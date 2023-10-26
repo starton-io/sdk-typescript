@@ -21,7 +21,7 @@ jobs:
       languages: |
         - typescript
       mode: direct
-      openapi_doc_auth_header: x-api-key
+      openapi_doc_auth_header: ""
       openapi_docs: |
         - https://raw.githubusercontent.com/starton-io/starton-openapi/master/starton-openapi.json
       publish_typescript: true
@@ -29,5 +29,5 @@ jobs:
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN }}
-      openapi_doc_auth_token: ${{ secrets.SPEC_TOKEN }}
+      openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
