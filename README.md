@@ -6,14 +6,11 @@
     
 </div>
 
+![Starton Banner](https://github.com/starton-io/.github/blob/master/github-banner.jpg?raw=true)
 
-## 🏗 **Welcome to your new SDK!** 🏗
+## 🏗 **Under construction!** 🏗
 
-It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-- [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasyapi.dev/docs/customize-sdks)
-- [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
-- [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
-- [ ] ✨ When ready to productionize, delete this section from the README
+This is an alpha release of the Starton SDK.  We are still working on the documentation and examples.  If you have any questions, please reach out to us on [Discord](https://discord.starton.com/).
 <!-- Start SDK Installation -->
 # SDK Installation
 
@@ -230,3 +227,15 @@ While we value open-source contributions to this SDK, this library is generated 
 Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
 
 ### SDK Created by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
+
+## Documentation
+
+Find out more on how to use Starton in our [Documentation](https://docs.starton.com/)
+
+## License
+
+[License MIT](./LICENSE.md)
+
+## Authors
+
+- Starton [support@starton.com](mailto:support@starton.com)
