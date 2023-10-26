@@ -1,16 +1,19 @@
+![Starton Banner](https://github.com/starton-io/.github/blob/master/github-banner.jpg?raw=true)
+
 # @starton/sdk
 
 <div align="left">
-    <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://github.com/starton-io/sdk-typescript.git/actions"><img src="https://img.shields.io/github/actions/workflow/status/starton-io/sdk-typescript/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
     
 </div>
 
-![Starton Banner](https://github.com/starton-io/.github/blob/master/github-banner.jpg?raw=true)
 
 ## 🏗 **Under construction!** 🏗
 
-This is an alpha release of the Starton SDK.  We are still working on the documentation and examples.  If you have any questions, please reach out to us on [Discord](https://discord.starton.com/).
+This is an alpha release of the Starton SDK.  We are still working on the documentation and examples and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally looking for the latest version.
+
+If you have any questions, please reach out to us on [Discord](https://discord.starton.com/).
+
 <!-- Start SDK Installation -->
 ## SDK Installation
 
@@ -28,27 +31,19 @@ yarn add @starton/sdk
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
 ```typescript
-import { Starton } from "@starton/sdk";
+import { Starton } from "@starton/sdk"
 
-(async () => {
-    const sdk = new Starton({
-        startonApiKey: "",
-    });
+const sdk = new Starton({
+    startonApiKey: "",
+})
 
-    const res = await sdk.data.getBalance({
-        address: "164 Runolfsson Via",
-        network: "string",
-    });
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
+sdk.data.getBalance({
+    address: "0xc479C6ceAd4fE25AF85965aB2364C1C5f5351200",
+    network: "ethereum-mainnet",
+}).then(response => console.log(response))
 ```
-<!-- End SDK Example Usage -->
+<!-- No SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
@@ -176,11 +171,7 @@ import { Starton } from "@starton/sdk";
 
 <!-- End Dev Containers -->
 
-<!-- Start Error Handling -->
-# Error Handling
-
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-<!-- End Error Handling -->
+<!-- No Error Handling -->
 
 <!-- Start Custom HTTP Client -->
 # Custom HTTP Client
@@ -240,87 +231,16 @@ import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
 ```
 <!-- End Pagination -->
 
-
-
-<!-- Start Server Selection -->
-# Server Selection
-
-## Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.starton.com` | None |
-
-For example:
-
-
-```typescript
-import { Starton } from "@starton/sdk";
-
-(async () => {
-    const sdk = new Starton({
-        startonApiKey: "",
-        serverIdx: 0,
-    });
-
-    const res = await sdk.data.getBalance({
-        address: "164 Runolfsson Via",
-        network: "string",
-    });
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
-```
-
-
-## Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
-
-
-```typescript
-import { Starton } from "@starton/sdk";
-
-(async () => {
-    const sdk = new Starton({
-        startonApiKey: "",
-        serverURL: "https://api.starton.com",
-    });
-
-    const res = await sdk.data.getBalance({
-        address: "164 Runolfsson Via",
-        network: "string",
-    });
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
-```
-<!-- End Server Selection -->
+<!-- No Server Selection -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development
 
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
-
 ## Contributions
 
 While we value open-source contributions to this SDK, this library is generated programmatically.
 Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
-
-### SDK Created by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
 
 ## Documentation
 
