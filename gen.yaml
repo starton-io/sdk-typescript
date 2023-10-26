@@ -9,23 +9,24 @@ generation:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
+  devContainers:
+    enabled: true
+    schemaPath: https://raw.githubusercontent.com/starton-io/starton-openapi/master/starton-openapi.json
   repoURL: https://github.com/starton-io/sdk-typescript.git
   sdkClassName: Starton
   singleTagPerOp: false
   tagNamespacingDisabled: false
-  devContainers:
-    enabled: true
-    schemaPath: https://raw.githubusercontent.com/starton-io/starton-openapi/master/starton-openapi.json
 features:
   typescript:
     core: 2.94.0
+    devContainers: 2.88.0
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.81.3
 typescript:
-  version: 0.1.1
+  version: 0.2.0
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true

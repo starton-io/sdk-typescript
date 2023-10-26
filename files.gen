@@ -466,3 +466,6 @@ docs/sdks/projectmemberinvitation/README.md
 docs/sdks/smartcontract/README.md
 docs/sdks/smartcontracttemplate/README.md
 .gitattributes
+.devcontainer/README.md
+.devcontainer/devcontainer.json
+.devcontainer/setup.sh
