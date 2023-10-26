@@ -1,0 +1,13 @@
+# GetAllSmartContractRequest
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `address`                                                                       | *string*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `includeAbi`                                                                    | *boolean*                                                                       | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `includeCompilationDetails`                                                     | *boolean*                                                                       | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `limit`                                                                         | *number*                                                                        | :heavy_minus_sign:                                                              | Number of entities returned on each page. By default this number is set to 100. |
+| `network`                                                                       | *string*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `page`                                                                          | *number*                                                                        | :heavy_minus_sign:                                                              | Number of returned page. By default the returned page is the first.             |
