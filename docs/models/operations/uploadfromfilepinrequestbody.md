@@ -1,0 +1,9 @@
+# UploadFromFilePinRequestBody
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `file`                                                                                                  | [UploadFromFilePinRequestBodyFile](../../models/operations/uploadfromfilepinrequestbodyfile.md)         | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `metadata`                                                                                              | [UploadFromFilePinRequestBodyMetadata](../../models/operations/uploadfromfilepinrequestbodymetadata.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |

@@ -1,15 +1,32 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 962daccb4aa3b9665e16c6b0c52fafa1
+  docVersion: "1.0"
+  speakeasyVersion: 1.108.0
+  generationVersion: 2.172.0
 generation:
   comments:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
+  repoURL: https://github.com/starton-io/sdk-typescript.git
   sdkClassName: Starton
   singleTagPerOp: false
   tagNamespacingDisabled: false
+features:
+  typescript:
+    core: 2.94.0
+    globalSecurity: 2.82.0
+    globalServerURLs: 2.82.0
+    groups: 2.81.2
+    nameOverrides: 2.81.1
 typescript:
-  version: 0.0.1
+  version: 0.1.0
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
+  flattenGlobalSecurity: true
+  installationURL: https://github.com/starton-io/sdk-typescript
   maxMethodParams: 0
   packageName: '@starton/sdk'
+  published: true
+  repoSubDirectory: .

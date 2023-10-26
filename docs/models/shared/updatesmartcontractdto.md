@@ -1,0 +1,10 @@
+# UpdateSmartContractDto
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `description`                                                                           | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `metadata`                                                                              | [UpdateSmartContractDtoMetadata](../../models/shared/updatesmartcontractdtometadata.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `name`                                                                                  | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
