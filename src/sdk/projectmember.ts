@@ -20,10 +20,10 @@ export class ProjectMember {
     }
 
     /**
-     * Delete a member
+     * Remove a user from a project.
      *
      * @remarks
-     * Delete a member.
+     * Delete a user's project membership. The user attempting this action needs to have the necessary permissions, and they cannot remove the project's owner.
      */
     async delete(
         req: operations.DeleteProjectMemberRequest,
@@ -104,10 +104,10 @@ export class ProjectMember {
     }
 
     /**
-     * Get all members
+     * Retrieve a list of all members of a specific project.
      *
      * @remarks
-     * Return all members
+     * Fetches all the members associated with a project. The user must have the appropriate permissions to access this data.
      */
     async getAll(config?: AxiosRequestConfig): Promise<operations.GetAllProjectMemberResponse> {
         const baseURL: string = utils.templateUrl(

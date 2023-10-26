@@ -48,6 +48,7 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
     symbol: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -85,6 +86,7 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -120,8 +122,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.network.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -156,6 +163,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.network.getOne({
     name: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -206,6 +214,7 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
     },
     name: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

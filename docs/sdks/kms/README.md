@@ -40,6 +40,7 @@ import { CreateKmsDtoProvider } from "@starton/sdk/dist/sdk/models/shared";
     secret: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -77,6 +78,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -112,8 +114,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.kms.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -148,6 +155,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.kms.getOne({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -186,6 +194,7 @@ import { Starton } from "@starton/sdk";
     requestBody: "string",
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

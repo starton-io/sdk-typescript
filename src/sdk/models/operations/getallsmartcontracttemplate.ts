@@ -86,4 +86,6 @@ export class GetAllSmartContractTemplateResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    next: () => Promise<GetAllSmartContractTemplateResponse | null>;
 }

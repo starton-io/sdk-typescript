@@ -89,4 +89,6 @@ export class GetAllWatcherResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     watcherPaginated?: GetAllWatcherWatcherPaginated;
+
+    next: () => Promise<GetAllWatcherResponse | null>;
 }

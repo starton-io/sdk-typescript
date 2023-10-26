@@ -74,4 +74,6 @@ export class GetAllPinResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    next: () => Promise<GetAllPinResponse | null>;
 }

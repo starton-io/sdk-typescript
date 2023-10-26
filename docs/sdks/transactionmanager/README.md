@@ -41,6 +41,7 @@ import { CreateTransactionDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -76,8 +77,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.transactionManager.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -113,6 +119,7 @@ import { Starton } from "@starton/sdk";
     address: "92240 Harris Row",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -151,6 +158,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -188,6 +196,7 @@ import { Starton } from "@starton/sdk";
     address: "4925 Shanahan Parkways",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

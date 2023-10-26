@@ -36,6 +36,7 @@ import { Starton } from "@starton/sdk";
     metadata: {},
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -73,6 +74,7 @@ import { Starton } from "@starton/sdk";
     address: "8653 Vaughn Hills",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -108,8 +110,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.wallet.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -144,6 +151,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.wallet.getOne({
     address: "43504 Penelope Expressway",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -183,6 +191,7 @@ import { ImportProviderKeyDtoProvider } from "@starton/sdk/dist/sdk/models/share
     metadata: {},
     provider: ImportProviderKeyDtoProvider.Aws,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -225,6 +234,7 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -262,6 +272,7 @@ import { Starton } from "@starton/sdk";
     address: "4925 Shanahan Parkways",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -303,6 +314,7 @@ import { Starton } from "@starton/sdk";
     address: "924 Makenzie Curve",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -342,6 +354,7 @@ import { Starton } from "@starton/sdk";
     },
     address: "050 Mellie Well",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

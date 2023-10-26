@@ -64,4 +64,6 @@ export class GetAllWebhookResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     webhookPaginated?: GetAllWebhookWebhookPaginated;
+
+    next: () => Promise<GetAllWebhookResponse | null>;
 }

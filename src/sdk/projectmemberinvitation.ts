@@ -8,6 +8,7 @@ import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
+import jp from "jsonpath";
 
 export class ProjectMemberInvitation {
     private sdkConfiguration: SDKConfiguration;
@@ -17,10 +18,10 @@ export class ProjectMemberInvitation {
     }
 
     /**
-     * Invite a member
+     * Send an invitation to the project
      *
      * @remarks
-     * Invite a member.
+     * Invites a new member to the project. The user needs to have the necessary permissions to send invitations. The invitation details, including the recipient's email and role, must be provided in the request body.
      */
     async create(
         req: shared.CreateInvitationDto,
@@ -115,10 +116,10 @@ export class ProjectMemberInvitation {
     }
 
     /**
-     * Delete an invitation
+     * Revoke a previously sent invitation.
      *
      * @remarks
-     * Delete an invitation.
+     * Deletes an invitation that was previously sent. The user needs to have the necessary permissions to delete invitations. The id of the invitation to be revoked must be provided in the request URL
      */
     async delete(
         req: operations.DeleteInvitationRequest,
@@ -197,10 +198,10 @@ export class ProjectMemberInvitation {
     }
 
     /**
-     * Get all member invitation
+     * Retrieve a list of all member invitations for a specific project
      *
      * @remarks
-     * Get all member invitation
+     * Fetch all member invitations for a project. The user needs to have the appropriate permissions to access this data.
      */
     async getAll(
         req: operations.GetAllInvitationRequest,
@@ -278,6 +279,34 @@ export class ProjectMemberInvitation {
                 );
         }
 
+        res.next = async (): Promise<operations.GetAllInvitationResponse | null> => {
+            const page = req.page || 0;
+            const newPage = page + 1;
+            const numPages = jp.value(JSON.parse(decodedRes), "$.meta.totalPages");
+            if (numPages == undefined || numPages <= page) {
+                return null;
+            }
+
+            if (!JSON.parse(decodedRes)) {
+                return null;
+            }
+            const results = jp.value(JSON.parse(decodedRes), "$.items");
+            if (!results.length) {
+                return null;
+            }
+            const limit = req.limit || 0;
+            if (results.length < limit) {
+                return null;
+            }
+
+            return await this.getAll(
+                {
+                    ...req,
+                    page: newPage,
+                },
+                config
+            );
+        };
         return res;
     }
 }

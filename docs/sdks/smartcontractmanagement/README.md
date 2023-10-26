@@ -52,6 +52,7 @@ import { CallDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
     network: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -89,6 +90,7 @@ import { Starton } from "@starton/sdk";
     address: "8653 Vaughn Hills",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -155,6 +157,7 @@ import { AbiObjectDtoStateMutability, AbiObjectDtoType, DeployFromBytecodeDtoSpe
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -205,6 +208,7 @@ import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared"
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -240,8 +244,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.smartContractManagement.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -277,6 +286,7 @@ import { Starton } from "@starton/sdk";
     address: "18523 Buford Brook",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -315,6 +325,7 @@ import { Starton } from "@starton/sdk";
     address: "43504 Penelope Expressway",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -380,6 +391,7 @@ import { AbiObjectDtoStateMutability, AbiObjectDtoType } from "@starton/sdk/dist
     templateId: "ERC721_META_TRANSACTION",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -427,6 +439,7 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -467,6 +480,7 @@ import { Starton } from "@starton/sdk";
     address: "050 Mellie Well",
     network: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

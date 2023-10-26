@@ -60,4 +60,6 @@ export class GetAllWatcherEventResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     watcherEventPaginated?: GetAllWatcherEventWatcherEventPaginated;
+
+    next: () => Promise<GetAllWatcherEventResponse | null>;
 }

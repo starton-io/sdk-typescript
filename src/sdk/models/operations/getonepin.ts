@@ -7,6 +7,9 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOnePinRequest extends SpeakeasyBase {
+    /**
+     * The unique identifier of the file to be retrieved. This {id} is assigned when the file is initially uploaded to IPFS.
+     */
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
     id: string;
 

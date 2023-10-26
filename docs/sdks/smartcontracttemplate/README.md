@@ -23,8 +23,13 @@ import { GetAllSmartContractTemplateCategory } from "@starton/sdk/dist/sdk/model
 
   const res = await sdk.smartContract.template.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -59,6 +64,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.smartContract.template.getOne({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

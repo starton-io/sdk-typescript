@@ -43,6 +43,7 @@ import { CreateWatcherDtoType } from "@starton/sdk/dist/sdk/models/shared";
     webhookUrl: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -80,6 +81,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -116,8 +118,13 @@ import { GetAllWatcherType } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.monitor.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -153,8 +160,13 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -189,6 +201,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.monitor.getOne({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -227,6 +240,7 @@ import { Starton } from "@starton/sdk";
     eventId: "string",
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -272,6 +286,7 @@ import { Starton } from "@starton/sdk";
     },
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

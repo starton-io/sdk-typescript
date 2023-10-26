@@ -60,4 +60,6 @@ export class GetAllNetworkResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    next: () => Promise<GetAllNetworkResponse | null>;
 }

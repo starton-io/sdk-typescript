@@ -32,6 +32,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,8 +69,13 @@ import { GetAllWebhookStatus } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.webhook.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -104,6 +110,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.webhook.getOne({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -140,6 +147,7 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.webhook.getSigningSecret();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -173,6 +181,7 @@ import { Starton } from "@starton/sdk";
   });
 
   const res = await sdk.webhook.regenerateSigningSecret();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -209,6 +218,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.webhook.resend({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

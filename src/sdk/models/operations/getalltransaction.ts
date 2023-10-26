@@ -84,4 +84,6 @@ export class GetAllTransactionResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     transactionPaginated?: GetAllTransactionTransactionPaginated;
+
+    next: () => Promise<GetAllTransactionResponse | null>;
 }

@@ -57,4 +57,6 @@ export class GetAllWalletResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     walletPaginated?: GetAllWalletWalletPaginated;
+
+    next: () => Promise<GetAllWalletResponse | null>;
 }

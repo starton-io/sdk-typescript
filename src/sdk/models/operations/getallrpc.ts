@@ -57,4 +57,6 @@ export class GetAllRpcResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    next: () => Promise<GetAllRpcResponse | null>;
 }

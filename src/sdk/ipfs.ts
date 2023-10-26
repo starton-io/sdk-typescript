@@ -8,6 +8,7 @@ import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
+import jp from "jsonpath";
 
 /**
  * IPFS allows users to host and receive content in a manner similar to BitTorrent. As opposed to a centrally located server, IPFS is built around a decentralized system creating a resilient system of file storage and sharing. Starton IPFS storage service acts as a liaison between the IPFS protocol and you, with a user-friendly interface that lets you pin or upload files as you would any other storage service. You get all the benefits of hosting your content on the protocol while still having the easy process of uploading it.
@@ -21,10 +22,10 @@ export class Ipfs {
     }
 
     /**
-     * Delete a pin
+     * Deletes pinned file referenced by {id}
      *
      * @remarks
-     * Delete a pin.
+     * Unpin a previously pinned file by providing the specific {id} associated with the file.
      */
     async delete(
         req: operations.DeletePinRequest,
@@ -103,10 +104,10 @@ export class Ipfs {
     }
 
     /**
-     * Get all files
+     * Retrieve all files
      *
      * @remarks
-     * Return all files pinned on IPFS
+     * Retrieve a list of files that have been pinned on IPFS.
      */
     async getAll(
         req: operations.GetAllPinRequest,
@@ -184,14 +185,42 @@ export class Ipfs {
                 );
         }
 
+        res.next = async (): Promise<operations.GetAllPinResponse | null> => {
+            const page = req.page || 0;
+            const newPage = page + 1;
+            const numPages = jp.value(JSON.parse(decodedRes), "$.meta.totalPages");
+            if (numPages == undefined || numPages <= page) {
+                return null;
+            }
+
+            if (!JSON.parse(decodedRes)) {
+                return null;
+            }
+            const results = jp.value(JSON.parse(decodedRes), "$.items");
+            if (!results.length) {
+                return null;
+            }
+            const limit = req.limit || 0;
+            if (results.length < limit) {
+                return null;
+            }
+
+            return await this.getAll(
+                {
+                    ...req,
+                    page: newPage,
+                },
+                config
+            );
+        };
         return res;
     }
 
     /**
-     * Get a file
+     * Retrieve a Specific File
      *
      * @remarks
-     * Return a file already uploaded on IPFS.
+     * Fetches the details of a specific file that has been previously uploaded to IPFS, using its unique identifier.
      */
     async getOne(
         req: operations.GetOnePinRequest,
@@ -271,10 +300,10 @@ export class Ipfs {
     }
 
     /**
-     * Get storage used
+     * Retrieve Current Storage Usage
      *
      * @remarks
-     * Get storage used
+     * Fetches the current storage utilization details for the project, providing insights into the used space, total allowance, and remaining free space.
      */
     async getStorageUsed(
         config?: AxiosRequestConfig
@@ -350,10 +379,10 @@ export class Ipfs {
     }
 
     /**
-     * Pin a file already on IPFS
+     * Pin Existing IPFS File
      *
      * @remarks
-     * Pin a file already uploaded on IPFS and ask starton to keep a copy of it
+     * Requests Starton to retain a copy of a file that has already been uploaded to IPFS, ensuring its availability.
      */
     async pinExistingFile(
         req: shared.CreatePinDto,
@@ -448,10 +477,10 @@ export class Ipfs {
     }
 
     /**
-     * Update a file name/metadata
+     * Update File Details
      *
      * @remarks
-     * Update a file name or metadata. If you want to edit a file directly, you need to delete it and upload a new one, on IPFS file are referenced by unique hash
+     * Modifies the name or metadata of an existing file stored in IPFS. Note that direct edits to the file content are not possible; any changes to the content require re-uploading and will result in a new unique hash for the file.
      */
     async update(
         req: operations.UpdatePinRequest,
@@ -549,7 +578,7 @@ export class Ipfs {
      * Upload a file
      *
      * @remarks
-     * Upload a new file on IPFS
+     * Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retrieval, and receive a unique CID as a reference to the uploaded content. THE BODY PARAMETERS ARE FORM PARAMETERS FOR THIS ENDPOINT.
      */
     async uploadFile(
         req: operations.UploadFromFilePinRequestBody,
@@ -647,7 +676,7 @@ export class Ipfs {
      * Upload a folder
      *
      * @remarks
-     * Upload a new folder on IPFS
+     * Upload an entire folder to IPFS, ensuring secure pinning of its contents for reliable retrieval. This endpoint expects a multipart/form-data payload, consisting of an optional metadata object and an array of files. The successful upload of the folder will result in a unique Content Identifier (CID) reference, which can be used to fetch the folder and its contents from IPFS at any time.
      */
     async uploadFolder(
         req: operations.UploadFromFolderPinRequestBody,
@@ -743,10 +772,10 @@ export class Ipfs {
     }
 
     /**
-     * Upload a json
+     * Upload a JSON file
      *
      * @remarks
-     * Upload a json.
+     * Upload a JSON file to IPFS with pinning for reliable access, associating it with a unique CID.
      */
     async uploadJson(
         req: shared.UploadJsonDto,

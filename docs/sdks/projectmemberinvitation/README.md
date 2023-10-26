@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [create](#create) - Invite a member
-* [delete](#delete) - Delete an invitation
-* [getAll](#getall) - Get all member invitation
+* [create](#create) - Send an invitation to the project
+* [delete](#delete) - Revoke a previously sent invitation.
+* [getAll](#getall) - Retrieve a list of all member invitations for a specific project
 
 ## create
 
-Invite a member.
+Invites a new member to the project. The user needs to have the necessary permissions to send invitations. The invitation details, including the recipient's email and role, must be provided in the request body.
 
 ### Example Usage
 
@@ -26,6 +26,7 @@ import { CreateInvitationDtoRole } from "@starton/sdk/dist/sdk/models/shared";
     email: "Jena.Nienow28@yahoo.com",
     role: CreateInvitationDtoRole.Owner,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -48,7 +49,7 @@ import { CreateInvitationDtoRole } from "@starton/sdk/dist/sdk/models/shared";
 
 ## delete
 
-Delete an invitation.
+Deletes an invitation that was previously sent. The user needs to have the necessary permissions to delete invitations. The id of the invitation to be revoked must be provided in the request URL
 
 ### Example Usage
 
@@ -63,6 +64,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.project.member.invitation.delete({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -85,7 +87,7 @@ import { Starton } from "@starton/sdk";
 
 ## getAll
 
-Get all member invitation
+Fetch all member invitations for a project. The user needs to have the appropriate permissions to access this data.
 
 ### Example Usage
 
@@ -99,8 +101,13 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.project.member.invitation.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```

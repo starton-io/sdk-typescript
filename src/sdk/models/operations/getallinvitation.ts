@@ -54,4 +54,6 @@ export class GetAllInvitationResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    next: () => Promise<GetAllInvitationResponse | null>;
 }

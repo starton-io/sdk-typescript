@@ -8,6 +8,7 @@ import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
+import jp from "jsonpath";
 
 /**
  * The Smart contract management is an abstraction on top of our **Transaction Manager** and it allow you to build and automate your smart contract transaction easily, without struggling with the ABI and params encoding. With it you can:
@@ -520,6 +521,34 @@ export class SmartContractManagement {
                 );
         }
 
+        res.next = async (): Promise<operations.GetAllSmartContractResponse | null> => {
+            const page = req.page || 0;
+            const newPage = page + 1;
+            const numPages = jp.value(JSON.parse(decodedRes), "$.meta.totalPages");
+            if (numPages == undefined || numPages <= page) {
+                return null;
+            }
+
+            if (!JSON.parse(decodedRes)) {
+                return null;
+            }
+            const results = jp.value(JSON.parse(decodedRes), "$.items");
+            if (!results.length) {
+                return null;
+            }
+            const limit = req.limit || 0;
+            if (results.length < limit) {
+                return null;
+            }
+
+            return await this.getAll(
+                {
+                    ...req,
+                    page: newPage,
+                },
+                config
+            );
+        };
         return res;
     }
 

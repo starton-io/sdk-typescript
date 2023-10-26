@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 962daccb4aa3b9665e16c6b0c52fafa1
+  docChecksum: 4199b80e31d9939cb77296b14dd95204
   docVersion: "1.0"
-  speakeasyVersion: 1.108.0
-  generationVersion: 2.172.0
+  speakeasyVersion: 1.108.1
+  generationVersion: 2.172.4
 generation:
   comments:
     disableComments: false
@@ -20,8 +20,9 @@ features:
     globalServerURLs: 2.82.0
     groups: 2.81.2
     nameOverrides: 2.81.1
+    pagination: 2.81.3
 typescript:
-  version: 0.1.0
+  version: 0.1.1
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true

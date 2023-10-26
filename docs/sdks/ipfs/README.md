@@ -7,19 +7,19 @@ IPFS allows users to host and receive content in a manner similar to BitTorrent.
 
 ### Available Operations
 
-* [delete](#delete) - Delete a pin
-* [getAll](#getall) - Get all files
-* [getOne](#getone) - Get a file
-* [getStorageUsed](#getstorageused) - Get storage used
-* [pinExistingFile](#pinexistingfile) - Pin a file already on IPFS
-* [update](#update) - Update a file name/metadata
+* [delete](#delete) - Deletes pinned file referenced by {id}
+* [getAll](#getall) - Retrieve all files
+* [getOne](#getone) - Retrieve a Specific File
+* [getStorageUsed](#getstorageused) - Retrieve Current Storage Usage
+* [pinExistingFile](#pinexistingfile) - Pin Existing IPFS File
+* [update](#update) - Update File Details
 * [uploadFile](#uploadfile) - Upload a file
 * [uploadFolder](#uploadfolder) - Upload a folder
-* [uploadJson](#uploadjson) - Upload a json
+* [uploadJson](#uploadjson) - Upload a JSON file
 
 ## delete
 
-Delete a pin.
+Unpin a previously pinned file by providing the specific {id} associated with the file.
 
 ### Example Usage
 
@@ -34,6 +34,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.ipfs.delete({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -56,7 +57,7 @@ import { Starton } from "@starton/sdk";
 
 ## getAll
 
-Return all files pinned on IPFS
+Retrieve a list of files that have been pinned on IPFS.
 
 ### Example Usage
 
@@ -71,8 +72,13 @@ import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.ipfs.getAll({});
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -92,7 +98,7 @@ import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
 
 ## getOne
 
-Return a file already uploaded on IPFS.
+Fetches the details of a specific file that has been previously uploaded to IPFS, using its unique identifier.
 
 ### Example Usage
 
@@ -107,6 +113,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.ipfs.getOne({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -129,7 +136,7 @@ import { Starton } from "@starton/sdk";
 
 ## getStorageUsed
 
-Get storage used
+Fetches the current storage utilization details for the project, providing insights into the used space, total allowance, and remaining free space.
 
 ### Example Usage
 
@@ -142,6 +149,7 @@ import { Starton } from "@starton/sdk";
   });
 
   const res = await sdk.ipfs.getStorageUsed();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -163,7 +171,7 @@ import { Starton } from "@starton/sdk";
 
 ## pinExistingFile
 
-Pin a file already uploaded on IPFS and ask starton to keep a copy of it
+Requests Starton to retain a copy of a file that has already been uploaded to IPFS, ensuring its availability.
 
 ### Example Usage
 
@@ -179,6 +187,7 @@ import { Starton } from "@starton/sdk";
     cid: "string",
     metadata: {},
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -201,7 +210,7 @@ import { Starton } from "@starton/sdk";
 
 ## update
 
-Update a file name or metadata. If you want to edit a file directly, you need to delete it and upload a new one, on IPFS file are referenced by unique hash
+Modifies the name or metadata of an existing file stored in IPFS. Note that direct edits to the file content are not possible; any changes to the content require re-uploading and will result in a new unique hash for the file.
 
 ### Example Usage
 
@@ -219,6 +228,7 @@ import { Starton } from "@starton/sdk";
     },
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -241,7 +251,7 @@ import { Starton } from "@starton/sdk";
 
 ## uploadFile
 
-Upload a new file on IPFS
+Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retrieval, and receive a unique CID as a reference to the uploaded content. THE BODY PARAMETERS ARE FORM PARAMETERS FOR THIS ENDPOINT.
 
 ### Example Usage
 
@@ -260,6 +270,7 @@ import { Starton } from "@starton/sdk";
     },
     metadata: {},
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -282,7 +293,7 @@ import { Starton } from "@starton/sdk";
 
 ## uploadFolder
 
-Upload a new folder on IPFS
+Upload an entire folder to IPFS, ensuring secure pinning of its contents for reliable retrieval. This endpoint expects a multipart/form-data payload, consisting of an optional metadata object and an array of files. The successful upload of the folder will result in a unique Content Identifier (CID) reference, which can be used to fetch the folder and its contents from IPFS at any time.
 
 ### Example Usage
 
@@ -303,6 +314,7 @@ import { Starton } from "@starton/sdk";
     ],
     metadata: {},
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -325,7 +337,7 @@ import { Starton } from "@starton/sdk";
 
 ## uploadJson
 
-Upload a json.
+Upload a JSON file to IPFS with pinning for reliable access, associating it with a unique CID.
 
 ### Example Usage
 
@@ -342,6 +354,7 @@ import { Starton } from "@starton/sdk";
     metadata: {},
     name: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

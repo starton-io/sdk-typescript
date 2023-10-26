@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [delete](#delete) - Delete a member
-* [getAll](#getall) - Get all members
+* [delete](#delete) - Remove a user from a project.
+* [getAll](#getall) - Retrieve a list of all members of a specific project.
 
 ## delete
 
-Delete a member.
+Delete a user's project membership. The user attempting this action needs to have the necessary permissions, and they cannot remove the project's owner.
 
 ### Example Usage
 
@@ -23,6 +23,7 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.project.member.delete({
     userId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -45,7 +46,7 @@ import { Starton } from "@starton/sdk";
 
 ## getAll
 
-Return all members
+Fetches all the members associated with a project. The user must have the appropriate permissions to access this data.
 
 ### Example Usage
 
@@ -58,6 +59,7 @@ import { Starton } from "@starton/sdk";
   });
 
   const res = await sdk.project.member.getAll();
+
 
   if (res.statusCode == 200) {
     // handle response

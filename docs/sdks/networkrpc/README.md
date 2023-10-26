@@ -30,6 +30,7 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,6 +69,7 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -105,8 +107,13 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
-    // handle response
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
   }
 })();
 ```
@@ -142,6 +149,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
     name: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -181,6 +189,7 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
     name: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

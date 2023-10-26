@@ -12,15 +12,15 @@
 
 This is an alpha release of the Starton SDK.  We are still working on the documentation and examples.  If you have any questions, please reach out to us on [Discord](https://discord.starton.com/).
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
-## NPM
+### NPM
 
 ```bash
 npm add @starton/sdk
 ```
 
-## Yarn
+### Yarn
 
 ```bash
 yarn add @starton/sdk
@@ -29,8 +29,6 @@ yarn add @starton/sdk
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { Starton } from "@starton/sdk";
 
@@ -53,28 +51,28 @@ import { Starton } from "@starton/sdk";
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
 
-## [data](docs/sdks/data/README.md)
+### [data](docs/sdks/data/README.md)
 
 * [getBalance](docs/sdks/data/README.md#getbalance) - Retrieve the native token balance of a specific blockchain address
 * [getErc20Balance](docs/sdks/data/README.md#geterc20balance) - Retrieve the ERC20 token balance for a specific address
 * [getGasPrice](docs/sdks/data/README.md#getgasprice) -  Retrieve the current gas prices
 
-## [ipfs](docs/sdks/ipfs/README.md)
+### [ipfs](docs/sdks/ipfs/README.md)
 
-* [delete](docs/sdks/ipfs/README.md#delete) - Delete a pin
-* [getAll](docs/sdks/ipfs/README.md#getall) - Get all files
-* [getOne](docs/sdks/ipfs/README.md#getone) - Get a file
-* [getStorageUsed](docs/sdks/ipfs/README.md#getstorageused) - Get storage used
-* [pinExistingFile](docs/sdks/ipfs/README.md#pinexistingfile) - Pin a file already on IPFS
-* [update](docs/sdks/ipfs/README.md#update) - Update a file name/metadata
+* [delete](docs/sdks/ipfs/README.md#delete) - Deletes pinned file referenced by {id}
+* [getAll](docs/sdks/ipfs/README.md#getall) - Retrieve all files
+* [getOne](docs/sdks/ipfs/README.md#getone) - Retrieve a Specific File
+* [getStorageUsed](docs/sdks/ipfs/README.md#getstorageused) - Retrieve Current Storage Usage
+* [pinExistingFile](docs/sdks/ipfs/README.md#pinexistingfile) - Pin Existing IPFS File
+* [update](docs/sdks/ipfs/README.md#update) - Update File Details
 * [uploadFile](docs/sdks/ipfs/README.md#uploadfile) - Upload a file
 * [uploadFolder](docs/sdks/ipfs/README.md#uploadfolder) - Upload a folder
-* [uploadJson](docs/sdks/ipfs/README.md#uploadjson) - Upload a json
+* [uploadJson](docs/sdks/ipfs/README.md#uploadjson) - Upload a JSON file
 
-## [kms](docs/sdks/kms/README.md)
+### [kms](docs/sdks/kms/README.md)
 
 * [create](docs/sdks/kms/README.md#create) - Create a new KMS entry
 * [delete](docs/sdks/kms/README.md#delete) - Remove a specific KMS entry
@@ -82,7 +80,7 @@ import { Starton } from "@starton/sdk";
 * [getOne](docs/sdks/kms/README.md#getone) - Retrieve details of a specific KMS
 * [update](docs/sdks/kms/README.md#update) - Update the details of a KMS
 
-## [monitor](docs/sdks/monitor/README.md)
+### [monitor](docs/sdks/monitor/README.md)
 
 * [create](docs/sdks/monitor/README.md#create) - Create a New Watcher
 * [delete](docs/sdks/monitor/README.md#delete) - Delete a watcher
@@ -92,7 +90,7 @@ import { Starton } from "@starton/sdk";
 * [getOneEvent](docs/sdks/monitor/README.md#getoneevent) - Get a watcher event
 * [update](docs/sdks/monitor/README.md#update) - Update a watcher
 
-## [network](docs/sdks/network/README.md)
+### [network](docs/sdks/network/README.md)
 
 * [create](docs/sdks/network/README.md#create) - Create a new network (Enterprise)
 * [delete](docs/sdks/network/README.md#delete) - Delete a network (Enterprise)
@@ -100,7 +98,7 @@ import { Starton } from "@starton/sdk";
 * [getOne](docs/sdks/network/README.md#getone) - Fetch a specific network
 * [update](docs/sdks/network/README.md#update) - Update specific network details (Enterprise)
 
-## [network.rpc](docs/sdks/networkrpc/README.md)
+### [network.rpc](docs/sdks/networkrpc/README.md)
 
 * [create](docs/sdks/networkrpc/README.md#create) - Add a rpc (enterprise)
 * [delete](docs/sdks/networkrpc/README.md#delete) - Delete a rpc (enterprise)
@@ -108,7 +106,7 @@ import { Starton } from "@starton/sdk";
 * [getOne](docs/sdks/networkrpc/README.md#getone) - Get a rpc (enterprise)
 * [update](docs/sdks/networkrpc/README.md#update) - Update a rpc (enterprise)
 
-## [smartContractManagement](docs/sdks/smartcontractmanagement/README.md)
+### [smartContractManagement](docs/sdks/smartcontractmanagement/README.md)
 
 * [call](docs/sdks/smartcontractmanagement/README.md#call) - Execute Smart Contract Function
 * [delete](docs/sdks/smartcontractmanagement/README.md#delete) - Delete a smart contract
@@ -121,7 +119,7 @@ import { Starton } from "@starton/sdk";
 * [read](docs/sdks/smartcontractmanagement/README.md#read) - Query Smart Contract Function
 * [update](docs/sdks/smartcontractmanagement/README.md#update) - Update a smart contract
 
-## [transactionManager](docs/sdks/transactionmanager/README.md)
+### [transactionManager](docs/sdks/transactionmanager/README.md)
 
 * [create](docs/sdks/transactionmanager/README.md#create) - Create a new transaction
 * [getAll](docs/sdks/transactionmanager/README.md#getall) - Retrieve a List of Transactions
@@ -129,12 +127,12 @@ import { Starton } from "@starton/sdk";
 * [getOne](docs/sdks/transactionmanager/README.md#getone) - Get a Specific Transaction
 * [resyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce) - Synchronize Nonces for a wallet
 
-## [transactionManager.setting](docs/sdks/transactionmanagersetting/README.md)
+### [transactionManager.setting](docs/sdks/transactionmanagersetting/README.md)
 
 * [get](docs/sdks/transactionmanagersetting/README.md#get) - Get Relayer settings
 * [update](docs/sdks/transactionmanagersetting/README.md#update) - Update Relayer Settings
 
-## [wallet](docs/sdks/wallet/README.md)
+### [wallet](docs/sdks/wallet/README.md)
 
 * [create](docs/sdks/wallet/README.md#create) - Create a new wallet
 * [delete](docs/sdks/wallet/README.md#delete) - Delete a wallet
@@ -146,7 +144,7 @@ import { Starton } from "@starton/sdk";
 * [sign](docs/sdks/wallet/README.md#sign) - Sign a message
 * [update](docs/sdks/wallet/README.md#update) - Update Wallet Information
 
-## [webhook](docs/sdks/webhook/README.md)
+### [webhook](docs/sdks/webhook/README.md)
 
 * [cancel](docs/sdks/webhook/README.md#cancel) - Cancel a webhook
 * [getAll](docs/sdks/webhook/README.md#getall) - Retrieve the list of Webhooks
@@ -156,19 +154,19 @@ import { Starton } from "@starton/sdk";
 * [resend](docs/sdks/webhook/README.md#resend) - Resend a Webhook
 
 
-## [project.member](docs/sdks/projectmember/README.md)
+### [project.member](docs/sdks/projectmember/README.md)
 
-* [delete](docs/sdks/projectmember/README.md#delete) - Delete a member
-* [getAll](docs/sdks/projectmember/README.md#getall) - Get all members
+* [delete](docs/sdks/projectmember/README.md#delete) - Remove a user from a project.
+* [getAll](docs/sdks/projectmember/README.md#getall) - Retrieve a list of all members of a specific project.
 
-## [project.member.invitation](docs/sdks/projectmemberinvitation/README.md)
+### [project.member.invitation](docs/sdks/projectmemberinvitation/README.md)
 
-* [create](docs/sdks/projectmemberinvitation/README.md#create) - Invite a member
-* [delete](docs/sdks/projectmemberinvitation/README.md#delete) - Delete an invitation
-* [getAll](docs/sdks/projectmemberinvitation/README.md#getall) - Get all member invitation
+* [create](docs/sdks/projectmemberinvitation/README.md#create) - Send an invitation to the project
+* [delete](docs/sdks/projectmemberinvitation/README.md#delete) - Revoke a previously sent invitation.
+* [getAll](docs/sdks/projectmemberinvitation/README.md#getall) - Retrieve a list of all member invitations for a specific project
 
 
-## [smartContract.template](docs/sdks/smartcontracttemplate/README.md)
+### [smartContract.template](docs/sdks/smartcontracttemplate/README.md)
 
 * [getAll](docs/sdks/smartcontracttemplate/README.md#getall) - Fetch the list of Smart Contract Templates
 * [getOne](docs/sdks/smartcontracttemplate/README.md#getone) - Retrieve a Specific Smart Contract Template
@@ -176,16 +174,12 @@ import { Starton } from "@starton/sdk";
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 <!-- Start Error Handling -->
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 <!-- Start Custom HTTP Client -->
@@ -207,9 +201,109 @@ const httpClient = axios.create({
 
 const sdk = new Starton({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `next` method that can be called to pull down the next group of results. If the
+return value of `next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+## Example
+
+```typescript
+import { Starton } from "@starton/sdk";
+import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new Starton({
+        startonApiKey: "",
+    });
+
+    const res = await sdk.ipfs.getAll({});
+
+    if (res.statusCode == 200) {
+        do {
+            // handle items
+
+            res = res.next();
+        } while (res);
+    }
+})();
+
+```
+<!-- End Pagination -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.starton.com` | None |
+
+For example:
+
+
+```typescript
+import { Starton } from "@starton/sdk";
+
+(async () => {
+    const sdk = new Starton({
+        startonApiKey: "",
+        serverIdx: 0,
+    });
+
+    const res = await sdk.data.getBalance({
+        address: "164 Runolfsson Via",
+        network: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```typescript
+import { Starton } from "@starton/sdk";
+
+(async () => {
+    const sdk = new Starton({
+        startonApiKey: "",
+        serverURL: "https://api.starton.com",
+    });
+
+    const res = await sdk.data.getBalance({
+        address: "164 Runolfsson Via",
+        network: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Server Selection -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
