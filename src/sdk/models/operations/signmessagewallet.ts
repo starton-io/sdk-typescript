@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class SignMessageWalletRequest extends SpeakeasyBase {
@@ -14,9 +14,12 @@ export class SignMessageWalletRequest extends SpeakeasyBase {
     address: string;
 }
 
-export class SignMessageWallet201ApplicationJSON extends SpeakeasyBase {}
+export class SignMessageWalletResponseBody extends SpeakeasyBase {}
 
 export class SignMessageWalletResponse extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    twoHundredAndOneApplicationJsonObject?: SignMessageWalletResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -34,7 +37,4 @@ export class SignMessageWalletResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    signMessageWallet201ApplicationJSONObject?: SignMessageWallet201ApplicationJSON;
 }

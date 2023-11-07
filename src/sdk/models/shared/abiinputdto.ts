@@ -5,13 +5,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class AbiInputDtoComponents extends SpeakeasyBase {}
+export class Components extends SpeakeasyBase {}
 
 export class AbiInputDto extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "components" })
-    @Type(() => AbiInputDtoComponents)
-    components?: AbiInputDtoComponents;
+    @Type(() => Components)
+    components?: Components;
 
     @SpeakeasyMetadata()
     @Expose({ name: "indexed" })

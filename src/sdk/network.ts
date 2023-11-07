@@ -3,10 +3,10 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
-import { NetworkRpc } from "./networkrpc";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
+import { Rpc } from "./rpc";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 import jp from "jsonpath";
@@ -16,12 +16,12 @@ import jp from "jsonpath";
  */
 
 export class Network {
-    public rpc: NetworkRpc;
+    public rpc: Rpc;
     private sdkConfiguration: SDKConfiguration;
 
     constructor(sdkConfig: SDKConfiguration) {
         this.sdkConfiguration = sdkConfig;
-        this.rpc = new NetworkRpc(this.sdkConfiguration);
+        this.rpc = new Rpc(this.sdkConfiguration);
     }
 
     /**
@@ -178,7 +178,7 @@ export class Network {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteNetwork200ApplicationJSONNumber = JSON.parse(decodedRes);
+                    res.twoHundredApplicationJsonNumber = JSON.parse(decodedRes);
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,

@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { CustomGasDto } from "./customgasdto";
 import { Expose, Type } from "class-transformer";
 
-export enum CallDtoSpeed {
+export enum Speed {
     Low = "low",
     Average = "average",
     Fast = "fast",
@@ -45,7 +45,7 @@ export class CallDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "speed" })
-    speed?: CallDtoSpeed;
+    speed?: Speed;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })

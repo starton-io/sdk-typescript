@@ -9,4 +9,4 @@
 | `faucet`                                                | [shared.Faucet](../../models/shared/faucet.md)          | :heavy_minus_sign:                                      | N/A                                                     |
 | `statusCode`                                            | *number*                                                | :heavy_check_mark:                                      | HTTP response status code for this operation            |
 | `rawResponse`                                           | [AxiosResponse](https://axios-http.com/docs/res_schema) | :heavy_minus_sign:                                      | Raw HTTP response; suitable for custom response parsing |
-| `claimFaucetDefaultApplicationJSONOneOf`                | *any*                                                   | :heavy_minus_sign:                                      | N/A                                                     |
+| `defaultApplicationJsonOneOf`                           | *any*                                                   | :heavy_minus_sign:                                      | N/A                                                     |

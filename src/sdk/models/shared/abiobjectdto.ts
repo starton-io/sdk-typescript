@@ -7,14 +7,14 @@ import { AbiInputDto } from "./abiinputdto";
 import { AbiOutputDto } from "./abioutputdto";
 import { Expose, Type } from "class-transformer";
 
-export enum AbiObjectDtoStateMutability {
+export enum StateMutability {
     Pure = "pure",
     View = "view",
     Nonpayable = "nonpayable",
     Payable = "payable",
 }
 
-export enum AbiObjectDtoType {
+export enum TypeT {
     Constructor = "constructor",
     Event = "event",
     Function = "function",
@@ -52,9 +52,9 @@ export class AbiObjectDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "stateMutability" })
-    stateMutability?: AbiObjectDtoStateMutability;
+    stateMutability?: StateMutability;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type: AbiObjectDtoType;
+    type: TypeT;
 }

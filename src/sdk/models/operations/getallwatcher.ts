@@ -3,11 +3,11 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export enum GetAllWatcherType {
+export enum TypeT {
     MinedTransaction = "MINED_TRANSACTION",
     AddressActivity = "ADDRESS_ACTIVITY",
     AddressReceivedNativeCurrency = "ADDRESS_RECEIVED_NATIVE_CURRENCY",
@@ -50,7 +50,7 @@ export class GetAllWatcherRequest extends SpeakeasyBase {
     paused?: boolean;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=type" })
-    type?: GetAllWatcherType;
+    type?: TypeT;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=webhookUrl" })
     webhookUrl?: string;

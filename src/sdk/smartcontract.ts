@@ -3,14 +3,14 @@
  */
 
 import { SDKConfiguration } from "./sdk";
-import { SmartContractTemplate } from "./smartcontracttemplate";
+import { Template } from "./template";
 
 export class SmartContract {
-    public template: SmartContractTemplate;
+    public template: Template;
     private sdkConfiguration: SDKConfiguration;
 
     constructor(sdkConfig: SDKConfiguration) {
         this.sdkConfiguration = sdkConfig;
-        this.template = new SmartContractTemplate(this.sdkConfiguration);
+        this.template = new Template(this.sdkConfiguration);
     }
 }

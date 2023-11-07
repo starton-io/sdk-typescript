@@ -1,5 +1,5 @@
 # Ipfs
-(*ipfs*)
+(*.ipfs*)
 
 ## Overview
 
@@ -63,7 +63,7 @@ Retrieve a list of files that have been pinned on IPFS.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
+import { Status } from "@starton/sdk/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new Starton({
@@ -265,8 +265,8 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.ipfs.uploadFile({
     file: {
-      content: "U?WWKB{5@q" as bytes <<<>>>,
-      file: "string",
+      content: new TextEncoder().encode("0xc7cca7F47D"),
+      fileName: "through_ew.mp4v",
     },
     metadata: {},
   });
@@ -308,8 +308,8 @@ import { Starton } from "@starton/sdk";
   const res = await sdk.ipfs.uploadFolder({
     files: [
       {
-        content: "$FpFd]o4kP" as bytes <<<>>>,
-        files: "string",
+        content: new TextEncoder().encode("0x08C8AeC4Bb"),
+        fileName: "flit.html",
       },
     ],
     metadata: {},

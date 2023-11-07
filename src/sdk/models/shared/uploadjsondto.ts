@@ -5,15 +5,15 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class UploadJsonDtoContent extends SpeakeasyBase {}
+export class Content extends SpeakeasyBase {}
 
 export class UploadJsonDtoMetadata extends SpeakeasyBase {}
 
 export class UploadJsonDto extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "content" })
-    @Type(() => UploadJsonDtoContent)
-    content: UploadJsonDtoContent;
+    @Type(() => Content)
+    content: Content;
 
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })

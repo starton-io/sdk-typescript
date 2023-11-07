@@ -3,28 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
-export class UploadFromFolderPinRequestBodyFiles extends SpeakeasyBase {
+export class Files extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, content=true" })
     content: Uint8Array;
 
     @SpeakeasyMetadata({ data: "multipart_form, name=files" })
-    files: string;
+    fileName: string;
 }
 
-export class UploadFromFolderPinRequestBodyMetadata extends SpeakeasyBase {}
+export class UploadFromFolderPinMetadata extends SpeakeasyBase {}
 
 export class UploadFromFolderPinRequestBody extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "multipart_form, name=files",
-        elemType: UploadFromFolderPinRequestBodyFiles,
-    })
-    files?: UploadFromFolderPinRequestBodyFiles[];
+    @SpeakeasyMetadata({ data: "multipart_form, name=files", elemType: Files })
+    files?: Files[];
 
     @SpeakeasyMetadata({ data: "multipart_form, name=metadata;json=true" })
-    metadata?: UploadFromFolderPinRequestBodyMetadata;
+    metadata?: UploadFromFolderPinMetadata;
 }
 
 export class UploadFromFolderPinResponse extends SpeakeasyBase {

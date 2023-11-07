@@ -8,7 +8,7 @@ import { Expose, Transform, Type } from "class-transformer";
 
 export class PinMetadata extends SpeakeasyBase {}
 
-export enum PinStatus {
+export enum Status {
     Queued = "queued",
     Pinning = "pinning",
     Pinned = "pinned",
@@ -67,7 +67,7 @@ export class Pin extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
-    status: PinStatus;
+    status: Status;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })

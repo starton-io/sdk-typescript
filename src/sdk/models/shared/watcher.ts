@@ -11,7 +11,7 @@ export class WatcherCustomFilters extends SpeakeasyBase {}
 
 export class WatcherMetadata extends SpeakeasyBase {}
 
-export enum WatcherTriggerType {
+export enum TriggerType {
     Block = "BLOCK",
     Transaction = "TRANSACTION",
     Event = "EVENT",
@@ -91,7 +91,7 @@ export class Watcher extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "triggerType" })
-    triggerType: WatcherTriggerType;
+    triggerType: TriggerType;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })

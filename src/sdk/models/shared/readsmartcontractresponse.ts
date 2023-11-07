@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class ReadSmartContractResponseParams extends SpeakeasyBase {}
+export class Params extends SpeakeasyBase {}
 
 export class ReadSmartContractResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -20,10 +20,10 @@ export class ReadSmartContractResponse extends SpeakeasyBase {
     @Expose({ name: "network" })
     network: string;
 
-    @SpeakeasyMetadata({ elemType: ReadSmartContractResponseParams })
+    @SpeakeasyMetadata({ elemType: Params })
     @Expose({ name: "params" })
-    @Type(() => ReadSmartContractResponseParams)
-    params: ReadSmartContractResponseParams[];
+    @Type(() => Params)
+    params: Params[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "response" })

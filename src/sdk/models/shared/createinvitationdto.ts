@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum CreateInvitationDtoRole {
+export enum Role {
     Owner = "owner",
 }
 
@@ -16,5 +16,5 @@ export class CreateInvitationDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "role" })
-    role: CreateInvitationDtoRole;
+    role: Role;
 }

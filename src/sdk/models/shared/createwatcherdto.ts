@@ -5,9 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class CreateWatcherDtoCustomEventAbi extends SpeakeasyBase {}
+export class CustomEventAbi extends SpeakeasyBase {}
 
-export class CreateWatcherDtoCustomFilters extends SpeakeasyBase {}
+export class CustomFilters extends SpeakeasyBase {}
 
 export class CreateWatcherDtoMetadata extends SpeakeasyBase {}
 
@@ -36,13 +36,13 @@ export class CreateWatcherDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "customEventAbi" })
-    @Type(() => CreateWatcherDtoCustomEventAbi)
-    customEventAbi?: CreateWatcherDtoCustomEventAbi;
+    @Type(() => CustomEventAbi)
+    customEventAbi?: CustomEventAbi;
 
     @SpeakeasyMetadata()
     @Expose({ name: "customFilters" })
-    @Type(() => CreateWatcherDtoCustomFilters)
-    customFilters?: CreateWatcherDtoCustomFilters;
+    @Type(() => CustomFilters)
+    customFilters?: CustomFilters;
 
     @SpeakeasyMetadata()
     @Expose({ name: "description" })

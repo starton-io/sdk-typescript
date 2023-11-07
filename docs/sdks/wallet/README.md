@@ -1,5 +1,5 @@
 # Wallet
-(*wallet*)
+(*.wallet*)
 
 ## Overview
 

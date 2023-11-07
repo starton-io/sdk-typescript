@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class WatcherEventPayload extends SpeakeasyBase {}
+export class Payload extends SpeakeasyBase {}
 
 export enum WatcherEventStatus {
     PendingValidation = "PENDING_VALIDATION",
@@ -37,8 +37,8 @@ export class WatcherEvent extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "payload" })
-    @Type(() => WatcherEventPayload)
-    payload: WatcherEventPayload;
+    @Type(() => Payload)
+    payload: Payload;
 
     @SpeakeasyMetadata()
     @Expose({ name: "projectId" })

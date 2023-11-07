@@ -5,11 +5,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class SmartContractAbi extends SpeakeasyBase {}
+export class Abi extends SpeakeasyBase {}
 
-export class SmartContractCompilationDetails extends SpeakeasyBase {}
+export class CompilationDetails extends SpeakeasyBase {}
 
-export enum SmartContractState {
+export enum State {
     Success = "SUCCESS",
     Pending = "PENDING",
     ManualActionRequired = "MANUAL_ACTION_REQUIRED",
@@ -57,10 +57,10 @@ export enum SmartContractStatus {
 }
 
 export class SmartContract extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: SmartContractAbi })
+    @SpeakeasyMetadata({ elemType: Abi })
     @Expose({ name: "abi" })
-    @Type(() => SmartContractAbi)
-    abi?: SmartContractAbi[];
+    @Type(() => Abi)
+    abi?: Abi[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "address" })
@@ -72,8 +72,8 @@ export class SmartContract extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "compilationDetails" })
-    @Type(() => SmartContractCompilationDetails)
-    compilationDetails?: SmartContractCompilationDetails;
+    @Type(() => CompilationDetails)
+    compilationDetails?: CompilationDetails;
 
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
@@ -115,7 +115,7 @@ export class SmartContract extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: SmartContractState;
+    state: State;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

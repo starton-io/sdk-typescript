@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class WebhookHeaders extends SpeakeasyBase {}
+export class Headers extends SpeakeasyBase {}
 
 export class WebhookPayload extends SpeakeasyBase {}
 
@@ -24,8 +24,8 @@ export class Webhook extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => WebhookHeaders)
-    headers: WebhookHeaders;
+    @Type(() => Headers)
+    headers: Headers;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })

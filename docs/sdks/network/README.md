@@ -1,5 +1,5 @@
 # Network
-(*network*)
+(*.network*)
 
 ## Overview
 

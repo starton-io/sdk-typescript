@@ -1,5 +1,5 @@
 # Webhook
-(*webhook*)
+(*.webhook*)
 
 ## Overview
 
@@ -60,7 +60,7 @@ Fetches the list of all webhooks dispatched to your server. You can apply filter
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { GetAllWebhookStatus } from "@starton/sdk/dist/sdk/models/operations";
+import { QueryParamStatus } from "@starton/sdk/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new Starton({

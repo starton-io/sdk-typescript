@@ -49,13 +49,25 @@ sdk.data.getBalance({
 ## Available Resources and Operations
 
 
-### [data](docs/sdks/data/README.md)
+### [.data](docs/sdks/data/README.md)
 
 * [getBalance](docs/sdks/data/README.md#getbalance) - Retrieve the native token balance of a specific blockchain address
 * [getErc20Balance](docs/sdks/data/README.md#geterc20balance) - Retrieve the ERC20 token balance for a specific address
 * [getGasPrice](docs/sdks/data/README.md#getgasprice) -  Retrieve the current gas prices
 
-### [ipfs](docs/sdks/ipfs/README.md)
+### [.wallet](docs/sdks/wallet/README.md)
+
+* [create](docs/sdks/wallet/README.md#create) - Create a new wallet
+* [delete](docs/sdks/wallet/README.md#delete) - Delete a wallet
+* [getAll](docs/sdks/wallet/README.md#getall) - Retrieve the list of Wallets
+* [getOne](docs/sdks/wallet/README.md#getone) - Fetch Wallet Details
+* [import](docs/sdks/wallet/README.md#import) - Import Wallet from Provider Key
+* [requestFaucet](docs/sdks/wallet/README.md#requestfaucet) - Request tokens from faucet
+* [resyncNonce](docs/sdks/wallet/README.md#resyncnonce) - Synchronize Nonces for a wallet
+* [sign](docs/sdks/wallet/README.md#sign) - Sign a message
+* [update](docs/sdks/wallet/README.md#update) - Update Wallet Information
+
+### [.ipfs](docs/sdks/ipfs/README.md)
 
 * [delete](docs/sdks/ipfs/README.md#delete) - Deletes pinned file referenced by {id}
 * [getAll](docs/sdks/ipfs/README.md#getall) - Retrieve all files
@@ -67,7 +79,7 @@ sdk.data.getBalance({
 * [uploadFolder](docs/sdks/ipfs/README.md#uploadfolder) - Upload a folder
 * [uploadJson](docs/sdks/ipfs/README.md#uploadjson) - Upload a JSON file
 
-### [kms](docs/sdks/kms/README.md)
+### [.kms](docs/sdks/kms/README.md)
 
 * [create](docs/sdks/kms/README.md#create) - Create a new KMS entry
 * [delete](docs/sdks/kms/README.md#delete) - Remove a specific KMS entry
@@ -75,17 +87,20 @@ sdk.data.getBalance({
 * [getOne](docs/sdks/kms/README.md#getone) - Retrieve details of a specific KMS
 * [update](docs/sdks/kms/README.md#update) - Update the details of a KMS
 
-### [monitor](docs/sdks/monitor/README.md)
+### [.transactionManager](docs/sdks/transactionmanager/README.md)
 
-* [create](docs/sdks/monitor/README.md#create) - Create a New Watcher
-* [delete](docs/sdks/monitor/README.md#delete) - Delete a watcher
-* [getAll](docs/sdks/monitor/README.md#getall) - Retrieve List of Watchers
-* [getAllEvents](docs/sdks/monitor/README.md#getallevents) - Fetches the list of events for a watcher 
-* [getOne](docs/sdks/monitor/README.md#getone) - Get a specific watcher
-* [getOneEvent](docs/sdks/monitor/README.md#getoneevent) - Get a watcher event
-* [update](docs/sdks/monitor/README.md#update) - Update a watcher
+* [create](docs/sdks/transactionmanager/README.md#create) - Create a new transaction
+* [getAll](docs/sdks/transactionmanager/README.md#getall) - Retrieve a List of Transactions
+* [getAvailableNonces](docs/sdks/transactionmanager/README.md#getavailablenonces) - Retrieve Available Nonces for a wallet
+* [getOne](docs/sdks/transactionmanager/README.md#getone) - Get a Specific Transaction
+* [resyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce) - Synchronize Nonces for a wallet
 
-### [network](docs/sdks/network/README.md)
+### [.transactionManager.setting](docs/sdks/setting/README.md)
+
+* [get](docs/sdks/setting/README.md#get) - Get Relayer settings
+* [update](docs/sdks/setting/README.md#update) - Update Relayer Settings
+
+### [.network](docs/sdks/network/README.md)
 
 * [create](docs/sdks/network/README.md#create) - Create a new network (Enterprise)
 * [delete](docs/sdks/network/README.md#delete) - Delete a network (Enterprise)
@@ -93,15 +108,27 @@ sdk.data.getBalance({
 * [getOne](docs/sdks/network/README.md#getone) - Fetch a specific network
 * [update](docs/sdks/network/README.md#update) - Update specific network details (Enterprise)
 
-### [network.rpc](docs/sdks/networkrpc/README.md)
+### [.network.rpc](docs/sdks/rpc/README.md)
 
-* [create](docs/sdks/networkrpc/README.md#create) - Add a rpc (enterprise)
-* [delete](docs/sdks/networkrpc/README.md#delete) - Delete a rpc (enterprise)
-* [getAll](docs/sdks/networkrpc/README.md#getall) - Get all rpc (enterprise)
-* [getOne](docs/sdks/networkrpc/README.md#getone) - Get a rpc (enterprise)
-* [update](docs/sdks/networkrpc/README.md#update) - Update a rpc (enterprise)
+* [create](docs/sdks/rpc/README.md#create) - Add a rpc (enterprise)
+* [delete](docs/sdks/rpc/README.md#delete) - Delete a rpc (enterprise)
+* [getAll](docs/sdks/rpc/README.md#getall) - Get all rpc (enterprise)
+* [getOne](docs/sdks/rpc/README.md#getone) - Get a rpc (enterprise)
+* [update](docs/sdks/rpc/README.md#update) - Update a rpc (enterprise)
 
-### [smartContractManagement](docs/sdks/smartcontractmanagement/README.md)
+
+### [.project.member](docs/sdks/member/README.md)
+
+* [delete](docs/sdks/member/README.md#delete) - Remove a user from a project.
+* [getAll](docs/sdks/member/README.md#getall) - Retrieve a list of all members of a specific project.
+
+### [.project.member.invitation](docs/sdks/invitation/README.md)
+
+* [create](docs/sdks/invitation/README.md#create) - Send an invitation to the project
+* [delete](docs/sdks/invitation/README.md#delete) - Revoke a previously sent invitation.
+* [getAll](docs/sdks/invitation/README.md#getall) - Retrieve a list of all member invitations for a specific project
+
+### [.smartContractManagement](docs/sdks/smartcontractmanagement/README.md)
 
 * [call](docs/sdks/smartcontractmanagement/README.md#call) - Execute Smart Contract Function
 * [delete](docs/sdks/smartcontractmanagement/README.md#delete) - Delete a smart contract
@@ -114,32 +141,23 @@ sdk.data.getBalance({
 * [read](docs/sdks/smartcontractmanagement/README.md#read) - Query Smart Contract Function
 * [update](docs/sdks/smartcontractmanagement/README.md#update) - Update a smart contract
 
-### [transactionManager](docs/sdks/transactionmanager/README.md)
 
-* [create](docs/sdks/transactionmanager/README.md#create) - Create a new transaction
-* [getAll](docs/sdks/transactionmanager/README.md#getall) - Retrieve a List of Transactions
-* [getAvailableNonces](docs/sdks/transactionmanager/README.md#getavailablenonces) - Retrieve Available Nonces for a wallet
-* [getOne](docs/sdks/transactionmanager/README.md#getone) - Get a Specific Transaction
-* [resyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce) - Synchronize Nonces for a wallet
+### [.smartContract.template](docs/sdks/template/README.md)
 
-### [transactionManager.setting](docs/sdks/transactionmanagersetting/README.md)
+* [getAll](docs/sdks/template/README.md#getall) - Fetch the list of Smart Contract Templates
+* [getOne](docs/sdks/template/README.md#getone) - Retrieve a Specific Smart Contract Template
 
-* [get](docs/sdks/transactionmanagersetting/README.md#get) - Get Relayer settings
-* [update](docs/sdks/transactionmanagersetting/README.md#update) - Update Relayer Settings
+### [.monitor](docs/sdks/monitor/README.md)
 
-### [wallet](docs/sdks/wallet/README.md)
+* [create](docs/sdks/monitor/README.md#create) - Create a New Watcher
+* [delete](docs/sdks/monitor/README.md#delete) - Delete a watcher
+* [getAll](docs/sdks/monitor/README.md#getall) - Retrieve List of Watchers
+* [getAllEvents](docs/sdks/monitor/README.md#getallevents) - Fetches the list of events for a watcher 
+* [getOne](docs/sdks/monitor/README.md#getone) - Get a specific watcher
+* [getOneEvent](docs/sdks/monitor/README.md#getoneevent) - Get a watcher event
+* [update](docs/sdks/monitor/README.md#update) - Update a watcher
 
-* [create](docs/sdks/wallet/README.md#create) - Create a new wallet
-* [delete](docs/sdks/wallet/README.md#delete) - Delete a wallet
-* [getAll](docs/sdks/wallet/README.md#getall) - Retrieve the list of Wallets
-* [getOne](docs/sdks/wallet/README.md#getone) - Fetch Wallet Details
-* [import](docs/sdks/wallet/README.md#import) - Import Wallet from Provider Key
-* [requestFaucet](docs/sdks/wallet/README.md#requestfaucet) - Request tokens from faucet
-* [resyncNonce](docs/sdks/wallet/README.md#resyncnonce) - Synchronize Nonces for a wallet
-* [sign](docs/sdks/wallet/README.md#sign) - Sign a message
-* [update](docs/sdks/wallet/README.md#update) - Update Wallet Information
-
-### [webhook](docs/sdks/webhook/README.md)
+### [.webhook](docs/sdks/webhook/README.md)
 
 * [cancel](docs/sdks/webhook/README.md#cancel) - Cancel a webhook
 * [getAll](docs/sdks/webhook/README.md#getall) - Retrieve the list of Webhooks
@@ -147,24 +165,6 @@ sdk.data.getBalance({
 * [getSigningSecret](docs/sdks/webhook/README.md#getsigningsecret) - Retrieve Webhook Signing Secret
 * [regenerateSigningSecret](docs/sdks/webhook/README.md#regeneratesigningsecret) - Regenerate Webhook signing secret
 * [resend](docs/sdks/webhook/README.md#resend) - Resend a Webhook
-
-
-### [project.member](docs/sdks/projectmember/README.md)
-
-* [delete](docs/sdks/projectmember/README.md#delete) - Remove a user from a project.
-* [getAll](docs/sdks/projectmember/README.md#getall) - Retrieve a list of all members of a specific project.
-
-### [project.member.invitation](docs/sdks/projectmemberinvitation/README.md)
-
-* [create](docs/sdks/projectmemberinvitation/README.md#create) - Send an invitation to the project
-* [delete](docs/sdks/projectmemberinvitation/README.md#delete) - Revoke a previously sent invitation.
-* [getAll](docs/sdks/projectmemberinvitation/README.md#getall) - Retrieve a list of all member invitations for a specific project
-
-
-### [smartContract.template](docs/sdks/smartcontracttemplate/README.md)
-
-* [getAll](docs/sdks/smartcontracttemplate/README.md#getall) - Fetch the list of Smart Contract Templates
-* [getOne](docs/sdks/smartcontracttemplate/README.md#getone) - Retrieve a Specific Smart Contract Template
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
@@ -218,14 +218,13 @@ Here's an example of one such pagination call:
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
 
 (async () => {
     const sdk = new Starton({
         startonApiKey: "",
     });
 
-    const res = await sdk.ipfs.getAll({});
+    const res = await sdk.wallet.getAll({});
 
     if (res.statusCode == 200) {
         do {
@@ -240,6 +239,43 @@ import { GetAllPinStatus } from "@starton/sdk/dist/sdk/models/operations";
 <!-- End Pagination -->
 
 <!-- No Server Selection -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `startonApiKey` | apiKey          | API key         |
+
+To authenticate with the API the `startonApiKey` parameter must be set when initializing the SDK client instance. For example:
+
+```typescript
+import { Starton } from "@starton/sdk";
+
+(async () => {
+    const sdk = new Starton({
+        startonApiKey: "",
+    });
+
+    const res = await sdk.data.getBalance({
+        address: "164 Runolfsson Via",
+        network: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

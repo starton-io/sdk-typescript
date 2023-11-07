@@ -6,9 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AwsKmsCredentialsDto } from "./awskmscredentialsdto";
 import { Expose, Type } from "class-transformer";
 
-export class CreateKmsDtoMetadata extends SpeakeasyBase {}
+export class Metadata extends SpeakeasyBase {}
 
-export enum CreateKmsDtoProvider {
+export enum Provider {
     Aws = "AWS",
     Vault = "Vault",
 }
@@ -21,8 +21,8 @@ export class CreateKmsDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    @Type(() => CreateKmsDtoMetadata)
-    metadata?: CreateKmsDtoMetadata;
+    @Type(() => Metadata)
+    metadata?: Metadata;
 
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
@@ -30,7 +30,7 @@ export class CreateKmsDto extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "provider" })
-    provider: CreateKmsDtoProvider;
+    provider: Provider;
 
     @SpeakeasyMetadata()
     @Expose({ name: "secret" })

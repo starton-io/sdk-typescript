@@ -1,5 +1,5 @@
 # TransactionManager
-(*transactionManager*)
+(*.transactionManager*)
 
 ## Overview
 

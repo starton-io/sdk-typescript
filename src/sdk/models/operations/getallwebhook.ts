@@ -3,11 +3,11 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export enum GetAllWebhookStatus {
+export enum QueryParamStatus {
     Retrying = "RETRYING",
     Successful = "SUCCESSFUL",
     Failed = "FAILED",
@@ -28,7 +28,7 @@ export class GetAllWebhookRequest extends SpeakeasyBase {
     page?: number;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=status" })
-    status?: GetAllWebhookStatus;
+    status?: QueryParamStatus;
 }
 
 export class GetAllWebhookWebhookPaginated extends SpeakeasyBase {

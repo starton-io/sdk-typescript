@@ -1,5 +1,5 @@
 # Monitor
-(*monitor*)
+(*.monitor*)
 
 ## Overview
 
@@ -109,7 +109,7 @@ Fetches list of all watchers associated with the current project.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { GetAllWatcherType } from "@starton/sdk/dist/sdk/models/operations";
+import { TypeT } from "@starton/sdk/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new Starton({

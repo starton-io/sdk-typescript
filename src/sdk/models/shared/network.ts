@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class NetworkGasPriceRecommendation extends SpeakeasyBase {}
+export class GasPriceRecommendation extends SpeakeasyBase {}
 
 export class Network extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -59,8 +59,8 @@ export class Network extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "gasPriceRecommendation" })
-    @Type(() => NetworkGasPriceRecommendation)
-    gasPriceRecommendation?: NetworkGasPriceRecommendation;
+    @Type(() => GasPriceRecommendation)
+    gasPriceRecommendation?: GasPriceRecommendation;
 
     @SpeakeasyMetadata()
     @Expose({ name: "logo" })

@@ -3,10 +3,10 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { Data } from "./data";
 import { Ipfs } from "./ipfs";
 import { Kms } from "./kms";
-import * as shared from "./models/shared";
 import { Monitor } from "./monitor";
 import { Network } from "./network";
 import { Project } from "./project";
@@ -56,9 +56,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0";
-    sdkVersion = "0.2.0";
-    genVersion = "2.172.4";
-    userAgent = "speakeasy-sdk/typescript 0.2.0 2.172.4 1.0 @starton/sdk";
+    sdkVersion = "0.3.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 0.3.0 2.181.1 1.0 @starton/sdk";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -142,6 +142,10 @@ export class Starton {
      */
     public data: Data;
     /**
+     * Starton wallet service
+     */
+    public wallet: Wallet;
+    /**
      * IPFS allows users to host and receive content in a manner similar to BitTorrent. As opposed to a centrally located server, IPFS is built around a decentralized system creating a resilient system of file storage and sharing. Starton IPFS storage service acts as a liaison between the IPFS protocol and you, with a user-friendly interface that lets you pin or upload files as you would any other storage service. You get all the benefits of hosting your content on the protocol while still having the easy process of uploading it.
      */
     public ipfs: Ipfs;
@@ -150,13 +154,14 @@ export class Starton {
      */
     public kms: Kms;
     /**
-     * The list of conditions that trigger a watcher event
+     * Starton Transaction Manager. Handle nonce issue, gas management, rebroadcasting etc.
      */
-    public monitor: Monitor;
+    public transactionManager: TransactionManager;
     /**
      * Get all available network, or add your custom one (enterprise only)
      */
     public network: Network;
+    public project: Project;
     /**
      * The Smart contract management is an abstraction on top of our **Transaction Manager** and it allow you to build and automate your smart contract transaction easily, without struggling with the ABI and params encoding. With it you can:
      *
@@ -166,20 +171,15 @@ export class Starton {
      * - **Interact:** Read state and interact with the smart contract previously deployed or imported
      */
     public smartContractManagement: SmartContractManagement;
+    public smartContract: SmartContract;
     /**
-     * Starton Transaction Manager. Handle nonce issue, gas management, rebroadcasting etc.
+     * The list of conditions that trigger a watcher event
      */
-    public transactionManager: TransactionManager;
-    /**
-     * Starton wallet service
-     */
-    public wallet: Wallet;
+    public monitor: Monitor;
     /**
      * Manage all the webhook you receive inside your app
      */
     public webhook: Webhook;
-    public project: Project;
-    public smartContract: SmartContract;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -201,15 +201,15 @@ export class Starton {
         });
 
         this.data = new Data(this.sdkConfiguration);
+        this.wallet = new Wallet(this.sdkConfiguration);
         this.ipfs = new Ipfs(this.sdkConfiguration);
         this.kms = new Kms(this.sdkConfiguration);
-        this.monitor = new Monitor(this.sdkConfiguration);
-        this.network = new Network(this.sdkConfiguration);
-        this.smartContractManagement = new SmartContractManagement(this.sdkConfiguration);
         this.transactionManager = new TransactionManager(this.sdkConfiguration);
-        this.wallet = new Wallet(this.sdkConfiguration);
-        this.webhook = new Webhook(this.sdkConfiguration);
+        this.network = new Network(this.sdkConfiguration);
         this.project = new Project(this.sdkConfiguration);
+        this.smartContractManagement = new SmartContractManagement(this.sdkConfiguration);
         this.smartContract = new SmartContract(this.sdkConfiguration);
+        this.monitor = new Monitor(this.sdkConfiguration);
+        this.webhook = new Webhook(this.sdkConfiguration);
     }
 }

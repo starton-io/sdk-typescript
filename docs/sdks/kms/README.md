@@ -1,5 +1,5 @@
 # Kms
-(*kms*)
+(*.kms*)
 
 ## Overview
 
@@ -21,7 +21,7 @@ Add a new Key Management System entry to the project.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { CreateKmsDtoProvider } from "@starton/sdk/dist/sdk/models/shared";
+import { Provider } from "@starton/sdk/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Starton({
@@ -36,7 +36,7 @@ import { CreateKmsDtoProvider } from "@starton/sdk/dist/sdk/models/shared";
     },
     metadata: {},
     name: "string",
-    provider: CreateKmsDtoProvider.Aws,
+    provider: Provider.Aws,
     secret: "string",
   });
 

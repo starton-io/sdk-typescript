@@ -1,5 +1,5 @@
 # SmartContractManagement
-(*smartContractManagement*)
+(*.smartContractManagement*)
 
 ## Overview
 
@@ -29,7 +29,7 @@ Calls a specific function within a deployed smart contract, enabling interaction
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { CallDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
+import { Speed } from "@starton/sdk/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Starton({
@@ -119,7 +119,7 @@ Deploys a smart contract from bytecode and returns transaction details.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { AbiObjectDtoStateMutability, AbiObjectDtoType, DeployFromBytecodeDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
+import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Starton({
@@ -140,7 +140,7 @@ import { AbiObjectDtoStateMutability, AbiObjectDtoType, DeployFromBytecodeDtoSpe
             name: "string",
             type: "string",
           },
-          type: AbiObjectDtoType.Event,
+          type: TypeT.Event,
         },
       ],
       bytecode: "string",
@@ -354,7 +354,7 @@ Import an already deployed smart contract into the project. This requires provid
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { AbiObjectDtoStateMutability, AbiObjectDtoType } from "@starton/sdk/dist/sdk/models/shared";
+import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Starton({
@@ -374,7 +374,7 @@ import { AbiObjectDtoStateMutability, AbiObjectDtoType } from "@starton/sdk/dist
           name: "string",
           type: "string",
         },
-        type: AbiObjectDtoType.Function,
+        type: TypeT.Function,
       },
     ],
     address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",

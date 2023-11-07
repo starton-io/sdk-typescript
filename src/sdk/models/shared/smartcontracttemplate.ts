@@ -7,7 +7,7 @@ import { Expose, Transform, Type } from "class-transformer";
 
 export class SmartContractTemplateAbi extends SpeakeasyBase {}
 
-export enum SmartContractTemplateCategory {
+export enum Category {
     Nft = "NFT",
     Fungible = "FUNGIBLE",
     Other = "OTHER",
@@ -18,7 +18,7 @@ export enum SmartContractTemplateCategory {
 
 export class SmartContractTemplateCompilationDetails extends SpeakeasyBase {}
 
-export class SmartContractTemplateForm extends SpeakeasyBase {}
+export class Form extends SpeakeasyBase {}
 
 export class SmartContractTemplate extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: SmartContractTemplateAbi })
@@ -32,7 +32,7 @@ export class SmartContractTemplate extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "category" })
-    category: SmartContractTemplateCategory;
+    category: Category;
 
     @SpeakeasyMetadata()
     @Expose({ name: "compilationDetails" })
@@ -50,8 +50,8 @@ export class SmartContractTemplate extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    @Type(() => SmartContractTemplateForm)
-    form?: SmartContractTemplateForm;
+    @Type(() => Form)
+    form?: Form;
 
     @SpeakeasyMetadata()
     @Expose({ name: "githubUrl" })

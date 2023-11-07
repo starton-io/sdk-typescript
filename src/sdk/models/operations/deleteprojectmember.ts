@@ -11,6 +11,9 @@ export class DeleteProjectMemberRequest extends SpeakeasyBase {
 }
 
 export class DeleteProjectMemberResponse extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonBoolean?: boolean;
+
     /**
      * HTTP response content type for this operation
      */
@@ -28,7 +31,4 @@ export class DeleteProjectMemberResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    deleteProjectMember200ApplicationJSONBoolean?: boolean;
 }

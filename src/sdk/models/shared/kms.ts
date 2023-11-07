@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class KmsCredentials extends SpeakeasyBase {}
+export class Credentials extends SpeakeasyBase {}
 
 export class KmsMetadata extends SpeakeasyBase {}
 
@@ -14,7 +14,7 @@ export enum KmsProvider {
     Vault = "Vault",
 }
 
-export class KmsWallets extends SpeakeasyBase {}
+export class Wallets extends SpeakeasyBase {}
 
 export class Kms extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -24,8 +24,8 @@ export class Kms extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "credentials" })
-    @Type(() => KmsCredentials)
-    credentials: KmsCredentials;
+    @Type(() => Credentials)
+    credentials: Credentials;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
@@ -55,6 +55,6 @@ export class Kms extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "wallets" })
-    @Type(() => KmsWallets)
-    wallets?: KmsWallets;
+    @Type(() => Wallets)
+    wallets?: Wallets;
 }

@@ -11,6 +11,9 @@ export class DeleteInvitationRequest extends SpeakeasyBase {
 }
 
 export class DeleteInvitationResponse extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonNumber?: number;
+
     /**
      * HTTP response content type for this operation
      */
@@ -28,7 +31,4 @@ export class DeleteInvitationResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    deleteInvitation200ApplicationJSONNumber?: number;
 }

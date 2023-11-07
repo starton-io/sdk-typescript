@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class TransactionLogContext extends SpeakeasyBase {}
+export class Context extends SpeakeasyBase {}
 
 export enum TransactionLogType {
     Unsigned = "UNSIGNED",
@@ -50,8 +50,8 @@ export enum TransactionLogType {
 export class TransactionLog extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "context" })
-    @Type(() => TransactionLogContext)
-    context?: TransactionLogContext;
+    @Type(() => Context)
+    context?: Context;
 
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
