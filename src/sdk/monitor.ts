@@ -39,7 +39,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/watcher";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/watcher";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -71,7 +71,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -139,7 +139,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -156,7 +156,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -221,7 +221,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/watcher";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/watcher";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -239,7 +239,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -334,7 +334,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/watcher/{id}/event", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/watcher/{id}/event", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -352,7 +352,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -448,7 +448,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -465,7 +465,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -530,7 +530,11 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/watcher/{id}/event/{eventId}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/v3/watcher/{id}/event/{eventId}",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -547,7 +551,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -616,7 +620,7 @@ export class Monitor {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/watcher/{id}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -648,7 +652,7 @@ export class Monitor {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

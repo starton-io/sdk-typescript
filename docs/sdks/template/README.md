@@ -1,5 +1,5 @@
 # Template
-(*.smartContract.template*)
+(*smartContract.template*)
 
 ### Available Operations
 
@@ -23,7 +23,6 @@ import { Category } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.smartContract.template.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -36,16 +35,20 @@ import { Category } from "@starton/sdk/dist/sdk/models/operations";
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [operations.GetAllSmartContractTemplateRequest](../../models/operations/getallsmartcontracttemplaterequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                          | [operations.GetAllSmartContractTemplateRequest](../../sdk/models/operations/getallsmartcontracttemplaterequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `config`                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                       | :heavy_minus_sign:                                                                                                 | Available config options for making requests.                                                                      |
 
 
 ### Response
 
-**Promise<[operations.GetAllSmartContractTemplateResponse](../../models/operations/getallsmartcontracttemplateresponse.md)>**
+**Promise<[operations.GetAllSmartContractTemplateResponse](../../sdk/models/operations/getallsmartcontracttemplateresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -65,7 +68,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -74,13 +76,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [operations.GetOneSmartContractTemplateRequest](../../models/operations/getonesmartcontracttemplaterequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                          | [operations.GetOneSmartContractTemplateRequest](../../sdk/models/operations/getonesmartcontracttemplaterequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `config`                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                       | :heavy_minus_sign:                                                                                                 | Available config options for making requests.                                                                      |
 
 
 ### Response
 
-**Promise<[operations.GetOneSmartContractTemplateResponse](../../models/operations/getonesmartcontracttemplateresponse.md)>**
+**Promise<[operations.GetOneSmartContractTemplateResponse](../../sdk/models/operations/getonesmartcontracttemplateresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

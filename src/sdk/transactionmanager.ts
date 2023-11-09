@@ -42,7 +42,7 @@ export class TransactionManager {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/transaction";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/transaction";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -79,7 +79,7 @@ export class TransactionManager {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -150,7 +150,7 @@ export class TransactionManager {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/transaction";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/transaction";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -168,7 +168,7 @@ export class TransactionManager {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -263,7 +263,7 @@ export class TransactionManager {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/kms/wallet/{address}/{network}/nonce/available",
             req
@@ -284,7 +284,7 @@ export class TransactionManager {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -355,7 +355,7 @@ export class TransactionManager {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/transaction/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/transaction/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -372,7 +372,7 @@ export class TransactionManager {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -440,7 +440,7 @@ export class TransactionManager {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/kms/wallet/{address}/{network}/nonce/resync",
             req
@@ -461,7 +461,7 @@ export class TransactionManager {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

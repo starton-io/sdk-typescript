@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 4199b80e31d9939cb77296b14dd95204
   docVersion: "1.0"
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   devContainers:
@@ -13,7 +13,7 @@ generation:
   repoURL: https://github.com/starton-io/sdk-typescript.git
 features:
   typescript:
-    core: 3.1.0
+    core: 3.1.2
     devContainers: 2.88.0
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
@@ -21,7 +21,7 @@ features:
     nameOverrides: 2.81.1
     pagination: 2.81.3
 typescript:
-  version: 0.3.0
+  version: 0.3.1
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -33,8 +33,10 @@ typescript:
       operations: sdk/models/operations
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/starton-io/sdk-typescript
   maxMethodParams: 0
+  outputModelSuffix: output
   packageName: '@starton/sdk'
   published: true
   repoSubDirectory: .

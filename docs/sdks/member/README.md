@@ -1,5 +1,5 @@
 # Member
-(*.project.member*)
+(*project.member*)
 
 ### Available Operations
 
@@ -24,7 +24,6 @@ import { Starton } from "@starton/sdk";
     userId: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -33,16 +32,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.DeleteProjectMemberRequest](../../models/operations/deleteprojectmemberrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.DeleteProjectMemberRequest](../../sdk/models/operations/deleteprojectmemberrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.DeleteProjectMemberResponse](../../models/operations/deleteprojectmemberresponse.md)>**
+**Promise<[operations.DeleteProjectMemberResponse](../../sdk/models/operations/deleteprojectmemberresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -60,7 +63,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.project.member.getAll();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -76,5 +78,9 @@ import { Starton } from "@starton/sdk";
 
 ### Response
 
-**Promise<[operations.GetAllProjectMemberResponse](../../models/operations/getallprojectmemberresponse.md)>**
+**Promise<[operations.GetAllProjectMemberResponse](../../sdk/models/operations/getallprojectmemberresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

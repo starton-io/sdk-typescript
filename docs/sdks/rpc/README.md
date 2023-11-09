@@ -1,5 +1,5 @@
 # Rpc
-(*.network.rpc*)
+(*network.rpc*)
 
 ### Available Operations
 
@@ -30,7 +30,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -39,16 +38,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.CreateRpcRequest](../../models/operations/createrpcrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.CreateRpcRequest](../../sdk/models/operations/createrpcrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.CreateRpcResponse](../../models/operations/createrpcresponse.md)>**
+**Promise<[operations.CreateRpcResponse](../../sdk/models/operations/createrpcresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -69,7 +72,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -78,16 +80,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.DeleteRpcRequest](../../models/operations/deleterpcrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.DeleteRpcRequest](../../sdk/models/operations/deleterpcrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.DeleteRpcResponse](../../models/operations/deleterpcresponse.md)>**
+**Promise<[operations.DeleteRpcResponse](../../sdk/models/operations/deleterpcresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -107,7 +113,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -120,16 +125,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetAllRpcRequest](../../models/operations/getallrpcrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetAllRpcRequest](../../sdk/models/operations/getallrpcrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetAllRpcResponse](../../models/operations/getallrpcresponse.md)>**
+**Promise<[operations.GetAllRpcResponse](../../sdk/models/operations/getallrpcresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -150,7 +159,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -159,16 +167,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetOneRpcRequest](../../models/operations/getonerpcrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetOneRpcRequest](../../sdk/models/operations/getonerpcrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetOneRpcResponse](../../models/operations/getonerpcresponse.md)>**
+**Promise<[operations.GetOneRpcResponse](../../sdk/models/operations/getonerpcresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -190,7 +202,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -199,13 +210,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.UpdateRpcRequest](../../models/operations/updaterpcrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.UpdateRpcRequest](../../sdk/models/operations/updaterpcrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.UpdateRpcResponse](../../models/operations/updaterpcresponse.md)>**
+**Promise<[operations.UpdateRpcResponse](../../sdk/models/operations/updaterpcresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

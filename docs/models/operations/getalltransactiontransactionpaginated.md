@@ -1,9 +1,0 @@
-# GetAllTransactionTransactionPaginated
-
-
-## Fields
-
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `items`                                                        | [shared.Transaction](../../models/shared/transaction.md)[]     | :heavy_check_mark:                                             | N/A                                                            |
-| `meta`                                                         | [shared.PaginationData](../../models/shared/paginationdata.md) | :heavy_check_mark:                                             | N/A                                                            |

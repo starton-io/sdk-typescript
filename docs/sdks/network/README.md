@@ -1,5 +1,5 @@
 # Network
-(*.network*)
+(*network*)
 
 ## Overview
 
@@ -48,7 +48,6 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
     symbol: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -57,16 +56,20 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [shared.CreateNetworkDto](../../models/shared/createnetworkdto.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `request`                                                              | [shared.CreateNetworkDto](../../sdk/models/shared/createnetworkdto.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
 
 
 ### Response
 
-**Promise<[operations.CreateNetworkResponse](../../models/operations/createnetworkresponse.md)>**
+**Promise<[operations.CreateNetworkResponse](../../sdk/models/operations/createnetworkresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -86,7 +89,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -95,16 +97,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.DeleteNetworkRequest](../../models/operations/deletenetworkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.DeleteNetworkRequest](../../sdk/models/operations/deletenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.DeleteNetworkResponse](../../models/operations/deletenetworkresponse.md)>**
+**Promise<[operations.DeleteNetworkResponse](../../sdk/models/operations/deletenetworkresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -122,7 +128,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.network.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -135,16 +140,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetAllNetworkRequest](../../models/operations/getallnetworkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetAllNetworkRequest](../../sdk/models/operations/getallnetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetAllNetworkResponse](../../models/operations/getallnetworkresponse.md)>**
+**Promise<[operations.GetAllNetworkResponse](../../sdk/models/operations/getallnetworkresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -164,7 +173,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -173,16 +181,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetOneNetworkRequest](../../models/operations/getonenetworkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetOneNetworkRequest](../../sdk/models/operations/getonenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetOneNetworkResponse](../../models/operations/getonenetworkresponse.md)>**
+**Promise<[operations.GetOneNetworkResponse](../../sdk/models/operations/getonenetworkresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -215,7 +227,6 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -224,13 +235,17 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.UpdateNetworkRequest](../../models/operations/updatenetworkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.UpdateNetworkRequest](../../sdk/models/operations/updatenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.UpdateNetworkResponse](../../models/operations/updatenetworkresponse.md)>**
+**Promise<[operations.UpdateNetworkResponse](../../sdk/models/operations/updatenetworkresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

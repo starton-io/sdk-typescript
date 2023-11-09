@@ -1,0 +1,10 @@
+# UpdateSmartContractRequest
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `updateSmartContractDto`                                                              | [shared.UpdateSmartContractDto](../../../sdk/models/shared/updatesmartcontractdto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `address`                                                                             | *string*                                                                              | :heavy_check_mark:                                                                    | Smart contract address.                                                               |
+| `network`                                                                             | *string*                                                                              | :heavy_check_mark:                                                                    | EVM starton supported network.                                                        |

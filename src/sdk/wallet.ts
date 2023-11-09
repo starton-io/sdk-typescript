@@ -39,7 +39,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/kms/wallet";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/kms/wallet";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -71,7 +71,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -136,7 +136,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -154,7 +154,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -219,7 +219,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/kms/wallet";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/kms/wallet";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -237,7 +237,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -332,7 +332,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -349,7 +349,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -414,7 +414,8 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/kms/wallet/import-provider-key";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/v3/kms/wallet/import-provider-key";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -446,7 +447,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -512,7 +513,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/faucet/{network}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/faucet/{network}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -544,7 +545,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -622,7 +623,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/kms/wallet/{address}/{network}/nonce/resync",
             req
@@ -643,7 +644,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -714,7 +715,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/kms/wallet/{address}/sign-message",
             req
@@ -750,7 +751,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -819,7 +820,7 @@ export class Wallet {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/wallet/{address}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -851,7 +852,7 @@ export class Wallet {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

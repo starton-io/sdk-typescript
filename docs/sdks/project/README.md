@@ -1,5 +1,5 @@
 # Project
-(*.project*)
+(*project*)
 
 ### Available Operations
 

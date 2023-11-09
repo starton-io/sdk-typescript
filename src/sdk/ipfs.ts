@@ -39,7 +39,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -56,7 +56,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -121,7 +121,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/pin";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/pin";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -139,7 +139,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -234,7 +234,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -252,7 +252,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -312,7 +312,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/storage-used";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/storage-used";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -329,7 +329,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -396,7 +396,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/pin";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/pin";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -428,7 +428,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -494,7 +494,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/ipfs/pin/{id}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -526,7 +526,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",
@@ -592,7 +592,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/file";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/file";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -624,7 +624,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -690,7 +690,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/folder";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/folder";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -722,7 +722,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -789,7 +789,7 @@ export class Ipfs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/json";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/ipfs/json";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -821,7 +821,7 @@ export class Ipfs {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

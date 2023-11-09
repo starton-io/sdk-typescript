@@ -39,7 +39,7 @@ export class Kms {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/kms";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/kms";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -71,7 +71,7 @@ export class Kms {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -136,7 +136,7 @@ export class Kms {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -153,7 +153,7 @@ export class Kms {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -218,7 +218,7 @@ export class Kms {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/kms";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/kms";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -236,7 +236,7 @@ export class Kms {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -331,7 +331,7 @@ export class Kms {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -348,7 +348,7 @@ export class Kms {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -413,7 +413,7 @@ export class Kms {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/kms/{id}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -445,7 +445,7 @@ export class Kms {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

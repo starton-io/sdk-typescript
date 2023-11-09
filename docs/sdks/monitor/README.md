@@ -1,5 +1,5 @@
 # Monitor
-(*.monitor*)
+(*monitor*)
 
 ## Overview
 
@@ -43,7 +43,6 @@ import { CreateWatcherDtoType } from "@starton/sdk/dist/sdk/models/shared";
     webhookUrl: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -52,16 +51,20 @@ import { CreateWatcherDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [shared.CreateWatcherDto](../../models/shared/createwatcherdto.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `request`                                                              | [shared.CreateWatcherDto](../../sdk/models/shared/createwatcherdto.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
 
 
 ### Response
 
-**Promise<[operations.CreateWatcherResponse](../../models/operations/createwatcherresponse.md)>**
+**Promise<[operations.CreateWatcherResponse](../../sdk/models/operations/createwatcherresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -81,7 +84,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -90,16 +92,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.DeleteWatcherRequest](../../models/operations/deletewatcherrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.DeleteWatcherRequest](../../sdk/models/operations/deletewatcherrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.DeleteWatcherResponse](../../models/operations/deletewatcherresponse.md)>**
+**Promise<[operations.DeleteWatcherResponse](../../sdk/models/operations/deletewatcherresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -118,7 +124,6 @@ import { TypeT } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.monitor.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -131,16 +136,20 @@ import { TypeT } from "@starton/sdk/dist/sdk/models/operations";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetAllWatcherRequest](../../models/operations/getallwatcherrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetAllWatcherRequest](../../sdk/models/operations/getallwatcherrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetAllWatcherResponse](../../models/operations/getallwatcherresponse.md)>**
+**Promise<[operations.GetAllWatcherResponse](../../sdk/models/operations/getallwatcherresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAllEvents
 
@@ -160,7 +169,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -173,16 +181,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.GetAllWatcherEventRequest](../../models/operations/getallwatchereventrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.GetAllWatcherEventRequest](../../sdk/models/operations/getallwatchereventrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.GetAllWatcherEventResponse](../../models/operations/getallwatchereventresponse.md)>**
+**Promise<[operations.GetAllWatcherEventResponse](../../sdk/models/operations/getallwatchereventresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -202,7 +214,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -211,16 +222,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetOneWatcherRequest](../../models/operations/getonewatcherrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetOneWatcherRequest](../../sdk/models/operations/getonewatcherrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetOneWatcherResponse](../../models/operations/getonewatcherresponse.md)>**
+**Promise<[operations.GetOneWatcherResponse](../../sdk/models/operations/getonewatcherresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOneEvent
 
@@ -241,7 +256,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -250,16 +264,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.GetOneWatcherEventRequest](../../models/operations/getonewatchereventrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.GetOneWatcherEventRequest](../../sdk/models/operations/getonewatchereventrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.GetOneWatcherEventResponse](../../models/operations/getonewatchereventresponse.md)>**
+**Promise<[operations.GetOneWatcherEventResponse](../../sdk/models/operations/getonewatchereventresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -287,7 +305,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -296,13 +313,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.UpdateWatcherRequest](../../models/operations/updatewatcherrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.UpdateWatcherRequest](../../sdk/models/operations/updatewatcherrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.UpdateWatcherResponse](../../models/operations/updatewatcherresponse.md)>**
+**Promise<[operations.UpdateWatcherResponse](../../sdk/models/operations/updatewatcherresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

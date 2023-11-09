@@ -1,5 +1,5 @@
 # Setting
-(*.transactionManager.setting*)
+(*transactionManager.setting*)
 
 ### Available Operations
 
@@ -24,7 +24,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -33,16 +32,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.GetAllSettingRelayerRequest](../../models/operations/getallsettingrelayerrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.GetAllSettingRelayerRequest](../../sdk/models/operations/getallsettingrelayerrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.GetAllSettingRelayerResponse](../../models/operations/getallsettingrelayerresponse.md)>**
+**Promise<[operations.GetAllSettingRelayerResponse](../../sdk/models/operations/getallsettingrelayerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -70,7 +73,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -79,13 +81,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.UpdateSettingRelayerRequest](../../models/operations/updatesettingrelayerrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.UpdateSettingRelayerRequest](../../sdk/models/operations/updatesettingrelayerrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateSettingRelayerResponse](../../models/operations/updatesettingrelayerresponse.md)>**
+**Promise<[operations.UpdateSettingRelayerResponse](../../sdk/models/operations/updatesettingrelayerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -1,5 +1,5 @@
 # Invitation
-(*.project.member.invitation*)
+(*project.member.invitation*)
 
 ### Available Operations
 
@@ -27,7 +27,6 @@ import { Role } from "@starton/sdk/dist/sdk/models/shared";
     role: Role.Owner,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -36,16 +35,20 @@ import { Role } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [shared.CreateInvitationDto](../../models/shared/createinvitationdto.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [shared.CreateInvitationDto](../../sdk/models/shared/createinvitationdto.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.CreateInvitationResponse](../../models/operations/createinvitationresponse.md)>**
+**Promise<[operations.CreateInvitationResponse](../../sdk/models/operations/createinvitationresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -65,7 +68,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -74,16 +76,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.DeleteInvitationRequest](../../models/operations/deleteinvitationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.DeleteInvitationRequest](../../sdk/models/operations/deleteinvitationrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.DeleteInvitationResponse](../../models/operations/deleteinvitationresponse.md)>**
+**Promise<[operations.DeleteInvitationResponse](../../sdk/models/operations/deleteinvitationresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -101,7 +107,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.project.member.invitation.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -114,13 +119,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.GetAllInvitationRequest](../../models/operations/getallinvitationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetAllInvitationRequest](../../sdk/models/operations/getallinvitationrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.GetAllInvitationResponse](../../models/operations/getallinvitationresponse.md)>**
+**Promise<[operations.GetAllInvitationResponse](../../sdk/models/operations/getallinvitationresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -1,5 +1,5 @@
 # Data
-(*.data*)
+(*data*)
 
 ## Overview
 
@@ -30,7 +30,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -39,16 +38,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.GetBalanceAddressRequest](../../models/operations/getbalanceaddressrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.GetBalanceAddressRequest](../../sdk/models/operations/getbalanceaddressrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.GetBalanceAddressResponse](../../models/operations/getbalanceaddressresponse.md)>**
+**Promise<[operations.GetBalanceAddressResponse](../../sdk/models/operations/getbalanceaddressresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getErc20Balance
 
@@ -70,7 +73,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -79,16 +81,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.GetBalanceErc20Request](../../models/operations/getbalanceerc20request.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.GetBalanceErc20Request](../../sdk/models/operations/getbalanceerc20request.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.GetBalanceErc20Response](../../models/operations/getbalanceerc20response.md)>**
+**Promise<[operations.GetBalanceErc20Response](../../sdk/models/operations/getbalanceerc20response.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getGasPrice
 
@@ -108,7 +114,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,13 +122,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetAllGasPriceRequest](../../models/operations/getallgaspricerequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.GetAllGasPriceRequest](../../sdk/models/operations/getallgaspricerequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.GetAllGasPriceResponse](../../models/operations/getallgaspriceresponse.md)>**
+**Promise<[operations.GetAllGasPriceResponse](../../sdk/models/operations/getallgaspriceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

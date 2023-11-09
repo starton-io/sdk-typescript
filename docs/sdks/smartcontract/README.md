@@ -1,5 +1,5 @@
 # SmartContract
-(*.smartContract*)
+(*smartContract*)
 
 ### Available Operations
 

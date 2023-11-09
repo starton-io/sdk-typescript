@@ -1,5 +1,5 @@
 # SmartContractManagement
-(*.smartContractManagement*)
+(*smartContractManagement*)
 
 ## Overview
 
@@ -52,7 +52,6 @@ import { Speed } from "@starton/sdk/dist/sdk/models/shared";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -61,16 +60,20 @@ import { Speed } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CallSmartContractRequest](../../models/operations/callsmartcontractrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CallSmartContractRequest](../../sdk/models/operations/callsmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CallSmartContractResponse](../../models/operations/callsmartcontractresponse.md)>**
+**Promise<[operations.CallSmartContractResponse](../../sdk/models/operations/callsmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -91,7 +94,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -100,16 +102,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.DeleteSmartContractRequest](../../models/operations/deletesmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.DeleteSmartContractRequest](../../sdk/models/operations/deletesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.DeleteSmartContractResponse](../../models/operations/deletesmartcontractresponse.md)>**
+**Promise<[operations.DeleteSmartContractResponse](../../sdk/models/operations/deletesmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deployFromBytecode
 
@@ -157,7 +163,6 @@ import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -166,16 +171,20 @@ import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                              | [operations.DeployFromBytecodeSmartContractRequest](../../models/operations/deployfrombytecodesmartcontractrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-| `config`                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                           | :heavy_minus_sign:                                                                                                     | Available config options for making requests.                                                                          |
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                  | [operations.DeployFromBytecodeSmartContractRequest](../../sdk/models/operations/deployfrombytecodesmartcontractrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `config`                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                               | :heavy_minus_sign:                                                                                                         | Available config options for making requests.                                                                              |
 
 
 ### Response
 
-**Promise<[operations.DeployFromBytecodeSmartContractResponse](../../models/operations/deployfrombytecodesmartcontractresponse.md)>**
+**Promise<[operations.DeployFromBytecodeSmartContractResponse](../../sdk/models/operations/deployfrombytecodesmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deployFromTemplate
 
@@ -208,7 +217,6 @@ import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared"
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -217,16 +225,20 @@ import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared"
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                              | [operations.DeployFromTemplateSmartContractRequest](../../models/operations/deployfromtemplatesmartcontractrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-| `config`                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                           | :heavy_minus_sign:                                                                                                     | Available config options for making requests.                                                                          |
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                  | [operations.DeployFromTemplateSmartContractRequest](../../sdk/models/operations/deployfromtemplatesmartcontractrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `config`                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                               | :heavy_minus_sign:                                                                                                         | Available config options for making requests.                                                                              |
 
 
 ### Response
 
-**Promise<[operations.DeployFromTemplateSmartContractResponse](../../models/operations/deployfromtemplatesmartcontractresponse.md)>**
+**Promise<[operations.DeployFromTemplateSmartContractResponse](../../sdk/models/operations/deployfromtemplatesmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -244,7 +256,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.smartContractManagement.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -257,16 +268,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.GetAllSmartContractRequest](../../models/operations/getallsmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetAllSmartContractRequest](../../sdk/models/operations/getallsmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.GetAllSmartContractResponse](../../models/operations/getallsmartcontractresponse.md)>**
+**Promise<[operations.GetAllSmartContractResponse](../../sdk/models/operations/getallsmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getFunctions
 
@@ -287,7 +302,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -296,16 +310,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                    | [operations.GetAvailableFunctionsSmartContractRequest](../../models/operations/getavailablefunctionssmartcontractrequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
-| `config`                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                 | :heavy_minus_sign:                                                                                                           | Available config options for making requests.                                                                                |
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                        | [operations.GetAvailableFunctionsSmartContractRequest](../../sdk/models/operations/getavailablefunctionssmartcontractrequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `config`                                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                     | :heavy_minus_sign:                                                                                                               | Available config options for making requests.                                                                                    |
 
 
 ### Response
 
-**Promise<[operations.GetAvailableFunctionsSmartContractResponse](../../models/operations/getavailablefunctionssmartcontractresponse.md)>**
+**Promise<[operations.GetAvailableFunctionsSmartContractResponse](../../sdk/models/operations/getavailablefunctionssmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -326,7 +344,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -335,16 +352,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.GetOneSmartContractRequest](../../models/operations/getonesmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetOneSmartContractRequest](../../sdk/models/operations/getonesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.GetOneSmartContractResponse](../../models/operations/getonesmartcontractresponse.md)>**
+**Promise<[operations.GetOneSmartContractResponse](../../sdk/models/operations/getonesmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## importExisting
 
@@ -391,7 +412,6 @@ import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
     templateId: "ERC721_META_TRANSACTION",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -400,16 +420,20 @@ import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [shared.ImportSmartContractDto](../../models/shared/importsmartcontractdto.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [shared.ImportSmartContractDto](../../sdk/models/shared/importsmartcontractdto.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ImportExistingSmartContractResponse](../../models/operations/importexistingsmartcontractresponse.md)>**
+**Promise<[operations.ImportExistingSmartContractResponse](../../sdk/models/operations/importexistingsmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## read
 
@@ -439,7 +463,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -448,16 +471,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.ReadSmartContractRequest](../../models/operations/readsmartcontractrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.ReadSmartContractRequest](../../sdk/models/operations/readsmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.ReadSmartContractResponse](../../models/operations/readsmartcontractresponse.md)>**
+**Promise<[operations.ReadSmartContractResponse](../../sdk/models/operations/readsmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -481,7 +508,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -490,13 +516,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.UpdateSmartContractRequest](../../models/operations/updatesmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.UpdateSmartContractRequest](../../sdk/models/operations/updatesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.UpdateSmartContractResponse](../../models/operations/updatesmartcontractresponse.md)>**
+**Promise<[operations.UpdateSmartContractResponse](../../sdk/models/operations/updatesmartcontractresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

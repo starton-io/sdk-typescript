@@ -42,7 +42,7 @@ export class Network {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/network";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/network";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -74,7 +74,7 @@ export class Network {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -139,7 +139,7 @@ export class Network {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -156,7 +156,7 @@ export class Network {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -221,7 +221,7 @@ export class Network {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/network";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/network";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -239,7 +239,7 @@ export class Network {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -334,7 +334,7 @@ export class Network {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -351,7 +351,7 @@ export class Network {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -416,7 +416,7 @@ export class Network {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/network/{name}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -448,7 +448,7 @@ export class Network {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

@@ -1,5 +1,5 @@
 # Wallet
-(*.wallet*)
+(*wallet*)
 
 ## Overview
 
@@ -36,7 +36,6 @@ import { Starton } from "@starton/sdk";
     metadata: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -45,16 +44,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `request`                                                        | [shared.CreateWalletDto](../../models/shared/createwalletdto.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
-| `config`                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)     | :heavy_minus_sign:                                               | Available config options for making requests.                    |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [shared.CreateWalletDto](../../sdk/models/shared/createwalletdto.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
 
 
 ### Response
 
-**Promise<[operations.CreateWalletResponse](../../models/operations/createwalletresponse.md)>**
+**Promise<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -74,7 +77,6 @@ import { Starton } from "@starton/sdk";
     address: "8653 Vaughn Hills",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,16 +85,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.DeleteWalletRequest](../../models/operations/deletewalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteWalletRequest](../../sdk/models/operations/deletewalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeleteWalletResponse](../../models/operations/deletewalletresponse.md)>**
+**Promise<[operations.DeleteWalletResponse](../../sdk/models/operations/deletewalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -110,7 +116,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.wallet.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -123,16 +128,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.GetAllWalletRequest](../../models/operations/getallwalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.GetAllWalletRequest](../../sdk/models/operations/getallwalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.GetAllWalletResponse](../../models/operations/getallwalletresponse.md)>**
+**Promise<[operations.GetAllWalletResponse](../../sdk/models/operations/getallwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -152,7 +161,6 @@ import { Starton } from "@starton/sdk";
     address: "43504 Penelope Expressway",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -161,16 +169,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.GetOneWalletRequest](../../models/operations/getonewalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.GetOneWalletRequest](../../sdk/models/operations/getonewalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.GetOneWalletResponse](../../models/operations/getonewalletresponse.md)>**
+**Promise<[operations.GetOneWalletResponse](../../sdk/models/operations/getonewalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## import
 
@@ -192,7 +204,6 @@ import { ImportProviderKeyDtoProvider } from "@starton/sdk/dist/sdk/models/share
     provider: ImportProviderKeyDtoProvider.Aws,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -201,16 +212,20 @@ import { ImportProviderKeyDtoProvider } from "@starton/sdk/dist/sdk/models/share
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [shared.ImportProviderKeyDto](../../models/shared/importproviderkeydto.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [shared.ImportProviderKeyDto](../../sdk/models/shared/importproviderkeydto.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.ImportProviderKeyWalletResponse](../../models/operations/importproviderkeywalletresponse.md)>**
+**Promise<[operations.ImportProviderKeyWalletResponse](../../sdk/models/operations/importproviderkeywalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestFaucet
 
@@ -234,7 +249,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -243,16 +257,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.ClaimFaucetRequest](../../models/operations/claimfaucetrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ClaimFaucetRequest](../../sdk/models/operations/claimfaucetrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ClaimFaucetResponse](../../models/operations/claimfaucetresponse.md)>**
+**Promise<[operations.ClaimFaucetResponse](../../sdk/models/operations/claimfaucetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## resyncNonce
 
@@ -273,7 +291,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -282,16 +299,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.ResyncNoncesWalletRequest](../../models/operations/resyncnonceswalletrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ResyncNoncesWalletRequest](../../sdk/models/operations/resyncnonceswalletrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.ResyncNoncesWalletResponse](../../models/operations/resyncnonceswalletresponse.md)>**
+**Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## sign
 
@@ -314,7 +335,6 @@ import { Starton } from "@starton/sdk";
     address: "924 Makenzie Curve",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -323,16 +343,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.SignMessageWalletRequest](../../models/operations/signmessagewalletrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.SignMessageWalletRequest](../../sdk/models/operations/signmessagewalletrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.SignMessageWalletResponse](../../models/operations/signmessagewalletresponse.md)>**
+**Promise<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -355,7 +379,6 @@ import { Starton } from "@starton/sdk";
     address: "050 Mellie Well",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -364,13 +387,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.UpdateWalletRequest](../../models/operations/updatewalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateWalletRequest](../../sdk/models/operations/updatewalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateWalletResponse](../../models/operations/updatewalletresponse.md)>**
+**Promise<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

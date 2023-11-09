@@ -1,5 +1,5 @@
 # Ipfs
-(*.ipfs*)
+(*ipfs*)
 
 ## Overview
 
@@ -35,7 +35,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -44,16 +43,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.DeletePinRequest](../../models/operations/deletepinrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.DeletePinRequest](../../sdk/models/operations/deletepinrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.DeletePinResponse](../../models/operations/deletepinresponse.md)>**
+**Promise<[operations.DeletePinResponse](../../sdk/models/operations/deletepinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -72,7 +75,6 @@ import { Status } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.ipfs.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -85,16 +87,20 @@ import { Status } from "@starton/sdk/dist/sdk/models/operations";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetAllPinRequest](../../models/operations/getallpinrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetAllPinRequest](../../sdk/models/operations/getallpinrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetAllPinResponse](../../models/operations/getallpinresponse.md)>**
+**Promise<[operations.GetAllPinResponse](../../sdk/models/operations/getallpinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -114,7 +120,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -123,16 +128,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetOnePinRequest](../../models/operations/getonepinrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetOnePinRequest](../../sdk/models/operations/getonepinrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetOnePinResponse](../../models/operations/getonepinresponse.md)>**
+**Promise<[operations.GetOnePinResponse](../../sdk/models/operations/getonepinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getStorageUsed
 
@@ -150,7 +159,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.ipfs.getStorageUsed();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -166,8 +174,12 @@ import { Starton } from "@starton/sdk";
 
 ### Response
 
-**Promise<[operations.GetStorageUsedPinResponse](../../models/operations/getstorageusedpinresponse.md)>**
+**Promise<[operations.GetStorageUsedPinResponse](../../sdk/models/operations/getstorageusedpinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pinExistingFile
 
@@ -188,7 +200,6 @@ import { Starton } from "@starton/sdk";
     metadata: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -197,16 +208,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.CreatePinDto](../../models/shared/createpindto.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `request`                                                      | [shared.CreatePinDto](../../sdk/models/shared/createpindto.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `config`                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)   | :heavy_minus_sign:                                             | Available config options for making requests.                  |
 
 
 ### Response
 
-**Promise<[operations.CreatePinResponse](../../models/operations/createpinresponse.md)>**
+**Promise<[operations.CreatePinResponse](../../sdk/models/operations/createpinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -229,7 +244,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -238,16 +252,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.UpdatePinRequest](../../models/operations/updatepinrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.UpdatePinRequest](../../sdk/models/operations/updatepinrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.UpdatePinResponse](../../models/operations/updatepinresponse.md)>**
+**Promise<[operations.UpdatePinResponse](../../sdk/models/operations/updatepinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadFile
 
@@ -271,7 +289,6 @@ import { Starton } from "@starton/sdk";
     metadata: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -280,16 +297,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.UploadFromFilePinRequestBody](../../models/operations/uploadfromfilepinrequestbody.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.UploadFromFilePinRequestBody](../../sdk/models/operations/uploadfromfilepinrequestbody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
 
 
 ### Response
 
-**Promise<[operations.UploadFromFilePinResponse](../../models/operations/uploadfromfilepinresponse.md)>**
+**Promise<[operations.UploadFromFilePinResponse](../../sdk/models/operations/uploadfromfilepinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadFolder
 
@@ -315,7 +336,6 @@ import { Starton } from "@starton/sdk";
     metadata: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -324,16 +344,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [operations.UploadFromFolderPinRequestBody](../../models/operations/uploadfromfolderpinrequestbody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                  | [operations.UploadFromFolderPinRequestBody](../../sdk/models/operations/uploadfromfolderpinrequestbody.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `config`                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                               | :heavy_minus_sign:                                                                                         | Available config options for making requests.                                                              |
 
 
 ### Response
 
-**Promise<[operations.UploadFromFolderPinResponse](../../models/operations/uploadfromfolderpinresponse.md)>**
+**Promise<[operations.UploadFromFolderPinResponse](../../sdk/models/operations/uploadfromfolderpinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadJson
 
@@ -355,7 +379,6 @@ import { Starton } from "@starton/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -364,13 +387,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.UploadJsonDto](../../models/shared/uploadjsondto.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `request`                                                        | [shared.UploadJsonDto](../../sdk/models/shared/uploadjsondto.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `config`                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)     | :heavy_minus_sign:                                               | Available config options for making requests.                    |
 
 
 ### Response
 
-**Promise<[operations.UploadFromJsonPinResponse](../../models/operations/uploadfromjsonpinresponse.md)>**
+**Promise<[operations.UploadFromJsonPinResponse](../../sdk/models/operations/uploadfromjsonpinresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

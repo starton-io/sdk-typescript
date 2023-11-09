@@ -1,5 +1,5 @@
 # Kms
-(*.kms*)
+(*kms*)
 
 ## Overview
 
@@ -40,7 +40,6 @@ import { Provider } from "@starton/sdk/dist/sdk/models/shared";
     secret: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -49,16 +48,20 @@ import { Provider } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.CreateKmsDto](../../models/shared/createkmsdto.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `request`                                                      | [shared.CreateKmsDto](../../sdk/models/shared/createkmsdto.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `config`                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)   | :heavy_minus_sign:                                             | Available config options for making requests.                  |
 
 
 ### Response
 
-**Promise<[operations.CreateKmsResponse](../../models/operations/createkmsresponse.md)>**
+**Promise<[operations.CreateKmsResponse](../../sdk/models/operations/createkmsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -78,7 +81,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -87,16 +89,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.DeleteKmsRequest](../../models/operations/deletekmsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.DeleteKmsRequest](../../sdk/models/operations/deletekmsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.DeleteKmsResponse](../../models/operations/deletekmsresponse.md)>**
+**Promise<[operations.DeleteKmsResponse](../../sdk/models/operations/deletekmsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -114,7 +120,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.kms.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -127,16 +132,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetAllKmsRequest](../../models/operations/getallkmsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetAllKmsRequest](../../sdk/models/operations/getallkmsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetAllKmsResponse](../../models/operations/getallkmsresponse.md)>**
+**Promise<[operations.GetAllKmsResponse](../../sdk/models/operations/getallkmsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -156,7 +165,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -165,16 +173,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetOneKmsRequest](../../models/operations/getonekmsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetOneKmsRequest](../../sdk/models/operations/getonekmsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetOneKmsResponse](../../models/operations/getonekmsresponse.md)>**
+**Promise<[operations.GetOneKmsResponse](../../sdk/models/operations/getonekmsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -195,7 +207,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,13 +215,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.UpdateKmsRequest](../../models/operations/updatekmsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.UpdateKmsRequest](../../sdk/models/operations/updatekmsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.UpdateKmsResponse](../../models/operations/updatekmsresponse.md)>**
+**Promise<[operations.UpdateKmsResponse](../../sdk/models/operations/updatekmsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

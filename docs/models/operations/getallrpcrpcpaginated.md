@@ -1,9 +1,0 @@
-# GetAllRpcRpcPaginated
-
-
-## Fields
-
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `items`                                                        | [shared.Rpc](../../models/shared/rpc.md)[]                     | :heavy_check_mark:                                             | N/A                                                            |
-| `meta`                                                         | [shared.PaginationData](../../models/shared/paginationdata.md) | :heavy_check_mark:                                             | N/A                                                            |

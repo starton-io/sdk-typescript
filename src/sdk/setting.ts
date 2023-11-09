@@ -34,7 +34,11 @@ export class Setting {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/setting/relayer/{network}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/v3/setting/relayer/{network}",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -51,7 +55,7 @@ export class Setting {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -120,7 +124,11 @@ export class Setting {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/setting/relayer/{network}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/v3/setting/relayer/{network}",
+            req
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -156,7 +164,7 @@ export class Setting {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

@@ -37,7 +37,7 @@ export class Member {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/v3/project-member/{userId}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/v3/project-member/{userId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -54,7 +54,7 @@ export class Member {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -114,7 +114,7 @@ export class Member {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/project-member";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/project-member";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -131,7 +131,7 @@ export class Member {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

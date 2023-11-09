@@ -1,5 +1,5 @@
 # Webhook
-(*.webhook*)
+(*webhook*)
 
 ## Overview
 
@@ -32,7 +32,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -41,16 +40,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.CancelWebhookRequest](../../models/operations/cancelwebhookrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.CancelWebhookRequest](../../sdk/models/operations/cancelwebhookrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.CancelWebhookResponse](../../models/operations/cancelwebhookresponse.md)>**
+**Promise<[operations.CancelWebhookResponse](../../sdk/models/operations/cancelwebhookresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -69,7 +72,6 @@ import { QueryParamStatus } from "@starton/sdk/dist/sdk/models/operations";
 
   const res = await sdk.webhook.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -82,16 +84,20 @@ import { QueryParamStatus } from "@starton/sdk/dist/sdk/models/operations";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetAllWebhookRequest](../../models/operations/getallwebhookrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetAllWebhookRequest](../../sdk/models/operations/getallwebhookrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetAllWebhookResponse](../../models/operations/getallwebhookresponse.md)>**
+**Promise<[operations.GetAllWebhookResponse](../../sdk/models/operations/getallwebhookresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -111,7 +117,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -120,16 +125,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.GetOneWebhookRequest](../../models/operations/getonewebhookrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetOneWebhookRequest](../../sdk/models/operations/getonewebhookrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetOneWebhookResponse](../../models/operations/getonewebhookresponse.md)>**
+**Promise<[operations.GetOneWebhookResponse](../../sdk/models/operations/getonewebhookresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getSigningSecret
 
@@ -147,7 +156,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.webhook.getSigningSecret();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -163,8 +171,12 @@ import { Starton } from "@starton/sdk";
 
 ### Response
 
-**Promise<[operations.GetOneWebhookSigningSecretResponse](../../models/operations/getonewebhooksigningsecretresponse.md)>**
+**Promise<[operations.GetOneWebhookSigningSecretResponse](../../sdk/models/operations/getonewebhooksigningsecretresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## regenerateSigningSecret
 
@@ -182,7 +194,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.webhook.regenerateSigningSecret();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -198,8 +209,12 @@ import { Starton } from "@starton/sdk";
 
 ### Response
 
-**Promise<[operations.CreateWebhookSigningSecretResponse](../../models/operations/createwebhooksigningsecretresponse.md)>**
+**Promise<[operations.CreateWebhookSigningSecretResponse](../../sdk/models/operations/createwebhooksigningsecretresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## resend
 
@@ -219,7 +234,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -228,13 +242,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.ResendWebhookRequest](../../models/operations/resendwebhookrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.ResendWebhookRequest](../../sdk/models/operations/resendwebhookrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.ResendWebhookResponse](../../models/operations/resendwebhookresponse.md)>**
+**Promise<[operations.ResendWebhookResponse](../../sdk/models/operations/resendwebhookresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

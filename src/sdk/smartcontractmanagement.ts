@@ -44,7 +44,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}/call",
             req
@@ -81,7 +81,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -152,7 +152,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}",
             req
@@ -173,7 +173,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -239,7 +239,8 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/smart-contract/from-bytecode";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/v3/smart-contract/from-bytecode";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -276,7 +277,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -348,7 +349,8 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/smart-contract/from-template";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/v3/smart-contract/from-template";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -385,7 +387,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -456,7 +458,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/smart-contract";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/v3/smart-contract";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -474,7 +476,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -570,7 +572,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}/available-functions",
             req
@@ -591,7 +593,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -661,7 +663,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}",
             req
@@ -683,7 +685,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -752,7 +754,8 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/v3/smart-contract/import-existing";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/v3/smart-contract/import-existing";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -784,7 +787,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -853,7 +856,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}/read",
             req
@@ -889,7 +892,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -959,7 +962,7 @@ export class SmartContractManagement {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/v3/smart-contract/{network}/{address}",
             req
@@ -999,7 +1002,7 @@ export class SmartContractManagement {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

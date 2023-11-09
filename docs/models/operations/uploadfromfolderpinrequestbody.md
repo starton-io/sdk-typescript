@@ -1,9 +1,0 @@
-# UploadFromFolderPinRequestBody
-
-
-## Fields
-
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `files`                                                                                          | [operations.Files](../../models/operations/files.md)[]                                           | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `metadata`                                                                                       | [operations.UploadFromFolderPinMetadata](../../models/operations/uploadfromfolderpinmetadata.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |

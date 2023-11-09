@@ -1,5 +1,5 @@
 # TransactionManager
-(*.transactionManager*)
+(*transactionManager*)
 
 ## Overview
 
@@ -41,7 +41,6 @@ import { CreateTransactionDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -50,16 +49,20 @@ import { CreateTransactionDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CreateTransactionRequest](../../models/operations/createtransactionrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CreateTransactionRequest](../../sdk/models/operations/createtransactionrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CreateTransactionResponse](../../models/operations/createtransactionresponse.md)>**
+**Promise<[operations.CreateTransactionResponse](../../sdk/models/operations/createtransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAll
 
@@ -77,7 +80,6 @@ import { Starton } from "@starton/sdk";
 
   const res = await sdk.transactionManager.getAll({});
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -90,16 +92,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.GetAllTransactionRequest](../../models/operations/getalltransactionrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.GetAllTransactionRequest](../../sdk/models/operations/getalltransactionrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.GetAllTransactionResponse](../../models/operations/getalltransactionresponse.md)>**
+**Promise<[operations.GetAllTransactionResponse](../../sdk/models/operations/getalltransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAvailableNonces
 
@@ -120,7 +126,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -129,16 +134,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.GetAvailableNoncesWalletRequest](../../models/operations/getavailablenonceswalletrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.GetAvailableNoncesWalletRequest](../../sdk/models/operations/getavailablenonceswalletrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
 
 
 ### Response
 
-**Promise<[operations.GetAvailableNoncesWalletResponse](../../models/operations/getavailablenonceswalletresponse.md)>**
+**Promise<[operations.GetAvailableNoncesWalletResponse](../../sdk/models/operations/getavailablenonceswalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getOne
 
@@ -158,7 +167,6 @@ import { Starton } from "@starton/sdk";
     id: "<ID>",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,16 +175,20 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.GetOneTransactionRequest](../../models/operations/getonetransactionrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.GetOneTransactionRequest](../../sdk/models/operations/getonetransactionrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.GetOneTransactionResponse](../../models/operations/getonetransactionresponse.md)>**
+**Promise<[operations.GetOneTransactionResponse](../../sdk/models/operations/getonetransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## resyncNonce
 
@@ -197,7 +209,6 @@ import { Starton } from "@starton/sdk";
     network: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -206,13 +217,17 @@ import { Starton } from "@starton/sdk";
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.ResyncNoncesWalletRequest](../../models/operations/resyncnonceswalletrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ResyncNoncesWalletRequest](../../sdk/models/operations/resyncnonceswalletrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.ResyncNoncesWalletResponse](../../models/operations/resyncnonceswalletresponse.md)>**
+**Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
