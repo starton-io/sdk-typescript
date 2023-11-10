@@ -182,10 +182,9 @@ Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Co
 <!-- No Error Handling -->
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
-
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
@@ -197,7 +196,6 @@ const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
 })
 
-
 const sdk = new Starton({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
@@ -205,17 +203,13 @@ const sdk = new Starton({defaultClient: httpClient});
 
 
 <!-- Start Pagination -->
-# Pagination
+## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
 returned response object will have a `next` method that can be called to pull down the next group of results. If the
 return value of `next` is `null`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
-## Example
-
 ```typescript
 import { Starton } from "@starton/sdk";
 
@@ -243,9 +237,9 @@ import { Starton } from "@starton/sdk";
 
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security scheme globally:
 
@@ -254,7 +248,6 @@ This SDK supports the following security scheme globally:
 | `startonApiKey` | apiKey          | API key         |
 
 To authenticate with the API the `startonApiKey` parameter must be set when initializing the SDK client instance. For example:
-
 ```typescript
 import { Starton } from "@starton/sdk";
 

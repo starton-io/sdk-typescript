@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 4199b80e31d9939cb77296b14dd95204
   docVersion: "1.0"
-  speakeasyVersion: 1.116.0
-  generationVersion: 2.185.0
+  speakeasyVersion: 1.118.3
+  generationVersion: 2.187.7
 generation:
   comments: {}
   devContainers:
@@ -11,9 +11,11 @@ generation:
     schemaPath: https://raw.githubusercontent.com/starton-io/starton-openapi/master/starton-openapi.json
   sdkClassName: Starton
   repoURL: https://github.com/starton-io/sdk-typescript.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.2
+    core: 3.1.3
     devContainers: 2.88.0
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
@@ -21,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     pagination: 2.81.3
 typescript:
-  version: 0.3.1
+  version: 0.3.2
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
