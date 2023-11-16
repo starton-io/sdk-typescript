@@ -53,7 +53,7 @@ export class GetAllKmsResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     next: () => Promise<GetAllKmsResponse | null>;
 }

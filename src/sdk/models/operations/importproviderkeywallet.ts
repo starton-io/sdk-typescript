@@ -23,7 +23,7 @@ export class ImportProviderKeyWalletResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     @SpeakeasyMetadata()
     wallet?: shared.Wallet;

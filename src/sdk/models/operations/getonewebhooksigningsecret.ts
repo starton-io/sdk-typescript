@@ -23,7 +23,7 @@ export class GetOneWebhookSigningSecretResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     @SpeakeasyMetadata()
     webhookSigningSecret?: shared.WebhookSigningSecret;

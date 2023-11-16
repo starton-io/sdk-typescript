@@ -23,7 +23,7 @@ export class CreateWatcherResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     @SpeakeasyMetadata()
     watcher?: shared.Watcher;
