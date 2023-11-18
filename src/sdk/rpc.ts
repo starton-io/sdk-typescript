@@ -172,7 +172,7 @@ export class Rpc {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.twoHundredApplicationJsonNumber = JSON.parse(decodedRes);
+                    res.number = JSON.parse(decodedRes);
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,

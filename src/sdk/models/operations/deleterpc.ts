@@ -14,9 +14,6 @@ export class DeleteRpcRequest extends SpeakeasyBase {
 }
 
 export class DeleteRpcResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    twoHundredApplicationJsonNumber?: number;
-
     /**
      * HTTP response content type for this operation
      */
@@ -34,4 +31,7 @@ export class DeleteRpcResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse: AxiosResponse;
+
+    @SpeakeasyMetadata()
+    number?: number;
 }

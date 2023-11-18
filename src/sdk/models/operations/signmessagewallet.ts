@@ -17,9 +17,6 @@ export class SignMessageWalletRequest extends SpeakeasyBase {
 export class SignMessageWalletResponseBody extends SpeakeasyBase {}
 
 export class SignMessageWalletResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    twoHundredAndOneApplicationJsonObject?: SignMessageWalletResponseBody;
-
     /**
      * HTTP response content type for this operation
      */
@@ -37,4 +34,7 @@ export class SignMessageWalletResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse: AxiosResponse;
+
+    @SpeakeasyMetadata()
+    object?: SignMessageWalletResponseBody;
 }

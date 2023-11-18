@@ -176,7 +176,7 @@ export class Wallet {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.twoHundredApplicationJsonNumber = JSON.parse(decodedRes);
+                    res.number = JSON.parse(decodedRes);
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -590,7 +590,7 @@ export class Wallet {
                 );
             default:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.defaultApplicationJsonOneOf = JSON.parse(decodedRes);
+                    res.oneOf = JSON.parse(decodedRes);
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -774,7 +774,7 @@ export class Wallet {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.twoHundredAndOneApplicationJsonObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.SignMessageWalletResponseBody
                     );

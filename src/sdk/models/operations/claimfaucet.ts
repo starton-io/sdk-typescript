@@ -40,5 +40,5 @@ export class ClaimFaucetResponse extends SpeakeasyBase {
     rawResponse: AxiosResponse;
 
     @SpeakeasyMetadata()
-    defaultApplicationJsonOneOf?: any;
+    oneOf?: any;
 }
