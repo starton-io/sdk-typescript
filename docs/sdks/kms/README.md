@@ -23,9 +23,9 @@ Add a new Key Management System entry to the project.
 import { Starton } from "@starton/sdk";
 import { Provider } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.kms.create({
@@ -43,7 +43,9 @@ import { Provider } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -72,9 +74,9 @@ Delete a Key Management System entry from the project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.kms.delete({
@@ -84,7 +86,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -113,9 +117,9 @@ Provides a list of all Key Management Systems entries associated with the curren
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.kms.getAll({});
@@ -127,7 +131,9 @@ import { Starton } from "@starton/sdk";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -156,9 +162,9 @@ Returns information of a particular Key Management Systems entry using its uniqu
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.kms.getOne({
@@ -168,7 +174,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -197,9 +205,9 @@ Updates changes to a particular Key Management Systems entry.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.kms.update({
@@ -210,7 +218,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

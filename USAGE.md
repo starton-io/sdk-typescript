@@ -1,10 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Starton({
-        startonApiKey: "",
+        startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
     const res = await sdk.data.getBalance({
@@ -15,7 +15,9 @@ import { Starton } from "@starton/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

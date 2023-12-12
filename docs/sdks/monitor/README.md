@@ -25,9 +25,9 @@ Adds a new watcher to the current project to start monitoring an address.
 import { Starton } from "@starton/sdk";
 import { CreateWatcherDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.create({
@@ -46,7 +46,9 @@ import { CreateWatcherDtoType } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -75,9 +77,9 @@ Removes a specific watcher from the current project. This action is irreversible
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.delete({
@@ -87,7 +89,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -117,9 +121,9 @@ Fetches list of all watchers associated with the current project.
 import { Starton } from "@starton/sdk";
 import { TypeT } from "@starton/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.getAll({});
@@ -131,7 +135,9 @@ import { TypeT } from "@starton/sdk/dist/sdk/models/operations";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -160,9 +166,9 @@ Fetches a list of all events linked to a specific watcher, identified by {id}.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.getAllEvents({
@@ -176,7 +182,9 @@ import { Starton } from "@starton/sdk";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -205,9 +213,9 @@ Retrieves detailed information about a specific watcher identified by its unique
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.getOne({
@@ -217,7 +225,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -246,9 +256,9 @@ Retrieves information about a specific watcher event.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.getOneEvent({
@@ -259,7 +269,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -288,9 +300,9 @@ Modifies the properties of an existing watcher. Only the fields provided in the 
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.monitor.update({
@@ -308,7 +320,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

@@ -23,9 +23,9 @@ Adds a new network to the project, available only for Enterprise plans.
 import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.network.create({
@@ -51,7 +51,9 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -80,9 +82,9 @@ Removes a network from the project, available only for Enterprise plans.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.network.delete({
@@ -92,7 +94,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -121,9 +125,9 @@ Fetches a paginated list of networks available in the current project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.network.getAll({});
@@ -135,7 +139,9 @@ import { Starton } from "@starton/sdk";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -164,9 +170,9 @@ Retrieves detailed information about a specific network based on its name.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.network.getOne({
@@ -176,7 +182,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -206,9 +214,9 @@ Modifies the details of a specific network based on its unique name. This featur
 import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.network.update({
@@ -230,7 +238,9 @@ import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

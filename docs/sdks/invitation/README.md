@@ -17,9 +17,9 @@ Invites a new member to the project. The user needs to have the necessary permis
 import { Starton } from "@starton/sdk";
 import { Role } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.project.member.invitation.create({
@@ -30,7 +30,9 @@ import { Role } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -59,9 +61,9 @@ Deletes an invitation that was previously sent. The user needs to have the neces
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.project.member.invitation.delete({
@@ -71,7 +73,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -100,9 +104,9 @@ Fetch all member invitations for a project. The user needs to have the appropria
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.project.member.invitation.getAll({});
@@ -114,7 +118,9 @@ import { Starton } from "@starton/sdk";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

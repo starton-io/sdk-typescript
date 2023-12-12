@@ -14,7 +14,7 @@ This is an alpha release of the Starton SDK.  We are still working on the docume
 
 If you have any questions, please reach out to us on [Discord](https://discord.starton.com/).
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -28,7 +28,7 @@ npm add @starton/sdk
 ```bash
 yarn add @starton/sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## SDK Example Usage
 ```typescript
@@ -45,9 +45,8 @@ sdk.data.getBalance({
 ```
 <!-- No SDK Example Usage -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [data](docs/sdks/data/README.md)
 
@@ -165,32 +164,20 @@ sdk.data.getBalance({
 * [getSigningSecret](docs/sdks/webhook/README.md#getsigningsecret) - Retrieve Webhook Signing Secret
 * [regenerateSigningSecret](docs/sdks/webhook/README.md#regeneratesigningsecret) - Regenerate Webhook signing secret
 * [resend](docs/sdks/webhook/README.md#resend) - Resend a Webhook
-<!-- End SDK Available Operations -->
-
-<!-- Start Dev Containers -->
-# Dev Containers
-<div align="left">
-    <a href="https://codespaces.new/starton-io/sdk-typescript.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
-    
-</div>
-
-Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Codespaces**!
-
-* [Explore Dev Containers](.devcontainer/README.md)
-<!-- End Dev Containers -->
+<!-- End Available Resources and Operations [operations] -->
 
 <!-- No Error Handling -->
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from @starton/sdk import Starton;
-import axios;
+import { @starton/sdk } from "Starton";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -198,11 +185,11 @@ const httpClient = axios.create({
 
 const sdk = new Starton({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -213,9 +200,9 @@ Here's an example of one such pagination call:
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Starton({
-        startonApiKey: "",
+        startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
     const res = await sdk.wallet.getAll({});
@@ -227,16 +214,18 @@ import { Starton } from "@starton/sdk";
             res = res.next();
         } while (res);
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 <!-- No Server Selection -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -251,9 +240,9 @@ To authenticate with the API the `startonApiKey` parameter must be set when init
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Starton({
-        startonApiKey: "",
+        startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
     const res = await sdk.data.getBalance({
@@ -264,10 +253,12 @@ import { Starton } from "@starton/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -31,9 +31,9 @@ Calls a specific function within a deployed smart contract, enabling interaction
 import { Starton } from "@starton/sdk";
 import { Speed } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.call({
@@ -55,7 +55,9 @@ import { Speed } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -84,9 +86,9 @@ Deletes a specific smart contract based on network and address.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.delete({
@@ -97,7 +99,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -127,9 +131,9 @@ Deploys a smart contract from bytecode and returns transaction details.
 import { Starton } from "@starton/sdk";
 import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.deployFromBytecode({
@@ -166,7 +170,9 @@ import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -196,9 +202,9 @@ Deploy from Starton audited smart contract template.
 import { Starton } from "@starton/sdk";
 import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.deployFromTemplate({
@@ -220,7 +226,9 @@ import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared"
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -249,9 +257,9 @@ Fetches and returns the list of smart contracts.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.getAll({});
@@ -263,7 +271,9 @@ import { Starton } from "@starton/sdk";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -292,9 +302,9 @@ Provides a list of the available read and write functions, as well as events, of
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.getFunctions({
@@ -305,7 +315,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -334,9 +346,9 @@ Fetches details of a specific smart contract based on network and address.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.getOne({
@@ -347,7 +359,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -377,9 +391,9 @@ Import an already deployed smart contract into the project. This requires provid
 import { Starton } from "@starton/sdk";
 import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.importExisting({
@@ -415,7 +429,9 @@ import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -444,9 +460,9 @@ Reads data from a smart contract by calling one of its functions without making 
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.read({
@@ -466,7 +482,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -495,9 +513,9 @@ Updates and returns details of a specific smart contract based on network and ad
 ```typescript
 import { Starton } from "@starton/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Starton({
-    startonApiKey: "",
+    startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
   const res = await sdk.smartContractManagement.update({
@@ -511,7 +529,9 @@ import { Starton } from "@starton/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

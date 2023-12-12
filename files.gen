@@ -170,7 +170,6 @@ src/sdk/models/shared/security.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
-USAGE.md
 docs/sdk/models/operations/getbalanceaddressrequest.md
 docs/sdk/models/operations/getbalanceaddressresponse.md
 docs/sdk/models/operations/getbalanceerc20request.md
@@ -465,6 +464,7 @@ docs/sdks/smartcontract/README.md
 docs/sdks/template/README.md
 docs/sdks/monitor/README.md
 docs/sdks/webhook/README.md
+USAGE.md
 .gitattributes
 .devcontainer/README.md
 .devcontainer/devcontainer.json
