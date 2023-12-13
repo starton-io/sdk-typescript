@@ -42,4 +42,4 @@ typescript:
   packageName: '@starton/sdk'
   published: true
   repoSubDirectory: .
-  templateVersion: v1
+  templateVersion: v2
