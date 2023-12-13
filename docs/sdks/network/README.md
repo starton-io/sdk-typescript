@@ -21,36 +21,39 @@ Adds a new network to the project, available only for Enterprise plans.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
+import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.network.create({
-    blockchain: "string",
-    chainId: 4865.89,
-    confirmationBlocks: 4893.82,
-    displayName: "string",
-    explorerApi: {
-      apiKey: "string",
-      type: ExplorerApiDtoType.Etherscan,
-      url: "https://timely-haven.biz",
-    },
-    gasPriceRecommendation: {
-      defaultRelayerUnstuck: "string",
-      lowest: "string",
-      max: "string",
-    },
-    logo: "string",
-    name: "string",
-    symbol: "string",
-  });
+      blockchain: "string",
+      chainId: 4865.89,
+      confirmationBlocks: 4893.82,
+      displayName: "string",
+      explorerApi: {
+        apiKey: "string",
+        type: ExplorerApiDtoType.Etherscan,
+        url: "https://timely-haven.biz",
+      },
+      gasPriceRecommendation: {
+        defaultRelayerUnstuck: "string",
+        lowest: "string",
+        max: "string",
+      },
+      logo: "string",
+      name: "string",
+      symbol: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -58,10 +61,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [shared.CreateNetworkDto](../../sdk/models/shared/createnetworkdto.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.CreateNetworkDto](../../sdk/models/shared/createnetworkdto.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -84,16 +88,19 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.network.delete({
-    name: "string",
-  });
+      name: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -101,10 +108,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.DeleteNetworkRequest](../../sdk/models/operations/deletenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteNetworkRequest](../../sdk/models/operations/deletenetworkrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -127,17 +135,21 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.network.getAll({});
 
-  if (res.statusCode == 200) {
-    do {
-      // handle items
-
-      res = res.next();
-    } while (res);
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
+  }
+  
+  let items: typeof res | null = res;
+  while (items != null) {
+    // handle items
+  
+    items = await items.next();
   }
 }
 
@@ -146,10 +158,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.GetAllNetworkRequest](../../sdk/models/operations/getallnetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetAllNetworkRequest](../../sdk/models/operations/getallnetworkrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -172,16 +185,19 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.network.getOne({
-    name: "string",
-  });
+      name: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -189,10 +205,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.GetOneNetworkRequest](../../sdk/models/operations/getonenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetOneNetworkRequest](../../sdk/models/operations/getonenetworkrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -212,32 +229,35 @@ Modifies the details of a specific network based on its unique name. This featur
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { ExplorerApiDtoType } from "@starton/sdk/dist/sdk/models/shared";
+import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.network.update({
-    updateNetworkDto: {
-      explorerApi: {
-        apiKey: "string",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "https://alarming-nondisclosure.com",
+      updateNetworkDto: {
+        explorerApi: {
+          apiKey: "string",
+          type: ExplorerApiDtoType.Etherscan,
+          url: "https://alarming-nondisclosure.com",
+        },
+        gasPriceRecommendation: {
+          defaultRelayerUnstuck: "string",
+          lowest: "string",
+          max: "string",
+        },
       },
-      gasPriceRecommendation: {
-        defaultRelayerUnstuck: "string",
-        lowest: "string",
-        max: "string",
-      },
-    },
-    name: "string",
-  });
+      name: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -245,10 +265,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.UpdateNetworkRequest](../../sdk/models/operations/updatenetworkrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateNetworkRequest](../../sdk/models/operations/updatenetworkrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response

@@ -29,32 +29,35 @@ Calls a specific function within a deployed smart contract, enabling interaction
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Speed } from "@starton/sdk/dist/sdk/models/shared";
+import { Speed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.call({
-    callDto: {
-      customGas: {},
-      functionName: "string",
-      params: [
-        "string",
-        "string",
-        "string",
-        "string",
-      ],
-      signerWallet: "string",
-    },
-    address: "842 Lee Forges",
-    network: "string",
-  });
+      callDto: {
+        customGas: {},
+        functionName: "string",
+        params: [
+          "string",
+          "string",
+          "string",
+          "string",
+        ],
+        signerWallet: "string",
+      },
+      address: "842 Lee Forges",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -62,10 +65,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.CallSmartContractRequest](../../sdk/models/operations/callsmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CallSmartContractRequest](../../sdk/models/operations/callsmartcontractrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -88,17 +92,20 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.delete({
-    address: "8653 Vaughn Hills",
-    network: "string",
-  });
+      address: "8653 Vaughn Hills",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -106,10 +113,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.DeleteSmartContractRequest](../../sdk/models/operations/deletesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteSmartContractRequest](../../sdk/models/operations/deletesmartcontractrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -129,47 +137,50 @@ Deploys a smart contract from bytecode and returns transaction details.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { DeployFromBytecodeDtoSpeed, StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
+import { DeployFromBytecodeDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.deployFromBytecode({
-    deployFromBytecodeDto: {
-      abi: [
-        {
-          inputs: {
-            components: {},
-            name: "string",
-            type: "string",
+      deployFromBytecodeDto: {
+        abi: [
+          {
+            inputs: {
+              components: {},
+              name: "string",
+              type: "string",
+            },
+            outputs: {
+              components: {},
+              name: "string",
+              type: "string",
+            },
+            type: TypeT.Event,
           },
-          outputs: {
-            components: {},
-            name: "string",
-            type: "string",
-          },
-          type: TypeT.Event,
-        },
-      ],
-      bytecode: "string",
-      customGas: {},
-      name: "string",
-      network: "string",
-      params: [
-        "string",
-        "string",
-        "string",
-        "string",
-      ],
-      signerWallet: "string",
-    },
-  });
+        ],
+        bytecode: "string",
+        customGas: {},
+        name: "string",
+        network: "string",
+        params: [
+          "string",
+          "string",
+          "string",
+          "string",
+        ],
+        signerWallet: "string",
+      },
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -177,10 +188,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                  | [operations.DeployFromBytecodeSmartContractRequest](../../sdk/models/operations/deployfrombytecodesmartcontractrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
-| `config`                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                               | :heavy_minus_sign:                                                                                                         | Available config options for making requests.                                                                              |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeployFromBytecodeSmartContractRequest](../../sdk/models/operations/deployfrombytecodesmartcontractrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -200,32 +212,35 @@ Deploy from Starton audited smart contract template.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { DeployFromTemplateDtoSpeed } from "@starton/sdk/dist/sdk/models/shared";
+import { DeployFromTemplateDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.deployFromTemplate({
-    deployFromTemplateDto: {
-      customGas: {},
-      name: "TestToken",
-      network: "polygon-mumbai",
-      params: [
-        "string",
-        "string",
-        "string",
-        "string",
-      ],
-      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-      templateId: "ERC20_META_TRANSACTION",
-    },
-  });
+      deployFromTemplateDto: {
+        customGas: {},
+        name: "TestToken",
+        network: "polygon-mumbai",
+        params: [
+          "string",
+          "string",
+          "string",
+          "string",
+        ],
+        signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+        templateId: "ERC20_META_TRANSACTION",
+      },
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -233,10 +248,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                  | [operations.DeployFromTemplateSmartContractRequest](../../sdk/models/operations/deployfromtemplatesmartcontractrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
-| `config`                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                               | :heavy_minus_sign:                                                                                                         | Available config options for making requests.                                                                              |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeployFromTemplateSmartContractRequest](../../sdk/models/operations/deployfromtemplatesmartcontractrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -259,17 +275,21 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.getAll({});
 
-  if (res.statusCode == 200) {
-    do {
-      // handle items
-
-      res = res.next();
-    } while (res);
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
+  }
+  
+  let items: typeof res | null = res;
+  while (items != null) {
+    // handle items
+  
+    items = await items.next();
   }
 }
 
@@ -278,10 +298,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.GetAllSmartContractRequest](../../sdk/models/operations/getallsmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetAllSmartContractRequest](../../sdk/models/operations/getallsmartcontractrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -304,17 +325,20 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.getFunctions({
-    address: "18523 Buford Brook",
-    network: "string",
-  });
+      address: "18523 Buford Brook",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -322,10 +346,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                        | [operations.GetAvailableFunctionsSmartContractRequest](../../sdk/models/operations/getavailablefunctionssmartcontractrequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
-| `config`                                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                     | :heavy_minus_sign:                                                                                                               | Available config options for making requests.                                                                                    |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetAvailableFunctionsSmartContractRequest](../../sdk/models/operations/getavailablefunctionssmartcontractrequest.md)                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -348,17 +373,20 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.getOne({
-    address: "43504 Penelope Expressway",
-    network: "string",
-  });
+      address: "43504 Penelope Expressway",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -366,10 +394,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.GetOneSmartContractRequest](../../sdk/models/operations/getonesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetOneSmartContractRequest](../../sdk/models/operations/getonesmartcontractrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -389,46 +418,48 @@ Import an already deployed smart contract into the project. This requires provid
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { StateMutability, TypeT } from "@starton/sdk/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.importExisting({
-    abi: [
-      {
-        inputs: {
-          components: {},
-          name: "string",
-          type: "string",
+      abi: [
+        {
+          inputs: {
+            components: {},
+            name: "string",
+            type: "string",
+          },
+          outputs: {
+            components: {},
+            name: "string",
+            type: "string",
+          },
+          type: TypeT.Function,
         },
-        outputs: {
-          components: {},
-          name: "string",
-          type: "string",
-        },
-        type: TypeT.Function,
-      },
-    ],
-    address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
-    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
-    description: "Minimal smart contract description.",
-    name: "Minimal Contract Test.",
-    network: "polygon-mumbai",
-    params: [
-      "string",
-      "string",
-      "string",
-      "string",
-    ],
-    templateId: "ERC721_META_TRANSACTION",
-  });
+      ],
+      address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
+      creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
+      description: "Minimal smart contract description.",
+      name: "Minimal Contract Test.",
+      network: "polygon-mumbai",
+      params: [
+        "string",
+        "string",
+        "string",
+        "string",
+      ],
+      templateId: "ERC721_META_TRANSACTION",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -436,10 +467,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [shared.ImportSmartContractDto](../../sdk/models/shared/importsmartcontractdto.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.ImportSmartContractDto](../../sdk/models/shared/importsmartcontractdto.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -462,26 +494,29 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.read({
-    readDto: {
-      functionName: "string",
-      params: [
-        "string",
-        "string",
-        "string",
-        "string",
-      ],
-    },
-    address: "660 Romaine Highway",
-    network: "string",
-  });
+      readDto: {
+        functionName: "string",
+        params: [
+          "string",
+          "string",
+          "string",
+          "string",
+        ],
+      },
+      address: "660 Romaine Highway",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -489,10 +524,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.ReadSmartContractRequest](../../sdk/models/operations/readsmartcontractrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ReadSmartContractRequest](../../sdk/models/operations/readsmartcontractrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -515,20 +551,23 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+      startonApiKey: "<YOUR_API_KEY_HERE>",
+    });
 
+  
   const res = await sdk.smartContractManagement.update({
-    updateSmartContractDto: {
-      metadata: {},
-    },
-    address: "050 Mellie Well",
-    network: "string",
-  });
+      updateSmartContractDto: {
+        metadata: {},
+      },
+      address: "050 Mellie Well",
+      network: "string",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
+  
+  // handle response
 }
 
 run();
@@ -536,10 +575,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.UpdateSmartContractRequest](../../sdk/models/operations/updatesmartcontractrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateSmartContractRequest](../../sdk/models/operations/updatesmartcontractrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response

@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 4199b80e31d9939cb77296b14dd95204
   docVersion: "1.0"
-  speakeasyVersion: 1.126.0
-  generationVersion: 2.213.3
+  speakeasyVersion: 1.126.3
+  generationVersion: 2.214.3
 generation:
   comments: {}
   devContainers:
@@ -15,7 +15,7 @@ generation:
     optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.3.0
+    core: 3.3.3
     devContainers: 2.88.0
     globalSecurity: 2.82.1
     globalServerURLs: 2.82.1
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     pagination: 2.81.3
 typescript:
-  version: 0.4.0
+  version: 0.5.0
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
