@@ -40,27 +40,38 @@ export class Network extends ClientSDK {
         input: shared.CreateNetworkDto,
         options?: RequestOptions
     ): Promise<operations.CreateNetworkResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.CreateNetworkDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.CreateNetworkDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/network")();
+        const path$ = this.templateURLComponent("/v3/network")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -69,7 +80,7 @@ export class Network extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreateNetworkResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Network: responseBody,
             });
             return result;
@@ -89,33 +100,44 @@ export class Network extends ClientSDK {
         input: operations.DeleteNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteNetworkResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeleteNetworkRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeleteNetworkRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -124,7 +146,7 @@ export class Network extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeleteNetworkResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 number: responseBody,
             });
             return result;
@@ -144,31 +166,46 @@ export class Network extends ClientSDK {
         input: operations.GetAllNetworkRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllNetworkResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllNetworkRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllNetworkRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/network")();
+        const path$ = this.templateURLComponent("/v3/network")();
 
-        const query = [
-            enc$.encodeForm("id", payload.id, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("testnet", payload.testnet, { explode: true, charEncoding: "percent" }),
+        const query$ = [
+            enc$.encodeForm("id", payload$.id, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("testnet", payload$.testnet, {
+                explode: true,
+                charEncoding: "percent",
+            }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -202,7 +239,7 @@ export class Network extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -211,7 +248,7 @@ export class Network extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllNetworkResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 NetworkPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -232,33 +269,44 @@ export class Network extends ClientSDK {
         input: operations.GetOneNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneNetworkResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneNetworkRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneNetworkRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -267,7 +315,7 @@ export class Network extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneNetworkResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Network: responseBody,
             });
             return result;
@@ -287,35 +335,46 @@ export class Network extends ClientSDK {
         input: operations.UpdateNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateNetworkResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdateNetworkRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdateNetworkRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdateNetworkDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdateNetworkDto, { explode: true });
 
-        const pathParams = {
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -324,7 +383,7 @@ export class Network extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdateNetworkResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Network: responseBody,
             });
             return result;

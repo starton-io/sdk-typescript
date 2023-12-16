@@ -33,54 +33,66 @@ export class Template extends ClientSDK {
         input: operations.GetAllSmartContractTemplateRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllSmartContractTemplateResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/smart-contract-template")();
+        const path$ = this.templateURLComponent("/v3/smart-contract-template")();
 
-        const query = [
-            enc$.encodeForm("blockchain", payload.blockchain, {
+        const query$ = [
+            enc$.encodeForm("blockchain", payload$.blockchain, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("category", payload.category, {
+            enc$.encodeForm("category", payload$.category, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("includeCompilationDetails", payload.includeCompilationDetails, {
+            enc$.encodeForm("includeCompilationDetails", payload$.includeCompilationDetails, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("includeForm", payload.includeForm, {
+            enc$.encodeForm("includeForm", payload$.includeForm, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("isActivated", payload.isActivated, {
+            enc$.encodeForm("isActivated", payload$.isActivated, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("isAudited", payload.isAudited, {
+            enc$.encodeForm("isAudited", payload$.isAudited, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -116,7 +128,7 @@ export class Template extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -125,7 +137,7 @@ export class Template extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllSmartContractTemplateResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 SmartContractTemplatePaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -146,21 +158,21 @@ export class Template extends ClientSDK {
         input: operations.GetOneSmartContractTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneSmartContractTemplateResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/smart-contract-template/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/smart-contract-template/{id}")(pathParams$);
 
-        const query = [
-            enc$.encodeForm("includeForm", payload.includeForm, {
+        const query$ = [
+            enc$.encodeForm("includeForm", payload$.includeForm, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -168,17 +180,29 @@ export class Template extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -187,7 +211,7 @@ export class Template extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneSmartContractTemplateResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 SmartContractTemplate: responseBody,
             });
             return result;

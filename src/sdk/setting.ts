@@ -31,33 +31,44 @@ export class Setting extends ClientSDK {
         input: operations.GetAllSettingRelayerRequest,
         options?: RequestOptions
     ): Promise<operations.GetAllSettingRelayerResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllSettingRelayerRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllSettingRelayerRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            network: enc$.encodeSimple("network", payload.network, {
+        const pathParams$ = {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -66,7 +77,7 @@ export class Setting extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetAllSettingRelayerResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 SettingRelayer: responseBody,
             });
             return result;
@@ -86,35 +97,46 @@ export class Setting extends ClientSDK {
         input: operations.UpdateSettingRelayerRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateSettingRelayerResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdateSettingRelayerRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdateSettingRelayerRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdateSettingRelayerDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdateSettingRelayerDto, { explode: true });
 
-        const pathParams = {
-            network: enc$.encodeSimple("network", payload.network, {
+        const pathParams$ = {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -123,7 +145,7 @@ export class Setting extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdateSettingRelayerResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 SettingRelayer: responseBody,
             });
             return result;

@@ -12,7 +12,7 @@ import { RetryConfig } from "./retries";
 export const ServerList = ["https://api.starton.com"] as const;
 
 export type SDKOptions = {
-    startonApiKey?: string;
+    startonApiKey?: string | (() => Promise<string>);
 
     httpClient?: HTTPClient;
     /**
@@ -46,7 +46,7 @@ export function serverURLFromOptions(options: SDKOptions): URL {
 export const SDK_METADATA = Object.freeze({
     language: "typescript",
     openapiDocVersion: "1.0",
-    sdkVersion: "0.5.0",
-    genVersion: "2.214.3",
-    userAgent: "speakeasy-sdk/typescript 0.5.0 2.214.3 1.0 @starton/sdk",
+    sdkVersion: "0.5.1",
+    genVersion: "2.214.10",
+    userAgent: "speakeasy-sdk/typescript 0.5.1 2.214.10 1.0 @starton/sdk",
 });

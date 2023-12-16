@@ -34,27 +34,38 @@ export class Monitor extends ClientSDK {
         input: shared.CreateWatcherDto,
         options?: RequestOptions
     ): Promise<operations.CreateWatcherResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.CreateWatcherDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.CreateWatcherDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/watcher")();
+        const path$ = this.templateURLComponent("/v3/watcher")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -63,7 +74,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreateWatcherResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Watcher: responseBody,
             });
             return result;
@@ -83,30 +94,41 @@ export class Monitor extends ClientSDK {
         input: operations.DeleteWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteWatcherResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeleteWatcherRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeleteWatcherRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/watcher/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -115,7 +137,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeleteWatcherResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 number: responseBody,
             });
             return result;
@@ -135,28 +157,34 @@ export class Monitor extends ClientSDK {
         input: operations.GetAllWatcherRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllWatcherResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllWatcherRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllWatcherRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/watcher")();
+        const path$ = this.templateURLComponent("/v3/watcher")();
 
-        const query = [
-            enc$.encodeForm("address", payload.address, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("confirmationsBlocks", payload.confirmationsBlocks, {
+        const query$ = [
+            enc$.encodeForm("address", payload$.address, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("network", payload.network, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("paused", payload.paused, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("type", payload.type, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("webhookUrl", payload.webhookUrl, {
+            enc$.encodeForm("confirmationsBlocks", payload$.confirmationsBlocks, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("network", payload$.network, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("paused", payload$.paused, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("type", payload$.type, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("webhookUrl", payload$.webhookUrl, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -164,13 +192,25 @@ export class Monitor extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -204,7 +244,7 @@ export class Monitor extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -213,7 +253,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllWatcherResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 WatcherPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -234,33 +274,45 @@ export class Monitor extends ClientSDK {
         input: operations.GetAllWatcherEventRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllWatcherEventResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllWatcherEventRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllWatcherEventRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/watcher/{id}/event")(pathParams);
+        const path$ = this.templateURLComponent("/v3/watcher/{id}/event")(pathParams$);
 
-        const query = [
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
+        const query$ = [
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -296,7 +348,7 @@ export class Monitor extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -305,7 +357,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllWatcherEventResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 WatcherEventPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -326,30 +378,41 @@ export class Monitor extends ClientSDK {
         input: operations.GetOneWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWatcherResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneWatcherRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneWatcherRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/watcher/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -358,7 +421,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneWatcherResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Watcher: responseBody,
             });
             return result;
@@ -378,34 +441,45 @@ export class Monitor extends ClientSDK {
         input: operations.GetOneWatcherEventRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWatcherEventResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneWatcherEventRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneWatcherEventRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            eventId: enc$.encodeSimple("eventId", payload.eventId, {
+        const pathParams$ = {
+            eventId: enc$.encodeSimple("eventId", payload$.eventId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/watcher/{id}/event/{eventId}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/watcher/{id}/event/{eventId}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -414,7 +488,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneWatcherEventResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 WatcherEvent: responseBody,
             });
             return result;
@@ -434,32 +508,43 @@ export class Monitor extends ClientSDK {
         input: operations.UpdateWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateWatcherResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdateWatcherRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdateWatcherRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdateWatcherDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdateWatcherDto, { explode: true });
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/watcher/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -468,7 +553,7 @@ export class Monitor extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdateWatcherResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Watcher: responseBody,
             });
             return result;

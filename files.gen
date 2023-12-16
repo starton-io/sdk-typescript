@@ -30,6 +30,7 @@ src/lib/security.ts
 src/lib/url.ts
 src/sdk/index.ts
 src/sdk/models/errors/sdkerror.ts
+src/sdk/types/blobs.ts
 src/sdk/types/decimal.ts
 src/sdk/types/index.ts
 src/sdk/types/operations.ts

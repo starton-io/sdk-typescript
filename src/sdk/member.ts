@@ -37,33 +37,44 @@ export class Member extends ClientSDK {
         input: operations.DeleteProjectMemberRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteProjectMemberResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeleteProjectMemberRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeleteProjectMemberRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            userId: enc$.encodeSimple("userId", payload.userId, {
+        const pathParams$ = {
+            userId: enc$.encodeSimple("userId", payload$.userId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/project-member/{userId}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/project-member/{userId}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -72,7 +83,7 @@ export class Member extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeleteProjectMemberResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 boolean: responseBody,
             });
             return result;
@@ -89,23 +100,28 @@ export class Member extends ClientSDK {
      * Fetches all the members associated with a project. The user must have the appropriate permissions to access this data.
      */
     async getAll(options?: RequestOptions): Promise<operations.GetAllProjectMemberResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const path = this.templateURLComponent("/v3/project-member")();
+        const path$ = this.templateURLComponent("/v3/project-member")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers },
+            { security: securitySettings$, method: "get", path: path$, headers: headers$ },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -114,7 +130,7 @@ export class Member extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetAllProjectMemberResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 ProjectMemberPaginated: responseBody,
             });
             return result;

@@ -33,35 +33,46 @@ export class Rpc extends ClientSDK {
         input: operations.CreateRpcRequest,
         options?: RequestOptions
     ): Promise<operations.CreateRpcResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.CreateRpcRequest$.outboundSchema.parse(input);
+        const payload$ = operations.CreateRpcRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.CreateRpcDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.CreateRpcDto, { explode: true });
 
-        const pathParams = {
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -70,7 +81,7 @@ export class Rpc extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreateRpcResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Rpc: responseBody,
             });
             return result;
@@ -90,34 +101,45 @@ export class Rpc extends ClientSDK {
         input: operations.DeleteRpcRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteRpcResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeleteRpcRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeleteRpcRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -126,7 +148,7 @@ export class Rpc extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeleteRpcResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 number: responseBody,
             });
             return result;
@@ -146,36 +168,48 @@ export class Rpc extends ClientSDK {
         input: operations.GetAllRpcRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllRpcResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllRpcRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllRpcRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
-        const query = [
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
+        const query$ = [
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -209,7 +243,7 @@ export class Rpc extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -218,7 +252,7 @@ export class Rpc extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllRpcResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 RpcPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -239,34 +273,45 @@ export class Rpc extends ClientSDK {
         input: operations.GetOneRpcRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneRpcResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneRpcRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneRpcRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -275,7 +320,7 @@ export class Rpc extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneRpcResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Rpc: responseBody,
             });
             return result;
@@ -295,36 +340,47 @@ export class Rpc extends ClientSDK {
         input: operations.UpdateRpcRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateRpcResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdateRpcRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdateRpcRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdateRpcDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdateRpcDto, { explode: true });
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload.name, {
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: enc$.encodeSimple("name", payload$.name, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -333,7 +389,7 @@ export class Rpc extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdateRpcResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Rpc: responseBody,
             });
             return result;

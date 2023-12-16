@@ -1,3 +1,10 @@
+/models
+/sdk/models/errors
+/sdk/types
+/lib
+/sdk
+/index.*
+/.tsbuildinfo
 /cjs
 /node_modules
 dist/

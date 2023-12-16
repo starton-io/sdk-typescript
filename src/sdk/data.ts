@@ -31,39 +31,50 @@ export class Data extends ClientSDK {
         input: operations.GetBalanceAddressRequest,
         options?: RequestOptions
     ): Promise<operations.GetBalanceAddressResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetBalanceAddressRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetBalanceAddressRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload.network, {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent(
+        const path$ = this.templateURLComponent(
             "/v3/data/{network}/address/{address}/balance/native"
-        )(pathParams);
+        )(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -72,7 +83,7 @@ export class Data extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetBalanceAddressResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 AddressNativeBalanceResponse: responseBody,
             });
             return result;
@@ -92,45 +103,60 @@ export class Data extends ClientSDK {
         input: operations.GetBalanceErc20Request,
         options?: RequestOptions
     ): Promise<operations.GetBalanceErc20Response> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetBalanceErc20Request$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetBalanceErc20Request$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            contractAddress: enc$.encodeSimple("contractAddress", payload.contractAddress, {
+        const pathParams$ = {
+            contractAddress: enc$.encodeSimple("contractAddress", payload$.contractAddress, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload.network, {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent(
+        const path$ = this.templateURLComponent(
             "/v3/data/{network}/erc20/{contractAddress}/balance"
-        )(pathParams);
+        )(pathParams$);
 
-        const query = [
-            enc$.encodeForm("address", payload.address, { explode: true, charEncoding: "percent" }),
+        const query$ = [
+            enc$.encodeForm("address", payload$.address, {
+                explode: true,
+                charEncoding: "percent",
+            }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -139,7 +165,7 @@ export class Data extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetBalanceErc20Response$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 ERC20BalanceResponse: responseBody,
             });
             return result;
@@ -159,33 +185,44 @@ export class Data extends ClientSDK {
         input: operations.GetAllGasPriceRequest,
         options?: RequestOptions
     ): Promise<operations.GetAllGasPriceResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllGasPriceRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllGasPriceRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            network: enc$.encodeSimple("network", payload.network, {
+        const pathParams$ = {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/data/{network}/gas-price")(pathParams);
+        const path$ = this.templateURLComponent("/v3/data/{network}/gas-price")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -194,7 +231,7 @@ export class Data extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetAllGasPriceResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 GasPrices: responseBody,
             });
             return result;

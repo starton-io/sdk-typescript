@@ -34,27 +34,38 @@ export class Wallet extends ClientSDK {
         input: shared.CreateWalletDto,
         options?: RequestOptions
     ): Promise<operations.CreateWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.CreateWalletDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.CreateWalletDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/kms/wallet")();
+        const path$ = this.templateURLComponent("/v3/kms/wallet")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -63,7 +74,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreateWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Wallet: responseBody,
             });
             return result;
@@ -83,24 +94,24 @@ export class Wallet extends ClientSDK {
         input: operations.DeleteWalletRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeleteWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeleteWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
-        const query = [
-            enc$.encodeForm("deleteKeyOnKms", payload.deleteKeyOnKms, {
+        const query$ = [
+            enc$.encodeForm("deleteKeyOnKms", payload$.deleteKeyOnKms, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -108,17 +119,29 @@ export class Wallet extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -127,7 +150,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeleteWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 number: responseBody,
             });
             return result;
@@ -147,30 +170,42 @@ export class Wallet extends ClientSDK {
         input: operations.GetAllWalletRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllWalletResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/kms/wallet")();
+        const path$ = this.templateURLComponent("/v3/kms/wallet")();
 
-        const query = [
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
+        const query$ = [
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -204,7 +239,7 @@ export class Wallet extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -213,7 +248,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 WalletPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -234,33 +269,44 @@ export class Wallet extends ClientSDK {
         input: operations.GetOneWalletRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -269,7 +315,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Wallet: responseBody,
             });
             return result;
@@ -289,27 +335,38 @@ export class Wallet extends ClientSDK {
         input: shared.ImportProviderKeyDto,
         options?: RequestOptions
     ): Promise<operations.ImportProviderKeyWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.ImportProviderKeyDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.ImportProviderKeyDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/kms/wallet/import-provider-key")();
+        const path$ = this.templateURLComponent("/v3/kms/wallet/import-provider-key")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -318,7 +375,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.ImportProviderKeyWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Wallet: responseBody,
             });
             return result;
@@ -338,35 +395,46 @@ export class Wallet extends ClientSDK {
         input: operations.ClaimFaucetRequest,
         options?: RequestOptions
     ): Promise<operations.ClaimFaucetResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.ClaimFaucetRequest$.outboundSchema.parse(input);
+        const payload$ = operations.ClaimFaucetRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.RequireFaucetDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.RequireFaucetDto, { explode: true });
 
-        const pathParams = {
-            network: enc$.encodeSimple("network", payload.network, {
+        const pathParams$ = {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/faucet/{network}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/faucet/{network}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -375,14 +443,14 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.ClaimFaucetResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Faucet: responseBody,
             });
             return result;
         } else if (this.matchResponse(response, "default", "application/json")) {
             const responseBody = await response.json();
             const result = operations.ClaimFaucetResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 oneOf: responseBody,
             });
             return result;
@@ -402,39 +470,50 @@ export class Wallet extends ClientSDK {
         input: operations.ResyncNoncesWalletRequest,
         options?: RequestOptions
     ): Promise<operations.ResyncNoncesWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.ResyncNoncesWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.ResyncNoncesWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload.network, {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
-            pathParams
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
+            pathParams$
         );
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -443,7 +522,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.ResyncNoncesWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 resyncNonce: responseBody,
             });
             return result;
@@ -463,35 +542,48 @@ export class Wallet extends ClientSDK {
         input: operations.SignMessageWalletRequest,
         options?: RequestOptions
     ): Promise<operations.SignMessageWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.SignMessageWalletRequest$.outboundSchema.parse(input);
+        const payload$ = operations.SignMessageWalletRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.SignMessageDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.SignMessageDto, { explode: true });
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}/sign-message")(pathParams);
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/sign-message")(
+            pathParams$
+        );
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -500,7 +592,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.SignMessageWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 object: responseBody,
             });
             return result;
@@ -520,35 +612,46 @@ export class Wallet extends ClientSDK {
         input: operations.UpdateWalletRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdateWalletRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdateWalletRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdateWalletDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdateWalletDto, { explode: true });
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -557,7 +660,7 @@ export class Wallet extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdateWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Wallet: responseBody,
             });
             return result;

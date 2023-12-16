@@ -39,19 +39,19 @@ export class TransactionManager extends ClientSDK {
         input: operations.CreateTransactionRequest,
         options?: RequestOptions
     ): Promise<operations.CreateTransactionResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.CreateTransactionRequest$.outboundSchema.parse(input);
+        const payload$ = operations.CreateTransactionRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.CreateTransactionDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.CreateTransactionDto, { explode: true });
 
-        const path = this.templateURLComponent("/v3/transaction")();
+        const path$ = this.templateURLComponent("/v3/transaction")();
 
-        const query = [
-            enc$.encodeForm("simulate", payload.simulate, {
+        const query$ = [
+            enc$.encodeForm("simulate", payload$.simulate, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -59,17 +59,29 @@ export class TransactionManager extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -78,7 +90,7 @@ export class TransactionManager extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreateTransactionResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Transaction: responseBody,
             });
             return result;
@@ -98,26 +110,29 @@ export class TransactionManager extends ClientSDK {
         input: operations.GetAllTransactionRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllTransactionResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllTransactionRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllTransactionRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/transaction")();
+        const path$ = this.templateURLComponent("/v3/transaction")();
 
-        const query = [
-            enc$.encodeForm("from", payload.from, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fromDate", payload.fromDate, {
+        const query$ = [
+            enc$.encodeForm("from", payload$.from, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("fromDate", payload$.fromDate, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("network", payload.network, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("to", payload.to, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("transactionHash", payload.transactionHash, {
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("network", payload$.network, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("to", payload$.to, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("transactionHash", payload$.transactionHash, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -125,13 +140,25 @@ export class TransactionManager extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -167,7 +194,7 @@ export class TransactionManager extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -176,7 +203,7 @@ export class TransactionManager extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllTransactionResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 TransactionPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -197,39 +224,50 @@ export class TransactionManager extends ClientSDK {
         input: operations.GetAvailableNoncesWalletRequest,
         options?: RequestOptions
     ): Promise<operations.GetAvailableNoncesWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAvailableNoncesWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAvailableNoncesWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload.network, {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent(
+        const path$ = this.templateURLComponent(
             "/v3/kms/wallet/{address}/{network}/nonce/available"
-        )(pathParams);
+        )(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -238,7 +276,7 @@ export class TransactionManager extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetAvailableNoncesWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 NoncesAvailable: responseBody,
             });
             return result;
@@ -258,30 +296,41 @@ export class TransactionManager extends ClientSDK {
         input: operations.GetOneTransactionRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneTransactionResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOneTransactionRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOneTransactionRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/transaction/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/transaction/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -290,7 +339,7 @@ export class TransactionManager extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOneTransactionResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Transaction: responseBody,
             });
             return result;
@@ -310,39 +359,50 @@ export class TransactionManager extends ClientSDK {
         input: operations.ResyncNoncesWalletRequest,
         options?: RequestOptions
     ): Promise<operations.ResyncNoncesWalletResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.ResyncNoncesWalletRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.ResyncNoncesWalletRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            address: enc$.encodeSimple("address", payload.address, {
+        const pathParams$ = {
+            address: enc$.encodeSimple("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload.network, {
+            network: enc$.encodeSimple("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
 
-        const path = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
-            pathParams
+        const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
+            pathParams$
         );
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -351,7 +411,7 @@ export class TransactionManager extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.ResyncNoncesWalletResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 resyncNonce: responseBody,
             });
             return result;

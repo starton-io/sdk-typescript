@@ -9,7 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
 import * as shared from "../sdk/models/shared";
-import { Paginated, Paginator } from "../sdk/types";
+import { isBlobLike, Paginated, Paginator } from "../sdk/types";
 import jp from "jsonpath";
 
 export class Ipfs extends ClientSDK {
@@ -34,30 +34,41 @@ export class Ipfs extends ClientSDK {
         input: operations.DeletePinRequest,
         options?: RequestOptions
     ): Promise<operations.DeletePinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.DeletePinRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.DeletePinRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "delete", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "delete",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -66,7 +77,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.DeletePinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 boolean: responseBody,
             });
             return result;
@@ -86,36 +97,48 @@ export class Ipfs extends ClientSDK {
         input: operations.GetAllPinRequest,
         options?: RequestOptions
     ): Promise<Paginated<operations.GetAllPinResponse>> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetAllPinRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetAllPinRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const path = this.templateURLComponent("/v3/ipfs/pin")();
+        const path$ = this.templateURLComponent("/v3/ipfs/pin")();
 
-        const query = [
-            enc$.encodeForm("cid", payload.cid, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("includeDirectoryContent", payload.includeDirectoryContent, {
+        const query$ = [
+            enc$.encodeForm("cid", payload$.cid, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("includeDirectoryContent", payload$.includeDirectoryContent, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("limit", payload.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("status", payload.status, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("status", payload$.status, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
@@ -149,7 +172,7 @@ export class Ipfs extends ClientSDK {
                 );
         };
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -158,7 +181,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const parsed = operations.GetAllPinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 PinPaginated: responseBody,
             });
             const result = { ...parsed, next: nextFunc(responseBody) };
@@ -179,21 +202,21 @@ export class Ipfs extends ClientSDK {
         input: operations.GetOnePinRequest,
         options?: RequestOptions
     ): Promise<operations.GetOnePinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.GetOnePinRequest$.outboundSchema.parse(input);
-        const body = null;
+        const payload$ = operations.GetOnePinRequest$.outboundSchema.parse(input);
+        const body$ = null;
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
-        const query = [
-            enc$.encodeForm("includeDirectoryContent", payload.includeDirectoryContent, {
+        const query$ = [
+            enc$.encodeForm("includeDirectoryContent", payload$.includeDirectoryContent, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -201,17 +224,29 @@ export class Ipfs extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers, query, body },
+            {
+                security: securitySettings$,
+                method: "get",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -220,7 +255,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetOnePinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;
@@ -237,23 +272,28 @@ export class Ipfs extends ClientSDK {
      * Fetches the current storage utilization details for the project, providing insights into the used space, total allowance, and remaining free space.
      */
     async getStorageUsed(options?: RequestOptions): Promise<operations.GetStorageUsedPinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const path = this.templateURLComponent("/v3/ipfs/storage-used")();
+        const path$ = this.templateURLComponent("/v3/ipfs/storage-used")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "get", path, headers },
+            { security: securitySettings$, method: "get", path: path$, headers: headers$ },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -262,7 +302,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.GetStorageUsedPinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 StorageUsed: responseBody,
             });
             return result;
@@ -282,27 +322,38 @@ export class Ipfs extends ClientSDK {
         input: shared.CreatePinDto,
         options?: RequestOptions
     ): Promise<operations.CreatePinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.CreatePinDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.CreatePinDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/ipfs/pin")();
+        const path$ = this.templateURLComponent("/v3/ipfs/pin")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -311,7 +362,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.CreatePinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;
@@ -331,32 +382,43 @@ export class Ipfs extends ClientSDK {
         input: operations.UpdatePinRequest,
         options?: RequestOptions
     ): Promise<operations.UpdatePinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UpdatePinRequest$.outboundSchema.parse(input);
+        const payload$ = operations.UpdatePinRequest$.outboundSchema.parse(input);
 
-        const body = enc$.encodeJSON("body", payload.UpdatePinDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.UpdatePinDto, { explode: true });
 
-        const pathParams = {
-            id: enc$.encodeSimple("id", payload.id, { explode: false, charEncoding: "percent" }),
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
 
-        const path = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams);
+        const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "patch", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "patch",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -365,7 +427,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UpdatePinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;
@@ -385,43 +447,54 @@ export class Ipfs extends ClientSDK {
         input: operations.UploadFromFilePinRequestBody,
         options?: RequestOptions
     ): Promise<operations.UploadFromFilePinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UploadFromFilePinRequestBody$.outboundSchema.parse(input);
-        const body = new FormData();
-        if (payload.file !== undefined) {
-            if (payload.file instanceof Blob) {
-                body.append("file", payload.file);
+        const payload$ = operations.UploadFromFilePinRequestBody$.outboundSchema.parse(input);
+        const body$ = new FormData();
+        if (payload$.file !== undefined) {
+            if (isBlobLike(payload$.file)) {
+                body$.append("file", payload$.file);
             } else {
-                body.append(
+                body$.append(
                     "file",
-                    new Blob([payload.file.content], { type: "application/octet-stream" }),
-                    payload.file.fileName
+                    new Blob([payload$.file.content], { type: "application/octet-stream" }),
+                    payload$.file.fileName
                 );
             }
         }
-        if (payload.metadata !== undefined) {
-            body.append(
+        if (payload$.metadata !== undefined) {
+            body$.append(
                 "metadata",
-                enc$.encodeJSON("metadata", payload.metadata, { explode: true })
+                enc$.encodeJSON("metadata", payload$.metadata, { explode: true })
             );
         }
 
-        const path = this.templateURLComponent("/v3/ipfs/file")();
+        const path$ = this.templateURLComponent("/v3/ipfs/file")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -430,7 +503,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UploadFromFilePinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;
@@ -450,35 +523,46 @@ export class Ipfs extends ClientSDK {
         input: operations.UploadFromFolderPinRequestBody,
         options?: RequestOptions
     ): Promise<operations.UploadFromFolderPinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
 
-        const payload = operations.UploadFromFolderPinRequestBody$.outboundSchema.parse(input);
-        const body = new FormData();
-        if (payload.files !== undefined) {
-            body.append("files", String(payload.files));
+        const payload$ = operations.UploadFromFolderPinRequestBody$.outboundSchema.parse(input);
+        const body$ = new FormData();
+        if (payload$.files !== undefined) {
+            body$.append("files", String(payload$.files));
         }
-        if (payload.metadata !== undefined) {
-            body.append(
+        if (payload$.metadata !== undefined) {
+            body$.append(
                 "metadata",
-                enc$.encodeJSON("metadata", payload.metadata, { explode: true })
+                enc$.encodeJSON("metadata", payload$.metadata, { explode: true })
             );
         }
 
-        const path = this.templateURLComponent("/v3/ipfs/folder")();
+        const path$ = this.templateURLComponent("/v3/ipfs/folder")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -487,7 +571,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UploadFromFolderPinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;
@@ -507,27 +591,38 @@ export class Ipfs extends ClientSDK {
         input: shared.UploadJsonDto,
         options?: RequestOptions
     ): Promise<operations.UploadFromJsonPinResponse> {
-        const headers = new Headers();
-        headers.set("user-agent", SDK_METADATA.userAgent);
-        headers.set("Content-Type", "application/json");
-        headers.set("Accept", "application/json");
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
 
-        const payload = shared.UploadJsonDto$.outboundSchema.parse(input);
-        const body = enc$.encodeJSON("body", payload, { explode: true });
+        const payload$ = shared.UploadJsonDto$.outboundSchema.parse(input);
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
-        const path = this.templateURLComponent("/v3/ipfs/json")();
+        const path$ = this.templateURLComponent("/v3/ipfs/json")();
 
-        const security = this.options$.startonApiKey
-            ? { startonApiKey: this.options$.startonApiKey }
-            : {};
-        const securitySettings = this.resolveGlobalSecurity(security);
+        let security$;
+        if (typeof this.options$.startonApiKey === "function") {
+            security$ = { startonApiKey: await this.options$.startonApiKey() };
+        } else if (this.options$.startonApiKey) {
+            security$ = { startonApiKey: this.options$.startonApiKey };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings, method: "post", path, headers, body },
+            {
+                security: securitySettings$,
+                method: "post",
+                path: path$,
+                headers: headers$,
+                body: body$,
+            },
             options
         );
 
-        const responseFields = {
+        const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
@@ -536,7 +631,7 @@ export class Ipfs extends ClientSDK {
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
             const result = operations.UploadFromJsonPinResponse$.inboundSchema.parse({
-                ...responseFields,
+                ...responseFields$,
                 Pin: responseBody,
             });
             return result;

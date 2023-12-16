@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "target": "ES2018",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
 

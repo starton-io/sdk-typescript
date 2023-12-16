@@ -4,6 +4,7 @@
 
 import * as b64$ from "../../../lib/base64";
 import * as shared from "../../../sdk/models/shared";
+import { blobLikeSchema } from "../../../sdk/types";
 import { z } from "zod";
 
 export type FileT = {
@@ -14,7 +15,7 @@ export type FileT = {
 export type Metadata = {};
 
 export type UploadFromFilePinRequestBody = {
-    file?: FileT | File | Blob | undefined;
+    file?: FileT | Blob | undefined;
     metadata?: Metadata | undefined;
 };
 
@@ -102,7 +103,7 @@ export namespace UploadFromFilePinRequestBody$ {
         });
 
     export type Outbound = {
-        file?: FileT$.Outbound | File | Blob | undefined;
+        file?: FileT$.Outbound | Blob | undefined;
         metadata?: Metadata$.Outbound | undefined;
     };
 
@@ -110,7 +111,7 @@ export namespace UploadFromFilePinRequestBody$ {
         .object({
             file: z
                 .lazy(() => FileT$.outboundSchema)
-                .or(z.instanceof(Blob))
+                .or(blobLikeSchema)
                 .optional(),
             metadata: z.lazy(() => Metadata$.outboundSchema).optional(),
         })

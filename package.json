@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "@starton/sdk",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Starton <support@starton.com> (https://www.starton.com)",
   "main": "./index.js",
   "sideEffects": false,
@@ -19,7 +19,7 @@
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
-    "prepack": "npm run build && cp -r src/. cjs/. ./"
+    "prepare": "npm run build && cp -r src/. cjs/. ./"
   },
   "keywords": [],
   "peerDependencies": {
