@@ -33,25 +33,24 @@ import { Speed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.call({
-      callDto: {
-        customGas: {},
-        functionName: "string",
-        params: [
-          "string",
-          "string",
-          "string",
-          "string",
-        ],
-        signerWallet: "string",
-      },
-      address: "842 Lee Forges",
-      network: "string",
-    });
+    callDto: {
+      customGas: {},
+      functionName: "string",
+      params: [
+        "string",
+        "string",
+        "string",
+        "string",
+      ],
+      signerWallet: "string",
+    },
+    address: "842 Lee Forges",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -79,7 +78,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -92,14 +91,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.delete({
-      address: "8653 Vaughn Hills",
-      network: "string",
-    });
+    address: "8653 Vaughn Hills",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -127,7 +125,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deployFromBytecode
 
@@ -141,40 +139,39 @@ import { DeployFromBytecodeDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.deployFromBytecode({
-      deployFromBytecodeDto: {
-        abi: [
-          {
-            inputs: {
-              components: {},
-              name: "string",
-              type: "string",
-            },
-            outputs: {
-              components: {},
-              name: "string",
-              type: "string",
-            },
-            type: TypeT.Event,
+    deployFromBytecodeDto: {
+      abi: [
+        {
+          inputs: {
+            components: {},
+            name: "string",
+            type: "string",
           },
-        ],
-        bytecode: "string",
-        customGas: {},
-        name: "string",
-        network: "string",
-        params: [
-          "string",
-          "string",
-          "string",
-          "string",
-        ],
-        signerWallet: "string",
-      },
-    });
+          outputs: {
+            components: {},
+            name: "string",
+            type: "string",
+          },
+          type: TypeT.Event,
+        },
+      ],
+      bytecode: "string",
+      customGas: {},
+      name: "string",
+      network: "string",
+      params: [
+        "string",
+        "string",
+        "string",
+        "string",
+      ],
+      signerWallet: "string",
+    },
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -202,7 +199,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deployFromTemplate
 
@@ -216,25 +213,24 @@ import { DeployFromTemplateDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.deployFromTemplate({
-      deployFromTemplateDto: {
-        customGas: {},
-        name: "TestToken",
-        network: "polygon-mumbai",
-        params: [
-          "string",
-          "string",
-          "string",
-          "string",
-        ],
-        signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-        templateId: "ERC20_META_TRANSACTION",
-      },
-    });
+    deployFromTemplateDto: {
+      customGas: {},
+      name: "TestToken",
+      network: "polygon-mumbai",
+      params: [
+        "string",
+        "string",
+        "string",
+        "string",
+      ],
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      templateId: "ERC20_META_TRANSACTION",
+    },
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -262,7 +258,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -275,10 +271,9 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -312,7 +307,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getFunctions
 
@@ -325,14 +320,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.getFunctions({
-      address: "18523 Buford Brook",
-      network: "string",
-    });
+    address: "18523 Buford Brook",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -360,7 +354,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOne
 
@@ -373,14 +367,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.getOne({
-      address: "43504 Penelope Expressway",
-      network: "string",
-    });
+    address: "43504 Penelope Expressway",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -408,7 +401,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## importExisting
 
@@ -421,39 +414,38 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.importExisting({
-      abi: [
-        {
-          inputs: {
-            components: {},
-            name: "string",
-            type: "string",
-          },
-          outputs: {
-            components: {},
-            name: "string",
-            type: "string",
-          },
-          type: TypeT.Function,
+    abi: [
+      {
+        inputs: {
+          components: {},
+          name: "string",
+          type: "string",
         },
-      ],
-      address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
-      creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
-      description: "Minimal smart contract description.",
-      name: "Minimal Contract Test.",
-      network: "polygon-mumbai",
-      params: [
-        "string",
-        "string",
-        "string",
-        "string",
-      ],
-      templateId: "ERC721_META_TRANSACTION",
-    });
+        outputs: {
+          components: {},
+          name: "string",
+          type: "string",
+        },
+        type: TypeT.Function,
+      },
+    ],
+    address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
+    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
+    description: "Minimal smart contract description.",
+    name: "Minimal Contract Test.",
+    network: "polygon-mumbai",
+    params: [
+      "string",
+      "string",
+      "string",
+      "string",
+    ],
+    templateId: "ERC721_META_TRANSACTION",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -481,7 +473,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## read
 
@@ -494,23 +486,22 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.read({
-      readDto: {
-        functionName: "string",
-        params: [
-          "string",
-          "string",
-          "string",
-          "string",
-        ],
-      },
-      address: "660 Romaine Highway",
-      network: "string",
-    });
+    readDto: {
+      functionName: "string",
+      params: [
+        "string",
+        "string",
+        "string",
+        "string",
+      ],
+    },
+    address: "660 Romaine Highway",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -538,7 +529,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -551,17 +542,16 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.smartContractManagement.update({
-      updateSmartContractDto: {
-        metadata: {},
-      },
-      address: "050 Mellie Well",
-      network: "string",
-    });
+    updateSmartContractDto: {
+      metadata: {},
+    },
+    address: "050 Mellie Well",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -589,4 +579,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

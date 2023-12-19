@@ -25,21 +25,20 @@ import { Provider } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.kms.create({
-      credentials: {
-        accessKeyId: "string",
-        accountId: "string",
-        region: "string",
-      },
-      metadata: {},
-      name: "string",
-      provider: Provider.Aws,
-      secret: "string",
-    });
+    credentials: {
+      accessKeyId: "string",
+      accountId: "string",
+      region: "string",
+    },
+    metadata: {},
+    name: "string",
+    provider: Provider.Aws,
+    secret: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -67,7 +66,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -80,13 +79,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.kms.delete({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -114,7 +112,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -127,10 +125,9 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.kms.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -164,7 +161,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOne
 
@@ -177,13 +174,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.kms.getOne({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -211,7 +207,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -224,14 +220,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.kms.update({
-      requestBody: "string",
-      id: "<ID>",
-    });
+    requestBody: "string",
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -259,4 +254,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -27,22 +27,21 @@ import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.create({
-      address: "0x298e760768c8481780397eE28A127eAd584df4ee",
-      confirmationsBlocks: 0,
-      customEventAbi: {},
-      customFilters: {},
-      description: "watcher tests",
-      metadata: {},
-      name: "watcher tests",
-      network: "polygon-mumbai",
-      type: CreateWatcherDtoType.AddressActivity,
-      webhookUrl: "string",
-    });
+    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    confirmationsBlocks: 0,
+    customEventAbi: {},
+    customFilters: {},
+    description: "watcher tests",
+    metadata: {},
+    name: "watcher tests",
+    network: "polygon-mumbai",
+    type: CreateWatcherDtoType.AddressActivity,
+    webhookUrl: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -70,7 +69,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -83,13 +82,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.delete({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -117,7 +115,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -131,10 +129,9 @@ import { TypeT } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -168,7 +165,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAllEvents
 
@@ -181,13 +178,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.getAllEvents({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -220,7 +216,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOne
 
@@ -233,13 +229,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.getOne({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -267,7 +262,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOneEvent
 
@@ -280,14 +275,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.getOneEvent({
-      eventId: "string",
-      id: "<ID>",
-    });
+    eventId: "string",
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -315,7 +309,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -328,21 +322,20 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.monitor.update({
-      updateWatcherDto: {
-        confirmationsBlocks: 0,
-        description: "watcher tests",
-        metadata: {},
-        name: "watcher tests",
-        paused: true,
-        webhookUrl: "string",
-      },
-      id: "<ID>",
-    });
+    updateWatcherDto: {
+      confirmationsBlocks: 0,
+      description: "watcher tests",
+      metadata: {},
+      name: "watcher tests",
+      paused: true,
+      webhookUrl: "string",
+    },
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -370,4 +363,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

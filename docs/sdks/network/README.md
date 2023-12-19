@@ -25,29 +25,28 @@ import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.network.create({
-      blockchain: "string",
-      chainId: 4865.89,
-      confirmationBlocks: 4893.82,
-      displayName: "string",
-      explorerApi: {
-        apiKey: "string",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "https://timely-haven.biz",
-      },
-      gasPriceRecommendation: {
-        defaultRelayerUnstuck: "string",
-        lowest: "string",
-        max: "string",
-      },
-      logo: "string",
-      name: "string",
-      symbol: "string",
-    });
+    blockchain: "string",
+    chainId: 4865.89,
+    confirmationBlocks: 4893.82,
+    displayName: "string",
+    explorerApi: {
+      apiKey: "string",
+      type: ExplorerApiDtoType.Etherscan,
+      url: "https://timely-haven.biz",
+    },
+    gasPriceRecommendation: {
+      defaultRelayerUnstuck: "string",
+      lowest: "string",
+      max: "string",
+    },
+    logo: "string",
+    name: "string",
+    symbol: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -75,7 +74,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -88,13 +87,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.network.delete({
-      name: "string",
-    });
+    name: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -122,7 +120,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -135,10 +133,9 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.network.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -172,7 +169,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOne
 
@@ -185,13 +182,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.network.getOne({
-      name: "string",
-    });
+    name: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -219,7 +215,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -233,25 +229,24 @@ import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.network.update({
-      updateNetworkDto: {
-        explorerApi: {
-          apiKey: "string",
-          type: ExplorerApiDtoType.Etherscan,
-          url: "https://alarming-nondisclosure.com",
-        },
-        gasPriceRecommendation: {
-          defaultRelayerUnstuck: "string",
-          lowest: "string",
-          max: "string",
-        },
+    updateNetworkDto: {
+      explorerApi: {
+        apiKey: "string",
+        type: ExplorerApiDtoType.Etherscan,
+        url: "https://alarming-nondisclosure.com",
       },
-      name: "string",
-    });
+      gasPriceRecommendation: {
+        defaultRelayerUnstuck: "string",
+        lowest: "string",
+        max: "string",
+      },
+    },
+    name: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -279,4 +274,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

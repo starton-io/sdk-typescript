@@ -19,14 +19,13 @@ import { Role } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.project.member.invitation.create({
-      email: "Jena.Nienow28@yahoo.com",
-      role: Role.Owner,
-    });
+    email: "Jena.Nienow28@yahoo.com",
+    role: Role.Owner,
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -54,7 +53,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -67,13 +66,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.project.member.invitation.delete({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -101,7 +99,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -114,10 +112,9 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.project.member.invitation.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -151,4 +148,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -25,22 +25,21 @@ import { CreateTransactionDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.create({
-      createTransactionDto: {
-        customGas: {},
-        data: "0x1234",
-        metadata: {},
-        network: "polygon-mumbai",
-        signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-        speed: CreateTransactionDtoSpeed.Low,
-        to: "0x298e760768c8481780397eE28A127eAd584df4ee",
-        value: "0",
-      },
-    });
+    createTransactionDto: {
+      customGas: {},
+      data: "0x1234",
+      metadata: {},
+      network: "polygon-mumbai",
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      speed: CreateTransactionDtoSpeed.Low,
+      to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      value: "0",
+    },
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -68,7 +67,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAll
 
@@ -81,10 +80,9 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.getAll({});
 
   if (res?.statusCode !== 200) {
@@ -118,7 +116,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAvailableNonces
 
@@ -131,14 +129,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.getAvailableNonces({
-      address: "92240 Harris Row",
-      network: "string",
-    });
+    address: "92240 Harris Row",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -166,7 +163,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOne
 
@@ -179,13 +176,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.getOne({
-      id: "<ID>",
-    });
+    id: "<ID>",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -213,7 +209,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## resyncNonce
 
@@ -226,14 +222,13 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.resyncNonce({
-      address: "4925 Shanahan Parkways",
-      network: "string",
-    });
+    address: "4925 Shanahan Parkways",
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -261,4 +256,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

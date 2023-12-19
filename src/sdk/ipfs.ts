@@ -453,6 +453,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = operations.UploadFromFilePinRequestBody$.outboundSchema.parse(input);
         const body$ = new FormData();
+
         if (payload$.file !== undefined) {
             if (isBlobLike(payload$.file)) {
                 body$.append("file", payload$.file);
@@ -529,6 +530,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = operations.UploadFromFolderPinRequestBody$.outboundSchema.parse(input);
         const body$ = new FormData();
+
         if (payload$.files !== undefined) {
             body$.append("files", String(payload$.files));
         }

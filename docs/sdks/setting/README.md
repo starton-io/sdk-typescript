@@ -17,13 +17,12 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.setting.get({
-      network: "string",
-    });
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -51,7 +50,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -64,21 +63,20 @@ import { Starton } from "@starton/sdk";
 
 async function run() {
   const sdk = new Starton({
-      startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+  });
 
-  
   const res = await sdk.transactionManager.setting.update({
-      updateSettingRelayerDto: {
-        unstuckAutomaticGasPrice: true,
-        unstuckCustomGasPrice: true,
-        unstuckGasPriceDelay: 300,
-        unstuckMaxGasPrice: "150000000000",
-        unstuckMissingNonce: true,
-        unstuckMissingNonceDelay: 300,
-      },
-      network: "string",
-    });
+    updateSettingRelayerDto: {
+      unstuckAutomaticGasPrice: true,
+      unstuckCustomGasPrice: true,
+      unstuckGasPriceDelay: 300,
+      unstuckMaxGasPrice: "150000000000",
+      unstuckMissingNonce: true,
+      unstuckMissingNonceDelay: 300,
+    },
+    network: "string",
+  });
 
   if (res?.statusCode !== 200) {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
@@ -106,4 +104,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
