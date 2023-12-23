@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "@starton/sdk",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "Starton <support@starton.com> (https://www.starton.com)",
   "main": "./index.js",
   "sideEffects": false,
@@ -10,16 +10,10 @@
     "url": "https://github.com/starton-io/sdk-typescript.git",
     "directory": "."
   },
-  "exports": {
-    "./package.json": "./package.json",
-    ".": "./cjs/index.js",
-    "./*.js": "./cjs/*.js",
-    "./*": "./cjs/*/index.js"
-  },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
-    "prepare": "npm run build && cp -r src/. cjs/. ./"
+    "prepare": "npm run build"
   },
   "keywords": [],
   "peerDependencies": {
