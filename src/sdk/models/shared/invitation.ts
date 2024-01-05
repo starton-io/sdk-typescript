@@ -9,12 +9,12 @@ export enum InvitationRole {
 }
 
 export type Invitation = {
-    createdAt?: Date | undefined;
+    createdAt: Date;
     email: string;
     id: string;
     projectId: string;
     role: InvitationRole;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
 };
 
 /** @internal */
@@ -23,12 +23,12 @@ export const InvitationRole$ = z.nativeEnum(InvitationRole);
 /** @internal */
 export namespace Invitation$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         email: string;
         id: string;
         projectId: string;
         role: InvitationRole;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const inboundSchema: z.ZodType<Invitation, z.ZodTypeDef, Inbound> = z
@@ -36,8 +36,7 @@ export namespace Invitation$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             email: z.string(),
             id: z.string(),
             projectId: z.string(),
@@ -45,52 +44,45 @@ export namespace Invitation$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 email: v.email,
                 id: v.id,
                 projectId: v.projectId,
                 role: v.role,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         email: string;
         id: string;
         projectId: string;
         role: InvitationRole;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Invitation> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             email: z.string(),
             id: z.string(),
             projectId: z.string(),
             role: InvitationRole$,
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 email: v.email,
                 id: v.id,
                 projectId: v.projectId,
                 role: v.role,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 }

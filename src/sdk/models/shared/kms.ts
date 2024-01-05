@@ -16,14 +16,14 @@ export enum KmsProvider {
 export type Wallets = {};
 
 export type Kms = {
-    createdAt?: Date | undefined;
+    createdAt: Date;
     credentials: Credentials;
     id: string;
     metadata?: KmsMetadata | undefined;
     name: string;
     projectId: string;
     provider: KmsProvider;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     wallets?: Wallets | undefined;
 };
 
@@ -66,14 +66,14 @@ export namespace Wallets$ {
 /** @internal */
 export namespace Kms$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         credentials: Credentials$.Inbound;
         id: string;
         metadata?: KmsMetadata$.Inbound | undefined;
         name: string;
         projectId: string;
         provider: KmsProvider;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         wallets?: Wallets$.Inbound | undefined;
     };
 
@@ -82,8 +82,7 @@ export namespace Kms$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             credentials: z.lazy(() => Credentials$.inboundSchema),
             id: z.string(),
             metadata: z.lazy(() => KmsMetadata$.inboundSchema).optional(),
@@ -93,64 +92,57 @@ export namespace Kms$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 credentials: v.credentials,
                 id: v.id,
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 name: v.name,
                 projectId: v.projectId,
                 provider: v.provider,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 ...(v.wallets === undefined ? null : { wallets: v.wallets }),
             };
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         credentials: Credentials$.Outbound;
         id: string;
         metadata?: KmsMetadata$.Outbound | undefined;
         name: string;
         projectId: string;
         provider: KmsProvider;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         wallets?: Wallets$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Kms> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             credentials: z.lazy(() => Credentials$.outboundSchema),
             id: z.string(),
             metadata: z.lazy(() => KmsMetadata$.outboundSchema).optional(),
             name: z.string(),
             projectId: z.string(),
             provider: KmsProvider$,
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 credentials: v.credentials,
                 id: v.id,
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 name: v.name,
                 projectId: v.projectId,
                 provider: v.provider,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 ...(v.wallets === undefined ? null : { wallets: v.wallets }),
             };
         });

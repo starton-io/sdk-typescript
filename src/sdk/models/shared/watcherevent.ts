@@ -15,14 +15,14 @@ export enum WatcherEventStatus {
 export type WatcherEvent = {
     blockHash: string;
     blockNumber: number;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     id: string;
     network: string;
     payload: Payload;
     projectId: string;
     status: WatcherEventStatus;
     txHash: string;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     watcherId: string;
 };
 
@@ -45,14 +45,14 @@ export namespace WatcherEvent$ {
     export type Inbound = {
         blockHash: string;
         blockNumber: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         network: string;
         payload: Payload$.Inbound;
         projectId: string;
         status: WatcherEventStatus;
         txHash: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         watcherId: string;
     };
 
@@ -63,8 +63,7 @@ export namespace WatcherEvent$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
             payload: z.lazy(() => Payload$.inboundSchema),
@@ -74,22 +73,21 @@ export namespace WatcherEvent$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             watcherId: z.string(),
         })
         .transform((v) => {
             return {
                 blockHash: v.blockHash,
                 blockNumber: v.blockNumber,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 payload: v.payload,
                 projectId: v.projectId,
                 status: v.status,
                 txHash: v.txHash,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 watcherId: v.watcherId,
             };
         });
@@ -97,14 +95,14 @@ export namespace WatcherEvent$ {
     export type Outbound = {
         blockHash: string;
         blockNumber: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         network: string;
         payload: Payload$.Outbound;
         projectId: string;
         status: WatcherEventStatus;
         txHash: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         watcherId: string;
     };
 
@@ -112,34 +110,28 @@ export namespace WatcherEvent$ {
         .object({
             blockHash: z.string(),
             blockNumber: z.number(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
             payload: z.lazy(() => Payload$.outboundSchema),
             projectId: z.string(),
             status: WatcherEventStatus$,
             txHash: z.string(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             watcherId: z.string(),
         })
         .transform((v) => {
             return {
                 blockHash: v.blockHash,
                 blockNumber: v.blockNumber,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 payload: v.payload,
                 projectId: v.projectId,
                 status: v.status,
                 txHash: v.txHash,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 watcherId: v.watcherId,
             };
         });

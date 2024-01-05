@@ -67,7 +67,7 @@ export type Transaction = {
     blockHash?: string | null | undefined;
     blockNumber?: number | null | undefined;
     chainId: number;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     data?: string | null | undefined;
     from: string;
     gasLimit?: string | null | undefined;
@@ -92,7 +92,7 @@ export type Transaction = {
     to?: string | null | undefined;
     transactionHash?: string | null | undefined;
     type?: number | null | undefined;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     value: string;
 };
 
@@ -127,7 +127,7 @@ export namespace Transaction$ {
         blockHash?: string | null | undefined;
         blockNumber?: number | null | undefined;
         chainId: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         data?: string | null | undefined;
         from: string;
         gasLimit?: string | null | undefined;
@@ -152,7 +152,7 @@ export namespace Transaction$ {
         to?: string | null | undefined;
         transactionHash?: string | null | undefined;
         type?: number | null | undefined;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         value: string;
     };
 
@@ -165,8 +165,7 @@ export namespace Transaction$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             data: z.string().nullable().optional(),
             from: z.string(),
             gasLimit: z.string().nullable().optional(),
@@ -207,8 +206,7 @@ export namespace Transaction$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             value: z.string(),
         })
         .transform((v) => {
@@ -217,7 +215,7 @@ export namespace Transaction$ {
                 ...(v.blockHash === undefined ? null : { blockHash: v.blockHash }),
                 ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
                 chainId: v.chainId,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.data === undefined ? null : { data: v.data }),
                 from: v.from,
                 ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
@@ -250,7 +248,7 @@ export namespace Transaction$ {
                     ? null
                     : { transactionHash: v.transactionHash }),
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 value: v.value,
             };
         });
@@ -260,7 +258,7 @@ export namespace Transaction$ {
         blockHash?: string | null | undefined;
         blockNumber?: number | null | undefined;
         chainId: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         data?: string | null | undefined;
         from: string;
         gasLimit?: string | null | undefined;
@@ -285,7 +283,7 @@ export namespace Transaction$ {
         to?: string | null | undefined;
         transactionHash?: string | null | undefined;
         type?: number | null | undefined;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         value: string;
     };
 
@@ -295,10 +293,7 @@ export namespace Transaction$ {
             blockHash: z.string().nullable().optional(),
             blockNumber: z.number().nullable().optional(),
             chainId: z.number(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             data: z.string().nullable().optional(),
             from: z.string(),
             gasLimit: z.string().nullable().optional(),
@@ -334,10 +329,7 @@ export namespace Transaction$ {
             to: z.string().nullable().optional(),
             transactionHash: z.string().nullable().optional(),
             type: z.number().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             value: z.string(),
         })
         .transform((v) => {
@@ -346,7 +338,7 @@ export namespace Transaction$ {
                 ...(v.blockHash === undefined ? null : { blockHash: v.blockHash }),
                 ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
                 chainId: v.chainId,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.data === undefined ? null : { data: v.data }),
                 from: v.from,
                 ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
@@ -379,7 +371,7 @@ export namespace Transaction$ {
                     ? null
                     : { transactionHash: v.transactionHash }),
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 value: v.value,
             };
         });

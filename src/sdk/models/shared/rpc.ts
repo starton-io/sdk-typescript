@@ -5,20 +5,20 @@
 import { z } from "zod";
 
 export type Rpc = {
-    createdAt?: Date | undefined;
+    createdAt: Date;
     id: string;
     networkName: string;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     url: string;
 };
 
 /** @internal */
 export namespace Rpc$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         networkName: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         url: string;
     };
 
@@ -27,55 +27,47 @@ export namespace Rpc$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             id: z.string(),
             networkName: z.string(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             url: z.string(),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 networkName: v.networkName,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 url: v.url,
             };
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         networkName: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         url: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Rpc> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             networkName: z.string(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             url: z.string(),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 networkName: v.networkName,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 url: v.url,
             };
         });

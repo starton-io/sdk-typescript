@@ -34,7 +34,7 @@ export enum WatcherType {
 export type Watcher = {
     address: string;
     confirmationsBlocks: number;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     customEventAbi?: Array<WatcherCustomEventAbi> | null | undefined;
     customFilters?: WatcherCustomFilters | undefined;
     description?: string | null | undefined;
@@ -47,7 +47,7 @@ export type Watcher = {
     projectId: string;
     triggerType: TriggerType;
     type: WatcherType;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     webhookUrl: string;
 };
 
@@ -102,7 +102,7 @@ export namespace Watcher$ {
     export type Inbound = {
         address: string;
         confirmationsBlocks: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         customEventAbi?: Array<WatcherCustomEventAbi$.Inbound> | null | undefined;
         customFilters?: WatcherCustomFilters$.Inbound | undefined;
         description?: string | null | undefined;
@@ -115,7 +115,7 @@ export namespace Watcher$ {
         projectId: string;
         triggerType: TriggerType;
         type: WatcherType;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         webhookUrl: string;
     };
 
@@ -126,8 +126,7 @@ export namespace Watcher$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             customEventAbi: z
                 .array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema))
                 .nullable()
@@ -149,15 +148,14 @@ export namespace Watcher$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             webhookUrl: z.string(),
         })
         .transform((v) => {
             return {
                 address: v.address,
                 confirmationsBlocks: v.confirmationsBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
                 ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
                 ...(v.description === undefined ? null : { description: v.description }),
@@ -170,7 +168,7 @@ export namespace Watcher$ {
                 projectId: v.projectId,
                 triggerType: v.triggerType,
                 type: v.type,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 webhookUrl: v.webhookUrl,
             };
         });
@@ -178,7 +176,7 @@ export namespace Watcher$ {
     export type Outbound = {
         address: string;
         confirmationsBlocks: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         customEventAbi?: Array<WatcherCustomEventAbi$.Outbound> | null | undefined;
         customFilters?: WatcherCustomFilters$.Outbound | undefined;
         description?: string | null | undefined;
@@ -191,7 +189,7 @@ export namespace Watcher$ {
         projectId: string;
         triggerType: TriggerType;
         type: WatcherType;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         webhookUrl: string;
     };
 
@@ -199,10 +197,7 @@ export namespace Watcher$ {
         .object({
             address: z.string(),
             confirmationsBlocks: z.number(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             customEventAbi: z
                 .array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema))
                 .nullable()
@@ -221,17 +216,14 @@ export namespace Watcher$ {
             projectId: z.string(),
             triggerType: TriggerType$,
             type: WatcherType$,
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             webhookUrl: z.string(),
         })
         .transform((v) => {
             return {
                 address: v.address,
                 confirmationsBlocks: v.confirmationsBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
                 ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
                 ...(v.description === undefined ? null : { description: v.description }),
@@ -244,7 +236,7 @@ export namespace Watcher$ {
                 projectId: v.projectId,
                 triggerType: v.triggerType,
                 type: v.type,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 webhookUrl: v.webhookUrl,
             };
         });

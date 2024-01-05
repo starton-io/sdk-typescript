@@ -8,7 +8,7 @@ export type Faucet = {
     /**
      * Claim date.
      */
-    createdAt?: Date | undefined;
+    createdAt: Date;
     /**
      * Faucet claim id.
      */
@@ -38,7 +38,7 @@ export type Faucet = {
 /** @internal */
 export namespace Faucet$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         ip: string;
         network: string | null;
@@ -52,8 +52,7 @@ export namespace Faucet$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             id: z.string(),
             ip: z.string(),
             network: z.string().nullable(),
@@ -63,7 +62,7 @@ export namespace Faucet$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 ip: v.ip,
                 network: v.network,
@@ -74,7 +73,7 @@ export namespace Faucet$ {
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         ip: string;
         network: string | null;
@@ -85,10 +84,7 @@ export namespace Faucet$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Faucet> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             ip: z.string(),
             network: z.string().nullable(),
@@ -98,7 +94,7 @@ export namespace Faucet$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 ip: v.ip,
                 network: v.network,

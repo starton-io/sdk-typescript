@@ -5,7 +5,7 @@
 import { z } from "zod";
 
 export type SettingRelayer = {
-    createdAt?: Date | undefined;
+    createdAt: Date;
     id: string;
     network: string;
     projectId: string;
@@ -15,13 +15,13 @@ export type SettingRelayer = {
     unstuckMaxGasPrice: string;
     unstuckMissingNonce: boolean;
     unstuckMissingNonceDelay: number;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
 };
 
 /** @internal */
 export namespace SettingRelayer$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         network: string;
         projectId: string;
@@ -31,7 +31,7 @@ export namespace SettingRelayer$ {
         unstuckMaxGasPrice: string;
         unstuckMissingNonce: boolean;
         unstuckMissingNonceDelay: number;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, Inbound> = z
@@ -39,8 +39,7 @@ export namespace SettingRelayer$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
             projectId: z.string(),
@@ -53,12 +52,11 @@ export namespace SettingRelayer$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 projectId: v.projectId,
@@ -68,12 +66,12 @@ export namespace SettingRelayer$ {
                 unstuckMaxGasPrice: v.unstuckMaxGasPrice,
                 unstuckMissingNonce: v.unstuckMissingNonce,
                 unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         id: string;
         network: string;
         projectId: string;
@@ -83,15 +81,12 @@ export namespace SettingRelayer$ {
         unstuckMaxGasPrice: string;
         unstuckMissingNonce: boolean;
         unstuckMissingNonceDelay: number;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SettingRelayer> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
             projectId: z.string(),
@@ -101,14 +96,11 @@ export namespace SettingRelayer$ {
             unstuckMaxGasPrice: z.string(),
             unstuckMissingNonce: z.boolean(),
             unstuckMissingNonceDelay: z.number(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 projectId: v.projectId,
@@ -118,7 +110,7 @@ export namespace SettingRelayer$ {
                 unstuckMaxGasPrice: v.unstuckMaxGasPrice,
                 unstuckMissingNonce: v.unstuckMissingNonce,
                 unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 }

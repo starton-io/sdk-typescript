@@ -10,7 +10,7 @@ export type Network = {
     blockchain: string;
     chainId: number;
     confirmationBlocks: number;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     decimal: number;
     displayName: string;
     eip1159: boolean;
@@ -25,7 +25,7 @@ export type Network = {
     owner: string;
     symbol: string;
     testnet: boolean;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
     verifyBlockIntegrity: boolean;
     verifyTxIntegrity: boolean;
 };
@@ -50,7 +50,7 @@ export namespace Network$ {
         blockchain: string;
         chainId: number;
         confirmationBlocks: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         decimal: number;
         displayName: string;
         eip1159: boolean;
@@ -65,7 +65,7 @@ export namespace Network$ {
         owner: string;
         symbol: string;
         testnet: boolean;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         verifyBlockIntegrity: boolean;
         verifyTxIntegrity: boolean;
     };
@@ -78,8 +78,7 @@ export namespace Network$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             decimal: z.number(),
             displayName: z.string(),
             eip1159: z.boolean(),
@@ -100,8 +99,7 @@ export namespace Network$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
         })
@@ -110,7 +108,7 @@ export namespace Network$ {
                 blockchain: v.blockchain,
                 chainId: v.chainId,
                 confirmationBlocks: v.confirmationBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 decimal: v.decimal,
                 displayName: v.displayName,
                 eip1159: v.eip1159,
@@ -127,7 +125,7 @@ export namespace Network$ {
                 owner: v.owner,
                 symbol: v.symbol,
                 testnet: v.testnet,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 verifyBlockIntegrity: v.verifyBlockIntegrity,
                 verifyTxIntegrity: v.verifyTxIntegrity,
             };
@@ -137,7 +135,7 @@ export namespace Network$ {
         blockchain: string;
         chainId: number;
         confirmationBlocks: number;
-        createdAt?: string | undefined;
+        createdAt: string;
         decimal: number;
         displayName: string;
         eip1159: boolean;
@@ -152,7 +150,7 @@ export namespace Network$ {
         owner: string;
         symbol: string;
         testnet: boolean;
-        updatedAt?: string | undefined;
+        updatedAt: string;
         verifyBlockIntegrity: boolean;
         verifyTxIntegrity: boolean;
     };
@@ -162,10 +160,7 @@ export namespace Network$ {
             blockchain: z.string(),
             chainId: z.number(),
             confirmationBlocks: z.number(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             decimal: z.number(),
             displayName: z.string(),
             eip1159: z.boolean(),
@@ -183,10 +178,7 @@ export namespace Network$ {
             owner: z.string(),
             symbol: z.string(),
             testnet: z.boolean(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
         })
@@ -195,7 +187,7 @@ export namespace Network$ {
                 blockchain: v.blockchain,
                 chainId: v.chainId,
                 confirmationBlocks: v.confirmationBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 decimal: v.decimal,
                 displayName: v.displayName,
                 eip1159: v.eip1159,
@@ -212,7 +204,7 @@ export namespace Network$ {
                 owner: v.owner,
                 symbol: v.symbol,
                 testnet: v.testnet,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 verifyBlockIntegrity: v.verifyBlockIntegrity,
                 verifyTxIntegrity: v.verifyTxIntegrity,
             };

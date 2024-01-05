@@ -22,7 +22,7 @@ export enum PinType {
 
 export type Pin = {
     cid?: string | undefined;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     delegates?: Array<string> | undefined;
     directoryContent?: Array<DirectoryContent> | undefined;
     id: string;
@@ -33,7 +33,7 @@ export type Pin = {
     size?: number | undefined;
     status: Status;
     type?: PinType | undefined;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
 };
 
 /** @internal */
@@ -57,7 +57,7 @@ export const PinType$ = z.nativeEnum(PinType);
 export namespace Pin$ {
     export type Inbound = {
         cid?: string | undefined;
-        createdAt?: string | undefined;
+        createdAt: string;
         delegates?: Array<string> | undefined;
         directoryContent?: Array<DirectoryContent$.Inbound> | undefined;
         id: string;
@@ -68,7 +68,7 @@ export namespace Pin$ {
         size?: number | undefined;
         status: Status;
         type?: PinType | undefined;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const inboundSchema: z.ZodType<Pin, z.ZodTypeDef, Inbound> = z
@@ -77,8 +77,7 @@ export namespace Pin$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             delegates: z.array(z.string()).optional(),
             directoryContent: z.array(DirectoryContent$.inboundSchema).optional(),
             id: z.string(),
@@ -92,13 +91,12 @@ export namespace Pin$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
                 ...(v.cid === undefined ? null : { cid: v.cid }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.delegates === undefined ? null : { delegates: v.delegates }),
                 ...(v.directoryContent === undefined
                     ? null
@@ -111,13 +109,13 @@ export namespace Pin$ {
                 ...(v.size === undefined ? null : { size: v.size }),
                 status: v.status,
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 
     export type Outbound = {
         cid?: string | undefined;
-        createdAt?: string | undefined;
+        createdAt: string;
         delegates?: Array<string> | undefined;
         directoryContent?: Array<DirectoryContent$.Outbound> | undefined;
         id: string;
@@ -128,16 +126,13 @@ export namespace Pin$ {
         size?: number | undefined;
         status: Status;
         type?: PinType | undefined;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Pin> = z
         .object({
             cid: z.string().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             delegates: z.array(z.string()).optional(),
             directoryContent: z.array(DirectoryContent$.outboundSchema).optional(),
             id: z.string(),
@@ -148,15 +143,12 @@ export namespace Pin$ {
             size: z.number().optional(),
             status: Status$,
             type: PinType$.optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
                 ...(v.cid === undefined ? null : { cid: v.cid }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.delegates === undefined ? null : { delegates: v.delegates }),
                 ...(v.directoryContent === undefined
                     ? null
@@ -169,7 +161,7 @@ export namespace Pin$ {
                 ...(v.size === undefined ? null : { size: v.size }),
                 status: v.status,
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 }

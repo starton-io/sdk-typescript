@@ -5,19 +5,19 @@
 import { z } from "zod";
 
 export type WebhookSigningSecret = {
-    createdAt?: Date | undefined;
+    createdAt: Date;
     projectId: string;
     secret: string;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
 };
 
 /** @internal */
 export namespace WebhookSigningSecret$ {
     export type Inbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         projectId: string;
         secret: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const inboundSchema: z.ZodType<WebhookSigningSecret, z.ZodTypeDef, Inbound> = z
@@ -25,51 +25,43 @@ export namespace WebhookSigningSecret$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             projectId: z.string(),
             secret: z.string(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 projectId: v.projectId,
                 secret: v.secret,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 
     export type Outbound = {
-        createdAt?: string | undefined;
+        createdAt: string;
         projectId: string;
         secret: string;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WebhookSigningSecret> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             projectId: z.string(),
             secret: z.string(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 projectId: v.projectId,
                 secret: v.secret,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 }

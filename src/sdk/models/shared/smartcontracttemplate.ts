@@ -24,19 +24,19 @@ export type SmartContractTemplate = {
     blockchains: Array<string>;
     category: Category;
     compilationDetails?: SmartContractTemplateCompilationDetails | null | undefined;
-    createdAt?: Date | undefined;
+    createdAt: Date;
     description: string;
     form?: Form | null | undefined;
     githubUrl: string;
     humanReadableAbi: Array<string>;
     id: string;
-    isActivated?: boolean | undefined;
-    isAudited?: boolean | undefined;
+    isActivated: boolean;
+    isAudited: boolean;
     name: string;
-    order?: number | undefined;
+    order: number;
     shortDescription: string;
     tags: Array<string>;
-    updatedAt?: Date | undefined;
+    updatedAt: Date;
 };
 
 /** @internal */
@@ -92,19 +92,19 @@ export namespace SmartContractTemplate$ {
         blockchains: Array<string>;
         category: Category;
         compilationDetails?: SmartContractTemplateCompilationDetails$.Inbound | null | undefined;
-        createdAt?: string | undefined;
+        createdAt: string;
         description: string;
         form?: Form$.Inbound | null | undefined;
         githubUrl: string;
         humanReadableAbi: Array<string>;
         id: string;
-        isActivated?: boolean | undefined;
-        isAudited?: boolean | undefined;
+        isActivated: boolean;
+        isAudited: boolean;
         name: string;
-        order?: number | undefined;
+        order: number;
         shortDescription: string;
         tags: Array<string>;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, Inbound> = z
@@ -119,8 +119,7 @@ export namespace SmartContractTemplate$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
             description: z.string(),
             form: z
                 .lazy(() => Form$.inboundSchema)
@@ -129,17 +128,16 @@ export namespace SmartContractTemplate$ {
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),
-            isActivated: z.boolean().optional(),
-            isAudited: z.boolean().optional(),
+            isActivated: z.boolean(),
+            isAudited: z.boolean(),
             name: z.string(),
-            order: z.number().optional(),
+            order: z.number(),
             shortDescription: z.string(),
             tags: z.array(z.string()),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
+                .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
@@ -149,19 +147,19 @@ export namespace SmartContractTemplate$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 description: v.description,
                 ...(v.form === undefined ? null : { form: v.form }),
                 githubUrl: v.githubUrl,
                 humanReadableAbi: v.humanReadableAbi,
                 id: v.id,
-                ...(v.isActivated === undefined ? null : { isActivated: v.isActivated }),
-                ...(v.isAudited === undefined ? null : { isAudited: v.isAudited }),
+                isActivated: v.isActivated,
+                isAudited: v.isAudited,
                 name: v.name,
-                ...(v.order === undefined ? null : { order: v.order }),
+                order: v.order,
                 shortDescription: v.shortDescription,
                 tags: v.tags,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 
@@ -170,19 +168,19 @@ export namespace SmartContractTemplate$ {
         blockchains: Array<string>;
         category: Category;
         compilationDetails?: SmartContractTemplateCompilationDetails$.Outbound | null | undefined;
-        createdAt?: string | undefined;
+        createdAt: string;
         description: string;
         form?: Form$.Outbound | null | undefined;
         githubUrl: string;
         humanReadableAbi: Array<string>;
         id: string;
-        isActivated?: boolean | undefined;
-        isAudited?: boolean | undefined;
+        isActivated: boolean;
+        isAudited: boolean;
         name: string;
-        order?: number | undefined;
+        order: number;
         shortDescription: string;
         tags: Array<string>;
-        updatedAt?: string | undefined;
+        updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractTemplate> = z
@@ -194,10 +192,7 @@ export namespace SmartContractTemplate$ {
                 .lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema)
                 .nullable()
                 .optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            createdAt: z.date().transform((v) => v.toISOString()),
             description: z.string(),
             form: z
                 .lazy(() => Form$.outboundSchema)
@@ -206,16 +201,13 @@ export namespace SmartContractTemplate$ {
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),
-            isActivated: z.boolean().optional(),
-            isAudited: z.boolean().optional(),
+            isActivated: z.boolean(),
+            isAudited: z.boolean(),
             name: z.string(),
-            order: z.number().optional(),
+            order: z.number(),
             shortDescription: z.string(),
             tags: z.array(z.string()),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
@@ -225,19 +217,19 @@ export namespace SmartContractTemplate$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 description: v.description,
                 ...(v.form === undefined ? null : { form: v.form }),
                 githubUrl: v.githubUrl,
                 humanReadableAbi: v.humanReadableAbi,
                 id: v.id,
-                ...(v.isActivated === undefined ? null : { isActivated: v.isActivated }),
-                ...(v.isAudited === undefined ? null : { isAudited: v.isAudited }),
+                isActivated: v.isActivated,
+                isAudited: v.isAudited,
                 name: v.name,
-                ...(v.order === undefined ? null : { order: v.order }),
+                order: v.order,
                 shortDescription: v.shortDescription,
                 tags: v.tags,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 }
