@@ -8,7 +8,7 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
-import { Paginated, Paginator } from "../sdk/types";
+import { createPageIterator, PageIterator, Paginator } from "../sdk/types";
 import { Setting } from "./setting";
 import jp from "jsonpath";
 
@@ -72,7 +72,7 @@ export class TransactionManager extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -109,7 +109,7 @@ export class TransactionManager extends ClientSDK {
     async getAll(
         input: operations.GetAllTransactionRequest,
         options?: RequestOptions
-    ): Promise<Paginated<operations.GetAllTransactionResponse>> {
+    ): Promise<PageIterator<operations.GetAllTransactionResponse>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -153,7 +153,7 @@ export class TransactionManager extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -206,7 +206,9 @@ export class TransactionManager extends ClientSDK {
                 ...responseFields$,
                 TransactionPaginated: responseBody,
             });
-            const result = { ...parsed, next: nextFunc(responseBody) };
+            const next$ = nextFunc(responseBody);
+            const page$ = { ...parsed, next: next$ };
+            const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else {
             const responseBody = await response.text();
@@ -259,7 +261,7 @@ export class TransactionManager extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -322,7 +324,7 @@ export class TransactionManager extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -394,7 +396,7 @@ export class TransactionManager extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,

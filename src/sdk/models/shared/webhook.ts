@@ -72,9 +72,9 @@ export namespace Webhook$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            headers: z.lazy(() => Headers$.inboundSchema).nullable(),
+            headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
             id: z.string(),
-            payload: z.lazy(() => WebhookPayload$.inboundSchema).nullable(),
+            payload: z.nullable(z.lazy(() => WebhookPayload$.inboundSchema)),
             projectId: z.string(),
             refId: z.string(),
             status: WebhookStatus$,
@@ -113,9 +113,9 @@ export namespace Webhook$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Webhook> = z
         .object({
             createdAt: z.date().transform((v) => v.toISOString()),
-            headers: z.lazy(() => Headers$.outboundSchema).nullable(),
+            headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
             id: z.string(),
-            payload: z.lazy(() => WebhookPayload$.outboundSchema).nullable(),
+            payload: z.nullable(z.lazy(() => WebhookPayload$.outboundSchema)),
             projectId: z.string(),
             refId: z.string(),
             status: WebhookStatus$,

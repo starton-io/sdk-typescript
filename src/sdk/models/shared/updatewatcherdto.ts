@@ -42,9 +42,9 @@ export namespace UpdateWatcherDto$ {
     export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, Inbound> = z
         .object({
             confirmationsBlocks: z.number().optional(),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             metadata: z.lazy(() => UpdateWatcherDtoMetadata$.inboundSchema).optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
             paused: z.boolean().optional(),
             webhookUrl: z.string().optional(),
         })
@@ -73,9 +73,9 @@ export namespace UpdateWatcherDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherDto> = z
         .object({
             confirmationsBlocks: z.number().optional(),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             metadata: z.lazy(() => UpdateWatcherDtoMetadata$.outboundSchema).optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
             paused: z.boolean().optional(),
             webhookUrl: z.string().optional(),
         })

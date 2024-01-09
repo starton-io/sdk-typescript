@@ -128,20 +128,16 @@ export namespace Watcher$ {
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             customEventAbi: z
-                .array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema))
-                .nullable()
+                .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema)))
                 .optional(),
             customFilters: z.lazy(() => WatcherCustomFilters$.inboundSchema).optional(),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
-            metadata: z
-                .lazy(() => WatcherMetadata$.inboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
+            metadata: z.nullable(z.lazy(() => WatcherMetadata$.inboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
             network: z.string(),
             paused: z.boolean(),
-            pausedReason: z.string().nullable().optional(),
+            pausedReason: z.nullable(z.string()).optional(),
             projectId: z.string(),
             triggerType: TriggerType$,
             type: WatcherType$,
@@ -199,20 +195,16 @@ export namespace Watcher$ {
             confirmationsBlocks: z.number(),
             createdAt: z.date().transform((v) => v.toISOString()),
             customEventAbi: z
-                .array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema))
-                .nullable()
+                .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema)))
                 .optional(),
             customFilters: z.lazy(() => WatcherCustomFilters$.outboundSchema).optional(),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
-            metadata: z
-                .lazy(() => WatcherMetadata$.outboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
+            metadata: z.nullable(z.lazy(() => WatcherMetadata$.outboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
             network: z.string(),
             paused: z.boolean(),
-            pausedReason: z.string().nullable().optional(),
+            pausedReason: z.nullable(z.string()).optional(),
             projectId: z.string(),
             triggerType: TriggerType$,
             type: WatcherType$,

@@ -9,7 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
 import * as shared from "../sdk/models/shared";
-import { Paginated, Paginator } from "../sdk/types";
+import { createPageIterator, PageIterator, Paginator } from "../sdk/types";
 import { Rpc } from "./rpc";
 import jp from "jsonpath";
 
@@ -63,7 +63,7 @@ export class Network extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -129,7 +129,7 @@ export class Network extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "delete",
+                method: "DELETE",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -165,7 +165,7 @@ export class Network extends ClientSDK {
     async getAll(
         input: operations.GetAllNetworkRequest,
         options?: RequestOptions
-    ): Promise<Paginated<operations.GetAllNetworkResponse>> {
+    ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -200,7 +200,7 @@ export class Network extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -251,7 +251,9 @@ export class Network extends ClientSDK {
                 ...responseFields$,
                 NetworkPaginated: responseBody,
             });
-            const result = { ...parsed, next: nextFunc(responseBody) };
+            const next$ = nextFunc(responseBody);
+            const page$ = { ...parsed, next: next$ };
+            const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else {
             const responseBody = await response.text();
@@ -298,7 +300,7 @@ export class Network extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -366,7 +368,7 @@ export class Network extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "patch",
+                method: "PATCH",
                 path: path$,
                 headers: headers$,
                 body: body$,

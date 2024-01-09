@@ -131,31 +131,32 @@ export namespace SmartContract$ {
         .object({
             abi: z.array(z.lazy(() => Abi$.inboundSchema)).optional(),
             address: z.string(),
-            blockNumber: z.number().nullable().optional(),
+            blockNumber: z.nullable(z.number()).optional(),
             compilationDetails: z
-                .lazy(() => CompilationDetails$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => CompilationDetails$.inboundSchema))
                 .optional(),
             createdAt: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            creationHash: z.string().nullable().optional(),
-            description: z.string().nullable().optional(),
+            creationHash: z.nullable(z.string()).optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
             minedDate: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.string()).nullable().optional(),
+            params: z.nullable(z.array(z.string())).optional(),
             projectId: z.string(),
             state: State$,
             status: SmartContractStatus$,
-            templateId: z.string().nullable().optional(),
+            templateId: z.nullable(z.string()).optional(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -209,27 +210,22 @@ export namespace SmartContract$ {
         .object({
             abi: z.array(z.lazy(() => Abi$.outboundSchema)).optional(),
             address: z.string(),
-            blockNumber: z.number().nullable().optional(),
+            blockNumber: z.nullable(z.number()).optional(),
             compilationDetails: z
-                .lazy(() => CompilationDetails$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => CompilationDetails$.outboundSchema))
                 .optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            creationHash: z.string().nullable().optional(),
-            description: z.string().nullable().optional(),
+            creationHash: z.nullable(z.string()).optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
-            minedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.string()).nullable().optional(),
+            params: z.nullable(z.array(z.string())).optional(),
             projectId: z.string(),
             state: State$,
             status: SmartContractStatus$,
-            templateId: z.string().nullable().optional(),
+            templateId: z.nullable(z.string()).optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {

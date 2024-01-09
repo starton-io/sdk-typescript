@@ -29,9 +29,9 @@ export namespace GasPriceInfo$ {
 
     export const inboundSchema: z.ZodType<GasPriceInfo, z.ZodTypeDef, Inbound> = z
         .object({
-            gasPrice: z.string().nullable(),
-            maxFeePerGas: z.string().nullable(),
-            maxPriorityFeePerGas: z.string().nullable(),
+            gasPrice: z.nullable(z.string()),
+            maxFeePerGas: z.nullable(z.string()),
+            maxPriorityFeePerGas: z.nullable(z.string()),
         })
         .transform((v) => {
             return {
@@ -49,9 +49,9 @@ export namespace GasPriceInfo$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPriceInfo> = z
         .object({
-            gasPrice: z.string().nullable(),
-            maxFeePerGas: z.string().nullable(),
-            maxPriorityFeePerGas: z.string().nullable(),
+            gasPrice: z.nullable(z.string()),
+            maxFeePerGas: z.nullable(z.string()),
+            maxPriorityFeePerGas: z.nullable(z.string()),
         })
         .transform((v) => {
             return {

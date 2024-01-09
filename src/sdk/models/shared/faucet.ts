@@ -55,9 +55,9 @@ export namespace Faucet$ {
                 .transform((v) => new Date(v)),
             id: z.string(),
             ip: z.string(),
-            network: z.string().nullable(),
-            txHash: z.string().nullable().optional(),
-            userId: z.string().nullable().optional(),
+            network: z.nullable(z.string()),
+            txHash: z.nullable(z.string()).optional(),
+            userId: z.nullable(z.string()).optional(),
             wallet: z.string(),
         })
         .transform((v) => {
@@ -87,9 +87,9 @@ export namespace Faucet$ {
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             ip: z.string(),
-            network: z.string().nullable(),
-            txHash: z.string().nullable().optional(),
-            userId: z.string().nullable().optional(),
+            network: z.nullable(z.string()),
+            txHash: z.nullable(z.string()).optional(),
+            userId: z.nullable(z.string()).optional(),
             wallet: z.string(),
         })
         .transform((v) => {

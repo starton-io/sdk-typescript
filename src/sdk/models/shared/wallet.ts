@@ -50,10 +50,10 @@ export namespace Wallet$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             kmsId: z.string(),
             metadata: z.lazy(() => WalletMetadata$.inboundSchema).optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
             projectId: z.string(),
             providerKeyId: z.string(),
             updatedAt: z
@@ -91,10 +91,10 @@ export namespace Wallet$ {
         .object({
             address: z.string(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             kmsId: z.string(),
             metadata: z.lazy(() => WalletMetadata$.outboundSchema).optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
             projectId: z.string(),
             providerKeyId: z.string(),
             updatedAt: z.date().transform((v) => v.toISOString()),

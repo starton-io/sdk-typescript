@@ -138,11 +138,8 @@ async function run() {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
   
-  let items: typeof res | null = res;
-  while (items != null) {
-    // handle items
-  
-    items = await items.next();
+  for await (const page of res) {
+    // handle page
   }
 }
 
@@ -189,11 +186,8 @@ async function run() {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
   
-  let items: typeof res | null = res;
-  while (items != null) {
-    // handle items
-  
-    items = await items.next();
+  for await (const page of res) {
+    // handle page
   }
 }
 

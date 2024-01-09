@@ -86,10 +86,9 @@ export namespace Network$ {
             enableListener: z.boolean(),
             enableRelayer: z.boolean(),
             explorerUrl: z.string(),
-            faucetUrl: z.string().nullable().optional(),
+            faucetUrl: z.nullable(z.string()).optional(),
             gasPriceRecommendation: z
-                .lazy(() => GasPriceRecommendation$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => GasPriceRecommendation$.inboundSchema))
                 .optional(),
             logo: z.string(),
             name: z.string(),
@@ -168,10 +167,9 @@ export namespace Network$ {
             enableListener: z.boolean(),
             enableRelayer: z.boolean(),
             explorerUrl: z.string(),
-            faucetUrl: z.string().nullable().optional(),
+            faucetUrl: z.nullable(z.string()).optional(),
             gasPriceRecommendation: z
-                .lazy(() => GasPriceRecommendation$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => GasPriceRecommendation$.outboundSchema))
                 .optional(),
             logo: z.string(),
             name: z.string(),

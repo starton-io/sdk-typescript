@@ -113,18 +113,14 @@ export namespace SmartContractTemplate$ {
             blockchains: z.array(z.string()),
             category: Category$,
             compilationDetails: z
-                .lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema))
                 .optional(),
             createdAt: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             description: z.string(),
-            form: z
-                .lazy(() => Form$.inboundSchema)
-                .nullable()
-                .optional(),
+            form: z.nullable(z.lazy(() => Form$.inboundSchema)).optional(),
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),
@@ -189,15 +185,11 @@ export namespace SmartContractTemplate$ {
             blockchains: z.array(z.string()),
             category: Category$,
             compilationDetails: z
-                .lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema))
                 .optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             description: z.string(),
-            form: z
-                .lazy(() => Form$.outboundSchema)
-                .nullable()
-                .optional(),
+            form: z.nullable(z.lazy(() => Form$.outboundSchema)).optional(),
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),

@@ -8,7 +8,7 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
-import { Paginated, Paginator } from "../sdk/types";
+import { createPageIterator, PageIterator, Paginator } from "../sdk/types";
 import jp from "jsonpath";
 
 export class Template extends ClientSDK {
@@ -32,7 +32,7 @@ export class Template extends ClientSDK {
     async getAll(
         input: operations.GetAllSmartContractTemplateRequest,
         options?: RequestOptions
-    ): Promise<Paginated<operations.GetAllSmartContractTemplateResponse>> {
+    ): Promise<PageIterator<operations.GetAllSmartContractTemplateResponse>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -87,7 +87,7 @@ export class Template extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -140,7 +140,9 @@ export class Template extends ClientSDK {
                 ...responseFields$,
                 SmartContractTemplatePaginated: responseBody,
             });
-            const result = { ...parsed, next: nextFunc(responseBody) };
+            const next$ = nextFunc(responseBody);
+            const page$ = { ...parsed, next: next$ };
+            const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else {
             const responseBody = await response.text();
@@ -193,7 +195,7 @@ export class Template extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,

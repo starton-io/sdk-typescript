@@ -159,50 +159,51 @@ export namespace Transaction$ {
     export const inboundSchema: z.ZodType<Transaction, z.ZodTypeDef, Inbound> = z
         .object({
             automaticNonce: z.boolean(),
-            blockHash: z.string().nullable().optional(),
-            blockNumber: z.number().nullable().optional(),
+            blockHash: z.nullable(z.string()).optional(),
+            blockNumber: z.nullable(z.number()).optional(),
             chainId: z.number(),
             createdAt: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            data: z.string().nullable().optional(),
+            data: z.nullable(z.string()).optional(),
             from: z.string(),
-            gasLimit: z.string().nullable().optional(),
-            gasPrice: z.string().nullable().optional(),
+            gasLimit: z.nullable(z.string()).optional(),
+            gasPrice: z.nullable(z.string()).optional(),
             id: z.string(),
             isDeployTransaction: z.boolean(),
             logs: z.array(TransactionLog$.inboundSchema),
-            maxFeePerGas: z.string().nullable().optional(),
-            maxPriorityFeePerGas: z.string().nullable().optional(),
-            metadata: z
-                .lazy(() => TransactionMetadata$.inboundSchema)
-                .nullable()
-                .optional(),
+            maxFeePerGas: z.nullable(z.string()).optional(),
+            maxPriorityFeePerGas: z.nullable(z.string()).optional(),
+            metadata: z.nullable(z.lazy(() => TransactionMetadata$.inboundSchema)).optional(),
             minedDate: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             network: z.string(),
-            nonce: z.number().nullable().optional(),
-            parentTransaction: z.string().nullable().optional(),
+            nonce: z.nullable(z.number()).optional(),
+            parentTransaction: z.nullable(z.string()).optional(),
             projectId: z.string(),
             publishedDate: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            signedTransaction: z.string().nullable().optional(),
+            signedTransaction: z.nullable(z.string()).optional(),
             signerWallet: z.string(),
-            speed: TransactionSpeed$.nullable().optional(),
+            speed: z.nullable(TransactionSpeed$).optional(),
             state: TransactionState$,
             status: TransactionStatus$,
-            to: z.string().nullable().optional(),
-            transactionHash: z.string().nullable().optional(),
-            type: z.number().nullable().optional(),
+            to: z.nullable(z.string()).optional(),
+            transactionHash: z.nullable(z.string()).optional(),
+            type: z.nullable(z.number()).optional(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -290,45 +291,34 @@ export namespace Transaction$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Transaction> = z
         .object({
             automaticNonce: z.boolean(),
-            blockHash: z.string().nullable().optional(),
-            blockNumber: z.number().nullable().optional(),
+            blockHash: z.nullable(z.string()).optional(),
+            blockNumber: z.nullable(z.number()).optional(),
             chainId: z.number(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            data: z.string().nullable().optional(),
+            data: z.nullable(z.string()).optional(),
             from: z.string(),
-            gasLimit: z.string().nullable().optional(),
-            gasPrice: z.string().nullable().optional(),
+            gasLimit: z.nullable(z.string()).optional(),
+            gasPrice: z.nullable(z.string()).optional(),
             id: z.string(),
             isDeployTransaction: z.boolean(),
             logs: z.array(TransactionLog$.outboundSchema),
-            maxFeePerGas: z.string().nullable().optional(),
-            maxPriorityFeePerGas: z.string().nullable().optional(),
-            metadata: z
-                .lazy(() => TransactionMetadata$.outboundSchema)
-                .nullable()
-                .optional(),
-            minedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            maxFeePerGas: z.nullable(z.string()).optional(),
+            maxPriorityFeePerGas: z.nullable(z.string()).optional(),
+            metadata: z.nullable(z.lazy(() => TransactionMetadata$.outboundSchema)).optional(),
+            minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             network: z.string(),
-            nonce: z.number().nullable().optional(),
-            parentTransaction: z.string().nullable().optional(),
+            nonce: z.nullable(z.number()).optional(),
+            parentTransaction: z.nullable(z.string()).optional(),
             projectId: z.string(),
-            publishedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            signedTransaction: z.string().nullable().optional(),
+            publishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            signedTransaction: z.nullable(z.string()).optional(),
             signerWallet: z.string(),
-            speed: TransactionSpeed$.nullable().optional(),
+            speed: z.nullable(TransactionSpeed$).optional(),
             state: TransactionState$,
             status: TransactionStatus$,
-            to: z.string().nullable().optional(),
-            transactionHash: z.string().nullable().optional(),
-            type: z.number().nullable().optional(),
+            to: z.nullable(z.string()).optional(),
+            transactionHash: z.nullable(z.string()).optional(),
+            type: z.nullable(z.number()).optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
             value: z.string(),
         })

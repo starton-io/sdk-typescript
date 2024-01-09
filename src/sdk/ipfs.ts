@@ -9,7 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
 import * as shared from "../sdk/models/shared";
-import { isBlobLike, Paginated, Paginator } from "../sdk/types";
+import { createPageIterator, isBlobLike, PageIterator, Paginator } from "../sdk/types";
 import jp from "jsonpath";
 
 export class Ipfs extends ClientSDK {
@@ -60,7 +60,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "delete",
+                method: "DELETE",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -96,7 +96,7 @@ export class Ipfs extends ClientSDK {
     async getAll(
         input: operations.GetAllPinRequest,
         options?: RequestOptions
-    ): Promise<Paginated<operations.GetAllPinResponse>> {
+    ): Promise<PageIterator<operations.GetAllPinResponse>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -133,7 +133,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -184,7 +184,9 @@ export class Ipfs extends ClientSDK {
                 ...responseFields$,
                 PinPaginated: responseBody,
             });
-            const result = { ...parsed, next: nextFunc(responseBody) };
+            const next$ = nextFunc(responseBody);
+            const page$ = { ...parsed, next: next$ };
+            const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else {
             const responseBody = await response.text();
@@ -237,7 +239,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -289,7 +291,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const response = await this.fetch$(
-            { security: securitySettings$, method: "get", path: path$, headers: headers$ },
+            { security: securitySettings$, method: "GET", path: path$, headers: headers$ },
             options
         );
 
@@ -345,7 +347,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -410,7 +412,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "patch",
+                method: "PATCH",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -487,7 +489,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -556,7 +558,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -616,7 +618,7 @@ export class Ipfs extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "post",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 body: body$,
