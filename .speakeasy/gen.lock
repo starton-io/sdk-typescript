@@ -4,16 +4,16 @@ management:
   docChecksum: 4199b80e31d9939cb77296b14dd95204
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.230.1
-  releaseVersion: 0.6.0
-  configChecksum: 524f1cee632b38c00db9539e66dbaed9
+  generationVersion: 2.230.3
+  releaseVersion: 0.6.1
+  configChecksum: 5969dd6902e190ecec25cfd5e4b9abd5
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
   published: true
 features:
   typescript:
-    core: 3.4.3
+    core: 3.4.5
     devContainers: 2.88.0
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
