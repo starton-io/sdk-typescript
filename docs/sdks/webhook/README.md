@@ -28,15 +28,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.cancel({
+  const result = await sdk.webhook.cancel({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -56,9 +53,12 @@ run();
 **Promise<[operations.CancelWebhookResponse](../../sdk/models/operations/cancelwebhookresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| errors.CancelWebhookResponseBody                | 400                                             | application/json                                |
+| errors.CancelWebhookWebhookResponseBody         | 404                                             | application/json                                |
+| errors.CancelWebhookWebhookResponseResponseBody | 412                                             | application/json                                |
+| errors.SDKError                                 | 4xx-5xx                                         | */*                                             |
 
 ## getAll
 
@@ -75,13 +75,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.getAll({});
+  const result = await sdk.webhook.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -103,9 +99,10 @@ run();
 **Promise<[operations.GetAllWebhookResponse](../../sdk/models/operations/getallwebhookresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.GetAllWebhookResponseBody | 400                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## getOne
 
@@ -121,15 +118,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.getOne({
+  const result = await sdk.webhook.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -149,9 +143,11 @@ run();
 **Promise<[operations.GetOneWebhookResponse](../../sdk/models/operations/getonewebhookresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.GetOneWebhookResponseBody        | 400                                     | application/json                        |
+| errors.GetOneWebhookWebhookResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
 
 ## getSigningSecret
 
@@ -167,13 +163,10 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.getSigningSecret();
+  const result = await sdk.webhook.getSigningSecret();
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -192,9 +185,10 @@ run();
 **Promise<[operations.GetOneWebhookSigningSecretResponse](../../sdk/models/operations/getonewebhooksigningsecretresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                  | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| errors.GetOneWebhookSigningSecretResponseBody | 400                                           | application/json                              |
+| errors.SDKError                               | 4xx-5xx                                       | */*                                           |
 
 ## regenerateSigningSecret
 
@@ -210,13 +204,10 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.regenerateSigningSecret();
+  const result = await sdk.webhook.regenerateSigningSecret();
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -235,9 +226,10 @@ run();
 **Promise<[operations.CreateWebhookSigningSecretResponse](../../sdk/models/operations/createwebhooksigningsecretresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                  | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| errors.CreateWebhookSigningSecretResponseBody | 400                                           | application/json                              |
+| errors.SDKError                               | 4xx-5xx                                       | */*                                           |
 
 ## resend
 
@@ -253,15 +245,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.webhook.resend({
+  const result = await sdk.webhook.resend({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -281,6 +270,9 @@ run();
 **Promise<[operations.ResendWebhookResponse](../../sdk/models/operations/resendwebhookresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| errors.ResendWebhookResponseBody                | 400                                             | application/json                                |
+| errors.ResendWebhookWebhookResponseBody         | 404                                             | application/json                                |
+| errors.ResendWebhookWebhookResponseResponseBody | 412                                             | application/json                                |
+| errors.SDKError                                 | 4xx-5xx                                         | */*                                             |

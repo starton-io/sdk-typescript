@@ -13,6 +13,8 @@ export type ClaimFaucetRequest = {
     network: string;
 };
 
+export type ClaimFaucetResponseBody = shared.TooEarly;
+
 export type ClaimFaucetResponse = {
     /**
      * HTTP response content type for this operation
@@ -27,7 +29,7 @@ export type ClaimFaucetResponse = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse: Response;
-    oneOf?: any | undefined;
+    oneOf?: shared.TooEarly | undefined;
 };
 
 /** @internal */
@@ -68,13 +70,26 @@ export namespace ClaimFaucetRequest$ {
 }
 
 /** @internal */
+export namespace ClaimFaucetResponseBody$ {
+    export type Inbound = shared.TooEarly$.Inbound;
+
+    export type Outbound = shared.TooEarly$.Outbound;
+
+    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, Inbound> =
+        shared.TooEarly$.inboundSchema;
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponseBody> =
+        shared.TooEarly$.outboundSchema;
+}
+
+/** @internal */
 export namespace ClaimFaucetResponse$ {
     export type Inbound = {
         ContentType: string;
         Faucet?: shared.Faucet$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
-        oneOf?: any | undefined;
+        oneOf?: shared.TooEarly$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<ClaimFaucetResponse, z.ZodTypeDef, Inbound> = z
@@ -83,7 +98,7 @@ export namespace ClaimFaucetResponse$ {
             Faucet: shared.Faucet$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
-            oneOf: z.any().optional(),
+            oneOf: shared.TooEarly$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -100,7 +115,7 @@ export namespace ClaimFaucetResponse$ {
         Faucet?: shared.Faucet$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
-        oneOf?: any | undefined;
+        oneOf?: shared.TooEarly$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponse> = z
@@ -111,7 +126,7 @@ export namespace ClaimFaucetResponse$ {
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
             }),
-            oneOf: z.any().optional(),
+            oneOf: shared.TooEarly$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {
