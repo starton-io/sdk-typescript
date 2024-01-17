@@ -5,7 +5,7 @@
 import { z } from "zod";
 
 export type SettingRelayer = {
-    createdAt: Date;
+    createdAt?: Date | undefined;
     id: string;
     network: string;
     projectId: string;
@@ -15,13 +15,13 @@ export type SettingRelayer = {
     unstuckMaxGasPrice: string;
     unstuckMissingNonce: boolean;
     unstuckMissingNonceDelay: number;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
 };
 
 /** @internal */
 export namespace SettingRelayer$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         id: string;
         network: string;
         projectId: string;
@@ -31,7 +31,7 @@ export namespace SettingRelayer$ {
         unstuckMaxGasPrice: string;
         unstuckMissingNonce: boolean;
         unstuckMissingNonceDelay: number;
-        updatedAt: string;
+        updatedAt?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, Inbound> = z
@@ -39,6 +39,7 @@ export namespace SettingRelayer$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:35.384Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
@@ -52,11 +53,12 @@ export namespace SettingRelayer$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:35.384Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 id: v.id,
                 network: v.network,
                 projectId: v.projectId,
@@ -66,7 +68,7 @@ export namespace SettingRelayer$ {
                 unstuckMaxGasPrice: v.unstuckMaxGasPrice,
                 unstuckMissingNonce: v.unstuckMissingNonce,
                 unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
             };
         });
 
@@ -86,7 +88,10 @@ export namespace SettingRelayer$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SettingRelayer> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:35.384Z"))
+                .transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
             projectId: z.string(),
@@ -96,7 +101,10 @@ export namespace SettingRelayer$ {
             unstuckMaxGasPrice: z.string(),
             unstuckMissingNonce: z.boolean(),
             unstuckMissingNonceDelay: z.number(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:35.384Z"))
+                .transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {

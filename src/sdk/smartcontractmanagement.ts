@@ -102,6 +102,41 @@ export class SmartContractManagement extends ClientSDK {
                 Transaction: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CallSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CallSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CallSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CallSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -174,6 +209,21 @@ export class SmartContractManagement extends ClientSDK {
                 number: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeleteSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeleteSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -246,6 +296,43 @@ export class SmartContractManagement extends ClientSDK {
                 DeploySmartContractResponse: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeployFromBytecodeSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -318,6 +405,33 @@ export class SmartContractManagement extends ClientSDK {
                 DeploySmartContractResponse: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeployFromTemplateSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -436,6 +550,13 @@ export class SmartContractManagement extends ClientSDK {
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -510,6 +631,34 @@ export class SmartContractManagement extends ClientSDK {
                     AvailableFunctions: responseBody,
                 });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableFunctionsSmartContractResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -596,6 +745,21 @@ export class SmartContractManagement extends ClientSDK {
                 SmartContract: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetOneSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -656,6 +820,13 @@ export class SmartContractManagement extends ClientSDK {
                 SmartContract: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ImportExistingSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -730,6 +901,31 @@ export class SmartContractManagement extends ClientSDK {
                 ReadSmartContractResponse: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ReadSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ReadSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ReadSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -804,6 +1000,21 @@ export class SmartContractManagement extends ClientSDK {
                 SmartContract: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.UpdateSmartContractResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.UpdateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

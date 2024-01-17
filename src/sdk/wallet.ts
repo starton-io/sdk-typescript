@@ -78,6 +78,13 @@ export class Wallet extends ClientSDK {
                 Wallet: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CreateWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -154,6 +161,20 @@ export class Wallet extends ClientSDK {
                 number: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeleteWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeleteWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -255,6 +276,13 @@ export class Wallet extends ClientSDK {
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -321,6 +349,20 @@ export class Wallet extends ClientSDK {
                 Wallet: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -381,6 +423,13 @@ export class Wallet extends ClientSDK {
                 Wallet: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ImportProviderKeyWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -449,6 +498,20 @@ export class Wallet extends ClientSDK {
                 Faucet: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ClaimFaucetResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ClaimFaucetWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else if (this.matchResponse(response, "default", "application/json")) {
             const responseBody = await response.json();
             const result = operations.ClaimFaucetResponse$.inboundSchema.parse({
@@ -528,6 +591,38 @@ export class Wallet extends ClientSDK {
                 resyncNonce: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResyncNoncesWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResyncNoncesWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -598,6 +693,20 @@ export class Wallet extends ClientSDK {
                 object: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.SignMessageWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.SignMessageWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -666,6 +775,20 @@ export class Wallet extends ClientSDK {
                 Wallet: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.UpdateWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.UpdateWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

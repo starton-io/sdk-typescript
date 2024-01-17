@@ -81,6 +81,23 @@ export class Setting extends ClientSDK {
                 SettingRelayer: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllSettingRelayerResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAllSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -149,6 +166,23 @@ export class Setting extends ClientSDK {
                 SettingRelayer: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.UpdateSettingRelayerResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.UpdateSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
