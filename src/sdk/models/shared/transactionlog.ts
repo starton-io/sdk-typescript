@@ -4,7 +4,7 @@
 
 import { z } from "zod";
 
-export type Context = {};
+export type TransactionLogContext = {};
 
 export enum TransactionLogType {
     Unsigned = "UNSIGNED",
@@ -47,21 +47,24 @@ export enum TransactionLogType {
 }
 
 export type TransactionLog = {
-    context?: Context | undefined;
+    context?: TransactionLogContext | undefined;
     createdAt: string;
     message: string;
     type: TransactionLogType;
 };
 
 /** @internal */
-export namespace Context$ {
+export namespace TransactionLogContext$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<TransactionLogContext, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Context> = z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLogContext> =
+        z.object({});
 }
 
 /** @internal */
@@ -70,7 +73,7 @@ export const TransactionLogType$ = z.nativeEnum(TransactionLogType);
 /** @internal */
 export namespace TransactionLog$ {
     export type Inbound = {
-        context?: Context$.Inbound | undefined;
+        context?: TransactionLogContext$.Inbound | undefined;
         createdAt: string;
         message: string;
         type: TransactionLogType;
@@ -78,7 +81,7 @@ export namespace TransactionLog$ {
 
     export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, Inbound> = z
         .object({
-            context: z.lazy(() => Context$.inboundSchema).optional(),
+            context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
             createdAt: z.string(),
             message: z.string(),
             type: TransactionLogType$,
@@ -93,7 +96,7 @@ export namespace TransactionLog$ {
         });
 
     export type Outbound = {
-        context?: Context$.Outbound | undefined;
+        context?: TransactionLogContext$.Outbound | undefined;
         createdAt: string;
         message: string;
         type: TransactionLogType;
@@ -101,7 +104,7 @@ export namespace TransactionLog$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLog> = z
         .object({
-            context: z.lazy(() => Context$.outboundSchema).optional(),
+            context: z.lazy(() => TransactionLogContext$.outboundSchema).optional(),
             createdAt: z.string(),
             message: z.string(),
             type: TransactionLogType$,
