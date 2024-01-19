@@ -22,16 +22,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.project.member.invitation.create({
+  const result = await sdk.project.member.invitation.create({
     email: "Jena.Nienow28@yahoo.com",
     role: Role.Owner,
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -51,9 +48,11 @@ run();
 **Promise<[operations.CreateInvitationResponse](../../sdk/models/operations/createinvitationresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.CreateInvitationResponseBody                        | 400                                                        | application/json                                           |
+| errors.CreateInvitationProjectMemberInvitationResponseBody | 401                                                        | application/json                                           |
+| errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
 
 ## delete
 
@@ -69,15 +68,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.project.member.invitation.delete({
+  const result = await sdk.project.member.invitation.delete({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -97,9 +93,11 @@ run();
 **Promise<[operations.DeleteInvitationResponse](../../sdk/models/operations/deleteinvitationresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.DeleteInvitationResponseBody                        | 400                                                        | application/json                                           |
+| errors.DeleteInvitationProjectMemberInvitationResponseBody | 404                                                        | application/json                                           |
+| errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
 
 ## getAll
 
@@ -115,13 +113,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.project.member.invitation.getAll({});
+  const result = await sdk.project.member.invitation.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -143,6 +137,7 @@ run();
 **Promise<[operations.GetAllInvitationResponse](../../sdk/models/operations/getallinvitationresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.GetAllInvitationResponseBody | 400                                 | application/json                    |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

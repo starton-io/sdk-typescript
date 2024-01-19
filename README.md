@@ -222,11 +222,15 @@ const sdk = new Starton({ httpClient });
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. If the
-return value of `next` is `null`, then there are no more pages to be fetched.
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 
 Here's an example of one such pagination call:
+
 ```typescript
 import { Starton } from "@starton/sdk";
 
@@ -235,13 +239,9 @@ async function run() {
         startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
-    const res = await sdk.wallet.getAll({});
+    const result = await sdk.wallet.getAll({});
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    for await (const page of res) {
+    for await (const page of result) {
         // handle page
     }
 }
@@ -275,16 +275,13 @@ async function run() {
         startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
-    const res = await sdk.data.getBalance({
+    const result = await sdk.data.getBalance({
         address: "164 Runolfsson Via",
         network: "string",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    // handle response
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -315,22 +312,25 @@ async function run() {
         startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
-    const res = await sdk.ipfs.uploadFile({
+    const result = await sdk.ipfs.uploadFile({
         file: await openAsBlob("./sample-file"),
         metadata: {},
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    // handle response
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
 <!-- End File uploads [file-upload] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

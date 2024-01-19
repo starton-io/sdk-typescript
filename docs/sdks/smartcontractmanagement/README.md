@@ -36,15 +36,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.call({
+  const result = await sdk.smartContractManagement.call({
     callDto: {
       customGas: {},
       functionName: "string",
       params: [
-        "string",
-        "string",
-        "string",
-        "string",
+        ,
+        ,
+        ,
+        ,
       ],
       signerWallet: "string",
     },
@@ -52,11 +52,8 @@ async function run() {
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -76,9 +73,13 @@ run();
 **Promise<[operations.CallSmartContractResponse](../../sdk/models/operations/callsmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| errors.CallSmartContractResponseBody                                   | 400                                                                    | application/json                                                       |
+| errors.CallSmartContractSmartContractManagementResponseBody            | 404                                                                    | application/json                                                       |
+| errors.CallSmartContractSmartContractManagementResponseResponseBody    | 422                                                                    | application/json                                                       |
+| errors.CallSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                    | application/json                                                       |
+| errors.SDKError                                                        | 4xx-5xx                                                                | */*                                                                    |
 
 ## delete
 
@@ -94,16 +95,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.delete({
+  const result = await sdk.smartContractManagement.delete({
     address: "8653 Vaughn Hills",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -123,9 +121,11 @@ run();
 **Promise<[operations.DeleteSmartContractResponse](../../sdk/models/operations/deletesmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.DeleteSmartContractResponseBody                        | 400                                                           | application/json                                              |
+| errors.DeleteSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
+| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
 
 ## deployFromBytecode
 
@@ -142,7 +142,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.deployFromBytecode({
+  const result = await sdk.smartContractManagement.deployFromBytecode({
     deployFromBytecodeDto: {
       abi: [
         {
@@ -164,20 +164,17 @@ async function run() {
       name: "string",
       network: "string",
       params: [
-        "string",
-        "string",
-        "string",
-        "string",
+        ,
+        ,
+        ,
+        ,
       ],
       signerWallet: "string",
     },
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -197,9 +194,13 @@ run();
 **Promise<[operations.DeployFromBytecodeSmartContractResponse](../../sdk/models/operations/deployfrombytecodesmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| errors.DeployFromBytecodeSmartContractResponseBody                                   | 400                                                                                  | application/json                                                                     |
+| errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody            | 404                                                                                  | application/json                                                                     |
+| errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody    | 422                                                                                  | application/json                                                                     |
+| errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                                  | application/json                                                                     |
+| errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
 
 ## deployFromTemplate
 
@@ -216,27 +217,24 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.deployFromTemplate({
+  const result = await sdk.smartContractManagement.deployFromTemplate({
     deployFromTemplateDto: {
       customGas: {},
       name: "TestToken",
       network: "polygon-mumbai",
       params: [
-        "string",
-        "string",
-        "string",
-        "string",
+        ,
+        ,
+        ,
+        ,
       ],
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       templateId: "ERC20_META_TRANSACTION",
     },
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -256,9 +254,12 @@ run();
 **Promise<[operations.DeployFromTemplateSmartContractResponse](../../sdk/models/operations/deployfromtemplatesmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                                      | Status Code                                                                       | Content Type                                                                      |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| errors.DeployFromTemplateSmartContractResponseBody                                | 400                                                                               | application/json                                                                  |
+| errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody         | 404                                                                               | application/json                                                                  |
+| errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody | 500                                                                               | application/json                                                                  |
+| errors.SDKError                                                                   | 4xx-5xx                                                                           | */*                                                                               |
 
 ## getAll
 
@@ -274,13 +275,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.getAll({});
+  const result = await sdk.smartContractManagement.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -302,9 +299,10 @@ run();
 **Promise<[operations.GetAllSmartContractResponse](../../sdk/models/operations/getallsmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GetAllSmartContractResponseBody | 400                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
 ## getFunctions
 
@@ -320,16 +318,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.getFunctions({
+  const result = await sdk.smartContractManagement.getFunctions({
     address: "18523 Buford Brook",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -349,9 +344,12 @@ run();
 **Promise<[operations.GetAvailableFunctionsSmartContractResponse](../../sdk/models/operations/getavailablefunctionssmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| errors.GetAvailableFunctionsSmartContractResponseBody                                | 400                                                                                  | application/json                                                                     |
+| errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody         | 404                                                                                  | application/json                                                                     |
+| errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody | 500                                                                                  | application/json                                                                     |
+| errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
 
 ## getOne
 
@@ -367,16 +365,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.getOne({
+  const result = await sdk.smartContractManagement.getOne({
     address: "43504 Penelope Expressway",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -396,9 +391,11 @@ run();
 **Promise<[operations.GetOneSmartContractResponse](../../sdk/models/operations/getonesmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.GetOneSmartContractResponseBody                        | 400                                                           | application/json                                              |
+| errors.GetOneSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
+| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
 
 ## importExisting
 
@@ -414,7 +411,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.importExisting({
+  const result = await sdk.smartContractManagement.importExisting({
     abi: [
       {
         inputs: {
@@ -436,19 +433,16 @@ async function run() {
     name: "Minimal Contract Test.",
     network: "polygon-mumbai",
     params: [
-      "string",
-      "string",
-      "string",
-      "string",
+      ,
+      ,
+      ,
+      ,
     ],
     templateId: "ERC721_META_TRANSACTION",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -468,9 +462,10 @@ run();
 **Promise<[operations.ImportExistingSmartContractResponse](../../sdk/models/operations/importexistingsmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| errors.ImportExistingSmartContractResponseBody | 400                                            | application/json                               |
+| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
 
 ## read
 
@@ -486,25 +481,22 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.read({
+  const result = await sdk.smartContractManagement.read({
     readDto: {
       functionName: "string",
       params: [
-        "string",
-        "string",
-        "string",
-        "string",
+        ,
+        ,
+        ,
+        ,
       ],
     },
     address: "660 Romaine Highway",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -524,9 +516,12 @@ run();
 **Promise<[operations.ReadSmartContractResponse](../../sdk/models/operations/readsmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| errors.ReadSmartContractResponseBody                                | 400                                                                 | application/json                                                    |
+| errors.ReadSmartContractSmartContractManagementResponseBody         | 404                                                                 | application/json                                                    |
+| errors.ReadSmartContractSmartContractManagementResponseResponseBody | 500                                                                 | application/json                                                    |
+| errors.SDKError                                                     | 4xx-5xx                                                             | */*                                                                 |
 
 ## update
 
@@ -542,7 +537,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContractManagement.update({
+  const result = await sdk.smartContractManagement.update({
     updateSmartContractDto: {
       metadata: {},
     },
@@ -550,11 +545,8 @@ async function run() {
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -574,6 +566,8 @@ run();
 **Promise<[operations.UpdateSmartContractResponse](../../sdk/models/operations/updatesmartcontractresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.UpdateSmartContractResponseBody                        | 400                                                           | application/json                                              |
+| errors.UpdateSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
+| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |

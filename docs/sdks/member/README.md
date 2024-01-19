@@ -20,15 +20,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.project.member.delete({
+  const result = await sdk.project.member.delete({
     userId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -48,9 +45,12 @@ run();
 **Promise<[operations.DeleteProjectMemberResponse](../../sdk/models/operations/deleteprojectmemberresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| errors.DeleteProjectMemberResponseBody                      | 400                                                         | application/json                                            |
+| errors.DeleteProjectMemberProjectMemberResponseBody         | 404                                                         | application/json                                            |
+| errors.DeleteProjectMemberProjectMemberResponseResponseBody | 500                                                         | application/json                                            |
+| errors.SDKError                                             | 4xx-5xx                                                     | */*                                                         |
 
 ## getAll
 
@@ -66,13 +66,10 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.project.member.getAll();
+  const result = await sdk.project.member.getAll();
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -91,6 +88,7 @@ run();
 **Promise<[operations.GetAllProjectMemberResponse](../../sdk/models/operations/getallprojectmemberresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GetAllProjectMemberResponseBody | 400                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
