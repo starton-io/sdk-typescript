@@ -25,16 +25,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.data.getBalance({
+  const result = await sdk.data.getBalance({
     address: "164 Runolfsson Via",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -54,9 +51,10 @@ run();
 **Promise<[operations.GetBalanceAddressResponse](../../sdk/models/operations/getbalanceaddressresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                         | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.GetBalanceAddressResponseBody | 400                                  | application/json                     |
+| errors.SDKError                      | 4xx-5xx                              | */*                                  |
 
 ## getErc20Balance
 
@@ -72,17 +70,14 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.data.getErc20Balance({
+  const result = await sdk.data.getErc20Balance({
     address: "81562 Emard Grove",
     contractAddress: "string",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -102,9 +97,10 @@ run();
 **Promise<[operations.GetBalanceErc20Response](../../sdk/models/operations/getbalanceerc20response.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetBalanceErc20ResponseBody | 400                                | application/json                   |
+| errors.SDKError                    | 4xx-5xx                            | */*                                |
 
 ## getGasPrice
 
@@ -120,15 +116,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.data.getGasPrice({
+  const result = await sdk.data.getGasPrice({
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -148,6 +141,7 @@ run();
 **Promise<[operations.GetAllGasPriceResponse](../../sdk/models/operations/getallgaspriceresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                      | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.GetAllGasPriceResponseBody | 400                               | application/json                  |
+| errors.SDKError                   | 4xx-5xx                           | */*                               |

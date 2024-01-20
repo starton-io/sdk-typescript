@@ -87,6 +87,30 @@ export class Member extends ClientSDK {
                 boolean: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeleteProjectMemberResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.DeleteProjectMemberProjectMemberResponseBody$.inboundSchema.parse(
+                {
+                    ...responseFields$,
+                    ...responseBody,
+                }
+            );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.DeleteProjectMemberProjectMemberResponseResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -134,6 +158,13 @@ export class Member extends ClientSDK {
                 ProjectMemberPaginated: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllProjectMemberResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

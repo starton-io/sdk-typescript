@@ -16,14 +16,14 @@ export enum KmsProvider {
 export type Wallets = {};
 
 export type Kms = {
-    createdAt: Date;
+    createdAt?: Date | undefined;
     credentials: Credentials;
     id: string;
     metadata?: KmsMetadata | undefined;
     name: string;
     projectId: string;
     provider: KmsProvider;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
     wallets?: Wallets | undefined;
 };
 
@@ -66,14 +66,14 @@ export namespace Wallets$ {
 /** @internal */
 export namespace Kms$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         credentials: Credentials$.Inbound;
         id: string;
         metadata?: KmsMetadata$.Inbound | undefined;
         name: string;
         projectId: string;
         provider: KmsProvider;
-        updatedAt: string;
+        updatedAt?: string | undefined;
         wallets?: Wallets$.Inbound | undefined;
     };
 
@@ -82,6 +82,7 @@ export namespace Kms$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:35.368Z")
                 .transform((v) => new Date(v)),
             credentials: z.lazy(() => Credentials$.inboundSchema),
             id: z.string(),
@@ -92,19 +93,20 @@ export namespace Kms$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:35.368Z")
                 .transform((v) => new Date(v)),
             wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 credentials: v.credentials,
                 id: v.id,
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 name: v.name,
                 projectId: v.projectId,
                 provider: v.provider,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
                 ...(v.wallets === undefined ? null : { wallets: v.wallets }),
             };
         });
@@ -123,14 +125,20 @@ export namespace Kms$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Kms> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:35.368Z"))
+                .transform((v) => v.toISOString()),
             credentials: z.lazy(() => Credentials$.outboundSchema),
             id: z.string(),
             metadata: z.lazy(() => KmsMetadata$.outboundSchema).optional(),
             name: z.string(),
             projectId: z.string(),
             provider: KmsProvider$,
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:35.368Z"))
+                .transform((v) => v.toISOString()),
             wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
         })
         .transform((v) => {
