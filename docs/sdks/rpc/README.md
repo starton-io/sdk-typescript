@@ -23,18 +23,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.rpc.create({
+  const result = await sdk.network.rpc.create({
     createRpcDto: {
       url: "http://limp-pastry.org",
     },
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -54,9 +51,11 @@ run();
 **Promise<[operations.CreateRpcResponse](../../sdk/models/operations/createrpcresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.CreateRpcResponseBody           | 400                                    | application/json                       |
+| errors.CreateRpcNetworkRpcResponseBody | 404                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
 ## delete
 
@@ -72,16 +71,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.rpc.delete({
+  const result = await sdk.network.rpc.delete({
     id: "<ID>",
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -101,9 +97,11 @@ run();
 **Promise<[operations.DeleteRpcResponse](../../sdk/models/operations/deleterpcresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.DeleteRpcResponseBody           | 400                                    | application/json                       |
+| errors.DeleteRpcNetworkRpcResponseBody | 404                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
 ## getAll
 
@@ -119,15 +117,11 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.rpc.getAll({
+  const result = await sdk.network.rpc.getAll({
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -149,9 +143,10 @@ run();
 **Promise<[operations.GetAllRpcResponse](../../sdk/models/operations/getallrpcresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.GetAllRpcResponseBody | 400                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 ## getOne
 
@@ -167,16 +162,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.rpc.getOne({
+  const result = await sdk.network.rpc.getOne({
     id: "<ID>",
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -196,9 +188,11 @@ run();
 **Promise<[operations.GetOneRpcResponse](../../sdk/models/operations/getonerpcresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GetOneRpcResponseBody           | 400                                    | application/json                       |
+| errors.GetOneRpcNetworkRpcResponseBody | 404                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
 ## update
 
@@ -214,17 +208,14 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.rpc.update({
+  const result = await sdk.network.rpc.update({
     updateRpcDto: {},
     id: "<ID>",
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -244,6 +235,8 @@ run();
 **Promise<[operations.UpdateRpcResponse](../../sdk/models/operations/updaterpcresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.UpdateRpcResponseBody           | 400                                    | application/json                       |
+| errors.UpdateRpcNetworkRpcResponseBody | 404                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
