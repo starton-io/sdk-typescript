@@ -94,6 +94,41 @@ export class TransactionManager extends ClientSDK {
                 Transaction: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CreateTransactionResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CreateTransactionTransactionManagerResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CreateTransactionTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.CreateTransactionTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -210,6 +245,13 @@ export class TransactionManager extends ClientSDK {
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllTransactionResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -282,6 +324,41 @@ export class TransactionManager extends ClientSDK {
                 NoncesAvailable: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAvailableNoncesWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableNoncesWalletTransactionManagerResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -345,6 +422,21 @@ export class TransactionManager extends ClientSDK {
                 Transaction: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneTransactionResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetOneTransactionTransactionManagerResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -417,6 +509,38 @@ export class TransactionManager extends ClientSDK {
                 resyncNonce: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResyncNoncesWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResyncNoncesWalletWalletResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 422, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$.inboundSchema.parse({
+                    ...responseFields$,
+                    ...responseBody,
+                });
+            throw result;
+        } else if (this.matchResponse(response, 500, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

@@ -4,25 +4,30 @@
 
 import { z } from "zod";
 
-export type Params = {};
+export type ReadSmartContractResponseParams = {};
 
 export type ReadSmartContractResponse = {
     address: string;
     functionName: string;
     network: string;
-    params: Array<Params>;
+    params: Array<ReadSmartContractResponseParams>;
     response: string;
 };
 
 /** @internal */
-export namespace Params$ {
+export namespace ReadSmartContractResponseParams$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, Inbound> =
+        z.object({});
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.object({});
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ReadSmartContractResponseParams
+    > = z.object({});
 }
 
 /** @internal */
@@ -31,7 +36,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Inbound>;
+        params: Array<ReadSmartContractResponseParams$.Inbound>;
         response: string;
     };
 
@@ -40,7 +45,7 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.inboundSchema)),
+            params: z.array(z.lazy(() => ReadSmartContractResponseParams$.inboundSchema)),
             response: z.string(),
         })
         .transform((v) => {
@@ -57,7 +62,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Outbound>;
+        params: Array<ReadSmartContractResponseParams$.Outbound>;
         response: string;
     };
 
@@ -66,7 +71,7 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.outboundSchema)),
+            params: z.array(z.lazy(() => ReadSmartContractResponseParams$.outboundSchema)),
             response: z.string(),
         })
         .transform((v) => {

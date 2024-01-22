@@ -7,16 +7,13 @@ async function run() {
         startonApiKey: "<YOUR_API_KEY_HERE>",
     });
 
-    const res = await sdk.data.getBalance({
+    const result = await sdk.data.getBalance({
         address: "164 Runolfsson Via",
         network: "string",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    // handle response
+    // Handle the result
+    console.log(result);
 }
 
 run();
