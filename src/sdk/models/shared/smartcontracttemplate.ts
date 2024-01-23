@@ -24,19 +24,19 @@ export type SmartContractTemplate = {
     blockchains: Array<string>;
     category: Category;
     compilationDetails?: SmartContractTemplateCompilationDetails | null | undefined;
-    createdAt: Date;
+    createdAt?: Date | undefined;
     description: string;
     form?: Form | null | undefined;
     githubUrl: string;
     humanReadableAbi: Array<string>;
     id: string;
-    isActivated: boolean;
-    isAudited: boolean;
+    isActivated?: boolean | undefined;
+    isAudited?: boolean | undefined;
     name: string;
-    order: number;
+    order?: number | undefined;
     shortDescription: string;
     tags: Array<string>;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
 };
 
 /** @internal */
@@ -92,19 +92,19 @@ export namespace SmartContractTemplate$ {
         blockchains: Array<string>;
         category: Category;
         compilationDetails?: SmartContractTemplateCompilationDetails$.Inbound | null | undefined;
-        createdAt: string;
+        createdAt?: string | undefined;
         description: string;
         form?: Form$.Inbound | null | undefined;
         githubUrl: string;
         humanReadableAbi: Array<string>;
         id: string;
-        isActivated: boolean;
-        isAudited: boolean;
+        isActivated?: boolean | undefined;
+        isAudited?: boolean | undefined;
         name: string;
-        order: number;
+        order?: number | undefined;
         shortDescription: string;
         tags: Array<string>;
-        updatedAt: string;
+        updatedAt?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, Inbound> = z
@@ -118,21 +118,23 @@ export namespace SmartContractTemplate$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:23.502Z")
                 .transform((v) => new Date(v)),
             description: z.string(),
             form: z.nullable(z.lazy(() => Form$.inboundSchema)).optional(),
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),
-            isActivated: z.boolean(),
-            isAudited: z.boolean(),
+            isActivated: z.boolean().default(true),
+            isAudited: z.boolean().default(false),
             name: z.string(),
-            order: z.number(),
+            order: z.number().default(0),
             shortDescription: z.string(),
             tags: z.array(z.string()),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:23.502Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -143,19 +145,19 @@ export namespace SmartContractTemplate$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 description: v.description,
                 ...(v.form === undefined ? null : { form: v.form }),
                 githubUrl: v.githubUrl,
                 humanReadableAbi: v.humanReadableAbi,
                 id: v.id,
-                isActivated: v.isActivated,
-                isAudited: v.isAudited,
+                ...(v.isActivated === undefined ? null : { isActivated: v.isActivated }),
+                ...(v.isAudited === undefined ? null : { isAudited: v.isAudited }),
                 name: v.name,
-                order: v.order,
+                ...(v.order === undefined ? null : { order: v.order }),
                 shortDescription: v.shortDescription,
                 tags: v.tags,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
             };
         });
 
@@ -187,19 +189,25 @@ export namespace SmartContractTemplate$ {
             compilationDetails: z
                 .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema))
                 .optional(),
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:23.502Z"))
+                .transform((v) => v.toISOString()),
             description: z.string(),
             form: z.nullable(z.lazy(() => Form$.outboundSchema)).optional(),
             githubUrl: z.string(),
             humanReadableAbi: z.array(z.string()),
             id: z.string(),
-            isActivated: z.boolean(),
-            isAudited: z.boolean(),
+            isActivated: z.boolean().default(true),
+            isAudited: z.boolean().default(false),
             name: z.string(),
-            order: z.number(),
+            order: z.number().default(0),
             shortDescription: z.string(),
             tags: z.array(z.string()),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:23.502Z"))
+                .transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {

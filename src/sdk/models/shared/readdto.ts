@@ -4,25 +4,57 @@
 
 import { z } from "zod";
 
+export type ReadDtoParams = string | number | Array<string | number | Array<models.Params>>;
+
 export type ReadDto = {
     functionName: string;
     /**
      * Smart contract parameters.
      */
-    params: Array<any>;
+    params: Array<string | number | Array<string | number | Array<models.Params>>>;
 };
+
+/** @internal */
+export namespace ReadDtoParams$ {
+    export type Inbound = string | number | Array<string | number | Array<models.Params$.Inbound>>;
+
+    export type Outbound =
+        | string
+        | number
+        | Array<string | number | Array<models.Params$.Outbound>>;
+
+    export const inboundSchema: z.ZodType<ReadDtoParams, z.ZodTypeDef, Inbound> = z.union([
+        z.string(),
+        z.number(),
+        z.array(z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDtoParams> = z.union([
+        z.string(),
+        z.number(),
+        z.array(z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])),
+    ]);
+}
 
 /** @internal */
 export namespace ReadDto$ {
     export type Inbound = {
         functionName: string;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Inbound>>>;
     };
 
     export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, Inbound> = z
         .object({
             functionName: z.string(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])
+                    ),
+                ])
+            ),
         })
         .transform((v) => {
             return {
@@ -33,13 +65,21 @@ export namespace ReadDto$ {
 
     export type Outbound = {
         functionName: string;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Outbound>>>;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto> = z
         .object({
             functionName: z.string(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])
+                    ),
+                ])
+            ),
         })
         .transform((v) => {
             return {

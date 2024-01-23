@@ -80,6 +80,27 @@ export class Webhook extends ClientSDK {
                 Webhook: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CancelWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CancelWebhookWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 412, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CancelWebhookWebhookResponseResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -181,6 +202,13 @@ export class Webhook extends ClientSDK {
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -244,6 +272,20 @@ export class Webhook extends ClientSDK {
                 Webhook: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneWebhookWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -293,6 +335,13 @@ export class Webhook extends ClientSDK {
                 WebhookSigningSecret: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneWebhookSigningSecretResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -342,6 +391,13 @@ export class Webhook extends ClientSDK {
                 WebhookSigningSecret: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.CreateWebhookSigningSecretResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -405,6 +461,27 @@ export class Webhook extends ClientSDK {
                 Webhook: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResendWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResendWebhookWebhookResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 412, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.ResendWebhookWebhookResponseResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

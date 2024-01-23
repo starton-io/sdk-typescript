@@ -21,13 +21,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContract.template.getAll({});
+  const result = await sdk.smartContract.template.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -49,9 +45,10 @@ run();
 **Promise<[operations.GetAllSmartContractTemplateResponse](../../sdk/models/operations/getallsmartcontracttemplateresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| errors.GetAllSmartContractTemplateResponseBody | 400                                            | application/json                               |
+| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
 
 ## getOne
 
@@ -67,15 +64,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.smartContract.template.getOne({
+  const result = await sdk.smartContract.template.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -95,6 +89,8 @@ run();
 **Promise<[operations.GetOneSmartContractTemplateResponse](../../sdk/models/operations/getonesmartcontracttemplateresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| errors.GetOneSmartContractTemplateResponseBody                      | 400                                                                 | application/json                                                    |
+| errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody | 404                                                                 | application/json                                                    |
+| errors.SDKError                                                     | 4xx-5xx                                                             | */*                                                                 |

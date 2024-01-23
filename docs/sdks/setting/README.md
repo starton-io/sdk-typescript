@@ -20,15 +20,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.setting.get({
+  const result = await sdk.transactionManager.setting.get({
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -48,9 +45,11 @@ run();
 **Promise<[operations.GetAllSettingRelayerResponse](../../sdk/models/operations/getallsettingrelayerresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.GetAllSettingRelayerResponseBody                          | 400                                                              | application/json                                                 |
+| errors.GetAllSettingRelayerTransactionManagerSettingResponseBody | 404                                                              | application/json                                                 |
+| errors.SDKError                                                  | 4xx-5xx                                                          | */*                                                              |
 
 ## update
 
@@ -66,7 +65,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.setting.update({
+  const result = await sdk.transactionManager.setting.update({
     updateSettingRelayerDto: {
       unstuckAutomaticGasPrice: true,
       unstuckCustomGasPrice: true,
@@ -78,11 +77,8 @@ async function run() {
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -102,6 +98,8 @@ run();
 **Promise<[operations.UpdateSettingRelayerResponse](../../sdk/models/operations/updatesettingrelayerresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.UpdateSettingRelayerResponseBody                          | 400                                                              | application/json                                                 |
+| errors.UpdateSettingRelayerTransactionManagerSettingResponseBody | 404                                                              | application/json                                                 |
+| errors.SDKError                                                  | 4xx-5xx                                                          | */*                                                              |

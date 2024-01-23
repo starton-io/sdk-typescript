@@ -144,6 +144,13 @@ export class Template extends ClientSDK {
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetAllSmartContractTemplateResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -217,6 +224,23 @@ export class Template extends ClientSDK {
                 SmartContractTemplate: responseBody,
             });
             return result;
+        } else if (this.matchResponse(response, 400, "application/json")) {
+            const responseBody = await response.json();
+            const result = errors.GetOneSmartContractTemplateResponseBody$.inboundSchema.parse({
+                ...responseFields$,
+                ...responseBody,
+            });
+            throw result;
+        } else if (this.matchResponse(response, 404, "application/json")) {
+            const responseBody = await response.json();
+            const result =
+                errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$.inboundSchema.parse(
+                    {
+                        ...responseFields$,
+                        ...responseBody,
+                    }
+                );
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
