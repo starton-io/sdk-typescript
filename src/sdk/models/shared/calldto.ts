@@ -5,6 +5,10 @@
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
 import { z } from "zod";
 
+export type Three = {};
+
+export type Params = Three | string | number | boolean;
+
 export enum Speed {
     Low = "low",
     Average = "average",
@@ -21,11 +25,43 @@ export type CallDto = {
     /**
      * Smart contract parameters.
      */
-    params: Array<any>;
+    params: Array<Three | string | number | boolean>;
     signerWallet: string;
     speed?: Speed | undefined;
     value?: string | undefined;
 };
+
+/** @internal */
+export namespace Three$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Three, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Three> = z.object({});
+}
+
+/** @internal */
+export namespace Params$ {
+    export type Inbound = Three$.Inbound | string | number | boolean;
+
+    export type Outbound = Three$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Three$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.union([
+        z.lazy(() => Three$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
 
 /** @internal */
 export const Speed$ = z.nativeEnum(Speed);
@@ -37,7 +73,7 @@ export namespace CallDto$ {
         functionName: string;
         gasLimit?: string | undefined;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<Three$.Inbound | string | number | boolean>;
         signerWallet: string;
         speed?: Speed | undefined;
         value?: string | undefined;
@@ -49,7 +85,9 @@ export namespace CallDto$ {
             functionName: z.string(),
             gasLimit: z.string().optional(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([z.lazy(() => Three$.inboundSchema), z.string(), z.number(), z.boolean()])
+            ),
             signerWallet: z.string(),
             speed: Speed$.optional(),
             value: z.string().optional(),
@@ -72,7 +110,7 @@ export namespace CallDto$ {
         functionName: string;
         gasLimit?: string | undefined;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<Three$.Outbound | string | number | boolean>;
         signerWallet: string;
         speed?: Speed | undefined;
         value?: string | undefined;
@@ -84,7 +122,9 @@ export namespace CallDto$ {
             functionName: z.string(),
             gasLimit: z.string().optional(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([z.lazy(() => Three$.outboundSchema), z.string(), z.number(), z.boolean()])
+            ),
             signerWallet: z.string(),
             speed: Speed$.optional(),
             value: z.string().optional(),

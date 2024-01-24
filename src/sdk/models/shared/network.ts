@@ -10,7 +10,7 @@ export type Network = {
     blockchain: string;
     chainId: number;
     confirmationBlocks: number;
-    createdAt: Date;
+    createdAt?: Date | undefined;
     decimal: number;
     displayName: string;
     eip1159: boolean;
@@ -20,12 +20,13 @@ export type Network = {
     explorerUrl: string;
     faucetUrl?: string | null | undefined;
     gasPriceRecommendation?: GasPriceRecommendation | null | undefined;
+    loadbalancerUrl: string;
     logo: string;
     name: string;
     owner: string;
     symbol: string;
     testnet: boolean;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
     verifyBlockIntegrity: boolean;
     verifyTxIntegrity: boolean;
 };
@@ -50,7 +51,7 @@ export namespace Network$ {
         blockchain: string;
         chainId: number;
         confirmationBlocks: number;
-        createdAt: string;
+        createdAt?: string | undefined;
         decimal: number;
         displayName: string;
         eip1159: boolean;
@@ -60,12 +61,13 @@ export namespace Network$ {
         explorerUrl: string;
         faucetUrl?: string | null | undefined;
         gasPriceRecommendation?: GasPriceRecommendation$.Inbound | null | undefined;
+        loadbalancerUrl: string;
         logo: string;
         name: string;
         owner: string;
         symbol: string;
         testnet: boolean;
-        updatedAt: string;
+        updatedAt?: string | undefined;
         verifyBlockIntegrity: boolean;
         verifyTxIntegrity: boolean;
     };
@@ -78,6 +80,7 @@ export namespace Network$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T16:52:29.330Z")
                 .transform((v) => new Date(v)),
             decimal: z.number(),
             displayName: z.string(),
@@ -90,6 +93,7 @@ export namespace Network$ {
             gasPriceRecommendation: z
                 .nullable(z.lazy(() => GasPriceRecommendation$.inboundSchema))
                 .optional(),
+            loadbalancerUrl: z.string(),
             logo: z.string(),
             name: z.string(),
             owner: z.string(),
@@ -98,6 +102,7 @@ export namespace Network$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T16:52:29.330Z")
                 .transform((v) => new Date(v)),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
@@ -107,7 +112,7 @@ export namespace Network$ {
                 blockchain: v.blockchain,
                 chainId: v.chainId,
                 confirmationBlocks: v.confirmationBlocks,
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 decimal: v.decimal,
                 displayName: v.displayName,
                 eip1159: v.eip1159,
@@ -119,12 +124,13 @@ export namespace Network$ {
                 ...(v.gasPriceRecommendation === undefined
                     ? null
                     : { gasPriceRecommendation: v.gasPriceRecommendation }),
+                loadbalancerUrl: v.loadbalancerUrl,
                 logo: v.logo,
                 name: v.name,
                 owner: v.owner,
                 symbol: v.symbol,
                 testnet: v.testnet,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
                 verifyBlockIntegrity: v.verifyBlockIntegrity,
                 verifyTxIntegrity: v.verifyTxIntegrity,
             };
@@ -144,6 +150,7 @@ export namespace Network$ {
         explorerUrl: string;
         faucetUrl?: string | null | undefined;
         gasPriceRecommendation?: GasPriceRecommendation$.Outbound | null | undefined;
+        loadbalancerUrl: string;
         logo: string;
         name: string;
         owner: string;
@@ -159,7 +166,10 @@ export namespace Network$ {
             blockchain: z.string(),
             chainId: z.number(),
             confirmationBlocks: z.number(),
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T16:52:29.330Z"))
+                .transform((v) => v.toISOString()),
             decimal: z.number(),
             displayName: z.string(),
             eip1159: z.boolean(),
@@ -171,12 +181,16 @@ export namespace Network$ {
             gasPriceRecommendation: z
                 .nullable(z.lazy(() => GasPriceRecommendation$.outboundSchema))
                 .optional(),
+            loadbalancerUrl: z.string(),
             logo: z.string(),
             name: z.string(),
             owner: z.string(),
             symbol: z.string(),
             testnet: z.boolean(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2024-01-24T16:52:29.330Z"))
+                .transform((v) => v.toISOString()),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
         })
@@ -197,6 +211,7 @@ export namespace Network$ {
                 ...(v.gasPriceRecommendation === undefined
                     ? null
                     : { gasPriceRecommendation: v.gasPriceRecommendation }),
+                loadbalancerUrl: v.loadbalancerUrl,
                 logo: v.logo,
                 name: v.name,
                 owner: v.owner,

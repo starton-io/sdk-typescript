@@ -1,0 +1,2 @@
+# ClaimFaucetResponseBody
+

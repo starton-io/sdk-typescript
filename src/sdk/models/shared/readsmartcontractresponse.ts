@@ -4,25 +4,62 @@
 
 import { z } from "zod";
 
-export type Params = {};
+export type ReadSmartContractResponse3 = {};
+
+export type ReadSmartContractResponseParams =
+    | ReadSmartContractResponse3
+    | string
+    | number
+    | boolean;
 
 export type ReadSmartContractResponse = {
     address: string;
     functionName: string;
     network: string;
-    params: Array<Params>;
+    /**
+     * Smart contract parameters.
+     */
+    params: Array<ReadSmartContractResponse3 | string | number | boolean>;
     response: string;
 };
 
 /** @internal */
-export namespace Params$ {
+export namespace ReadSmartContractResponse3$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<ReadSmartContractResponse3, z.ZodTypeDef, Inbound> =
+        z.object({});
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse3> =
+        z.object({});
+}
+
+/** @internal */
+export namespace ReadSmartContractResponseParams$ {
+    export type Inbound = ReadSmartContractResponse3$.Inbound | string | number | boolean;
+
+    export type Outbound = ReadSmartContractResponse3$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => ReadSmartContractResponse3$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ReadSmartContractResponseParams
+    > = z.union([
+        z.lazy(() => ReadSmartContractResponse3$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -31,7 +68,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Inbound>;
+        params: Array<ReadSmartContractResponse3$.Inbound | string | number | boolean>;
         response: string;
     };
 
@@ -40,7 +77,14 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.inboundSchema)),
+            params: z.array(
+                z.union([
+                    z.lazy(() => ReadSmartContractResponse3$.inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             response: z.string(),
         })
         .transform((v) => {
@@ -57,7 +101,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Outbound>;
+        params: Array<ReadSmartContractResponse3$.Outbound | string | number | boolean>;
         response: string;
     };
 
@@ -66,7 +110,14 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.outboundSchema)),
+            params: z.array(
+                z.union([
+                    z.lazy(() => ReadSmartContractResponse3$.outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             response: z.string(),
         })
         .transform((v) => {

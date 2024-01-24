@@ -28,7 +28,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.create({
+  const result = await sdk.network.create({
     blockchain: "string",
     chainId: 4865.89,
     confirmationBlocks: 4893.82,
@@ -48,11 +48,8 @@ async function run() {
     symbol: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -72,9 +69,10 @@ run();
 **Promise<[operations.CreateNetworkResponse](../../sdk/models/operations/createnetworkresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.CreateNetworkResponseBody | 400                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## delete
 
@@ -90,15 +88,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.delete({
+  const result = await sdk.network.delete({
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -118,9 +113,11 @@ run();
 **Promise<[operations.DeleteNetworkResponse](../../sdk/models/operations/deletenetworkresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.DeleteNetworkResponseBody        | 400                                     | application/json                        |
+| errors.DeleteNetworkNetworkResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
 
 ## getAll
 
@@ -136,13 +133,11 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.getAll({});
+  const result = await sdk.network.getAll({
+    origin: "string",
+  });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -164,9 +159,10 @@ run();
 **Promise<[operations.GetAllNetworkResponse](../../sdk/models/operations/getallnetworkresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.GetAllNetworkResponseBody | 400                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## getOne
 
@@ -182,15 +178,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.getOne({
+  const result = await sdk.network.getOne({
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -210,9 +203,11 @@ run();
 **Promise<[operations.GetOneNetworkResponse](../../sdk/models/operations/getonenetworkresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.GetOneNetworkResponseBody        | 400                                     | application/json                        |
+| errors.GetOneNetworkNetworkResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
 
 ## update
 
@@ -229,7 +224,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.network.update({
+  const result = await sdk.network.update({
     updateNetworkDto: {
       explorerApi: {
         apiKey: "string",
@@ -245,11 +240,8 @@ async function run() {
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -269,6 +261,8 @@ run();
 **Promise<[operations.UpdateNetworkResponse](../../sdk/models/operations/updatenetworkresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.UpdateNetworkResponseBody        | 400                                     | application/json                        |
+| errors.UpdateNetworkNetworkResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |

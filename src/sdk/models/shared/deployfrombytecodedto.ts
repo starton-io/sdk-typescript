@@ -6,6 +6,10 @@ import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto";
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
 import { z } from "zod";
 
+export type DeployFromBytecodeDto3 = {};
+
+export type DeployFromBytecodeDtoParams = DeployFromBytecodeDto3 | string | number | boolean;
+
 export enum DeployFromBytecodeDtoSpeed {
     Low = "low",
     Average = "average",
@@ -26,11 +30,48 @@ export type DeployFromBytecodeDto = {
     /**
      * Smart contract constructor parameters.
      */
-    params: Array<any>;
+    params: Array<DeployFromBytecodeDto3 | string | number | boolean>;
     signerWallet: string;
     speed?: DeployFromBytecodeDtoSpeed | undefined;
     value?: string | undefined;
 };
+
+/** @internal */
+export namespace DeployFromBytecodeDto3$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDto3, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromBytecodeDto3> =
+        z.object({});
+}
+
+/** @internal */
+export namespace DeployFromBytecodeDtoParams$ {
+    export type Inbound = DeployFromBytecodeDto3$.Inbound | string | number | boolean;
+
+    export type Outbound = DeployFromBytecodeDto3$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDtoParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => DeployFromBytecodeDto3$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromBytecodeDtoParams> =
+        z.union([
+            z.lazy(() => DeployFromBytecodeDto3$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
 
 /** @internal */
 export const DeployFromBytecodeDtoSpeed$ = z.nativeEnum(DeployFromBytecodeDtoSpeed);
@@ -46,7 +87,7 @@ export namespace DeployFromBytecodeDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<DeployFromBytecodeDto3$.Inbound | string | number | boolean>;
         signerWallet: string;
         speed?: DeployFromBytecodeDtoSpeed | undefined;
         value?: string | undefined;
@@ -62,7 +103,14 @@ export namespace DeployFromBytecodeDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => DeployFromBytecodeDto3$.inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromBytecodeDtoSpeed$.optional(),
             value: z.string().optional(),
@@ -93,7 +141,7 @@ export namespace DeployFromBytecodeDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<DeployFromBytecodeDto3$.Outbound | string | number | boolean>;
         signerWallet: string;
         speed?: DeployFromBytecodeDtoSpeed | undefined;
         value?: string | undefined;
@@ -109,7 +157,14 @@ export namespace DeployFromBytecodeDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => DeployFromBytecodeDto3$.outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromBytecodeDtoSpeed$.optional(),
             value: z.string().optional(),

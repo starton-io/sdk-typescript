@@ -48,7 +48,7 @@ Responses will be in the root `meta` and `items` key. For example:
 
 ```
 {
-	data: […],
+	items: […],
 	meta: {
 		itemCount: 10,
 		totalItems: 50,

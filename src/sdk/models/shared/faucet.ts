@@ -8,7 +8,7 @@ export type Faucet = {
     /**
      * Claim date.
      */
-    createdAt: Date;
+    createdAt?: Date | undefined;
     /**
      * Faucet claim id.
      */
@@ -38,7 +38,7 @@ export type Faucet = {
 /** @internal */
 export namespace Faucet$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         id: string;
         ip: string;
         network: string | null;
@@ -52,6 +52,7 @@ export namespace Faucet$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T16:52:30.532Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             ip: z.string(),
@@ -62,7 +63,7 @@ export namespace Faucet$ {
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 id: v.id,
                 ip: v.ip,
                 network: v.network,
@@ -84,7 +85,10 @@ export namespace Faucet$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Faucet> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T16:52:30.532Z"))
+                .transform((v) => v.toISOString()),
             id: z.string(),
             ip: z.string(),
             network: z.nullable(z.string()),

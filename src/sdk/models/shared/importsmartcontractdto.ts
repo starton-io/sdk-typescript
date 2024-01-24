@@ -5,6 +5,10 @@
 import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto";
 import { z } from "zod";
 
+export type ImportSmartContractDto3 = {};
+
+export type ImportSmartContractDtoParams = ImportSmartContractDto3 | string | number | boolean;
+
 export type ImportSmartContractDto = {
     abi: Array<AbiObjectDto>;
     address: string;
@@ -15,9 +19,45 @@ export type ImportSmartContractDto = {
     /**
      * Smart contract constructor parameters.
      */
-    params?: Array<any> | undefined;
+    params?: Array<ImportSmartContractDto3 | string | number | boolean> | undefined;
     templateId?: string | undefined;
 };
+
+/** @internal */
+export namespace ImportSmartContractDto3$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<ImportSmartContractDto3, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDto3> =
+        z.object({});
+}
+
+/** @internal */
+export namespace ImportSmartContractDtoParams$ {
+    export type Inbound = ImportSmartContractDto3$.Inbound | string | number | boolean;
+
+    export type Outbound = ImportSmartContractDto3$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<ImportSmartContractDtoParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => ImportSmartContractDto3$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoParams> =
+        z.union([
+            z.lazy(() => ImportSmartContractDto3$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
 
 /** @internal */
 export namespace ImportSmartContractDto$ {
@@ -28,7 +68,7 @@ export namespace ImportSmartContractDto$ {
         description?: string | undefined;
         name: string;
         network: string;
-        params?: Array<any> | undefined;
+        params?: Array<ImportSmartContractDto3$.Inbound | string | number | boolean> | undefined;
         templateId?: string | undefined;
     };
 
@@ -40,7 +80,16 @@ export namespace ImportSmartContractDto$ {
             description: z.string().optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.any()).optional(),
+            params: z
+                .array(
+                    z.union([
+                        z.lazy(() => ImportSmartContractDto3$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             templateId: z.string().optional(),
         })
         .transform((v) => {
@@ -63,7 +112,7 @@ export namespace ImportSmartContractDto$ {
         description?: string | undefined;
         name: string;
         network: string;
-        params?: Array<any> | undefined;
+        params?: Array<ImportSmartContractDto3$.Outbound | string | number | boolean> | undefined;
         templateId?: string | undefined;
     };
 
@@ -75,7 +124,16 @@ export namespace ImportSmartContractDto$ {
             description: z.string().optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.any()).optional(),
+            params: z
+                .array(
+                    z.union([
+                        z.lazy(() => ImportSmartContractDto3$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             templateId: z.string().optional(),
         })
         .transform((v) => {

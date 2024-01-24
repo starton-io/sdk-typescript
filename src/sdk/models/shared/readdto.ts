@@ -4,25 +4,68 @@
 
 import { z } from "zod";
 
+export type ReadDto3 = {};
+
+export type ReadDtoParams = ReadDto3 | string | number | boolean;
+
 export type ReadDto = {
     functionName: string;
     /**
      * Smart contract parameters.
      */
-    params: Array<any>;
+    params: Array<ReadDto3 | string | number | boolean>;
 };
+
+/** @internal */
+export namespace ReadDto3$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<ReadDto3, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto3> = z.object({});
+}
+
+/** @internal */
+export namespace ReadDtoParams$ {
+    export type Inbound = ReadDto3$.Inbound | string | number | boolean;
+
+    export type Outbound = ReadDto3$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<ReadDtoParams, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => ReadDto3$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDtoParams> = z.union([
+        z.lazy(() => ReadDto3$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
 
 /** @internal */
 export namespace ReadDto$ {
     export type Inbound = {
         functionName: string;
-        params: Array<any>;
+        params: Array<ReadDto3$.Inbound | string | number | boolean>;
     };
 
     export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, Inbound> = z
         .object({
             functionName: z.string(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => ReadDto3$.inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
         })
         .transform((v) => {
             return {
@@ -33,13 +76,20 @@ export namespace ReadDto$ {
 
     export type Outbound = {
         functionName: string;
-        params: Array<any>;
+        params: Array<ReadDto3$.Outbound | string | number | boolean>;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto> = z
         .object({
             functionName: z.string(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => ReadDto3$.outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
         })
         .transform((v) => {
             return {

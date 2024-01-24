@@ -11,6 +11,7 @@ export type GetAllNetworkRequest = {
      * Number of entities returned on each page. By default this number is set to 100.
      */
     limit?: number | undefined;
+    origin: string;
     /**
      * Number of returned page. By default the returned page is the first.
      */
@@ -44,6 +45,7 @@ export namespace GetAllNetworkRequest$ {
     export type Inbound = {
         id?: string | undefined;
         limit?: number | undefined;
+        origin: string;
         page?: number | undefined;
         testnet?: boolean | undefined;
     };
@@ -52,6 +54,7 @@ export namespace GetAllNetworkRequest$ {
         .object({
             id: z.string().optional(),
             limit: z.number().int().optional(),
+            origin: z.string(),
             page: z.number().int().optional(),
             testnet: z.boolean().optional(),
         })
@@ -59,6 +62,7 @@ export namespace GetAllNetworkRequest$ {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.limit === undefined ? null : { limit: v.limit }),
+                origin: v.origin,
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.testnet === undefined ? null : { testnet: v.testnet }),
             };
@@ -67,6 +71,7 @@ export namespace GetAllNetworkRequest$ {
     export type Outbound = {
         id?: string | undefined;
         limit?: number | undefined;
+        origin: string;
         page?: number | undefined;
         testnet?: boolean | undefined;
     };
@@ -75,6 +80,7 @@ export namespace GetAllNetworkRequest$ {
         .object({
             id: z.string().optional(),
             limit: z.number().int().optional(),
+            origin: z.string(),
             page: z.number().int().optional(),
             testnet: z.boolean().optional(),
         })
@@ -82,6 +88,7 @@ export namespace GetAllNetworkRequest$ {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.limit === undefined ? null : { limit: v.limit }),
+                origin: v.origin,
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.testnet === undefined ? null : { testnet: v.testnet }),
             };

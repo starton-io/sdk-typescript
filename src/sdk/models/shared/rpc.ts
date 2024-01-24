@@ -5,20 +5,20 @@
 import { z } from "zod";
 
 export type Rpc = {
-    createdAt: Date;
+    createdAt?: Date | undefined;
     id: string;
     networkName: string;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
     url: string;
 };
 
 /** @internal */
 export namespace Rpc$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         id: string;
         networkName: string;
-        updatedAt: string;
+        updatedAt?: string | undefined;
         url: string;
     };
 
@@ -27,21 +27,23 @@ export namespace Rpc$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T16:52:29.318Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             networkName: z.string(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T16:52:29.318Z")
                 .transform((v) => new Date(v)),
             url: z.string(),
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 id: v.id,
                 networkName: v.networkName,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
                 url: v.url,
             };
         });
@@ -56,10 +58,16 @@ export namespace Rpc$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Rpc> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T16:52:29.318Z"))
+                .transform((v) => v.toISOString()),
             id: z.string(),
             networkName: z.string(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2024-01-24T16:52:29.318Z"))
+                .transform((v) => v.toISOString()),
             url: z.string(),
         })
         .transform((v) => {

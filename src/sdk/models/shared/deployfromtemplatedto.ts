@@ -5,6 +5,10 @@
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
 import { z } from "zod";
 
+export type DeployFromTemplateDto3 = {};
+
+export type DeployFromTemplateDtoParams = DeployFromTemplateDto3 | string | number | boolean;
+
 /**
  * Gas Speed, by default on average, could be set at custom.
  */
@@ -44,7 +48,7 @@ export type DeployFromTemplateDto = {
     /**
      * Smart contract constructor parameters.
      */
-    params: Array<any>;
+    params: Array<DeployFromTemplateDto3 | string | number | boolean>;
     /**
      * Signer wallet of the transaction.
      */
@@ -64,6 +68,43 @@ export type DeployFromTemplateDto = {
 };
 
 /** @internal */
+export namespace DeployFromTemplateDto3$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<DeployFromTemplateDto3, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDto3> =
+        z.object({});
+}
+
+/** @internal */
+export namespace DeployFromTemplateDtoParams$ {
+    export type Inbound = DeployFromTemplateDto3$.Inbound | string | number | boolean;
+
+    export type Outbound = DeployFromTemplateDto3$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<DeployFromTemplateDtoParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => DeployFromTemplateDto3$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoParams> =
+        z.union([
+            z.lazy(() => DeployFromTemplateDto3$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
 export const DeployFromTemplateDtoSpeed$ = z.nativeEnum(DeployFromTemplateDtoSpeed);
 
 /** @internal */
@@ -75,7 +116,7 @@ export namespace DeployFromTemplateDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<DeployFromTemplateDto3$.Inbound | string | number | boolean>;
         signerWallet: string;
         speed?: DeployFromTemplateDtoSpeed | undefined;
         templateId: string;
@@ -90,7 +131,14 @@ export namespace DeployFromTemplateDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => DeployFromTemplateDto3$.inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromTemplateDtoSpeed$.optional(),
             templateId: z.string(),
@@ -119,7 +167,7 @@ export namespace DeployFromTemplateDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<DeployFromTemplateDto3$.Outbound | string | number | boolean>;
         signerWallet: string;
         speed?: DeployFromTemplateDtoSpeed | undefined;
         templateId: string;
@@ -134,7 +182,14 @@ export namespace DeployFromTemplateDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.lazy(() => DeployFromTemplateDto3$.outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromTemplateDtoSpeed$.optional(),
             templateId: z.string(),
