@@ -31,15 +31,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.delete({
+  const result = await sdk.ipfs.delete({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -59,9 +56,11 @@ run();
 **Promise<[operations.DeletePinResponse](../../sdk/models/operations/deletepinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.DeletePinResponseBody     | 400                              | application/json                 |
+| errors.DeletePinIpfsResponseBody | 404                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## getAll
 
@@ -78,13 +77,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.getAll({});
+  const result = await sdk.ipfs.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -106,9 +101,10 @@ run();
 **Promise<[operations.GetAllPinResponse](../../sdk/models/operations/getallpinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.GetAllPinResponseBody | 400                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 ## getOne
 
@@ -124,15 +120,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.getOne({
+  const result = await sdk.ipfs.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -152,9 +145,11 @@ run();
 **Promise<[operations.GetOnePinResponse](../../sdk/models/operations/getonepinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.GetOnePinResponseBody     | 400                              | application/json                 |
+| errors.GetOnePinIpfsResponseBody | 404                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## getStorageUsed
 
@@ -170,13 +165,10 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.getStorageUsed();
+  const result = await sdk.ipfs.getStorageUsed();
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -195,9 +187,10 @@ run();
 **Promise<[operations.GetStorageUsedPinResponse](../../sdk/models/operations/getstorageusedpinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                         | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.GetStorageUsedPinResponseBody | 400                                  | application/json                     |
+| errors.SDKError                      | 4xx-5xx                              | */*                                  |
 
 ## pinExistingFile
 
@@ -213,16 +206,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.pinExistingFile({
+  const result = await sdk.ipfs.pinExistingFile({
     cid: "string",
     metadata: {},
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -242,9 +232,11 @@ run();
 **Promise<[operations.CreatePinResponse](../../sdk/models/operations/createpinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.CreatePinResponseBody     | 400                              | application/json                 |
+| errors.CreatePinIpfsResponseBody | 413                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## update
 
@@ -260,18 +252,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.update({
+  const result = await sdk.ipfs.update({
     updatePinDto: {
       metadata: {},
     },
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -291,9 +280,11 @@ run();
 **Promise<[operations.UpdatePinResponse](../../sdk/models/operations/updatepinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.UpdatePinResponseBody     | 400                              | application/json                 |
+| errors.UpdatePinIpfsResponseBody | 404                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## uploadFile
 
@@ -310,16 +301,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.uploadFile({
+  const result = await sdk.ipfs.uploadFile({
     file: await openAsBlob("./sample-file"),
     metadata: {},
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -339,9 +327,11 @@ run();
 **Promise<[operations.UploadFromFilePinResponse](../../sdk/models/operations/uploadfromfilepinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| errors.UploadFromFilePinResponseBody     | 400                                      | application/json                         |
+| errors.UploadFromFilePinIpfsResponseBody | 413                                      | application/json                         |
+| errors.SDKError                          | 4xx-5xx                                  | */*                                      |
 
 ## uploadFolder
 
@@ -357,7 +347,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.uploadFolder({
+  const result = await sdk.ipfs.uploadFolder({
     files: [
       {
         content: new TextEncoder().encode("0x08C8AeC4Bb"),
@@ -367,11 +357,8 @@ async function run() {
     metadata: {},
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -391,9 +378,11 @@ run();
 **Promise<[operations.UploadFromFolderPinResponse](../../sdk/models/operations/uploadfromfolderpinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.UploadFromFolderPinResponseBody     | 400                                        | application/json                           |
+| errors.UploadFromFolderPinIpfsResponseBody | 413                                        | application/json                           |
+| errors.SDKError                            | 4xx-5xx                                    | */*                                        |
 
 ## uploadJson
 
@@ -409,17 +398,14 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.ipfs.uploadJson({
+  const result = await sdk.ipfs.uploadJson({
     content: {},
     metadata: {},
     name: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -439,6 +425,8 @@ run();
 **Promise<[operations.UploadFromJsonPinResponse](../../sdk/models/operations/uploadfromjsonpinresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| errors.UploadFromJsonPinResponseBody     | 400                                      | application/json                         |
+| errors.UploadFromJsonPinIpfsResponseBody | 413                                      | application/json                         |
+| errors.SDKError                          | 4xx-5xx                                  | */*                                      |

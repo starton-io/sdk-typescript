@@ -5,6 +5,11 @@
 import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto";
 import { z } from "zod";
 
+export type ImportSmartContractDtoParams =
+    | string
+    | number
+    | Array<string | number | Array<models.Params>>;
+
 export type ImportSmartContractDto = {
     abi: Array<AbiObjectDto>;
     address: string;
@@ -15,9 +20,33 @@ export type ImportSmartContractDto = {
     /**
      * Smart contract constructor parameters.
      */
-    params?: Array<any> | undefined;
+    params?: Array<string | number | Array<string | number | Array<models.Params>>> | undefined;
     templateId?: string | undefined;
 };
+
+/** @internal */
+export namespace ImportSmartContractDtoParams$ {
+    export type Inbound = string | number | Array<string | number | Array<models.Params$.Inbound>>;
+
+    export type Outbound =
+        | string
+        | number
+        | Array<string | number | Array<models.Params$.Outbound>>;
+
+    export const inboundSchema: z.ZodType<ImportSmartContractDtoParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.string(),
+            z.number(),
+            z.array(z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoParams> =
+        z.union([
+            z.string(),
+            z.number(),
+            z.array(z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])),
+        ]);
+}
 
 /** @internal */
 export namespace ImportSmartContractDto$ {
@@ -28,7 +57,9 @@ export namespace ImportSmartContractDto$ {
         description?: string | undefined;
         name: string;
         network: string;
-        params?: Array<any> | undefined;
+        params?:
+            | Array<string | number | Array<string | number | Array<models.Params$.Inbound>>>
+            | undefined;
         templateId?: string | undefined;
     };
 
@@ -40,7 +71,17 @@ export namespace ImportSmartContractDto$ {
             description: z.string().optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.any()).optional(),
+            params: z
+                .array(
+                    z.union([
+                        z.string(),
+                        z.number(),
+                        z.array(
+                            z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])
+                        ),
+                    ])
+                )
+                .optional(),
             templateId: z.string().optional(),
         })
         .transform((v) => {
@@ -63,7 +104,9 @@ export namespace ImportSmartContractDto$ {
         description?: string | undefined;
         name: string;
         network: string;
-        params?: Array<any> | undefined;
+        params?:
+            | Array<string | number | Array<string | number | Array<models.Params$.Outbound>>>
+            | undefined;
         templateId?: string | undefined;
     };
 
@@ -75,7 +118,21 @@ export namespace ImportSmartContractDto$ {
             description: z.string().optional(),
             name: z.string(),
             network: z.string(),
-            params: z.array(z.any()).optional(),
+            params: z
+                .array(
+                    z.union([
+                        z.string(),
+                        z.number(),
+                        z.array(
+                            z.union([
+                                z.string(),
+                                z.number(),
+                                z.array(models.Params$.outboundSchema),
+                            ])
+                        ),
+                    ])
+                )
+                .optional(),
             templateId: z.string().optional(),
         })
         .transform((v) => {
