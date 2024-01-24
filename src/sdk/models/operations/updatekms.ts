@@ -6,7 +6,7 @@ import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
 export type UpdateKmsRequest = {
-    requestBody: string;
+    updateKmsDto: shared.UpdateKmsDto;
     /**
      * The unique identifier of the KMS entry to update.
      */
@@ -32,35 +32,35 @@ export type UpdateKmsResponse = {
 /** @internal */
 export namespace UpdateKmsRequest$ {
     export type Inbound = {
-        RequestBody: string;
+        UpdateKmsDto: shared.UpdateKmsDto$.Inbound;
         id: string;
     };
 
     export const inboundSchema: z.ZodType<UpdateKmsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            RequestBody: z.string(),
+            UpdateKmsDto: shared.UpdateKmsDto$.inboundSchema,
             id: z.string(),
         })
         .transform((v) => {
             return {
-                requestBody: v.RequestBody,
+                updateKmsDto: v.UpdateKmsDto,
                 id: v.id,
             };
         });
 
     export type Outbound = {
-        RequestBody: string;
+        UpdateKmsDto: shared.UpdateKmsDto$.Outbound;
         id: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateKmsRequest> = z
         .object({
-            requestBody: z.string(),
+            updateKmsDto: shared.UpdateKmsDto$.outboundSchema,
             id: z.string(),
         })
         .transform((v) => {
             return {
-                RequestBody: v.requestBody,
+                UpdateKmsDto: v.updateKmsDto,
                 id: v.id,
             };
         });

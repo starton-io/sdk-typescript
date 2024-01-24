@@ -5,6 +5,8 @@
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
 import { z } from "zod";
 
+export type CallDtoParams = string | number | Array<string | number | Array<models.Params>>;
+
 export enum Speed {
     Low = "low",
     Average = "average",
@@ -21,11 +23,33 @@ export type CallDto = {
     /**
      * Smart contract parameters.
      */
-    params: Array<any>;
+    params: Array<string | number | Array<string | number | Array<models.Params>>>;
     signerWallet: string;
     speed?: Speed | undefined;
     value?: string | undefined;
 };
+
+/** @internal */
+export namespace CallDtoParams$ {
+    export type Inbound = string | number | Array<string | number | Array<models.Params$.Inbound>>;
+
+    export type Outbound =
+        | string
+        | number
+        | Array<string | number | Array<models.Params$.Outbound>>;
+
+    export const inboundSchema: z.ZodType<CallDtoParams, z.ZodTypeDef, Inbound> = z.union([
+        z.string(),
+        z.number(),
+        z.array(z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CallDtoParams> = z.union([
+        z.string(),
+        z.number(),
+        z.array(z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])),
+    ]);
+}
 
 /** @internal */
 export const Speed$ = z.nativeEnum(Speed);
@@ -37,7 +61,7 @@ export namespace CallDto$ {
         functionName: string;
         gasLimit?: string | undefined;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Inbound>>>;
         signerWallet: string;
         speed?: Speed | undefined;
         value?: string | undefined;
@@ -49,7 +73,15 @@ export namespace CallDto$ {
             functionName: z.string(),
             gasLimit: z.string().optional(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])
+                    ),
+                ])
+            ),
             signerWallet: z.string(),
             speed: Speed$.optional(),
             value: z.string().optional(),
@@ -72,7 +104,7 @@ export namespace CallDto$ {
         functionName: string;
         gasLimit?: string | undefined;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Outbound>>>;
         signerWallet: string;
         speed?: Speed | undefined;
         value?: string | undefined;
@@ -84,7 +116,15 @@ export namespace CallDto$ {
             functionName: z.string(),
             gasLimit: z.string().optional(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])
+                    ),
+                ])
+            ),
             signerWallet: z.string(),
             speed: Speed$.optional(),
             value: z.string().optional(),

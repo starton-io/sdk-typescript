@@ -31,16 +31,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.create({
+  const result = await sdk.wallet.create({
     kmsId: "string",
     metadata: {},
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -60,9 +57,10 @@ run();
 **Promise<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.CreateWalletResponseBody | 400                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## delete
 
@@ -78,15 +76,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.delete({
+  const result = await sdk.wallet.delete({
     address: "8653 Vaughn Hills",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -106,9 +101,11 @@ run();
 **Promise<[operations.DeleteWalletResponse](../../sdk/models/operations/deletewalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.DeleteWalletResponseBody       | 400                                   | application/json                      |
+| errors.DeleteWalletWalletResponseBody | 404                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 ## getAll
 
@@ -124,13 +121,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.getAll({});
+  const result = await sdk.wallet.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -152,9 +145,10 @@ run();
 **Promise<[operations.GetAllWalletResponse](../../sdk/models/operations/getallwalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.GetAllWalletResponseBody | 400                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## getOne
 
@@ -170,15 +164,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.getOne({
+  const result = await sdk.wallet.getOne({
     address: "43504 Penelope Expressway",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -198,9 +189,11 @@ run();
 **Promise<[operations.GetOneWalletResponse](../../sdk/models/operations/getonewalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.GetOneWalletResponseBody       | 400                                   | application/json                      |
+| errors.GetOneWalletWalletResponseBody | 404                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 ## import
 
@@ -217,16 +210,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.import({
+  const result = await sdk.wallet.import({
     metadata: {},
     provider: ImportProviderKeyDtoProvider.Aws,
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -246,9 +236,10 @@ run();
 **Promise<[operations.ImportProviderKeyWalletResponse](../../sdk/models/operations/importproviderkeywalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.ImportProviderKeyWalletResponseBody | 400                                        | application/json                           |
+| errors.SDKError                            | 4xx-5xx                                    | */*                                        |
 
 ## requestFaucet
 
@@ -264,7 +255,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.requestFaucet({
+  const result = await sdk.wallet.requestFaucet({
     requireFaucetDto: {
       captchaToken: "testCaptchaToken",
       wallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
@@ -272,11 +263,8 @@ async function run() {
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -296,9 +284,11 @@ run();
 **Promise<[operations.ClaimFaucetResponse](../../sdk/models/operations/claimfaucetresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                         | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.ClaimFaucetResponseBody       | 400                                  | application/json                     |
+| errors.ClaimFaucetWalletResponseBody | 500                                  | application/json                     |
+| errors.SDKError                      | 4xx-5xx                              | */*                                  |
 
 ## resyncNonce
 
@@ -314,16 +304,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.resyncNonce({
+  const result = await sdk.wallet.resyncNonce({
     address: "4925 Shanahan Parkways",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -343,9 +330,13 @@ run();
 **Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.ResyncNoncesWalletResponseBody                                 | 400                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletResponseBody                           | 404                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletTransactionManagerResponseBody         | 422                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody | 500                                                                   | application/json                                                      |
+| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
 
 ## sign
 
@@ -361,18 +352,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.sign({
+  const result = await sdk.wallet.sign({
     signMessageDto: {
       message: "string",
     },
     address: "924 Makenzie Curve",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -392,9 +380,11 @@ run();
 **Promise<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.SignMessageWalletResponseBody       | 400                                        | application/json                           |
+| errors.SignMessageWalletWalletResponseBody | 404                                        | application/json                           |
+| errors.SDKError                            | 4xx-5xx                                    | */*                                        |
 
 ## update
 
@@ -410,18 +400,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.wallet.update({
+  const result = await sdk.wallet.update({
     updateWalletDto: {
       metadata: {},
     },
     address: "050 Mellie Well",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -441,6 +428,8 @@ run();
 **Promise<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.UpdateWalletResponseBody       | 400                                   | application/json                      |
+| errors.UpdateWalletWalletResponseBody | 404                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |

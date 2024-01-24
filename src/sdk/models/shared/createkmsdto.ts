@@ -3,7 +3,10 @@
  */
 
 import { AwsKmsCredentialsDto, AwsKmsCredentialsDto$ } from "./awskmscredentialsdto";
+import { VaultKmsCredentialsDto, VaultKmsCredentialsDto$ } from "./vaultkmscredentialsdto";
 import { z } from "zod";
+
+export type Credentials = AwsKmsCredentialsDto | VaultKmsCredentialsDto;
 
 export type Metadata = {};
 
@@ -13,12 +16,29 @@ export enum Provider {
 }
 
 export type CreateKmsDto = {
-    credentials?: AwsKmsCredentialsDto | undefined;
+    credentials?: AwsKmsCredentialsDto | VaultKmsCredentialsDto | undefined;
     metadata?: Metadata | undefined;
     name: string;
     provider: Provider;
     secret: string;
 };
+
+/** @internal */
+export namespace Credentials$ {
+    export type Inbound = AwsKmsCredentialsDto$.Inbound | VaultKmsCredentialsDto$.Inbound;
+
+    export type Outbound = AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound;
+
+    export const inboundSchema: z.ZodType<Credentials, z.ZodTypeDef, Inbound> = z.union([
+        AwsKmsCredentialsDto$.inboundSchema,
+        VaultKmsCredentialsDto$.inboundSchema,
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Credentials> = z.union([
+        AwsKmsCredentialsDto$.outboundSchema,
+        VaultKmsCredentialsDto$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace Metadata$ {
@@ -37,7 +57,7 @@ export const Provider$ = z.nativeEnum(Provider);
 /** @internal */
 export namespace CreateKmsDto$ {
     export type Inbound = {
-        credentials?: AwsKmsCredentialsDto$.Inbound | undefined;
+        credentials?: AwsKmsCredentialsDto$.Inbound | VaultKmsCredentialsDto$.Inbound | undefined;
         metadata?: Metadata$.Inbound | undefined;
         name: string;
         provider: Provider;
@@ -46,7 +66,9 @@ export namespace CreateKmsDto$ {
 
     export const inboundSchema: z.ZodType<CreateKmsDto, z.ZodTypeDef, Inbound> = z
         .object({
-            credentials: AwsKmsCredentialsDto$.inboundSchema.optional(),
+            credentials: z
+                .union([AwsKmsCredentialsDto$.inboundSchema, VaultKmsCredentialsDto$.inboundSchema])
+                .optional(),
             metadata: z.lazy(() => Metadata$.inboundSchema).optional(),
             name: z.string(),
             provider: Provider$,
@@ -63,7 +85,7 @@ export namespace CreateKmsDto$ {
         });
 
     export type Outbound = {
-        credentials?: AwsKmsCredentialsDto$.Outbound | undefined;
+        credentials?: AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound | undefined;
         metadata?: Metadata$.Outbound | undefined;
         name: string;
         provider: Provider;
@@ -72,7 +94,12 @@ export namespace CreateKmsDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateKmsDto> = z
         .object({
-            credentials: AwsKmsCredentialsDto$.outboundSchema.optional(),
+            credentials: z
+                .union([
+                    AwsKmsCredentialsDto$.outboundSchema,
+                    VaultKmsCredentialsDto$.outboundSchema,
+                ])
+                .optional(),
             metadata: z.lazy(() => Metadata$.outboundSchema).optional(),
             name: z.string(),
             provider: Provider$,

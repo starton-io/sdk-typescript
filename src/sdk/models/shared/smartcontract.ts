@@ -60,7 +60,7 @@ export type SmartContract = {
     address: string;
     blockNumber?: number | null | undefined;
     compilationDetails?: CompilationDetails | null | undefined;
-    createdAt: Date;
+    createdAt?: Date | undefined;
     creationHash?: string | null | undefined;
     description?: string | null | undefined;
     id: string;
@@ -72,7 +72,7 @@ export type SmartContract = {
     state: State;
     status: SmartContractStatus;
     templateId?: string | null | undefined;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
 };
 
 /** @internal */
@@ -112,7 +112,7 @@ export namespace SmartContract$ {
         address: string;
         blockNumber?: number | null | undefined;
         compilationDetails?: CompilationDetails$.Inbound | null | undefined;
-        createdAt: string;
+        createdAt?: string | undefined;
         creationHash?: string | null | undefined;
         description?: string | null | undefined;
         id: string;
@@ -124,7 +124,7 @@ export namespace SmartContract$ {
         state: State;
         status: SmartContractStatus;
         templateId?: string | null | undefined;
-        updatedAt: string;
+        updatedAt?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, Inbound> = z
@@ -138,6 +138,7 @@ export namespace SmartContract$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:51.525Z")
                 .transform((v) => new Date(v)),
             creationHash: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
@@ -160,6 +161,7 @@ export namespace SmartContract$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:51.525Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -170,7 +172,7 @@ export namespace SmartContract$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
@@ -182,7 +184,7 @@ export namespace SmartContract$ {
                 state: v.state,
                 status: v.status,
                 ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
             };
         });
 
@@ -214,7 +216,10 @@ export namespace SmartContract$ {
             compilationDetails: z
                 .nullable(z.lazy(() => CompilationDetails$.outboundSchema))
                 .optional(),
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:51.525Z"))
+                .transform((v) => v.toISOString()),
             creationHash: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -226,7 +231,10 @@ export namespace SmartContract$ {
             state: State$,
             status: SmartContractStatus$,
             templateId: z.nullable(z.string()).optional(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:51.525Z"))
+                .transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {

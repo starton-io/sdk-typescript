@@ -28,23 +28,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.kms.create({
-    credentials: {
-      accessKeyId: "string",
-      accountId: "string",
-      region: "string",
-    },
+  const result = await sdk.kms.create({
     metadata: {},
     name: "string",
     provider: Provider.Aws,
     secret: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -64,9 +56,10 @@ run();
 **Promise<[operations.CreateKmsResponse](../../sdk/models/operations/createkmsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.CreateKmsResponseBody | 400                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 ## delete
 
@@ -82,15 +75,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.kms.delete({
+  const result = await sdk.kms.delete({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -110,9 +100,11 @@ run();
 **Promise<[operations.DeleteKmsResponse](../../sdk/models/operations/deletekmsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.DeleteKmsResponseBody    | 400                             | application/json                |
+| errors.DeleteKmsKmsResponseBody | 404                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## getAll
 
@@ -128,13 +120,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.kms.getAll({});
+  const result = await sdk.kms.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -156,9 +144,10 @@ run();
 **Promise<[operations.GetAllKmsResponse](../../sdk/models/operations/getallkmsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.GetAllKmsResponseBody | 400                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 ## getOne
 
@@ -174,15 +163,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.kms.getOne({
+  const result = await sdk.kms.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -202,9 +188,11 @@ run();
 **Promise<[operations.GetOneKmsResponse](../../sdk/models/operations/getonekmsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.GetOneKmsResponseBody    | 400                             | application/json                |
+| errors.GetOneKmsKmsResponseBody | 404                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## update
 
@@ -220,16 +208,15 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.kms.update({
-    requestBody: "string",
+  const result = await sdk.kms.update({
+    updateKmsDto: {
+      metadata: {},
+    },
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -249,6 +236,8 @@ run();
 **Promise<[operations.UpdateKmsResponse](../../sdk/models/operations/updatekmsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.UpdateKmsResponseBody    | 400                             | application/json                |
+| errors.UpdateKmsKmsResponseBody | 404                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

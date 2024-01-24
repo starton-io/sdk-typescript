@@ -15,14 +15,14 @@ export enum WatcherEventStatus {
 export type WatcherEvent = {
     blockHash: string;
     blockNumber: number;
-    createdAt: Date;
+    createdAt?: Date | undefined;
     id: string;
     network: string;
     payload: Payload;
     projectId: string;
     status: WatcherEventStatus;
     txHash: string;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
     watcherId: string;
 };
 
@@ -45,14 +45,14 @@ export namespace WatcherEvent$ {
     export type Inbound = {
         blockHash: string;
         blockNumber: number;
-        createdAt: string;
+        createdAt?: string | undefined;
         id: string;
         network: string;
         payload: Payload$.Inbound;
         projectId: string;
         status: WatcherEventStatus;
         txHash: string;
-        updatedAt: string;
+        updatedAt?: string | undefined;
         watcherId: string;
     };
 
@@ -63,6 +63,7 @@ export namespace WatcherEvent$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:43.928Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
@@ -73,6 +74,7 @@ export namespace WatcherEvent$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:43.928Z")
                 .transform((v) => new Date(v)),
             watcherId: z.string(),
         })
@@ -80,14 +82,14 @@ export namespace WatcherEvent$ {
             return {
                 blockHash: v.blockHash,
                 blockNumber: v.blockNumber,
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 id: v.id,
                 network: v.network,
                 payload: v.payload,
                 projectId: v.projectId,
                 status: v.status,
                 txHash: v.txHash,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
                 watcherId: v.watcherId,
             };
         });
@@ -110,14 +112,20 @@ export namespace WatcherEvent$ {
         .object({
             blockHash: z.string(),
             blockNumber: z.number(),
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:43.928Z"))
+                .transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
             payload: z.lazy(() => Payload$.outboundSchema),
             projectId: z.string(),
             status: WatcherEventStatus$,
             txHash: z.string(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:43.928Z"))
+                .transform((v) => v.toISOString()),
             watcherId: z.string(),
         })
         .transform((v) => {

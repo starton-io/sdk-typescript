@@ -4,25 +4,47 @@
 
 import { z } from "zod";
 
-export type Params = {};
+export type ReadSmartContractResponseParams =
+    | string
+    | number
+    | Array<string | number | Array<models.Params>>;
 
 export type ReadSmartContractResponse = {
     address: string;
     functionName: string;
     network: string;
-    params: Array<Params>;
+    /**
+     * Smart contract parameters.
+     */
+    params: Array<string | number | Array<string | number | Array<models.Params>>>;
     response: string;
 };
 
 /** @internal */
-export namespace Params$ {
-    export type Inbound = {};
+export namespace ReadSmartContractResponseParams$ {
+    export type Inbound = string | number | Array<string | number | Array<models.Params$.Inbound>>;
 
-    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.object({});
+    export type Outbound =
+        | string
+        | number
+        | Array<string | number | Array<models.Params$.Outbound>>;
 
-    export type Outbound = {};
+    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.string(),
+            z.number(),
+            z.array(z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])),
+        ]);
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.object({});
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ReadSmartContractResponseParams
+    > = z.union([
+        z.string(),
+        z.number(),
+        z.array(z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])),
+    ]);
 }
 
 /** @internal */
@@ -31,7 +53,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Inbound>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Inbound>>>;
         response: string;
     };
 
@@ -40,7 +62,15 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.inboundSchema)),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])
+                    ),
+                ])
+            ),
             response: z.string(),
         })
         .transform((v) => {
@@ -57,7 +87,7 @@ export namespace ReadSmartContractResponse$ {
         address: string;
         functionName: string;
         network: string;
-        params: Array<Params$.Outbound>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Outbound>>>;
         response: string;
     };
 
@@ -66,7 +96,15 @@ export namespace ReadSmartContractResponse$ {
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
-            params: z.array(z.lazy(() => Params$.outboundSchema)),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])
+                    ),
+                ])
+            ),
             response: z.string(),
         })
         .transform((v) => {

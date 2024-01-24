@@ -16,14 +16,14 @@ export enum WebhookStatus {
 }
 
 export type Webhook = {
-    createdAt: Date;
+    createdAt?: Date | undefined;
     headers: Headers | null;
     id: string;
     payload: WebhookPayload | null;
     projectId: string;
     refId: string;
     status: WebhookStatus;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
     url: string;
 };
 
@@ -55,14 +55,14 @@ export const WebhookStatus$ = z.nativeEnum(WebhookStatus);
 /** @internal */
 export namespace Webhook$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         headers: Headers$.Inbound | null;
         id: string;
         payload: WebhookPayload$.Inbound | null;
         projectId: string;
         refId: string;
         status: WebhookStatus;
-        updatedAt: string;
+        updatedAt?: string | undefined;
         url: string;
     };
 
@@ -71,6 +71,7 @@ export namespace Webhook$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:45.360Z")
                 .transform((v) => new Date(v)),
             headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
             id: z.string(),
@@ -81,19 +82,20 @@ export namespace Webhook$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2024-01-24T15:42:45.360Z")
                 .transform((v) => new Date(v)),
             url: z.string(),
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 headers: v.headers,
                 id: v.id,
                 payload: v.payload,
                 projectId: v.projectId,
                 refId: v.refId,
                 status: v.status,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
                 url: v.url,
             };
         });
@@ -112,14 +114,20 @@ export namespace Webhook$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Webhook> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:45.360Z"))
+                .transform((v) => v.toISOString()),
             headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
             id: z.string(),
             payload: z.nullable(z.lazy(() => WebhookPayload$.outboundSchema)),
             projectId: z.string(),
             refId: z.string(),
             status: WebhookStatus$,
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2024-01-24T15:42:45.360Z"))
+                .transform((v) => v.toISOString()),
             url: z.string(),
         })
         .transform((v) => {

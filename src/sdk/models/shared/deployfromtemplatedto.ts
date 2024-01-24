@@ -5,6 +5,11 @@
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
 import { z } from "zod";
 
+export type DeployFromTemplateDtoParams =
+    | string
+    | number
+    | Array<string | number | Array<models.Params>>;
+
 /**
  * Gas Speed, by default on average, could be set at custom.
  */
@@ -44,7 +49,7 @@ export type DeployFromTemplateDto = {
     /**
      * Smart contract constructor parameters.
      */
-    params: Array<any>;
+    params: Array<string | number | Array<string | number | Array<models.Params>>>;
     /**
      * Signer wallet of the transaction.
      */
@@ -64,6 +69,30 @@ export type DeployFromTemplateDto = {
 };
 
 /** @internal */
+export namespace DeployFromTemplateDtoParams$ {
+    export type Inbound = string | number | Array<string | number | Array<models.Params$.Inbound>>;
+
+    export type Outbound =
+        | string
+        | number
+        | Array<string | number | Array<models.Params$.Outbound>>;
+
+    export const inboundSchema: z.ZodType<DeployFromTemplateDtoParams, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.string(),
+            z.number(),
+            z.array(z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoParams> =
+        z.union([
+            z.string(),
+            z.number(),
+            z.array(z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])),
+        ]);
+}
+
+/** @internal */
 export const DeployFromTemplateDtoSpeed$ = z.nativeEnum(DeployFromTemplateDtoSpeed);
 
 /** @internal */
@@ -75,7 +104,7 @@ export namespace DeployFromTemplateDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Inbound>>>;
         signerWallet: string;
         speed?: DeployFromTemplateDtoSpeed | undefined;
         templateId: string;
@@ -90,7 +119,15 @@ export namespace DeployFromTemplateDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.inboundSchema)])
+                    ),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromTemplateDtoSpeed$.optional(),
             templateId: z.string(),
@@ -119,7 +156,7 @@ export namespace DeployFromTemplateDto$ {
         name: string;
         network: string;
         nonce?: number | undefined;
-        params: Array<any>;
+        params: Array<string | number | Array<string | number | Array<models.Params$.Outbound>>>;
         signerWallet: string;
         speed?: DeployFromTemplateDtoSpeed | undefined;
         templateId: string;
@@ -134,7 +171,15 @@ export namespace DeployFromTemplateDto$ {
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
-            params: z.array(z.any()),
+            params: z.array(
+                z.union([
+                    z.string(),
+                    z.number(),
+                    z.array(
+                        z.union([z.string(), z.number(), z.array(models.Params$.outboundSchema)])
+                    ),
+                ])
+            ),
             signerWallet: z.string(),
             speed: DeployFromTemplateDtoSpeed$.optional(),
             templateId: z.string(),
