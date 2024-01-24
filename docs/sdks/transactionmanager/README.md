@@ -28,7 +28,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.create({
+  const result = await sdk.transactionManager.create({
     createTransactionDto: {
       customGas: {},
       data: "0x1234",
@@ -41,11 +41,8 @@ async function run() {
     },
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -65,9 +62,13 @@ run();
 **Promise<[operations.CreateTransactionResponse](../../sdk/models/operations/createtransactionresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.CreateTransactionResponseBody                              | 400                                                               | application/json                                                  |
+| errors.CreateTransactionTransactionManagerResponseBody            | 404                                                               | application/json                                                  |
+| errors.CreateTransactionTransactionManagerResponseResponseBody    | 422                                                               | application/json                                                  |
+| errors.CreateTransactionTransactionManagerResponse500ResponseBody | 500                                                               | application/json                                                  |
+| errors.SDKError                                                   | 4xx-5xx                                                           | */*                                                               |
 
 ## getAll
 
@@ -83,13 +84,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.getAll({});
+  const result = await sdk.transactionManager.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -111,9 +108,10 @@ run();
 **Promise<[operations.GetAllTransactionResponse](../../sdk/models/operations/getalltransactionresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                         | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.GetAllTransactionResponseBody | 400                                  | application/json                     |
+| errors.SDKError                      | 4xx-5xx                              | */*                                  |
 
 ## getAvailableNonces
 
@@ -129,16 +127,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.getAvailableNonces({
+  const result = await sdk.transactionManager.getAvailableNonces({
     address: "92240 Harris Row",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -158,9 +153,13 @@ run();
 **Promise<[operations.GetAvailableNoncesWalletResponse](../../sdk/models/operations/getavailablenonceswalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                             | Status Code                                                              | Content Type                                                             |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| errors.GetAvailableNoncesWalletResponseBody                              | 400                                                                      | application/json                                                         |
+| errors.GetAvailableNoncesWalletTransactionManagerResponseBody            | 404                                                                      | application/json                                                         |
+| errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody    | 422                                                                      | application/json                                                         |
+| errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody | 500                                                                      | application/json                                                         |
+| errors.SDKError                                                          | 4xx-5xx                                                                  | */*                                                                      |
 
 ## getOne
 
@@ -176,15 +175,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.getOne({
+  const result = await sdk.transactionManager.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -204,9 +200,11 @@ run();
 **Promise<[operations.GetOneTransactionResponse](../../sdk/models/operations/getonetransactionresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                           | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| errors.GetOneTransactionResponseBody                   | 400                                                    | application/json                                       |
+| errors.GetOneTransactionTransactionManagerResponseBody | 404                                                    | application/json                                       |
+| errors.SDKError                                        | 4xx-5xx                                                | */*                                                    |
 
 ## resyncNonce
 
@@ -222,16 +220,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.transactionManager.resyncNonce({
+  const result = await sdk.transactionManager.resyncNonce({
     address: "4925 Shanahan Parkways",
     network: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -251,6 +246,10 @@ run();
 **Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.ResyncNoncesWalletResponseBody                                 | 400                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletResponseBody                           | 404                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletTransactionManagerResponseBody         | 422                                                                   | application/json                                                      |
+| errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody | 500                                                                   | application/json                                                      |
+| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |

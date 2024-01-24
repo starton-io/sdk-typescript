@@ -9,12 +9,12 @@ export enum InvitationRole {
 }
 
 export type Invitation = {
-    createdAt: Date;
+    createdAt?: Date | undefined;
     email: string;
     id: string;
     projectId: string;
     role: InvitationRole;
-    updatedAt: Date;
+    updatedAt?: Date | undefined;
 };
 
 /** @internal */
@@ -23,12 +23,12 @@ export const InvitationRole$ = z.nativeEnum(InvitationRole);
 /** @internal */
 export namespace Invitation$ {
     export type Inbound = {
-        createdAt: string;
+        createdAt?: string | undefined;
         email: string;
         id: string;
         projectId: string;
         role: InvitationRole;
-        updatedAt: string;
+        updatedAt?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<Invitation, z.ZodTypeDef, Inbound> = z
@@ -36,6 +36,7 @@ export namespace Invitation$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:56.588Z")
                 .transform((v) => new Date(v)),
             email: z.string(),
             id: z.string(),
@@ -44,16 +45,17 @@ export namespace Invitation$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
+                .default("2023-10-26T19:08:56.588Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
             return {
-                createdAt: v.createdAt,
+                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
                 email: v.email,
                 id: v.id,
                 projectId: v.projectId,
                 role: v.role,
-                updatedAt: v.updatedAt,
+                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
             };
         });
 
@@ -68,12 +70,18 @@ export namespace Invitation$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Invitation> = z
         .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
+            createdAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:56.588Z"))
+                .transform((v) => v.toISOString()),
             email: z.string(),
             id: z.string(),
             projectId: z.string(),
             role: InvitationRole$,
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            updatedAt: z
+                .date()
+                .default(() => new Date("2023-10-26T19:08:56.588Z"))
+                .transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {

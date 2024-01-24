@@ -30,7 +30,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.create({
+  const result = await sdk.monitor.create({
     address: "0x298e760768c8481780397eE28A127eAd584df4ee",
     confirmationsBlocks: 0,
     customEventAbi: {},
@@ -43,11 +43,8 @@ async function run() {
     webhookUrl: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -67,9 +64,13 @@ run();
 **Promise<[operations.CreateWatcherResponse](../../sdk/models/operations/createwatcherresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                       | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| errors.CreateWatcherResponseBody                   | 400                                                | application/json                                   |
+| errors.CreateWatcherMonitorResponseBody            | 409                                                | application/json                                   |
+| errors.CreateWatcherMonitorResponseResponseBody    | 412                                                | application/json                                   |
+| errors.CreateWatcherMonitorResponse500ResponseBody | 500                                                | application/json                                   |
+| errors.SDKError                                    | 4xx-5xx                                            | */*                                                |
 
 ## delete
 
@@ -85,15 +86,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.delete({
+  const result = await sdk.monitor.delete({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -113,9 +111,11 @@ run();
 **Promise<[operations.DeleteWatcherResponse](../../sdk/models/operations/deletewatcherresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.DeleteWatcherResponseBody        | 400                                     | application/json                        |
+| errors.DeleteWatcherMonitorResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
 
 ## getAll
 
@@ -132,13 +132,9 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.getAll({});
+  const result = await sdk.monitor.getAll({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -160,9 +156,10 @@ run();
 **Promise<[operations.GetAllWatcherResponse](../../sdk/models/operations/getallwatcherresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.GetAllWatcherResponseBody | 400                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 ## getAllEvents
 
@@ -178,15 +175,11 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.getAllEvents({
+  const result = await sdk.monitor.getAllEvents({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -208,9 +201,10 @@ run();
 **Promise<[operations.GetAllWatcherEventResponse](../../sdk/models/operations/getallwatchereventresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.GetAllWatcherEventResponseBody | 400                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 ## getOne
 
@@ -226,15 +220,12 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.getOne({
+  const result = await sdk.monitor.getOne({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -254,9 +245,11 @@ run();
 **Promise<[operations.GetOneWatcherResponse](../../sdk/models/operations/getonewatcherresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.GetOneWatcherResponseBody        | 400                                     | application/json                        |
+| errors.GetOneWatcherMonitorResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
 
 ## getOneEvent
 
@@ -272,16 +265,13 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.getOneEvent({
+  const result = await sdk.monitor.getOneEvent({
     eventId: "string",
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -301,9 +291,11 @@ run();
 **Promise<[operations.GetOneWatcherEventResponse](../../sdk/models/operations/getonewatchereventresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.GetOneWatcherEventResponseBody        | 400                                          | application/json                             |
+| errors.GetOneWatcherEventMonitorResponseBody | 404                                          | application/json                             |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
 
 ## update
 
@@ -319,7 +311,7 @@ async function run() {
     startonApiKey: "<YOUR_API_KEY_HERE>",
   });
 
-  const res = await sdk.monitor.update({
+  const result = await sdk.monitor.update({
     updateWatcherDto: {
       confirmationsBlocks: 0,
       description: "watcher tests",
@@ -331,11 +323,8 @@ async function run() {
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -355,6 +344,8 @@ run();
 **Promise<[operations.UpdateWatcherResponse](../../sdk/models/operations/updatewatcherresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.UpdateWatcherResponseBody        | 400                                     | application/json                        |
+| errors.UpdateWatcherMonitorResponseBody | 404                                     | application/json                        |
+| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
