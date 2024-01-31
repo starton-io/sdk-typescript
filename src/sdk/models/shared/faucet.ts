@@ -52,7 +52,7 @@ export namespace Faucet$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.532Z")
+                .default("2024-01-31T13:57:38.178Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             ip: z.string(),
@@ -87,7 +87,7 @@ export namespace Faucet$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.532Z"))
+                .default(() => new Date("2024-01-31T13:57:38.178Z"))
                 .transform((v) => v.toISOString()),
             id: z.string(),
             ip: z.string(),

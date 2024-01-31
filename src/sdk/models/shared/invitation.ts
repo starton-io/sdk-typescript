@@ -36,7 +36,7 @@ export namespace Invitation$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.312Z")
+                .default("2024-01-31T13:57:37.250Z")
                 .transform((v) => new Date(v)),
             email: z.string(),
             id: z.string(),
@@ -45,7 +45,7 @@ export namespace Invitation$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.312Z")
+                .default("2024-01-31T13:57:37.250Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -72,7 +72,7 @@ export namespace Invitation$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.312Z"))
+                .default(() => new Date("2024-01-31T13:57:37.250Z"))
                 .transform((v) => v.toISOString()),
             email: z.string(),
             id: z.string(),
@@ -80,7 +80,7 @@ export namespace Invitation$ {
             role: InvitationRole$,
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.312Z"))
+                .default(() => new Date("2024-01-31T13:57:37.250Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

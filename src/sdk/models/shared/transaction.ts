@@ -165,7 +165,7 @@ export namespace Transaction$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.499Z")
+                .default("2024-01-31T13:57:38.141Z")
                 .transform((v) => new Date(v)),
             data: z.nullable(z.string()).optional(),
             from: z.string(),
@@ -208,7 +208,7 @@ export namespace Transaction$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.499Z")
+                .default("2024-01-31T13:57:38.141Z")
                 .transform((v) => new Date(v)),
             value: z.string(),
         })
@@ -298,7 +298,7 @@ export namespace Transaction$ {
             chainId: z.number(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.499Z"))
+                .default(() => new Date("2024-01-31T13:57:38.141Z"))
                 .transform((v) => v.toISOString()),
             data: z.nullable(z.string()).optional(),
             from: z.string(),
@@ -326,7 +326,7 @@ export namespace Transaction$ {
             type: z.nullable(z.number()).optional(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.499Z"))
+                .default(() => new Date("2024-01-31T13:57:38.141Z"))
                 .transform((v) => v.toISOString()),
             value: z.string(),
         })

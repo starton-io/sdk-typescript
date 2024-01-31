@@ -49,7 +49,7 @@ export namespace Wallet$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.516Z")
+                .default("2024-01-31T13:57:38.161Z")
                 .transform((v) => new Date(v)),
             description: z.nullable(z.string()).optional(),
             kmsId: z.string(),
@@ -60,7 +60,7 @@ export namespace Wallet$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.516Z")
+                .default("2024-01-31T13:57:38.161Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -94,7 +94,7 @@ export namespace Wallet$ {
             address: z.string(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.516Z"))
+                .default(() => new Date("2024-01-31T13:57:38.161Z"))
                 .transform((v) => v.toISOString()),
             description: z.nullable(z.string()).optional(),
             kmsId: z.string(),
@@ -104,7 +104,7 @@ export namespace Wallet$ {
             providerKeyId: z.string(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.516Z"))
+                .default(() => new Date("2024-01-31T13:57:38.161Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

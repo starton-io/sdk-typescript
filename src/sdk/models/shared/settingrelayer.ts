@@ -39,7 +39,7 @@ export namespace SettingRelayer$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.530Z")
+                .default("2024-01-31T13:57:38.175Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
@@ -53,7 +53,7 @@ export namespace SettingRelayer$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.530Z")
+                .default("2024-01-31T13:57:38.175Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -90,7 +90,7 @@ export namespace SettingRelayer$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.530Z"))
+                .default(() => new Date("2024-01-31T13:57:38.175Z"))
                 .transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
@@ -103,7 +103,7 @@ export namespace SettingRelayer$ {
             unstuckMissingNonceDelay: z.number(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.530Z"))
+                .default(() => new Date("2024-01-31T13:57:38.175Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

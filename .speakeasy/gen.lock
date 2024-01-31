@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
-  docChecksum: 9350e06c381076a490ee3425fb982547
+  docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.239.1
-  releaseVersion: 0.7.0
-  configChecksum: 61f32aaecfbee849bf178371374b51e0
+  generationVersion: 2.239.4
+  releaseVersion: 0.7.1
+  configChecksum: 39aa5c5928d5e968593583a0d0bd7af9
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -640,6 +640,8 @@ generatedFiles:
   - docs/sdk/models/shared/importsmartcontractdto.md
   - docs/sdk/models/shared/readsmartcontractresponse3.md
   - docs/sdk/models/shared/readsmartcontractresponseparams.md
+  - docs/sdk/models/shared/readsmartcontractresponseschemas3.md
+  - docs/sdk/models/shared/response.md
   - docs/sdk/models/shared/readsmartcontractresponse.md
   - docs/sdk/models/shared/readdto3.md
   - docs/sdk/models/shared/readdtoparams.md

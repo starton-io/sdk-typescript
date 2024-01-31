@@ -77,7 +77,7 @@ export namespace Pin$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:28.173Z")
+                .default("2024-01-31T13:57:35.191Z")
                 .transform((v) => new Date(v)),
             delegates: z.array(z.string()).optional(),
             directoryContent: z.array(DirectoryContent$.inboundSchema).optional(),
@@ -92,7 +92,7 @@ export namespace Pin$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:28.173Z")
+                .default("2024-01-31T13:57:35.191Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -136,7 +136,7 @@ export namespace Pin$ {
             cid: z.string().optional(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:28.173Z"))
+                .default(() => new Date("2024-01-31T13:57:35.191Z"))
                 .transform((v) => v.toISOString()),
             delegates: z.array(z.string()).optional(),
             directoryContent: z.array(DirectoryContent$.outboundSchema).optional(),
@@ -150,7 +150,7 @@ export namespace Pin$ {
             type: PinType$.optional(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:28.173Z"))
+                .default(() => new Date("2024-01-31T13:57:35.191Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

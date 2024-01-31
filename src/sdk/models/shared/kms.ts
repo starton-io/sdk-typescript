@@ -82,7 +82,7 @@ export namespace Kms$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.521Z")
+                .default("2024-01-31T13:57:38.167Z")
                 .transform((v) => new Date(v)),
             credentials: z.lazy(() => KmsCredentials$.inboundSchema),
             id: z.string(),
@@ -93,7 +93,7 @@ export namespace Kms$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.521Z")
+                .default("2024-01-31T13:57:38.167Z")
                 .transform((v) => new Date(v)),
             wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
         })
@@ -127,7 +127,7 @@ export namespace Kms$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.521Z"))
+                .default(() => new Date("2024-01-31T13:57:38.167Z"))
                 .transform((v) => v.toISOString()),
             credentials: z.lazy(() => KmsCredentials$.outboundSchema),
             id: z.string(),
@@ -137,7 +137,7 @@ export namespace Kms$ {
             provider: KmsProvider$,
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.521Z"))
+                .default(() => new Date("2024-01-31T13:57:38.167Z"))
                 .transform((v) => v.toISOString()),
             wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
         })

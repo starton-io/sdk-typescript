@@ -71,7 +71,7 @@ export namespace Webhook$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.292Z")
+                .default("2024-01-31T13:57:35.791Z")
                 .transform((v) => new Date(v)),
             headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
             id: z.string(),
@@ -82,7 +82,7 @@ export namespace Webhook$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.292Z")
+                .default("2024-01-31T13:57:35.791Z")
                 .transform((v) => new Date(v)),
             url: z.string(),
         })
@@ -116,7 +116,7 @@ export namespace Webhook$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.292Z"))
+                .default(() => new Date("2024-01-31T13:57:35.791Z"))
                 .transform((v) => v.toISOString()),
             headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
             id: z.string(),
@@ -126,7 +126,7 @@ export namespace Webhook$ {
             status: WebhookStatus$,
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.292Z"))
+                .default(() => new Date("2024-01-31T13:57:35.791Z"))
                 .transform((v) => v.toISOString()),
             url: z.string(),
         })

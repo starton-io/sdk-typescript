@@ -138,7 +138,7 @@ export namespace SmartContract$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.490Z")
+                .default("2024-01-31T13:57:38.131Z")
                 .transform((v) => new Date(v)),
             creationHash: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
@@ -161,7 +161,7 @@ export namespace SmartContract$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:30.490Z")
+                .default("2024-01-31T13:57:38.131Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -218,7 +218,7 @@ export namespace SmartContract$ {
                 .optional(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.490Z"))
+                .default(() => new Date("2024-01-31T13:57:38.131Z"))
                 .transform((v) => v.toISOString()),
             creationHash: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
@@ -233,7 +233,7 @@ export namespace SmartContract$ {
             templateId: z.nullable(z.string()).optional(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:30.490Z"))
+                .default(() => new Date("2024-01-31T13:57:38.131Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

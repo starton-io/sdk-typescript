@@ -25,14 +25,14 @@ export namespace WebhookSigningSecret$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.274Z")
+                .default("2024-01-31T13:57:35.786Z")
                 .transform((v) => new Date(v)),
             projectId: z.string(),
             secret: z.string(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.274Z")
+                .default("2024-01-31T13:57:35.786Z")
                 .transform((v) => new Date(v)),
         })
         .transform((v) => {
@@ -55,13 +55,13 @@ export namespace WebhookSigningSecret$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.274Z"))
+                .default(() => new Date("2024-01-31T13:57:35.786Z"))
                 .transform((v) => v.toISOString()),
             projectId: z.string(),
             secret: z.string(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.274Z"))
+                .default(() => new Date("2024-01-31T13:57:35.786Z"))
                 .transform((v) => v.toISOString()),
         })
         .transform((v) => {

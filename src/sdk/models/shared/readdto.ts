@@ -13,7 +13,7 @@ export type ReadDto = {
     /**
      * Smart contract parameters.
      */
-    params: Array<ReadDto3 | string | number | boolean>;
+    params?: Array<ReadDto3 | string | number | boolean> | undefined;
 };
 
 /** @internal */
@@ -52,49 +52,53 @@ export namespace ReadDtoParams$ {
 export namespace ReadDto$ {
     export type Inbound = {
         functionName: string;
-        params: Array<ReadDto3$.Inbound | string | number | boolean>;
+        params?: Array<ReadDto3$.Inbound | string | number | boolean> | undefined;
     };
 
     export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, Inbound> = z
         .object({
             functionName: z.string(),
-            params: z.array(
-                z.union([
-                    z.lazy(() => ReadDto3$.inboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            ),
+            params: z
+                .array(
+                    z.union([
+                        z.lazy(() => ReadDto3$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
         })
         .transform((v) => {
             return {
                 functionName: v.functionName,
-                params: v.params,
+                ...(v.params === undefined ? null : { params: v.params }),
             };
         });
 
     export type Outbound = {
         functionName: string;
-        params: Array<ReadDto3$.Outbound | string | number | boolean>;
+        params?: Array<ReadDto3$.Outbound | string | number | boolean> | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto> = z
         .object({
             functionName: z.string(),
-            params: z.array(
-                z.union([
-                    z.lazy(() => ReadDto3$.outboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            ),
+            params: z
+                .array(
+                    z.union([
+                        z.lazy(() => ReadDto3$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
         })
         .transform((v) => {
             return {
                 functionName: v.functionName,
-                params: v.params,
+                ...(v.params === undefined ? null : { params: v.params }),
             };
         });
 }

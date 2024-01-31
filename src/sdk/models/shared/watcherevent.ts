@@ -63,7 +63,7 @@ export namespace WatcherEvent$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.398Z")
+                .default("2024-01-31T13:57:36.375Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             network: z.string(),
@@ -74,7 +74,7 @@ export namespace WatcherEvent$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.398Z")
+                .default("2024-01-31T13:57:36.375Z")
                 .transform((v) => new Date(v)),
             watcherId: z.string(),
         })
@@ -114,7 +114,7 @@ export namespace WatcherEvent$ {
             blockNumber: z.number(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.398Z"))
+                .default(() => new Date("2024-01-31T13:57:36.375Z"))
                 .transform((v) => v.toISOString()),
             id: z.string(),
             network: z.string(),
@@ -124,7 +124,7 @@ export namespace WatcherEvent$ {
             txHash: z.string(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.398Z"))
+                .default(() => new Date("2024-01-31T13:57:36.375Z"))
                 .transform((v) => v.toISOString()),
             watcherId: z.string(),
         })

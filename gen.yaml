@@ -9,7 +9,7 @@ generation:
   fixes:
     nameResolutionDec2023: false
 typescript:
-  version: 0.7.0
+  version: 0.7.1
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true

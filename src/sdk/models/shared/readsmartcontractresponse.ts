@@ -12,6 +12,10 @@ export type ReadSmartContractResponseParams =
     | number
     | boolean;
 
+export type ReadSmartContractResponseSchemas3 = {};
+
+export type Response = ReadSmartContractResponseSchemas3 | string | number | boolean | Array<any>;
+
 export type ReadSmartContractResponse = {
     address: string;
     functionName: string;
@@ -20,7 +24,7 @@ export type ReadSmartContractResponse = {
      * Smart contract parameters.
      */
     params: Array<ReadSmartContractResponse3 | string | number | boolean>;
-    response: string;
+    response: ReadSmartContractResponseSchemas3 | string | number | boolean | Array<any>;
 };
 
 /** @internal */
@@ -63,13 +67,70 @@ export namespace ReadSmartContractResponseParams$ {
 }
 
 /** @internal */
+export namespace ReadSmartContractResponseSchemas3$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        ReadSmartContractResponseSchemas3,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ReadSmartContractResponseSchemas3
+    > = z.object({});
+}
+
+/** @internal */
+export namespace Response$ {
+    export type Inbound =
+        | ReadSmartContractResponseSchemas3$.Inbound
+        | string
+        | number
+        | boolean
+        | Array<any>;
+
+    export type Outbound =
+        | ReadSmartContractResponseSchemas3$.Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>;
+
+    export const inboundSchema: z.ZodType<Response, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Response> = z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
+}
+
+/** @internal */
 export namespace ReadSmartContractResponse$ {
     export type Inbound = {
         address: string;
         functionName: string;
         network: string;
         params: Array<ReadSmartContractResponse3$.Inbound | string | number | boolean>;
-        response: string;
+        response:
+            | ReadSmartContractResponseSchemas3$.Inbound
+            | string
+            | number
+            | boolean
+            | Array<any>;
     };
 
     export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, Inbound> = z
@@ -85,7 +146,13 @@ export namespace ReadSmartContractResponse$ {
                     z.boolean(),
                 ])
             ),
-            response: z.string(),
+            response: z.union([
+                z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
+                z.string(),
+                z.number(),
+                z.boolean(),
+                z.array(z.any()),
+            ]),
         })
         .transform((v) => {
             return {
@@ -102,7 +169,12 @@ export namespace ReadSmartContractResponse$ {
         functionName: string;
         network: string;
         params: Array<ReadSmartContractResponse3$.Outbound | string | number | boolean>;
-        response: string;
+        response:
+            | ReadSmartContractResponseSchemas3$.Outbound
+            | string
+            | number
+            | boolean
+            | Array<any>;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse> = z
@@ -118,7 +190,13 @@ export namespace ReadSmartContractResponse$ {
                     z.boolean(),
                 ])
             ),
-            response: z.string(),
+            response: z.union([
+                z.lazy(() => ReadSmartContractResponseSchemas3$.outboundSchema),
+                z.string(),
+                z.number(),
+                z.boolean(),
+                z.array(z.any()),
+            ]),
         })
         .transform((v) => {
             return {

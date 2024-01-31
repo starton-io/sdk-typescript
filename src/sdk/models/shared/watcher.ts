@@ -126,7 +126,7 @@ export namespace Watcher$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.373Z")
+                .default("2024-01-31T13:57:36.353Z")
                 .transform((v) => new Date(v)),
             customEventAbi: z
                 .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema)))
@@ -145,7 +145,7 @@ export namespace Watcher$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.373Z")
+                .default("2024-01-31T13:57:36.353Z")
                 .transform((v) => new Date(v)),
             webhookUrl: z.string(),
         })
@@ -197,7 +197,7 @@ export namespace Watcher$ {
             confirmationsBlocks: z.number(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.373Z"))
+                .default(() => new Date("2024-01-31T13:57:36.353Z"))
                 .transform((v) => v.toISOString()),
             customEventAbi: z
                 .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema)))
@@ -215,7 +215,7 @@ export namespace Watcher$ {
             type: WatcherType$,
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.373Z"))
+                .default(() => new Date("2024-01-31T13:57:36.353Z"))
                 .transform((v) => v.toISOString()),
             webhookUrl: z.string(),
         })

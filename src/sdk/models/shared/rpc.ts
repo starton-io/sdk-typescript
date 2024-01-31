@@ -27,14 +27,14 @@ export namespace Rpc$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.318Z")
+                .default("2024-01-31T13:57:36.269Z")
                 .transform((v) => new Date(v)),
             id: z.string(),
             networkName: z.string(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.318Z")
+                .default("2024-01-31T13:57:36.269Z")
                 .transform((v) => new Date(v)),
             url: z.string(),
         })
@@ -60,13 +60,13 @@ export namespace Rpc$ {
         .object({
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.318Z"))
+                .default(() => new Date("2024-01-31T13:57:36.269Z"))
                 .transform((v) => v.toISOString()),
             id: z.string(),
             networkName: z.string(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.318Z"))
+                .default(() => new Date("2024-01-31T13:57:36.269Z"))
                 .transform((v) => v.toISOString()),
             url: z.string(),
         })

@@ -80,7 +80,7 @@ export namespace Network$ {
             createdAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.330Z")
+                .default("2024-01-31T13:57:36.282Z")
                 .transform((v) => new Date(v)),
             decimal: z.number(),
             displayName: z.string(),
@@ -102,7 +102,7 @@ export namespace Network$ {
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
-                .default("2024-01-24T16:52:29.330Z")
+                .default("2024-01-31T13:57:36.282Z")
                 .transform((v) => new Date(v)),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
@@ -168,7 +168,7 @@ export namespace Network$ {
             confirmationBlocks: z.number(),
             createdAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.330Z"))
+                .default(() => new Date("2024-01-31T13:57:36.282Z"))
                 .transform((v) => v.toISOString()),
             decimal: z.number(),
             displayName: z.string(),
@@ -189,7 +189,7 @@ export namespace Network$ {
             testnet: z.boolean(),
             updatedAt: z
                 .date()
-                .default(() => new Date("2024-01-24T16:52:29.330Z"))
+                .default(() => new Date("2024-01-31T13:57:36.282Z"))
                 .transform((v) => v.toISOString()),
             verifyBlockIntegrity: z.boolean(),
             verifyTxIntegrity: z.boolean(),
