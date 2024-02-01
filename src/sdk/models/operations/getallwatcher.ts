@@ -5,7 +5,7 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
-export enum TypeT {
+export enum Type {
     MinedTransaction = "MINED_TRANSACTION",
     AddressActivity = "ADDRESS_ACTIVITY",
     AddressReceivedNativeCurrency = "ADDRESS_RECEIVED_NATIVE_CURRENCY",
@@ -33,7 +33,7 @@ export type GetAllWatcherRequest = {
      */
     page?: number | undefined;
     paused?: boolean | undefined;
-    type?: TypeT | undefined;
+    type?: Type | undefined;
     webhookUrl?: string | undefined;
 };
 
@@ -59,7 +59,7 @@ export type GetAllWatcherResponse = {
 };
 
 /** @internal */
-export const TypeT$ = z.nativeEnum(TypeT);
+export const Type$ = z.nativeEnum(Type);
 
 /** @internal */
 export namespace GetAllWatcherRequest$ {
@@ -71,7 +71,7 @@ export namespace GetAllWatcherRequest$ {
         network?: string | undefined;
         page?: number | undefined;
         paused?: boolean | undefined;
-        type?: TypeT | undefined;
+        type?: Type | undefined;
         webhookUrl?: string | undefined;
     };
 
@@ -84,7 +84,7 @@ export namespace GetAllWatcherRequest$ {
             network: z.string().optional(),
             page: z.number().int().optional(),
             paused: z.boolean().optional(),
-            type: TypeT$.optional(),
+            type: Type$.optional(),
             webhookUrl: z.string().optional(),
         })
         .transform((v) => {
@@ -111,7 +111,7 @@ export namespace GetAllWatcherRequest$ {
         network?: string | undefined;
         page?: number | undefined;
         paused?: boolean | undefined;
-        type?: TypeT | undefined;
+        type?: Type | undefined;
         webhookUrl?: string | undefined;
     };
 
@@ -124,7 +124,7 @@ export namespace GetAllWatcherRequest$ {
             network: z.string().optional(),
             page: z.number().int().optional(),
             paused: z.boolean().optional(),
-            type: TypeT$.optional(),
+            type: Type$.optional(),
             webhookUrl: z.string().optional(),
         })
         .transform((v) => {

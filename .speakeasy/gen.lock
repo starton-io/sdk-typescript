@@ -4,9 +4,9 @@ management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.239.4
-  releaseVersion: 0.7.1
-  configChecksum: 39aa5c5928d5e968593583a0d0bd7af9
+  generationVersion: 2.245.1
+  releaseVersion: 0.7.2
+  configChecksum: 2cf7b5c22cc57cf0fc4657da5e340474
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -14,14 +14,14 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.1
-    core: 3.4.7
+    core: 3.4.8
     devContainers: 2.90.0
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
-    unions: 2.85.0
+    unions: 2.85.1
 generatedFiles:
   - src/sdk/data.ts
   - src/sdk/wallet.ts
@@ -440,7 +440,7 @@ generatedFiles:
   - docs/sdk/models/operations/createwatcherresponse.md
   - docs/sdk/models/operations/deletewatcherrequest.md
   - docs/sdk/models/operations/deletewatcherresponse.md
-  - docs/sdk/models/operations/typet.md
+  - docs/sdk/models/operations/type.md
   - docs/sdk/models/operations/getallwatcherrequest.md
   - docs/sdk/models/operations/getallwatcherwatcherpaginated.md
   - docs/sdk/models/operations/getallwatcherresponse.md
@@ -620,7 +620,7 @@ generatedFiles:
   - docs/sdk/models/shared/deployfrombytecodedtospeed.md
   - docs/sdk/models/shared/deployfrombytecodedto.md
   - docs/sdk/models/shared/statemutability.md
-  - docs/sdk/models/shared/typet.md
+  - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/abiobjectdto.md
   - docs/sdk/models/shared/abioutputdtocomponents.md
   - docs/sdk/models/shared/abioutputdto.md

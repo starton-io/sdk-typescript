@@ -125,7 +125,7 @@ Fetches list of all watchers associated with the current project.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { TypeT } from "@starton/sdk/sdk/models/operations";
+import { Type } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
