@@ -4,24 +4,24 @@ management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.245.1
-  releaseVersion: 0.7.2
-  configChecksum: 2cf7b5c22cc57cf0fc4657da5e340474
+  generationVersion: 2.250.22
+  releaseVersion: 0.7.3
+  configChecksum: e8c3c0292a48f7ca419afeb54bcca931
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
   published: true
 features:
   typescript:
-    constsAndDefaults: 0.1.1
-    core: 3.4.8
+    constsAndDefaults: 0.1.2
+    core: 3.4.9
     devContainers: 2.90.0
     globalSecurity: 2.82.2
-    globalServerURLs: 2.82.1
+    globalServerURLs: 2.82.2
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
-    unions: 2.85.1
+    unions: 2.85.2
 generatedFiles:
   - src/sdk/data.ts
   - src/sdk/wallet.ts
