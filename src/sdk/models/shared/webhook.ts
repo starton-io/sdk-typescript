@@ -88,14 +88,14 @@ export namespace Webhook$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 headers: v.headers,
                 id: v.id,
                 payload: v.payload,
                 projectId: v.projectId,
                 refId: v.refId,
                 status: v.status,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 url: v.url,
             };
         });

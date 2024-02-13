@@ -172,7 +172,7 @@ export namespace SmartContract$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
@@ -184,7 +184,7 @@ export namespace SmartContract$ {
                 state: v.state,
                 status: v.status,
                 ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

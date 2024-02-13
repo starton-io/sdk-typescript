@@ -50,12 +50,12 @@ export namespace Invitation$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 email: v.email,
                 id: v.id,
                 projectId: v.projectId,
                 role: v.role,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

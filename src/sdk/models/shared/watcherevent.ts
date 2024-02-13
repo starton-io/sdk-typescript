@@ -82,14 +82,14 @@ export namespace WatcherEvent$ {
             return {
                 blockHash: v.blockHash,
                 blockNumber: v.blockNumber,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 payload: v.payload,
                 projectId: v.projectId,
                 status: v.status,
                 txHash: v.txHash,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 watcherId: v.watcherId,
             };
         });

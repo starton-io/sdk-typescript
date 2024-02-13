@@ -40,7 +40,7 @@ async function run() {
     name: "watcher tests",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
-    webhookUrl: "string",
+    webhookUrl: "",
   });
 
   // Handle the result
@@ -318,7 +318,7 @@ async function run() {
       metadata: {},
       name: "watcher tests",
       paused: true,
-      webhookUrl: "string",
+      webhookUrl: "",
     },
     id: "<ID>",
   });

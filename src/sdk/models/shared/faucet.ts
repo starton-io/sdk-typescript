@@ -63,7 +63,7 @@ export namespace Faucet$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 ip: v.ip,
                 network: v.network,

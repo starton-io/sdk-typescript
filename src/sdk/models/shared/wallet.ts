@@ -66,14 +66,14 @@ export namespace Wallet$ {
         .transform((v) => {
             return {
                 address: v.address,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.description === undefined ? null : { description: v.description }),
                 kmsId: v.kmsId,
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 ...(v.name === undefined ? null : { name: v.name }),
                 projectId: v.projectId,
                 providerKeyId: v.providerKeyId,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

@@ -37,10 +37,10 @@ export namespace WebhookSigningSecret$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 projectId: v.projectId,
                 secret: v.secret,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

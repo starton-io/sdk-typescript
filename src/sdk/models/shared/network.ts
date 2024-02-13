@@ -112,7 +112,7 @@ export namespace Network$ {
                 blockchain: v.blockchain,
                 chainId: v.chainId,
                 confirmationBlocks: v.confirmationBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 decimal: v.decimal,
                 displayName: v.displayName,
                 eip1159: v.eip1159,
@@ -130,7 +130,7 @@ export namespace Network$ {
                 owner: v.owner,
                 symbol: v.symbol,
                 testnet: v.testnet,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 verifyBlockIntegrity: v.verifyBlockIntegrity,
                 verifyTxIntegrity: v.verifyTxIntegrity,
             };

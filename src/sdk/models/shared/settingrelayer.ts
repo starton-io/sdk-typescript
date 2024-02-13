@@ -58,7 +58,7 @@ export namespace SettingRelayer$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 network: v.network,
                 projectId: v.projectId,
@@ -68,7 +68,7 @@ export namespace SettingRelayer$ {
                 unstuckMaxGasPrice: v.unstuckMaxGasPrice,
                 unstuckMissingNonce: v.unstuckMissingNonce,
                 unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

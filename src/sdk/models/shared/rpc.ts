@@ -40,10 +40,10 @@ export namespace Rpc$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 id: v.id,
                 networkName: v.networkName,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 url: v.url,
             };
         });

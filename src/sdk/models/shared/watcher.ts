@@ -153,7 +153,7 @@ export namespace Watcher$ {
             return {
                 address: v.address,
                 confirmationsBlocks: v.confirmationsBlocks,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
                 ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
                 ...(v.description === undefined ? null : { description: v.description }),
@@ -166,7 +166,7 @@ export namespace Watcher$ {
                 projectId: v.projectId,
                 triggerType: v.triggerType,
                 type: v.type,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 webhookUrl: v.webhookUrl,
             };
         });

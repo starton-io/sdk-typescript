@@ -98,7 +98,7 @@ export namespace Pin$ {
         .transform((v) => {
             return {
                 ...(v.cid === undefined ? null : { cid: v.cid }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.delegates === undefined ? null : { delegates: v.delegates }),
                 ...(v.directoryContent === undefined
                     ? null
@@ -111,7 +111,7 @@ export namespace Pin$ {
                 ...(v.size === undefined ? null : { size: v.size }),
                 status: v.status,
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

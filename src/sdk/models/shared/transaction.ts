@@ -218,7 +218,7 @@ export namespace Transaction$ {
                 ...(v.blockHash === undefined ? null : { blockHash: v.blockHash }),
                 ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
                 chainId: v.chainId,
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 ...(v.data === undefined ? null : { data: v.data }),
                 from: v.from,
                 ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
@@ -251,7 +251,7 @@ export namespace Transaction$ {
                     ? null
                     : { transactionHash: v.transactionHash }),
                 ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 value: v.value,
             };
         });

@@ -54,10 +54,10 @@ export namespace MicroserviceNotResponding$ {
         .transform((v) => {
             return {
                 ...(v.context === undefined ? null : { context: v.context }),
-                ...(v.errorCode === undefined ? null : { errorCode: v.errorCode }),
-                ...(v.message === undefined ? null : { message: v.message }),
+                errorCode: v.errorCode,
+                message: v.message,
                 path: v.path,
-                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
+                statusCode: v.statusCode,
                 timestamp: v.timestamp,
             };
         });

@@ -145,19 +145,19 @@ export namespace SmartContractTemplate$ {
                 ...(v.compilationDetails === undefined
                     ? null
                     : { compilationDetails: v.compilationDetails }),
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 description: v.description,
                 ...(v.form === undefined ? null : { form: v.form }),
                 githubUrl: v.githubUrl,
                 humanReadableAbi: v.humanReadableAbi,
                 id: v.id,
-                ...(v.isActivated === undefined ? null : { isActivated: v.isActivated }),
-                ...(v.isAudited === undefined ? null : { isAudited: v.isAudited }),
+                isActivated: v.isActivated,
+                isAudited: v.isAudited,
                 name: v.name,
-                ...(v.order === undefined ? null : { order: v.order }),
+                order: v.order,
                 shortDescription: v.shortDescription,
                 tags: v.tags,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
             };
         });
 

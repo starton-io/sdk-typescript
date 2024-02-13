@@ -51,10 +51,10 @@ export namespace BadRequestException$ {
         .transform((v) => {
             return {
                 ...(v.context === undefined ? null : { context: v.context }),
-                ...(v.errorCode === undefined ? null : { errorCode: v.errorCode }),
+                errorCode: v.errorCode,
                 message: v.message,
                 path: v.path,
-                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
+                statusCode: v.statusCode,
                 timestamp: v.timestamp,
             };
         });

@@ -99,14 +99,14 @@ export namespace Kms$ {
         })
         .transform((v) => {
             return {
-                ...(v.createdAt === undefined ? null : { createdAt: v.createdAt }),
+                createdAt: v.createdAt,
                 credentials: v.credentials,
                 id: v.id,
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 name: v.name,
                 projectId: v.projectId,
                 provider: v.provider,
-                ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
+                updatedAt: v.updatedAt,
                 ...(v.wallets === undefined ? null : { wallets: v.wallets }),
             };
         });
