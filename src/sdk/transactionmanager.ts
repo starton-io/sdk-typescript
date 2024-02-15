@@ -29,6 +29,7 @@ export class TransactionManager extends ClientSDK {
     get setting() {
         return (this._setting ??= new Setting(this.options$));
     }
+
     /**
      * Create a new transaction
      *

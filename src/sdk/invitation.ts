@@ -24,6 +24,7 @@ export class Invitation extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Send an invitation to the project
      *

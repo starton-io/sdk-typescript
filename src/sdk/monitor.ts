@@ -24,6 +24,7 @@ export class Monitor extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create a New Watcher
      *

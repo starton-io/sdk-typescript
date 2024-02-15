@@ -23,6 +23,7 @@ export class Template extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Fetch the list of Smart Contract Templates
      *

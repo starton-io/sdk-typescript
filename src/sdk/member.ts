@@ -27,6 +27,7 @@ export class Member extends ClientSDK {
     get invitation() {
         return (this._invitation ??= new Invitation(this.options$));
     }
+
     /**
      * Remove a user from a project.
      *

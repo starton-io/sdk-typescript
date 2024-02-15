@@ -24,6 +24,7 @@ export class SmartContractManagement extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Execute Smart Contract Function
      *

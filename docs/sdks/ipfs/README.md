@@ -32,7 +32,7 @@ async function run() {
   });
 
   const result = await sdk.ipfs.delete({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -70,7 +70,6 @@ Retrieve a list of files that have been pinned on IPFS.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Status } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
@@ -121,7 +120,7 @@ async function run() {
   });
 
   const result = await sdk.ipfs.getOne({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -207,7 +206,7 @@ async function run() {
   });
 
   const result = await sdk.ipfs.pinExistingFile({
-    cid: "string",
+    cid: "<value>",
     metadata: {},
   });
 
@@ -256,7 +255,7 @@ async function run() {
     updatePinDto: {
       metadata: {},
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -401,7 +400,7 @@ async function run() {
   const result = await sdk.ipfs.uploadJson({
     content: {},
     metadata: {},
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result

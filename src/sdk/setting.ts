@@ -21,6 +21,7 @@ export class Setting extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Get Relayer settings
      *

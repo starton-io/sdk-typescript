@@ -27,7 +27,7 @@ async function run() {
     createRpcDto: {
       url: "http://limp-pastry.org",
     },
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result
@@ -72,8 +72,8 @@ async function run() {
   });
 
   const result = await sdk.network.rpc.delete({
-    id: "<ID>",
-    name: "string",
+    id: "<id>",
+    name: "<value>",
   });
 
   // Handle the result
@@ -118,7 +118,7 @@ async function run() {
   });
 
   const result = await sdk.network.rpc.getAll({
-    name: "string",
+    name: "<value>",
   });
 
   for await (const page of result) {
@@ -163,8 +163,8 @@ async function run() {
   });
 
   const result = await sdk.network.rpc.getOne({
-    id: "<ID>",
-    name: "string",
+    id: "<id>",
+    name: "<value>",
   });
 
   // Handle the result
@@ -210,8 +210,8 @@ async function run() {
 
   const result = await sdk.network.rpc.update({
     updateRpcDto: {},
-    id: "<ID>",
-    name: "string",
+    id: "<id>",
+    name: "<value>",
   });
 
   // Handle the result

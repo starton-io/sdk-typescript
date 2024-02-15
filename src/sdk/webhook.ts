@@ -23,6 +23,7 @@ export class Webhook extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Cancel a webhook
      *

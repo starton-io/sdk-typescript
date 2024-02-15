@@ -21,7 +21,7 @@ async function run() {
   });
 
   const result = await sdk.transactionManager.setting.get({
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -74,7 +74,7 @@ async function run() {
       unstuckMissingNonce: true,
       unstuckMissingNonceDelay: 300,
     },
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result

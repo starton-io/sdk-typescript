@@ -24,6 +24,7 @@ export class Ipfs extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Deletes pinned file referenced by {id}
      *

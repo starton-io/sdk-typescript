@@ -23,6 +23,7 @@ export class Rpc extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Add a rpc (enterprise)
      *

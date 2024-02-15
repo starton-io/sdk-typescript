@@ -21,7 +21,7 @@ async function run() {
   });
 
   const result = await sdk.project.member.delete({
-    userId: "string",
+    userId: "<value>",
   });
 
   // Handle the result

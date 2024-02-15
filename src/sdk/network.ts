@@ -30,6 +30,7 @@ export class Network extends ClientSDK {
     get rpc() {
         return (this._rpc ??= new Rpc(this.options$));
     }
+
     /**
      * Create a new network (Enterprise)
      *

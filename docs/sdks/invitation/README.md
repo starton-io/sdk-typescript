@@ -69,7 +69,7 @@ async function run() {
   });
 
   const result = await sdk.project.member.invitation.delete({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result

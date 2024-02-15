@@ -87,7 +87,7 @@ async function run() {
   });
 
   const result = await sdk.monitor.delete({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -125,7 +125,6 @@ Fetches list of all watchers associated with the current project.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Type } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
@@ -176,7 +175,7 @@ async function run() {
   });
 
   const result = await sdk.monitor.getAllEvents({
-    id: "<ID>",
+    id: "<id>",
   });
 
   for await (const page of result) {
@@ -221,7 +220,7 @@ async function run() {
   });
 
   const result = await sdk.monitor.getOne({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -266,8 +265,8 @@ async function run() {
   });
 
   const result = await sdk.monitor.getOneEvent({
-    eventId: "string",
-    id: "<ID>",
+    eventId: "<value>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -320,7 +319,7 @@ async function run() {
       paused: true,
       webhookUrl: "",
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result

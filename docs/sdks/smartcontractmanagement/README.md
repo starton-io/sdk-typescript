@@ -29,7 +29,6 @@ Calls a specific function within a deployed smart contract, enabling interaction
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Speed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
@@ -39,17 +38,17 @@ async function run() {
   const result = await sdk.smartContractManagement.call({
     callDto: {
       customGas: {},
-      functionName: "string",
+      functionName: "<value>",
       params: [
-        ,
-        ,
-        ,
-        ,
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
-      signerWallet: "string",
+      signerWallet: "<value>",
     },
     address: "842 Lee Forges",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -97,7 +96,7 @@ async function run() {
 
   const result = await sdk.smartContractManagement.delete({
     address: "8653 Vaughn Hills",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -135,7 +134,7 @@ Deploys a smart contract from bytecode and returns transaction details.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { DeployFromBytecodeDtoSpeed } from "@starton/sdk/sdk/models/shared";
+import { Type } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
@@ -148,28 +147,28 @@ async function run() {
         {
           inputs: {
             components: {},
-            name: "string",
-            type: "string",
+            name: "<value>",
+            type: "<value>",
           },
           outputs: {
             components: {},
-            name: "string",
-            type: "string",
+            name: "<value>",
+            type: "<value>",
           },
           type: Type.Event,
         },
       ],
-      bytecode: "string",
+      bytecode: "<value>",
       customGas: {},
-      name: "string",
-      network: "string",
+      name: "<value>",
+      network: "<value>",
       params: [
-        ,
-        ,
-        ,
-        ,
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
-      signerWallet: "string",
+      signerWallet: "<value>",
     },
   });
 
@@ -210,7 +209,6 @@ Deploy from Starton audited smart contract template.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { DeployFromTemplateDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
@@ -223,10 +221,10 @@ async function run() {
       name: "TestToken",
       network: "polygon-mumbai",
       params: [
-        ,
-        ,
-        ,
-        ,
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       templateId: "ERC20_META_TRANSACTION",
@@ -320,7 +318,7 @@ async function run() {
 
   const result = await sdk.smartContractManagement.getFunctions({
     address: "18523 Buford Brook",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -367,7 +365,7 @@ async function run() {
 
   const result = await sdk.smartContractManagement.getOne({
     address: "43504 Penelope Expressway",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -405,6 +403,7 @@ Import an already deployed smart contract into the project. This requires provid
 
 ```typescript
 import { Starton } from "@starton/sdk";
+import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Starton({
@@ -416,13 +415,13 @@ async function run() {
       {
         inputs: {
           components: {},
-          name: "string",
-          type: "string",
+          name: "<value>",
+          type: "<value>",
         },
         outputs: {
           components: {},
-          name: "string",
-          type: "string",
+          name: "<value>",
+          type: "<value>",
         },
         stateMutability: StateMutability.Nonpayable,
         type: Type.Constructor,
@@ -434,10 +433,10 @@ async function run() {
     name: "Minimal Contract Test.",
     network: "polygon-mumbai",
     params: [
-      ,
-      ,
-      ,
-      ,
+      "TestToken",
+      "TEST",
+      "1000000000000000000000000",
+      "0x298e760768c8481780397eE28A127eAd584df4ee",
     ],
     templateId: "ERC721_META_TRANSACTION",
   });
@@ -484,16 +483,16 @@ async function run() {
 
   const result = await sdk.smartContractManagement.read({
     readDto: {
-      functionName: "string",
+      functionName: "<value>",
       params: [
-        ,
-        ,
-        ,
-        ,
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
     },
     address: "660 Romaine Highway",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -543,7 +542,7 @@ async function run() {
       metadata: {},
     },
     address: "050 Mellie Well",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result

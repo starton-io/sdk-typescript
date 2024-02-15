@@ -14,7 +14,6 @@ Retrieves a paginated list of smart contract templates, you can use filters and 
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Category } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
@@ -65,7 +64,7 @@ async function run() {
   });
 
   const result = await sdk.smartContract.template.getOne({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result

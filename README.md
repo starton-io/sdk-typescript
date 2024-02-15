@@ -277,7 +277,7 @@ async function run() {
 
     const result = await sdk.data.getBalance({
         address: "164 Runolfsson Via",
-        network: "string",
+        network: "<value>",
     });
 
     // Handle the result

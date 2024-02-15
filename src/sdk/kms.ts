@@ -24,6 +24,7 @@ export class Kms extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create a new KMS entry
      *

@@ -29,7 +29,7 @@ async function run() {
   });
 
   const result = await sdk.webhook.cancel({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -68,7 +68,6 @@ Fetches the list of all webhooks dispatched to your server. You can apply filter
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
 
 async function run() {
   const sdk = new Starton({
@@ -119,7 +118,7 @@ async function run() {
   });
 
   const result = await sdk.webhook.getOne({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -247,7 +246,7 @@ async function run() {
   });
 
   const result = await sdk.webhook.resend({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result

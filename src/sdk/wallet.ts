@@ -24,6 +24,7 @@ export class Wallet extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create a new wallet
      *

@@ -21,6 +21,7 @@ export class Data extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Retrieve the native token balance of a specific blockchain address
      *

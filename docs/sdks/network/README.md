@@ -29,23 +29,23 @@ async function run() {
   });
 
   const result = await sdk.network.create({
-    blockchain: "string",
+    blockchain: "<value>",
     chainId: 4865.89,
     confirmationBlocks: 4893.82,
-    displayName: "string",
+    displayName: "Loyal.Stokes",
     explorerApi: {
-      apiKey: "string",
+      apiKey: "<value>",
       type: ExplorerApiDtoType.Etherscan,
-      url: "https://timely-haven.biz",
+      url: "http://speedy-basil.org",
     },
     gasPriceRecommendation: {
-      defaultRelayerUnstuck: "string",
-      lowest: "string",
-      max: "string",
+      defaultRelayerUnstuck: "<value>",
+      lowest: "<value>",
+      max: "<value>",
     },
-    logo: "string",
-    name: "string",
-    symbol: "string",
+    logo: "<value>",
+    name: "<value>",
+    symbol: "<value>",
   });
 
   // Handle the result
@@ -89,7 +89,7 @@ async function run() {
   });
 
   const result = await sdk.network.delete({
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result
@@ -134,7 +134,7 @@ async function run() {
   });
 
   const result = await sdk.network.getAll({
-    origin: "string",
+    origin: "<value>",
   });
 
   for await (const page of result) {
@@ -179,7 +179,7 @@ async function run() {
   });
 
   const result = await sdk.network.getOne({
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result
@@ -227,17 +227,17 @@ async function run() {
   const result = await sdk.network.update({
     updateNetworkDto: {
       explorerApi: {
-        apiKey: "string",
+        apiKey: "<value>",
         type: ExplorerApiDtoType.Etherscan,
         url: "https://alarming-nondisclosure.com",
       },
       gasPriceRecommendation: {
-        defaultRelayerUnstuck: "string",
-        lowest: "string",
-        max: "string",
+        defaultRelayerUnstuck: "<value>",
+        lowest: "<value>",
+        max: "<value>",
       },
     },
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result

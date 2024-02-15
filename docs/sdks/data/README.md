@@ -27,7 +27,7 @@ async function run() {
 
   const result = await sdk.data.getBalance({
     address: "164 Runolfsson Via",
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result
@@ -72,8 +72,8 @@ async function run() {
 
   const result = await sdk.data.getErc20Balance({
     address: "81562 Emard Grove",
-    contractAddress: "string",
-    network: "string",
+    contractAddress: "<value>",
+    network: "<value>",
   });
 
   // Handle the result
@@ -117,7 +117,7 @@ async function run() {
   });
 
   const result = await sdk.data.getGasPrice({
-    network: "string",
+    network: "<value>",
   });
 
   // Handle the result

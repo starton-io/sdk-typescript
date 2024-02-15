@@ -29,10 +29,15 @@ async function run() {
   });
 
   const result = await sdk.kms.create({
+  credentials:     {
+        accessKeyId: "<value>",
+        accountId: "<value>",
+        region: "<value>",
+      },
     metadata: {},
-    name: "string",
+    name: "<value>",
     provider: Provider.Aws,
-    secret: "string",
+    secret: "<value>",
   });
 
   // Handle the result
@@ -76,7 +81,7 @@ async function run() {
   });
 
   const result = await sdk.kms.delete({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -164,7 +169,7 @@ async function run() {
   });
 
   const result = await sdk.kms.getOne({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -210,9 +215,19 @@ async function run() {
 
   const result = await sdk.kms.update({
     updateKmsDto: {
+    credentials:     {
+          baseUrl: "<value>",
+          id: "<id>",
+          loginPath: "<value>",
+          role: "<value>",
+          rootPath: "<value>",
+          selfSigned: false,
+          timeout: 245.55,
+          tokenPath: "<value>",
+        },
       metadata: {},
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
