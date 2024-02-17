@@ -45,7 +45,6 @@ export class Ipfs extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
         let security$;
@@ -236,7 +235,6 @@ export class Ipfs extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
         const query$ = [
@@ -453,7 +451,6 @@ export class Ipfs extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
         let security$;

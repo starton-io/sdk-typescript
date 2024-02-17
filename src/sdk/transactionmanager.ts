@@ -286,7 +286,6 @@ export class TransactionManager extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/v3/kms/wallet/{address}/{network}/nonce/available"
         )(pathParams$);
@@ -386,7 +385,6 @@ export class TransactionManager extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/transaction/{id}")(pathParams$);
 
         let security$;
@@ -471,7 +469,6 @@ export class TransactionManager extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
             pathParams$
         );

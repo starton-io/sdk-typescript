@@ -121,7 +121,6 @@ export class Network extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         let security$;
@@ -318,7 +317,6 @@ export class Network extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         let security$;
@@ -400,7 +398,6 @@ export class Network extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         let security$;

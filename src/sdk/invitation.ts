@@ -120,7 +120,6 @@ export class Invitation extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/project-member/invitation/{id}")(pathParams$);
 
         let security$;

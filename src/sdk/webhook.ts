@@ -44,7 +44,6 @@ export class Webhook extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/webhook/{id}/cancel")(pathParams$);
 
         let security$;
@@ -236,7 +235,6 @@ export class Webhook extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/webhook/{id}")(pathParams$);
 
         let security$;
@@ -433,7 +431,6 @@ export class Webhook extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/webhook/{id}/resend")(pathParams$);
 
         let security$;

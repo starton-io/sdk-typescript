@@ -49,7 +49,6 @@ export class Rpc extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
         let security$;
@@ -130,7 +129,6 @@ export class Rpc extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
         let security$;
@@ -210,7 +208,6 @@ export class Rpc extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
         const query$ = [
@@ -325,7 +322,6 @@ export class Rpc extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
         let security$;
@@ -408,7 +404,6 @@ export class Rpc extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
         let security$;

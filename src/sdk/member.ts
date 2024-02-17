@@ -51,7 +51,6 @@ export class Member extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/project-member/{userId}")(pathParams$);
 
         let security$;

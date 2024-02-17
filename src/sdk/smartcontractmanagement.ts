@@ -54,7 +54,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract/{network}/{address}/call")(
             pathParams$
         );
@@ -171,7 +170,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract/{network}/{address}")(
             pathParams$
         );
@@ -592,7 +590,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/v3/smart-contract/{network}/{address}/available-functions"
         )(pathParams$);
@@ -693,7 +690,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract/{network}/{address}")(
             pathParams$
         );
@@ -863,7 +859,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract/{network}/{address}/read")(
             pathParams$
         );
@@ -962,7 +957,6 @@ export class SmartContractManagement extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract/{network}/{address}")(
             pathParams$
         );

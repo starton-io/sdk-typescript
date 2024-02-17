@@ -115,7 +115,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
         const query$ = [
@@ -313,7 +312,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
         let security$;
@@ -462,7 +460,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/faucet/{network}")(pathParams$);
 
         let security$;
@@ -553,7 +550,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/{network}/nonce/resync")(
             pathParams$
         );
@@ -655,7 +651,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}/sign-message")(
             pathParams$
         );
@@ -739,7 +734,6 @@ export class Wallet extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
         let security$;

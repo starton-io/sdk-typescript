@@ -4,7 +4,7 @@ management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.258.2
+  generationVersion: 2.262.2
   releaseVersion: 0.7.5
   configChecksum: d095df3bbb8eb89959445bdbcd9c9f2f
   repoURL: https://github.com/starton-io/sdk-typescript.git

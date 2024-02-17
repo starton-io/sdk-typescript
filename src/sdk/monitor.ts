@@ -133,7 +133,6 @@ export class Monitor extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
         let security$;
@@ -336,7 +335,6 @@ export class Monitor extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/watcher/{id}/event")(pathParams$);
 
         const query$ = [
@@ -449,7 +447,6 @@ export class Monitor extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
         let security$;
@@ -530,7 +527,6 @@ export class Monitor extends ClientSDK {
             }),
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/watcher/{id}/event/{eventId}")(pathParams$);
 
         let security$;
@@ -609,7 +605,6 @@ export class Monitor extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
         let security$;

@@ -45,7 +45,6 @@ export class Setting extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams$);
 
         let security$;
@@ -130,7 +129,6 @@ export class Setting extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/setting/relayer/{network}")(pathParams$);
 
         let security$;

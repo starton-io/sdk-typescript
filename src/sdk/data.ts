@@ -49,7 +49,6 @@ export class Data extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/v3/data/{network}/address/{address}/balance/native"
         )(pathParams$);
@@ -128,7 +127,6 @@ export class Data extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/v3/data/{network}/erc20/{contractAddress}/balance"
         )(pathParams$);
@@ -213,7 +211,6 @@ export class Data extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/v3/data/{network}/gas-price")(pathParams$);
 
         let security$;

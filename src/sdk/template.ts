@@ -178,7 +178,6 @@ export class Template extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/v3/smart-contract-template/{id}")(pathParams$);
 
         const query$ = [
