@@ -11,7 +11,11 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 0.7.5
+  version: 0.8.0
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   author: Starton <support@starton.com> (https://www.starton.com)
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
