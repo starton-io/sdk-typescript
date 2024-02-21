@@ -4,9 +4,9 @@ management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.7.5
-  configChecksum: d095df3bbb8eb89959445bdbcd9c9f2f
+  generationVersion: 2.263.3
+  releaseVersion: 0.8.0
+  configChecksum: ac949537155387d7251cef0c6a53aad6
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.3
-    core: 3.4.10
+    core: 3.5.1
     devContainers: 2.90.0
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.3
@@ -43,7 +43,6 @@ generatedFiles:
   - .eslintrc.js
   - .npmignore
   - RUNTIMES.md
-  - package-lock.json
   - package.json
   - src/index.ts
   - src/lib/base64.ts
@@ -844,3 +843,6 @@ generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
+  - src/hooks/hooks.ts
+  - src/hooks/types.ts
+  - src/hooks/index.ts
