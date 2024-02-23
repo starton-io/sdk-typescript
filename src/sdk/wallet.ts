@@ -500,7 +500,6 @@ export class Wallet extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.ClaimFaucetRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.RequireFaucetDto, { explode: true });
 
         const pathParams$ = {
@@ -707,7 +706,6 @@ export class Wallet extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.SignMessageWalletRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.SignMessageDto, { explode: true });
 
         const pathParams$ = {
@@ -798,7 +796,6 @@ export class Wallet extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateWalletRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateWalletDto, { explode: true });
 
         const pathParams$ = {

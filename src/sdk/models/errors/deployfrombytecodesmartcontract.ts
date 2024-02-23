@@ -30,10 +30,10 @@ export class DeployFromBytecodeSmartContractSmartContractManagementResponse500Re
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody";
     }
@@ -65,10 +65,10 @@ export class DeployFromBytecodeSmartContractSmartContractManagementResponseRespo
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody";
     }
@@ -98,10 +98,10 @@ export class DeployFromBytecodeSmartContractSmartContractManagementResponseBody 
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "DeployFromBytecodeSmartContractSmartContractManagementResponseBody";
     }
@@ -131,10 +131,10 @@ export class DeployFromBytecodeSmartContractResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "DeployFromBytecodeSmartContractResponseBody";
     }

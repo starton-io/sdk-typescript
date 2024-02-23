@@ -28,10 +28,10 @@ export class ResyncNoncesWalletWalletTransactionManagerResponseResponseBody exte
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "ResyncNoncesWalletWalletTransactionManagerResponseResponseBody";
     }
@@ -61,10 +61,10 @@ export class ResyncNoncesWalletWalletTransactionManagerResponseBody extends Erro
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "ResyncNoncesWalletWalletTransactionManagerResponseBody";
     }
@@ -94,10 +94,10 @@ export class ResyncNoncesWalletWalletResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "ResyncNoncesWalletWalletResponseBody";
     }
@@ -127,10 +127,10 @@ export class ResyncNoncesWalletResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "ResyncNoncesWalletResponseBody";
     }

@@ -28,10 +28,10 @@ export class CallSmartContractSmartContractManagementResponse500ResponseBody ext
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CallSmartContractSmartContractManagementResponse500ResponseBody";
     }
@@ -61,10 +61,10 @@ export class CallSmartContractSmartContractManagementResponseResponseBody extend
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CallSmartContractSmartContractManagementResponseResponseBody";
     }
@@ -94,10 +94,10 @@ export class CallSmartContractSmartContractManagementResponseBody extends Error 
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CallSmartContractSmartContractManagementResponseBody";
     }
@@ -127,10 +127,10 @@ export class CallSmartContractResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CallSmartContractResponseBody";
     }

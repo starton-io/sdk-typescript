@@ -499,7 +499,6 @@ export class Ipfs extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdatePinRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdatePinDto, { explode: true });
 
         const pathParams$ = {

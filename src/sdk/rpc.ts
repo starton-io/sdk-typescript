@@ -55,7 +55,6 @@ export class Rpc extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.CreateRpcRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.CreateRpcDto, { explode: true });
 
         const pathParams$ = {
@@ -438,7 +437,6 @@ export class Rpc extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateRpcRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateRpcDto, { explode: true });
 
         const pathParams$ = {

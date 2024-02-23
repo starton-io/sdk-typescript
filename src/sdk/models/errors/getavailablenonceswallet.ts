@@ -28,10 +28,10 @@ export class GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody e
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody";
     }
@@ -61,10 +61,10 @@ export class GetAvailableNoncesWalletTransactionManagerResponseResponseBody exte
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "GetAvailableNoncesWalletTransactionManagerResponseResponseBody";
     }
@@ -94,10 +94,10 @@ export class GetAvailableNoncesWalletTransactionManagerResponseBody extends Erro
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "GetAvailableNoncesWalletTransactionManagerResponseBody";
     }
@@ -127,10 +127,10 @@ export class GetAvailableNoncesWalletResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "GetAvailableNoncesWalletResponseBody";
     }

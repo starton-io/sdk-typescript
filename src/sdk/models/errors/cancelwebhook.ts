@@ -28,10 +28,10 @@ export class CancelWebhookWebhookResponseResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CancelWebhookWebhookResponseResponseBody";
     }
@@ -61,10 +61,10 @@ export class CancelWebhookWebhookResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CancelWebhookWebhookResponseBody";
     }
@@ -94,10 +94,10 @@ export class CancelWebhookResponseBody extends Error {
             this.rawResponse = err.rawResponse;
         }
 
-        const msg = "message" in err && typeof err.message === "string" ? err.message : "";
-        const { rawResponse, ...data } = err;
-        const content = JSON.stringify(data);
-        this.message = [msg, content].filter(Boolean).join("\n");
+        this.message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : "API error occurred";
 
         this.name = "CancelWebhookResponseBody";
     }

@@ -143,7 +143,6 @@ export class Setting extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateSettingRelayerRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateSettingRelayerDto, { explode: true });
 
         const pathParams$ = {

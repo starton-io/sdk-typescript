@@ -11,7 +11,7 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 0.8.0
+  version: 0.9.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -31,4 +31,5 @@ typescript:
   maxMethodParams: 0
   outputModelSuffix: output
   packageName: '@starton/sdk'
+  responseFormat: envelope
   templateVersion: v2

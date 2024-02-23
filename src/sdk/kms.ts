@@ -411,7 +411,6 @@ export class Kms extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateKmsRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateKmsDto, { explode: true });
 
         const pathParams$ = {

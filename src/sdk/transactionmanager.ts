@@ -61,7 +61,6 @@ export class TransactionManager extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.CreateTransactionRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.CreateTransactionDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/transaction")();

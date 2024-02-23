@@ -433,7 +433,6 @@ export class Network extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateNetworkRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateNetworkDto, { explode: true });
 
         const pathParams$ = {

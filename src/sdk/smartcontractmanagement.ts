@@ -56,7 +56,6 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.CallSmartContractRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.CallDto, { explode: true });
 
         const pathParams$ = {
@@ -274,7 +273,6 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ =
             operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.DeployFromBytecodeDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-bytecode")();
@@ -388,7 +386,6 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ =
             operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.DeployFromTemplateDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-template")();
@@ -910,7 +907,6 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.ReadSmartContractRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.ReadDto, { explode: true });
 
         const pathParams$ = {
@@ -1016,7 +1012,6 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateSmartContractRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateSmartContractDto, { explode: true });
 
         const pathParams$ = {

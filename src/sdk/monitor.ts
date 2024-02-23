@@ -656,7 +656,6 @@ export class Monitor extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UpdateWatcherRequest$.outboundSchema.parse(input);
-
         const body$ = enc$.encodeJSON("body", payload$.UpdateWatcherDto, { explode: true });
 
         const pathParams$ = {
