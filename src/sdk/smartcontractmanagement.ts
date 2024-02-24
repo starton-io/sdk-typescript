@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
 import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
+import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
@@ -55,7 +56,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CallSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.CallSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.CallDto, { explode: true });
 
         const pathParams$ = {
@@ -93,9 +98,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "callSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -116,45 +120,74 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.CallSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                Transaction: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.CallSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        Transaction: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.CallSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CallSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CallSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CallSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CallSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CallSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CallSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CallSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -176,7 +209,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.DeleteSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -207,9 +244,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "deleteSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "DELETE",
                 path: path$,
@@ -230,25 +266,44 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.DeleteSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                number: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.DeleteSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        number: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.DeleteSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeleteSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeleteSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeleteSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -271,8 +326,12 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ =
-            operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.DeployFromBytecodeDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-bytecode")();
@@ -298,9 +357,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "deployFromBytecodeSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -321,47 +379,74 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.DeployFromBytecodeSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                DeploySmartContractResponse: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.DeployFromBytecodeSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        DeploySmartContractResponse: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.DeployFromBytecodeSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromBytecodeSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -384,8 +469,12 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ =
-            operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.DeployFromTemplateDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-template")();
@@ -411,9 +500,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "deployFromTemplateSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -434,37 +522,59 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.DeployFromTemplateSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                DeploySmartContractResponse: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.DeployFromTemplateSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        DeploySmartContractResponse: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.DeployFromTemplateSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromTemplateSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -486,7 +596,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetAllSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetAllSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const path$ = this.templateURLComponent("/v3/smart-contract")();
@@ -526,9 +640,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "getAllSmartContract" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -581,20 +694,32 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const parsed = operations.GetAllSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContractPaginated: responseBody,
-            });
+            const parsed = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAllSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContractPaginated: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             const next$ = nextFunc(responseBody);
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetAllSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAllSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -616,8 +741,12 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ =
-            operations.GetAvailableFunctionsSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.GetAvailableFunctionsSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -648,9 +777,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "getAvailableFunctionsSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -671,39 +799,63 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                operations.GetAvailableFunctionsSmartContractResponse$.inboundSchema.parse({
-                    ...responseFields$,
-                    AvailableFunctions: responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAvailableFunctionsSmartContractResponse$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            AvailableFunctions: val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableFunctionsSmartContractResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableFunctionsSmartContractResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -725,7 +877,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetOneSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetOneSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -767,9 +923,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "getOneSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -790,25 +945,44 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.GetOneSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContract: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetOneSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContract: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetOneSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetOneSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -831,7 +1005,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = shared.ImportSmartContractDto$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => shared.ImportSmartContractDto$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/import-existing")();
@@ -850,9 +1028,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "importExistingSmartContract" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -873,17 +1050,29 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.ImportExistingSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContract: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.ImportExistingSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContract: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.ImportExistingSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ImportExistingSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -906,7 +1095,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ReadSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.ReadSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.ReadDto, { explode: true });
 
         const pathParams$ = {
@@ -937,9 +1130,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "readSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -960,35 +1152,59 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.ReadSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                ReadSmartContractResponse: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.ReadSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        ReadSmartContractResponse: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.ReadSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ReadSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.ReadSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ReadSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.ReadSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ReadSmartContractSmartContractManagementResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -1011,7 +1227,11 @@ export class SmartContractManagement extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateSmartContractRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.UpdateSmartContractRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.UpdateSmartContractDto, { explode: true });
 
         const pathParams$ = {
@@ -1042,9 +1262,8 @@ export class SmartContractManagement extends ClientSDK {
 
         const context = { operationID: "updateSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "PATCH",
                 path: path$,
@@ -1065,25 +1284,44 @@ export class SmartContractManagement extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.UpdateSmartContractResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContract: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.UpdateSmartContractResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContract: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.UpdateSmartContractResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.UpdateSmartContractResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.UpdateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.UpdateSmartContractSmartContractManagementResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();

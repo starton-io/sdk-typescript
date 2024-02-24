@@ -4,9 +4,9 @@ management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
   speakeasyVersion: internal
-  generationVersion: 2.269.0
-  releaseVersion: 0.9.0
-  configChecksum: 56fec7f51c616718855bf29a9f118402
+  generationVersion: 2.272.4
+  releaseVersion: 0.10.0
+  configChecksum: 788320e0df4fb09582e66da1b6d7daf9
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -14,9 +14,9 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.3
-    core: 3.5.1
+    core: 3.6.1
     devContainers: 2.90.0
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.3
     groups: 2.81.2
     nameOverrides: 2.81.1
@@ -52,11 +52,13 @@ generatedFiles:
   - src/lib/event-streams.ts
   - src/lib/http.ts
   - src/lib/retries.ts
+  - src/lib/schemas.ts
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
   - src/sdk/models/errors/sdkerror.ts
+  - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts

@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
 import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
+import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
@@ -53,7 +54,11 @@ export class Template extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const path$ = this.templateURLComponent("/v3/smart-contract-template")();
@@ -102,9 +107,8 @@ export class Template extends ClientSDK {
 
         const context = { operationID: "getAllSmartContractTemplate" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -157,20 +161,32 @@ export class Template extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const parsed = operations.GetAllSmartContractTemplateResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContractTemplatePaginated: responseBody,
-            });
+            const parsed = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAllSmartContractTemplateResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContractTemplatePaginated: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             const next$ = nextFunc(responseBody);
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetAllSmartContractTemplateResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAllSmartContractTemplateResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -192,7 +208,11 @@ export class Template extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -221,9 +241,8 @@ export class Template extends ClientSDK {
 
         const context = { operationID: "getOneSmartContractTemplate" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -244,27 +263,44 @@ export class Template extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.GetOneSmartContractTemplateResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SmartContractTemplate: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetOneSmartContractTemplateResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SmartContractTemplate: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetOneSmartContractTemplateResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneSmartContractTemplateResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();

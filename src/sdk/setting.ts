@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
 import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
+import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
@@ -51,7 +52,11 @@ export class Setting extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetAllSettingRelayerRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetAllSettingRelayerRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -76,9 +81,8 @@ export class Setting extends ClientSDK {
 
         const context = { operationID: "getAllSettingRelayer" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -99,27 +103,44 @@ export class Setting extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.GetAllSettingRelayerResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SettingRelayer: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAllSettingRelayerResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SettingRelayer: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetAllSettingRelayerResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAllSettingRelayerResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAllSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAllSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -142,7 +163,11 @@ export class Setting extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateSettingRelayerRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.UpdateSettingRelayerRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.UpdateSettingRelayerDto, { explode: true });
 
         const pathParams$ = {
@@ -167,9 +192,8 @@ export class Setting extends ClientSDK {
 
         const context = { operationID: "updateSettingRelayer" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "PATCH",
                 path: path$,
@@ -190,27 +214,44 @@ export class Setting extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.UpdateSettingRelayerResponse$.inboundSchema.parse({
-                ...responseFields$,
-                SettingRelayer: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.UpdateSettingRelayerResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        SettingRelayer: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.UpdateSettingRelayerResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.UpdateSettingRelayerResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.UpdateSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.UpdateSettingRelayerTransactionManagerSettingResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();

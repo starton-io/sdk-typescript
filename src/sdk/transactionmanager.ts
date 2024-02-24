@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
 import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
+import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
@@ -60,7 +61,11 @@ export class TransactionManager extends ClientSDK {
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateTransactionRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.CreateTransactionRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = enc$.encodeJSON("body", payload$.CreateTransactionDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/transaction")();
@@ -86,9 +91,8 @@ export class TransactionManager extends ClientSDK {
 
         const context = { operationID: "createTransaction" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -109,45 +113,74 @@ export class TransactionManager extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.CreateTransactionResponse$.inboundSchema.parse({
-                ...responseFields$,
-                Transaction: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.CreateTransactionResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        Transaction: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.CreateTransactionResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CreateTransactionResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CreateTransactionTransactionManagerResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CreateTransactionTransactionManagerResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CreateTransactionTransactionManagerResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CreateTransactionTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.CreateTransactionTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.CreateTransactionTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -169,7 +202,11 @@ export class TransactionManager extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetAllTransactionRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetAllTransactionRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const path$ = this.templateURLComponent("/v3/transaction")();
@@ -207,9 +244,8 @@ export class TransactionManager extends ClientSDK {
 
         const context = { operationID: "getAllTransaction" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -262,20 +298,32 @@ export class TransactionManager extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const parsed = operations.GetAllTransactionResponse$.inboundSchema.parse({
-                ...responseFields$,
-                TransactionPaginated: responseBody,
-            });
+            const parsed = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAllTransactionResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        TransactionPaginated: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             const next$ = nextFunc(responseBody);
             const page$ = { ...parsed, next: next$ };
             const result = { ...page$, ...createPageIterator(page$) };
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetAllTransactionResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAllTransactionResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -297,7 +345,11 @@ export class TransactionManager extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetAvailableNoncesWalletRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetAvailableNoncesWalletRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -328,9 +380,8 @@ export class TransactionManager extends ClientSDK {
 
         const context = { operationID: "getAvailableNoncesWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -351,45 +402,74 @@ export class TransactionManager extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.GetAvailableNoncesWalletResponse$.inboundSchema.parse({
-                ...responseFields$,
-                NoncesAvailable: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetAvailableNoncesWalletResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        NoncesAvailable: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetAvailableNoncesWalletResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableNoncesWalletResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableNoncesWalletTransactionManagerResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableNoncesWalletTransactionManagerResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -411,7 +491,11 @@ export class TransactionManager extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetOneTransactionRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.GetOneTransactionRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -433,9 +517,8 @@ export class TransactionManager extends ClientSDK {
 
         const context = { operationID: "getOneTransaction" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "GET",
                 path: path$,
@@ -456,25 +539,44 @@ export class TransactionManager extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.GetOneTransactionResponse$.inboundSchema.parse({
-                ...responseFields$,
-                Transaction: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.GetOneTransactionResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        Transaction: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.GetOneTransactionResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneTransactionResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.GetOneTransactionTransactionManagerResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.GetOneTransactionTransactionManagerResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();
@@ -496,7 +598,11 @@ export class TransactionManager extends ClientSDK {
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ResyncNoncesWalletRequest$.outboundSchema.parse(input);
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.ResyncNoncesWalletRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
         const body$ = null;
 
         const pathParams$ = {
@@ -527,9 +633,8 @@ export class TransactionManager extends ClientSDK {
 
         const context = { operationID: "resyncNoncesWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = await this.createRequest$(
+        const request = this.createRequest$(
             {
-                context,
                 security: securitySettings$,
                 method: "POST",
                 path: path$,
@@ -550,42 +655,72 @@ export class TransactionManager extends ClientSDK {
 
         if (this.matchResponse(response, 201, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.ResyncNoncesWalletResponse$.inboundSchema.parse({
-                ...responseFields$,
-                resyncNonce: responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.ResyncNoncesWalletResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        resyncNonce: val$,
+                    });
+                },
+                "Response validation failed"
+            );
             return result;
         } else if (this.matchResponse(response, 400, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.ResyncNoncesWalletResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ResyncNoncesWalletResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
-            const result = errors.ResyncNoncesWalletWalletResponseBody$.inboundSchema.parse({
-                ...responseFields$,
-                ...responseBody,
-            });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ResyncNoncesWalletWalletResponseBody$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$.inboundSchema.parse({
-                    ...responseFields$,
-                    ...responseBody,
-                });
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
-            const result =
-                errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
-                    {
-                        ...responseFields$,
-                        ...responseBody,
-                    }
-                );
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$.inboundSchema.parse(
+                        {
+                            ...responseFields$,
+                            ...val$,
+                        }
+                    );
+                },
+                "Response validation failed"
+            );
             throw result;
         } else {
             const responseBody = await response.text();

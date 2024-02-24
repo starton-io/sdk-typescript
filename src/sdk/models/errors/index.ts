@@ -63,6 +63,7 @@ export * from "./readsmartcontract";
 export * from "./resendwebhook";
 export * from "./resyncnonceswallet";
 export * from "./sdkerror";
+export * from "./sdkvalidationerror";
 export * from "./signmessagewallet";
 export * from "./updatekms";
 export * from "./updatenetwork";
