@@ -87,9 +87,13 @@ export class TransactionManager extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createTransaction",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createTransaction" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -240,9 +244,13 @@ export class TransactionManager extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllTransaction",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllTransaction" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -376,9 +384,13 @@ export class TransactionManager extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAvailableNoncesWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAvailableNoncesWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -513,9 +525,13 @@ export class TransactionManager extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneTransaction",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneTransaction" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -629,9 +645,13 @@ export class TransactionManager extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "resyncNoncesWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "resyncNoncesWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {

@@ -75,9 +75,13 @@ export class Kms extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createKms",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createKms" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -167,9 +171,13 @@ export class Kms extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteKms",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteKms" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -274,9 +282,13 @@ export class Kms extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllKms",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllKms" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -399,9 +411,13 @@ export class Kms extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneKms",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneKms" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -505,9 +521,13 @@ export class Kms extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateKms",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateKms" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

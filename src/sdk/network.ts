@@ -81,9 +81,13 @@ export class Network extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createNetwork",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createNetwork" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -176,9 +180,13 @@ export class Network extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteNetwork",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteNetwork" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -293,9 +301,13 @@ export class Network extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllNetwork",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllNetwork" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -421,9 +433,13 @@ export class Network extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneNetwork",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneNetwork" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -530,9 +546,13 @@ export class Network extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateNetwork",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateNetwork" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

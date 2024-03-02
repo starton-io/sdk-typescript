@@ -75,9 +75,13 @@ export class Invitation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createInvitation",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createInvitation" };
         const doOptions = { context, errorCodes: ["400", "401", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -182,9 +186,13 @@ export class Invitation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteInvitation",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteInvitation" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -291,9 +299,13 @@ export class Invitation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllInvitation",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllInvitation" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

@@ -80,9 +80,13 @@ export class Rpc extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createRpc",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createRpc" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -189,9 +193,13 @@ export class Rpc extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteRpc",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteRpc" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -302,9 +310,13 @@ export class Rpc extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllRpc",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllRpc" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -431,9 +443,13 @@ export class Rpc extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneRpc",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneRpc" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -541,9 +557,13 @@ export class Rpc extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateRpc",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateRpc" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

@@ -75,9 +75,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createWatcher",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createWatcher" };
         const doOptions = { context, errorCodes: ["400", "409", "412", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -206,9 +210,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteWatcher",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteWatcher" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -332,9 +340,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllWatcher",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllWatcher" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -462,9 +474,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllWatcherEvent",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllWatcherEvent" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -589,9 +605,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneWatcher",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneWatcher" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -698,9 +718,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneWatcherEvent",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneWatcherEvent" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -804,9 +828,13 @@ export class Monitor extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateWatcher",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateWatcher" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

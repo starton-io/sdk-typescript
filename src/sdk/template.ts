@@ -103,9 +103,13 @@ export class Template extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllSmartContractTemplate",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllSmartContractTemplate" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -237,9 +241,13 @@ export class Template extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneSmartContractTemplate",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneSmartContractTemplate" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

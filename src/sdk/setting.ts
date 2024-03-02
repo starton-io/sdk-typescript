@@ -77,9 +77,13 @@ export class Setting extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllSettingRelayer",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllSettingRelayer" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -188,9 +192,13 @@ export class Setting extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateSettingRelayer",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateSettingRelayer" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

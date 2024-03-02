@@ -75,9 +75,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createWallet" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -177,9 +181,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -285,9 +293,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllWallet" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -413,9 +425,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -516,9 +532,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "importProviderKeyWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "importProviderKeyWallet" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -612,9 +632,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "claimFaucet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "claimFaucet" };
         const doOptions = { context, errorCodes: ["400", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -739,9 +763,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "resyncNoncesWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "resyncNoncesWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -880,9 +908,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "signMessageWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "signMessageWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -989,9 +1021,13 @@ export class Wallet extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateWallet",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateWallet" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

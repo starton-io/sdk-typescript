@@ -77,9 +77,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deletePin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deletePin" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -191,9 +195,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllPin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllPin" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -323,9 +331,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOnePin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOnePin" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -415,9 +427,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getStorageUsedPin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getStorageUsedPin" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -504,9 +520,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createPin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createPin" };
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -610,9 +630,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updatePin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updatePin" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -730,9 +754,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadFromFilePin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadFromFilePin" };
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -842,9 +870,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadFromFolderPin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadFromFolderPin" };
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -945,9 +977,13 @@ export class Ipfs extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadFromJsonPin",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadFromJsonPin" };
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request = this.createRequest$(
             {

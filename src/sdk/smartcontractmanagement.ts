@@ -94,9 +94,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "callSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "callSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -240,9 +244,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -353,9 +361,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deployFromBytecodeSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deployFromBytecodeSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -496,9 +508,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deployFromTemplateSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deployFromTemplateSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -636,9 +652,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAllSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAllSmartContract" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -773,9 +793,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getAvailableFunctionsSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getAvailableFunctionsSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -919,9 +943,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getOneSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getOneSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -1024,9 +1052,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "importExistingSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "importExistingSmartContract" };
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
@@ -1126,9 +1158,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "readSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "readSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
             {
@@ -1258,9 +1294,13 @@ export class SmartContractManagement extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "updateSmartContract",
+            oAuth2Scopes: [],
+            securitySource: this.options$.startonApiKey,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "updateSmartContract" };
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
             {
