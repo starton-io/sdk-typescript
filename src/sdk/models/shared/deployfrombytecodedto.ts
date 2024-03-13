@@ -4,7 +4,7 @@
 
 import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto";
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type DeployFromBytecodeDto3 = {};
 
@@ -55,7 +55,6 @@ export namespace DeployFromBytecodeDtoParams$ {
     export type Inbound = DeployFromBytecodeDto3$.Inbound | string | number | boolean;
 
     export type Outbound = DeployFromBytecodeDto3$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<DeployFromBytecodeDtoParams, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => DeployFromBytecodeDto3$.inboundSchema),
@@ -63,7 +62,6 @@ export namespace DeployFromBytecodeDtoParams$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromBytecodeDtoParams> =
         z.union([
             z.lazy(() => DeployFromBytecodeDto3$.outboundSchema),

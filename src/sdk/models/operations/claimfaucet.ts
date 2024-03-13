@@ -3,7 +3,7 @@
  */
 
 import * as shared from "../../../sdk/models/shared";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ClaimFaucetRequest = {
     requireFaucetDto: shared.RequireFaucetDto;
@@ -74,10 +74,8 @@ export namespace ClaimFaucetResponseBody$ {
     export type Inbound = shared.TooEarly$.Inbound;
 
     export type Outbound = shared.TooEarly$.Outbound;
-
     export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, Inbound> =
         shared.TooEarly$.inboundSchema;
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponseBody> =
         shared.TooEarly$.outboundSchema;
 }

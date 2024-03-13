@@ -4,7 +4,7 @@
 
 import { SmartContract, SmartContract$ } from "./smartcontract";
 import { Transaction, Transaction$ } from "./transaction";
-import { z } from "zod";
+import * as z from "zod";
 
 export type DeploySmartContractResponse = {
     smartContract: SmartContract;

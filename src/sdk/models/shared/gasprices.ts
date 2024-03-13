@@ -3,7 +3,7 @@
  */
 
 import { GasPriceInfo, GasPriceInfo$ } from "./gaspriceinfo";
-import { z } from "zod";
+import * as z from "zod";
 
 export type GasPrices = {
     /**

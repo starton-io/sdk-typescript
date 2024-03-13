@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
   docVersion: "1.0"
-  speakeasyVersion: internal
-  generationVersion: 2.277.0
-  releaseVersion: 0.10.1
-  configChecksum: 988d5fa9281846ac5d03121f35245bec
+  speakeasyVersion: 1.207.1
+  generationVersion: 2.280.6
+  releaseVersion: 0.11.0
+  configChecksum: 5551f6a7ffd2c1778324c3064c44170d
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -17,11 +17,11 @@ features:
     core: 3.6.1
     devContainers: 2.90.0
     globalSecurity: 2.82.4
-    globalServerURLs: 2.82.3
+    globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.1
-    pagination: 2.82.0
-    responseFormat: 0.1.0
+    pagination: 2.82.1
+    responseFormat: 0.2.1
     unions: 2.85.3
 generatedFiles:
   - src/sdk/data.ts
@@ -49,7 +49,6 @@ generatedFiles:
   - src/lib/base64.ts
   - src/lib/config.ts
   - src/lib/encodings.ts
-  - src/lib/event-streams.ts
   - src/lib/http.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -60,7 +59,6 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
-  - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts

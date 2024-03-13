@@ -4,7 +4,7 @@
 
 import { AwsKmsCredentialsDto, AwsKmsCredentialsDto$ } from "./awskmscredentialsdto";
 import { VaultKmsCredentialsDto, VaultKmsCredentialsDto$ } from "./vaultkmscredentialsdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Credentials = AwsKmsCredentialsDto | VaultKmsCredentialsDto;
 
@@ -28,12 +28,10 @@ export namespace Credentials$ {
     export type Inbound = AwsKmsCredentialsDto$.Inbound | VaultKmsCredentialsDto$.Inbound;
 
     export type Outbound = AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound;
-
     export const inboundSchema: z.ZodType<Credentials, z.ZodTypeDef, Inbound> = z.union([
         AwsKmsCredentialsDto$.inboundSchema,
         VaultKmsCredentialsDto$.inboundSchema,
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Credentials> = z.union([
         AwsKmsCredentialsDto$.outboundSchema,
         VaultKmsCredentialsDto$.outboundSchema,

@@ -4,7 +4,7 @@
 
 import { AbiInputDto, AbiInputDto$ } from "./abiinputdto";
 import { AbiOutputDto, AbiOutputDto$ } from "./abioutputdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export enum StateMutability {
     Pure = "pure",

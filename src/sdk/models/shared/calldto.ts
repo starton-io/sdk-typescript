@@ -3,7 +3,7 @@
  */
 
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Three = {};
 
@@ -47,14 +47,12 @@ export namespace Params$ {
     export type Inbound = Three$.Inbound | string | number | boolean;
 
     export type Outbound = Three$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Three$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.union([
         z.lazy(() => Three$.outboundSchema),
         z.string(),

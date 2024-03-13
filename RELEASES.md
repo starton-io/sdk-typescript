@@ -269,3 +269,13 @@ Based on:
 - [typescript v0.10.1] .
 ### Releases
 - [NPM v0.10.1] https://www.npmjs.com/package/@starton/sdk/v/0.10.1 - .
+
+## 2024-03-13 00:47:16
+### Changes
+Based on:
+- OpenAPI Doc 1.0 
+- Speakeasy CLI 1.207.1 (2.280.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.11.0] .
+### Releases
+- [NPM v0.11.0] https://www.npmjs.com/package/@starton/sdk/v/0.11.0 - .

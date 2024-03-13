@@ -3,7 +3,7 @@
  */
 
 import { DirectoryContent, DirectoryContent$ } from "./directorycontent";
-import { z } from "zod";
+import * as z from "zod";
 
 export type PinMetadata = {};
 

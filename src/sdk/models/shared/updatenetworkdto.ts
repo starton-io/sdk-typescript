@@ -4,7 +4,7 @@
 
 import { ExplorerApiDto, ExplorerApiDto$ } from "./explorerapidto";
 import { GasPriceRecommendationDto, GasPriceRecommendationDto$ } from "./gaspricerecommendationdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type UpdateNetworkDto = {
     blockchain?: string | undefined;

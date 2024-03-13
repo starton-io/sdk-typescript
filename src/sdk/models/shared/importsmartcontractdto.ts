@@ -3,7 +3,7 @@
  */
 
 import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ImportSmartContractDto3 = {};
 
@@ -41,7 +41,6 @@ export namespace ImportSmartContractDtoParams$ {
     export type Inbound = ImportSmartContractDto3$.Inbound | string | number | boolean;
 
     export type Outbound = ImportSmartContractDto3$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<ImportSmartContractDtoParams, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => ImportSmartContractDto3$.inboundSchema),
@@ -49,7 +48,6 @@ export namespace ImportSmartContractDtoParams$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoParams> =
         z.union([
             z.lazy(() => ImportSmartContractDto3$.outboundSchema),

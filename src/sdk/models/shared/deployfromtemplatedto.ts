@@ -3,7 +3,7 @@
  */
 
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto";
-import { z } from "zod";
+import * as z from "zod";
 
 export type DeployFromTemplateDto3 = {};
 
@@ -86,7 +86,6 @@ export namespace DeployFromTemplateDtoParams$ {
     export type Inbound = DeployFromTemplateDto3$.Inbound | string | number | boolean;
 
     export type Outbound = DeployFromTemplateDto3$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<DeployFromTemplateDtoParams, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => DeployFromTemplateDto3$.inboundSchema),
@@ -94,7 +93,6 @@ export namespace DeployFromTemplateDtoParams$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoParams> =
         z.union([
             z.lazy(() => DeployFromTemplateDto3$.outboundSchema),

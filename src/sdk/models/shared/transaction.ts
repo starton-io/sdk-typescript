@@ -3,7 +3,7 @@
  */
 
 import { TransactionLog, TransactionLog$ } from "./transactionlog";
-import { z } from "zod";
+import * as z from "zod";
 
 export type TransactionMetadata = {};
 
