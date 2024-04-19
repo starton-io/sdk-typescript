@@ -26,12 +26,12 @@ Unpin a previously pinned file by providing the specific {id} associated with th
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.delete({
+async function run() {
+  const result = await starton.ipfs.delete({
     id: "<id>",
   });
 
@@ -71,12 +71,12 @@ Retrieve a list of files that have been pinned on IPFS.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.getAll({});
+async function run() {
+  const result = await starton.ipfs.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -114,12 +114,12 @@ Fetches the details of a specific file that has been previously uploaded to IPFS
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.getOne({
+async function run() {
+  const result = await starton.ipfs.getOne({
     id: "<id>",
   });
 
@@ -159,12 +159,12 @@ Fetches the current storage utilization details for the project, providing insig
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.getStorageUsed();
+async function run() {
+  const result = await starton.ipfs.getStorageUsed();
 
   // Handle the result
   console.log(result)
@@ -200,12 +200,12 @@ Requests Starton to retain a copy of a file that has already been uploaded to IP
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.pinExistingFile({
+async function run() {
+  const result = await starton.ipfs.pinExistingFile({
     cid: "<value>",
     metadata: {},
   });
@@ -246,12 +246,12 @@ Modifies the name or metadata of an existing file stored in IPFS. Note that dire
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.update({
+async function run() {
+  const result = await starton.ipfs.update({
     updatePinDto: {
       metadata: {},
     },
@@ -295,12 +295,12 @@ Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retr
 import { Starton } from "@starton/sdk";
 import { openAsBlob } from "node:fs";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.uploadFile({
+async function run() {
+  const result = await starton.ipfs.uploadFile({
     file: await openAsBlob("./sample-file"),
     metadata: {},
   });
@@ -341,12 +341,12 @@ Upload an entire folder to IPFS, ensuring secure pinning of its contents for rel
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.uploadFolder({
+async function run() {
+  const result = await starton.ipfs.uploadFolder({
     files: [
       {
         content: new TextEncoder().encode("0x08C8AeC4Bb"),
@@ -392,12 +392,12 @@ Upload a JSON file to IPFS with pinning for reliable access, associating it with
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.ipfs.uploadJson({
+async function run() {
+  const result = await starton.ipfs.uploadJson({
     content: {},
     metadata: {},
     name: "<value>",

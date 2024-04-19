@@ -72,7 +72,8 @@ export namespace DeployFromBytecodeDtoParams$ {
 }
 
 /** @internal */
-export const DeployFromBytecodeDtoSpeed$ = z.nativeEnum(DeployFromBytecodeDtoSpeed);
+export const DeployFromBytecodeDtoSpeed$: z.ZodNativeEnum<typeof DeployFromBytecodeDtoSpeed> =
+    z.nativeEnum(DeployFromBytecodeDtoSpeed);
 
 /** @internal */
 export namespace DeployFromBytecodeDto$ {

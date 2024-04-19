@@ -14,7 +14,7 @@ export type CreateInvitationDto = {
 };
 
 /** @internal */
-export const Role$ = z.nativeEnum(Role);
+export const Role$: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
 
 /** @internal */
 export namespace CreateInvitationDto$ {

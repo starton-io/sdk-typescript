@@ -7,15 +7,17 @@ export type Fetcher = (
   init?: RequestInit,
 ) => Promise<Response>;
 
+export type Awaitable<T> = T | Promise<T>;
+
 const DEFAULT_FETCHER: Fetcher = (input, init) => fetch(input, init);
 
 export interface HTTPClientOptions {
   fetcher?: Fetcher;
 }
 
-type BeforeRequestHook = (req: Request) => Request | void;
-type RequestErrorHook = (err: unknown, req: Request) => void;
-type ResponseHook = (res: Response, req: Request) => void;
+export type BeforeRequestHook = (req: Request) => Awaitable<Request | void>;
+export type RequestErrorHook = (err: unknown, req: Request) => Awaitable<void>;
+export type ResponseHook = (res: Response, req: Request) => Awaitable<void>;
 
 export class HTTPClient {
   private fetcher: Fetcher;
@@ -28,17 +30,27 @@ export class HTTPClient {
   }
 
   async request(request: Request): Promise<Response> {
-    const req = this.requestHooks.reduce((currentReq, fn) => {
-      const nextRequest = fn(currentReq);
-      return nextRequest || currentReq;
-    }, request);
+    let req = request;
+    for (const hook of this.requestHooks) {
+      const nextRequest = await hook(req);
+      if (nextRequest) {
+        req = nextRequest;
+      }
+    }
 
     try {
       const res = await this.fetcher(req);
-      this.responseHooks.forEach((fn) => fn(res, req));
+
+      for (const hook of this.responseHooks) {
+        await hook(res, req);
+      }
+
       return res;
     } catch (err) {
-      this.requestErrorHooks.forEach((fn) => fn(err, req));
+      for (const hook of this.requestErrorHooks) {
+        await hook(err, req);
+      }
+
       throw err;
     }
   }
@@ -88,7 +100,7 @@ export class HTTPClient {
       | [hook: "beforeRequest", fn: BeforeRequestHook]
       | [hook: "requestError", fn: RequestErrorHook]
       | [hook: "response", fn: ResponseHook]
-  ) {
+  ): this {
     let target: unknown[];
     if (args[0] === "beforeRequest") {
       target = this.requestHooks;
@@ -108,7 +120,7 @@ export class HTTPClient {
     return this;
   }
 
-  clone() {
+  clone(): HTTPClient {
     const child = new HTTPClient(this.options);
     child.requestHooks = this.requestHooks.slice();
     child.requestErrorHooks = this.requestErrorHooks.slice();
@@ -148,7 +160,7 @@ const codeRangeRE = new RegExp("^[0-9]xx$", "i");
 export function matchStatusCode(
   response: Response,
   codes: number | string | (number | string)[],
-) {
+): boolean {
   const actual = `${response.status}`;
   const expectedCodes = Array.isArray(codes) ? codes : [codes];
   if (!expectedCodes.length) {

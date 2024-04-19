@@ -26,12 +26,12 @@ Create a new wallet for the project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.create({
+async function run() {
+  const result = await starton.wallet.create({
     kmsId: "<value>",
     metadata: {},
   });
@@ -71,12 +71,12 @@ Removes a wallet from the Key Management System.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.delete({
+async function run() {
+  const result = await starton.wallet.delete({
     address: "8653 Vaughn Hills",
   });
 
@@ -116,12 +116,12 @@ Fetches the list of wallets of the project
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.getAll({});
+async function run() {
+  const result = await starton.wallet.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -159,12 +159,12 @@ Retrieves information about a specific wallet.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.getOne({
+async function run() {
+  const result = await starton.wallet.getOne({
     address: "43504 Penelope Expressway",
   });
 
@@ -205,12 +205,12 @@ Imports a wallet using a Key Management System.
 import { Starton } from "@starton/sdk";
 import { ImportProviderKeyDtoProvider } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.import({
+async function run() {
+  const result = await starton.wallet.import({
     metadata: {},
     provider: ImportProviderKeyDtoProvider.Aws,
   });
@@ -250,12 +250,12 @@ Request tokens from the faucet, which can be used for testing and development pu
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.requestFaucet({
+async function run() {
+  const result = await starton.wallet.requestFaucet({
     requireFaucetDto: {
       captchaToken: "testCaptchaToken",
       wallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
@@ -299,12 +299,12 @@ Updates the stored nonce values for a wallet, synchronizing them with the curren
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.resyncNonce({
+async function run() {
+  const result = await starton.wallet.resyncNonce({
     address: "4925 Shanahan Parkways",
     network: "<value>",
   });
@@ -347,12 +347,12 @@ Generates a cryptographic signature for a given message using a specified wallet
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.sign({
+async function run() {
+  const result = await starton.wallet.sign({
     signMessageDto: {
       message: "<value>",
     },
@@ -395,12 +395,12 @@ Modifies details of an existing wallet using its address.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.wallet.update({
+async function run() {
+  const result = await starton.wallet.update({
     updateWalletDto: {
       metadata: {},
     },

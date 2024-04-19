@@ -92,10 +92,10 @@ export namespace WatcherMetadata$ {
 }
 
 /** @internal */
-export const TriggerType$ = z.nativeEnum(TriggerType);
+export const TriggerType$: z.ZodNativeEnum<typeof TriggerType> = z.nativeEnum(TriggerType);
 
 /** @internal */
-export const WatcherType$ = z.nativeEnum(WatcherType);
+export const WatcherType$: z.ZodNativeEnum<typeof WatcherType> = z.nativeEnum(WatcherType);
 
 /** @internal */
 export namespace Watcher$ {

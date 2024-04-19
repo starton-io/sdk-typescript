@@ -15,12 +15,12 @@ Retrieves a paginated list of smart contract templates, you can use filters and 
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.smartContract.template.getAll({});
+async function run() {
+  const result = await starton.smartContract.template.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -58,12 +58,12 @@ Fetches the details of a particular smart contract template using its unique ide
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.smartContract.template.getOne({
+async function run() {
+  const result = await starton.smartContract.template.getOne({
     id: "<id>",
   });
 

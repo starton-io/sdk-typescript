@@ -62,7 +62,7 @@ export namespace Params$ {
 }
 
 /** @internal */
-export const Speed$ = z.nativeEnum(Speed);
+export const Speed$: z.ZodNativeEnum<typeof Speed> = z.nativeEnum(Speed);
 
 /** @internal */
 export namespace CallDto$ {

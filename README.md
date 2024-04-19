@@ -234,12 +234,12 @@ Here's an example of one such pagination call:
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-    const sdk = new Starton({
-        startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+const starton = new Starton({
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-    const result = await sdk.wallet.getAll({});
+async function run() {
+    const result = await starton.wallet.getAll({});
 
     for await (const page of result) {
         // handle page
@@ -270,12 +270,12 @@ To authenticate with the API the `startonApiKey` parameter must be set when init
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-    const sdk = new Starton({
-        startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+const starton = new Starton({
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-    const result = await sdk.data.getBalance({
+async function run() {
+    const result = await starton.data.getBalance({
         address: "164 Runolfsson Via",
         network: "<value>",
     });
@@ -307,12 +307,12 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 import { Starton } from "@starton/sdk";
 import { openAsBlob } from "node:fs";
 
-async function run() {
-    const sdk = new Starton({
-        startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+const starton = new Starton({
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-    const result = await sdk.ipfs.uploadFile({
+async function run() {
+    const result = await starton.ipfs.uploadFile({
         file: await openAsBlob("./sample-file"),
         metadata: {},
     });

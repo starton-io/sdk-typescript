@@ -23,12 +23,12 @@ Terminates the designated webhook, identified by its {id}, preventing any furthe
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.cancel({
+async function run() {
+  const result = await starton.webhook.cancel({
     id: "<id>",
   });
 
@@ -69,12 +69,12 @@ Fetches the list of all webhooks dispatched to your server. You can apply filter
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.getAll({});
+async function run() {
+  const result = await starton.webhook.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -112,12 +112,12 @@ Fetches the details of a specific webhook dispatched by Starton, identified uniq
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.getOne({
+async function run() {
+  const result = await starton.webhook.getOne({
     id: "<id>",
   });
 
@@ -157,12 +157,12 @@ Fetches the signing secret associated with your project. Use this secret to secu
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.getSigningSecret();
+async function run() {
+  const result = await starton.webhook.getSigningSecret();
 
   // Handle the result
   console.log(result)
@@ -198,12 +198,12 @@ Generates a new signing secret for your project, invalidating the old one. All s
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.regenerateSigningSecret();
+async function run() {
+  const result = await starton.webhook.regenerateSigningSecret();
 
   // Handle the result
   console.log(result)
@@ -240,12 +240,12 @@ Initiates the resend process for a particular webhook to your server, facilitati
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.webhook.resend({
+async function run() {
+  const result = await starton.webhook.resend({
     id: "<id>",
   });
 

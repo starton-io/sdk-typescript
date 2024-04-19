@@ -3,8 +3,8 @@
  */
 
 import * as b64$ from "../../../lib/base64";
-import * as shared from "../../../sdk/models/shared";
-import { blobLikeSchema } from "../../../sdk/types";
+import { blobLikeSchema } from "../../types";
+import * as shared from "../shared";
 import * as z from "zod";
 
 export type FileT = {

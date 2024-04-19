@@ -50,7 +50,7 @@ export namespace KmsMetadata$ {
 }
 
 /** @internal */
-export const KmsProvider$ = z.nativeEnum(KmsProvider);
+export const KmsProvider$: z.ZodNativeEnum<typeof KmsProvider> = z.nativeEnum(KmsProvider);
 
 /** @internal */
 export namespace Wallets$ {

@@ -16,7 +16,8 @@ export type ExplorerApiDto = {
 };
 
 /** @internal */
-export const ExplorerApiDtoType$ = z.nativeEnum(ExplorerApiDtoType);
+export const ExplorerApiDtoType$: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
+    z.nativeEnum(ExplorerApiDtoType);
 
 /** @internal */
 export namespace ExplorerApiDto$ {

@@ -50,7 +50,7 @@ export namespace WebhookPayload$ {
 }
 
 /** @internal */
-export const WebhookStatus$ = z.nativeEnum(WebhookStatus);
+export const WebhookStatus$: z.ZodNativeEnum<typeof WebhookStatus> = z.nativeEnum(WebhookStatus);
 
 /** @internal */
 export namespace Webhook$ {

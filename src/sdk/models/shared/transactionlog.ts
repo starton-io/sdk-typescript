@@ -68,7 +68,8 @@ export namespace TransactionLogContext$ {
 }
 
 /** @internal */
-export const TransactionLogType$ = z.nativeEnum(TransactionLogType);
+export const TransactionLogType$: z.ZodNativeEnum<typeof TransactionLogType> =
+    z.nativeEnum(TransactionLogType);
 
 /** @internal */
 export namespace TransactionLog$ {

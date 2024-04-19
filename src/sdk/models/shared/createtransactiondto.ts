@@ -66,7 +66,8 @@ export namespace CreateTransactionDtoMetadata$ {
 }
 
 /** @internal */
-export const CreateTransactionDtoSpeed$ = z.nativeEnum(CreateTransactionDtoSpeed);
+export const CreateTransactionDtoSpeed$: z.ZodNativeEnum<typeof CreateTransactionDtoSpeed> =
+    z.nativeEnum(CreateTransactionDtoSpeed);
 
 /** @internal */
 export namespace CreateTransactionDto$ {

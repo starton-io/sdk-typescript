@@ -33,7 +33,8 @@ export namespace ImportProviderKeyDtoMetadata$ {
 }
 
 /** @internal */
-export const ImportProviderKeyDtoProvider$ = z.nativeEnum(ImportProviderKeyDtoProvider);
+export const ImportProviderKeyDtoProvider$: z.ZodNativeEnum<typeof ImportProviderKeyDtoProvider> =
+    z.nativeEnum(ImportProviderKeyDtoProvider);
 
 /** @internal */
 export namespace ImportProviderKeyDto$ {

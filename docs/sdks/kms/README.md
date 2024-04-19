@@ -23,12 +23,12 @@ Add a new Key Management System entry to the project.
 import { Starton } from "@starton/sdk";
 import { Provider } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.kms.create({
+async function run() {
+  const result = await starton.kms.create({
   credentials:     {
         accessKeyId: "<value>",
         accountId: "<value>",
@@ -75,12 +75,12 @@ Delete a Key Management System entry from the project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.kms.delete({
+async function run() {
+  const result = await starton.kms.delete({
     id: "<id>",
   });
 
@@ -120,12 +120,12 @@ Provides a list of all Key Management Systems entries associated with the curren
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.kms.getAll({});
+async function run() {
+  const result = await starton.kms.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -163,12 +163,12 @@ Returns information of a particular Key Management Systems entry using its uniqu
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.kms.getOne({
+async function run() {
+  const result = await starton.kms.getOne({
     id: "<id>",
   });
 
@@ -208,12 +208,12 @@ Updates changes to a particular Key Management Systems entry.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.kms.update({
+async function run() {
+  const result = await starton.kms.update({
     updateKmsDto: {
     credentials:     {
           baseUrl: "<value>",

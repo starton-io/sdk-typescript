@@ -34,10 +34,11 @@ export type AbiObjectDto = {
 };
 
 /** @internal */
-export const StateMutability$ = z.nativeEnum(StateMutability);
+export const StateMutability$: z.ZodNativeEnum<typeof StateMutability> =
+    z.nativeEnum(StateMutability);
 
 /** @internal */
-export const Type$ = z.nativeEnum(Type);
+export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
 
 /** @internal */
 export namespace AbiObjectDto$ {

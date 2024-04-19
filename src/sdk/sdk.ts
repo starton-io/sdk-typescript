@@ -46,57 +46,57 @@ export class Starton extends ClientSDK {
     }
 
     private _data?: Data;
-    get data() {
+    get data(): Data {
         return (this._data ??= new Data(this.options$));
     }
 
     private _wallet?: Wallet;
-    get wallet() {
+    get wallet(): Wallet {
         return (this._wallet ??= new Wallet(this.options$));
     }
 
     private _ipfs?: Ipfs;
-    get ipfs() {
+    get ipfs(): Ipfs {
         return (this._ipfs ??= new Ipfs(this.options$));
     }
 
     private _kms?: Kms;
-    get kms() {
+    get kms(): Kms {
         return (this._kms ??= new Kms(this.options$));
     }
 
     private _transactionManager?: TransactionManager;
-    get transactionManager() {
+    get transactionManager(): TransactionManager {
         return (this._transactionManager ??= new TransactionManager(this.options$));
     }
 
     private _network?: Network;
-    get network() {
+    get network(): Network {
         return (this._network ??= new Network(this.options$));
     }
 
     private _project?: Project;
-    get project() {
+    get project(): Project {
         return (this._project ??= new Project(this.options$));
     }
 
     private _smartContractManagement?: SmartContractManagement;
-    get smartContractManagement() {
+    get smartContractManagement(): SmartContractManagement {
         return (this._smartContractManagement ??= new SmartContractManagement(this.options$));
     }
 
     private _smartContract?: SmartContract;
-    get smartContract() {
+    get smartContract(): SmartContract {
         return (this._smartContract ??= new SmartContract(this.options$));
     }
 
     private _monitor?: Monitor;
-    get monitor() {
+    get monitor(): Monitor {
         return (this._monitor ??= new Monitor(this.options$));
     }
 
     private _webhook?: Webhook;
-    get webhook() {
+    get webhook(): Webhook {
         return (this._webhook ??= new Webhook(this.options$));
     }
 }

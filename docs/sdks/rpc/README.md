@@ -18,12 +18,12 @@ Add a rpc for a specific network
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.rpc.create({
+async function run() {
+  const result = await starton.network.rpc.create({
     createRpcDto: {
       url: "http://limp-pastry.org",
     },
@@ -66,12 +66,12 @@ Delete a rpc for a specific network
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.rpc.delete({
+async function run() {
+  const result = await starton.network.rpc.delete({
     id: "<id>",
     name: "<value>",
   });
@@ -112,12 +112,12 @@ Return all rpc for a specific network
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.rpc.getAll({
+async function run() {
+  const result = await starton.network.rpc.getAll({
     name: "<value>",
   });
 
@@ -157,12 +157,12 @@ Return a specific rpc for a specific network
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.rpc.getOne({
+async function run() {
+  const result = await starton.network.rpc.getOne({
     id: "<id>",
     name: "<value>",
   });
@@ -203,12 +203,12 @@ Update a specific rpc for a specific network
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.rpc.update({
+async function run() {
+  const result = await starton.network.rpc.update({
     updateRpcDto: {},
     id: "<id>",
     name: "<value>",

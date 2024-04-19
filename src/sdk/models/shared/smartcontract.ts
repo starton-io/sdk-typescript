@@ -100,10 +100,11 @@ export namespace CompilationDetails$ {
 }
 
 /** @internal */
-export const State$ = z.nativeEnum(State);
+export const State$: z.ZodNativeEnum<typeof State> = z.nativeEnum(State);
 
 /** @internal */
-export const SmartContractStatus$ = z.nativeEnum(SmartContractStatus);
+export const SmartContractStatus$: z.ZodNativeEnum<typeof SmartContractStatus> =
+    z.nativeEnum(SmartContractStatus);
 
 /** @internal */
 export namespace SmartContract$ {

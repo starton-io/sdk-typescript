@@ -1,7 +1,7 @@
 {
   "name": "@starton/sdk",
-  "version": "0.11.1",
-  "author": "Starton <support@starton.com> (https://www.starton.com)",
+  "version": "0.12.0",
+  "author": "Starton <support@starton.com> (https://www.starton.com)",  
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -14,7 +14,6 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
   "peerDependencies": {
     "zod": ">= 3"
   },

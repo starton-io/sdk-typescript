@@ -23,12 +23,12 @@ Create a new blockchain transaction
 import { Starton } from "@starton/sdk";
 import { CreateTransactionDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.create({
+async function run() {
+  const result = await starton.transactionManager.create({
     createTransactionDto: {
       customGas: {},
       data: "0x1234",
@@ -79,12 +79,12 @@ Retrieves a list of transactions.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.getAll({});
+async function run() {
+  const result = await starton.transactionManager.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -122,12 +122,12 @@ Gets all available nonces for a wallet, ensuring transaction integrity on the bl
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.getAvailableNonces({
+async function run() {
+  const result = await starton.transactionManager.getAvailableNonces({
     address: "92240 Harris Row",
     network: "<value>",
   });
@@ -170,12 +170,12 @@ Retrieves the details of a specific transaction using its unique identifier.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.getOne({
+async function run() {
+  const result = await starton.transactionManager.getOne({
     id: "<id>",
   });
 
@@ -215,12 +215,12 @@ Updates the stored nonce values for a wallet, synchronizing them with the curren
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.resyncNonce({
+async function run() {
+  const result = await starton.transactionManager.resyncNonce({
     address: "4925 Shanahan Parkways",
     network: "<value>",
   });

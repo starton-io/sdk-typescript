@@ -15,12 +15,12 @@ Retrieve the Relayer settings for a specific network within the current project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.setting.get({
+async function run() {
+  const result = await starton.transactionManager.setting.get({
     network: "<value>",
   });
 
@@ -60,12 +60,12 @@ Update the Relayer settings for a specific network within the current project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.transactionManager.setting.update({
+async function run() {
+  const result = await starton.transactionManager.setting.update({
     updateSettingRelayerDto: {
       unstuckAutomaticGasPrice: true,
       unstuckCustomGasPrice: true,

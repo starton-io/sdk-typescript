@@ -73,7 +73,8 @@ export namespace CreateWatcherDtoMetadata$ {
 }
 
 /** @internal */
-export const CreateWatcherDtoType$ = z.nativeEnum(CreateWatcherDtoType);
+export const CreateWatcherDtoType$: z.ZodNativeEnum<typeof CreateWatcherDtoType> =
+    z.nativeEnum(CreateWatcherDtoType);
 
 /** @internal */
 export namespace CreateWatcherDto$ {

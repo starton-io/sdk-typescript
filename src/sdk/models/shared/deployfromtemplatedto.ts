@@ -103,7 +103,8 @@ export namespace DeployFromTemplateDtoParams$ {
 }
 
 /** @internal */
-export const DeployFromTemplateDtoSpeed$ = z.nativeEnum(DeployFromTemplateDtoSpeed);
+export const DeployFromTemplateDtoSpeed$: z.ZodNativeEnum<typeof DeployFromTemplateDtoSpeed> =
+    z.nativeEnum(DeployFromTemplateDtoSpeed);
 
 /** @internal */
 export namespace DeployFromTemplateDto$ {

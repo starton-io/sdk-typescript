@@ -112,13 +112,16 @@ export namespace TransactionMetadata$ {
 }
 
 /** @internal */
-export const TransactionSpeed$ = z.nativeEnum(TransactionSpeed);
+export const TransactionSpeed$: z.ZodNativeEnum<typeof TransactionSpeed> =
+    z.nativeEnum(TransactionSpeed);
 
 /** @internal */
-export const TransactionState$ = z.nativeEnum(TransactionState);
+export const TransactionState$: z.ZodNativeEnum<typeof TransactionState> =
+    z.nativeEnum(TransactionState);
 
 /** @internal */
-export const TransactionStatus$ = z.nativeEnum(TransactionStatus);
+export const TransactionStatus$: z.ZodNativeEnum<typeof TransactionStatus> =
+    z.nativeEnum(TransactionStatus);
 
 /** @internal */
 export namespace Transaction$ {

@@ -48,10 +48,10 @@ export namespace PinMetadata$ {
 }
 
 /** @internal */
-export const Status$ = z.nativeEnum(Status);
+export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
 
 /** @internal */
-export const PinType$ = z.nativeEnum(PinType);
+export const PinType$: z.ZodNativeEnum<typeof PinType> = z.nativeEnum(PinType);
 
 /** @internal */
 export namespace Pin$ {

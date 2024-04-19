@@ -36,7 +36,7 @@ export class SmartContract extends ClientSDK {
     }
 
     private _template?: Template;
-    get template() {
+    get template(): Template {
         return (this._template ??= new Template(this.options$));
     }
 }

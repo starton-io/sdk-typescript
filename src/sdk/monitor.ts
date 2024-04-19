@@ -8,10 +8,10 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
-import { createPageIterator, PageIterator, Paginator } from "../sdk/types";
+import * as errors from "./models/errors";
+import * as operations from "./models/operations";
+import * as shared from "./models/shared";
+import { createPageIterator, PageIterator, Paginator } from "./types";
 import jp from "jsonpath";
 
 export class Monitor extends ClientSDK {

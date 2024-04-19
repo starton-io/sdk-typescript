@@ -2,12 +2,12 @@
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-    const sdk = new Starton({
-        startonApiKey: "<YOUR_API_KEY_HERE>",
-    });
+const starton = new Starton({
+    startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-    const result = await sdk.data.getBalance({
+async function run() {
+    const result = await starton.data.getBalance({
         address: "164 Runolfsson Via",
         network: "<value>",
     });

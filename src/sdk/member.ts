@@ -8,9 +8,9 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
 import { Invitation } from "./invitation";
+import * as errors from "./models/errors";
+import * as operations from "./models/operations";
 
 export class Member extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -40,7 +40,7 @@ export class Member extends ClientSDK {
     }
 
     private _invitation?: Invitation;
-    get invitation() {
+    get invitation(): Invitation {
         return (this._invitation ??= new Invitation(this.options$));
     }
 

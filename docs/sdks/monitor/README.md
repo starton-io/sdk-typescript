@@ -25,12 +25,12 @@ Adds a new watcher to the current project to start monitoring an address.
 import { Starton } from "@starton/sdk";
 import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.create({
+async function run() {
+  const result = await starton.monitor.create({
     address: "0x298e760768c8481780397eE28A127eAd584df4ee",
     confirmationsBlocks: 0,
     customEventAbi: {},
@@ -81,12 +81,12 @@ Removes a specific watcher from the current project. This action is irreversible
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.delete({
+async function run() {
+  const result = await starton.monitor.delete({
     id: "<id>",
   });
 
@@ -126,12 +126,12 @@ Fetches list of all watchers associated with the current project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.getAll({});
+async function run() {
+  const result = await starton.monitor.getAll({});
 
   for await (const page of result) {
     // handle page
@@ -169,12 +169,12 @@ Fetches a list of all events linked to a specific watcher, identified by {id}.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.getAllEvents({
+async function run() {
+  const result = await starton.monitor.getAllEvents({
     id: "<id>",
   });
 
@@ -214,12 +214,12 @@ Retrieves detailed information about a specific watcher identified by its unique
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.getOne({
+async function run() {
+  const result = await starton.monitor.getOne({
     id: "<id>",
   });
 
@@ -259,12 +259,12 @@ Retrieves information about a specific watcher event.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.getOneEvent({
+async function run() {
+  const result = await starton.monitor.getOneEvent({
     eventId: "<value>",
     id: "<id>",
   });
@@ -305,12 +305,12 @@ Modifies the properties of an existing watcher. Only the fields provided in the 
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.monitor.update({
+async function run() {
+  const result = await starton.monitor.update({
     updateWatcherDto: {
       confirmationsBlocks: 0,
       description: "watcher tests",

@@ -17,7 +17,8 @@ export type DirectoryContent = {
 };
 
 /** @internal */
-export const DirectoryContentType$ = z.nativeEnum(DirectoryContentType);
+export const DirectoryContentType$: z.ZodNativeEnum<typeof DirectoryContentType> =
+    z.nativeEnum(DirectoryContentType);
 
 /** @internal */
 export namespace DirectoryContent$ {

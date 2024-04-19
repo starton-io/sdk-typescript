@@ -23,12 +23,12 @@ Adds a new network to the project, available only for Enterprise plans.
 import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.create({
+async function run() {
+  const result = await starton.network.create({
     blockchain: "<value>",
     chainId: 4865.89,
     confirmationBlocks: 4893.82,
@@ -83,12 +83,12 @@ Removes a network from the project, available only for Enterprise plans.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.delete({
+async function run() {
+  const result = await starton.network.delete({
     name: "<value>",
   });
 
@@ -128,12 +128,12 @@ Fetches a paginated list of networks available in the current project.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.getAll({
+async function run() {
+  const result = await starton.network.getAll({
     origin: "<value>",
   });
 
@@ -173,12 +173,12 @@ Retrieves detailed information about a specific network based on its name.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.getOne({
+async function run() {
+  const result = await starton.network.getOne({
     name: "<value>",
   });
 
@@ -219,12 +219,12 @@ Modifies the details of a specific network based on its unique name. This featur
 import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.network.update({
+async function run() {
+  const result = await starton.network.update({
     updateNetworkDto: {
       explorerApi: {
         apiKey: "<value>",

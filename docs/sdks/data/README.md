@@ -20,12 +20,12 @@ Checks the native balance of a given address on a specified blockchain network.
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.data.getBalance({
+async function run() {
+  const result = await starton.data.getBalance({
     address: "164 Runolfsson Via",
     network: "<value>",
   });
@@ -65,12 +65,12 @@ Fetches the balance of ERC20 tokens held by a specific address. You must specify
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.data.getErc20Balance({
+async function run() {
+  const result = await starton.data.getErc20Balance({
     address: "81562 Emard Grove",
     contractAddress: "<value>",
     network: "<value>",
@@ -111,12 +111,12 @@ Provides the current gas prices for the specified blockchain network, offering c
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.data.getGasPrice({
+async function run() {
+  const result = await starton.data.getGasPrice({
     network: "<value>",
   });
 

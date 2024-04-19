@@ -15,12 +15,12 @@ Delete a user's project membership. The user attempting this action needs to hav
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.project.member.delete({
+async function run() {
+  const result = await starton.project.member.delete({
     userId: "<value>",
   });
 
@@ -61,12 +61,12 @@ Fetches all the members associated with a project. The user must have the approp
 ```typescript
 import { Starton } from "@starton/sdk";
 
-async function run() {
-  const sdk = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
-  });
+const starton = new Starton({
+  startonApiKey: "<YOUR_API_KEY_HERE>",
+});
 
-  const result = await sdk.project.member.getAll();
+async function run() {
+  const result = await starton.project.member.getAll();
 
   // Handle the result
   console.log(result)
