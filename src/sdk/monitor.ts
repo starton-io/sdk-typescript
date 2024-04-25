@@ -84,6 +84,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "409", "412", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -219,6 +220,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -349,6 +351,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -483,6 +486,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -614,6 +618,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -727,6 +732,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -837,6 +843,7 @@ export class Monitor extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",

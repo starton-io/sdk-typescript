@@ -103,6 +103,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -253,6 +254,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -370,6 +372,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -517,6 +520,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -661,6 +665,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -802,6 +807,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -952,6 +958,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1061,6 +1068,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -1167,6 +1175,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -1303,6 +1312,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",
