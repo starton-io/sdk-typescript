@@ -30,9 +30,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.transactionManager.create({
     createTransactionDto: {
-      customGas: {},
       data: "0x1234",
-      metadata: {},
       network: "polygon-mumbai",
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       speed: CreateTransactionDtoSpeed.Low,

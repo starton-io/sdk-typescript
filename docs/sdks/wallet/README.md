@@ -33,7 +33,6 @@ const starton = new Starton({
 async function run() {
   const result = await starton.wallet.create({
     kmsId: "<value>",
-    metadata: {},
   });
 
   // Handle the result
@@ -211,7 +210,6 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.import({
-    metadata: {},
     provider: ImportProviderKeyDtoProvider.Aws,
   });
 
@@ -401,9 +399,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.update({
-    updateWalletDto: {
-      metadata: {},
-    },
+    updateWalletDto: {},
     address: "050 Mellie Well",
   });
 

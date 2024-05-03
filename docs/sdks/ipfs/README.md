@@ -206,8 +206,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.pinExistingFile({
-    cid: "<value>",
-    metadata: {},
+    cid: "bafkreiae3nprvu6qp6twwpokfk5lbd5qev34d6zrwmnv3jxetuc2zwmegq",
+    name: "my file",
   });
 
   // Handle the result
@@ -252,9 +252,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.update({
-    updatePinDto: {
-      metadata: {},
-    },
+    updatePinDto: {},
     id: "<id>",
   });
 
@@ -293,17 +291,13 @@ Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retr
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { openAsBlob } from "node:fs";
 
 const starton = new Starton({
   startonApiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await starton.ipfs.uploadFile({
-    file: await openAsBlob("./sample-file"),
-    metadata: {},
-  });
+  const result = await starton.ipfs.uploadFile({});
 
   // Handle the result
   console.log(result)
@@ -346,15 +340,7 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.ipfs.uploadFolder({
-    files: [
-      {
-        content: new TextEncoder().encode("0x08C8AeC4Bb"),
-        fileName: "flit.html",
-      },
-    ],
-    metadata: {},
-  });
+  const result = await starton.ipfs.uploadFolder({});
 
   // Handle the result
   console.log(result)
@@ -399,8 +385,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.ipfs.uploadJson({
     content: {},
-    metadata: {},
-    name: "<value>",
+    name: "my file",
   });
 
   // Handle the result

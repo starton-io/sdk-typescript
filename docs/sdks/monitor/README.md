@@ -31,16 +31,14 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.monitor.create({
-    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    address: "0xd73da0912e663bf1c0180de8e3e5ed2cc456f018",
     confirmationsBlocks: 0,
-    customEventAbi: {},
-    customFilters: {},
     description: "watcher tests",
     metadata: {},
-    name: "watcher tests",
+    name: "watcher test",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
-    webhookUrl: "",
+    webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
   });
 
   // Handle the result

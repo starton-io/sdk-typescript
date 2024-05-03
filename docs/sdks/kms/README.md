@@ -29,12 +29,6 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.kms.create({
-  credentials:     {
-        accessKeyId: "<value>",
-        accountId: "<value>",
-        region: "<value>",
-      },
-    metadata: {},
     name: "<value>",
     provider: Provider.Aws,
     secret: "<value>",
@@ -214,19 +208,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.kms.update({
-    updateKmsDto: {
-    credentials:     {
-          baseUrl: "<value>",
-          id: "<id>",
-          loginPath: "<value>",
-          role: "<value>",
-          rootPath: "<value>",
-          selfSigned: false,
-          timeout: 245.55,
-          tokenPath: "<value>",
-        },
-      metadata: {},
-    },
+    updateKmsDto: {},
     id: "<id>",
   });
 

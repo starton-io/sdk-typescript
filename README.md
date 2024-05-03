@@ -305,17 +305,13 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { openAsBlob } from "node:fs";
 
 const starton = new Starton({
     startonApiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.ipfs.uploadFile({
-        file: await openAsBlob("./sample-file"),
-        metadata: {},
-    });
+    const result = await starton.ipfs.uploadFile({});
 
     // Handle the result
     console.log(result);

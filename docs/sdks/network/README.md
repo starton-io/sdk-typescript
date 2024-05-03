@@ -29,23 +29,22 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.create({
-    blockchain: "<value>",
-    chainId: 4865.89,
-    confirmationBlocks: 4893.82,
-    displayName: "Loyal.Stokes",
+    blockchain: "optimism",
+    chainId: 10,
+    confirmationBlocks: 128,
+    displayName: "optimism-private",
+    enableExternalWallet: false,
+    enableListener: false,
+    enableRelayer: false,
     explorerApi: {
       apiKey: "<value>",
       type: ExplorerApiDtoType.Etherscan,
-      url: "http://speedy-basil.org",
+      url: "http://limp-pastry.org",
     },
-    gasPriceRecommendation: {
-      defaultRelayerUnstuck: "<value>",
-      lowest: "<value>",
-      max: "<value>",
-    },
-    logo: "<value>",
-    name: "<value>",
-    symbol: "<value>",
+    explorerUrl: "https://optimism-invalid-test-explorer.com",
+    logo: "https://optimism-invalid-test-logo.com",
+    name: "optimism-functional-tests1706709455336",
+    symbol: "ETH",
   });
 
   // Handle the result
@@ -230,11 +229,6 @@ async function run() {
         apiKey: "<value>",
         type: ExplorerApiDtoType.Etherscan,
         url: "https://alarming-nondisclosure.com",
-      },
-      gasPriceRecommendation: {
-        defaultRelayerUnstuck: "<value>",
-        lowest: "<value>",
-        max: "<value>",
       },
     },
     name: "<value>",

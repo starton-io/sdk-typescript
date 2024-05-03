@@ -37,7 +37,6 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.call({
     callDto: {
-      customGas: {},
       functionName: "<value>",
       params: [
         "TestToken",
@@ -145,21 +144,10 @@ async function run() {
     deployFromBytecodeDto: {
       abi: [
         {
-          inputs: {
-            components: {},
-            name: "<value>",
-            type: "<value>",
-          },
-          outputs: {
-            components: {},
-            name: "<value>",
-            type: "<value>",
-          },
           type: Type.Event,
         },
       ],
       bytecode: "<value>",
-      customGas: {},
       name: "<value>",
       network: "<value>",
       params: [
@@ -217,7 +205,6 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.deployFromTemplate({
     deployFromTemplateDto: {
-      customGas: {},
       name: "TestToken",
       network: "polygon-mumbai",
       params: [
@@ -414,12 +401,6 @@ async function run() {
     abi: [
       {
         inputs: {
-          components: {},
-          name: "<value>",
-          type: "<value>",
-        },
-        outputs: {
-          components: {},
           name: "<value>",
           type: "<value>",
         },
@@ -429,8 +410,8 @@ async function run() {
     ],
     address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
     creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
-    description: "Minimal smart contract description.",
-    name: "Minimal Contract Test.",
+    description: "Test minimal contract tests.",
+    name: "Minimal contract tests.",
     network: "polygon-mumbai",
     params: [
       "TestToken",
@@ -538,9 +519,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContractManagement.update({
-    updateSmartContractDto: {
-      metadata: {},
-    },
+    updateSmartContractDto: {},
     address: "050 Mellie Well",
     network: "<value>",
   });
