@@ -51,15 +51,16 @@ export class Member extends ClientSDK {
      * Delete a user's project membership. The user attempting this action needs to have the necessary permissions, and they cannot remove the project's owner.
      */
     async delete(
-        input: operations.DeleteProjectMemberRequest,
+        request: operations.DeleteProjectMemberRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteProjectMemberResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteProjectMemberRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -91,7 +92,7 @@ export class Member extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -104,7 +105,7 @@ export class Member extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -210,7 +211,7 @@ export class Member extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -222,7 +223,7 @@ export class Member extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

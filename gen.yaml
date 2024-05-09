@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.13.2
+  version: 0.14.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -33,6 +33,7 @@ typescript:
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: require-security-and-request
   outputModelSuffix: output
   packageName: '@starton/sdk'
   responseFormat: envelope

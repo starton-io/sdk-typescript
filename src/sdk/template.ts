@@ -47,15 +47,16 @@ export class Template extends ClientSDK {
      * Retrieves a paginated list of smart contract templates, you can use filters and pagination options to tailor the results to your specific needs.
      */
     async getAll(
-        input: operations.GetAllSmartContractTemplateRequest,
+        request: operations.GetAllSmartContractTemplateRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllSmartContractTemplateResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -111,7 +112,7 @@ export class Template extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -124,12 +125,12 @@ export class Template extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllSmartContractTemplateResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -143,7 +144,7 @@ export class Template extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -151,7 +152,7 @@ export class Template extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -211,15 +212,16 @@ export class Template extends ClientSDK {
      * Fetches the details of a particular smart contract template using its unique identifier.
      */
     async getOne(
-        input: operations.GetOneSmartContractTemplateRequest,
+        request: operations.GetOneSmartContractTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneSmartContractTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -255,7 +257,7 @@ export class Template extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -268,7 +270,7 @@ export class Template extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

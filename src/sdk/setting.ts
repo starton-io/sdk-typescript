@@ -45,15 +45,16 @@ export class Setting extends ClientSDK {
      * Retrieve the Relayer settings for a specific network within the current project.
      */
     async get(
-        input: operations.GetAllSettingRelayerRequest,
+        request: operations.GetAllSettingRelayerRequest,
         options?: RequestOptions
     ): Promise<operations.GetAllSettingRelayerResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllSettingRelayerRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -85,7 +86,7 @@ export class Setting extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -98,7 +99,7 @@ export class Setting extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -165,16 +166,17 @@ export class Setting extends ClientSDK {
      * Update the Relayer settings for a specific network within the current project.
      */
     async update(
-        input: operations.UpdateSettingRelayerRequest,
+        request: operations.UpdateSettingRelayerRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateSettingRelayerResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateSettingRelayerRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -206,7 +208,7 @@ export class Setting extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -219,7 +221,7 @@ export class Setting extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

@@ -48,15 +48,16 @@ export class Ipfs extends ClientSDK {
      * Unpin a previously pinned file by providing the specific {id} associated with the file.
      */
     async delete(
-        input: operations.DeletePinRequest,
+        request: operations.DeletePinRequest,
         options?: RequestOptions
     ): Promise<operations.DeletePinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeletePinRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -85,7 +86,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -98,7 +99,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -163,15 +164,16 @@ export class Ipfs extends ClientSDK {
      * Retrieve a list of files that have been pinned on IPFS.
      */
     async getAll(
-        input: operations.GetAllPinRequest,
+        request: operations.GetAllPinRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllPinResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllPinRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -209,7 +211,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -222,10 +224,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllPinResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -239,7 +241,7 @@ export class Ipfs extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -247,7 +249,7 @@ export class Ipfs extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -307,15 +309,16 @@ export class Ipfs extends ClientSDK {
      * Fetches the details of a specific file that has been previously uploaded to IPFS, using its unique identifier.
      */
     async getOne(
-        input: operations.GetOnePinRequest,
+        request: operations.GetOnePinRequest,
         options?: RequestOptions
     ): Promise<operations.GetOnePinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOnePinRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -351,7 +354,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -364,7 +367,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -453,7 +456,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -465,7 +468,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -517,16 +520,17 @@ export class Ipfs extends ClientSDK {
      * Requests Starton to retain a copy of a file that has already been uploaded to IPFS, ensuring its availability.
      */
     async pinExistingFile(
-        input: shared.CreatePinDto,
+        request: shared.CreatePinDto,
         options?: RequestOptions
     ): Promise<operations.CreatePinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.CreatePinDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -552,7 +556,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -565,7 +569,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -630,16 +634,17 @@ export class Ipfs extends ClientSDK {
      * Modifies the name or metadata of an existing file stored in IPFS. Note that direct edits to the file content are not possible; any changes to the content require re-uploading and will result in a new unique hash for the file.
      */
     async update(
-        input: operations.UpdatePinRequest,
+        request: operations.UpdatePinRequest,
         options?: RequestOptions
     ): Promise<operations.UpdatePinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdatePinRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -668,7 +673,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -681,7 +686,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -746,15 +751,16 @@ export class Ipfs extends ClientSDK {
      * Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retrieval, and receive a unique CID as a reference to the uploaded content. THE BODY PARAMETERS ARE FORM PARAMETERS FOR THIS ENDPOINT.
      */
     async uploadFile(
-        input: operations.UploadFromFilePinRequestBody,
+        request: operations.UploadFromFilePinRequestBody,
         options?: RequestOptions
     ): Promise<operations.UploadFromFilePinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UploadFromFilePinRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -798,7 +804,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -811,7 +817,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -876,15 +882,16 @@ export class Ipfs extends ClientSDK {
      * Upload an entire folder to IPFS, ensuring secure pinning of its contents for reliable retrieval. This endpoint expects a multipart/form-data payload, consisting of an optional metadata object and an array of files. The successful upload of the folder will result in a unique Content Identifier (CID) reference, which can be used to fetch the folder and its contents from IPFS at any time.
      */
     async uploadFolder(
-        input: operations.UploadFromFolderPinRequestBody,
+        request: operations.UploadFromFolderPinRequestBody,
         options?: RequestOptions
     ): Promise<operations.UploadFromFolderPinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UploadFromFolderPinRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -920,7 +927,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -933,7 +940,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -998,16 +1005,17 @@ export class Ipfs extends ClientSDK {
      * Upload a JSON file to IPFS with pinning for reliable access, associating it with a unique CID.
      */
     async uploadJson(
-        input: shared.UploadJsonDto,
+        request: shared.UploadJsonDto,
         options?: RequestOptions
     ): Promise<operations.UploadFromJsonPinResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.UploadJsonDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1033,7 +1041,7 @@ export class Ipfs extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1046,7 +1054,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

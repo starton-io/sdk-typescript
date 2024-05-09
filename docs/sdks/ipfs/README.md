@@ -32,7 +32,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.delete({
-    id: "<id>",
+    id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
 
   // Handle the result
@@ -76,7 +76,10 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.ipfs.getAll({});
+  const result = await starton.ipfs.getAll({
+    limit: 20,
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page
@@ -120,7 +123,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.getOne({
-    id: "<id>",
+    id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
 
   // Handle the result
@@ -253,7 +256,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.ipfs.update({
     updatePinDto: {},
-    id: "<id>",
+    id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
 
   // Handle the result

@@ -48,16 +48,17 @@ export class SmartContractManagement extends ClientSDK {
      * Calls a specific function within a deployed smart contract, enabling interactions such as executing transactions or querying state. The method parameters, including the smart contract address and network, need to be specified.
      */
     async call(
-        input: operations.CallSmartContractRequest,
+        request: operations.CallSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.CallSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CallSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -102,7 +103,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -115,7 +116,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -212,15 +213,16 @@ export class SmartContractManagement extends ClientSDK {
      * Deletes a specific smart contract based on network and address.
      */
     async delete(
-        input: operations.DeleteSmartContractRequest,
+        request: operations.DeleteSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -258,7 +260,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -271,7 +273,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -338,16 +340,17 @@ export class SmartContractManagement extends ClientSDK {
      * Deploys a smart contract from bytecode and returns transaction details.
      */
     async deployFromBytecode(
-        input: operations.DeployFromBytecodeSmartContractRequest,
+        request: operations.DeployFromBytecodeSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.DeployFromBytecodeSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -381,7 +384,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -394,7 +397,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -491,16 +494,17 @@ export class SmartContractManagement extends ClientSDK {
      * Deploy from Starton audited smart contract template.
      */
     async deployFromTemplate(
-        input: operations.DeployFromTemplateSmartContractRequest,
+        request: operations.DeployFromTemplateSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.DeployFromTemplateSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -534,7 +538,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -547,7 +551,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -629,15 +633,16 @@ export class SmartContractManagement extends ClientSDK {
      * Fetches and returns the list of smart contracts.
      */
     async getAll(
-        input: operations.GetAllSmartContractRequest,
+        request: operations.GetAllSmartContractRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllSmartContractResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -684,7 +689,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -697,12 +702,12 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllSmartContractResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -716,7 +721,7 @@ export class SmartContractManagement extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -724,7 +729,7 @@ export class SmartContractManagement extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -784,15 +789,16 @@ export class SmartContractManagement extends ClientSDK {
      * Provides a list of the available read and write functions, as well as events, of a specified smart contract. This can be used to understand how to interact with the contract.
      */
     async getFunctions(
-        input: operations.GetAvailableFunctionsSmartContractRequest,
+        request: operations.GetAvailableFunctionsSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.GetAvailableFunctionsSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.GetAvailableFunctionsSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -831,7 +837,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -844,7 +850,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -930,15 +936,16 @@ export class SmartContractManagement extends ClientSDK {
      * Fetches details of a specific smart contract based on network and address.
      */
     async getOne(
-        input: operations.GetOneSmartContractRequest,
+        request: operations.GetOneSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -987,7 +994,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1000,7 +1007,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1067,16 +1074,17 @@ export class SmartContractManagement extends ClientSDK {
      * Import an already deployed smart contract into the project. This requires providing the smart contract’s address, ABI, and the network it’s deployed on.
      */
     async importExisting(
-        input: shared.ImportSmartContractDto,
+        request: shared.ImportSmartContractDto,
         options?: RequestOptions
     ): Promise<operations.ImportExistingSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.ImportSmartContractDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1102,7 +1110,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1115,7 +1123,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1167,16 +1175,17 @@ export class SmartContractManagement extends ClientSDK {
      * Reads data from a smart contract by calling one of its functions without making any state changes on the blockchain. This is typically used for retrieving information from the contract.
      */
     async read(
-        input: operations.ReadSmartContractRequest,
+        request: operations.ReadSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.ReadSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.ReadSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1214,7 +1223,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1227,7 +1236,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1309,16 +1318,17 @@ export class SmartContractManagement extends ClientSDK {
      * Updates and returns details of a specific smart contract based on network and address.
      */
     async update(
-        input: operations.UpdateSmartContractRequest,
+        request: operations.UpdateSmartContractRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateSmartContractResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1356,7 +1366,7 @@ export class SmartContractManagement extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1369,7 +1379,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

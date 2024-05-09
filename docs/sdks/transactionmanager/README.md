@@ -37,6 +37,7 @@ async function run() {
       to: "0x298e760768c8481780397eE28A127eAd584df4ee",
       value: "0",
     },
+    simulate: false,
   });
 
   // Handle the result
@@ -82,7 +83,14 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.transactionManager.getAll({});
+  const result = await starton.transactionManager.getAll({
+    from: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    limit: 20,
+    network: "polygon-mumbai",
+    page: 0,
+    to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5",
+  });
 
   for await (const page of result) {
     // handle page
@@ -126,8 +134,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.transactionManager.getAvailableNonces({
-    address: "92240 Harris Row",
-    network: "<value>",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -174,7 +182,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.transactionManager.getOne({
-    id: "<id>",
+    id: "tx_1abfa87e04814cb7a669d614d1fe5f78",
   });
 
   // Handle the result
@@ -219,8 +227,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.transactionManager.resyncNonce({
-    address: "4925 Shanahan Parkways",
-    network: "<value>",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+    network: "polygon-mumbai",
   });
 
   // Handle the result

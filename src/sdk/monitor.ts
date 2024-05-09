@@ -48,16 +48,17 @@ export class Monitor extends ClientSDK {
      * Adds a new watcher to the current project to start monitoring an address.
      */
     async create(
-        input: shared.CreateWatcherDto,
+        request: shared.CreateWatcherDto,
         options?: RequestOptions
     ): Promise<operations.CreateWatcherResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.CreateWatcherDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -83,7 +84,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "409", "412", "4XX", "500", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -96,7 +97,7 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -187,15 +188,16 @@ export class Monitor extends ClientSDK {
      * Removes a specific watcher from the current project. This action is irreversible.
      */
     async delete(
-        input: operations.DeleteWatcherRequest,
+        request: operations.DeleteWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteWatcherResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteWatcherRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -224,7 +226,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -237,7 +239,7 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -302,15 +304,16 @@ export class Monitor extends ClientSDK {
      * Fetches list of all watchers associated with the current project.
      */
     async getAll(
-        input: operations.GetAllWatcherRequest,
+        request: operations.GetAllWatcherRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllWatcherResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllWatcherRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -360,7 +363,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -373,10 +376,10 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllWatcherResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -390,7 +393,7 @@ export class Monitor extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -398,7 +401,7 @@ export class Monitor extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -458,15 +461,16 @@ export class Monitor extends ClientSDK {
      * Fetches a list of all events linked to a specific watcher, identified by {id}.
      */
     async getAllEvents(
-        input: operations.GetAllWatcherEventRequest,
+        request: operations.GetAllWatcherEventRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllWatcherEventResponse>> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllWatcherEventRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -500,7 +504,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -513,12 +517,12 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllWatcherEventResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -532,7 +536,7 @@ export class Monitor extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -540,7 +544,7 @@ export class Monitor extends ClientSDK {
             return () =>
                 this.getAllEvents(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -600,15 +604,16 @@ export class Monitor extends ClientSDK {
      * Retrieves detailed information about a specific watcher identified by its unique {id} within the current project.
      */
     async getOne(
-        input: operations.GetOneWatcherRequest,
+        request: operations.GetOneWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWatcherResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneWatcherRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -637,7 +642,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -650,7 +655,7 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -715,15 +720,16 @@ export class Monitor extends ClientSDK {
      * Retrieves information about a specific watcher event.
      */
     async getOneEvent(
-        input: operations.GetOneWatcherEventRequest,
+        request: operations.GetOneWatcherEventRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWatcherEventResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneWatcherEventRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -756,7 +762,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -769,7 +775,7 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -834,16 +840,17 @@ export class Monitor extends ClientSDK {
      * Modifies the properties of an existing watcher. Only the fields provided in the request body will be updated.
      */
     async update(
-        input: operations.UpdateWatcherRequest,
+        request: operations.UpdateWatcherRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateWatcherResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateWatcherRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -872,7 +879,7 @@ export class Monitor extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -885,7 +892,7 @@ export class Monitor extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

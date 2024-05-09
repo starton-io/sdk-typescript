@@ -123,13 +123,24 @@ Fetches list of all watchers associated with the current project.
 
 ```typescript
 import { Starton } from "@starton/sdk";
+import { Type } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
   startonApiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await starton.monitor.getAll({});
+  const result = await starton.monitor.getAll({
+    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    confirmationsBlocks: 0,
+    limit: 20,
+    name: "watcher",
+    network: "polygon-mumbai",
+    page: 0,
+    paused: false,
+    type: Type.AddressActivity,
+    webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
+  });
 
   for await (const page of result) {
     // handle page
@@ -173,7 +184,9 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.monitor.getAllEvents({
-    id: "<id>",
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+    limit: 20,
+    page: 0,
   });
 
   for await (const page of result) {
@@ -218,7 +231,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.monitor.getOne({
-    id: "<id>",
+    id: "ntif_f94e4a79611947d48254537a8861265d",
   });
 
   // Handle the result
@@ -263,8 +276,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.monitor.getOneEvent({
-    eventId: "<value>",
-    id: "<id>",
+    eventId: "wevent_437e18e7470944099bd094e1c936e4cd",
+    id: "ntif_f94e4a79611947d48254537a8861265d",
   });
 
   // Handle the result
@@ -317,7 +330,7 @@ async function run() {
       paused: true,
       webhookUrl: "",
     },
-    id: "<id>",
+    id: "ntif_f94e4a79611947d48254537a8861265d",
   });
 
   // Handle the result

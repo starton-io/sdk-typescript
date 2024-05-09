@@ -47,15 +47,16 @@ export class Webhook extends ClientSDK {
      * Terminates the designated webhook, identified by its {id}, preventing any further processing.
      */
     async cancel(
-        input: operations.CancelWebhookRequest,
+        request: operations.CancelWebhookRequest,
         options?: RequestOptions
     ): Promise<operations.CancelWebhookResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CancelWebhookRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -84,7 +85,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "412", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -97,7 +98,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -175,15 +176,16 @@ export class Webhook extends ClientSDK {
      * Fetches the list of all webhooks dispatched to your server. You can apply filters and pagination for more tailored results.
      */
     async getAll(
-        input: operations.GetAllWebhookRequest,
+        request: operations.GetAllWebhookRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllWebhookResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllWebhookRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -215,7 +217,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -228,10 +230,10 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllWebhookResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -245,7 +247,7 @@ export class Webhook extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -253,7 +255,7 @@ export class Webhook extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -313,15 +315,16 @@ export class Webhook extends ClientSDK {
      * Fetches the details of a specific webhook dispatched by Starton, identified uniquely by its {id}.
      */
     async getOne(
-        input: operations.GetOneWebhookRequest,
+        request: operations.GetOneWebhookRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneWebhookResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneWebhookRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -350,7 +353,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -363,7 +366,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -454,7 +457,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -466,7 +469,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -544,7 +547,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "401", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -556,7 +559,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -623,15 +626,16 @@ export class Webhook extends ClientSDK {
      * Initiates the resend process for a particular webhook to your server, facilitating testing scenarios or handling missed events.
      */
     async resend(
-        input: operations.ResendWebhookRequest,
+        request: operations.ResendWebhookRequest,
         options?: RequestOptions
     ): Promise<operations.ResendWebhookResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.ResendWebhookRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -660,7 +664,7 @@ export class Webhook extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "412", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -673,7 +677,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

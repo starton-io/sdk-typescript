@@ -76,7 +76,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.delete({
-    address: "8653 Vaughn Hills",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
 
   // Handle the result
@@ -120,7 +120,10 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.wallet.getAll({});
+  const result = await starton.wallet.getAll({
+    limit: 20,
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page
@@ -164,7 +167,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.getOne({
-    address: "43504 Penelope Expressway",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
 
   // Handle the result
@@ -258,7 +261,7 @@ async function run() {
       captchaToken: "testCaptchaToken",
       wallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
     },
-    network: "<value>",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -303,8 +306,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.resyncNonce({
-    address: "4925 Shanahan Parkways",
-    network: "<value>",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -354,7 +357,7 @@ async function run() {
     signMessageDto: {
       message: "<value>",
     },
-    address: "924 Makenzie Curve",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
 
   // Handle the result
@@ -400,7 +403,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.wallet.update({
     updateWalletDto: {},
-    address: "050 Mellie Well",
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
 
   // Handle the result

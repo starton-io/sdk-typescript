@@ -48,16 +48,17 @@ export class Kms extends ClientSDK {
      * Add a new Key Management System entry to the project.
      */
     async create(
-        input: shared.CreateKmsDto,
+        request: shared.CreateKmsDto,
         options?: RequestOptions
     ): Promise<operations.CreateKmsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.CreateKmsDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -83,7 +84,7 @@ export class Kms extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -96,7 +97,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -148,15 +149,16 @@ export class Kms extends ClientSDK {
      * Delete a Key Management System entry from the project.
      */
     async delete(
-        input: operations.DeleteKmsRequest,
+        request: operations.DeleteKmsRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteKmsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteKmsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -185,7 +187,7 @@ export class Kms extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -198,7 +200,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -263,15 +265,16 @@ export class Kms extends ClientSDK {
      * Provides a list of all Key Management Systems entries associated with the current project
      */
     async getAll(
-        input: operations.GetAllKmsRequest,
+        request: operations.GetAllKmsRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllKmsResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllKmsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -302,7 +305,7 @@ export class Kms extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -315,10 +318,10 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllKmsResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -332,7 +335,7 @@ export class Kms extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -340,7 +343,7 @@ export class Kms extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -400,15 +403,16 @@ export class Kms extends ClientSDK {
      * Returns information of a particular Key Management Systems entry using its unique identifier.
      */
     async getOne(
-        input: operations.GetOneKmsRequest,
+        request: operations.GetOneKmsRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneKmsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneKmsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -437,7 +441,7 @@ export class Kms extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -450,7 +454,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -515,16 +519,17 @@ export class Kms extends ClientSDK {
      * Updates changes to a particular Key Management Systems entry.
      */
     async update(
-        input: operations.UpdateKmsRequest,
+        request: operations.UpdateKmsRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateKmsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateKmsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -553,7 +558,7 @@ export class Kms extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -566,7 +571,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

@@ -46,8 +46,9 @@ async function run() {
       ],
       signerWallet: "<value>",
     },
-    address: "842 Lee Forges",
-    network: "<value>",
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+    simulate: false,
   });
 
   // Handle the result
@@ -95,7 +96,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.delete({
     address: "8653 Vaughn Hills",
-    network: "<value>",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -158,6 +159,7 @@ async function run() {
       ],
       signerWallet: "<value>",
     },
+    simulate: false,
   });
 
   // Handle the result
@@ -216,6 +218,7 @@ async function run() {
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       templateId: "ERC20_META_TRANSACTION",
     },
+    simulate: false,
   });
 
   // Handle the result
@@ -260,7 +263,14 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.smartContractManagement.getAll({});
+  const result = await starton.smartContractManagement.getAll({
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    includeAbi: true,
+    includeCompilationDetails: true,
+    limit: 20,
+    network: "polygon-mumbai",
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page
@@ -304,8 +314,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContractManagement.getFunctions({
-    address: "18523 Buford Brook",
-    network: "<value>",
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -351,8 +361,10 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContractManagement.getOne({
-    address: "43504 Penelope Expressway",
-    network: "<value>",
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    includeAbi: true,
+    includeCompilationDetails: true,
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -472,8 +484,8 @@ async function run() {
         "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
     },
-    address: "660 Romaine Highway",
-    network: "<value>",
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -520,8 +532,8 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.update({
     updateSmartContractDto: {},
-    address: "050 Mellie Well",
-    network: "<value>",
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
   });
 
   // Handle the result

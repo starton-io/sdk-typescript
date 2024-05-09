@@ -45,15 +45,16 @@ export class Data extends ClientSDK {
      * Checks the native balance of a given address on a specified blockchain network.
      */
     async getBalance(
-        input: operations.GetBalanceAddressRequest,
+        request: operations.GetBalanceAddressRequest,
         options?: RequestOptions
     ): Promise<operations.GetBalanceAddressResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetBalanceAddressRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -91,7 +92,7 @@ export class Data extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -104,7 +105,7 @@ export class Data extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -156,15 +157,16 @@ export class Data extends ClientSDK {
      * Fetches the balance of ERC20 tokens held by a specific address. You must specify the blockchain network, the contract address of the ERC20 token, and the address of the token holder.
      */
     async getErc20Balance(
-        input: operations.GetBalanceErc20Request,
+        request: operations.GetBalanceErc20Request,
         options?: RequestOptions
     ): Promise<operations.GetBalanceErc20Response> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetBalanceErc20Request$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -209,7 +211,7 @@ export class Data extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -222,7 +224,7 @@ export class Data extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -274,15 +276,16 @@ export class Data extends ClientSDK {
      * Provides the current gas prices for the specified blockchain network, offering crucial information to estimate transaction costs.
      */
     async getGasPrice(
-        input: operations.GetAllGasPriceRequest,
+        request: operations.GetAllGasPriceRequest,
         options?: RequestOptions
     ): Promise<operations.GetAllGasPriceResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllGasPriceRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -314,7 +317,7 @@ export class Data extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -327,7 +330,7 @@ export class Data extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

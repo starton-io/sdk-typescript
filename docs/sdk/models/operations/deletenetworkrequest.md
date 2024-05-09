@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `name`                            | *string*                          | :heavy_check_mark:                | The name of the network to delete |
+| Field                                  | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `name`                                 | *string*                               | :heavy_check_mark:                     | The name of the network to delete      | optimism-functional-tests1706709455337 |

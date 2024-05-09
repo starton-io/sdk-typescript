@@ -8,8 +8,8 @@ const starton = new Starton({
 
 async function run() {
     const result = await starton.data.getBalance({
-        address: "164 Runolfsson Via",
-        network: "<value>",
+        address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+        network: "polygon-mainnet",
     });
 
     // Handle the result

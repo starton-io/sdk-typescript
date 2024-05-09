@@ -54,16 +54,17 @@ export class Network extends ClientSDK {
      * Adds a new network to the project, available only for Enterprise plans.
      */
     async create(
-        input: shared.CreateNetworkDto,
+        request: shared.CreateNetworkDto,
         options?: RequestOptions
     ): Promise<operations.CreateNetworkResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.CreateNetworkDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -89,7 +90,7 @@ export class Network extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -102,7 +103,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -154,15 +155,16 @@ export class Network extends ClientSDK {
      * Removes a network from the project, available only for Enterprise plans.
      */
     async delete(
-        input: operations.DeleteNetworkRequest,
+        request: operations.DeleteNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteNetworkResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteNetworkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -194,7 +196,7 @@ export class Network extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -207,7 +209,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -272,15 +274,16 @@ export class Network extends ClientSDK {
      * Fetches a paginated list of networks available in the current project.
      */
     async getAll(
-        input: operations.GetAllNetworkRequest,
+        request: operations.GetAllNetworkRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllNetworkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -321,7 +324,7 @@ export class Network extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -334,10 +337,10 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllNetworkResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -351,7 +354,7 @@ export class Network extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -359,7 +362,7 @@ export class Network extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -419,15 +422,16 @@ export class Network extends ClientSDK {
      * Retrieves detailed information about a specific network based on its name.
      */
     async getOne(
-        input: operations.GetOneNetworkRequest,
+        request: operations.GetOneNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneNetworkResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneNetworkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -459,7 +463,7 @@ export class Network extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -472,7 +476,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -537,16 +541,17 @@ export class Network extends ClientSDK {
      * Modifies the details of a specific network based on its unique name. This feature is only available to Entreprise plans.
      */
     async update(
-        input: operations.UpdateNetworkRequest,
+        request: operations.UpdateNetworkRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateNetworkResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateNetworkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -578,7 +583,7 @@ export class Network extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -591,7 +596,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

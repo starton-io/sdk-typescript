@@ -69,7 +69,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.project.member.invitation.delete({
-    id: "<id>",
+    id: "invit_f9701ff8e2ea4a1d964e0d6d40564801",
   });
 
   // Handle the result
@@ -113,7 +113,10 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.project.member.invitation.getAll({});
+  const result = await starton.project.member.invitation.getAll({
+    limit: 20,
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page

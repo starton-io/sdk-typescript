@@ -26,8 +26,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.data.getBalance({
-    address: "164 Runolfsson Via",
-    network: "<value>",
+    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
   });
 
   // Handle the result
@@ -71,9 +71,9 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.data.getErc20Balance({
-    address: "81562 Emard Grove",
-    contractAddress: "<value>",
-    network: "<value>",
+    address: "0x24cd470f549b136ec93ccd42c087124cf3ea3233",
+    contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
   });
 
   // Handle the result
@@ -117,7 +117,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.data.getGasPrice({
-    network: "<value>",
+    network: "polygon-mainnet",
   });
 
   // Handle the result

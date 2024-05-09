@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `address`                                        | *string*                                         | :heavy_check_mark:                               | Your address.                                    |
-| `network`                                        | *string*                                         | :heavy_check_mark:                               | The blockchain network you are checking data on. |
+| Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `address`                                        | *string*                                         | :heavy_check_mark:                               | Your address.                                    | 0xc2132d05d31c914a87c6611c10748aeb04b58e8f       |
+| `network`                                        | *string*                                         | :heavy_check_mark:                               | The blockchain network you are checking data on. | polygon-mainnet                                  |

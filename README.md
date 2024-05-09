@@ -198,7 +198,7 @@ const httpClient = new HTTPClient({
 
 httpClient.addHook("beforeRequest", (request) => {
   const nextRequest = new Request(request, {
-    signal: request.signal || AbortSignal.timeout(5000);
+    signal: request.signal || AbortSignal.timeout(5000)
   });
 
   nextRequest.headers.set("x-custom-header", "custom value");
@@ -239,7 +239,10 @@ const starton = new Starton({
 });
 
 async function run() {
-    const result = await starton.wallet.getAll({});
+    const result = await starton.wallet.getAll({
+        limit: 20,
+        page: 0,
+    });
 
     for await (const page of result) {
         // handle page
@@ -276,8 +279,8 @@ const starton = new Starton({
 
 async function run() {
     const result = await starton.data.getBalance({
-        address: "164 Runolfsson Via",
-        network: "<value>",
+        address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+        network: "polygon-mainnet",
     });
 
     // Handle the result

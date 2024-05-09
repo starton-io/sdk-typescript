@@ -14,13 +14,24 @@ Retrieves a paginated list of smart contract templates, you can use filters and 
 
 ```typescript
 import { Starton } from "@starton/sdk";
+import { Category } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
   startonApiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await starton.smartContract.template.getAll({});
+  const result = await starton.smartContract.template.getAll({
+    blockchain: "polygon",
+    category: Category.Nft,
+    includeCompilationDetails: true,
+    includeForm: true,
+    isActivated: true,
+    isAudited: true,
+    limit: 20,
+    name: "ERC",
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page
@@ -64,7 +75,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContract.template.getOne({
-    id: "<id>",
+    id: "ERC721_META_TRANSACTION",
+    includeForm: true,
   });
 
   // Handle the result

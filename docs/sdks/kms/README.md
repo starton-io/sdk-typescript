@@ -75,7 +75,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.kms.delete({
-    id: "<id>",
+    id: "kms_000",
   });
 
   // Handle the result
@@ -119,7 +119,10 @@ const starton = new Starton({
 });
 
 async function run() {
-  const result = await starton.kms.getAll({});
+  const result = await starton.kms.getAll({
+    limit: 20,
+    page: 0,
+  });
 
   for await (const page of result) {
     // handle page
@@ -163,7 +166,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.kms.getOne({
-    id: "<id>",
+    id: "kms_000",
   });
 
   // Handle the result
@@ -209,7 +212,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.kms.update({
     updateKmsDto: {},
-    id: "<id>",
+    id: "kms_000",
   });
 
   // Handle the result

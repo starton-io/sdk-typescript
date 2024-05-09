@@ -88,7 +88,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.delete({
-    name: "<value>",
+    name: "optimism-functional-tests1706709455337",
   });
 
   // Handle the result
@@ -133,7 +133,9 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.getAll({
+    limit: 20,
     origin: "<value>",
+    page: 0,
   });
 
   for await (const page of result) {
@@ -178,7 +180,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.getOne({
-    name: "<value>",
+    name: "optimism-functional-tests",
   });
 
   // Handle the result
@@ -231,7 +233,7 @@ async function run() {
         url: "https://alarming-nondisclosure.com",
       },
     },
-    name: "<value>",
+    name: "optimism-functional-tests",
   });
 
   // Handle the result

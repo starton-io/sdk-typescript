@@ -3,9 +3,9 @@
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `address`                      | *string*                       | :heavy_check_mark:             | Smart contract address.        |
-| `includeAbi`                   | *boolean*                      | :heavy_minus_sign:             | N/A                            |
-| `includeCompilationDetails`    | *boolean*                      | :heavy_minus_sign:             | N/A                            |
-| `network`                      | *string*                       | :heavy_check_mark:             | EVM starton supported network. |
+| Field                                      | Type                                       | Required                                   | Description                                | Example                                    |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `address`                                  | *string*                                   | :heavy_check_mark:                         | Smart contract address.                    | 0x820f8728E32519b9C91B2406BF48AF80711aFecD |
+| `includeAbi`                               | *boolean*                                  | :heavy_minus_sign:                         | N/A                                        | true                                       |
+| `includeCompilationDetails`                | *boolean*                                  | :heavy_minus_sign:                         | N/A                                        | true                                       |
+| `network`                                  | *string*                                   | :heavy_check_mark:                         | EVM starton supported network.             | polygon-mumbai                             |

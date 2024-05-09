@@ -21,7 +21,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.transactionManager.setting.get({
-    network: "<value>",
+    network: "polygon-mumbai",
   });
 
   // Handle the result
@@ -74,7 +74,7 @@ async function run() {
       unstuckMissingNonce: true,
       unstuckMissingNonceDelay: 300,
     },
-    network: "<value>",
+    network: "polygon-mumbai",
   });
 
   // Handle the result

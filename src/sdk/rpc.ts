@@ -47,16 +47,17 @@ export class Rpc extends ClientSDK {
      * Add a rpc for a specific network
      */
     async create(
-        input: operations.CreateRpcRequest,
+        request: operations.CreateRpcRequest,
         options?: RequestOptions
     ): Promise<operations.CreateRpcResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CreateRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -88,7 +89,7 @@ export class Rpc extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -101,7 +102,7 @@ export class Rpc extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -166,15 +167,16 @@ export class Rpc extends ClientSDK {
      * Delete a rpc for a specific network
      */
     async delete(
-        input: operations.DeleteRpcRequest,
+        request: operations.DeleteRpcRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteRpcResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -207,7 +209,7 @@ export class Rpc extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -220,7 +222,7 @@ export class Rpc extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -285,15 +287,16 @@ export class Rpc extends ClientSDK {
      * Return all rpc for a specific network
      */
     async getAll(
-        input: operations.GetAllRpcRequest,
+        request: operations.GetAllRpcRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllRpcResponse>> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -330,7 +333,7 @@ export class Rpc extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -343,10 +346,10 @@ export class Rpc extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllRpcResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -360,7 +363,7 @@ export class Rpc extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -368,7 +371,7 @@ export class Rpc extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options
@@ -428,15 +431,16 @@ export class Rpc extends ClientSDK {
      * Return a specific rpc for a specific network
      */
     async getOne(
-        input: operations.GetOneRpcRequest,
+        request: operations.GetOneRpcRequest,
         options?: RequestOptions
     ): Promise<operations.GetOneRpcResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOneRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -469,7 +473,7 @@ export class Rpc extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -482,7 +486,7 @@ export class Rpc extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -547,16 +551,17 @@ export class Rpc extends ClientSDK {
      * Update a specific rpc for a specific network
      */
     async update(
-        input: operations.UpdateRpcRequest,
+        request: operations.UpdateRpcRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateRpcResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.UpdateRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -589,7 +594,7 @@ export class Rpc extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -602,7 +607,7 @@ export class Rpc extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

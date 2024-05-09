@@ -48,16 +48,17 @@ export class Invitation extends ClientSDK {
      * Invites a new member to the project. The user needs to have the necessary permissions to send invitations. The invitation details, including the recipient's email and role, must be provided in the request body.
      */
     async create(
-        input: shared.CreateInvitationDto,
+        request: shared.CreateInvitationDto,
         options?: RequestOptions
     ): Promise<operations.CreateInvitationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.CreateInvitationDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -83,7 +84,7 @@ export class Invitation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "401", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -96,7 +97,7 @@ export class Invitation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -163,15 +164,16 @@ export class Invitation extends ClientSDK {
      * Deletes an invitation that was previously sent. The user needs to have the necessary permissions to delete invitations. The id of the invitation to be revoked must be provided in the request URL
      */
     async delete(
-        input: operations.DeleteInvitationRequest,
+        request: operations.DeleteInvitationRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteInvitationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteInvitationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -200,7 +202,7 @@ export class Invitation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -213,7 +215,7 @@ export class Invitation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -280,15 +282,16 @@ export class Invitation extends ClientSDK {
      * Fetch all member invitations for a project. The user needs to have the appropriate permissions to access this data.
      */
     async getAll(
-        input: operations.GetAllInvitationRequest,
+        request: operations.GetAllInvitationRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllInvitationResponse>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetAllInvitationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -319,7 +322,7 @@ export class Invitation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -332,12 +335,12 @@ export class Invitation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllInvitationResponse> => {
-            const page = input.page || 0;
+            const page = input$.page || 0;
             const nextPage = page + 1;
             const numPages = jp.value(responseData, "$.meta.totalPages");
             if (numPages == null || numPages <= page) {
@@ -351,7 +354,7 @@ export class Invitation extends ClientSDK {
             if (!results.length) {
                 return () => null;
             }
-            const limit = input.limit || 0;
+            const limit = input$.limit || 0;
             if (results.length < limit) {
                 return () => null;
             }
@@ -359,7 +362,7 @@ export class Invitation extends ClientSDK {
             return () =>
                 this.getAll(
                     {
-                        ...input,
+                        ...input$,
                         page: nextPage,
                     },
                     options

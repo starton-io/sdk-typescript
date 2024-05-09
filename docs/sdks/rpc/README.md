@@ -27,7 +27,7 @@ async function run() {
     createRpcDto: {
       url: "http://limp-pastry.org",
     },
-    name: "<value>",
+    name: "optimism-functionnal-tests",
   });
 
   // Handle the result
@@ -72,8 +72,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.rpc.delete({
-    id: "<id>",
-    name: "<value>",
+    id: "rpc_c3d39f5a79be4599b0cdff667ffd1df3",
+    name: "optimism-functionnal-tests",
   });
 
   // Handle the result
@@ -118,7 +118,9 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.rpc.getAll({
-    name: "<value>",
+    limit: 20,
+    name: "optimism-functionnal-tests",
+    page: 0,
   });
 
   for await (const page of result) {
@@ -163,8 +165,8 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.rpc.getOne({
-    id: "<id>",
-    name: "<value>",
+    id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d",
+    name: "optimism-functionnal-tests",
   });
 
   // Handle the result
@@ -210,8 +212,8 @@ const starton = new Starton({
 async function run() {
   const result = await starton.network.rpc.update({
     updateRpcDto: {},
-    id: "<id>",
-    name: "<value>",
+    id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d",
+    name: "optimism-functionnal-tests",
   });
 
   // Handle the result
