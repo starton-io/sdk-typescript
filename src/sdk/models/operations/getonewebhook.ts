@@ -30,11 +30,7 @@ export type GetOneWebhookResponse = {
 
 /** @internal */
 export namespace GetOneWebhookRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWebhookRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWebhookRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace GetOneWebhookRequest$ {
 
 /** @internal */
 export namespace GetOneWebhookResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Webhook?: shared.Webhook$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWebhookResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWebhookResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

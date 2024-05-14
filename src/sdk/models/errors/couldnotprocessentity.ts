@@ -70,12 +70,10 @@ export class CouldNotProcessEntity extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTPROCESSENTITYContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTPROCESSENTITYContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -89,18 +87,7 @@ export namespace SchemasCOULDNOTPROCESSENTITYContext$ {
 
 /** @internal */
 export namespace CouldNotProcessEntity$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        context?: SchemasCOULDNOTPROCESSENTITYContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotProcessEntity, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotProcessEntity, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

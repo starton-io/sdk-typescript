@@ -69,9 +69,7 @@ export type DeployFromTemplateDto = {
 
 /** @internal */
 export namespace DeployFromTemplateDto3$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<DeployFromTemplateDto3, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<DeployFromTemplateDto3, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -83,16 +81,15 @@ export namespace DeployFromTemplateDto3$ {
 
 /** @internal */
 export namespace DeployFromTemplateDtoParams$ {
-    export type Inbound = DeployFromTemplateDto3$.Inbound | string | number | boolean;
-
-    export type Outbound = DeployFromTemplateDto3$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<DeployFromTemplateDtoParams, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<DeployFromTemplateDtoParams, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => DeployFromTemplateDto3$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = DeployFromTemplateDto3$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoParams> =
         z.union([
             z.lazy(() => DeployFromTemplateDto3$.outboundSchema),
@@ -108,21 +105,7 @@ export const DeployFromTemplateDtoSpeed$: z.ZodNativeEnum<typeof DeployFromTempl
 
 /** @internal */
 export namespace DeployFromTemplateDto$ {
-    export type Inbound = {
-        customGas?: CustomGasDto$.Inbound | undefined;
-        description?: string | undefined;
-        gasLimit?: string | undefined;
-        name: string;
-        network: string;
-        nonce?: number | undefined;
-        params: Array<DeployFromTemplateDto3$.Inbound | string | number | boolean>;
-        signerWallet: string;
-        speed?: DeployFromTemplateDtoSpeed | undefined;
-        templateId: string;
-        value?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeployFromTemplateDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeployFromTemplateDto, z.ZodTypeDef, unknown> = z
         .object({
             customGas: CustomGasDto$.inboundSchema.optional(),
             description: z.string().optional(),

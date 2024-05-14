@@ -19,21 +19,18 @@ export type UpdateKmsDto = {
 
 /** @internal */
 export namespace UpdateKmsDtoCredentials$ {
-    export type Inbound = AwsKmsCredentialsDto$.Inbound | VaultKmsCredentialsDto$.Inbound;
-
-    export type Outbound = AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound;
-    export const inboundSchema: z.ZodType<UpdateKmsDtoCredentials, z.ZodTypeDef, Inbound> = z.union(
+    export const inboundSchema: z.ZodType<UpdateKmsDtoCredentials, z.ZodTypeDef, unknown> = z.union(
         [AwsKmsCredentialsDto$.inboundSchema, VaultKmsCredentialsDto$.inboundSchema]
     );
+
+    export type Outbound = AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateKmsDtoCredentials> =
         z.union([AwsKmsCredentialsDto$.outboundSchema, VaultKmsCredentialsDto$.outboundSchema]);
 }
 
 /** @internal */
 export namespace UpdateKmsDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UpdateKmsDtoMetadata, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<UpdateKmsDtoMetadata, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -46,14 +43,7 @@ export namespace UpdateKmsDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateKmsDto$ {
-    export type Inbound = {
-        credentials?: AwsKmsCredentialsDto$.Inbound | VaultKmsCredentialsDto$.Inbound | undefined;
-        metadata?: UpdateKmsDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-        secret?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateKmsDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateKmsDto, z.ZodTypeDef, unknown> = z
         .object({
             credentials: z
                 .union([AwsKmsCredentialsDto$.inboundSchema, VaultKmsCredentialsDto$.inboundSchema])

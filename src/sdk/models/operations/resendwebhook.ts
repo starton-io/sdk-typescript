@@ -30,11 +30,7 @@ export type ResendWebhookResponse = {
 
 /** @internal */
 export namespace ResendWebhookRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<ResendWebhookRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResendWebhookRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace ResendWebhookRequest$ {
 
 /** @internal */
 export namespace ResendWebhookResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Webhook?: shared.Webhook$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ResendWebhookResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResendWebhookResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

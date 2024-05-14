@@ -39,9 +39,7 @@ export type CreateWatcherDto = {
 
 /** @internal */
 export namespace CustomEventAbi$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CustomEventAbi, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<CustomEventAbi, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -50,9 +48,7 @@ export namespace CustomEventAbi$ {
 
 /** @internal */
 export namespace CustomFilters$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CustomFilters, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<CustomFilters, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -61,9 +57,7 @@ export namespace CustomFilters$ {
 
 /** @internal */
 export namespace CreateWatcherDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CreateWatcherDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateWatcherDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -78,20 +72,7 @@ export const CreateWatcherDtoType$: z.ZodNativeEnum<typeof CreateWatcherDtoType>
 
 /** @internal */
 export namespace CreateWatcherDto$ {
-    export type Inbound = {
-        address: string;
-        confirmationsBlocks: number;
-        customEventAbi?: CustomEventAbi$.Inbound | undefined;
-        customFilters?: CustomFilters$.Inbound | undefined;
-        description?: string | null | undefined;
-        metadata?: CreateWatcherDtoMetadata$.Inbound | undefined;
-        name?: string | null | undefined;
-        network: string;
-        type: CreateWatcherDtoType;
-        webhookUrl: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             confirmationsBlocks: z.number(),

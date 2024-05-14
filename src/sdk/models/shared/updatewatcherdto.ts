@@ -17,9 +17,7 @@ export type UpdateWatcherDto = {
 
 /** @internal */
 export namespace UpdateWatcherDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UpdateWatcherDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UpdateWatcherDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -30,16 +28,7 @@ export namespace UpdateWatcherDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateWatcherDto$ {
-    export type Inbound = {
-        confirmationsBlocks?: number | undefined;
-        description?: string | null | undefined;
-        metadata?: UpdateWatcherDtoMetadata$.Inbound | undefined;
-        name?: string | null | undefined;
-        paused?: boolean | undefined;
-        webhookUrl?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, unknown> = z
         .object({
             confirmationsBlocks: z.number().optional(),
             description: z.nullable(z.string()).optional(),

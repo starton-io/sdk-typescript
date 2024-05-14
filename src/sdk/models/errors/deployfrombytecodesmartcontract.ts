@@ -63,25 +63,10 @@ export type DeployFromBytecodeSmartContractResponseBody =
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$ {
-    export type Inbound =
-        | Unknown$.Inbound
-        | NoProviderForNetwork$.Inbound
-        | CouldNotEstimateGasPrice$.Inbound
-        | CouldNotSign$.Inbound
-        | CouldNotAssignNonce$.Inbound
-        | CouldNotBroadcast$.Inbound;
-
-    export type Outbound =
-        | Unknown$.Outbound
-        | NoProviderForNetwork$.Outbound
-        | CouldNotEstimateGasPrice$.Outbound
-        | CouldNotSign$.Outbound
-        | CouldNotAssignNonce$.Outbound
-        | CouldNotBroadcast$.Outbound;
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         Unknown$.inboundSchema,
         NoProviderForNetwork$.inboundSchema,
@@ -90,6 +75,14 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponse5
         CouldNotAssignNonce$.inboundSchema,
         CouldNotBroadcast$.inboundSchema,
     ]);
+
+    export type Outbound =
+        | Unknown$.Outbound
+        | NoProviderForNetwork$.Outbound
+        | CouldNotEstimateGasPrice$.Outbound
+        | CouldNotSign$.Outbound
+        | CouldNotAssignNonce$.Outbound
+        | CouldNotBroadcast$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -106,14 +99,13 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponse5
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$ {
-    export type Inbound = ReplacementGasPriceUnderpriced$.Inbound;
-
-    export type Outbound = ReplacementGasPriceUnderpriced$.Outbound;
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = ReplacementGasPriceUnderpriced$.inboundSchema;
+
+    export type Outbound = ReplacementGasPriceUnderpriced$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -123,14 +115,13 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseR
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractSmartContractManagementResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -140,43 +131,10 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseB
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractResponseBody$ {
-    export type Inbound =
-        | InvalidBytecode$.Inbound
-        | InvalidAbi$.Inbound
-        | MissingArgument$.Inbound
-        | UnexpectedArgument$.Inbound
-        | InvalidArgument$.Inbound
-        | CallException$.Inbound
-        | NumericFault$.Inbound
-        | EnsNotSupported$.Inbound
-        | ExecutionWillFail$.Inbound
-        | InvalidGasPrice$.Inbound
-        | InsufficientFunds$.Inbound
-        | AlreadyKnown$.Inbound
-        | NonceExpired$.Inbound
-        | UnpredictableGasLimit$.Inbound
-        | BadRequestException$.Inbound;
-
-    export type Outbound =
-        | InvalidBytecode$.Outbound
-        | InvalidAbi$.Outbound
-        | MissingArgument$.Outbound
-        | UnexpectedArgument$.Outbound
-        | InvalidArgument$.Outbound
-        | CallException$.Outbound
-        | NumericFault$.Outbound
-        | EnsNotSupported$.Outbound
-        | ExecutionWillFail$.Outbound
-        | InvalidGasPrice$.Outbound
-        | InsufficientFunds$.Outbound
-        | AlreadyKnown$.Outbound
-        | NonceExpired$.Outbound
-        | UnpredictableGasLimit$.Outbound
-        | BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         InvalidBytecode$.inboundSchema,
         InvalidAbi$.inboundSchema,
@@ -194,6 +152,23 @@ export namespace DeployFromBytecodeSmartContractResponseBody$ {
         UnpredictableGasLimit$.inboundSchema,
         BadRequestException$.inboundSchema,
     ]);
+
+    export type Outbound =
+        | InvalidBytecode$.Outbound
+        | InvalidAbi$.Outbound
+        | MissingArgument$.Outbound
+        | UnexpectedArgument$.Outbound
+        | InvalidArgument$.Outbound
+        | CallException$.Outbound
+        | NumericFault$.Outbound
+        | EnsNotSupported$.Outbound
+        | ExecutionWillFail$.Outbound
+        | InvalidGasPrice$.Outbound
+        | InsufficientFunds$.Outbound
+        | AlreadyKnown$.Outbound
+        | NonceExpired$.Outbound
+        | UnpredictableGasLimit$.Outbound
+        | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

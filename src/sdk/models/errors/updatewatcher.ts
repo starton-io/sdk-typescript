@@ -12,11 +12,10 @@ export type UpdateWatcherResponseBody = BadRequestException;
 
 /** @internal */
 export namespace UpdateWatcherMonitorResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<UpdateWatcherMonitorResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<UpdateWatcherMonitorResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -26,11 +25,10 @@ export namespace UpdateWatcherMonitorResponseBody$ {
 
 /** @internal */
 export namespace UpdateWatcherResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<UpdateWatcherResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<UpdateWatcherResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherResponseBody> =
         BadRequestException$.outboundSchema;
 }

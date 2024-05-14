@@ -43,16 +43,7 @@ export type GetAllSmartContractResponse = {
 
 /** @internal */
 export namespace GetAllSmartContractRequest$ {
-    export type Inbound = {
-        address?: string | undefined;
-        includeAbi?: boolean | undefined;
-        includeCompilationDetails?: boolean | undefined;
-        limit?: number | undefined;
-        network?: string | undefined;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string().optional(),
             includeAbi: z.boolean().optional(),
@@ -108,15 +99,10 @@ export namespace GetAllSmartContractRequest$ {
 
 /** @internal */
 export namespace GetAllSmartContractSmartContractPaginated$ {
-    export type Inbound = {
-        items: Array<shared.SmartContract$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllSmartContractSmartContractPaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.SmartContract$.inboundSchema),
@@ -153,14 +139,7 @@ export namespace GetAllSmartContractSmartContractPaginated$ {
 
 /** @internal */
 export namespace GetAllSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContractPaginated?: GetAllSmartContractSmartContractPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             SmartContractPaginated: z

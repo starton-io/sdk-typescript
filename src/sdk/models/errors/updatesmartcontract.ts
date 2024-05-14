@@ -12,14 +12,13 @@ export type UpdateSmartContractResponseBody = BadRequestException;
 
 /** @internal */
 export namespace UpdateSmartContractSmartContractManagementResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         UpdateSmartContractSmartContractManagementResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,11 +28,10 @@ export namespace UpdateSmartContractSmartContractManagementResponseBody$ {
 
 /** @internal */
 export namespace UpdateSmartContractResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<UpdateSmartContractResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<UpdateSmartContractResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

@@ -38,18 +38,7 @@ export type VaultKmsCredentialsDto = {
 
 /** @internal */
 export namespace VaultKmsCredentialsDto$ {
-    export type Inbound = {
-        baseUrl: string;
-        id: string;
-        loginPath: string;
-        role: string;
-        rootPath: string;
-        selfSigned: boolean;
-        timeout: number;
-        tokenPath: string;
-    };
-
-    export const inboundSchema: z.ZodType<VaultKmsCredentialsDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<VaultKmsCredentialsDto, z.ZodTypeDef, unknown> = z
         .object({
             baseUrl: z.string(),
             id: z.string(),

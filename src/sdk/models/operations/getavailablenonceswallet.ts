@@ -34,12 +34,7 @@ export type GetAvailableNoncesWalletResponse = {
 
 /** @internal */
 export namespace GetAvailableNoncesWalletRequest$ {
-    export type Inbound = {
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 address: z.string(),
@@ -76,14 +71,7 @@ export namespace GetAvailableNoncesWalletRequest$ {
 
 /** @internal */
 export namespace GetAvailableNoncesWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        NoncesAvailable?: shared.NoncesAvailable$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletResponse, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletResponse, z.ZodTypeDef, unknown> =
         z
             .object({
                 ContentType: z.string(),

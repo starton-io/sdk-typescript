@@ -31,12 +31,7 @@ export type UpdateWalletResponse = {
 
 /** @internal */
 export namespace UpdateWalletRequest$ {
-    export type Inbound = {
-        UpdateWalletDto: shared.UpdateWalletDto$.Inbound;
-        address: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateWalletDto: shared.UpdateWalletDto$.inboundSchema,
             address: z.string(),
@@ -68,14 +63,7 @@ export namespace UpdateWalletRequest$ {
 
 /** @internal */
 export namespace UpdateWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Wallet?: shared.Wallet$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

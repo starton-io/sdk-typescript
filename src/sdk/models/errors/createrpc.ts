@@ -12,11 +12,10 @@ export type CreateRpcResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreateRpcNetworkRpcResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<CreateRpcNetworkRpcResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<CreateRpcNetworkRpcResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -26,11 +25,10 @@ export namespace CreateRpcNetworkRpcResponseBody$ {
 
 /** @internal */
 export namespace CreateRpcResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<CreateRpcResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreateRpcResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRpcResponseBody> =
         BadRequestException$.outboundSchema;
 }

@@ -31,15 +31,10 @@ export type GetOneSmartContractTemplateResponse = {
 
 /** @internal */
 export namespace GetOneSmartContractTemplateRequest$ {
-    export type Inbound = {
-        id: string;
-        includeForm?: boolean | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         GetOneSmartContractTemplateRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.string(),
@@ -76,17 +71,10 @@ export namespace GetOneSmartContractTemplateRequest$ {
 
 /** @internal */
 export namespace GetOneSmartContractTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContractTemplate?: shared.SmartContractTemplate$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         GetOneSmartContractTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -10,11 +10,7 @@ export type ResyncNonce = {
 
 /** @internal */
 export namespace ResyncNonce$ {
-    export type Inbound = {
-        nextNonce: number;
-    };
-
-    export const inboundSchema: z.ZodType<ResyncNonce, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResyncNonce, z.ZodTypeDef, unknown> = z
         .object({
             nextNonce: z.number(),
         })

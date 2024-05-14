@@ -12,13 +12,7 @@ export type AwsKmsCredentialsDto = {
 
 /** @internal */
 export namespace AwsKmsCredentialsDto$ {
-    export type Inbound = {
-        accessKeyId: string;
-        accountId: string;
-        region: string;
-    };
-
-    export const inboundSchema: z.ZodType<AwsKmsCredentialsDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AwsKmsCredentialsDto, z.ZodTypeDef, unknown> = z
         .object({
             accessKeyId: z.string(),
             accountId: z.string(),

@@ -92,9 +92,7 @@ export class AlreadyKnown extends Error {
 
 /** @internal */
 export namespace Context$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -103,20 +101,7 @@ export namespace Context$ {
 
 /** @internal */
 export namespace AlreadyKnown$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: Context$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<AlreadyKnown, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AlreadyKnown, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

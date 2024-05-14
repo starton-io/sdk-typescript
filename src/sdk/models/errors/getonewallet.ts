@@ -12,22 +12,20 @@ export type GetOneWalletResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetOneWalletWalletResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneWalletWalletResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneWalletWalletResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWalletWalletResponseBody> =
         CouldNotFindResource$.outboundSchema;
 }
 
 /** @internal */
 export namespace GetOneWalletResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneWalletResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneWalletResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWalletResponseBody> =
         BadRequestException$.outboundSchema;
 }

@@ -29,9 +29,7 @@ export type ReadSmartContractResponse = {
 
 /** @internal */
 export namespace ReadSmartContractResponse3$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse3, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ReadSmartContractResponse3, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -42,16 +40,15 @@ export namespace ReadSmartContractResponse3$ {
 
 /** @internal */
 export namespace ReadSmartContractResponseParams$ {
-    export type Inbound = ReadSmartContractResponse3$.Inbound | string | number | boolean;
-
-    export type Outbound = ReadSmartContractResponse3$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => ReadSmartContractResponse3$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = ReadSmartContractResponse3$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -66,12 +63,10 @@ export namespace ReadSmartContractResponseParams$ {
 
 /** @internal */
 export namespace ReadSmartContractResponseSchemas3$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         ReadSmartContractResponseSchemas3,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -85,12 +80,13 @@ export namespace ReadSmartContractResponseSchemas3$ {
 
 /** @internal */
 export namespace Response$ {
-    export type Inbound =
-        | ReadSmartContractResponseSchemas3$.Inbound
-        | string
-        | number
-        | boolean
-        | Array<any>;
+    export const inboundSchema: z.ZodType<Response, z.ZodTypeDef, unknown> = z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
 
     export type Outbound =
         | ReadSmartContractResponseSchemas3$.Outbound
@@ -98,13 +94,6 @@ export namespace Response$ {
         | number
         | boolean
         | Array<any>;
-    export const inboundSchema: z.ZodType<Response, z.ZodTypeDef, Inbound> = z.union([
-        z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-    ]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Response> = z.union([
         z.lazy(() => ReadSmartContractResponseSchemas3$.outboundSchema),
         z.string(),
@@ -116,20 +105,7 @@ export namespace Response$ {
 
 /** @internal */
 export namespace ReadSmartContractResponse$ {
-    export type Inbound = {
-        address: string;
-        functionName: string;
-        network: string;
-        params: Array<ReadSmartContractResponse3$.Inbound | string | number | boolean>;
-        response:
-            | ReadSmartContractResponseSchemas3$.Inbound
-            | string
-            | number
-            | boolean
-            | Array<any>;
-    };
-
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             functionName: z.string(),

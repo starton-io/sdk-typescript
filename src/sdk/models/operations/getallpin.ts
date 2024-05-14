@@ -54,16 +54,7 @@ export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
 
 /** @internal */
 export namespace GetAllPinRequest$ {
-    export type Inbound = {
-        cid?: string | undefined;
-        includeDirectoryContent?: boolean | undefined;
-        limit?: number | undefined;
-        name?: string | undefined;
-        page?: number | undefined;
-        status?: Status | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllPinRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllPinRequest, z.ZodTypeDef, unknown> = z
         .object({
             cid: z.string().optional(),
             includeDirectoryContent: z.boolean().optional(),
@@ -119,12 +110,7 @@ export namespace GetAllPinRequest$ {
 
 /** @internal */
 export namespace GetAllPinPinPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Pin$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllPinPinPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllPinPinPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Pin$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -156,14 +142,7 @@ export namespace GetAllPinPinPaginated$ {
 
 /** @internal */
 export namespace GetAllPinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        PinPaginated?: GetAllPinPinPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllPinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllPinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             PinPaginated: z.lazy(() => GetAllPinPinPaginated$.inboundSchema).optional(),

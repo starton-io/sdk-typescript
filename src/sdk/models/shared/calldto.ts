@@ -33,9 +33,7 @@ export type CallDto = {
 
 /** @internal */
 export namespace Three$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Three, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -44,15 +42,14 @@ export namespace Three$ {
 
 /** @internal */
 export namespace Params$ {
-    export type Inbound = Three$.Inbound | string | number | boolean;
-
-    export type Outbound = Three$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<Params, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Three$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Three$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Params> = z.union([
         z.lazy(() => Three$.outboundSchema),
         z.string(),
@@ -66,18 +63,7 @@ export const Speed$: z.ZodNativeEnum<typeof Speed> = z.nativeEnum(Speed);
 
 /** @internal */
 export namespace CallDto$ {
-    export type Inbound = {
-        customGas?: CustomGasDto$.Inbound | undefined;
-        functionName: string;
-        gasLimit?: string | undefined;
-        nonce?: number | undefined;
-        params: Array<Three$.Inbound | string | number | boolean>;
-        signerWallet: string;
-        speed?: Speed | undefined;
-        value?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CallDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CallDto, z.ZodTypeDef, unknown> = z
         .object({
             customGas: CustomGasDto$.inboundSchema.optional(),
             functionName: z.string(),

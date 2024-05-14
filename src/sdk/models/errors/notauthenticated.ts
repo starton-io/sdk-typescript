@@ -70,9 +70,7 @@ export class NotAuthenticated extends Error {
 
 /** @internal */
 export namespace SchemasNOTAUTHENTICATEDContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasNOTAUTHENTICATEDContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasNOTAUTHENTICATEDContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -83,18 +81,7 @@ export namespace SchemasNOTAUTHENTICATEDContext$ {
 
 /** @internal */
 export namespace NotAuthenticated$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        context?: SchemasNOTAUTHENTICATEDContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<NotAuthenticated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NotAuthenticated, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

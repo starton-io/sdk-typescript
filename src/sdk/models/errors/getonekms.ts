@@ -12,22 +12,20 @@ export type GetOneKmsResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetOneKmsKmsResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneKmsKmsResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneKmsKmsResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneKmsKmsResponseBody> =
         CouldNotFindResource$.outboundSchema;
 }
 
 /** @internal */
 export namespace GetOneKmsResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneKmsResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneKmsResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneKmsResponseBody> =
         BadRequestException$.outboundSchema;
 }

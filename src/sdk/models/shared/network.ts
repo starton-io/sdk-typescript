@@ -33,9 +33,7 @@ export type Network = {
 
 /** @internal */
 export namespace GasPriceRecommendation$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<GasPriceRecommendation, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<GasPriceRecommendation, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -47,32 +45,7 @@ export namespace GasPriceRecommendation$ {
 
 /** @internal */
 export namespace Network$ {
-    export type Inbound = {
-        blockchain: string;
-        chainId: number;
-        confirmationBlocks: number;
-        createdAt?: string | undefined;
-        decimal: number;
-        displayName: string;
-        eip1159: boolean;
-        enableExternalWallet: boolean;
-        enableListener: boolean;
-        enableRelayer: boolean;
-        explorerUrl: string;
-        faucetUrl?: string | null | undefined;
-        gasPriceRecommendation?: GasPriceRecommendation$.Inbound | null | undefined;
-        loadbalancerUrl: string;
-        logo: string;
-        name: string;
-        owner: string;
-        symbol: string;
-        testnet: boolean;
-        updatedAt?: string | undefined;
-        verifyBlockIntegrity: boolean;
-        verifyTxIntegrity: boolean;
-    };
-
-    export const inboundSchema: z.ZodType<Network, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> = z
         .object({
             blockchain: z.string(),
             chainId: z.number(),

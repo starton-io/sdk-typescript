@@ -38,9 +38,7 @@ export type Pin = {
 
 /** @internal */
 export namespace PinMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<PinMetadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<PinMetadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -55,23 +53,7 @@ export const PinType$: z.ZodNativeEnum<typeof PinType> = z.nativeEnum(PinType);
 
 /** @internal */
 export namespace Pin$ {
-    export type Inbound = {
-        cid?: string | undefined;
-        createdAt?: string | undefined;
-        delegates?: Array<string> | undefined;
-        directoryContent?: Array<DirectoryContent$.Inbound> | undefined;
-        id: string;
-        metadata?: PinMetadata$.Inbound | undefined;
-        name?: string | undefined;
-        origins?: Array<string> | undefined;
-        projectId: string;
-        size?: number | undefined;
-        status: Status;
-        type?: PinType | undefined;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Pin, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Pin, z.ZodTypeDef, unknown> = z
         .object({
             cid: z.string().optional(),
             createdAt: z

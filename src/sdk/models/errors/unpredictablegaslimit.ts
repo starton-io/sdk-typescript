@@ -92,12 +92,10 @@ export class UnpredictableGasLimit extends Error {
 
 /** @internal */
 export namespace SchemasUNPREDICTABLEGASLIMITContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasUNPREDICTABLEGASLIMITContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -111,20 +109,7 @@ export namespace SchemasUNPREDICTABLEGASLIMITContext$ {
 
 /** @internal */
 export namespace UnpredictableGasLimit$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasUNPREDICTABLEGASLIMITContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<UnpredictableGasLimit, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UnpredictableGasLimit, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

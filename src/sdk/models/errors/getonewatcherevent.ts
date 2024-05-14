@@ -12,14 +12,13 @@ export type GetOneWatcherEventResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetOneWatcherEventMonitorResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         GetOneWatcherEventMonitorResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,11 +28,10 @@ export namespace GetOneWatcherEventMonitorResponseBody$ {
 
 /** @internal */
 export namespace GetOneWatcherEventResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneWatcherEventResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneWatcherEventResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWatcherEventResponseBody> =
         BadRequestException$.outboundSchema;
 }

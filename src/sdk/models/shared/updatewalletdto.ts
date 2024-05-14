@@ -14,9 +14,7 @@ export type UpdateWalletDto = {
 
 /** @internal */
 export namespace UpdateWalletDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UpdateWalletDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UpdateWalletDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -27,13 +25,7 @@ export namespace UpdateWalletDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateWalletDto$ {
-    export type Inbound = {
-        description?: string | undefined;
-        metadata?: UpdateWalletDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             metadata: z.lazy(() => UpdateWalletDtoMetadata$.inboundSchema).optional(),

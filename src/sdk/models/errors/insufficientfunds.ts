@@ -92,9 +92,7 @@ export class InsufficientFunds extends Error {
 
 /** @internal */
 export namespace SchemasINSUFFICIENTFUNDSContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasINSUFFICIENTFUNDSContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasINSUFFICIENTFUNDSContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -108,20 +106,7 @@ export namespace SchemasINSUFFICIENTFUNDSContext$ {
 
 /** @internal */
 export namespace InsufficientFunds$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasINSUFFICIENTFUNDSContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<InsufficientFunds, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InsufficientFunds, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

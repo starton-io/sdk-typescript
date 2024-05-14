@@ -12,13 +12,7 @@ export type GasPriceRecommendationDto = {
 
 /** @internal */
 export namespace GasPriceRecommendationDto$ {
-    export type Inbound = {
-        defaultRelayerUnstuck: string;
-        lowest: string;
-        max: string;
-    };
-
-    export const inboundSchema: z.ZodType<GasPriceRecommendationDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GasPriceRecommendationDto, z.ZodTypeDef, unknown> = z
         .object({
             defaultRelayerUnstuck: z.string(),
             lowest: z.string(),

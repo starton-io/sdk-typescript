@@ -26,11 +26,7 @@ export type DeleteProjectMemberResponse = {
 
 /** @internal */
 export namespace DeleteProjectMemberRequest$ {
-    export type Inbound = {
-        userId: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteProjectMemberRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteProjectMemberRequest, z.ZodTypeDef, unknown> = z
         .object({
             userId: z.string(),
         })
@@ -57,14 +53,7 @@ export namespace DeleteProjectMemberRequest$ {
 
 /** @internal */
 export namespace DeleteProjectMemberResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        boolean?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteProjectMemberResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteProjectMemberResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -29,13 +29,7 @@ export type UpdateRpcResponse = {
 
 /** @internal */
 export namespace UpdateRpcRequest$ {
-    export type Inbound = {
-        UpdateRpcDto: shared.UpdateRpcDto$.Inbound;
-        id: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateRpcRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateRpcRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateRpcDto: shared.UpdateRpcDto$.inboundSchema,
             id: z.string(),
@@ -72,14 +66,7 @@ export namespace UpdateRpcRequest$ {
 
 /** @internal */
 export namespace UpdateRpcResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Rpc?: shared.Rpc$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateRpcResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateRpcResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Rpc: shared.Rpc$.inboundSchema.optional(),

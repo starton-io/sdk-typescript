@@ -46,25 +46,10 @@ export type CreateTransactionResponseBody =
 
 /** @internal */
 export namespace CreateTransactionTransactionManagerResponse500ResponseBody$ {
-    export type Inbound =
-        | CouldNotAssignNonce$.Inbound
-        | CouldNotBroadcast$.Inbound
-        | CouldNotEstimateGasPrice$.Inbound
-        | NoProviderForNetwork$.Inbound
-        | CouldNotSign$.Inbound
-        | Unknown$.Inbound;
-
-    export type Outbound =
-        | CouldNotAssignNonce$.Outbound
-        | CouldNotBroadcast$.Outbound
-        | CouldNotEstimateGasPrice$.Outbound
-        | NoProviderForNetwork$.Outbound
-        | CouldNotSign$.Outbound
-        | Unknown$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateTransactionTransactionManagerResponse500ResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         CouldNotAssignNonce$.inboundSchema,
         CouldNotBroadcast$.inboundSchema,
@@ -73,6 +58,14 @@ export namespace CreateTransactionTransactionManagerResponse500ResponseBody$ {
         CouldNotSign$.inboundSchema,
         Unknown$.inboundSchema,
     ]);
+
+    export type Outbound =
+        | CouldNotAssignNonce$.Outbound
+        | CouldNotBroadcast$.Outbound
+        | CouldNotEstimateGasPrice$.Outbound
+        | NoProviderForNetwork$.Outbound
+        | CouldNotSign$.Outbound
+        | Unknown$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -89,14 +82,13 @@ export namespace CreateTransactionTransactionManagerResponse500ResponseBody$ {
 
 /** @internal */
 export namespace CreateTransactionTransactionManagerResponseResponseBody$ {
-    export type Inbound = ReplacementGasPriceUnderpriced$.Inbound;
-
-    export type Outbound = ReplacementGasPriceUnderpriced$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateTransactionTransactionManagerResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = ReplacementGasPriceUnderpriced$.inboundSchema;
+
+    export type Outbound = ReplacementGasPriceUnderpriced$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -106,14 +98,13 @@ export namespace CreateTransactionTransactionManagerResponseResponseBody$ {
 
 /** @internal */
 export namespace CreateTransactionTransactionManagerResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateTransactionTransactionManagerResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -123,24 +114,7 @@ export namespace CreateTransactionTransactionManagerResponseBody$ {
 
 /** @internal */
 export namespace CreateTransactionResponseBody$ {
-    export type Inbound =
-        | NonceExpired$.Inbound
-        | ExecutionWillFail$.Inbound
-        | InvalidGasPrice$.Inbound
-        | InsufficientFunds$.Inbound
-        | AlreadyKnown$.Inbound
-        | UnpredictableGasLimit$.Inbound
-        | BadRequestException$.Inbound;
-
-    export type Outbound =
-        | NonceExpired$.Outbound
-        | ExecutionWillFail$.Outbound
-        | InvalidGasPrice$.Outbound
-        | InsufficientFunds$.Outbound
-        | AlreadyKnown$.Outbound
-        | UnpredictableGasLimit$.Outbound
-        | BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreateTransactionResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateTransactionResponseBody, z.ZodTypeDef, unknown> =
         z.union([
             NonceExpired$.inboundSchema,
             ExecutionWillFail$.inboundSchema,
@@ -150,6 +124,15 @@ export namespace CreateTransactionResponseBody$ {
             UnpredictableGasLimit$.inboundSchema,
             BadRequestException$.inboundSchema,
         ]);
+
+    export type Outbound =
+        | NonceExpired$.Outbound
+        | ExecutionWillFail$.Outbound
+        | InvalidGasPrice$.Outbound
+        | InsufficientFunds$.Outbound
+        | AlreadyKnown$.Outbound
+        | UnpredictableGasLimit$.Outbound
+        | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTransactionResponseBody> =
         z.union([
             NonceExpired$.outboundSchema,

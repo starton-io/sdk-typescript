@@ -23,14 +23,7 @@ export type CreateKmsResponse = {
 
 /** @internal */
 export namespace CreateKmsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Kms?: shared.Kms$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CreateKmsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateKmsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Kms: shared.Kms$.inboundSchema.optional(),

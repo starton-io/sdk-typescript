@@ -18,12 +18,7 @@ export const Role$: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
 
 /** @internal */
 export namespace CreateInvitationDto$ {
-    export type Inbound = {
-        email: string;
-        role: Role;
-    };
-
-    export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, unknown> = z
         .object({
             email: z.string(),
             role: Role$,

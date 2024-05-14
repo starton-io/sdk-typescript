@@ -15,14 +15,13 @@ export type DeleteProjectMemberResponseBody = BadRequestException;
 
 /** @internal */
 export namespace DeleteProjectMemberProjectMemberResponseResponseBody$ {
-    export type Inbound = MicroserviceNotResponding$.Inbound;
-
-    export type Outbound = MicroserviceNotResponding$.Outbound;
     export const inboundSchema: z.ZodType<
         DeleteProjectMemberProjectMemberResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = MicroserviceNotResponding$.inboundSchema;
+
+    export type Outbound = MicroserviceNotResponding$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -32,14 +31,13 @@ export namespace DeleteProjectMemberProjectMemberResponseResponseBody$ {
 
 /** @internal */
 export namespace DeleteProjectMemberProjectMemberResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         DeleteProjectMemberProjectMemberResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -49,11 +47,10 @@ export namespace DeleteProjectMemberProjectMemberResponseBody$ {
 
 /** @internal */
 export namespace DeleteProjectMemberResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<DeleteProjectMemberResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<DeleteProjectMemberResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

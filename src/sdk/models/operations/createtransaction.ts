@@ -34,12 +34,7 @@ export type CreateTransactionResponse = {
 
 /** @internal */
 export namespace CreateTransactionRequest$ {
-    export type Inbound = {
-        CreateTransactionDto: shared.CreateTransactionDto$.Inbound;
-        simulate?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateTransactionRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateTransactionRequest, z.ZodTypeDef, unknown> = z
         .object({
             CreateTransactionDto: shared.CreateTransactionDto$.inboundSchema,
             simulate: z.boolean().optional(),
@@ -71,14 +66,7 @@ export namespace CreateTransactionRequest$ {
 
 /** @internal */
 export namespace CreateTransactionResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Transaction?: shared.Transaction$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateTransactionResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateTransactionResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

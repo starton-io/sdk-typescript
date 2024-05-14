@@ -12,22 +12,20 @@ export type UpdatePinResponseBody = BadRequestException;
 
 /** @internal */
 export namespace UpdatePinIpfsResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<UpdatePinIpfsResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<UpdatePinIpfsResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdatePinIpfsResponseBody> =
         CouldNotFindResource$.outboundSchema;
 }
 
 /** @internal */
 export namespace UpdatePinResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<UpdatePinResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<UpdatePinResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdatePinResponseBody> =
         BadRequestException$.outboundSchema;
 }

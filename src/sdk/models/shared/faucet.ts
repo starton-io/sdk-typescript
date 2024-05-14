@@ -37,17 +37,7 @@ export type Faucet = {
 
 /** @internal */
 export namespace Faucet$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id: string;
-        ip: string;
-        network: string | null;
-        txHash?: string | null | undefined;
-        userId?: string | null | undefined;
-        wallet: string;
-    };
-
-    export const inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

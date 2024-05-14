@@ -14,9 +14,7 @@ export type UpdateSmartContractDto = {
 
 /** @internal */
 export namespace UpdateSmartContractDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UpdateSmartContractDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UpdateSmartContractDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -27,13 +25,7 @@ export namespace UpdateSmartContractDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateSmartContractDto$ {
-    export type Inbound = {
-        description?: string | undefined;
-        metadata?: UpdateSmartContractDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSmartContractDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSmartContractDto, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             metadata: z.lazy(() => UpdateSmartContractDtoMetadata$.inboundSchema).optional(),

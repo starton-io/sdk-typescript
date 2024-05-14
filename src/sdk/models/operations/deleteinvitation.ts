@@ -26,11 +26,7 @@ export type DeleteInvitationResponse = {
 
 /** @internal */
 export namespace DeleteInvitationRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteInvitationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteInvitationRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -57,14 +53,7 @@ export namespace DeleteInvitationRequest$ {
 
 /** @internal */
 export namespace DeleteInvitationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteInvitationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteInvitationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

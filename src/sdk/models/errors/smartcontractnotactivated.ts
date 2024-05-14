@@ -59,12 +59,10 @@ export class SmartContractNotActivated extends Error {
 
 /** @internal */
 export namespace SchemasSMARTCONTRACTNOTACTIVATEDContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasSMARTCONTRACTNOTACTIVATEDContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasSMARTCONTRACTNOTACTIVATEDContext$ {
 
 /** @internal */
 export namespace SmartContractNotActivated$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasSMARTCONTRACTNOTACTIVATEDContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<SmartContractNotActivated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SmartContractNotActivated, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z

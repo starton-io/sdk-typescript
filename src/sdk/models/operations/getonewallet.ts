@@ -30,11 +30,7 @@ export type GetOneWalletResponse = {
 
 /** @internal */
 export namespace GetOneWalletRequest$ {
-    export type Inbound = {
-        address: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace GetOneWalletRequest$ {
 
 /** @internal */
 export namespace GetOneWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Wallet?: shared.Wallet$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

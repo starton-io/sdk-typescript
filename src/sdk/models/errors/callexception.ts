@@ -92,9 +92,7 @@ export class CallException extends Error {
 
 /** @internal */
 export namespace SchemasCALLEXCEPTIONContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasCALLEXCEPTIONContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasCALLEXCEPTIONContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasCALLEXCEPTIONContext$ {
 
 /** @internal */
 export namespace CallException$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasCALLEXCEPTIONContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CallException, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CallException, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

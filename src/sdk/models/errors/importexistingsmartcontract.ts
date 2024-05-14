@@ -14,24 +14,20 @@ export type ImportExistingSmartContractResponseBody =
 
 /** @internal */
 export namespace ImportExistingSmartContractResponseBody$ {
-    export type Inbound =
-        | InvalidContractAddress$.Inbound
-        | InvalidAbi$.Inbound
-        | BadRequestException$.Inbound;
-
-    export type Outbound =
-        | InvalidContractAddress$.Outbound
-        | InvalidAbi$.Outbound
-        | BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         ImportExistingSmartContractResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         InvalidContractAddress$.inboundSchema,
         InvalidAbi$.inboundSchema,
         BadRequestException$.inboundSchema,
     ]);
+
+    export type Outbound =
+        | InvalidContractAddress$.Outbound
+        | InvalidAbi$.Outbound
+        | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

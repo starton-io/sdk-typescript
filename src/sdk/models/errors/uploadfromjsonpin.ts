@@ -12,14 +12,13 @@ export type UploadFromJsonPinResponseBody = BadRequestException;
 
 /** @internal */
 export namespace UploadFromJsonPinIpfsResponseBody$ {
-    export type Inbound = MaximumStorageReached$.Inbound;
-
-    export type Outbound = MaximumStorageReached$.Outbound;
     export const inboundSchema: z.ZodType<
         UploadFromJsonPinIpfsResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = MaximumStorageReached$.inboundSchema;
+
+    export type Outbound = MaximumStorageReached$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,11 +28,10 @@ export namespace UploadFromJsonPinIpfsResponseBody$ {
 
 /** @internal */
 export namespace UploadFromJsonPinResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<UploadFromJsonPinResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<UploadFromJsonPinResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromJsonPinResponseBody> =
         BadRequestException$.outboundSchema;
 }

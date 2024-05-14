@@ -12,14 +12,13 @@ export type CreateInvitationResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreateInvitationProjectMemberInvitationResponseBody$ {
-    export type Inbound = NotAuthenticated$.Inbound;
-
-    export type Outbound = NotAuthenticated$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateInvitationProjectMemberInvitationResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = NotAuthenticated$.inboundSchema;
+
+    export type Outbound = NotAuthenticated$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,11 +28,10 @@ export namespace CreateInvitationProjectMemberInvitationResponseBody$ {
 
 /** @internal */
 export namespace CreateInvitationResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<CreateInvitationResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreateInvitationResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateInvitationResponseBody> =
         BadRequestException$.outboundSchema;
 }

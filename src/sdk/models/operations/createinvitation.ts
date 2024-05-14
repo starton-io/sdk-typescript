@@ -23,14 +23,7 @@ export type CreateInvitationResponse = {
 
 /** @internal */
 export namespace CreateInvitationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Invitation?: shared.Invitation$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CreateInvitationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateInvitationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Invitation: shared.Invitation$.inboundSchema.optional(),

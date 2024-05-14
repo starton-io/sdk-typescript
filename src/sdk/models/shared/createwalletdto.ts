@@ -15,9 +15,7 @@ export type CreateWalletDto = {
 
 /** @internal */
 export namespace CreateWalletDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CreateWalletDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateWalletDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -28,14 +26,7 @@ export namespace CreateWalletDtoMetadata$ {
 
 /** @internal */
 export namespace CreateWalletDto$ {
-    export type Inbound = {
-        description?: string | undefined;
-        kmsId: string;
-        metadata?: CreateWalletDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             kmsId: z.string(),

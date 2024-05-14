@@ -30,11 +30,7 @@ export type GetOneTransactionResponse = {
 
 /** @internal */
 export namespace GetOneTransactionRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneTransactionRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneTransactionRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace GetOneTransactionRequest$ {
 
 /** @internal */
 export namespace GetOneTransactionResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Transaction?: shared.Transaction$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneTransactionResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneTransactionResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

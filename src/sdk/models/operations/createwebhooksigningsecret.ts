@@ -23,17 +23,10 @@ export type CreateWebhookSigningSecretResponse = {
 
 /** @internal */
 export namespace CreateWebhookSigningSecretResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WebhookSigningSecret?: shared.WebhookSigningSecret$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateWebhookSigningSecretResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

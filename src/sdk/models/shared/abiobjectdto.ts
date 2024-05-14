@@ -42,18 +42,7 @@ export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
 
 /** @internal */
 export namespace AbiObjectDto$ {
-    export type Inbound = {
-        anonymous?: boolean | undefined;
-        constant?: boolean | undefined;
-        inputs?: AbiInputDto$.Inbound | undefined;
-        name?: string | undefined;
-        outputs?: AbiOutputDto$.Inbound | undefined;
-        payability?: boolean | undefined;
-        stateMutability?: StateMutability | undefined;
-        type: Type;
-    };
-
-    export const inboundSchema: z.ZodType<AbiObjectDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AbiObjectDto, z.ZodTypeDef, unknown> = z
         .object({
             anonymous: z.boolean().optional(),
             constant: z.boolean().optional(),

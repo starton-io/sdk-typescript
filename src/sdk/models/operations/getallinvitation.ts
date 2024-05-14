@@ -39,12 +39,7 @@ export type GetAllInvitationResponse = {
 
 /** @internal */
 export namespace GetAllInvitationRequest$ {
-    export type Inbound = {
-        limit?: number | undefined;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllInvitationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllInvitationRequest, z.ZodTypeDef, unknown> = z
         .object({
             limit: z.number().int().optional(),
             page: z.number().int().optional(),
@@ -76,15 +71,10 @@ export namespace GetAllInvitationRequest$ {
 
 /** @internal */
 export namespace GetAllInvitationInvitationPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Invitation$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllInvitationInvitationPaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.Invitation$.inboundSchema),
@@ -121,14 +111,7 @@ export namespace GetAllInvitationInvitationPaginated$ {
 
 /** @internal */
 export namespace GetAllInvitationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        InvitationPaginated?: GetAllInvitationInvitationPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllInvitationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllInvitationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             InvitationPaginated: z

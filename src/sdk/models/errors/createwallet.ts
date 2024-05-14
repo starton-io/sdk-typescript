@@ -9,11 +9,10 @@ export type CreateWalletResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreateWalletResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<CreateWalletResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreateWalletResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletResponseBody> =
         BadRequestException$.outboundSchema;
 }

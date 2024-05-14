@@ -114,12 +114,10 @@ export class CouldNotAssignNonce extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTASSIGNNONCEContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTASSIGNNONCEContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -133,22 +131,7 @@ export namespace SchemasCOULDNOTASSIGNNONCEContext$ {
 
 /** @internal */
 export namespace CouldNotAssignNonce$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        RawResponse5?: Response | undefined;
-        context?: SchemasCOULDNOTASSIGNNONCEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotAssignNonce, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotAssignNonce, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

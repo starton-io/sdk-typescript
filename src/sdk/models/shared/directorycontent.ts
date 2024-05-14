@@ -22,14 +22,7 @@ export const DirectoryContentType$: z.ZodNativeEnum<typeof DirectoryContentType>
 
 /** @internal */
 export namespace DirectoryContent$ {
-    export type Inbound = {
-        cid: string;
-        name: string;
-        size: number;
-        type?: DirectoryContentType | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> = z
         .object({
             cid: z.string(),
             name: z.string(),

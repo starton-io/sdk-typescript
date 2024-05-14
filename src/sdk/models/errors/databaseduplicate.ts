@@ -59,9 +59,7 @@ export class DatabaseDuplicate extends Error {
 
 /** @internal */
 export namespace SchemasDATABASEDUPLICATEContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasDATABASEDUPLICATEContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasDATABASEDUPLICATEContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -75,17 +73,7 @@ export namespace SchemasDATABASEDUPLICATEContext$ {
 
 /** @internal */
 export namespace DatabaseDuplicate$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasDATABASEDUPLICATEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<DatabaseDuplicate, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DatabaseDuplicate, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasDATABASEDUPLICATEContext$.inboundSchema).optional(),

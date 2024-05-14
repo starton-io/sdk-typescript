@@ -18,14 +18,13 @@ export type ResyncNoncesWalletResponseBody = BadRequestException;
 
 /** @internal */
 export namespace ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$ {
-    export type Inbound = CouldNotAssignNonce$.Inbound;
-
-    export type Outbound = CouldNotAssignNonce$.Outbound;
     export const inboundSchema: z.ZodType<
         ResyncNoncesWalletWalletTransactionManagerResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotAssignNonce$.inboundSchema;
+
+    export type Outbound = CouldNotAssignNonce$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -35,14 +34,13 @@ export namespace ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$
 
 /** @internal */
 export namespace ResyncNoncesWalletWalletTransactionManagerResponseBody$ {
-    export type Inbound = CouldNotProcessEntity$.Inbound;
-
-    export type Outbound = CouldNotProcessEntity$.Outbound;
     export const inboundSchema: z.ZodType<
         ResyncNoncesWalletWalletTransactionManagerResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotProcessEntity$.inboundSchema;
+
+    export type Outbound = CouldNotProcessEntity$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -52,14 +50,13 @@ export namespace ResyncNoncesWalletWalletTransactionManagerResponseBody$ {
 
 /** @internal */
 export namespace ResyncNoncesWalletWalletResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         ResyncNoncesWalletWalletResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -69,11 +66,10 @@ export namespace ResyncNoncesWalletWalletResponseBody$ {
 
 /** @internal */
 export namespace ResyncNoncesWalletResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<ResyncNoncesWalletResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<ResyncNoncesWalletResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResyncNoncesWalletResponseBody> =
         BadRequestException$.outboundSchema;
 }

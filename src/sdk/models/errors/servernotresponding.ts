@@ -59,12 +59,10 @@ export class ServerNotResponding extends Error {
 
 /** @internal */
 export namespace SchemasSERVERNOTRESPONDINGContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasSERVERNOTRESPONDINGContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasSERVERNOTRESPONDINGContext$ {
 
 /** @internal */
 export namespace ServerNotResponding$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasSERVERNOTRESPONDINGContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<ServerNotResponding, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ServerNotResponding, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.inboundSchema).optional(),

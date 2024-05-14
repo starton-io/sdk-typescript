@@ -23,14 +23,7 @@ export type UploadFromJsonPinResponse = {
 
 /** @internal */
 export namespace UploadFromJsonPinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UploadFromJsonPinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadFromJsonPinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

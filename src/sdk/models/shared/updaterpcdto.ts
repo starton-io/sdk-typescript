@@ -10,11 +10,7 @@ export type UpdateRpcDto = {
 
 /** @internal */
 export namespace UpdateRpcDto$ {
-    export type Inbound = {
-        url?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateRpcDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateRpcDto, z.ZodTypeDef, unknown> = z
         .object({
             url: z.string().optional(),
         })

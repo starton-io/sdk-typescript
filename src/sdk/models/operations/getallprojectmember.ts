@@ -28,15 +28,10 @@ export type GetAllProjectMemberResponse = {
 
 /** @internal */
 export namespace GetAllProjectMemberProjectMemberPaginated$ {
-    export type Inbound = {
-        items: Array<shared.ProjectMember$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllProjectMemberProjectMemberPaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.ProjectMember$.inboundSchema),
@@ -73,14 +68,7 @@ export namespace GetAllProjectMemberProjectMemberPaginated$ {
 
 /** @internal */
 export namespace GetAllProjectMemberResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ProjectMemberPaginated?: GetAllProjectMemberProjectMemberPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllProjectMemberResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllProjectMemberResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             ProjectMemberPaginated: z

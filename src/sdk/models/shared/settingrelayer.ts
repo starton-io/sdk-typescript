@@ -20,21 +20,7 @@ export type SettingRelayer = {
 
 /** @internal */
 export namespace SettingRelayer$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id: string;
-        network: string;
-        projectId: string;
-        unstuckAutomaticGasPrice: boolean;
-        unstuckCustomGasPrice: boolean;
-        unstuckGasPriceDelay: number;
-        unstuckMaxGasPrice: string;
-        unstuckMissingNonce: boolean;
-        unstuckMissingNonceDelay: number;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

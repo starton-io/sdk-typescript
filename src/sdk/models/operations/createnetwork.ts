@@ -23,14 +23,7 @@ export type CreateNetworkResponse = {
 
 /** @internal */
 export namespace CreateNetworkResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Network?: shared.Network$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CreateNetworkResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateNetworkResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Network: shared.Network$.inboundSchema.optional(),

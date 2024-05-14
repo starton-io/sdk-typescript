@@ -21,13 +21,7 @@ export type GasPriceInfo = {
 
 /** @internal */
 export namespace GasPriceInfo$ {
-    export type Inbound = {
-        gasPrice: string | null;
-        maxFeePerGas: string | null;
-        maxPriorityFeePerGas: string | null;
-    };
-
-    export const inboundSchema: z.ZodType<GasPriceInfo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GasPriceInfo, z.ZodTypeDef, unknown> = z
         .object({
             gasPrice: z.nullable(z.string()),
             maxFeePerGas: z.nullable(z.string()),

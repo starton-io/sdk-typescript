@@ -38,13 +38,7 @@ export type GetBalanceErc20Response = {
 
 /** @internal */
 export namespace GetBalanceErc20Request$ {
-    export type Inbound = {
-        address: string;
-        contractAddress: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetBalanceErc20Request, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetBalanceErc20Request, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             contractAddress: z.string(),
@@ -81,14 +75,7 @@ export namespace GetBalanceErc20Request$ {
 
 /** @internal */
 export namespace GetBalanceErc20Response$ {
-    export type Inbound = {
-        ContentType: string;
-        ERC20BalanceResponse?: shared.Erc20BalanceResponse$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetBalanceErc20Response, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetBalanceErc20Response, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             ERC20BalanceResponse: shared.Erc20BalanceResponse$.inboundSchema.optional(),

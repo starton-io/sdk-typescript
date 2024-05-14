@@ -12,13 +12,7 @@ export type StorageUsed = {
 
 /** @internal */
 export namespace StorageUsed$ {
-    export type Inbound = {
-        currentStorageUsed: number;
-        freeSpaceRemaining: number;
-        maxAllowed: number;
-    };
-
-    export const inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, unknown> = z
         .object({
             currentStorageUsed: z.number(),
             freeSpaceRemaining: z.number(),

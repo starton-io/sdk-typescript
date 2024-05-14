@@ -70,9 +70,7 @@ export class PayloadTooLarge extends Error {
 
 /** @internal */
 export namespace SchemasPAYLOADTOOLARGEContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasPAYLOADTOOLARGEContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasPAYLOADTOOLARGEContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -83,18 +81,7 @@ export namespace SchemasPAYLOADTOOLARGEContext$ {
 
 /** @internal */
 export namespace PayloadTooLarge$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        context?: SchemasPAYLOADTOOLARGEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<PayloadTooLarge, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PayloadTooLarge, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

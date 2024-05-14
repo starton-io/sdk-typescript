@@ -31,12 +31,7 @@ export type UpdateSettingRelayerResponse = {
 
 /** @internal */
 export namespace UpdateSettingRelayerRequest$ {
-    export type Inbound = {
-        UpdateSettingRelayerDto: shared.UpdateSettingRelayerDto$.Inbound;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSettingRelayerRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSettingRelayerRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateSettingRelayerDto: shared.UpdateSettingRelayerDto$.inboundSchema,
             network: z.string(),
@@ -68,14 +63,7 @@ export namespace UpdateSettingRelayerRequest$ {
 
 /** @internal */
 export namespace UpdateSettingRelayerResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SettingRelayer?: shared.SettingRelayer$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSettingRelayerResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSettingRelayerResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             SettingRelayer: shared.SettingRelayer$.inboundSchema.optional(),

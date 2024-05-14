@@ -29,9 +29,7 @@ export type Kms = {
 
 /** @internal */
 export namespace KmsCredentials$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<KmsCredentials, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<KmsCredentials, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -40,9 +38,7 @@ export namespace KmsCredentials$ {
 
 /** @internal */
 export namespace KmsMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<KmsMetadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<KmsMetadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -54,9 +50,7 @@ export const KmsProvider$: z.ZodNativeEnum<typeof KmsProvider> = z.nativeEnum(Km
 
 /** @internal */
 export namespace Wallets$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Wallets, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Wallets, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -65,19 +59,7 @@ export namespace Wallets$ {
 
 /** @internal */
 export namespace Kms$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        credentials: KmsCredentials$.Inbound;
-        id: string;
-        metadata?: KmsMetadata$.Inbound | undefined;
-        name: string;
-        projectId: string;
-        provider: KmsProvider;
-        updatedAt?: string | undefined;
-        wallets?: Wallets$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Kms, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Kms, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

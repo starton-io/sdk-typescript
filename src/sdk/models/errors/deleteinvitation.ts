@@ -12,14 +12,13 @@ export type DeleteInvitationResponseBody = BadRequestException;
 
 /** @internal */
 export namespace DeleteInvitationProjectMemberInvitationResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         DeleteInvitationProjectMemberInvitationResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,11 +28,10 @@ export namespace DeleteInvitationProjectMemberInvitationResponseBody$ {
 
 /** @internal */
 export namespace DeleteInvitationResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<DeleteInvitationResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<DeleteInvitationResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteInvitationResponseBody> =
         BadRequestException$.outboundSchema;
 }

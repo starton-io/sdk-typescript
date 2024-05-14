@@ -39,12 +39,7 @@ export type GetAllKmsResponse = {
 
 /** @internal */
 export namespace GetAllKmsRequest$ {
-    export type Inbound = {
-        limit?: number | undefined;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllKmsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllKmsRequest, z.ZodTypeDef, unknown> = z
         .object({
             limit: z.number().int().optional(),
             page: z.number().int().optional(),
@@ -76,12 +71,7 @@ export namespace GetAllKmsRequest$ {
 
 /** @internal */
 export namespace GetAllKmsKmsPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Kms$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllKmsKmsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllKmsKmsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Kms$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -113,14 +103,7 @@ export namespace GetAllKmsKmsPaginated$ {
 
 /** @internal */
 export namespace GetAllKmsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        KmsPaginated?: GetAllKmsKmsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllKmsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllKmsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             KmsPaginated: z.lazy(() => GetAllKmsKmsPaginated$.inboundSchema).optional(),

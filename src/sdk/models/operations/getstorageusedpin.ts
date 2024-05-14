@@ -23,14 +23,7 @@ export type GetStorageUsedPinResponse = {
 
 /** @internal */
 export namespace GetStorageUsedPinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        StorageUsed?: shared.StorageUsed$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetStorageUsedPinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetStorageUsedPinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -12,14 +12,13 @@ export type CreateWebhookSigningSecretResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreateWebhookSigningSecretWebhookResponseBody$ {
-    export type Inbound = NotAuthenticated$.Inbound;
-
-    export type Outbound = NotAuthenticated$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateWebhookSigningSecretWebhookResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = NotAuthenticated$.inboundSchema;
+
+    export type Outbound = NotAuthenticated$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -29,14 +28,13 @@ export namespace CreateWebhookSigningSecretWebhookResponseBody$ {
 
 /** @internal */
 export namespace CreateWebhookSigningSecretResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
-
-    export type Outbound = BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateWebhookSigningSecretResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = BadRequestException$.inboundSchema;
+
+    export type Outbound = BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

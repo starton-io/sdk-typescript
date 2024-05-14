@@ -34,12 +34,7 @@ export type UpdatePinResponse = {
 
 /** @internal */
 export namespace UpdatePinRequest$ {
-    export type Inbound = {
-        UpdatePinDto: shared.UpdatePinDto$.Inbound;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdatePinRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdatePinRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdatePinDto: shared.UpdatePinDto$.inboundSchema,
             id: z.string(),
@@ -71,14 +66,7 @@ export namespace UpdatePinRequest$ {
 
 /** @internal */
 export namespace UpdatePinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdatePinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdatePinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

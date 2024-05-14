@@ -11,12 +11,7 @@ export type NoncesAvailable = {
 
 /** @internal */
 export namespace NoncesAvailable$ {
-    export type Inbound = {
-        availableNonces: Array<number>;
-        nextNonce: number;
-    };
-
-    export const inboundSchema: z.ZodType<NoncesAvailable, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NoncesAvailable, z.ZodTypeDef, unknown> = z
         .object({
             availableNonces: z.array(z.number()),
             nextNonce: z.number(),

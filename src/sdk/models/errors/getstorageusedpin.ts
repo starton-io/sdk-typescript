@@ -9,11 +9,10 @@ export type GetStorageUsedPinResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetStorageUsedPinResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetStorageUsedPinResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetStorageUsedPinResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStorageUsedPinResponseBody> =
         BadRequestException$.outboundSchema;
 }

@@ -499,12 +499,10 @@ export class CouldNotFindResource extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTFINDRESOURCEContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTFINDRESOURCEContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -518,57 +516,7 @@ export namespace SchemasCOULDNOTFINDRESOURCEContext$ {
 
 /** @internal */
 export namespace CouldNotFindResource$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse10?: Response | undefined;
-        RawResponse11?: Response | undefined;
-        RawResponse12?: Response | undefined;
-        RawResponse13?: Response | undefined;
-        RawResponse14?: Response | undefined;
-        RawResponse15?: Response | undefined;
-        RawResponse16?: Response | undefined;
-        RawResponse17?: Response | undefined;
-        RawResponse18?: Response | undefined;
-        RawResponse19?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse20?: Response | undefined;
-        RawResponse21?: Response | undefined;
-        RawResponse22?: Response | undefined;
-        RawResponse23?: Response | undefined;
-        RawResponse24?: Response | undefined;
-        RawResponse25?: Response | undefined;
-        RawResponse26?: Response | undefined;
-        RawResponse27?: Response | undefined;
-        RawResponse28?: Response | undefined;
-        RawResponse29?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse30?: Response | undefined;
-        RawResponse31?: Response | undefined;
-        RawResponse32?: Response | undefined;
-        RawResponse33?: Response | undefined;
-        RawResponse34?: Response | undefined;
-        RawResponse35?: Response | undefined;
-        RawResponse36?: Response | undefined;
-        RawResponse37?: Response | undefined;
-        RawResponse38?: Response | undefined;
-        RawResponse39?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        RawResponse40?: Response | undefined;
-        RawResponse5?: Response | undefined;
-        RawResponse6?: Response | undefined;
-        RawResponse7?: Response | undefined;
-        RawResponse8?: Response | undefined;
-        RawResponse9?: Response | undefined;
-        context?: SchemasCOULDNOTFINDRESOURCEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotFindResource, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotFindResource, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

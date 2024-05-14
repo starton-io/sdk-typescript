@@ -30,11 +30,7 @@ export type GetOneNetworkResponse = {
 
 /** @internal */
 export namespace GetOneNetworkRequest$ {
-    export type Inbound = {
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneNetworkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneNetworkRequest, z.ZodTypeDef, unknown> = z
         .object({
             name: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace GetOneNetworkRequest$ {
 
 /** @internal */
 export namespace GetOneNetworkResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Network?: shared.Network$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneNetworkResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneNetworkResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Network: shared.Network$.inboundSchema.optional(),

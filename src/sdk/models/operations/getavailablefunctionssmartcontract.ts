@@ -34,15 +34,10 @@ export type GetAvailableFunctionsSmartContractResponse = {
 
 /** @internal */
 export namespace GetAvailableFunctionsSmartContractRequest$ {
-    export type Inbound = {
-        address: string;
-        network: string;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAvailableFunctionsSmartContractRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             address: z.string(),
@@ -79,17 +74,10 @@ export namespace GetAvailableFunctionsSmartContractRequest$ {
 
 /** @internal */
 export namespace GetAvailableFunctionsSmartContractResponse$ {
-    export type Inbound = {
-        AvailableFunctions?: shared.AvailableFunctions$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAvailableFunctionsSmartContractResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             AvailableFunctions: shared.AvailableFunctions$.inboundSchema.optional(),

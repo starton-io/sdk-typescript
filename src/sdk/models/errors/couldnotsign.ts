@@ -92,9 +92,7 @@ export class CouldNotSign extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTSIGNContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasCOULDNOTSIGNContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasCOULDNOTSIGNContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasCOULDNOTSIGNContext$ {
 
 /** @internal */
 export namespace CouldNotSign$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasCOULDNOTSIGNContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotSign, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotSign, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

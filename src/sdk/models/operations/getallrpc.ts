@@ -40,13 +40,7 @@ export type GetAllRpcResponse = {
 
 /** @internal */
 export namespace GetAllRpcRequest$ {
-    export type Inbound = {
-        limit?: number | undefined;
-        name: string;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllRpcRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllRpcRequest, z.ZodTypeDef, unknown> = z
         .object({
             limit: z.number().int().optional(),
             name: z.string(),
@@ -83,12 +77,7 @@ export namespace GetAllRpcRequest$ {
 
 /** @internal */
 export namespace GetAllRpcRpcPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Rpc$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllRpcRpcPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllRpcRpcPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Rpc$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -120,14 +109,7 @@ export namespace GetAllRpcRpcPaginated$ {
 
 /** @internal */
 export namespace GetAllRpcResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        RpcPaginated?: GetAllRpcRpcPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllRpcResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllRpcResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             RpcPaginated: z.lazy(() => GetAllRpcRpcPaginated$.inboundSchema).optional(),

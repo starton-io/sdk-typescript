@@ -40,13 +40,7 @@ export type GetAllWalletResponse = {
 
 /** @internal */
 export namespace GetAllWalletRequest$ {
-    export type Inbound = {
-        limit?: number | undefined;
-        name?: string | undefined;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             limit: z.number().int().optional(),
             name: z.string().optional(),
@@ -83,12 +77,7 @@ export namespace GetAllWalletRequest$ {
 
 /** @internal */
 export namespace GetAllWalletWalletPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Wallet$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWalletWalletPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWalletWalletPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Wallet$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -120,14 +109,7 @@ export namespace GetAllWalletWalletPaginated$ {
 
 /** @internal */
 export namespace GetAllWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WalletPaginated?: GetAllWalletWalletPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

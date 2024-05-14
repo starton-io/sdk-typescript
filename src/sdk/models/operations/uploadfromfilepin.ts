@@ -37,12 +37,7 @@ export type UploadFromFilePinResponse = {
 
 /** @internal */
 export namespace FileT$ {
-    export type Inbound = {
-        content: Uint8Array | string;
-        fileName: string;
-    };
-
-    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
         .object({
             content: b64$.zodInbound,
             fileName: z.string(),
@@ -74,9 +69,7 @@ export namespace FileT$ {
 
 /** @internal */
 export namespace Metadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -85,12 +78,7 @@ export namespace Metadata$ {
 
 /** @internal */
 export namespace UploadFromFilePinRequestBody$ {
-    export type Inbound = {
-        file?: FileT$.Inbound | undefined;
-        metadata?: Metadata$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadFromFilePinRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadFromFilePinRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             file: z.lazy(() => FileT$.inboundSchema).optional(),
             metadata: z.lazy(() => Metadata$.inboundSchema).optional(),
@@ -125,14 +113,7 @@ export namespace UploadFromFilePinRequestBody$ {
 
 /** @internal */
 export namespace UploadFromFilePinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UploadFromFilePinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadFromFilePinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

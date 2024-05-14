@@ -9,14 +9,13 @@ export type ImportProviderKeyWalletResponseBody = BadRequestException;
 
 /** @internal */
 export namespace ImportProviderKeyWalletResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
-
-    export type Outbound = BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         ImportProviderKeyWalletResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = BadRequestException$.inboundSchema;
+
+    export type Outbound = BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

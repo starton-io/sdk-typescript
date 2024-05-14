@@ -60,22 +60,10 @@ export const Category$: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category
 
 /** @internal */
 export namespace GetAllSmartContractTemplateRequest$ {
-    export type Inbound = {
-        blockchain?: string | undefined;
-        category?: Category | undefined;
-        includeCompilationDetails?: boolean | undefined;
-        includeForm?: boolean | undefined;
-        isActivated?: boolean | undefined;
-        isAudited?: boolean | undefined;
-        limit?: number | undefined;
-        name?: string | undefined;
-        page?: number | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllSmartContractTemplateRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             blockchain: z.string().optional(),
@@ -151,15 +139,10 @@ export namespace GetAllSmartContractTemplateRequest$ {
 
 /** @internal */
 export namespace GetAllSmartContractTemplateSmartContractTemplatePaginated$ {
-    export type Inbound = {
-        items: Array<shared.SmartContractTemplate$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllSmartContractTemplateSmartContractTemplatePaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.SmartContractTemplate$.inboundSchema),
@@ -196,19 +179,10 @@ export namespace GetAllSmartContractTemplateSmartContractTemplatePaginated$ {
 
 /** @internal */
 export namespace GetAllSmartContractTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContractTemplatePaginated?:
-            | GetAllSmartContractTemplateSmartContractTemplatePaginated$.Inbound
-            | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllSmartContractTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

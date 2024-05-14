@@ -12,11 +12,10 @@ export type DeleteWatcherResponseBody = BadRequestException;
 
 /** @internal */
 export namespace DeleteWatcherMonitorResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<DeleteWatcherMonitorResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<DeleteWatcherMonitorResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -26,11 +25,10 @@ export namespace DeleteWatcherMonitorResponseBody$ {
 
 /** @internal */
 export namespace DeleteWatcherResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<DeleteWatcherResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<DeleteWatcherResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteWatcherResponseBody> =
         BadRequestException$.outboundSchema;
 }

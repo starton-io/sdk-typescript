@@ -22,16 +22,7 @@ export const InvitationRole$: z.ZodNativeEnum<typeof InvitationRole> = z.nativeE
 
 /** @internal */
 export namespace Invitation$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        email: string;
-        id: string;
-        projectId: string;
-        role: InvitationRole;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Invitation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Invitation, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

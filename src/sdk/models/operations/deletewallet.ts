@@ -27,12 +27,7 @@ export type DeleteWalletResponse = {
 
 /** @internal */
 export namespace DeleteWalletRequest$ {
-    export type Inbound = {
-        address: string;
-        deleteKeyOnKms?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             deleteKeyOnKms: z.boolean().optional(),
@@ -64,14 +59,7 @@ export namespace DeleteWalletRequest$ {
 
 /** @internal */
 export namespace DeleteWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

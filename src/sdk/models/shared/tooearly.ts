@@ -17,9 +17,7 @@ export type TooEarly = {
 
 /** @internal */
 export namespace Context$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -28,16 +26,7 @@ export namespace Context$ {
 
 /** @internal */
 export namespace TooEarly$ {
-    export type Inbound = {
-        context?: Context$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<TooEarly, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TooEarly, z.ZodTypeDef, unknown> = z
         .object({
             context: z.lazy(() => Context$.inboundSchema).optional(),
             errorCode: z.string().default("TOO_EARLY"),

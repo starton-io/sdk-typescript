@@ -15,14 +15,13 @@ export type ResendWebhookResponseBody = BadRequestException;
 
 /** @internal */
 export namespace ResendWebhookWebhookResponseResponseBody$ {
-    export type Inbound = CouldNotResendWebhook$.Inbound;
-
-    export type Outbound = CouldNotResendWebhook$.Outbound;
     export const inboundSchema: z.ZodType<
         ResendWebhookWebhookResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotResendWebhook$.inboundSchema;
+
+    export type Outbound = CouldNotResendWebhook$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -32,11 +31,10 @@ export namespace ResendWebhookWebhookResponseResponseBody$ {
 
 /** @internal */
 export namespace ResendWebhookWebhookResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<ResendWebhookWebhookResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<ResendWebhookWebhookResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -46,11 +44,10 @@ export namespace ResendWebhookWebhookResponseBody$ {
 
 /** @internal */
 export namespace ResendWebhookResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<ResendWebhookResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<ResendWebhookResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResendWebhookResponseBody> =
         BadRequestException$.outboundSchema;
 }

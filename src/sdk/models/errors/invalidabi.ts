@@ -114,9 +114,7 @@ export class InvalidAbi extends Error {
 
 /** @internal */
 export namespace SchemasINVALIDABIContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasINVALIDABIContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasINVALIDABIContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -127,22 +125,7 @@ export namespace SchemasINVALIDABIContext$ {
 
 /** @internal */
 export namespace InvalidAbi$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        RawResponse5?: Response | undefined;
-        context?: SchemasINVALIDABIContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<InvalidAbi, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InvalidAbi, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

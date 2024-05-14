@@ -13,14 +13,13 @@ export type UploadFromFilePinResponseBody = BadRequestException;
 
 /** @internal */
 export namespace UploadFromFilePinIpfsResponseBody$ {
-    export type Inbound = MaximumStorageReached$.Inbound | PayloadTooLarge$.Inbound;
-
-    export type Outbound = MaximumStorageReached$.Outbound | PayloadTooLarge$.Outbound;
     export const inboundSchema: z.ZodType<
         UploadFromFilePinIpfsResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([MaximumStorageReached$.inboundSchema, PayloadTooLarge$.inboundSchema]);
+
+    export type Outbound = MaximumStorageReached$.Outbound | PayloadTooLarge$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -30,11 +29,10 @@ export namespace UploadFromFilePinIpfsResponseBody$ {
 
 /** @internal */
 export namespace UploadFromFilePinResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<UploadFromFilePinResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<UploadFromFilePinResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFilePinResponseBody> =
         BadRequestException$.outboundSchema;
 }

@@ -92,12 +92,10 @@ export class CouldNotEstimateGasPrice extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTESTIMATEGASPRICEContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTESTIMATEGASPRICEContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -111,20 +109,7 @@ export namespace SchemasCOULDNOTESTIMATEGASPRICEContext$ {
 
 /** @internal */
 export namespace CouldNotEstimateGasPrice$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasCOULDNOTESTIMATEGASPRICEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotEstimateGasPrice, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotEstimateGasPrice, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

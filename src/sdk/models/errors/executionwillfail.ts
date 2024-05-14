@@ -103,9 +103,7 @@ export class ExecutionWillFail extends Error {
 
 /** @internal */
 export namespace SchemasEXECUTIONWILLFAILContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasEXECUTIONWILLFAILContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasEXECUTIONWILLFAILContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -119,21 +117,7 @@ export namespace SchemasEXECUTIONWILLFAILContext$ {
 
 /** @internal */
 export namespace ExecutionWillFail$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        context?: SchemasEXECUTIONWILLFAILContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<ExecutionWillFail, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ExecutionWillFail, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

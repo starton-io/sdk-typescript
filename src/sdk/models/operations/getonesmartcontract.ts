@@ -36,14 +36,7 @@ export type GetOneSmartContractResponse = {
 
 /** @internal */
 export namespace GetOneSmartContractRequest$ {
-    export type Inbound = {
-        address: string;
-        includeAbi?: boolean | undefined;
-        includeCompilationDetails?: boolean | undefined;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             includeAbi: z.boolean().optional(),
@@ -89,14 +82,7 @@ export namespace GetOneSmartContractRequest$ {
 
 /** @internal */
 export namespace GetOneSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             SmartContract: shared.SmartContract$.inboundSchema.optional(),

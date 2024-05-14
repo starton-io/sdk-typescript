@@ -59,12 +59,10 @@ export class ContractNotYetDeployed extends Error {
 
 /** @internal */
 export namespace SchemasCONTRACTNOTYETDEPLOYEDContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCONTRACTNOTYETDEPLOYEDContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasCONTRACTNOTYETDEPLOYEDContext$ {
 
 /** @internal */
 export namespace ContractNotYetDeployed$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasCONTRACTNOTYETDEPLOYEDContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<ContractNotYetDeployed, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ContractNotYetDeployed, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.inboundSchema).optional(),

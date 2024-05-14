@@ -34,12 +34,7 @@ export type ResyncNoncesWalletResponse = {
 
 /** @internal */
 export namespace ResyncNoncesWalletRequest$ {
-    export type Inbound = {
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<ResyncNoncesWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResyncNoncesWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             network: z.string(),
@@ -71,14 +66,7 @@ export namespace ResyncNoncesWalletRequest$ {
 
 /** @internal */
 export namespace ResyncNoncesWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        resyncNonce?: shared.ResyncNonce$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ResyncNoncesWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResyncNoncesWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

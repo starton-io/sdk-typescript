@@ -34,12 +34,7 @@ export type ClaimFaucetResponse = {
 
 /** @internal */
 export namespace ClaimFaucetRequest$ {
-    export type Inbound = {
-        RequireFaucetDto: shared.RequireFaucetDto$.Inbound;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<ClaimFaucetRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ClaimFaucetRequest, z.ZodTypeDef, unknown> = z
         .object({
             RequireFaucetDto: shared.RequireFaucetDto$.inboundSchema,
             network: z.string(),
@@ -71,26 +66,17 @@ export namespace ClaimFaucetRequest$ {
 
 /** @internal */
 export namespace ClaimFaucetResponseBody$ {
-    export type Inbound = shared.TooEarly$.Inbound;
+    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, unknown> =
+        shared.TooEarly$.inboundSchema;
 
     export type Outbound = shared.TooEarly$.Outbound;
-    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, Inbound> =
-        shared.TooEarly$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponseBody> =
         shared.TooEarly$.outboundSchema;
 }
 
 /** @internal */
 export namespace ClaimFaucetResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Faucet?: shared.Faucet$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-        oneOf?: shared.TooEarly$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ClaimFaucetResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ClaimFaucetResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Faucet: shared.Faucet$.inboundSchema.optional(),

@@ -34,12 +34,7 @@ export type UpdateNetworkResponse = {
 
 /** @internal */
 export namespace UpdateNetworkRequest$ {
-    export type Inbound = {
-        UpdateNetworkDto: shared.UpdateNetworkDto$.Inbound;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateNetworkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateNetworkRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateNetworkDto: shared.UpdateNetworkDto$.inboundSchema,
             name: z.string(),
@@ -71,14 +66,7 @@ export namespace UpdateNetworkRequest$ {
 
 /** @internal */
 export namespace UpdateNetworkResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Network?: shared.Network$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateNetworkResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateNetworkResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Network: shared.Network$.inboundSchema.optional(),

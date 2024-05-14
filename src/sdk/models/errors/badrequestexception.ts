@@ -840,9 +840,7 @@ export class BadRequestException extends Error {
 
 /** @internal */
 export namespace SchemasContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasContext, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<SchemasContext, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -851,88 +849,7 @@ export namespace SchemasContext$ {
 
 /** @internal */
 export namespace BadRequestException$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse10?: Response | undefined;
-        RawResponse11?: Response | undefined;
-        RawResponse12?: Response | undefined;
-        RawResponse13?: Response | undefined;
-        RawResponse14?: Response | undefined;
-        RawResponse15?: Response | undefined;
-        RawResponse16?: Response | undefined;
-        RawResponse17?: Response | undefined;
-        RawResponse18?: Response | undefined;
-        RawResponse19?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse20?: Response | undefined;
-        RawResponse21?: Response | undefined;
-        RawResponse22?: Response | undefined;
-        RawResponse23?: Response | undefined;
-        RawResponse24?: Response | undefined;
-        RawResponse25?: Response | undefined;
-        RawResponse26?: Response | undefined;
-        RawResponse27?: Response | undefined;
-        RawResponse28?: Response | undefined;
-        RawResponse29?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse30?: Response | undefined;
-        RawResponse31?: Response | undefined;
-        RawResponse32?: Response | undefined;
-        RawResponse33?: Response | undefined;
-        RawResponse34?: Response | undefined;
-        RawResponse35?: Response | undefined;
-        RawResponse36?: Response | undefined;
-        RawResponse37?: Response | undefined;
-        RawResponse38?: Response | undefined;
-        RawResponse39?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        RawResponse40?: Response | undefined;
-        RawResponse41?: Response | undefined;
-        RawResponse42?: Response | undefined;
-        RawResponse43?: Response | undefined;
-        RawResponse44?: Response | undefined;
-        RawResponse45?: Response | undefined;
-        RawResponse46?: Response | undefined;
-        RawResponse47?: Response | undefined;
-        RawResponse48?: Response | undefined;
-        RawResponse49?: Response | undefined;
-        RawResponse5?: Response | undefined;
-        RawResponse50?: Response | undefined;
-        RawResponse51?: Response | undefined;
-        RawResponse52?: Response | undefined;
-        RawResponse53?: Response | undefined;
-        RawResponse54?: Response | undefined;
-        RawResponse55?: Response | undefined;
-        RawResponse56?: Response | undefined;
-        RawResponse57?: Response | undefined;
-        RawResponse58?: Response | undefined;
-        RawResponse59?: Response | undefined;
-        RawResponse6?: Response | undefined;
-        RawResponse60?: Response | undefined;
-        RawResponse61?: Response | undefined;
-        RawResponse62?: Response | undefined;
-        RawResponse63?: Response | undefined;
-        RawResponse64?: Response | undefined;
-        RawResponse65?: Response | undefined;
-        RawResponse66?: Response | undefined;
-        RawResponse67?: Response | undefined;
-        RawResponse68?: Response | undefined;
-        RawResponse69?: Response | undefined;
-        RawResponse7?: Response | undefined;
-        RawResponse70?: Response | undefined;
-        RawResponse71?: Response | undefined;
-        RawResponse8?: Response | undefined;
-        RawResponse9?: Response | undefined;
-        context?: SchemasContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message: Array<string>;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<BadRequestException, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<BadRequestException, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

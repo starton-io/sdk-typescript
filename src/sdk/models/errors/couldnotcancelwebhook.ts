@@ -59,12 +59,10 @@ export class CouldNotCancelWebhook extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTCANCELWEBHOOKContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTCANCELWEBHOOKContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasCOULDNOTCANCELWEBHOOKContext$ {
 
 /** @internal */
 export namespace CouldNotCancelWebhook$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasCOULDNOTCANCELWEBHOOKContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotCancelWebhook, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotCancelWebhook, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.inboundSchema).optional(),

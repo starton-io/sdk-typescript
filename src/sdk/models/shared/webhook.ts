@@ -29,9 +29,7 @@ export type Webhook = {
 
 /** @internal */
 export namespace Headers$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -40,9 +38,7 @@ export namespace Headers$ {
 
 /** @internal */
 export namespace WebhookPayload$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<WebhookPayload, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<WebhookPayload, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -54,19 +50,7 @@ export const WebhookStatus$: z.ZodNativeEnum<typeof WebhookStatus> = z.nativeEnu
 
 /** @internal */
 export namespace Webhook$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        headers: Headers$.Inbound | null;
-        id: string;
-        payload: WebhookPayload$.Inbound | null;
-        projectId: string;
-        refId: string;
-        status: WebhookStatus;
-        updatedAt?: string | undefined;
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

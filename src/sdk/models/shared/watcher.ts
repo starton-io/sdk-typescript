@@ -53,9 +53,7 @@ export type Watcher = {
 
 /** @internal */
 export namespace WatcherCustomEventAbi$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<WatcherCustomEventAbi, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<WatcherCustomEventAbi, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -67,9 +65,7 @@ export namespace WatcherCustomEventAbi$ {
 
 /** @internal */
 export namespace WatcherCustomFilters$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<WatcherCustomFilters, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<WatcherCustomFilters, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -82,9 +78,7 @@ export namespace WatcherCustomFilters$ {
 
 /** @internal */
 export namespace WatcherMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<WatcherMetadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<WatcherMetadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -99,27 +93,7 @@ export const WatcherType$: z.ZodNativeEnum<typeof WatcherType> = z.nativeEnum(Wa
 
 /** @internal */
 export namespace Watcher$ {
-    export type Inbound = {
-        address: string;
-        confirmationsBlocks: number;
-        createdAt?: string | undefined;
-        customEventAbi?: Array<WatcherCustomEventAbi$.Inbound> | null | undefined;
-        customFilters?: WatcherCustomFilters$.Inbound | undefined;
-        description?: string | null | undefined;
-        id: string;
-        metadata?: WatcherMetadata$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        network: string;
-        paused: boolean;
-        pausedReason?: string | null | undefined;
-        projectId: string;
-        triggerType: TriggerType;
-        type: WatcherType;
-        updatedAt?: string | undefined;
-        webhookUrl: string;
-    };
-
-    export const inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             confirmationsBlocks: z.number(),

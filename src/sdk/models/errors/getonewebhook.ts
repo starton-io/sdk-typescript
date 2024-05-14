@@ -12,11 +12,10 @@ export type GetOneWebhookResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetOneWebhookWebhookResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneWebhookWebhookResponseBody, z.ZodTypeDef, unknown> =
+        CouldNotFindResource$.inboundSchema;
 
     export type Outbound = CouldNotFindResource$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneWebhookWebhookResponseBody, z.ZodTypeDef, Inbound> =
-        CouldNotFindResource$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -26,11 +25,10 @@ export namespace GetOneWebhookWebhookResponseBody$ {
 
 /** @internal */
 export namespace GetOneWebhookResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetOneWebhookResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetOneWebhookResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWebhookResponseBody> =
         BadRequestException$.outboundSchema;
 }

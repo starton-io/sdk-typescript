@@ -35,13 +35,7 @@ export type UpdateSmartContractResponse = {
 
 /** @internal */
 export namespace UpdateSmartContractRequest$ {
-    export type Inbound = {
-        UpdateSmartContractDto: shared.UpdateSmartContractDto$.Inbound;
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateSmartContractDto: shared.UpdateSmartContractDto$.inboundSchema,
             address: z.string(),
@@ -78,14 +72,7 @@ export namespace UpdateSmartContractRequest$ {
 
 /** @internal */
 export namespace UpdateSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             SmartContract: shared.SmartContract$.inboundSchema.optional(),

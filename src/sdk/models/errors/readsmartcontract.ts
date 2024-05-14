@@ -36,14 +36,13 @@ export type ReadSmartContractResponseBody =
 
 /** @internal */
 export namespace ReadSmartContractSmartContractManagementResponseResponseBody$ {
-    export type Inbound = Unknown$.Inbound;
-
-    export type Outbound = Unknown$.Outbound;
     export const inboundSchema: z.ZodType<
         ReadSmartContractSmartContractManagementResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = Unknown$.inboundSchema;
+
+    export type Outbound = Unknown$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -53,14 +52,13 @@ export namespace ReadSmartContractSmartContractManagementResponseResponseBody$ {
 
 /** @internal */
 export namespace ReadSmartContractSmartContractManagementResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         ReadSmartContractSmartContractManagementResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -70,32 +68,7 @@ export namespace ReadSmartContractSmartContractManagementResponseBody$ {
 
 /** @internal */
 export namespace ReadSmartContractResponseBody$ {
-    export type Inbound =
-        | InvalidBytecode$.Inbound
-        | InvalidAbi$.Inbound
-        | InvalidFunction$.Inbound
-        | MissingArgument$.Inbound
-        | UnexpectedArgument$.Inbound
-        | InvalidArgument$.Inbound
-        | CallException$.Inbound
-        | NumericFault$.Inbound
-        | ExecutionWillFail$.Inbound
-        | EnsNotSupported$.Inbound
-        | BadRequestException$.Inbound;
-
-    export type Outbound =
-        | InvalidBytecode$.Outbound
-        | InvalidAbi$.Outbound
-        | InvalidFunction$.Outbound
-        | MissingArgument$.Outbound
-        | UnexpectedArgument$.Outbound
-        | InvalidArgument$.Outbound
-        | CallException$.Outbound
-        | NumericFault$.Outbound
-        | ExecutionWillFail$.Outbound
-        | EnsNotSupported$.Outbound
-        | BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<ReadSmartContractResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ReadSmartContractResponseBody, z.ZodTypeDef, unknown> =
         z.union([
             InvalidBytecode$.inboundSchema,
             InvalidAbi$.inboundSchema,
@@ -109,6 +82,19 @@ export namespace ReadSmartContractResponseBody$ {
             EnsNotSupported$.inboundSchema,
             BadRequestException$.inboundSchema,
         ]);
+
+    export type Outbound =
+        | InvalidBytecode$.Outbound
+        | InvalidAbi$.Outbound
+        | InvalidFunction$.Outbound
+        | MissingArgument$.Outbound
+        | UnexpectedArgument$.Outbound
+        | InvalidArgument$.Outbound
+        | CallException$.Outbound
+        | NumericFault$.Outbound
+        | ExecutionWillFail$.Outbound
+        | EnsNotSupported$.Outbound
+        | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponseBody> =
         z.union([
             InvalidBytecode$.outboundSchema,

@@ -14,15 +14,7 @@ export type PaginationData = {
 
 /** @internal */
 export namespace PaginationData$ {
-    export type Inbound = {
-        currentPage: number;
-        itemCount: number;
-        itemsPerPage: number;
-        totalItems?: number | undefined;
-        totalPages?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PaginationData, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PaginationData, z.ZodTypeDef, unknown> = z
         .object({
             currentPage: z.number(),
             itemCount: z.number(),

@@ -9,11 +9,10 @@ export type GetAllWatcherResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetAllWatcherResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetAllWatcherResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetAllWatcherResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWatcherResponseBody> =
         BadRequestException$.outboundSchema;
 }

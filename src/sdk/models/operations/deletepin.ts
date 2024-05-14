@@ -29,11 +29,7 @@ export type DeletePinResponse = {
 
 /** @internal */
 export namespace DeletePinRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeletePinRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeletePinRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -60,14 +56,7 @@ export namespace DeletePinRequest$ {
 
 /** @internal */
 export namespace DeletePinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        boolean?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeletePinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeletePinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

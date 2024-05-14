@@ -23,14 +23,7 @@ export type CreatePinResponse = {
 
 /** @internal */
 export namespace CreatePinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CreatePinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreatePinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

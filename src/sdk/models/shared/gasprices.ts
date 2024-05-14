@@ -26,14 +26,7 @@ export type GasPrices = {
 
 /** @internal */
 export namespace GasPrices$ {
-    export type Inbound = {
-        average: GasPriceInfo$.Inbound;
-        fast: GasPriceInfo$.Inbound;
-        fastest: GasPriceInfo$.Inbound;
-        low: GasPriceInfo$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GasPrices, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GasPrices, z.ZodTypeDef, unknown> = z
         .object({
             average: GasPriceInfo$.inboundSchema,
             fast: GasPriceInfo$.inboundSchema,

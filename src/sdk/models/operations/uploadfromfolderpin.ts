@@ -36,12 +36,7 @@ export type UploadFromFolderPinResponse = {
 
 /** @internal */
 export namespace Files$ {
-    export type Inbound = {
-        content: Uint8Array | string;
-        fileName: string;
-    };
-
-    export const inboundSchema: z.ZodType<Files, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
         .object({
             content: b64$.zodInbound,
             fileName: z.string(),
@@ -73,9 +68,7 @@ export namespace Files$ {
 
 /** @internal */
 export namespace UploadFromFolderPinMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UploadFromFolderPinMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UploadFromFolderPinMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -86,12 +79,7 @@ export namespace UploadFromFolderPinMetadata$ {
 
 /** @internal */
 export namespace UploadFromFolderPinRequestBody$ {
-    export type Inbound = {
-        files?: Array<Files$.Inbound> | undefined;
-        metadata?: UploadFromFolderPinMetadata$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadFromFolderPinRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadFromFolderPinRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             files: z.array(z.lazy(() => Files$.inboundSchema)).optional(),
             metadata: z.lazy(() => UploadFromFolderPinMetadata$.inboundSchema).optional(),
@@ -124,14 +112,7 @@ export namespace UploadFromFolderPinRequestBody$ {
 
 /** @internal */
 export namespace UploadFromFolderPinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UploadFromFolderPinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadFromFolderPinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

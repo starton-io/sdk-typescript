@@ -25,14 +25,7 @@ export type AddressNativeBalanceResponse = {
 
 /** @internal */
 export namespace AddressNativeBalanceResponse$ {
-    export type Inbound = {
-        balance: string;
-        decimal: number;
-        formatted: string;
-        symbol: string;
-    };
-
-    export const inboundSchema: z.ZodType<AddressNativeBalanceResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AddressNativeBalanceResponse, z.ZodTypeDef, unknown> = z
         .object({
             balance: z.string(),
             decimal: z.number(),

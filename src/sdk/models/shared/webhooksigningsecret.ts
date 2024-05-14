@@ -13,14 +13,7 @@ export type WebhookSigningSecret = {
 
 /** @internal */
 export namespace WebhookSigningSecret$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        projectId: string;
-        secret: string;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<WebhookSigningSecret, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<WebhookSigningSecret, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

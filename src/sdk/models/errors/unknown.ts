@@ -114,9 +114,7 @@ export class Unknown extends Error {
 
 /** @internal */
 export namespace SchemasUNKNOWNContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasUNKNOWNContext, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<SchemasUNKNOWNContext, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -128,22 +126,7 @@ export namespace SchemasUNKNOWNContext$ {
 
 /** @internal */
 export namespace Unknown$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        RawResponse4?: Response | undefined;
-        RawResponse5?: Response | undefined;
-        context?: SchemasUNKNOWNContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<Unknown, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Unknown, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

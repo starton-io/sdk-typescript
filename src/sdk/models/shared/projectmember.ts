@@ -12,13 +12,7 @@ export type ProjectMember = {
 
 /** @internal */
 export namespace ProjectMember$ {
-    export type Inbound = {
-        email: string;
-        fullName: string;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<ProjectMember, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProjectMember, z.ZodTypeDef, unknown> = z
         .object({
             email: z.string(),
             fullName: z.string(),

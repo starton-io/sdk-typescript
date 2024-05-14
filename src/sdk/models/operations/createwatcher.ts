@@ -23,14 +23,7 @@ export type CreateWatcherResponse = {
 
 /** @internal */
 export namespace CreateWatcherResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Watcher?: shared.Watcher$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateWatcherResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateWatcherResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

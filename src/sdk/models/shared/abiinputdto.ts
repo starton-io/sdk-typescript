@@ -16,9 +16,7 @@ export type AbiInputDto = {
 
 /** @internal */
 export namespace Components$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Components, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Components, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -27,15 +25,7 @@ export namespace Components$ {
 
 /** @internal */
 export namespace AbiInputDto$ {
-    export type Inbound = {
-        components?: Components$.Inbound | undefined;
-        indexed?: boolean | undefined;
-        internalType?: string | undefined;
-        name: string;
-        type: string;
-    };
-
-    export const inboundSchema: z.ZodType<AbiInputDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AbiInputDto, z.ZodTypeDef, unknown> = z
         .object({
             components: z.lazy(() => Components$.inboundSchema).optional(),
             indexed: z.boolean().optional(),

@@ -12,13 +12,7 @@ export type AvailableFunctions = {
 
 /** @internal */
 export namespace AvailableFunctions$ {
-    export type Inbound = {
-        call: Array<string>;
-        events: Array<string>;
-        read: Array<string>;
-    };
-
-    export const inboundSchema: z.ZodType<AvailableFunctions, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AvailableFunctions, z.ZodTypeDef, unknown> = z
         .object({
             call: z.array(z.string()),
             events: z.array(z.string()),

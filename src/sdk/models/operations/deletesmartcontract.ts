@@ -30,12 +30,7 @@ export type DeleteSmartContractResponse = {
 
 /** @internal */
 export namespace DeleteSmartContractRequest$ {
-    export type Inbound = {
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             network: z.string(),
@@ -67,14 +62,7 @@ export namespace DeleteSmartContractRequest$ {
 
 /** @internal */
 export namespace DeleteSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -12,22 +12,20 @@ export type CreatePinResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreatePinIpfsResponseBody$ {
-    export type Inbound = MaximumStorageReached$.Inbound;
+    export const inboundSchema: z.ZodType<CreatePinIpfsResponseBody, z.ZodTypeDef, unknown> =
+        MaximumStorageReached$.inboundSchema;
 
     export type Outbound = MaximumStorageReached$.Outbound;
-    export const inboundSchema: z.ZodType<CreatePinIpfsResponseBody, z.ZodTypeDef, Inbound> =
-        MaximumStorageReached$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePinIpfsResponseBody> =
         MaximumStorageReached$.outboundSchema;
 }
 
 /** @internal */
 export namespace CreatePinResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<CreatePinResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreatePinResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePinResponseBody> =
         BadRequestException$.outboundSchema;
 }

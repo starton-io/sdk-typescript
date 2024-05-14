@@ -30,11 +30,7 @@ export type GetAllGasPriceResponse = {
 
 /** @internal */
 export namespace GetAllGasPriceRequest$ {
-    export type Inbound = {
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllGasPriceRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllGasPriceRequest, z.ZodTypeDef, unknown> = z
         .object({
             network: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace GetAllGasPriceRequest$ {
 
 /** @internal */
 export namespace GetAllGasPriceResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        GasPrices?: shared.GasPrices$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllGasPriceResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllGasPriceResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             GasPrices: shared.GasPrices$.inboundSchema.optional(),

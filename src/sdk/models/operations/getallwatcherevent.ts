@@ -43,13 +43,7 @@ export type GetAllWatcherEventResponse = {
 
 /** @internal */
 export namespace GetAllWatcherEventRequest$ {
-    export type Inbound = {
-        id: string;
-        limit?: number | undefined;
-        page?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWatcherEventRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWatcherEventRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             limit: z.number().int().optional(),
@@ -86,15 +80,10 @@ export namespace GetAllWatcherEventRequest$ {
 
 /** @internal */
 export namespace GetAllWatcherEventWatcherEventPaginated$ {
-    export type Inbound = {
-        items: Array<shared.WatcherEvent$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllWatcherEventWatcherEventPaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.WatcherEvent$.inboundSchema),
@@ -131,14 +120,7 @@ export namespace GetAllWatcherEventWatcherEventPaginated$ {
 
 /** @internal */
 export namespace GetAllWatcherEventResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WatcherEventPaginated?: GetAllWatcherEventWatcherEventPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWatcherEventResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWatcherEventResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

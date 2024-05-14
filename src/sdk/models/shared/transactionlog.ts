@@ -55,9 +55,7 @@ export type TransactionLog = {
 
 /** @internal */
 export namespace TransactionLogContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<TransactionLogContext, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<TransactionLogContext, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -73,14 +71,7 @@ export const TransactionLogType$: z.ZodNativeEnum<typeof TransactionLogType> =
 
 /** @internal */
 export namespace TransactionLog$ {
-    export type Inbound = {
-        context?: TransactionLogContext$.Inbound | undefined;
-        createdAt: string;
-        message: string;
-        type: TransactionLogType;
-    };
-
-    export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, unknown> = z
         .object({
             context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
             createdAt: z.string(),

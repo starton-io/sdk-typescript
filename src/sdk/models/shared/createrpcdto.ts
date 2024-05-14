@@ -10,11 +10,7 @@ export type CreateRpcDto = {
 
 /** @internal */
 export namespace CreateRpcDto$ {
-    export type Inbound = {
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z
         .object({
             url: z.string(),
         })

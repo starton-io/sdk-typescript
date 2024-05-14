@@ -13,9 +13,7 @@ export type UpdatePinDto = {
 
 /** @internal */
 export namespace UpdatePinDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UpdatePinDtoMetadata, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<UpdatePinDtoMetadata, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -28,12 +26,7 @@ export namespace UpdatePinDtoMetadata$ {
 
 /** @internal */
 export namespace UpdatePinDto$ {
-    export type Inbound = {
-        metadata?: UpdatePinDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdatePinDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdatePinDto, z.ZodTypeDef, unknown> = z
         .object({
             metadata: z.lazy(() => UpdatePinDtoMetadata$.inboundSchema).optional(),
             name: z.string().optional(),

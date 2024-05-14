@@ -9,11 +9,10 @@ export type GetAllWebhookResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetAllWebhookResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetAllWebhookResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetAllWebhookResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookResponseBody> =
         BadRequestException$.outboundSchema;
 }

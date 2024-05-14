@@ -29,11 +29,7 @@ export type DeleteNetworkResponse = {
 
 /** @internal */
 export namespace DeleteNetworkRequest$ {
-    export type Inbound = {
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteNetworkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteNetworkRequest, z.ZodTypeDef, unknown> = z
         .object({
             name: z.string(),
         })
@@ -60,14 +56,7 @@ export namespace DeleteNetworkRequest$ {
 
 /** @internal */
 export namespace DeleteNetworkResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteNetworkResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteNetworkResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

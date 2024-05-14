@@ -18,14 +18,13 @@ export type GetAvailableNoncesWalletResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$ {
-    export type Inbound = CouldNotAssignNonce$.Inbound;
-
-    export type Outbound = CouldNotAssignNonce$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotAssignNonce$.inboundSchema;
+
+    export type Outbound = CouldNotAssignNonce$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -35,14 +34,13 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponse500ResponseBo
 
 /** @internal */
 export namespace GetAvailableNoncesWalletTransactionManagerResponseResponseBody$ {
-    export type Inbound = CouldNotProcessEntity$.Inbound;
-
-    export type Outbound = CouldNotProcessEntity$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableNoncesWalletTransactionManagerResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotProcessEntity$.inboundSchema;
+
+    export type Outbound = CouldNotProcessEntity$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -52,14 +50,13 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponseResponseBody$
 
 /** @internal */
 export namespace GetAvailableNoncesWalletTransactionManagerResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableNoncesWalletTransactionManagerResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -69,14 +66,13 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponseBody$ {
 
 /** @internal */
 export namespace GetAvailableNoncesWalletResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
-
-    export type Outbound = BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableNoncesWalletResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = BadRequestException$.inboundSchema;
+
+    export type Outbound = BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

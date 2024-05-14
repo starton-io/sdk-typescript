@@ -92,9 +92,7 @@ export class CouldNotBroadcast extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTBROADCASTContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasCOULDNOTBROADCASTContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasCOULDNOTBROADCASTContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -108,20 +106,7 @@ export namespace SchemasCOULDNOTBROADCASTContext$ {
 
 /** @internal */
 export namespace CouldNotBroadcast$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasCOULDNOTBROADCASTContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotBroadcast, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotBroadcast, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

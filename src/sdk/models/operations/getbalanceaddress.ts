@@ -34,12 +34,7 @@ export type GetBalanceAddressResponse = {
 
 /** @internal */
 export namespace GetBalanceAddressRequest$ {
-    export type Inbound = {
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetBalanceAddressRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetBalanceAddressRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             network: z.string(),
@@ -71,14 +66,7 @@ export namespace GetBalanceAddressRequest$ {
 
 /** @internal */
 export namespace GetBalanceAddressResponse$ {
-    export type Inbound = {
-        AddressNativeBalanceResponse?: shared.AddressNativeBalanceResponse$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetBalanceAddressResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetBalanceAddressResponse, z.ZodTypeDef, unknown> = z
         .object({
             AddressNativeBalanceResponse:
                 shared.AddressNativeBalanceResponse$.inboundSchema.optional(),

@@ -21,13 +21,7 @@ export const ExplorerApiDtoType$: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
 
 /** @internal */
 export namespace ExplorerApiDto$ {
-    export type Inbound = {
-        apiKey: string;
-        type: ExplorerApiDtoType;
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> = z
         .object({
             apiKey: z.string(),
             type: ExplorerApiDtoType$,

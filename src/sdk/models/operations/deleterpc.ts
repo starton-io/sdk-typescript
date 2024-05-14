@@ -27,12 +27,7 @@ export type DeleteRpcResponse = {
 
 /** @internal */
 export namespace DeleteRpcRequest$ {
-    export type Inbound = {
-        id: string;
-        name?: any | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteRpcRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteRpcRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             name: z.any().optional(),
@@ -64,14 +59,7 @@ export namespace DeleteRpcRequest$ {
 
 /** @internal */
 export namespace DeleteRpcResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteRpcResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteRpcResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

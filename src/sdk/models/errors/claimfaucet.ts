@@ -13,11 +13,10 @@ export type ClaimFaucetResponseBody = BadRequestException;
 
 /** @internal */
 export namespace ClaimFaucetWalletResponseBody$ {
-    export type Inbound = MicroserviceNotResponding$.Inbound | CouldNotPerformRequest$.Inbound;
+    export const inboundSchema: z.ZodType<ClaimFaucetWalletResponseBody, z.ZodTypeDef, unknown> =
+        z.union([MicroserviceNotResponding$.inboundSchema, CouldNotPerformRequest$.inboundSchema]);
 
     export type Outbound = MicroserviceNotResponding$.Outbound | CouldNotPerformRequest$.Outbound;
-    export const inboundSchema: z.ZodType<ClaimFaucetWalletResponseBody, z.ZodTypeDef, Inbound> =
-        z.union([MicroserviceNotResponding$.inboundSchema, CouldNotPerformRequest$.inboundSchema]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetWalletResponseBody> =
         z.union([
             MicroserviceNotResponding$.outboundSchema,
@@ -27,11 +26,10 @@ export namespace ClaimFaucetWalletResponseBody$ {
 
 /** @internal */
 export namespace ClaimFaucetResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponseBody> =
         BadRequestException$.outboundSchema;
 }

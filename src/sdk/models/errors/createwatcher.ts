@@ -18,14 +18,13 @@ export type CreateWatcherResponseBody = BadRequestException;
 
 /** @internal */
 export namespace CreateWatcherMonitorResponse500ResponseBody$ {
-    export type Inbound = MicroserviceNotResponding$.Inbound;
-
-    export type Outbound = MicroserviceNotResponding$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateWatcherMonitorResponse500ResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = MicroserviceNotResponding$.inboundSchema;
+
+    export type Outbound = MicroserviceNotResponding$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -35,14 +34,13 @@ export namespace CreateWatcherMonitorResponse500ResponseBody$ {
 
 /** @internal */
 export namespace CreateWatcherMonitorResponseResponseBody$ {
-    export type Inbound = ServerNotResponding$.Inbound;
-
-    export type Outbound = ServerNotResponding$.Outbound;
     export const inboundSchema: z.ZodType<
         CreateWatcherMonitorResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = ServerNotResponding$.inboundSchema;
+
+    export type Outbound = ServerNotResponding$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -52,11 +50,10 @@ export namespace CreateWatcherMonitorResponseResponseBody$ {
 
 /** @internal */
 export namespace CreateWatcherMonitorResponseBody$ {
-    export type Inbound = DatabaseDuplicate$.Inbound;
+    export const inboundSchema: z.ZodType<CreateWatcherMonitorResponseBody, z.ZodTypeDef, unknown> =
+        DatabaseDuplicate$.inboundSchema;
 
     export type Outbound = DatabaseDuplicate$.Outbound;
-    export const inboundSchema: z.ZodType<CreateWatcherMonitorResponseBody, z.ZodTypeDef, Inbound> =
-        DatabaseDuplicate$.inboundSchema;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -66,11 +63,10 @@ export namespace CreateWatcherMonitorResponseBody$ {
 
 /** @internal */
 export namespace CreateWatcherResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<CreateWatcherResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<CreateWatcherResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWatcherResponseBody> =
         BadRequestException$.outboundSchema;
 }

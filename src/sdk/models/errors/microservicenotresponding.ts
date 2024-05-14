@@ -92,12 +92,10 @@ export class MicroserviceNotResponding extends Error {
 
 /** @internal */
 export namespace SchemasMICROSERVICENOTRESPONDINGContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasMICROSERVICENOTRESPONDINGContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -111,20 +109,7 @@ export namespace SchemasMICROSERVICENOTRESPONDINGContext$ {
 
 /** @internal */
 export namespace MicroserviceNotResponding$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasMICROSERVICENOTRESPONDINGContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<MicroserviceNotResponding, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MicroserviceNotResponding, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

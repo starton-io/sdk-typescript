@@ -10,11 +10,7 @@ export type SignMessageDto = {
 
 /** @internal */
 export namespace SignMessageDto$ {
-    export type Inbound = {
-        message: string;
-    };
-
-    export const inboundSchema: z.ZodType<SignMessageDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SignMessageDto, z.ZodTypeDef, unknown> = z
         .object({
             message: z.string(),
         })

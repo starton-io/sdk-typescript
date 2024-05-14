@@ -33,16 +33,7 @@ export type UpdateSettingRelayerDto = {
 
 /** @internal */
 export namespace UpdateSettingRelayerDto$ {
-    export type Inbound = {
-        unstuckAutomaticGasPrice?: boolean | undefined;
-        unstuckCustomGasPrice?: boolean | undefined;
-        unstuckGasPriceDelay?: number | undefined;
-        unstuckMaxGasPrice?: string | undefined;
-        unstuckMissingNonce?: boolean | undefined;
-        unstuckMissingNonceDelay?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateSettingRelayerDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateSettingRelayerDto, z.ZodTypeDef, unknown> = z
         .object({
             unstuckAutomaticGasPrice: z.boolean().optional(),
             unstuckCustomGasPrice: z.boolean().optional(),

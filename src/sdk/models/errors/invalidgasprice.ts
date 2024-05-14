@@ -92,9 +92,7 @@ export class InvalidGasPrice extends Error {
 
 /** @internal */
 export namespace SchemasINVALIDGASPRICEContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasINVALIDGASPRICEContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasINVALIDGASPRICEContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasINVALIDGASPRICEContext$ {
 
 /** @internal */
 export namespace InvalidGasPrice$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasINVALIDGASPRICEContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<InvalidGasPrice, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InvalidGasPrice, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

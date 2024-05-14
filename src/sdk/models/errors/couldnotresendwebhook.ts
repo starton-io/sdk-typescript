@@ -59,12 +59,10 @@ export class CouldNotResendWebhook extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTRESENDWEBHOOKContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTRESENDWEBHOOKContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasCOULDNOTRESENDWEBHOOKContext$ {
 
 /** @internal */
 export namespace CouldNotResendWebhook$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasCOULDNOTRESENDWEBHOOKContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotResendWebhook, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotResendWebhook, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.inboundSchema).optional(),

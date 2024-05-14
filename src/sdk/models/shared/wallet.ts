@@ -20,9 +20,7 @@ export type Wallet = {
 
 /** @internal */
 export namespace WalletMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<WalletMetadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<WalletMetadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -31,19 +29,7 @@ export namespace WalletMetadata$ {
 
 /** @internal */
 export namespace Wallet$ {
-    export type Inbound = {
-        address: string;
-        createdAt?: string | undefined;
-        description?: string | null | undefined;
-        kmsId: string;
-        metadata?: WalletMetadata$.Inbound | undefined;
-        name?: string | null | undefined;
-        projectId: string;
-        providerKeyId: string;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string(),
             createdAt: z

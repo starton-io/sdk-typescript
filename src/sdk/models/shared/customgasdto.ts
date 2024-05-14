@@ -12,13 +12,7 @@ export type CustomGasDto = {
 
 /** @internal */
 export namespace CustomGasDto$ {
-    export type Inbound = {
-        gasPrice?: string | undefined;
-        maxFeePerGas?: string | undefined;
-        maxPriorityFeePerGas?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CustomGasDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CustomGasDto, z.ZodTypeDef, unknown> = z
         .object({
             gasPrice: z.string().optional(),
             maxFeePerGas: z.string().optional(),

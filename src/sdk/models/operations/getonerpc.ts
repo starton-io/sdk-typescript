@@ -28,12 +28,7 @@ export type GetOneRpcResponse = {
 
 /** @internal */
 export namespace GetOneRpcRequest$ {
-    export type Inbound = {
-        id: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneRpcRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneRpcRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             name: z.string(),
@@ -65,14 +60,7 @@ export namespace GetOneRpcRequest$ {
 
 /** @internal */
 export namespace GetOneRpcResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Rpc?: shared.Rpc$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneRpcResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneRpcResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Rpc: shared.Rpc$.inboundSchema.optional(),

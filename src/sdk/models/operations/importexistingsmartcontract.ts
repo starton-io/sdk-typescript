@@ -23,17 +23,10 @@ export type ImportExistingSmartContractResponse = {
 
 /** @internal */
 export namespace ImportExistingSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         ImportExistingSmartContractResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

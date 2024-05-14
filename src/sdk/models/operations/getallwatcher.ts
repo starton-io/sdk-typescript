@@ -63,19 +63,7 @@ export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
 
 /** @internal */
 export namespace GetAllWatcherRequest$ {
-    export type Inbound = {
-        address?: string | undefined;
-        confirmationsBlocks?: number | undefined;
-        limit?: number | undefined;
-        name?: string | undefined;
-        network?: string | undefined;
-        page?: number | undefined;
-        paused?: boolean | undefined;
-        type?: Type | undefined;
-        webhookUrl?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWatcherRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWatcherRequest, z.ZodTypeDef, unknown> = z
         .object({
             address: z.string().optional(),
             confirmationsBlocks: z.number().optional(),
@@ -146,12 +134,7 @@ export namespace GetAllWatcherRequest$ {
 
 /** @internal */
 export namespace GetAllWatcherWatcherPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Watcher$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWatcherWatcherPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWatcherWatcherPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Watcher$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -184,14 +167,7 @@ export namespace GetAllWatcherWatcherPaginated$ {
 
 /** @internal */
 export namespace GetAllWatcherResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WatcherPaginated?: GetAllWatcherWatcherPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWatcherResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWatcherResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

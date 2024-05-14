@@ -59,17 +59,7 @@ export type GetAllTransactionResponse = {
 
 /** @internal */
 export namespace GetAllTransactionRequest$ {
-    export type Inbound = {
-        from?: string | undefined;
-        fromDate?: string | undefined;
-        limit?: number | undefined;
-        network?: string | undefined;
-        page?: number | undefined;
-        to?: string | undefined;
-        transactionHash?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllTransactionRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllTransactionRequest, z.ZodTypeDef, unknown> = z
         .object({
             from: z.string().optional(),
             fromDate: z
@@ -137,15 +127,10 @@ export namespace GetAllTransactionRequest$ {
 
 /** @internal */
 export namespace GetAllTransactionTransactionPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Transaction$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         GetAllTransactionTransactionPaginated,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             items: z.array(shared.Transaction$.inboundSchema),
@@ -182,14 +167,7 @@ export namespace GetAllTransactionTransactionPaginated$ {
 
 /** @internal */
 export namespace GetAllTransactionResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TransactionPaginated?: GetAllTransactionTransactionPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllTransactionResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllTransactionResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

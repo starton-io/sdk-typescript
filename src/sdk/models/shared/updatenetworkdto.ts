@@ -29,28 +29,7 @@ export type UpdateNetworkDto = {
 
 /** @internal */
 export namespace UpdateNetworkDto$ {
-    export type Inbound = {
-        blockchain?: string | undefined;
-        chainId?: number | undefined;
-        confirmationBlocks?: number | undefined;
-        decimal?: number | undefined;
-        displayName?: string | undefined;
-        eip1159?: boolean | undefined;
-        enableExternalWallet?: boolean | undefined;
-        enableListener?: boolean | undefined;
-        enableRelayer?: boolean | undefined;
-        explorerApi?: ExplorerApiDto$.Inbound | undefined;
-        explorerUrl?: string | undefined;
-        gasPriceRecommendation?: GasPriceRecommendationDto$.Inbound | undefined;
-        logo?: string | undefined;
-        name?: string | undefined;
-        symbol?: string | undefined;
-        testnet?: boolean | undefined;
-        verifyBlockIntegrity?: boolean | undefined;
-        verifyTxIntegrity?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateNetworkDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateNetworkDto, z.ZodTypeDef, unknown> = z
         .object({
             blockchain: z.string().optional(),
             chainId: z.number().optional(),

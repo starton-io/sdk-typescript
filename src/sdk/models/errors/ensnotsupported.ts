@@ -92,9 +92,7 @@ export class EnsNotSupported extends Error {
 
 /** @internal */
 export namespace SchemasENSNOTSUPPORTEDContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasENSNOTSUPPORTEDContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasENSNOTSUPPORTEDContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasENSNOTSUPPORTEDContext$ {
 
 /** @internal */
 export namespace EnsNotSupported$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasENSNOTSUPPORTEDContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<EnsNotSupported, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EnsNotSupported, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

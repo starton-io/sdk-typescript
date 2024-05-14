@@ -31,12 +31,7 @@ export type UpdateKmsResponse = {
 
 /** @internal */
 export namespace UpdateKmsRequest$ {
-    export type Inbound = {
-        UpdateKmsDto: shared.UpdateKmsDto$.Inbound;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateKmsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateKmsRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateKmsDto: shared.UpdateKmsDto$.inboundSchema,
             id: z.string(),
@@ -68,14 +63,7 @@ export namespace UpdateKmsRequest$ {
 
 /** @internal */
 export namespace UpdateKmsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Kms?: shared.Kms$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateKmsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateKmsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Kms: shared.Kms$.inboundSchema.optional(),

@@ -17,12 +17,7 @@ export type RequireFaucetDto = {
 
 /** @internal */
 export namespace RequireFaucetDto$ {
-    export type Inbound = {
-        captchaToken?: string | undefined;
-        wallet: string;
-    };
-
-    export const inboundSchema: z.ZodType<RequireFaucetDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RequireFaucetDto, z.ZodTypeDef, unknown> = z
         .object({
             captchaToken: z.string().optional(),
             wallet: z.string(),

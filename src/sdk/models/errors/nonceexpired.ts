@@ -92,9 +92,7 @@ export class NonceExpired extends Error {
 
 /** @internal */
 export namespace SchemasNONCEEXPIREDContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasNONCEEXPIREDContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasNONCEEXPIREDContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasNONCEEXPIREDContext$ {
 
 /** @internal */
 export namespace NonceExpired$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasNONCEEXPIREDContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<NonceExpired, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NonceExpired, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

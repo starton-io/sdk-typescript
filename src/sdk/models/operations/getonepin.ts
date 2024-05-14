@@ -31,12 +31,7 @@ export type GetOnePinResponse = {
 
 /** @internal */
 export namespace GetOnePinRequest$ {
-    export type Inbound = {
-        id: string;
-        includeDirectoryContent?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetOnePinRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOnePinRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             includeDirectoryContent: z.boolean().optional(),
@@ -72,14 +67,7 @@ export namespace GetOnePinRequest$ {
 
 /** @internal */
 export namespace GetOnePinResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetOnePinResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOnePinResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             Pin: shared.Pin$.inboundSchema.optional(),

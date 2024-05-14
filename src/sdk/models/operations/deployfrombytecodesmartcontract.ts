@@ -31,15 +31,10 @@ export type DeployFromBytecodeSmartContractResponse = {
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractRequest$ {
-    export type Inbound = {
-        DeployFromBytecodeDto: shared.DeployFromBytecodeDto$.Inbound;
-        simulate?: boolean | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             DeployFromBytecodeDto: shared.DeployFromBytecodeDto$.inboundSchema,
@@ -76,17 +71,10 @@ export namespace DeployFromBytecodeSmartContractRequest$ {
 
 /** @internal */
 export namespace DeployFromBytecodeSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        DeploySmartContractResponse?: shared.DeploySmartContractResponse$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         DeployFromBytecodeSmartContractResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

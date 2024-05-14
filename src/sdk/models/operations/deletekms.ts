@@ -29,11 +29,7 @@ export type DeleteKmsResponse = {
 
 /** @internal */
 export namespace DeleteKmsRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteKmsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteKmsRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -60,14 +56,7 @@ export namespace DeleteKmsRequest$ {
 
 /** @internal */
 export namespace DeleteKmsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        number?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteKmsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteKmsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

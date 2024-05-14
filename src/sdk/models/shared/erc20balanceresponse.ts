@@ -29,15 +29,7 @@ export type Erc20BalanceResponse = {
 
 /** @internal */
 export namespace Erc20BalanceResponse$ {
-    export type Inbound = {
-        balance: string;
-        contractAddress: string;
-        decimal: number;
-        formatted: string;
-        symbol: string;
-    };
-
-    export const inboundSchema: z.ZodType<Erc20BalanceResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Erc20BalanceResponse, z.ZodTypeDef, unknown> = z
         .object({
             balance: z.string(),
             contractAddress: z.string(),

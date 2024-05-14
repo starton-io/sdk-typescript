@@ -42,14 +42,7 @@ export type CallSmartContractResponse = {
 
 /** @internal */
 export namespace CallSmartContractRequest$ {
-    export type Inbound = {
-        CallDto: shared.CallDto$.Inbound;
-        address: string;
-        network: string;
-        simulate?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CallSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CallSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             CallDto: shared.CallDto$.inboundSchema,
             address: z.string(),
@@ -91,14 +84,7 @@ export namespace CallSmartContractRequest$ {
 
 /** @internal */
 export namespace CallSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Transaction?: shared.Transaction$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CallSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CallSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -59,12 +59,10 @@ export class InvalidContractAddress extends Error {
 
 /** @internal */
 export namespace SchemasINVALIDCONTRACTADDRESSContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasINVALIDCONTRACTADDRESSContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasINVALIDCONTRACTADDRESSContext$ {
 
 /** @internal */
 export namespace InvalidContractAddress$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasINVALIDCONTRACTADDRESSContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<InvalidContractAddress, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InvalidContractAddress, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasINVALIDCONTRACTADDRESSContext$.inboundSchema).optional(),

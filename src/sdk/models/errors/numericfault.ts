@@ -92,9 +92,7 @@ export class NumericFault extends Error {
 
 /** @internal */
 export namespace SchemasNUMERICFAULTContext$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SchemasNUMERICFAULTContext, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SchemasNUMERICFAULTContext, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -105,20 +103,7 @@ export namespace SchemasNUMERICFAULTContext$ {
 
 /** @internal */
 export namespace NumericFault$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        RawResponse1?: Response | undefined;
-        RawResponse2?: Response | undefined;
-        RawResponse3?: Response | undefined;
-        context?: SchemasNUMERICFAULTContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<NumericFault, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NumericFault, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),

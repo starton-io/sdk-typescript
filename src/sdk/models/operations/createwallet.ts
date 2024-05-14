@@ -23,14 +23,7 @@ export type CreateWalletResponse = {
 
 /** @internal */
 export namespace CreateWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Wallet?: shared.Wallet$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

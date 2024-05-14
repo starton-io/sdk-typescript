@@ -34,12 +34,7 @@ export type UpdateWatcherResponse = {
 
 /** @internal */
 export namespace UpdateWatcherRequest$ {
-    export type Inbound = {
-        UpdateWatcherDto: shared.UpdateWatcherDto$.Inbound;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWatcherRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWatcherRequest, z.ZodTypeDef, unknown> = z
         .object({
             UpdateWatcherDto: shared.UpdateWatcherDto$.inboundSchema,
             id: z.string(),
@@ -71,14 +66,7 @@ export namespace UpdateWatcherRequest$ {
 
 /** @internal */
 export namespace UpdateWatcherResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        Watcher?: shared.Watcher$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateWatcherResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateWatcherResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

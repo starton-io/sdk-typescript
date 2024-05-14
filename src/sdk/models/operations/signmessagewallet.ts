@@ -30,12 +30,7 @@ export type SignMessageWalletResponse = {
 
 /** @internal */
 export namespace SignMessageWalletRequest$ {
-    export type Inbound = {
-        SignMessageDto: shared.SignMessageDto$.Inbound;
-        address: string;
-    };
-
-    export const inboundSchema: z.ZodType<SignMessageWalletRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SignMessageWalletRequest, z.ZodTypeDef, unknown> = z
         .object({
             SignMessageDto: shared.SignMessageDto$.inboundSchema,
             address: z.string(),
@@ -67,9 +62,7 @@ export namespace SignMessageWalletRequest$ {
 
 /** @internal */
 export namespace SignMessageWalletResponseBody$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SignMessageWalletResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SignMessageWalletResponseBody, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -80,14 +73,7 @@ export namespace SignMessageWalletResponseBody$ {
 
 /** @internal */
 export namespace SignMessageWalletResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: SignMessageWalletResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SignMessageWalletResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SignMessageWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -54,9 +54,7 @@ export type CreateTransactionDto = {
 
 /** @internal */
 export namespace CreateTransactionDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CreateTransactionDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateTransactionDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -71,20 +69,7 @@ export const CreateTransactionDtoSpeed$: z.ZodNativeEnum<typeof CreateTransactio
 
 /** @internal */
 export namespace CreateTransactionDto$ {
-    export type Inbound = {
-        customGas?: CustomGasDto$.Inbound | undefined;
-        data?: string | undefined;
-        gasLimit?: string | undefined;
-        metadata?: CreateTransactionDtoMetadata$.Inbound | undefined;
-        network: string;
-        nonce?: number | undefined;
-        signerWallet: string;
-        speed?: CreateTransactionDtoSpeed | undefined;
-        to?: string | undefined;
-        value?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateTransactionDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateTransactionDto, z.ZodTypeDef, unknown> = z
         .object({
             customGas: CustomGasDto$.inboundSchema.optional(),
             data: z.string().optional(),

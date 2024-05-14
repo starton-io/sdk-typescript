@@ -34,15 +34,10 @@ export type DeployFromTemplateSmartContractResponse = {
 
 /** @internal */
 export namespace DeployFromTemplateSmartContractRequest$ {
-    export type Inbound = {
-        DeployFromTemplateDto: shared.DeployFromTemplateDto$.Inbound;
-        simulate?: boolean | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeployFromTemplateSmartContractRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             DeployFromTemplateDto: shared.DeployFromTemplateDto$.inboundSchema,
@@ -79,17 +74,10 @@ export namespace DeployFromTemplateSmartContractRequest$ {
 
 /** @internal */
 export namespace DeployFromTemplateSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        DeploySmartContractResponse?: shared.DeploySmartContractResponse$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         DeployFromTemplateSmartContractResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -9,14 +9,13 @@ export type GetAllSmartContractTemplateResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetAllSmartContractTemplateResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
-
-    export type Outbound = BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAllSmartContractTemplateResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = BadRequestException$.inboundSchema;
+
+    export type Outbound = BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

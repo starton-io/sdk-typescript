@@ -59,12 +59,10 @@ export class CouldNotPerformRequest extends Error {
 
 /** @internal */
 export namespace SchemasCOULDNOTPERFORMREQUESTContext$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SchemasCOULDNOTPERFORMREQUESTContext,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -78,17 +76,7 @@ export namespace SchemasCOULDNOTPERFORMREQUESTContext$ {
 
 /** @internal */
 export namespace CouldNotPerformRequest$ {
-    export type Inbound = {
-        RawResponse?: Response | undefined;
-        context?: SchemasCOULDNOTPERFORMREQUESTContext$.Inbound | undefined;
-        errorCode?: string | undefined;
-        message?: string | undefined;
-        path: string;
-        statusCode?: number | undefined;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CouldNotPerformRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CouldNotPerformRequest, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.inboundSchema).optional(),

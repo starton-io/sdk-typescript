@@ -51,13 +51,7 @@ export const QueryParamStatus$: z.ZodNativeEnum<typeof QueryParamStatus> =
 
 /** @internal */
 export namespace GetAllWebhookRequest$ {
-    export type Inbound = {
-        limit?: number | undefined;
-        page?: number | undefined;
-        status?: QueryParamStatus | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWebhookRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWebhookRequest, z.ZodTypeDef, unknown> = z
         .object({
             limit: z.number().int().optional(),
             page: z.number().int().optional(),
@@ -94,12 +88,7 @@ export namespace GetAllWebhookRequest$ {
 
 /** @internal */
 export namespace GetAllWebhookWebhookPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Webhook$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWebhookWebhookPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWebhookWebhookPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Webhook$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -132,14 +121,7 @@ export namespace GetAllWebhookWebhookPaginated$ {
 
 /** @internal */
 export namespace GetAllWebhookResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WebhookPaginated?: GetAllWebhookWebhookPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllWebhookResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllWebhookResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

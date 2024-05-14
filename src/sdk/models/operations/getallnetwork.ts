@@ -42,15 +42,7 @@ export type GetAllNetworkResponse = {
 
 /** @internal */
 export namespace GetAllNetworkRequest$ {
-    export type Inbound = {
-        id?: string | undefined;
-        limit?: number | undefined;
-        origin: string;
-        page?: number | undefined;
-        testnet?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllNetworkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllNetworkRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string().optional(),
             limit: z.number().int().optional(),
@@ -97,12 +89,7 @@ export namespace GetAllNetworkRequest$ {
 
 /** @internal */
 export namespace GetAllNetworkNetworkPaginated$ {
-    export type Inbound = {
-        items: Array<shared.Network$.Inbound>;
-        meta: shared.PaginationData$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllNetworkNetworkPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllNetworkNetworkPaginated, z.ZodTypeDef, unknown> = z
         .object({
             items: z.array(shared.Network$.inboundSchema),
             meta: shared.PaginationData$.inboundSchema,
@@ -135,14 +122,7 @@ export namespace GetAllNetworkNetworkPaginated$ {
 
 /** @internal */
 export namespace GetAllNetworkResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        NetworkPaginated?: GetAllNetworkNetworkPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<GetAllNetworkResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetAllNetworkResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             NetworkPaginated: z.lazy(() => GetAllNetworkNetworkPaginated$.inboundSchema).optional(),

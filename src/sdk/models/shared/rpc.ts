@@ -14,15 +14,7 @@ export type Rpc = {
 
 /** @internal */
 export namespace Rpc$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id: string;
-        networkName: string;
-        updatedAt?: string | undefined;
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<Rpc, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Rpc, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()

@@ -38,9 +38,7 @@ export type DeployFromBytecodeDto = {
 
 /** @internal */
 export namespace DeployFromBytecodeDto3$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<DeployFromBytecodeDto3, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDto3, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -52,16 +50,15 @@ export namespace DeployFromBytecodeDto3$ {
 
 /** @internal */
 export namespace DeployFromBytecodeDtoParams$ {
-    export type Inbound = DeployFromBytecodeDto3$.Inbound | string | number | boolean;
-
-    export type Outbound = DeployFromBytecodeDto3$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<DeployFromBytecodeDtoParams, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDtoParams, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => DeployFromBytecodeDto3$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = DeployFromBytecodeDto3$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromBytecodeDtoParams> =
         z.union([
             z.lazy(() => DeployFromBytecodeDto3$.outboundSchema),
@@ -77,22 +74,7 @@ export const DeployFromBytecodeDtoSpeed$: z.ZodNativeEnum<typeof DeployFromBytec
 
 /** @internal */
 export namespace DeployFromBytecodeDto$ {
-    export type Inbound = {
-        abi: Array<AbiObjectDto$.Inbound>;
-        bytecode: string;
-        customGas?: CustomGasDto$.Inbound | undefined;
-        description?: string | undefined;
-        gasLimit?: string | undefined;
-        name: string;
-        network: string;
-        nonce?: number | undefined;
-        params: Array<DeployFromBytecodeDto3$.Inbound | string | number | boolean>;
-        signerWallet: string;
-        speed?: DeployFromBytecodeDtoSpeed | undefined;
-        value?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeployFromBytecodeDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDto, z.ZodTypeDef, unknown> = z
         .object({
             abi: z.array(AbiObjectDto$.inboundSchema),
             bytecode: z.string(),

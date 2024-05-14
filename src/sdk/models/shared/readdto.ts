@@ -18,9 +18,7 @@ export type ReadDto = {
 
 /** @internal */
 export namespace ReadDto3$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ReadDto3, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<ReadDto3, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -29,15 +27,14 @@ export namespace ReadDto3$ {
 
 /** @internal */
 export namespace ReadDtoParams$ {
-    export type Inbound = ReadDto3$.Inbound | string | number | boolean;
-
-    export type Outbound = ReadDto3$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ReadDtoParams, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<ReadDtoParams, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => ReadDto3$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = ReadDto3$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDtoParams> = z.union([
         z.lazy(() => ReadDto3$.outboundSchema),
         z.string(),
@@ -48,12 +45,7 @@ export namespace ReadDtoParams$ {
 
 /** @internal */
 export namespace ReadDto$ {
-    export type Inbound = {
-        functionName: string;
-        params?: Array<ReadDto3$.Inbound | string | number | boolean> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, unknown> = z
         .object({
             functionName: z.string(),
             params: z

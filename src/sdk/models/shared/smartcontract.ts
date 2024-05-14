@@ -77,9 +77,7 @@ export type SmartContract = {
 
 /** @internal */
 export namespace Abi$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Abi, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Abi, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -88,9 +86,7 @@ export namespace Abi$ {
 
 /** @internal */
 export namespace CompilationDetails$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CompilationDetails, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<CompilationDetails, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -108,27 +104,7 @@ export const SmartContractStatus$: z.ZodNativeEnum<typeof SmartContractStatus> =
 
 /** @internal */
 export namespace SmartContract$ {
-    export type Inbound = {
-        abi?: Array<Abi$.Inbound> | undefined;
-        address: string;
-        blockNumber?: number | null | undefined;
-        compilationDetails?: CompilationDetails$.Inbound | null | undefined;
-        createdAt?: string | undefined;
-        creationHash?: string | null | undefined;
-        description?: string | null | undefined;
-        id: string;
-        minedDate?: string | null | undefined;
-        name: string;
-        network: string;
-        params?: Array<string> | null | undefined;
-        projectId: string;
-        state: State;
-        status: SmartContractStatus;
-        templateId?: string | null | undefined;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, unknown> = z
         .object({
             abi: z.array(z.lazy(() => Abi$.inboundSchema)).optional(),
             address: z.string(),

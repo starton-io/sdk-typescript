@@ -28,9 +28,7 @@ export type WatcherEvent = {
 
 /** @internal */
 export namespace Payload$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Payload, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -43,21 +41,7 @@ export const WatcherEventStatus$: z.ZodNativeEnum<typeof WatcherEventStatus> =
 
 /** @internal */
 export namespace WatcherEvent$ {
-    export type Inbound = {
-        blockHash: string;
-        blockNumber: number;
-        createdAt?: string | undefined;
-        id: string;
-        network: string;
-        payload: Payload$.Inbound;
-        projectId: string;
-        status: WatcherEventStatus;
-        txHash: string;
-        updatedAt?: string | undefined;
-        watcherId: string;
-    };
-
-    export const inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, unknown> = z
         .object({
             blockHash: z.string(),
             blockNumber: z.number(),

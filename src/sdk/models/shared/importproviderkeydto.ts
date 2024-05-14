@@ -21,9 +21,7 @@ export type ImportProviderKeyDto = {
 
 /** @internal */
 export namespace ImportProviderKeyDtoMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ImportProviderKeyDtoMetadata, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ImportProviderKeyDtoMetadata, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -38,15 +36,7 @@ export const ImportProviderKeyDtoProvider$: z.ZodNativeEnum<typeof ImportProvide
 
 /** @internal */
 export namespace ImportProviderKeyDto$ {
-    export type Inbound = {
-        description?: string | undefined;
-        metadata?: ImportProviderKeyDtoMetadata$.Inbound | undefined;
-        name?: string | undefined;
-        provider: ImportProviderKeyDtoProvider;
-        providerKeyId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ImportProviderKeyDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ImportProviderKeyDto, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.inboundSchema).optional(),

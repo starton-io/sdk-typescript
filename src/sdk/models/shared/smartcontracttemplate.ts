@@ -41,9 +41,7 @@ export type SmartContractTemplate = {
 
 /** @internal */
 export namespace SmartContractTemplateAbi$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SmartContractTemplateAbi, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SmartContractTemplateAbi, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -57,12 +55,10 @@ export const Category$: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category
 
 /** @internal */
 export namespace SmartContractTemplateCompilationDetails$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         SmartContractTemplateCompilationDetails,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -76,9 +72,7 @@ export namespace SmartContractTemplateCompilationDetails$ {
 
 /** @internal */
 export namespace Form$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Form, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Form, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -87,27 +81,7 @@ export namespace Form$ {
 
 /** @internal */
 export namespace SmartContractTemplate$ {
-    export type Inbound = {
-        abi: Array<SmartContractTemplateAbi$.Inbound>;
-        blockchains: Array<string>;
-        category: Category;
-        compilationDetails?: SmartContractTemplateCompilationDetails$.Inbound | null | undefined;
-        createdAt?: string | undefined;
-        description: string;
-        form?: Form$.Inbound | null | undefined;
-        githubUrl: string;
-        humanReadableAbi: Array<string>;
-        id: string;
-        isActivated?: boolean | undefined;
-        isAudited?: boolean | undefined;
-        name: string;
-        order?: number | undefined;
-        shortDescription: string;
-        tags: Array<string>;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, unknown> = z
         .object({
             abi: z.array(z.lazy(() => SmartContractTemplateAbi$.inboundSchema)),
             blockchains: z.array(z.string()),

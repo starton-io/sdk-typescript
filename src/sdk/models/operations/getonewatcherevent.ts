@@ -34,12 +34,7 @@ export type GetOneWatcherEventResponse = {
 
 /** @internal */
 export namespace GetOneWatcherEventRequest$ {
-    export type Inbound = {
-        eventId: string;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWatcherEventRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWatcherEventRequest, z.ZodTypeDef, unknown> = z
         .object({
             eventId: z.string(),
             id: z.string(),
@@ -71,14 +66,7 @@ export namespace GetOneWatcherEventRequest$ {
 
 /** @internal */
 export namespace GetOneWatcherEventResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WatcherEvent?: shared.WatcherEvent$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetOneWatcherEventResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOneWatcherEventResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -9,11 +9,10 @@ export type GetAllInvitationResponseBody = BadRequestException;
 
 /** @internal */
 export namespace GetAllInvitationResponseBody$ {
-    export type Inbound = BadRequestException$.Inbound;
+    export const inboundSchema: z.ZodType<GetAllInvitationResponseBody, z.ZodTypeDef, unknown> =
+        BadRequestException$.inboundSchema;
 
     export type Outbound = BadRequestException$.Outbound;
-    export const inboundSchema: z.ZodType<GetAllInvitationResponseBody, z.ZodTypeDef, Inbound> =
-        BadRequestException$.inboundSchema;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllInvitationResponseBody> =
         BadRequestException$.outboundSchema;
 }

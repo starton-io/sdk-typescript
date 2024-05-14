@@ -13,12 +13,7 @@ export type DeploySmartContractResponse = {
 
 /** @internal */
 export namespace DeploySmartContractResponse$ {
-    export type Inbound = {
-        smartContract: SmartContract$.Inbound;
-        transaction: Transaction$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<DeploySmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploySmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             smartContract: SmartContract$.inboundSchema,
             transaction: Transaction$.inboundSchema,

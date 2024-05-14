@@ -21,14 +21,13 @@ export type GetAvailableFunctionsSmartContractResponseBody =
 
 /** @internal */
 export namespace GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$ {
-    export type Inbound = Unknown$.Inbound;
-
-    export type Outbound = Unknown$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = Unknown$.inboundSchema;
+
+    export type Outbound = Unknown$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -38,14 +37,13 @@ export namespace GetAvailableFunctionsSmartContractSmartContractManagementRespon
 
 /** @internal */
 export namespace GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$ {
-    export type Inbound = CouldNotFindResource$.Inbound;
-
-    export type Outbound = CouldNotFindResource$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableFunctionsSmartContractSmartContractManagementResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = CouldNotFindResource$.inboundSchema;
+
+    export type Outbound = CouldNotFindResource$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -55,24 +53,20 @@ export namespace GetAvailableFunctionsSmartContractSmartContractManagementRespon
 
 /** @internal */
 export namespace GetAvailableFunctionsSmartContractResponseBody$ {
-    export type Inbound =
-        | InvalidBytecode$.Inbound
-        | InvalidAbi$.Inbound
-        | BadRequestException$.Inbound;
-
-    export type Outbound =
-        | InvalidBytecode$.Outbound
-        | InvalidAbi$.Outbound
-        | BadRequestException$.Outbound;
     export const inboundSchema: z.ZodType<
         GetAvailableFunctionsSmartContractResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         InvalidBytecode$.inboundSchema,
         InvalidAbi$.inboundSchema,
         BadRequestException$.inboundSchema,
     ]);
+
+    export type Outbound =
+        | InvalidBytecode$.Outbound
+        | InvalidAbi$.Outbound
+        | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

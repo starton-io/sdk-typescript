@@ -25,9 +25,7 @@ export type ImportSmartContractDto = {
 
 /** @internal */
 export namespace ImportSmartContractDto3$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ImportSmartContractDto3, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ImportSmartContractDto3, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -38,16 +36,15 @@ export namespace ImportSmartContractDto3$ {
 
 /** @internal */
 export namespace ImportSmartContractDtoParams$ {
-    export type Inbound = ImportSmartContractDto3$.Inbound | string | number | boolean;
-
-    export type Outbound = ImportSmartContractDto3$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ImportSmartContractDtoParams, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ImportSmartContractDtoParams, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => ImportSmartContractDto3$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = ImportSmartContractDto3$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoParams> =
         z.union([
             z.lazy(() => ImportSmartContractDto3$.outboundSchema),
@@ -59,18 +56,7 @@ export namespace ImportSmartContractDtoParams$ {
 
 /** @internal */
 export namespace ImportSmartContractDto$ {
-    export type Inbound = {
-        abi: Array<AbiObjectDto$.Inbound>;
-        address: string;
-        creationHash?: string | undefined;
-        description?: string | undefined;
-        name: string;
-        network: string;
-        params?: Array<ImportSmartContractDto3$.Inbound | string | number | boolean> | undefined;
-        templateId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ImportSmartContractDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ImportSmartContractDto, z.ZodTypeDef, unknown> = z
         .object({
             abi: z.array(AbiObjectDto$.inboundSchema),
             address: z.string(),

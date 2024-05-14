@@ -98,9 +98,7 @@ export type Transaction = {
 
 /** @internal */
 export namespace TransactionMetadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<TransactionMetadata, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<TransactionMetadata, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -125,41 +123,7 @@ export const TransactionStatus$: z.ZodNativeEnum<typeof TransactionStatus> =
 
 /** @internal */
 export namespace Transaction$ {
-    export type Inbound = {
-        automaticNonce: boolean;
-        blockHash?: string | null | undefined;
-        blockNumber?: number | null | undefined;
-        chainId: number;
-        createdAt?: string | undefined;
-        data?: string | null | undefined;
-        from: string;
-        gasLimit?: string | null | undefined;
-        gasPrice?: string | null | undefined;
-        id: string;
-        isDeployTransaction: boolean;
-        logs: Array<TransactionLog$.Inbound>;
-        maxFeePerGas?: string | null | undefined;
-        maxPriorityFeePerGas?: string | null | undefined;
-        metadata?: TransactionMetadata$.Inbound | null | undefined;
-        minedDate?: string | null | undefined;
-        network: string;
-        nonce?: number | null | undefined;
-        parentTransaction?: string | null | undefined;
-        projectId: string;
-        publishedDate?: string | null | undefined;
-        signedTransaction?: string | null | undefined;
-        signerWallet: string;
-        speed?: TransactionSpeed | null | undefined;
-        state: TransactionState;
-        status: TransactionStatus;
-        to?: string | null | undefined;
-        transactionHash?: string | null | undefined;
-        type?: number | null | undefined;
-        updatedAt?: string | undefined;
-        value: string;
-    };
-
-    export const inboundSchema: z.ZodType<Transaction, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Transaction, z.ZodTypeDef, unknown> = z
         .object({
             automaticNonce: z.boolean(),
             blockHash: z.nullable(z.string()).optional(),

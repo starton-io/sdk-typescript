@@ -38,13 +38,7 @@ export type ReadSmartContractResponse = {
 
 /** @internal */
 export namespace ReadSmartContractRequest$ {
-    export type Inbound = {
-        ReadDto: shared.ReadDto$.Inbound;
-        address: string;
-        network: string;
-    };
-
-    export const inboundSchema: z.ZodType<ReadSmartContractRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ReadSmartContractRequest, z.ZodTypeDef, unknown> = z
         .object({
             ReadDto: shared.ReadDto$.inboundSchema,
             address: z.string(),
@@ -81,14 +75,7 @@ export namespace ReadSmartContractRequest$ {
 
 /** @internal */
 export namespace ReadSmartContractResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ReadSmartContractResponse?: shared.ReadSmartContractResponse$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             ReadSmartContractResponse: shared.ReadSmartContractResponse$.inboundSchema.optional(),
