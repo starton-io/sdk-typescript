@@ -50,7 +50,10 @@ export type GetAllPinResponse = {
 };
 
 /** @internal */
-export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+export namespace Status$ {
+    export const inboundSchema = z.nativeEnum(Status);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace GetAllPinRequest$ {
@@ -61,7 +64,7 @@ export namespace GetAllPinRequest$ {
             limit: z.number().int().optional(),
             name: z.string().optional(),
             page: z.number().int().optional(),
-            status: Status$.optional(),
+            status: Status$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -82,7 +85,7 @@ export namespace GetAllPinRequest$ {
         limit?: number | undefined;
         name?: string | undefined;
         page?: number | undefined;
-        status?: Status | undefined;
+        status?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllPinRequest> = z
@@ -92,7 +95,7 @@ export namespace GetAllPinRequest$ {
             limit: z.number().int().optional(),
             name: z.string().optional(),
             page: z.number().int().optional(),
-            status: Status$.optional(),
+            status: Status$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

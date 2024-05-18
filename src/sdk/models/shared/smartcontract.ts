@@ -96,11 +96,16 @@ export namespace CompilationDetails$ {
 }
 
 /** @internal */
-export const State$: z.ZodNativeEnum<typeof State> = z.nativeEnum(State);
+export namespace State$ {
+    export const inboundSchema = z.nativeEnum(State);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const SmartContractStatus$: z.ZodNativeEnum<typeof SmartContractStatus> =
-    z.nativeEnum(SmartContractStatus);
+export namespace SmartContractStatus$ {
+    export const inboundSchema = z.nativeEnum(SmartContractStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace SmartContract$ {
@@ -132,8 +137,8 @@ export namespace SmartContract$ {
             network: z.string(),
             params: z.nullable(z.array(z.string())).optional(),
             projectId: z.string(),
-            state: State$,
-            status: SmartContractStatus$,
+            state: State$.inboundSchema,
+            status: SmartContractStatus$.inboundSchema,
             templateId: z.nullable(z.string()).optional(),
             updatedAt: z
                 .string()
@@ -179,8 +184,8 @@ export namespace SmartContract$ {
         network: string;
         params?: Array<string> | null | undefined;
         projectId: string;
-        state: State;
-        status: SmartContractStatus;
+        state: string;
+        status: string;
         templateId?: string | null | undefined;
         updatedAt: string;
     };
@@ -205,8 +210,8 @@ export namespace SmartContract$ {
             network: z.string(),
             params: z.nullable(z.array(z.string())).optional(),
             projectId: z.string(),
-            state: State$,
-            status: SmartContractStatus$,
+            state: State$.outboundSchema,
+            status: SmartContractStatus$.outboundSchema,
             templateId: z.nullable(z.string()).optional(),
             updatedAt: z
                 .date()

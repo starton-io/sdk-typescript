@@ -86,10 +86,16 @@ export namespace WatcherMetadata$ {
 }
 
 /** @internal */
-export const TriggerType$: z.ZodNativeEnum<typeof TriggerType> = z.nativeEnum(TriggerType);
+export namespace TriggerType$ {
+    export const inboundSchema = z.nativeEnum(TriggerType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const WatcherType$: z.ZodNativeEnum<typeof WatcherType> = z.nativeEnum(WatcherType);
+export namespace WatcherType$ {
+    export const inboundSchema = z.nativeEnum(WatcherType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Watcher$ {
@@ -114,8 +120,8 @@ export namespace Watcher$ {
             paused: z.boolean(),
             pausedReason: z.nullable(z.string()).optional(),
             projectId: z.string(),
-            triggerType: TriggerType$,
-            type: WatcherType$,
+            triggerType: TriggerType$.inboundSchema,
+            type: WatcherType$.inboundSchema,
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -159,8 +165,8 @@ export namespace Watcher$ {
         paused: boolean;
         pausedReason?: string | null | undefined;
         projectId: string;
-        triggerType: TriggerType;
-        type: WatcherType;
+        triggerType: string;
+        type: string;
         updatedAt: string;
         webhookUrl: string;
     };
@@ -185,8 +191,8 @@ export namespace Watcher$ {
             paused: z.boolean(),
             pausedReason: z.nullable(z.string()).optional(),
             projectId: z.string(),
-            triggerType: TriggerType$,
-            type: WatcherType$,
+            triggerType: TriggerType$.outboundSchema,
+            type: WatcherType$.outboundSchema,
             updatedAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:36.353Z"))

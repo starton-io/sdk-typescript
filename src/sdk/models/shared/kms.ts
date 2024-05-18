@@ -46,7 +46,10 @@ export namespace KmsMetadata$ {
 }
 
 /** @internal */
-export const KmsProvider$: z.ZodNativeEnum<typeof KmsProvider> = z.nativeEnum(KmsProvider);
+export namespace KmsProvider$ {
+    export const inboundSchema = z.nativeEnum(KmsProvider);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Wallets$ {
@@ -71,7 +74,7 @@ export namespace Kms$ {
             metadata: z.lazy(() => KmsMetadata$.inboundSchema).optional(),
             name: z.string(),
             projectId: z.string(),
-            provider: KmsProvider$,
+            provider: KmsProvider$.inboundSchema,
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -100,7 +103,7 @@ export namespace Kms$ {
         metadata?: KmsMetadata$.Outbound | undefined;
         name: string;
         projectId: string;
-        provider: KmsProvider;
+        provider: string;
         updatedAt: string;
         wallets?: Wallets$.Outbound | undefined;
     };
@@ -116,7 +119,7 @@ export namespace Kms$ {
             metadata: z.lazy(() => KmsMetadata$.outboundSchema).optional(),
             name: z.string(),
             projectId: z.string(),
-            provider: KmsProvider$,
+            provider: KmsProvider$.outboundSchema,
             updatedAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:38.167Z"))

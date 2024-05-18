@@ -67,8 +67,10 @@ export namespace CreateWatcherDtoMetadata$ {
 }
 
 /** @internal */
-export const CreateWatcherDtoType$: z.ZodNativeEnum<typeof CreateWatcherDtoType> =
-    z.nativeEnum(CreateWatcherDtoType);
+export namespace CreateWatcherDtoType$ {
+    export const inboundSchema = z.nativeEnum(CreateWatcherDtoType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CreateWatcherDto$ {
@@ -82,7 +84,7 @@ export namespace CreateWatcherDto$ {
             metadata: z.lazy(() => CreateWatcherDtoMetadata$.inboundSchema).optional(),
             name: z.nullable(z.string()).optional(),
             network: z.string(),
-            type: CreateWatcherDtoType$,
+            type: CreateWatcherDtoType$.inboundSchema,
             webhookUrl: z.string(),
         })
         .transform((v) => {
@@ -109,7 +111,7 @@ export namespace CreateWatcherDto$ {
         metadata?: CreateWatcherDtoMetadata$.Outbound | undefined;
         name?: string | null | undefined;
         network: string;
-        type: CreateWatcherDtoType;
+        type: string;
         webhookUrl: string;
     };
 
@@ -123,7 +125,7 @@ export namespace CreateWatcherDto$ {
             metadata: z.lazy(() => CreateWatcherDtoMetadata$.outboundSchema).optional(),
             name: z.nullable(z.string()).optional(),
             network: z.string(),
-            type: CreateWatcherDtoType$,
+            type: CreateWatcherDtoType$.outboundSchema,
             webhookUrl: z.string(),
         })
         .transform((v) => {

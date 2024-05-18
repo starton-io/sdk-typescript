@@ -18,7 +18,10 @@ export type Invitation = {
 };
 
 /** @internal */
-export const InvitationRole$: z.ZodNativeEnum<typeof InvitationRole> = z.nativeEnum(InvitationRole);
+export namespace InvitationRole$ {
+    export const inboundSchema = z.nativeEnum(InvitationRole);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Invitation$ {
@@ -32,7 +35,7 @@ export namespace Invitation$ {
             email: z.string(),
             id: z.string(),
             projectId: z.string(),
-            role: InvitationRole$,
+            role: InvitationRole$.inboundSchema,
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -55,7 +58,7 @@ export namespace Invitation$ {
         email: string;
         id: string;
         projectId: string;
-        role: InvitationRole;
+        role: string;
         updatedAt: string;
     };
 
@@ -68,7 +71,7 @@ export namespace Invitation$ {
             email: z.string(),
             id: z.string(),
             projectId: z.string(),
-            role: InvitationRole$,
+            role: InvitationRole$.outboundSchema,
             updatedAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:37.250Z"))

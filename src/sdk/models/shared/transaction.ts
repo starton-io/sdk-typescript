@@ -110,16 +110,22 @@ export namespace TransactionMetadata$ {
 }
 
 /** @internal */
-export const TransactionSpeed$: z.ZodNativeEnum<typeof TransactionSpeed> =
-    z.nativeEnum(TransactionSpeed);
+export namespace TransactionSpeed$ {
+    export const inboundSchema = z.nativeEnum(TransactionSpeed);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const TransactionState$: z.ZodNativeEnum<typeof TransactionState> =
-    z.nativeEnum(TransactionState);
+export namespace TransactionState$ {
+    export const inboundSchema = z.nativeEnum(TransactionState);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const TransactionStatus$: z.ZodNativeEnum<typeof TransactionStatus> =
-    z.nativeEnum(TransactionStatus);
+export namespace TransactionStatus$ {
+    export const inboundSchema = z.nativeEnum(TransactionStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Transaction$ {
@@ -166,9 +172,9 @@ export namespace Transaction$ {
                 .optional(),
             signedTransaction: z.nullable(z.string()).optional(),
             signerWallet: z.string(),
-            speed: z.nullable(TransactionSpeed$).optional(),
-            state: TransactionState$,
-            status: TransactionStatus$,
+            speed: z.nullable(TransactionSpeed$.inboundSchema).optional(),
+            state: TransactionState$.inboundSchema,
+            status: TransactionStatus$.inboundSchema,
             to: z.nullable(z.string()).optional(),
             transactionHash: z.nullable(z.string()).optional(),
             type: z.nullable(z.number()).optional(),
@@ -247,9 +253,9 @@ export namespace Transaction$ {
         publishedDate?: string | null | undefined;
         signedTransaction?: string | null | undefined;
         signerWallet: string;
-        speed?: TransactionSpeed | null | undefined;
-        state: TransactionState;
-        status: TransactionStatus;
+        speed?: string | null | undefined;
+        state: string;
+        status: string;
         to?: string | null | undefined;
         transactionHash?: string | null | undefined;
         type?: number | null | undefined;
@@ -285,9 +291,9 @@ export namespace Transaction$ {
             publishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             signedTransaction: z.nullable(z.string()).optional(),
             signerWallet: z.string(),
-            speed: z.nullable(TransactionSpeed$).optional(),
-            state: TransactionState$,
-            status: TransactionStatus$,
+            speed: z.nullable(TransactionSpeed$.outboundSchema).optional(),
+            state: TransactionState$.outboundSchema,
+            status: TransactionStatus$.outboundSchema,
             to: z.nullable(z.string()).optional(),
             transactionHash: z.nullable(z.string()).optional(),
             type: z.nullable(z.number()).optional(),

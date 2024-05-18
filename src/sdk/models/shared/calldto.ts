@@ -59,7 +59,10 @@ export namespace Params$ {
 }
 
 /** @internal */
-export const Speed$: z.ZodNativeEnum<typeof Speed> = z.nativeEnum(Speed);
+export namespace Speed$ {
+    export const inboundSchema = z.nativeEnum(Speed);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CallDto$ {
@@ -73,7 +76,7 @@ export namespace CallDto$ {
                 z.union([z.lazy(() => Three$.inboundSchema), z.string(), z.number(), z.boolean()])
             ),
             signerWallet: z.string(),
-            speed: Speed$.optional(),
+            speed: Speed$.inboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {
@@ -96,7 +99,7 @@ export namespace CallDto$ {
         nonce?: number | undefined;
         params: Array<Three$.Outbound | string | number | boolean>;
         signerWallet: string;
-        speed?: Speed | undefined;
+        speed?: string | undefined;
         value?: string | undefined;
     };
 
@@ -110,7 +113,7 @@ export namespace CallDto$ {
                 z.union([z.lazy(() => Three$.outboundSchema), z.string(), z.number(), z.boolean()])
             ),
             signerWallet: z.string(),
-            speed: Speed$.optional(),
+            speed: Speed$.outboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {

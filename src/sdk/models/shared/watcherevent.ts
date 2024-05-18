@@ -36,8 +36,10 @@ export namespace Payload$ {
 }
 
 /** @internal */
-export const WatcherEventStatus$: z.ZodNativeEnum<typeof WatcherEventStatus> =
-    z.nativeEnum(WatcherEventStatus);
+export namespace WatcherEventStatus$ {
+    export const inboundSchema = z.nativeEnum(WatcherEventStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace WatcherEvent$ {
@@ -54,7 +56,7 @@ export namespace WatcherEvent$ {
             network: z.string(),
             payload: z.lazy(() => Payload$.inboundSchema),
             projectId: z.string(),
-            status: WatcherEventStatus$,
+            status: WatcherEventStatus$.inboundSchema,
             txHash: z.string(),
             updatedAt: z
                 .string()
@@ -87,7 +89,7 @@ export namespace WatcherEvent$ {
         network: string;
         payload: Payload$.Outbound;
         projectId: string;
-        status: WatcherEventStatus;
+        status: string;
         txHash: string;
         updatedAt: string;
         watcherId: string;
@@ -105,7 +107,7 @@ export namespace WatcherEvent$ {
             network: z.string(),
             payload: z.lazy(() => Payload$.outboundSchema),
             projectId: z.string(),
-            status: WatcherEventStatus$,
+            status: WatcherEventStatus$.outboundSchema,
             txHash: z.string(),
             updatedAt: z
                 .date()

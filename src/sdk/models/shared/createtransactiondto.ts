@@ -64,8 +64,10 @@ export namespace CreateTransactionDtoMetadata$ {
 }
 
 /** @internal */
-export const CreateTransactionDtoSpeed$: z.ZodNativeEnum<typeof CreateTransactionDtoSpeed> =
-    z.nativeEnum(CreateTransactionDtoSpeed);
+export namespace CreateTransactionDtoSpeed$ {
+    export const inboundSchema = z.nativeEnum(CreateTransactionDtoSpeed);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CreateTransactionDto$ {
@@ -78,7 +80,7 @@ export namespace CreateTransactionDto$ {
             network: z.string(),
             nonce: z.number().int().optional(),
             signerWallet: z.string(),
-            speed: CreateTransactionDtoSpeed$.optional(),
+            speed: CreateTransactionDtoSpeed$.inboundSchema.optional(),
             to: z.string().optional(),
             value: z.string().optional(),
         })
@@ -105,7 +107,7 @@ export namespace CreateTransactionDto$ {
         network: string;
         nonce?: number | undefined;
         signerWallet: string;
-        speed?: CreateTransactionDtoSpeed | undefined;
+        speed?: string | undefined;
         to?: string | undefined;
         value?: string | undefined;
     };
@@ -119,7 +121,7 @@ export namespace CreateTransactionDto$ {
             network: z.string(),
             nonce: z.number().int().optional(),
             signerWallet: z.string(),
-            speed: CreateTransactionDtoSpeed$.optional(),
+            speed: CreateTransactionDtoSpeed$.outboundSchema.optional(),
             to: z.string().optional(),
             value: z.string().optional(),
         })

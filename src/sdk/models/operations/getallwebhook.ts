@@ -46,8 +46,10 @@ export type GetAllWebhookResponse = {
 };
 
 /** @internal */
-export const QueryParamStatus$: z.ZodNativeEnum<typeof QueryParamStatus> =
-    z.nativeEnum(QueryParamStatus);
+export namespace QueryParamStatus$ {
+    export const inboundSchema = z.nativeEnum(QueryParamStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace GetAllWebhookRequest$ {
@@ -55,7 +57,7 @@ export namespace GetAllWebhookRequest$ {
         .object({
             limit: z.number().int().optional(),
             page: z.number().int().optional(),
-            status: QueryParamStatus$.optional(),
+            status: QueryParamStatus$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -68,14 +70,14 @@ export namespace GetAllWebhookRequest$ {
     export type Outbound = {
         limit?: number | undefined;
         page?: number | undefined;
-        status?: QueryParamStatus | undefined;
+        status?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookRequest> = z
         .object({
             limit: z.number().int().optional(),
             page: z.number().int().optional(),
-            status: QueryParamStatus$.optional(),
+            status: QueryParamStatus$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

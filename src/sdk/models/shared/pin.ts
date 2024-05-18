@@ -46,10 +46,16 @@ export namespace PinMetadata$ {
 }
 
 /** @internal */
-export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+export namespace Status$ {
+    export const inboundSchema = z.nativeEnum(Status);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const PinType$: z.ZodNativeEnum<typeof PinType> = z.nativeEnum(PinType);
+export namespace PinType$ {
+    export const inboundSchema = z.nativeEnum(PinType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Pin$ {
@@ -69,8 +75,8 @@ export namespace Pin$ {
             origins: z.array(z.string()).optional(),
             projectId: z.string(),
             size: z.number().optional(),
-            status: Status$,
-            type: PinType$.optional(),
+            status: Status$.inboundSchema,
+            type: PinType$.inboundSchema.optional(),
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -108,8 +114,8 @@ export namespace Pin$ {
         origins?: Array<string> | undefined;
         projectId: string;
         size?: number | undefined;
-        status: Status;
-        type?: PinType | undefined;
+        status: string;
+        type?: string | undefined;
         updatedAt: string;
     };
 
@@ -128,8 +134,8 @@ export namespace Pin$ {
             origins: z.array(z.string()).optional(),
             projectId: z.string(),
             size: z.number().optional(),
-            status: Status$,
-            type: PinType$.optional(),
+            status: Status$.outboundSchema,
+            type: PinType$.outboundSchema.optional(),
             updatedAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:35.191Z"))

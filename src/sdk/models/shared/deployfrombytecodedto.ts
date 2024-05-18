@@ -69,8 +69,10 @@ export namespace DeployFromBytecodeDtoParams$ {
 }
 
 /** @internal */
-export const DeployFromBytecodeDtoSpeed$: z.ZodNativeEnum<typeof DeployFromBytecodeDtoSpeed> =
-    z.nativeEnum(DeployFromBytecodeDtoSpeed);
+export namespace DeployFromBytecodeDtoSpeed$ {
+    export const inboundSchema = z.nativeEnum(DeployFromBytecodeDtoSpeed);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace DeployFromBytecodeDto$ {
@@ -93,7 +95,7 @@ export namespace DeployFromBytecodeDto$ {
                 ])
             ),
             signerWallet: z.string(),
-            speed: DeployFromBytecodeDtoSpeed$.optional(),
+            speed: DeployFromBytecodeDtoSpeed$.inboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {
@@ -124,7 +126,7 @@ export namespace DeployFromBytecodeDto$ {
         nonce?: number | undefined;
         params: Array<DeployFromBytecodeDto3$.Outbound | string | number | boolean>;
         signerWallet: string;
-        speed?: DeployFromBytecodeDtoSpeed | undefined;
+        speed?: string | undefined;
         value?: string | undefined;
     };
 
@@ -147,7 +149,7 @@ export namespace DeployFromBytecodeDto$ {
                 ])
             ),
             signerWallet: z.string(),
-            speed: DeployFromBytecodeDtoSpeed$.optional(),
+            speed: DeployFromBytecodeDtoSpeed$.outboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {

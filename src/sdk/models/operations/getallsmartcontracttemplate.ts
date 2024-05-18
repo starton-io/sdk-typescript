@@ -56,7 +56,10 @@ export type GetAllSmartContractTemplateResponse = {
 };
 
 /** @internal */
-export const Category$: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+export namespace Category$ {
+    export const inboundSchema = z.nativeEnum(Category);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace GetAllSmartContractTemplateRequest$ {
@@ -67,7 +70,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
     > = z
         .object({
             blockchain: z.string().optional(),
-            category: Category$.optional(),
+            category: Category$.inboundSchema.optional(),
             includeCompilationDetails: z.boolean().optional(),
             includeForm: z.boolean().optional(),
             isActivated: z.boolean().optional(),
@@ -94,7 +97,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
 
     export type Outbound = {
         blockchain?: string | undefined;
-        category?: Category | undefined;
+        category?: string | undefined;
         includeCompilationDetails?: boolean | undefined;
         includeForm?: boolean | undefined;
         isActivated?: boolean | undefined;
@@ -111,7 +114,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
     > = z
         .object({
             blockchain: z.string().optional(),
-            category: Category$.optional(),
+            category: Category$.outboundSchema.optional(),
             includeCompilationDetails: z.boolean().optional(),
             includeForm: z.boolean().optional(),
             isActivated: z.boolean().optional(),

@@ -47,7 +47,10 @@ export namespace Metadata$ {
 }
 
 /** @internal */
-export const Provider$: z.ZodNativeEnum<typeof Provider> = z.nativeEnum(Provider);
+export namespace Provider$ {
+    export const inboundSchema = z.nativeEnum(Provider);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CreateKmsDto$ {
@@ -58,7 +61,7 @@ export namespace CreateKmsDto$ {
                 .optional(),
             metadata: z.lazy(() => Metadata$.inboundSchema).optional(),
             name: z.string(),
-            provider: Provider$,
+            provider: Provider$.inboundSchema,
             secret: z.string(),
         })
         .transform((v) => {
@@ -75,7 +78,7 @@ export namespace CreateKmsDto$ {
         credentials?: AwsKmsCredentialsDto$.Outbound | VaultKmsCredentialsDto$.Outbound | undefined;
         metadata?: Metadata$.Outbound | undefined;
         name: string;
-        provider: Provider;
+        provider: string;
         secret: string;
     };
 
@@ -89,7 +92,7 @@ export namespace CreateKmsDto$ {
                 .optional(),
             metadata: z.lazy(() => Metadata$.outboundSchema).optional(),
             name: z.string(),
-            provider: Provider$,
+            provider: Provider$.outboundSchema,
             secret: z.string(),
         })
         .transform((v) => {

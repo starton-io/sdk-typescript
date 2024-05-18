@@ -51,7 +51,10 @@ export namespace SmartContractTemplateAbi$ {
 }
 
 /** @internal */
-export const Category$: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+export namespace Category$ {
+    export const inboundSchema = z.nativeEnum(Category);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace SmartContractTemplateCompilationDetails$ {
@@ -85,7 +88,7 @@ export namespace SmartContractTemplate$ {
         .object({
             abi: z.array(z.lazy(() => SmartContractTemplateAbi$.inboundSchema)),
             blockchains: z.array(z.string()),
-            category: Category$,
+            category: Category$.inboundSchema,
             compilationDetails: z
                 .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema))
                 .optional(),
@@ -138,7 +141,7 @@ export namespace SmartContractTemplate$ {
     export type Outbound = {
         abi: Array<SmartContractTemplateAbi$.Outbound>;
         blockchains: Array<string>;
-        category: Category;
+        category: string;
         compilationDetails?: SmartContractTemplateCompilationDetails$.Outbound | null | undefined;
         createdAt: string;
         description: string;
@@ -159,7 +162,7 @@ export namespace SmartContractTemplate$ {
         .object({
             abi: z.array(z.lazy(() => SmartContractTemplateAbi$.outboundSchema)),
             blockchains: z.array(z.string()),
-            category: Category$,
+            category: Category$.outboundSchema,
             compilationDetails: z
                 .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema))
                 .optional(),

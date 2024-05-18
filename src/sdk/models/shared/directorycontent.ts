@@ -17,8 +17,10 @@ export type DirectoryContent = {
 };
 
 /** @internal */
-export const DirectoryContentType$: z.ZodNativeEnum<typeof DirectoryContentType> =
-    z.nativeEnum(DirectoryContentType);
+export namespace DirectoryContentType$ {
+    export const inboundSchema = z.nativeEnum(DirectoryContentType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace DirectoryContent$ {
@@ -27,7 +29,7 @@ export namespace DirectoryContent$ {
             cid: z.string(),
             name: z.string(),
             size: z.number(),
-            type: DirectoryContentType$.optional(),
+            type: DirectoryContentType$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -42,7 +44,7 @@ export namespace DirectoryContent$ {
         cid: string;
         name: string;
         size: number;
-        type?: DirectoryContentType | undefined;
+        type?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DirectoryContent> = z
@@ -50,7 +52,7 @@ export namespace DirectoryContent$ {
             cid: z.string(),
             name: z.string(),
             size: z.number(),
-            type: DirectoryContentType$.optional(),
+            type: DirectoryContentType$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

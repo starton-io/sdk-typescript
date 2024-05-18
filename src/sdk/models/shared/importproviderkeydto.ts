@@ -31,8 +31,10 @@ export namespace ImportProviderKeyDtoMetadata$ {
 }
 
 /** @internal */
-export const ImportProviderKeyDtoProvider$: z.ZodNativeEnum<typeof ImportProviderKeyDtoProvider> =
-    z.nativeEnum(ImportProviderKeyDtoProvider);
+export namespace ImportProviderKeyDtoProvider$ {
+    export const inboundSchema = z.nativeEnum(ImportProviderKeyDtoProvider);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ImportProviderKeyDto$ {
@@ -41,7 +43,7 @@ export namespace ImportProviderKeyDto$ {
             description: z.string().optional(),
             metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.inboundSchema).optional(),
             name: z.string().optional(),
-            provider: ImportProviderKeyDtoProvider$,
+            provider: ImportProviderKeyDtoProvider$.inboundSchema,
             providerKeyId: z.string().optional(),
         })
         .transform((v) => {
@@ -58,7 +60,7 @@ export namespace ImportProviderKeyDto$ {
         description?: string | undefined;
         metadata?: ImportProviderKeyDtoMetadata$.Outbound | undefined;
         name?: string | undefined;
-        provider: ImportProviderKeyDtoProvider;
+        provider: string;
         providerKeyId?: string | undefined;
     };
 
@@ -67,7 +69,7 @@ export namespace ImportProviderKeyDto$ {
             description: z.string().optional(),
             metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.outboundSchema).optional(),
             name: z.string().optional(),
-            provider: ImportProviderKeyDtoProvider$,
+            provider: ImportProviderKeyDtoProvider$.outboundSchema,
             providerKeyId: z.string().optional(),
         })
         .transform((v) => {

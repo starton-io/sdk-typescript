@@ -100,8 +100,10 @@ export namespace DeployFromTemplateDtoParams$ {
 }
 
 /** @internal */
-export const DeployFromTemplateDtoSpeed$: z.ZodNativeEnum<typeof DeployFromTemplateDtoSpeed> =
-    z.nativeEnum(DeployFromTemplateDtoSpeed);
+export namespace DeployFromTemplateDtoSpeed$ {
+    export const inboundSchema = z.nativeEnum(DeployFromTemplateDtoSpeed);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace DeployFromTemplateDto$ {
@@ -122,7 +124,7 @@ export namespace DeployFromTemplateDto$ {
                 ])
             ),
             signerWallet: z.string(),
-            speed: DeployFromTemplateDtoSpeed$.optional(),
+            speed: DeployFromTemplateDtoSpeed$.inboundSchema.optional(),
             templateId: z.string(),
             value: z.string().optional(),
         })
@@ -151,7 +153,7 @@ export namespace DeployFromTemplateDto$ {
         nonce?: number | undefined;
         params: Array<DeployFromTemplateDto3$.Outbound | string | number | boolean>;
         signerWallet: string;
-        speed?: DeployFromTemplateDtoSpeed | undefined;
+        speed?: string | undefined;
         templateId: string;
         value?: string | undefined;
     };
@@ -173,7 +175,7 @@ export namespace DeployFromTemplateDto$ {
                 ])
             ),
             signerWallet: z.string(),
-            speed: DeployFromTemplateDtoSpeed$.optional(),
+            speed: DeployFromTemplateDtoSpeed$.outboundSchema.optional(),
             templateId: z.string(),
             value: z.string().optional(),
         })

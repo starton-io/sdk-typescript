@@ -34,11 +34,16 @@ export type AbiObjectDto = {
 };
 
 /** @internal */
-export const StateMutability$: z.ZodNativeEnum<typeof StateMutability> =
-    z.nativeEnum(StateMutability);
+export namespace StateMutability$ {
+    export const inboundSchema = z.nativeEnum(StateMutability);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
-export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
+export namespace Type$ {
+    export const inboundSchema = z.nativeEnum(Type);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace AbiObjectDto$ {
@@ -50,8 +55,8 @@ export namespace AbiObjectDto$ {
             name: z.string().optional(),
             outputs: AbiOutputDto$.inboundSchema.optional(),
             payability: z.boolean().optional(),
-            stateMutability: StateMutability$.optional(),
-            type: Type$,
+            stateMutability: StateMutability$.inboundSchema.optional(),
+            type: Type$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -75,8 +80,8 @@ export namespace AbiObjectDto$ {
         name?: string | undefined;
         outputs?: AbiOutputDto$.Outbound | undefined;
         payability?: boolean | undefined;
-        stateMutability?: StateMutability | undefined;
-        type: Type;
+        stateMutability?: string | undefined;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiObjectDto> = z
@@ -87,8 +92,8 @@ export namespace AbiObjectDto$ {
             name: z.string().optional(),
             outputs: AbiOutputDto$.outboundSchema.optional(),
             payability: z.boolean().optional(),
-            stateMutability: StateMutability$.optional(),
-            type: Type$,
+            stateMutability: StateMutability$.outboundSchema.optional(),
+            type: Type$.outboundSchema,
         })
         .transform((v) => {
             return {

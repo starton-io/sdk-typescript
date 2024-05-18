@@ -16,15 +16,17 @@ export type ExplorerApiDto = {
 };
 
 /** @internal */
-export const ExplorerApiDtoType$: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
-    z.nativeEnum(ExplorerApiDtoType);
+export namespace ExplorerApiDtoType$ {
+    export const inboundSchema = z.nativeEnum(ExplorerApiDtoType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ExplorerApiDto$ {
     export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> = z
         .object({
             apiKey: z.string(),
-            type: ExplorerApiDtoType$,
+            type: ExplorerApiDtoType$.inboundSchema,
             url: z.string(),
         })
         .transform((v) => {
@@ -37,14 +39,14 @@ export namespace ExplorerApiDto$ {
 
     export type Outbound = {
         apiKey: string;
-        type: ExplorerApiDtoType;
+        type: string;
         url: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExplorerApiDto> = z
         .object({
             apiKey: z.string(),
-            type: ExplorerApiDtoType$,
+            type: ExplorerApiDtoType$.outboundSchema,
             url: z.string(),
         })
         .transform((v) => {

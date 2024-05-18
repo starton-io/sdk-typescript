@@ -59,7 +59,10 @@ export type GetAllWatcherResponse = {
 };
 
 /** @internal */
-export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
+export namespace Type$ {
+    export const inboundSchema = z.nativeEnum(Type);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace GetAllWatcherRequest$ {
@@ -72,7 +75,7 @@ export namespace GetAllWatcherRequest$ {
             network: z.string().optional(),
             page: z.number().int().optional(),
             paused: z.boolean().optional(),
-            type: Type$.optional(),
+            type: Type$.inboundSchema.optional(),
             webhookUrl: z.string().optional(),
         })
         .transform((v) => {
@@ -99,7 +102,7 @@ export namespace GetAllWatcherRequest$ {
         network?: string | undefined;
         page?: number | undefined;
         paused?: boolean | undefined;
-        type?: Type | undefined;
+        type?: string | undefined;
         webhookUrl?: string | undefined;
     };
 
@@ -112,7 +115,7 @@ export namespace GetAllWatcherRequest$ {
             network: z.string().optional(),
             page: z.number().int().optional(),
             paused: z.boolean().optional(),
-            type: Type$.optional(),
+            type: Type$.outboundSchema.optional(),
             webhookUrl: z.string().optional(),
         })
         .transform((v) => {

@@ -14,14 +14,17 @@ export type CreateInvitationDto = {
 };
 
 /** @internal */
-export const Role$: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
+export namespace Role$ {
+    export const inboundSchema = z.nativeEnum(Role);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CreateInvitationDto$ {
     export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, unknown> = z
         .object({
             email: z.string(),
-            role: Role$,
+            role: Role$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -32,13 +35,13 @@ export namespace CreateInvitationDto$ {
 
     export type Outbound = {
         email: string;
-        role: Role;
+        role: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateInvitationDto> = z
         .object({
             email: z.string(),
-            role: Role$,
+            role: Role$.outboundSchema,
         })
         .transform((v) => {
             return {

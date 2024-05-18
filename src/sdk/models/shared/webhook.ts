@@ -46,7 +46,10 @@ export namespace WebhookPayload$ {
 }
 
 /** @internal */
-export const WebhookStatus$: z.ZodNativeEnum<typeof WebhookStatus> = z.nativeEnum(WebhookStatus);
+export namespace WebhookStatus$ {
+    export const inboundSchema = z.nativeEnum(WebhookStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Webhook$ {
@@ -62,7 +65,7 @@ export namespace Webhook$ {
             payload: z.nullable(z.lazy(() => WebhookPayload$.inboundSchema)),
             projectId: z.string(),
             refId: z.string(),
-            status: WebhookStatus$,
+            status: WebhookStatus$.inboundSchema,
             updatedAt: z
                 .string()
                 .datetime({ offset: true })
@@ -91,7 +94,7 @@ export namespace Webhook$ {
         payload: WebhookPayload$.Outbound | null;
         projectId: string;
         refId: string;
-        status: WebhookStatus;
+        status: string;
         updatedAt: string;
         url: string;
     };
@@ -107,7 +110,7 @@ export namespace Webhook$ {
             payload: z.nullable(z.lazy(() => WebhookPayload$.outboundSchema)),
             projectId: z.string(),
             refId: z.string(),
-            status: WebhookStatus$,
+            status: WebhookStatus$.outboundSchema,
             updatedAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:35.791Z"))

@@ -66,8 +66,10 @@ export namespace TransactionLogContext$ {
 }
 
 /** @internal */
-export const TransactionLogType$: z.ZodNativeEnum<typeof TransactionLogType> =
-    z.nativeEnum(TransactionLogType);
+export namespace TransactionLogType$ {
+    export const inboundSchema = z.nativeEnum(TransactionLogType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace TransactionLog$ {
@@ -76,7 +78,7 @@ export namespace TransactionLog$ {
             context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
             createdAt: z.string(),
             message: z.string(),
-            type: TransactionLogType$,
+            type: TransactionLogType$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -91,7 +93,7 @@ export namespace TransactionLog$ {
         context?: TransactionLogContext$.Outbound | undefined;
         createdAt: string;
         message: string;
-        type: TransactionLogType;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLog> = z
@@ -99,7 +101,7 @@ export namespace TransactionLog$ {
             context: z.lazy(() => TransactionLogContext$.outboundSchema).optional(),
             createdAt: z.string(),
             message: z.string(),
-            type: TransactionLogType$,
+            type: TransactionLogType$.outboundSchema,
         })
         .transform((v) => {
             return {
