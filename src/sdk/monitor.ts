@@ -106,79 +106,16 @@ export class Monitor extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.CreateWatcherResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Watcher: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.CreateWatcherResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 409, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.CreateWatcherMonitorResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 412, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.CreateWatcherMonitorResponseResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 500, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.CreateWatcherMonitorResponse500ResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.CreateWatcherResponse>()
+            .json(201, operations.CreateWatcherResponse$, { key: "Watcher" })
+            .json(400, errors.CreateWatcherResponseBody$, { err: true })
+            .json(409, errors.CreateWatcherMonitorResponseBody$, { err: true })
+            .json(412, errors.CreateWatcherMonitorResponseResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .json(500, errors.CreateWatcherMonitorResponse500ResponseBody$, { err: true })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -248,53 +185,14 @@ export class Monitor extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.DeleteWatcherResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        number: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.DeleteWatcherResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.DeleteWatcherMonitorResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.DeleteWatcherResponse>()
+            .json(200, operations.DeleteWatcherResponse$, { key: "number" })
+            .json(400, errors.DeleteWatcherResponseBody$, { err: true })
+            .json(404, errors.DeleteWatcherMonitorResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -378,6 +276,19 @@ export class Monitor extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$, raw$] = await this.matcher<operations.GetAllWatcherResponse>()
+            .json(200, operations.GetAllWatcherResponse$, { key: "WatcherPaginated" })
+            .json(400, errors.GetAllWatcherResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllWatcherResponse> => {
             const page = input$.page || 0;
             const nextPage = page + 1;
@@ -408,50 +319,8 @@ export class Monitor extends ClientSDK {
                 );
         };
 
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const parsed = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetAllWatcherResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WatcherPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            const next$ = nextFunc(responseBody);
-            const page$ = { ...parsed, next: next$ };
-            const result = { ...page$, ...createPageIterator(page$) };
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetAllWatcherResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const page$ = { ...result$, next: nextFunc(raw$) };
+        return { ...page$, ...createPageIterator(page$) };
     }
 
     /**
@@ -519,6 +388,19 @@ export class Monitor extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$, raw$] = await this.matcher<operations.GetAllWatcherEventResponse>()
+            .json(200, operations.GetAllWatcherEventResponse$, { key: "WatcherEventPaginated" })
+            .json(400, errors.GetAllWatcherEventResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllWatcherEventResponse> => {
@@ -551,50 +433,8 @@ export class Monitor extends ClientSDK {
                 );
         };
 
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const parsed = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetAllWatcherEventResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WatcherEventPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            const next$ = nextFunc(responseBody);
-            const page$ = { ...parsed, next: next$ };
-            const result = { ...page$, ...createPageIterator(page$) };
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetAllWatcherEventResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const page$ = { ...result$, next: nextFunc(raw$) };
+        return { ...page$, ...createPageIterator(page$) };
     }
 
     /**
@@ -664,53 +504,14 @@ export class Monitor extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetOneWatcherResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Watcher: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneWatcherResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneWatcherMonitorResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.GetOneWatcherResponse>()
+            .json(200, operations.GetOneWatcherResponse$, { key: "Watcher" })
+            .json(400, errors.GetOneWatcherResponseBody$, { err: true })
+            .json(404, errors.GetOneWatcherMonitorResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -784,53 +585,14 @@ export class Monitor extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetOneWatcherEventResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WatcherEvent: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneWatcherEventResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneWatcherEventMonitorResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.GetOneWatcherEventResponse>()
+            .json(200, operations.GetOneWatcherEventResponse$, { key: "WatcherEvent" })
+            .json(400, errors.GetOneWatcherEventResponseBody$, { err: true })
+            .json(404, errors.GetOneWatcherEventMonitorResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -901,52 +663,13 @@ export class Monitor extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.UpdateWatcherResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Watcher: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UpdateWatcherResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UpdateWatcherMonitorResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.UpdateWatcherResponse>()
+            .json(200, operations.UpdateWatcherResponse$, { key: "Watcher" })
+            .json(400, errors.UpdateWatcherResponseBody$, { err: true })
+            .json(404, errors.UpdateWatcherMonitorResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

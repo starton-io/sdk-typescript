@@ -127,6 +127,21 @@ export class Template extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$, raw$] = await this.matcher<operations.GetAllSmartContractTemplateResponse>()
+            .json(200, operations.GetAllSmartContractTemplateResponse$, {
+                key: "SmartContractTemplatePaginated",
+            })
+            .json(400, errors.GetAllSmartContractTemplateResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.GetAllSmartContractTemplateResponse> => {
@@ -159,50 +174,8 @@ export class Template extends ClientSDK {
                 );
         };
 
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const parsed = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetAllSmartContractTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        SmartContractTemplatePaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            const next$ = nextFunc(responseBody);
-            const page$ = { ...parsed, next: next$ };
-            const result = { ...page$, ...createPageIterator(page$) };
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetAllSmartContractTemplateResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const page$ = { ...result$, next: nextFunc(raw$) };
+        return { ...page$, ...createPageIterator(page$) };
     }
 
     /**
@@ -279,54 +252,17 @@ export class Template extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetOneSmartContractTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        SmartContractTemplate: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneSmartContractTemplateResponseBody$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            ...val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.GetOneSmartContractTemplateResponse>()
+            .json(200, operations.GetOneSmartContractTemplateResponse$, {
+                key: "SmartContractTemplate",
+            })
+            .json(400, errors.GetOneSmartContractTemplateResponseBody$, { err: true })
+            .json(404, errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$, {
+                err: true,
+            })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

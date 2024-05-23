@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllSettingRelayerResponse](../../sdk/models/operations/getallsettingrelayerresponse.md)>**
+**Promise\<[operations.GetAllSettingRelayerResponse](../../sdk/models/operations/getallsettingrelayerresponse.md)\>**
 ### Errors
 
 | Error Object                                                     | Status Code                                                      | Content Type                                                     |
@@ -95,7 +95,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateSettingRelayerResponse](../../sdk/models/operations/updatesettingrelayerresponse.md)>**
+**Promise\<[operations.UpdateSettingRelayerResponse](../../sdk/models/operations/updatesettingrelayerresponse.md)\>**
 ### Errors
 
 | Error Object                                                     | Status Code                                                      | Content Type                                                     |

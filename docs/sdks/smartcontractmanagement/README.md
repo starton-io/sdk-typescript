@@ -69,7 +69,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CallSmartContractResponse](../../sdk/models/operations/callsmartcontractresponse.md)>**
+**Promise\<[operations.CallSmartContractResponse](../../sdk/models/operations/callsmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                           | Status Code                                                            | Content Type                                                           |
@@ -117,7 +117,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteSmartContractResponse](../../sdk/models/operations/deletesmartcontractresponse.md)>**
+**Promise\<[operations.DeleteSmartContractResponse](../../sdk/models/operations/deletesmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |
@@ -180,7 +180,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeployFromBytecodeSmartContractResponse](../../sdk/models/operations/deployfrombytecodesmartcontractresponse.md)>**
+**Promise\<[operations.DeployFromBytecodeSmartContractResponse](../../sdk/models/operations/deployfrombytecodesmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
@@ -239,7 +239,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeployFromTemplateSmartContractResponse](../../sdk/models/operations/deployfromtemplatesmartcontractresponse.md)>**
+**Promise\<[operations.DeployFromTemplateSmartContractResponse](../../sdk/models/operations/deployfromtemplatesmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                                      | Status Code                                                                       | Content Type                                                                      |
@@ -291,7 +291,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllSmartContractResponse](../../sdk/models/operations/getallsmartcontractresponse.md)>**
+**Promise\<[operations.GetAllSmartContractResponse](../../sdk/models/operations/getallsmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -336,7 +336,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAvailableFunctionsSmartContractResponse](../../sdk/models/operations/getavailablefunctionssmartcontractresponse.md)>**
+**Promise\<[operations.GetAvailableFunctionsSmartContractResponse](../../sdk/models/operations/getavailablefunctionssmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
@@ -385,7 +385,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneSmartContractResponse](../../sdk/models/operations/getonesmartcontractresponse.md)>**
+**Promise\<[operations.GetOneSmartContractResponse](../../sdk/models/operations/getonesmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |
@@ -452,7 +452,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ImportExistingSmartContractResponse](../../sdk/models/operations/importexistingsmartcontractresponse.md)>**
+**Promise\<[operations.ImportExistingSmartContractResponse](../../sdk/models/operations/importexistingsmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
@@ -506,7 +506,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ReadSmartContractResponse](../../sdk/models/operations/readsmartcontractresponse.md)>**
+**Promise\<[operations.ReadSmartContractResponse](../../sdk/models/operations/readsmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                        | Status Code                                                         | Content Type                                                        |
@@ -554,7 +554,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateSmartContractResponse](../../sdk/models/operations/updatesmartcontractresponse.md)>**
+**Promise\<[operations.UpdateSmartContractResponse](../../sdk/models/operations/updatesmartcontractresponse.md)\>**
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |

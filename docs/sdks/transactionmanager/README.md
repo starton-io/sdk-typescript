@@ -58,7 +58,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateTransactionResponse](../../sdk/models/operations/createtransactionresponse.md)>**
+**Promise\<[operations.CreateTransactionResponse](../../sdk/models/operations/createtransactionresponse.md)\>**
 ### Errors
 
 | Error Object                                                      | Status Code                                                       | Content Type                                                      |
@@ -111,7 +111,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllTransactionResponse](../../sdk/models/operations/getalltransactionresponse.md)>**
+**Promise\<[operations.GetAllTransactionResponse](../../sdk/models/operations/getalltransactionresponse.md)\>**
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
@@ -156,7 +156,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAvailableNoncesWalletResponse](../../sdk/models/operations/getavailablenonceswalletresponse.md)>**
+**Promise\<[operations.GetAvailableNoncesWalletResponse](../../sdk/models/operations/getavailablenonceswalletresponse.md)\>**
 ### Errors
 
 | Error Object                                                             | Status Code                                                              | Content Type                                                             |
@@ -203,7 +203,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneTransactionResponse](../../sdk/models/operations/getonetransactionresponse.md)>**
+**Promise\<[operations.GetOneTransactionResponse](../../sdk/models/operations/getonetransactionresponse.md)\>**
 ### Errors
 
 | Error Object                                           | Status Code                                            | Content Type                                           |
@@ -249,7 +249,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
+**Promise\<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)\>**
 ### Errors
 
 | Error Object                                                          | Status Code                                                           | Content Type                                                          |

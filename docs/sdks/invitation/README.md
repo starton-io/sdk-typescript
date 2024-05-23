@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateInvitationResponse](../../sdk/models/operations/createinvitationresponse.md)>**
+**Promise\<[operations.CreateInvitationResponse](../../sdk/models/operations/createinvitationresponse.md)\>**
 ### Errors
 
 | Error Object                                               | Status Code                                                | Content Type                                               |
@@ -90,7 +90,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteInvitationResponse](../../sdk/models/operations/deleteinvitationresponse.md)>**
+**Promise\<[operations.DeleteInvitationResponse](../../sdk/models/operations/deleteinvitationresponse.md)\>**
 ### Errors
 
 | Error Object                                               | Status Code                                                | Content Type                                               |
@@ -137,7 +137,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllInvitationResponse](../../sdk/models/operations/getallinvitationresponse.md)>**
+**Promise\<[operations.GetAllInvitationResponse](../../sdk/models/operations/getallinvitationresponse.md)\>**
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

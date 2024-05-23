@@ -53,7 +53,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)>**
+**Promise\<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -97,7 +97,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteWalletResponse](../../sdk/models/operations/deletewalletresponse.md)>**
+**Promise\<[operations.DeleteWalletResponse](../../sdk/models/operations/deletewalletresponse.md)\>**
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllWalletResponse](../../sdk/models/operations/getallwalletresponse.md)>**
+**Promise\<[operations.GetAllWalletResponse](../../sdk/models/operations/getallwalletresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -188,7 +188,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneWalletResponse](../../sdk/models/operations/getonewalletresponse.md)>**
+**Promise\<[operations.GetOneWalletResponse](../../sdk/models/operations/getonewalletresponse.md)\>**
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -234,7 +234,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ImportProviderKeyWalletResponse](../../sdk/models/operations/importproviderkeywalletresponse.md)>**
+**Promise\<[operations.ImportProviderKeyWalletResponse](../../sdk/models/operations/importproviderkeywalletresponse.md)\>**
 ### Errors
 
 | Error Object                               | Status Code                                | Content Type                               |
@@ -282,7 +282,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ClaimFaucetResponse](../../sdk/models/operations/claimfaucetresponse.md)>**
+**Promise\<[operations.ClaimFaucetResponse](../../sdk/models/operations/claimfaucetresponse.md)\>**
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
@@ -328,7 +328,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)>**
+**Promise\<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)\>**
 ### Errors
 
 | Error Object                                                          | Status Code                                                           | Content Type                                                          |
@@ -378,7 +378,7 @@ run();
 
 ### Response
 
-**Promise<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)>**
+**Promise\<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)\>**
 ### Errors
 
 | Error Object                               | Status Code                                | Content Type                               |
@@ -424,7 +424,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)>**
+**Promise\<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)\>**
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |

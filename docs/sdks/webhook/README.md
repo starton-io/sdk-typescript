@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CancelWebhookResponse](../../sdk/models/operations/cancelwebhookresponse.md)>**
+**Promise\<[operations.CancelWebhookResponse](../../sdk/models/operations/cancelwebhookresponse.md)\>**
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
@@ -100,7 +100,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllWebhookResponse](../../sdk/models/operations/getallwebhookresponse.md)>**
+**Promise\<[operations.GetAllWebhookResponse](../../sdk/models/operations/getallwebhookresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneWebhookResponse](../../sdk/models/operations/getonewebhookresponse.md)>**
+**Promise\<[operations.GetOneWebhookResponse](../../sdk/models/operations/getonewebhookresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -186,7 +186,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneWebhookSigningSecretResponse](../../sdk/models/operations/getonewebhooksigningsecretresponse.md)>**
+**Promise\<[operations.GetOneWebhookSigningSecretResponse](../../sdk/models/operations/getonewebhooksigningsecretresponse.md)\>**
 ### Errors
 
 | Error Object                                  | Status Code                                   | Content Type                                  |
@@ -227,7 +227,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateWebhookSigningSecretResponse](../../sdk/models/operations/createwebhooksigningsecretresponse.md)>**
+**Promise\<[operations.CreateWebhookSigningSecretResponse](../../sdk/models/operations/createwebhooksigningsecretresponse.md)\>**
 ### Errors
 
 | Error Object                                         | Status Code                                          | Content Type                                         |
@@ -272,7 +272,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ResendWebhookResponse](../../sdk/models/operations/resendwebhookresponse.md)>**
+**Promise\<[operations.ResendWebhookResponse](../../sdk/models/operations/resendwebhookresponse.md)\>**
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |

@@ -53,7 +53,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeletePinResponse](../../sdk/models/operations/deletepinresponse.md)>**
+**Promise\<[operations.DeletePinResponse](../../sdk/models/operations/deletepinresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -100,7 +100,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllPinResponse](../../sdk/models/operations/getallpinresponse.md)>**
+**Promise\<[operations.GetAllPinResponse](../../sdk/models/operations/getallpinresponse.md)\>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOnePinResponse](../../sdk/models/operations/getonepinresponse.md)>**
+**Promise\<[operations.GetOnePinResponse](../../sdk/models/operations/getonepinresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -186,7 +186,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetStorageUsedPinResponse](../../sdk/models/operations/getstorageusedpinresponse.md)>**
+**Promise\<[operations.GetStorageUsedPinResponse](../../sdk/models/operations/getstorageusedpinresponse.md)\>**
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
@@ -231,7 +231,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreatePinResponse](../../sdk/models/operations/createpinresponse.md)>**
+**Promise\<[operations.CreatePinResponse](../../sdk/models/operations/createpinresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -277,7 +277,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdatePinResponse](../../sdk/models/operations/updatepinresponse.md)>**
+**Promise\<[operations.UpdatePinResponse](../../sdk/models/operations/updatepinresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -320,7 +320,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadFromFilePinResponse](../../sdk/models/operations/uploadfromfilepinresponse.md)>**
+**Promise\<[operations.UploadFromFilePinResponse](../../sdk/models/operations/uploadfromfilepinresponse.md)\>**
 ### Errors
 
 | Error Object                             | Status Code                              | Content Type                             |
@@ -363,7 +363,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadFromFolderPinResponse](../../sdk/models/operations/uploadfromfolderpinresponse.md)>**
+**Promise\<[operations.UploadFromFolderPinResponse](../../sdk/models/operations/uploadfromfolderpinresponse.md)\>**
 ### Errors
 
 | Error Object                               | Status Code                                | Content Type                               |
@@ -409,7 +409,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadFromJsonPinResponse](../../sdk/models/operations/uploadfromjsonpinresponse.md)>**
+**Promise\<[operations.UploadFromJsonPinResponse](../../sdk/models/operations/uploadfromjsonpinresponse.md)\>**
 ### Errors
 
 | Error Object                             | Status Code                              | Content Type                             |

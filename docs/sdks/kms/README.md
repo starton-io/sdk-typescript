@@ -52,7 +52,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateKmsResponse](../../sdk/models/operations/createkmsresponse.md)>**
+**Promise\<[operations.CreateKmsResponse](../../sdk/models/operations/createkmsresponse.md)\>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
@@ -96,7 +96,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteKmsResponse](../../sdk/models/operations/deletekmsresponse.md)>**
+**Promise\<[operations.DeleteKmsResponse](../../sdk/models/operations/deletekmsresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -143,7 +143,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllKmsResponse](../../sdk/models/operations/getallkmsresponse.md)>**
+**Promise\<[operations.GetAllKmsResponse](../../sdk/models/operations/getallkmsresponse.md)\>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
@@ -187,7 +187,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneKmsResponse](../../sdk/models/operations/getonekmsresponse.md)>**
+**Promise\<[operations.GetOneKmsResponse](../../sdk/models/operations/getonekmsresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -233,7 +233,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateKmsResponse](../../sdk/models/operations/updatekmsresponse.md)>**
+**Promise\<[operations.UpdateKmsResponse](../../sdk/models/operations/updatekmsresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

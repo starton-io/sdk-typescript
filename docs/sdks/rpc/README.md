@@ -48,7 +48,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateRpcResponse](../../sdk/models/operations/createrpcresponse.md)>**
+**Promise\<[operations.CreateRpcResponse](../../sdk/models/operations/createrpcresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteRpcResponse](../../sdk/models/operations/deleterpcresponse.md)>**
+**Promise\<[operations.DeleteRpcResponse](../../sdk/models/operations/deleterpcresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -142,7 +142,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllRpcResponse](../../sdk/models/operations/getallrpcresponse.md)>**
+**Promise\<[operations.GetAllRpcResponse](../../sdk/models/operations/getallrpcresponse.md)\>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
@@ -187,7 +187,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneRpcResponse](../../sdk/models/operations/getonerpcresponse.md)>**
+**Promise\<[operations.GetOneRpcResponse](../../sdk/models/operations/getonerpcresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -234,7 +234,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateRpcResponse](../../sdk/models/operations/updaterpcresponse.md)>**
+**Promise\<[operations.UpdateRpcResponse](../../sdk/models/operations/updaterpcresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |

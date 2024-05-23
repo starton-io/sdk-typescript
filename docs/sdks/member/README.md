@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteProjectMemberResponse](../../sdk/models/operations/deleteprojectmemberresponse.md)>**
+**Promise\<[operations.DeleteProjectMemberResponse](../../sdk/models/operations/deleteprojectmemberresponse.md)\>**
 ### Errors
 
 | Error Object                                                | Status Code                                                 | Content Type                                                |
@@ -85,7 +85,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllProjectMemberResponse](../../sdk/models/operations/getallprojectmemberresponse.md)>**
+**Promise\<[operations.GetAllProjectMemberResponse](../../sdk/models/operations/getallprojectmemberresponse.md)\>**
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |

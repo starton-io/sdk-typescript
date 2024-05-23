@@ -48,7 +48,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetBalanceAddressResponse](../../sdk/models/operations/getbalanceaddressresponse.md)>**
+**Promise\<[operations.GetBalanceAddressResponse](../../sdk/models/operations/getbalanceaddressresponse.md)\>**
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetBalanceErc20Response](../../sdk/models/operations/getbalanceerc20response.md)>**
+**Promise\<[operations.GetBalanceErc20Response](../../sdk/models/operations/getbalanceerc20response.md)\>**
 ### Errors
 
 | Error Object                       | Status Code                        | Content Type                       |
@@ -138,7 +138,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllGasPriceResponse](../../sdk/models/operations/getallgaspriceresponse.md)>**
+**Promise\<[operations.GetAllGasPriceResponse](../../sdk/models/operations/getallgaspriceresponse.md)\>**
 ### Errors
 
 | Error Object                      | Status Code                       | Content Type                      |

@@ -52,7 +52,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllSmartContractTemplateResponse](../../sdk/models/operations/getallsmartcontracttemplateresponse.md)>**
+**Promise\<[operations.GetAllSmartContractTemplateResponse](../../sdk/models/operations/getallsmartcontracttemplateresponse.md)\>**
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
@@ -97,7 +97,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneSmartContractTemplateResponse](../../sdk/models/operations/getonesmartcontracttemplateresponse.md)>**
+**Promise\<[operations.GetOneSmartContractTemplateResponse](../../sdk/models/operations/getonesmartcontracttemplateresponse.md)\>**
 ### Errors
 
 | Error Object                                                        | Status Code                                                         | Content Type                                                        |

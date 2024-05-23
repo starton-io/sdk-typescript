@@ -59,7 +59,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateWatcherResponse](../../sdk/models/operations/createwatcherresponse.md)>**
+**Promise\<[operations.CreateWatcherResponse](../../sdk/models/operations/createwatcherresponse.md)\>**
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |
@@ -106,7 +106,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteWatcherResponse](../../sdk/models/operations/deletewatcherresponse.md)>**
+**Promise\<[operations.DeleteWatcherResponse](../../sdk/models/operations/deletewatcherresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -161,7 +161,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllWatcherResponse](../../sdk/models/operations/getallwatcherresponse.md)>**
+**Promise\<[operations.GetAllWatcherResponse](../../sdk/models/operations/getallwatcherresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -208,7 +208,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllWatcherEventResponse](../../sdk/models/operations/getallwatchereventresponse.md)>**
+**Promise\<[operations.GetAllWatcherEventResponse](../../sdk/models/operations/getallwatchereventresponse.md)\>**
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -252,7 +252,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneWatcherResponse](../../sdk/models/operations/getonewatcherresponse.md)>**
+**Promise\<[operations.GetOneWatcherResponse](../../sdk/models/operations/getonewatcherresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -298,7 +298,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneWatcherEventResponse](../../sdk/models/operations/getonewatchereventresponse.md)>**
+**Promise\<[operations.GetOneWatcherEventResponse](../../sdk/models/operations/getonewatchereventresponse.md)\>**
 ### Errors
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
@@ -351,7 +351,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateWatcherResponse](../../sdk/models/operations/updatewatcherresponse.md)>**
+**Promise\<[operations.UpdateWatcherResponse](../../sdk/models/operations/updatewatcherresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

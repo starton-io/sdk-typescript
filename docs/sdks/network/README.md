@@ -65,7 +65,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateNetworkResponse](../../sdk/models/operations/createnetworkresponse.md)>**
+**Promise\<[operations.CreateNetworkResponse](../../sdk/models/operations/createnetworkresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -109,7 +109,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteNetworkResponse](../../sdk/models/operations/deletenetworkresponse.md)>**
+**Promise\<[operations.DeleteNetworkResponse](../../sdk/models/operations/deletenetworkresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -157,7 +157,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAllNetworkResponse](../../sdk/models/operations/getallnetworkresponse.md)>**
+**Promise\<[operations.GetAllNetworkResponse](../../sdk/models/operations/getallnetworkresponse.md)\>**
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -201,7 +201,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOneNetworkResponse](../../sdk/models/operations/getonenetworkresponse.md)>**
+**Promise\<[operations.GetOneNetworkResponse](../../sdk/models/operations/getonenetworkresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -254,7 +254,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateNetworkResponse](../../sdk/models/operations/updatenetworkresponse.md)>**
+**Promise\<[operations.UpdateNetworkResponse](../../sdk/models/operations/updatenetworkresponse.md)\>**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
