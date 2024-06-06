@@ -129,105 +129,61 @@ export namespace TransactionStatus$ {
 
 /** @internal */
 export namespace Transaction$ {
-    export const inboundSchema: z.ZodType<Transaction, z.ZodTypeDef, unknown> = z
-        .object({
-            automaticNonce: z.boolean(),
-            blockHash: z.nullable(z.string()).optional(),
-            blockNumber: z.nullable(z.number()).optional(),
-            chainId: z.number(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.141Z")
-                .transform((v) => new Date(v)),
-            data: z.nullable(z.string()).optional(),
-            from: z.string(),
-            gasLimit: z.nullable(z.string()).optional(),
-            gasPrice: z.nullable(z.string()).optional(),
-            id: z.string(),
-            isDeployTransaction: z.boolean(),
-            logs: z.array(TransactionLog$.inboundSchema),
-            maxFeePerGas: z.nullable(z.string()).optional(),
-            maxPriorityFeePerGas: z.nullable(z.string()).optional(),
-            metadata: z.nullable(z.lazy(() => TransactionMetadata$.inboundSchema)).optional(),
-            minedDate: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            network: z.string(),
-            nonce: z.nullable(z.number()).optional(),
-            parentTransaction: z.nullable(z.string()).optional(),
-            projectId: z.string(),
-            publishedDate: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            signedTransaction: z.nullable(z.string()).optional(),
-            signerWallet: z.string(),
-            speed: z.nullable(TransactionSpeed$.inboundSchema).optional(),
-            state: TransactionState$.inboundSchema,
-            status: TransactionStatus$.inboundSchema,
-            to: z.nullable(z.string()).optional(),
-            transactionHash: z.nullable(z.string()).optional(),
-            type: z.nullable(z.number()).optional(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.141Z")
-                .transform((v) => new Date(v)),
-            value: z.string(),
-        })
-        .transform((v) => {
-            return {
-                automaticNonce: v.automaticNonce,
-                ...(v.blockHash === undefined ? null : { blockHash: v.blockHash }),
-                ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
-                chainId: v.chainId,
-                createdAt: v.createdAt,
-                ...(v.data === undefined ? null : { data: v.data }),
-                from: v.from,
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.gasPrice === undefined ? null : { gasPrice: v.gasPrice }),
-                id: v.id,
-                isDeployTransaction: v.isDeployTransaction,
-                logs: v.logs,
-                ...(v.maxFeePerGas === undefined ? null : { maxFeePerGas: v.maxFeePerGas }),
-                ...(v.maxPriorityFeePerGas === undefined
-                    ? null
-                    : { maxPriorityFeePerGas: v.maxPriorityFeePerGas }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.minedDate === undefined ? null : { minedDate: v.minedDate }),
-                network: v.network,
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                ...(v.parentTransaction === undefined
-                    ? null
-                    : { parentTransaction: v.parentTransaction }),
-                projectId: v.projectId,
-                ...(v.publishedDate === undefined ? null : { publishedDate: v.publishedDate }),
-                ...(v.signedTransaction === undefined
-                    ? null
-                    : { signedTransaction: v.signedTransaction }),
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                state: v.state,
-                status: v.status,
-                ...(v.to === undefined ? null : { to: v.to }),
-                ...(v.transactionHash === undefined
-                    ? null
-                    : { transactionHash: v.transactionHash }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                updatedAt: v.updatedAt,
-                value: v.value,
-            };
-        });
+    export const inboundSchema: z.ZodType<Transaction, z.ZodTypeDef, unknown> = z.object({
+        automaticNonce: z.boolean(),
+        blockHash: z.nullable(z.string()).optional(),
+        blockNumber: z.nullable(z.number()).optional(),
+        chainId: z.number(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.141Z")
+            .transform((v) => new Date(v)),
+        data: z.nullable(z.string()).optional(),
+        from: z.string(),
+        gasLimit: z.nullable(z.string()).optional(),
+        gasPrice: z.nullable(z.string()).optional(),
+        id: z.string(),
+        isDeployTransaction: z.boolean(),
+        logs: z.array(TransactionLog$.inboundSchema),
+        maxFeePerGas: z.nullable(z.string()).optional(),
+        maxPriorityFeePerGas: z.nullable(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => TransactionMetadata$.inboundSchema)).optional(),
+        minedDate: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        network: z.string(),
+        nonce: z.nullable(z.number()).optional(),
+        parentTransaction: z.nullable(z.string()).optional(),
+        projectId: z.string(),
+        publishedDate: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        signedTransaction: z.nullable(z.string()).optional(),
+        signerWallet: z.string(),
+        speed: z.nullable(TransactionSpeed$.inboundSchema).optional(),
+        state: TransactionState$.inboundSchema,
+        status: TransactionStatus$.inboundSchema,
+        to: z.nullable(z.string()).optional(),
+        transactionHash: z.nullable(z.string()).optional(),
+        type: z.nullable(z.number()).optional(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.141Z")
+            .transform((v) => new Date(v)),
+        value: z.string(),
+    });
 
     export type Outbound = {
         automaticNonce: boolean;
@@ -263,87 +219,43 @@ export namespace Transaction$ {
         value: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Transaction> = z
-        .object({
-            automaticNonce: z.boolean(),
-            blockHash: z.nullable(z.string()).optional(),
-            blockNumber: z.nullable(z.number()).optional(),
-            chainId: z.number(),
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.141Z"))
-                .transform((v) => v.toISOString()),
-            data: z.nullable(z.string()).optional(),
-            from: z.string(),
-            gasLimit: z.nullable(z.string()).optional(),
-            gasPrice: z.nullable(z.string()).optional(),
-            id: z.string(),
-            isDeployTransaction: z.boolean(),
-            logs: z.array(TransactionLog$.outboundSchema),
-            maxFeePerGas: z.nullable(z.string()).optional(),
-            maxPriorityFeePerGas: z.nullable(z.string()).optional(),
-            metadata: z.nullable(z.lazy(() => TransactionMetadata$.outboundSchema)).optional(),
-            minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            network: z.string(),
-            nonce: z.nullable(z.number()).optional(),
-            parentTransaction: z.nullable(z.string()).optional(),
-            projectId: z.string(),
-            publishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            signedTransaction: z.nullable(z.string()).optional(),
-            signerWallet: z.string(),
-            speed: z.nullable(TransactionSpeed$.outboundSchema).optional(),
-            state: TransactionState$.outboundSchema,
-            status: TransactionStatus$.outboundSchema,
-            to: z.nullable(z.string()).optional(),
-            transactionHash: z.nullable(z.string()).optional(),
-            type: z.nullable(z.number()).optional(),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.141Z"))
-                .transform((v) => v.toISOString()),
-            value: z.string(),
-        })
-        .transform((v) => {
-            return {
-                automaticNonce: v.automaticNonce,
-                ...(v.blockHash === undefined ? null : { blockHash: v.blockHash }),
-                ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
-                chainId: v.chainId,
-                createdAt: v.createdAt,
-                ...(v.data === undefined ? null : { data: v.data }),
-                from: v.from,
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.gasPrice === undefined ? null : { gasPrice: v.gasPrice }),
-                id: v.id,
-                isDeployTransaction: v.isDeployTransaction,
-                logs: v.logs,
-                ...(v.maxFeePerGas === undefined ? null : { maxFeePerGas: v.maxFeePerGas }),
-                ...(v.maxPriorityFeePerGas === undefined
-                    ? null
-                    : { maxPriorityFeePerGas: v.maxPriorityFeePerGas }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.minedDate === undefined ? null : { minedDate: v.minedDate }),
-                network: v.network,
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                ...(v.parentTransaction === undefined
-                    ? null
-                    : { parentTransaction: v.parentTransaction }),
-                projectId: v.projectId,
-                ...(v.publishedDate === undefined ? null : { publishedDate: v.publishedDate }),
-                ...(v.signedTransaction === undefined
-                    ? null
-                    : { signedTransaction: v.signedTransaction }),
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                state: v.state,
-                status: v.status,
-                ...(v.to === undefined ? null : { to: v.to }),
-                ...(v.transactionHash === undefined
-                    ? null
-                    : { transactionHash: v.transactionHash }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                updatedAt: v.updatedAt,
-                value: v.value,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Transaction> = z.object({
+        automaticNonce: z.boolean(),
+        blockHash: z.nullable(z.string()).optional(),
+        blockNumber: z.nullable(z.number()).optional(),
+        chainId: z.number(),
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.141Z"))
+            .transform((v) => v.toISOString()),
+        data: z.nullable(z.string()).optional(),
+        from: z.string(),
+        gasLimit: z.nullable(z.string()).optional(),
+        gasPrice: z.nullable(z.string()).optional(),
+        id: z.string(),
+        isDeployTransaction: z.boolean(),
+        logs: z.array(TransactionLog$.outboundSchema),
+        maxFeePerGas: z.nullable(z.string()).optional(),
+        maxPriorityFeePerGas: z.nullable(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => TransactionMetadata$.outboundSchema)).optional(),
+        minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        network: z.string(),
+        nonce: z.nullable(z.number()).optional(),
+        parentTransaction: z.nullable(z.string()).optional(),
+        projectId: z.string(),
+        publishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        signedTransaction: z.nullable(z.string()).optional(),
+        signerWallet: z.string(),
+        speed: z.nullable(TransactionSpeed$.outboundSchema).optional(),
+        state: TransactionState$.outboundSchema,
+        status: TransactionStatus$.outboundSchema,
+        to: z.nullable(z.string()).optional(),
+        transactionHash: z.nullable(z.string()).optional(),
+        type: z.nullable(z.number()).optional(),
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.141Z"))
+            .transform((v) => v.toISOString()),
+        value: z.string(),
+    });
 }

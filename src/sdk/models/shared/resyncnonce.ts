@@ -10,27 +10,15 @@ export type ResyncNonce = {
 
 /** @internal */
 export namespace ResyncNonce$ {
-    export const inboundSchema: z.ZodType<ResyncNonce, z.ZodTypeDef, unknown> = z
-        .object({
-            nextNonce: z.number(),
-        })
-        .transform((v) => {
-            return {
-                nextNonce: v.nextNonce,
-            };
-        });
+    export const inboundSchema: z.ZodType<ResyncNonce, z.ZodTypeDef, unknown> = z.object({
+        nextNonce: z.number(),
+    });
 
     export type Outbound = {
         nextNonce: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResyncNonce> = z
-        .object({
-            nextNonce: z.number(),
-        })
-        .transform((v) => {
-            return {
-                nextNonce: v.nextNonce,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResyncNonce> = z.object({
+        nextNonce: z.number(),
+    });
 }

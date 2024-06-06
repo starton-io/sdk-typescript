@@ -13,16 +13,10 @@ export type DeploySmartContractResponse = {
 
 /** @internal */
 export namespace DeploySmartContractResponse$ {
-    export const inboundSchema: z.ZodType<DeploySmartContractResponse, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DeploySmartContractResponse, z.ZodTypeDef, unknown> =
+        z.object({
             smartContract: SmartContract$.inboundSchema,
             transaction: Transaction$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                smartContract: v.smartContract,
-                transaction: v.transaction,
-            };
         });
 
     export type Outbound = {
@@ -30,15 +24,9 @@ export namespace DeploySmartContractResponse$ {
         transaction: Transaction$.Outbound;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploySmartContractResponse> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploySmartContractResponse> =
+        z.object({
             smartContract: SmartContract$.outboundSchema,
             transaction: Transaction$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                smartContract: v.smartContract,
-                transaction: v.transaction,
-            };
         });
 }

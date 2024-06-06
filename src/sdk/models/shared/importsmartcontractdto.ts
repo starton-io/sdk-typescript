@@ -56,8 +56,8 @@ export namespace ImportSmartContractDtoParams$ {
 
 /** @internal */
 export namespace ImportSmartContractDto$ {
-    export const inboundSchema: z.ZodType<ImportSmartContractDto, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<ImportSmartContractDto, z.ZodTypeDef, unknown> = z.object(
+        {
             abi: z.array(AbiObjectDto$.inboundSchema),
             address: z.string(),
             creationHash: z.string().optional(),
@@ -75,19 +75,8 @@ export namespace ImportSmartContractDto$ {
                 )
                 .optional(),
             templateId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                abi: v.abi,
-                address: v.address,
-                ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                name: v.name,
-                network: v.network,
-                ...(v.params === undefined ? null : { params: v.params }),
-                ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         abi: Array<AbiObjectDto$.Outbound>;
@@ -100,8 +89,8 @@ export namespace ImportSmartContractDto$ {
         templateId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDto> =
+        z.object({
             abi: z.array(AbiObjectDto$.outboundSchema),
             address: z.string(),
             creationHash: z.string().optional(),
@@ -119,17 +108,5 @@ export namespace ImportSmartContractDto$ {
                 )
                 .optional(),
             templateId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                abi: v.abi,
-                address: v.address,
-                ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                name: v.name,
-                network: v.network,
-                ...(v.params === undefined ? null : { params: v.params }),
-                ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-            };
         });
 }

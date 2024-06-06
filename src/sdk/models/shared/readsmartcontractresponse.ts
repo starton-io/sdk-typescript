@@ -105,8 +105,8 @@ export namespace Response$ {
 
 /** @internal */
 export namespace ReadSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, unknown> =
+        z.object({
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
@@ -125,15 +125,6 @@ export namespace ReadSmartContractResponse$ {
                 z.boolean(),
                 z.array(z.any()),
             ]),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                functionName: v.functionName,
-                network: v.network,
-                params: v.params,
-                response: v.response,
-            };
         });
 
     export type Outbound = {
@@ -149,8 +140,8 @@ export namespace ReadSmartContractResponse$ {
             | Array<any>;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse> =
+        z.object({
             address: z.string(),
             functionName: z.string(),
             network: z.string(),
@@ -169,14 +160,5 @@ export namespace ReadSmartContractResponse$ {
                 z.boolean(),
                 z.array(z.any()),
             ]),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                functionName: v.functionName,
-                network: v.network,
-                params: v.params,
-                response: v.response,
-            };
         });
 }

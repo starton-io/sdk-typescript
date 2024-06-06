@@ -71,33 +71,18 @@ export namespace CreateTransactionDtoSpeed$ {
 
 /** @internal */
 export namespace CreateTransactionDto$ {
-    export const inboundSchema: z.ZodType<CreateTransactionDto, z.ZodTypeDef, unknown> = z
-        .object({
-            customGas: CustomGasDto$.inboundSchema.optional(),
-            data: z.string().optional(),
-            gasLimit: z.string().optional(),
-            metadata: z.lazy(() => CreateTransactionDtoMetadata$.inboundSchema).optional(),
-            network: z.string(),
-            nonce: z.number().int().optional(),
-            signerWallet: z.string(),
-            speed: CreateTransactionDtoSpeed$.inboundSchema.optional(),
-            to: z.string().optional(),
-            value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.customGas === undefined ? null : { customGas: v.customGas }),
-                ...(v.data === undefined ? null : { data: v.data }),
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                network: v.network,
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                ...(v.to === undefined ? null : { to: v.to }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateTransactionDto, z.ZodTypeDef, unknown> = z.object({
+        customGas: CustomGasDto$.inboundSchema.optional(),
+        data: z.string().optional(),
+        gasLimit: z.string().optional(),
+        metadata: z.lazy(() => CreateTransactionDtoMetadata$.inboundSchema).optional(),
+        network: z.string(),
+        nonce: z.number().int().optional(),
+        signerWallet: z.string(),
+        speed: CreateTransactionDtoSpeed$.inboundSchema.optional(),
+        to: z.string().optional(),
+        value: z.string().optional(),
+    });
 
     export type Outbound = {
         customGas?: CustomGasDto$.Outbound | undefined;
@@ -112,8 +97,8 @@ export namespace CreateTransactionDto$ {
         value?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTransactionDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTransactionDto> = z.object(
+        {
             customGas: CustomGasDto$.outboundSchema.optional(),
             data: z.string().optional(),
             gasLimit: z.string().optional(),
@@ -124,19 +109,6 @@ export namespace CreateTransactionDto$ {
             speed: CreateTransactionDtoSpeed$.outboundSchema.optional(),
             to: z.string().optional(),
             value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.customGas === undefined ? null : { customGas: v.customGas }),
-                ...(v.data === undefined ? null : { data: v.data }),
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                network: v.network,
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                ...(v.to === undefined ? null : { to: v.to }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+        }
+    );
 }

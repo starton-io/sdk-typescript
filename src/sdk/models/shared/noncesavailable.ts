@@ -11,32 +11,18 @@ export type NoncesAvailable = {
 
 /** @internal */
 export namespace NoncesAvailable$ {
-    export const inboundSchema: z.ZodType<NoncesAvailable, z.ZodTypeDef, unknown> = z
-        .object({
-            availableNonces: z.array(z.number()),
-            nextNonce: z.number(),
-        })
-        .transform((v) => {
-            return {
-                availableNonces: v.availableNonces,
-                nextNonce: v.nextNonce,
-            };
-        });
+    export const inboundSchema: z.ZodType<NoncesAvailable, z.ZodTypeDef, unknown> = z.object({
+        availableNonces: z.array(z.number()),
+        nextNonce: z.number(),
+    });
 
     export type Outbound = {
         availableNonces: Array<number>;
         nextNonce: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoncesAvailable> = z
-        .object({
-            availableNonces: z.array(z.number()),
-            nextNonce: z.number(),
-        })
-        .transform((v) => {
-            return {
-                availableNonces: v.availableNonces,
-                nextNonce: v.nextNonce,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoncesAvailable> = z.object({
+        availableNonces: z.array(z.number()),
+        nextNonce: z.number(),
+    });
 }

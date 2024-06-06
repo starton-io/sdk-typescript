@@ -20,43 +20,27 @@ export type SettingRelayer = {
 
 /** @internal */
 export namespace SettingRelayer$ {
-    export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.175Z")
-                .transform((v) => new Date(v)),
-            id: z.string(),
-            network: z.string(),
-            projectId: z.string(),
-            unstuckAutomaticGasPrice: z.boolean(),
-            unstuckCustomGasPrice: z.boolean(),
-            unstuckGasPriceDelay: z.number(),
-            unstuckMaxGasPrice: z.string(),
-            unstuckMissingNonce: z.boolean(),
-            unstuckMissingNonceDelay: z.number(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.175Z")
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                network: v.network,
-                projectId: v.projectId,
-                unstuckAutomaticGasPrice: v.unstuckAutomaticGasPrice,
-                unstuckCustomGasPrice: v.unstuckCustomGasPrice,
-                unstuckGasPriceDelay: v.unstuckGasPriceDelay,
-                unstuckMaxGasPrice: v.unstuckMaxGasPrice,
-                unstuckMissingNonce: v.unstuckMissingNonce,
-                unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const inboundSchema: z.ZodType<SettingRelayer, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.175Z")
+            .transform((v) => new Date(v)),
+        id: z.string(),
+        network: z.string(),
+        projectId: z.string(),
+        unstuckAutomaticGasPrice: z.boolean(),
+        unstuckCustomGasPrice: z.boolean(),
+        unstuckGasPriceDelay: z.number(),
+        unstuckMaxGasPrice: z.string(),
+        unstuckMissingNonce: z.boolean(),
+        unstuckMissingNonceDelay: z.number(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.175Z")
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -72,39 +56,23 @@ export namespace SettingRelayer$ {
         updatedAt: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SettingRelayer> = z
-        .object({
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.175Z"))
-                .transform((v) => v.toISOString()),
-            id: z.string(),
-            network: z.string(),
-            projectId: z.string(),
-            unstuckAutomaticGasPrice: z.boolean(),
-            unstuckCustomGasPrice: z.boolean(),
-            unstuckGasPriceDelay: z.number(),
-            unstuckMaxGasPrice: z.string(),
-            unstuckMissingNonce: z.boolean(),
-            unstuckMissingNonceDelay: z.number(),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.175Z"))
-                .transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                network: v.network,
-                projectId: v.projectId,
-                unstuckAutomaticGasPrice: v.unstuckAutomaticGasPrice,
-                unstuckCustomGasPrice: v.unstuckCustomGasPrice,
-                unstuckGasPriceDelay: v.unstuckGasPriceDelay,
-                unstuckMaxGasPrice: v.unstuckMaxGasPrice,
-                unstuckMissingNonce: v.unstuckMissingNonce,
-                unstuckMissingNonceDelay: v.unstuckMissingNonceDelay,
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SettingRelayer> = z.object({
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.175Z"))
+            .transform((v) => v.toISOString()),
+        id: z.string(),
+        network: z.string(),
+        projectId: z.string(),
+        unstuckAutomaticGasPrice: z.boolean(),
+        unstuckCustomGasPrice: z.boolean(),
+        unstuckGasPriceDelay: z.number(),
+        unstuckMaxGasPrice: z.string(),
+        unstuckMissingNonce: z.boolean(),
+        unstuckMissingNonceDelay: z.number(),
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.175Z"))
+            .transform((v) => v.toISOString()),
+    });
 }

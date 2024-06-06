@@ -62,39 +62,25 @@ export namespace Wallets$ {
 
 /** @internal */
 export namespace Kms$ {
-    export const inboundSchema: z.ZodType<Kms, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.167Z")
-                .transform((v) => new Date(v)),
-            credentials: z.lazy(() => KmsCredentials$.inboundSchema),
-            id: z.string(),
-            metadata: z.lazy(() => KmsMetadata$.inboundSchema).optional(),
-            name: z.string(),
-            projectId: z.string(),
-            provider: KmsProvider$.inboundSchema,
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.167Z")
-                .transform((v) => new Date(v)),
-            wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                credentials: v.credentials,
-                id: v.id,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                name: v.name,
-                projectId: v.projectId,
-                provider: v.provider,
-                updatedAt: v.updatedAt,
-                ...(v.wallets === undefined ? null : { wallets: v.wallets }),
-            };
-        });
+    export const inboundSchema: z.ZodType<Kms, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.167Z")
+            .transform((v) => new Date(v)),
+        credentials: z.lazy(() => KmsCredentials$.inboundSchema),
+        id: z.string(),
+        metadata: z.lazy(() => KmsMetadata$.inboundSchema).optional(),
+        name: z.string(),
+        projectId: z.string(),
+        provider: KmsProvider$.inboundSchema,
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.167Z")
+            .transform((v) => new Date(v)),
+        wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -108,35 +94,21 @@ export namespace Kms$ {
         wallets?: Wallets$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Kms> = z
-        .object({
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.167Z"))
-                .transform((v) => v.toISOString()),
-            credentials: z.lazy(() => KmsCredentials$.outboundSchema),
-            id: z.string(),
-            metadata: z.lazy(() => KmsMetadata$.outboundSchema).optional(),
-            name: z.string(),
-            projectId: z.string(),
-            provider: KmsProvider$.outboundSchema,
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.167Z"))
-                .transform((v) => v.toISOString()),
-            wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                credentials: v.credentials,
-                id: v.id,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                name: v.name,
-                projectId: v.projectId,
-                provider: v.provider,
-                updatedAt: v.updatedAt,
-                ...(v.wallets === undefined ? null : { wallets: v.wallets }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Kms> = z.object({
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.167Z"))
+            .transform((v) => v.toISOString()),
+        credentials: z.lazy(() => KmsCredentials$.outboundSchema),
+        id: z.string(),
+        metadata: z.lazy(() => KmsMetadata$.outboundSchema).optional(),
+        name: z.string(),
+        projectId: z.string(),
+        provider: KmsProvider$.outboundSchema,
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.167Z"))
+            .transform((v) => v.toISOString()),
+        wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
+    });
 }

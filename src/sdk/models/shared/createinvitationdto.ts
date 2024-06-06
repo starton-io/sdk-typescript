@@ -21,32 +21,18 @@ export namespace Role$ {
 
 /** @internal */
 export namespace CreateInvitationDto$ {
-    export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, unknown> = z
-        .object({
-            email: z.string(),
-            role: Role$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                email: v.email,
-                role: v.role,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, unknown> = z.object({
+        email: z.string(),
+        role: Role$.inboundSchema,
+    });
 
     export type Outbound = {
         email: string;
         role: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateInvitationDto> = z
-        .object({
-            email: z.string(),
-            role: Role$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                email: v.email,
-                role: v.role,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateInvitationDto> = z.object({
+        email: z.string(),
+        role: Role$.outboundSchema,
+    });
 }

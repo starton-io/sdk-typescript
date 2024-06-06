@@ -26,21 +26,12 @@ export namespace CreateWalletDtoMetadata$ {
 
 /** @internal */
 export namespace CreateWalletDto$ {
-    export const inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string().optional(),
-            kmsId: z.string(),
-            metadata: z.lazy(() => CreateWalletDtoMetadata$.inboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                kmsId: v.kmsId,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, unknown> = z.object({
+        description: z.string().optional(),
+        kmsId: z.string(),
+        metadata: z.lazy(() => CreateWalletDtoMetadata$.inboundSchema).optional(),
+        name: z.string().optional(),
+    });
 
     export type Outbound = {
         description?: string | undefined;
@@ -49,19 +40,10 @@ export namespace CreateWalletDto$ {
         name?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletDto> = z
-        .object({
-            description: z.string().optional(),
-            kmsId: z.string(),
-            metadata: z.lazy(() => CreateWalletDtoMetadata$.outboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                kmsId: v.kmsId,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletDto> = z.object({
+        description: z.string().optional(),
+        kmsId: z.string(),
+        metadata: z.lazy(() => CreateWalletDtoMetadata$.outboundSchema).optional(),
+        name: z.string().optional(),
+    });
 }

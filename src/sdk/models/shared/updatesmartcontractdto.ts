@@ -25,19 +25,13 @@ export namespace UpdateSmartContractDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateSmartContractDto$ {
-    export const inboundSchema: z.ZodType<UpdateSmartContractDto, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<UpdateSmartContractDto, z.ZodTypeDef, unknown> = z.object(
+        {
             description: z.string().optional(),
             metadata: z.lazy(() => UpdateSmartContractDtoMetadata$.inboundSchema).optional(),
             name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         description?: string | undefined;
@@ -45,17 +39,10 @@ export namespace UpdateSmartContractDto$ {
         name?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSmartContractDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSmartContractDto> =
+        z.object({
             description: z.string().optional(),
             metadata: z.lazy(() => UpdateSmartContractDtoMetadata$.outboundSchema).optional(),
             name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
         });
 }

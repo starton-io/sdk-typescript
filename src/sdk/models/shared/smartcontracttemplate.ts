@@ -84,59 +84,35 @@ export namespace Form$ {
 
 /** @internal */
 export namespace SmartContractTemplate$ {
-    export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, unknown> = z
-        .object({
-            abi: z.array(z.lazy(() => SmartContractTemplateAbi$.inboundSchema)),
-            blockchains: z.array(z.string()),
-            category: Category$.inboundSchema,
-            compilationDetails: z
-                .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema))
-                .optional(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.374Z")
-                .transform((v) => new Date(v)),
-            description: z.string(),
-            form: z.nullable(z.lazy(() => Form$.inboundSchema)).optional(),
-            githubUrl: z.string(),
-            humanReadableAbi: z.array(z.string()),
-            id: z.string(),
-            isActivated: z.boolean().default(true),
-            isAudited: z.boolean().default(false),
-            name: z.string(),
-            order: z.number().default(0),
-            shortDescription: z.string(),
-            tags: z.array(z.string()),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.374Z")
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                abi: v.abi,
-                blockchains: v.blockchains,
-                category: v.category,
-                ...(v.compilationDetails === undefined
-                    ? null
-                    : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
-                description: v.description,
-                ...(v.form === undefined ? null : { form: v.form }),
-                githubUrl: v.githubUrl,
-                humanReadableAbi: v.humanReadableAbi,
-                id: v.id,
-                isActivated: v.isActivated,
-                isAudited: v.isAudited,
-                name: v.name,
-                order: v.order,
-                shortDescription: v.shortDescription,
-                tags: v.tags,
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, unknown> = z.object({
+        abi: z.array(z.lazy(() => SmartContractTemplateAbi$.inboundSchema)),
+        blockchains: z.array(z.string()),
+        category: Category$.inboundSchema,
+        compilationDetails: z
+            .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema))
+            .optional(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.374Z")
+            .transform((v) => new Date(v)),
+        description: z.string(),
+        form: z.nullable(z.lazy(() => Form$.inboundSchema)).optional(),
+        githubUrl: z.string(),
+        humanReadableAbi: z.array(z.string()),
+        id: z.string(),
+        isActivated: z.boolean().default(true),
+        isAudited: z.boolean().default(false),
+        name: z.string(),
+        order: z.number().default(0),
+        shortDescription: z.string(),
+        tags: z.array(z.string()),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.374Z")
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         abi: Array<SmartContractTemplateAbi$.Outbound>;
@@ -158,8 +134,8 @@ export namespace SmartContractTemplate$ {
         updatedAt: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractTemplate> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractTemplate> =
+        z.object({
             abi: z.array(z.lazy(() => SmartContractTemplateAbi$.outboundSchema)),
             blockchains: z.array(z.string()),
             category: Category$.outboundSchema,
@@ -185,28 +161,5 @@ export namespace SmartContractTemplate$ {
                 .date()
                 .default(() => new Date("2024-01-31T13:57:36.374Z"))
                 .transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                abi: v.abi,
-                blockchains: v.blockchains,
-                category: v.category,
-                ...(v.compilationDetails === undefined
-                    ? null
-                    : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
-                description: v.description,
-                ...(v.form === undefined ? null : { form: v.form }),
-                githubUrl: v.githubUrl,
-                humanReadableAbi: v.humanReadableAbi,
-                id: v.id,
-                isActivated: v.isActivated,
-                isAudited: v.isAudited,
-                name: v.name,
-                order: v.order,
-                shortDescription: v.shortDescription,
-                tags: v.tags,
-                updatedAt: v.updatedAt,
-            };
         });
 }

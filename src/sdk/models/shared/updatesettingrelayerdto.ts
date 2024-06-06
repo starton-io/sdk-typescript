@@ -33,36 +33,14 @@ export type UpdateSettingRelayerDto = {
 
 /** @internal */
 export namespace UpdateSettingRelayerDto$ {
-    export const inboundSchema: z.ZodType<UpdateSettingRelayerDto, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<UpdateSettingRelayerDto, z.ZodTypeDef, unknown> =
+        z.object({
             unstuckAutomaticGasPrice: z.boolean().optional(),
             unstuckCustomGasPrice: z.boolean().optional(),
             unstuckGasPriceDelay: z.number().optional(),
             unstuckMaxGasPrice: z.string().optional(),
             unstuckMissingNonce: z.boolean().optional(),
             unstuckMissingNonceDelay: z.number().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.unstuckAutomaticGasPrice === undefined
-                    ? null
-                    : { unstuckAutomaticGasPrice: v.unstuckAutomaticGasPrice }),
-                ...(v.unstuckCustomGasPrice === undefined
-                    ? null
-                    : { unstuckCustomGasPrice: v.unstuckCustomGasPrice }),
-                ...(v.unstuckGasPriceDelay === undefined
-                    ? null
-                    : { unstuckGasPriceDelay: v.unstuckGasPriceDelay }),
-                ...(v.unstuckMaxGasPrice === undefined
-                    ? null
-                    : { unstuckMaxGasPrice: v.unstuckMaxGasPrice }),
-                ...(v.unstuckMissingNonce === undefined
-                    ? null
-                    : { unstuckMissingNonce: v.unstuckMissingNonce }),
-                ...(v.unstuckMissingNonceDelay === undefined
-                    ? null
-                    : { unstuckMissingNonceDelay: v.unstuckMissingNonceDelay }),
-            };
         });
 
     export type Outbound = {
@@ -74,35 +52,13 @@ export namespace UpdateSettingRelayerDto$ {
         unstuckMissingNonceDelay?: number | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSettingRelayerDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSettingRelayerDto> =
+        z.object({
             unstuckAutomaticGasPrice: z.boolean().optional(),
             unstuckCustomGasPrice: z.boolean().optional(),
             unstuckGasPriceDelay: z.number().optional(),
             unstuckMaxGasPrice: z.string().optional(),
             unstuckMissingNonce: z.boolean().optional(),
             unstuckMissingNonceDelay: z.number().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.unstuckAutomaticGasPrice === undefined
-                    ? null
-                    : { unstuckAutomaticGasPrice: v.unstuckAutomaticGasPrice }),
-                ...(v.unstuckCustomGasPrice === undefined
-                    ? null
-                    : { unstuckCustomGasPrice: v.unstuckCustomGasPrice }),
-                ...(v.unstuckGasPriceDelay === undefined
-                    ? null
-                    : { unstuckGasPriceDelay: v.unstuckGasPriceDelay }),
-                ...(v.unstuckMaxGasPrice === undefined
-                    ? null
-                    : { unstuckMaxGasPrice: v.unstuckMaxGasPrice }),
-                ...(v.unstuckMissingNonce === undefined
-                    ? null
-                    : { unstuckMissingNonce: v.unstuckMissingNonce }),
-                ...(v.unstuckMissingNonceDelay === undefined
-                    ? null
-                    : { unstuckMissingNonceDelay: v.unstuckMissingNonceDelay }),
-            };
         });
 }

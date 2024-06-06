@@ -37,31 +37,19 @@ export type Faucet = {
 
 /** @internal */
 export namespace Faucet$ {
-    export const inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.178Z")
-                .transform((v) => new Date(v)),
-            id: z.string(),
-            ip: z.string(),
-            network: z.nullable(z.string()),
-            txHash: z.nullable(z.string()).optional(),
-            userId: z.nullable(z.string()).optional(),
-            wallet: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                ip: v.ip,
-                network: v.network,
-                ...(v.txHash === undefined ? null : { txHash: v.txHash }),
-                ...(v.userId === undefined ? null : { userId: v.userId }),
-                wallet: v.wallet,
-            };
-        });
+    export const inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.178Z")
+            .transform((v) => new Date(v)),
+        id: z.string(),
+        ip: z.string(),
+        network: z.nullable(z.string()),
+        txHash: z.nullable(z.string()).optional(),
+        userId: z.nullable(z.string()).optional(),
+        wallet: z.string(),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -73,28 +61,16 @@ export namespace Faucet$ {
         wallet: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Faucet> = z
-        .object({
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.178Z"))
-                .transform((v) => v.toISOString()),
-            id: z.string(),
-            ip: z.string(),
-            network: z.nullable(z.string()),
-            txHash: z.nullable(z.string()).optional(),
-            userId: z.nullable(z.string()).optional(),
-            wallet: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                ip: v.ip,
-                network: v.network,
-                ...(v.txHash === undefined ? null : { txHash: v.txHash }),
-                ...(v.userId === undefined ? null : { userId: v.userId }),
-                wallet: v.wallet,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Faucet> = z.object({
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.178Z"))
+            .transform((v) => v.toISOString()),
+        id: z.string(),
+        ip: z.string(),
+        network: z.nullable(z.string()),
+        txHash: z.nullable(z.string()).optional(),
+        userId: z.nullable(z.string()).optional(),
+        wallet: z.string(),
+    });
 }

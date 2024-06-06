@@ -47,31 +47,16 @@ export namespace Type$ {
 
 /** @internal */
 export namespace AbiObjectDto$ {
-    export const inboundSchema: z.ZodType<AbiObjectDto, z.ZodTypeDef, unknown> = z
-        .object({
-            anonymous: z.boolean().optional(),
-            constant: z.boolean().optional(),
-            inputs: AbiInputDto$.inboundSchema.optional(),
-            name: z.string().optional(),
-            outputs: AbiOutputDto$.inboundSchema.optional(),
-            payability: z.boolean().optional(),
-            stateMutability: StateMutability$.inboundSchema.optional(),
-            type: Type$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.anonymous === undefined ? null : { anonymous: v.anonymous }),
-                ...(v.constant === undefined ? null : { constant: v.constant }),
-                ...(v.inputs === undefined ? null : { inputs: v.inputs }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.outputs === undefined ? null : { outputs: v.outputs }),
-                ...(v.payability === undefined ? null : { payability: v.payability }),
-                ...(v.stateMutability === undefined
-                    ? null
-                    : { stateMutability: v.stateMutability }),
-                type: v.type,
-            };
-        });
+    export const inboundSchema: z.ZodType<AbiObjectDto, z.ZodTypeDef, unknown> = z.object({
+        anonymous: z.boolean().optional(),
+        constant: z.boolean().optional(),
+        inputs: AbiInputDto$.inboundSchema.optional(),
+        name: z.string().optional(),
+        outputs: AbiOutputDto$.inboundSchema.optional(),
+        payability: z.boolean().optional(),
+        stateMutability: StateMutability$.inboundSchema.optional(),
+        type: Type$.inboundSchema,
+    });
 
     export type Outbound = {
         anonymous?: boolean | undefined;
@@ -84,29 +69,14 @@ export namespace AbiObjectDto$ {
         type: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiObjectDto> = z
-        .object({
-            anonymous: z.boolean().optional(),
-            constant: z.boolean().optional(),
-            inputs: AbiInputDto$.outboundSchema.optional(),
-            name: z.string().optional(),
-            outputs: AbiOutputDto$.outboundSchema.optional(),
-            payability: z.boolean().optional(),
-            stateMutability: StateMutability$.outboundSchema.optional(),
-            type: Type$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.anonymous === undefined ? null : { anonymous: v.anonymous }),
-                ...(v.constant === undefined ? null : { constant: v.constant }),
-                ...(v.inputs === undefined ? null : { inputs: v.inputs }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.outputs === undefined ? null : { outputs: v.outputs }),
-                ...(v.payability === undefined ? null : { payability: v.payability }),
-                ...(v.stateMutability === undefined
-                    ? null
-                    : { stateMutability: v.stateMutability }),
-                type: v.type,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiObjectDto> = z.object({
+        anonymous: z.boolean().optional(),
+        constant: z.boolean().optional(),
+        inputs: AbiInputDto$.outboundSchema.optional(),
+        name: z.string().optional(),
+        outputs: AbiOutputDto$.outboundSchema.optional(),
+        payability: z.boolean().optional(),
+        stateMutability: StateMutability$.outboundSchema.optional(),
+        type: Type$.outboundSchema,
+    });
 }

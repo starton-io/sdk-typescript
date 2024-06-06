@@ -3,6 +3,7 @@
  */
 
 import * as b64$ from "../../../lib/base64";
+import { remap as remap$ } from "../../../lib/primitives";
 import { blobLikeSchema } from "../../types";
 import * as shared from "../shared";
 import * as z from "zod";
@@ -37,34 +38,20 @@ export type UploadFromFilePinResponse = {
 
 /** @internal */
 export namespace FileT$ {
-    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-        .object({
-            content: b64$.zodInbound,
-            fileName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                content: v.content,
-                fileName: v.fileName,
-            };
-        });
+    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z.object({
+        content: b64$.zodInbound,
+        fileName: z.string(),
+    });
 
     export type Outbound = {
         content: Uint8Array;
         fileName: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileT> = z
-        .object({
-            content: b64$.zodOutbound,
-            fileName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                content: v.content,
-                fileName: v.fileName,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileT> = z.object({
+        content: b64$.zodOutbound,
+        fileName: z.string(),
+    });
 }
 
 /** @internal */
@@ -78,16 +65,10 @@ export namespace Metadata$ {
 
 /** @internal */
 export namespace UploadFromFilePinRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadFromFilePinRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<UploadFromFilePinRequestBody, z.ZodTypeDef, unknown> =
+        z.object({
             file: z.lazy(() => FileT$.inboundSchema).optional(),
             metadata: z.lazy(() => Metadata$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.file === undefined ? null : { file: v.file }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
         });
 
     export type Outbound = {
@@ -95,19 +76,13 @@ export namespace UploadFromFilePinRequestBody$ {
         metadata?: Metadata$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFilePinRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFilePinRequestBody> =
+        z.object({
             file: z
                 .lazy(() => FileT$.outboundSchema)
                 .or(blobLikeSchema)
                 .optional(),
             metadata: z.lazy(() => Metadata$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.file === undefined ? null : { file: v.file }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
         });
 }
 
@@ -121,12 +96,12 @@ export namespace UploadFromFilePinResponse$ {
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
-            return {
-                contentType: v.ContentType,
-                ...(v.Pin === undefined ? null : { pin: v.Pin }),
-                statusCode: v.StatusCode,
-                rawResponse: v.RawResponse,
-            };
+            return remap$(v, {
+                ContentType: "contentType",
+                Pin: "pin",
+                StatusCode: "statusCode",
+                RawResponse: "rawResponse",
+            });
         });
 
     export type Outbound = {
@@ -146,11 +121,11 @@ export namespace UploadFromFilePinResponse$ {
             }),
         })
         .transform((v) => {
-            return {
-                ContentType: v.contentType,
-                ...(v.pin === undefined ? null : { Pin: v.pin }),
-                StatusCode: v.statusCode,
-                RawResponse: v.rawResponse,
-            };
+            return remap$(v, {
+                contentType: "ContentType",
+                pin: "Pin",
+                statusCode: "StatusCode",
+                rawResponse: "RawResponse",
+            });
         });
 }

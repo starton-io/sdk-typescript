@@ -38,23 +38,13 @@ export namespace ImportProviderKeyDtoProvider$ {
 
 /** @internal */
 export namespace ImportProviderKeyDto$ {
-    export const inboundSchema: z.ZodType<ImportProviderKeyDto, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string().optional(),
-            metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.inboundSchema).optional(),
-            name: z.string().optional(),
-            provider: ImportProviderKeyDtoProvider$.inboundSchema,
-            providerKeyId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                provider: v.provider,
-                ...(v.providerKeyId === undefined ? null : { providerKeyId: v.providerKeyId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ImportProviderKeyDto, z.ZodTypeDef, unknown> = z.object({
+        description: z.string().optional(),
+        metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.inboundSchema).optional(),
+        name: z.string().optional(),
+        provider: ImportProviderKeyDtoProvider$.inboundSchema,
+        providerKeyId: z.string().optional(),
+    });
 
     export type Outbound = {
         description?: string | undefined;
@@ -64,21 +54,13 @@ export namespace ImportProviderKeyDto$ {
         providerKeyId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportProviderKeyDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportProviderKeyDto> = z.object(
+        {
             description: z.string().optional(),
             metadata: z.lazy(() => ImportProviderKeyDtoMetadata$.outboundSchema).optional(),
             name: z.string().optional(),
             provider: ImportProviderKeyDtoProvider$.outboundSchema,
             providerKeyId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                provider: v.provider,
-                ...(v.providerKeyId === undefined ? null : { providerKeyId: v.providerKeyId }),
-            };
-        });
+        }
+    );
 }

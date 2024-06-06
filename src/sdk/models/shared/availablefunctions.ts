@@ -12,19 +12,11 @@ export type AvailableFunctions = {
 
 /** @internal */
 export namespace AvailableFunctions$ {
-    export const inboundSchema: z.ZodType<AvailableFunctions, z.ZodTypeDef, unknown> = z
-        .object({
-            call: z.array(z.string()),
-            events: z.array(z.string()),
-            read: z.array(z.string()),
-        })
-        .transform((v) => {
-            return {
-                call: v.call,
-                events: v.events,
-                read: v.read,
-            };
-        });
+    export const inboundSchema: z.ZodType<AvailableFunctions, z.ZodTypeDef, unknown> = z.object({
+        call: z.array(z.string()),
+        events: z.array(z.string()),
+        read: z.array(z.string()),
+    });
 
     export type Outbound = {
         call: Array<string>;
@@ -32,17 +24,9 @@ export namespace AvailableFunctions$ {
         read: Array<string>;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AvailableFunctions> = z
-        .object({
-            call: z.array(z.string()),
-            events: z.array(z.string()),
-            read: z.array(z.string()),
-        })
-        .transform((v) => {
-            return {
-                call: v.call,
-                events: v.events,
-                read: v.read,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AvailableFunctions> = z.object({
+        call: z.array(z.string()),
+        events: z.array(z.string()),
+        read: z.array(z.string()),
+    });
 }

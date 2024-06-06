@@ -14,31 +14,21 @@ export type Rpc = {
 
 /** @internal */
 export namespace Rpc$ {
-    export const inboundSchema: z.ZodType<Rpc, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.269Z")
-                .transform((v) => new Date(v)),
-            id: z.string(),
-            networkName: z.string(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.269Z")
-                .transform((v) => new Date(v)),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                networkName: v.networkName,
-                updatedAt: v.updatedAt,
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<Rpc, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.269Z")
+            .transform((v) => new Date(v)),
+        id: z.string(),
+        networkName: z.string(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.269Z")
+            .transform((v) => new Date(v)),
+        url: z.string(),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -48,27 +38,17 @@ export namespace Rpc$ {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Rpc> = z
-        .object({
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.269Z"))
-                .transform((v) => v.toISOString()),
-            id: z.string(),
-            networkName: z.string(),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.269Z"))
-                .transform((v) => v.toISOString()),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                id: v.id,
-                networkName: v.networkName,
-                updatedAt: v.updatedAt,
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Rpc> = z.object({
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.269Z"))
+            .transform((v) => v.toISOString()),
+        id: z.string(),
+        networkName: z.string(),
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.269Z"))
+            .transform((v) => v.toISOString()),
+        url: z.string(),
+    });
 }

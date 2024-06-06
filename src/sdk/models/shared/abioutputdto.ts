@@ -27,21 +27,12 @@ export namespace AbiOutputDtoComponents$ {
 
 /** @internal */
 export namespace AbiOutputDto$ {
-    export const inboundSchema: z.ZodType<AbiOutputDto, z.ZodTypeDef, unknown> = z
-        .object({
-            components: z.lazy(() => AbiOutputDtoComponents$.inboundSchema).optional(),
-            internalType: z.string().optional(),
-            name: z.string(),
-            type: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.components === undefined ? null : { components: v.components }),
-                ...(v.internalType === undefined ? null : { internalType: v.internalType }),
-                name: v.name,
-                type: v.type,
-            };
-        });
+    export const inboundSchema: z.ZodType<AbiOutputDto, z.ZodTypeDef, unknown> = z.object({
+        components: z.lazy(() => AbiOutputDtoComponents$.inboundSchema).optional(),
+        internalType: z.string().optional(),
+        name: z.string(),
+        type: z.string(),
+    });
 
     export type Outbound = {
         components?: AbiOutputDtoComponents$.Outbound | undefined;
@@ -50,19 +41,10 @@ export namespace AbiOutputDto$ {
         type: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiOutputDto> = z
-        .object({
-            components: z.lazy(() => AbiOutputDtoComponents$.outboundSchema).optional(),
-            internalType: z.string().optional(),
-            name: z.string(),
-            type: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.components === undefined ? null : { components: v.components }),
-                ...(v.internalType === undefined ? null : { internalType: v.internalType }),
-                name: v.name,
-                type: v.type,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiOutputDto> = z.object({
+        components: z.lazy(() => AbiOutputDtoComponents$.outboundSchema).optional(),
+        internalType: z.string().optional(),
+        name: z.string(),
+        type: z.string(),
+    });
 }

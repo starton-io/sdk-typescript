@@ -12,18 +12,11 @@ export type GasPriceRecommendationDto = {
 
 /** @internal */
 export namespace GasPriceRecommendationDto$ {
-    export const inboundSchema: z.ZodType<GasPriceRecommendationDto, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GasPriceRecommendationDto, z.ZodTypeDef, unknown> =
+        z.object({
             defaultRelayerUnstuck: z.string(),
             lowest: z.string(),
             max: z.string(),
-        })
-        .transform((v) => {
-            return {
-                defaultRelayerUnstuck: v.defaultRelayerUnstuck,
-                lowest: v.lowest,
-                max: v.max,
-            };
         });
 
     export type Outbound = {
@@ -32,17 +25,10 @@ export namespace GasPriceRecommendationDto$ {
         max: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPriceRecommendationDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPriceRecommendationDto> =
+        z.object({
             defaultRelayerUnstuck: z.string(),
             lowest: z.string(),
             max: z.string(),
-        })
-        .transform((v) => {
-            return {
-                defaultRelayerUnstuck: v.defaultRelayerUnstuck,
-                lowest: v.lowest,
-                max: v.max,
-            };
         });
 }

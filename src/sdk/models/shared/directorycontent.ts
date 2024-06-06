@@ -24,21 +24,12 @@ export namespace DirectoryContentType$ {
 
 /** @internal */
 export namespace DirectoryContent$ {
-    export const inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> = z
-        .object({
-            cid: z.string(),
-            name: z.string(),
-            size: z.number(),
-            type: DirectoryContentType$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                cid: v.cid,
-                name: v.name,
-                size: v.size,
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> = z.object({
+        cid: z.string(),
+        name: z.string(),
+        size: z.number(),
+        type: DirectoryContentType$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         cid: string;
@@ -47,19 +38,10 @@ export namespace DirectoryContent$ {
         type?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DirectoryContent> = z
-        .object({
-            cid: z.string(),
-            name: z.string(),
-            size: z.number(),
-            type: DirectoryContentType$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                cid: v.cid,
-                name: v.name,
-                size: v.size,
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DirectoryContent> = z.object({
+        cid: z.string(),
+        name: z.string(),
+        size: z.number(),
+        type: DirectoryContentType$.outboundSchema.optional(),
+    });
 }

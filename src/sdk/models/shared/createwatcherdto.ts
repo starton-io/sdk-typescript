@@ -74,33 +74,18 @@ export namespace CreateWatcherDtoType$ {
 
 /** @internal */
 export namespace CreateWatcherDto$ {
-    export const inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, unknown> = z
-        .object({
-            address: z.string(),
-            confirmationsBlocks: z.number(),
-            customEventAbi: z.lazy(() => CustomEventAbi$.inboundSchema).optional(),
-            customFilters: z.lazy(() => CustomFilters$.inboundSchema).optional(),
-            description: z.nullable(z.string()).optional(),
-            metadata: z.lazy(() => CreateWatcherDtoMetadata$.inboundSchema).optional(),
-            name: z.nullable(z.string()).optional(),
-            network: z.string(),
-            type: CreateWatcherDtoType$.inboundSchema,
-            webhookUrl: z.string(),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                confirmationsBlocks: v.confirmationsBlocks,
-                ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
-                ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                network: v.network,
-                type: v.type,
-                webhookUrl: v.webhookUrl,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, unknown> = z.object({
+        address: z.string(),
+        confirmationsBlocks: z.number(),
+        customEventAbi: z.lazy(() => CustomEventAbi$.inboundSchema).optional(),
+        customFilters: z.lazy(() => CustomFilters$.inboundSchema).optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => CreateWatcherDtoMetadata$.inboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        network: z.string(),
+        type: CreateWatcherDtoType$.inboundSchema,
+        webhookUrl: z.string(),
+    });
 
     export type Outbound = {
         address: string;
@@ -115,31 +100,16 @@ export namespace CreateWatcherDto$ {
         webhookUrl: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWatcherDto> = z
-        .object({
-            address: z.string(),
-            confirmationsBlocks: z.number(),
-            customEventAbi: z.lazy(() => CustomEventAbi$.outboundSchema).optional(),
-            customFilters: z.lazy(() => CustomFilters$.outboundSchema).optional(),
-            description: z.nullable(z.string()).optional(),
-            metadata: z.lazy(() => CreateWatcherDtoMetadata$.outboundSchema).optional(),
-            name: z.nullable(z.string()).optional(),
-            network: z.string(),
-            type: CreateWatcherDtoType$.outboundSchema,
-            webhookUrl: z.string(),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                confirmationsBlocks: v.confirmationsBlocks,
-                ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
-                ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                network: v.network,
-                type: v.type,
-                webhookUrl: v.webhookUrl,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWatcherDto> = z.object({
+        address: z.string(),
+        confirmationsBlocks: z.number(),
+        customEventAbi: z.lazy(() => CustomEventAbi$.outboundSchema).optional(),
+        customFilters: z.lazy(() => CustomFilters$.outboundSchema).optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => CreateWatcherDtoMetadata$.outboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        network: z.string(),
+        type: CreateWatcherDtoType$.outboundSchema,
+        webhookUrl: z.string(),
+    });
 }

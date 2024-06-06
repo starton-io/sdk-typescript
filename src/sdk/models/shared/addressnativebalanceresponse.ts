@@ -25,20 +25,12 @@ export type AddressNativeBalanceResponse = {
 
 /** @internal */
 export namespace AddressNativeBalanceResponse$ {
-    export const inboundSchema: z.ZodType<AddressNativeBalanceResponse, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<AddressNativeBalanceResponse, z.ZodTypeDef, unknown> =
+        z.object({
             balance: z.string(),
             decimal: z.number(),
             formatted: z.string(),
             symbol: z.string(),
-        })
-        .transform((v) => {
-            return {
-                balance: v.balance,
-                decimal: v.decimal,
-                formatted: v.formatted,
-                symbol: v.symbol,
-            };
         });
 
     export type Outbound = {
@@ -48,19 +40,11 @@ export namespace AddressNativeBalanceResponse$ {
         symbol: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddressNativeBalanceResponse> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddressNativeBalanceResponse> =
+        z.object({
             balance: z.string(),
             decimal: z.number(),
             formatted: z.string(),
             symbol: z.string(),
-        })
-        .transform((v) => {
-            return {
-                balance: v.balance,
-                decimal: v.decimal,
-                formatted: v.formatted,
-                symbol: v.symbol,
-            };
         });
 }

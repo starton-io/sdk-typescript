@@ -12,21 +12,11 @@ export type CustomGasDto = {
 
 /** @internal */
 export namespace CustomGasDto$ {
-    export const inboundSchema: z.ZodType<CustomGasDto, z.ZodTypeDef, unknown> = z
-        .object({
-            gasPrice: z.string().optional(),
-            maxFeePerGas: z.string().optional(),
-            maxPriorityFeePerGas: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.gasPrice === undefined ? null : { gasPrice: v.gasPrice }),
-                ...(v.maxFeePerGas === undefined ? null : { maxFeePerGas: v.maxFeePerGas }),
-                ...(v.maxPriorityFeePerGas === undefined
-                    ? null
-                    : { maxPriorityFeePerGas: v.maxPriorityFeePerGas }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CustomGasDto, z.ZodTypeDef, unknown> = z.object({
+        gasPrice: z.string().optional(),
+        maxFeePerGas: z.string().optional(),
+        maxPriorityFeePerGas: z.string().optional(),
+    });
 
     export type Outbound = {
         gasPrice?: string | undefined;
@@ -34,19 +24,9 @@ export namespace CustomGasDto$ {
         maxPriorityFeePerGas?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CustomGasDto> = z
-        .object({
-            gasPrice: z.string().optional(),
-            maxFeePerGas: z.string().optional(),
-            maxPriorityFeePerGas: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.gasPrice === undefined ? null : { gasPrice: v.gasPrice }),
-                ...(v.maxFeePerGas === undefined ? null : { maxFeePerGas: v.maxFeePerGas }),
-                ...(v.maxPriorityFeePerGas === undefined
-                    ? null
-                    : { maxPriorityFeePerGas: v.maxPriorityFeePerGas }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CustomGasDto> = z.object({
+        gasPrice: z.string().optional(),
+        maxFeePerGas: z.string().optional(),
+        maxPriorityFeePerGas: z.string().optional(),
+    });
 }

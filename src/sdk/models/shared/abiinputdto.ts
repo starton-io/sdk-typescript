@@ -25,23 +25,13 @@ export namespace Components$ {
 
 /** @internal */
 export namespace AbiInputDto$ {
-    export const inboundSchema: z.ZodType<AbiInputDto, z.ZodTypeDef, unknown> = z
-        .object({
-            components: z.lazy(() => Components$.inboundSchema).optional(),
-            indexed: z.boolean().optional(),
-            internalType: z.string().optional(),
-            name: z.string(),
-            type: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.components === undefined ? null : { components: v.components }),
-                ...(v.indexed === undefined ? null : { indexed: v.indexed }),
-                ...(v.internalType === undefined ? null : { internalType: v.internalType }),
-                name: v.name,
-                type: v.type,
-            };
-        });
+    export const inboundSchema: z.ZodType<AbiInputDto, z.ZodTypeDef, unknown> = z.object({
+        components: z.lazy(() => Components$.inboundSchema).optional(),
+        indexed: z.boolean().optional(),
+        internalType: z.string().optional(),
+        name: z.string(),
+        type: z.string(),
+    });
 
     export type Outbound = {
         components?: Components$.Outbound | undefined;
@@ -51,21 +41,11 @@ export namespace AbiInputDto$ {
         type: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiInputDto> = z
-        .object({
-            components: z.lazy(() => Components$.outboundSchema).optional(),
-            indexed: z.boolean().optional(),
-            internalType: z.string().optional(),
-            name: z.string(),
-            type: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.components === undefined ? null : { components: v.components }),
-                ...(v.indexed === undefined ? null : { indexed: v.indexed }),
-                ...(v.internalType === undefined ? null : { internalType: v.internalType }),
-                name: v.name,
-                type: v.type,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AbiInputDto> = z.object({
+        components: z.lazy(() => Components$.outboundSchema).optional(),
+        indexed: z.boolean().optional(),
+        internalType: z.string().optional(),
+        name: z.string(),
+        type: z.string(),
+    });
 }

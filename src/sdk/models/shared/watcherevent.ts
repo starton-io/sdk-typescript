@@ -43,43 +43,27 @@ export namespace WatcherEventStatus$ {
 
 /** @internal */
 export namespace WatcherEvent$ {
-    export const inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, unknown> = z
-        .object({
-            blockHash: z.string(),
-            blockNumber: z.number(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.375Z")
-                .transform((v) => new Date(v)),
-            id: z.string(),
-            network: z.string(),
-            payload: z.lazy(() => Payload$.inboundSchema),
-            projectId: z.string(),
-            status: WatcherEventStatus$.inboundSchema,
-            txHash: z.string(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.375Z")
-                .transform((v) => new Date(v)),
-            watcherId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                blockHash: v.blockHash,
-                blockNumber: v.blockNumber,
-                createdAt: v.createdAt,
-                id: v.id,
-                network: v.network,
-                payload: v.payload,
-                projectId: v.projectId,
-                status: v.status,
-                txHash: v.txHash,
-                updatedAt: v.updatedAt,
-                watcherId: v.watcherId,
-            };
-        });
+    export const inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, unknown> = z.object({
+        blockHash: z.string(),
+        blockNumber: z.number(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.375Z")
+            .transform((v) => new Date(v)),
+        id: z.string(),
+        network: z.string(),
+        payload: z.lazy(() => Payload$.inboundSchema),
+        projectId: z.string(),
+        status: WatcherEventStatus$.inboundSchema,
+        txHash: z.string(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.375Z")
+            .transform((v) => new Date(v)),
+        watcherId: z.string(),
+    });
 
     export type Outbound = {
         blockHash: string;
@@ -95,39 +79,23 @@ export namespace WatcherEvent$ {
         watcherId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherEvent> = z
-        .object({
-            blockHash: z.string(),
-            blockNumber: z.number(),
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.375Z"))
-                .transform((v) => v.toISOString()),
-            id: z.string(),
-            network: z.string(),
-            payload: z.lazy(() => Payload$.outboundSchema),
-            projectId: z.string(),
-            status: WatcherEventStatus$.outboundSchema,
-            txHash: z.string(),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.375Z"))
-                .transform((v) => v.toISOString()),
-            watcherId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                blockHash: v.blockHash,
-                blockNumber: v.blockNumber,
-                createdAt: v.createdAt,
-                id: v.id,
-                network: v.network,
-                payload: v.payload,
-                projectId: v.projectId,
-                status: v.status,
-                txHash: v.txHash,
-                updatedAt: v.updatedAt,
-                watcherId: v.watcherId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherEvent> = z.object({
+        blockHash: z.string(),
+        blockNumber: z.number(),
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.375Z"))
+            .transform((v) => v.toISOString()),
+        id: z.string(),
+        network: z.string(),
+        payload: z.lazy(() => Payload$.outboundSchema),
+        projectId: z.string(),
+        status: WatcherEventStatus$.outboundSchema,
+        txHash: z.string(),
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.375Z"))
+            .transform((v) => v.toISOString()),
+        watcherId: z.string(),
+    });
 }

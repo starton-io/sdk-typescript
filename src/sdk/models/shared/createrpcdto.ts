@@ -10,27 +10,15 @@ export type CreateRpcDto = {
 
 /** @internal */
 export namespace CreateRpcDto$ {
-    export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+    });
 
     export type Outbound = {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRpcDto> = z
-        .object({
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRpcDto> = z.object({
+        url: z.string(),
+    });
 }

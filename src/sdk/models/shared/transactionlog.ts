@@ -73,21 +73,12 @@ export namespace TransactionLogType$ {
 
 /** @internal */
 export namespace TransactionLog$ {
-    export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, unknown> = z
-        .object({
-            context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
-            createdAt: z.string(),
-            message: z.string(),
-            type: TransactionLogType$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.context === undefined ? null : { context: v.context }),
-                createdAt: v.createdAt,
-                message: v.message,
-                type: v.type,
-            };
-        });
+    export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, unknown> = z.object({
+        context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
+        createdAt: z.string(),
+        message: z.string(),
+        type: TransactionLogType$.inboundSchema,
+    });
 
     export type Outbound = {
         context?: TransactionLogContext$.Outbound | undefined;
@@ -96,19 +87,10 @@ export namespace TransactionLog$ {
         type: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLog> = z
-        .object({
-            context: z.lazy(() => TransactionLogContext$.outboundSchema).optional(),
-            createdAt: z.string(),
-            message: z.string(),
-            type: TransactionLogType$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.context === undefined ? null : { context: v.context }),
-                createdAt: v.createdAt,
-                message: v.message,
-                type: v.type,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLog> = z.object({
+        context: z.lazy(() => TransactionLogContext$.outboundSchema).optional(),
+        createdAt: z.string(),
+        message: z.string(),
+        type: TransactionLogType$.outboundSchema,
+    });
 }

@@ -29,59 +29,26 @@ export type UpdateNetworkDto = {
 
 /** @internal */
 export namespace UpdateNetworkDto$ {
-    export const inboundSchema: z.ZodType<UpdateNetworkDto, z.ZodTypeDef, unknown> = z
-        .object({
-            blockchain: z.string().optional(),
-            chainId: z.number().optional(),
-            confirmationBlocks: z.number().optional(),
-            decimal: z.number().optional(),
-            displayName: z.string().optional(),
-            eip1159: z.boolean().optional(),
-            enableExternalWallet: z.boolean().optional(),
-            enableListener: z.boolean().optional(),
-            enableRelayer: z.boolean().optional(),
-            explorerApi: ExplorerApiDto$.inboundSchema.optional(),
-            explorerUrl: z.string().optional(),
-            gasPriceRecommendation: GasPriceRecommendationDto$.inboundSchema.optional(),
-            logo: z.string().optional(),
-            name: z.string().optional(),
-            symbol: z.string().optional(),
-            testnet: z.boolean().optional(),
-            verifyBlockIntegrity: z.boolean().optional(),
-            verifyTxIntegrity: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.blockchain === undefined ? null : { blockchain: v.blockchain }),
-                ...(v.chainId === undefined ? null : { chainId: v.chainId }),
-                ...(v.confirmationBlocks === undefined
-                    ? null
-                    : { confirmationBlocks: v.confirmationBlocks }),
-                ...(v.decimal === undefined ? null : { decimal: v.decimal }),
-                ...(v.displayName === undefined ? null : { displayName: v.displayName }),
-                ...(v.eip1159 === undefined ? null : { eip1159: v.eip1159 }),
-                ...(v.enableExternalWallet === undefined
-                    ? null
-                    : { enableExternalWallet: v.enableExternalWallet }),
-                ...(v.enableListener === undefined ? null : { enableListener: v.enableListener }),
-                ...(v.enableRelayer === undefined ? null : { enableRelayer: v.enableRelayer }),
-                ...(v.explorerApi === undefined ? null : { explorerApi: v.explorerApi }),
-                ...(v.explorerUrl === undefined ? null : { explorerUrl: v.explorerUrl }),
-                ...(v.gasPriceRecommendation === undefined
-                    ? null
-                    : { gasPriceRecommendation: v.gasPriceRecommendation }),
-                ...(v.logo === undefined ? null : { logo: v.logo }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.symbol === undefined ? null : { symbol: v.symbol }),
-                ...(v.testnet === undefined ? null : { testnet: v.testnet }),
-                ...(v.verifyBlockIntegrity === undefined
-                    ? null
-                    : { verifyBlockIntegrity: v.verifyBlockIntegrity }),
-                ...(v.verifyTxIntegrity === undefined
-                    ? null
-                    : { verifyTxIntegrity: v.verifyTxIntegrity }),
-            };
-        });
+    export const inboundSchema: z.ZodType<UpdateNetworkDto, z.ZodTypeDef, unknown> = z.object({
+        blockchain: z.string().optional(),
+        chainId: z.number().optional(),
+        confirmationBlocks: z.number().optional(),
+        decimal: z.number().optional(),
+        displayName: z.string().optional(),
+        eip1159: z.boolean().optional(),
+        enableExternalWallet: z.boolean().optional(),
+        enableListener: z.boolean().optional(),
+        enableRelayer: z.boolean().optional(),
+        explorerApi: ExplorerApiDto$.inboundSchema.optional(),
+        explorerUrl: z.string().optional(),
+        gasPriceRecommendation: GasPriceRecommendationDto$.inboundSchema.optional(),
+        logo: z.string().optional(),
+        name: z.string().optional(),
+        symbol: z.string().optional(),
+        testnet: z.boolean().optional(),
+        verifyBlockIntegrity: z.boolean().optional(),
+        verifyTxIntegrity: z.boolean().optional(),
+    });
 
     export type Outbound = {
         blockchain?: string | undefined;
@@ -104,57 +71,24 @@ export namespace UpdateNetworkDto$ {
         verifyTxIntegrity?: boolean | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateNetworkDto> = z
-        .object({
-            blockchain: z.string().optional(),
-            chainId: z.number().optional(),
-            confirmationBlocks: z.number().optional(),
-            decimal: z.number().optional(),
-            displayName: z.string().optional(),
-            eip1159: z.boolean().optional(),
-            enableExternalWallet: z.boolean().optional(),
-            enableListener: z.boolean().optional(),
-            enableRelayer: z.boolean().optional(),
-            explorerApi: ExplorerApiDto$.outboundSchema.optional(),
-            explorerUrl: z.string().optional(),
-            gasPriceRecommendation: GasPriceRecommendationDto$.outboundSchema.optional(),
-            logo: z.string().optional(),
-            name: z.string().optional(),
-            symbol: z.string().optional(),
-            testnet: z.boolean().optional(),
-            verifyBlockIntegrity: z.boolean().optional(),
-            verifyTxIntegrity: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.blockchain === undefined ? null : { blockchain: v.blockchain }),
-                ...(v.chainId === undefined ? null : { chainId: v.chainId }),
-                ...(v.confirmationBlocks === undefined
-                    ? null
-                    : { confirmationBlocks: v.confirmationBlocks }),
-                ...(v.decimal === undefined ? null : { decimal: v.decimal }),
-                ...(v.displayName === undefined ? null : { displayName: v.displayName }),
-                ...(v.eip1159 === undefined ? null : { eip1159: v.eip1159 }),
-                ...(v.enableExternalWallet === undefined
-                    ? null
-                    : { enableExternalWallet: v.enableExternalWallet }),
-                ...(v.enableListener === undefined ? null : { enableListener: v.enableListener }),
-                ...(v.enableRelayer === undefined ? null : { enableRelayer: v.enableRelayer }),
-                ...(v.explorerApi === undefined ? null : { explorerApi: v.explorerApi }),
-                ...(v.explorerUrl === undefined ? null : { explorerUrl: v.explorerUrl }),
-                ...(v.gasPriceRecommendation === undefined
-                    ? null
-                    : { gasPriceRecommendation: v.gasPriceRecommendation }),
-                ...(v.logo === undefined ? null : { logo: v.logo }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.symbol === undefined ? null : { symbol: v.symbol }),
-                ...(v.testnet === undefined ? null : { testnet: v.testnet }),
-                ...(v.verifyBlockIntegrity === undefined
-                    ? null
-                    : { verifyBlockIntegrity: v.verifyBlockIntegrity }),
-                ...(v.verifyTxIntegrity === undefined
-                    ? null
-                    : { verifyTxIntegrity: v.verifyTxIntegrity }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateNetworkDto> = z.object({
+        blockchain: z.string().optional(),
+        chainId: z.number().optional(),
+        confirmationBlocks: z.number().optional(),
+        decimal: z.number().optional(),
+        displayName: z.string().optional(),
+        eip1159: z.boolean().optional(),
+        enableExternalWallet: z.boolean().optional(),
+        enableListener: z.boolean().optional(),
+        enableRelayer: z.boolean().optional(),
+        explorerApi: ExplorerApiDto$.outboundSchema.optional(),
+        explorerUrl: z.string().optional(),
+        gasPriceRecommendation: GasPriceRecommendationDto$.outboundSchema.optional(),
+        logo: z.string().optional(),
+        name: z.string().optional(),
+        symbol: z.string().optional(),
+        testnet: z.boolean().optional(),
+        verifyBlockIntegrity: z.boolean().optional(),
+        verifyTxIntegrity: z.boolean().optional(),
+    });
 }

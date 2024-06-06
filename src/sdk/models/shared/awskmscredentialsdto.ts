@@ -12,19 +12,11 @@ export type AwsKmsCredentialsDto = {
 
 /** @internal */
 export namespace AwsKmsCredentialsDto$ {
-    export const inboundSchema: z.ZodType<AwsKmsCredentialsDto, z.ZodTypeDef, unknown> = z
-        .object({
-            accessKeyId: z.string(),
-            accountId: z.string(),
-            region: z.string(),
-        })
-        .transform((v) => {
-            return {
-                accessKeyId: v.accessKeyId,
-                accountId: v.accountId,
-                region: v.region,
-            };
-        });
+    export const inboundSchema: z.ZodType<AwsKmsCredentialsDto, z.ZodTypeDef, unknown> = z.object({
+        accessKeyId: z.string(),
+        accountId: z.string(),
+        region: z.string(),
+    });
 
     export type Outbound = {
         accessKeyId: string;
@@ -32,17 +24,11 @@ export namespace AwsKmsCredentialsDto$ {
         region: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AwsKmsCredentialsDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AwsKmsCredentialsDto> = z.object(
+        {
             accessKeyId: z.string(),
             accountId: z.string(),
             region: z.string(),
-        })
-        .transform((v) => {
-            return {
-                accessKeyId: v.accessKeyId,
-                accountId: v.accountId,
-                region: v.region,
-            };
-        });
+        }
+    );
 }

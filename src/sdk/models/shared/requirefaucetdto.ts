@@ -17,32 +17,18 @@ export type RequireFaucetDto = {
 
 /** @internal */
 export namespace RequireFaucetDto$ {
-    export const inboundSchema: z.ZodType<RequireFaucetDto, z.ZodTypeDef, unknown> = z
-        .object({
-            captchaToken: z.string().optional(),
-            wallet: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.captchaToken === undefined ? null : { captchaToken: v.captchaToken }),
-                wallet: v.wallet,
-            };
-        });
+    export const inboundSchema: z.ZodType<RequireFaucetDto, z.ZodTypeDef, unknown> = z.object({
+        captchaToken: z.string().optional(),
+        wallet: z.string(),
+    });
 
     export type Outbound = {
         captchaToken?: string | undefined;
         wallet: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RequireFaucetDto> = z
-        .object({
-            captchaToken: z.string().optional(),
-            wallet: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.captchaToken === undefined ? null : { captchaToken: v.captchaToken }),
-                wallet: v.wallet,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RequireFaucetDto> = z.object({
+        captchaToken: z.string().optional(),
+        wallet: z.string(),
+    });
 }

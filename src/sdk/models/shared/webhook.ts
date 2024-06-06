@@ -53,39 +53,25 @@ export namespace WebhookStatus$ {
 
 /** @internal */
 export namespace Webhook$ {
-    export const inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:35.791Z")
-                .transform((v) => new Date(v)),
-            headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
-            id: z.string(),
-            payload: z.nullable(z.lazy(() => WebhookPayload$.inboundSchema)),
-            projectId: z.string(),
-            refId: z.string(),
-            status: WebhookStatus$.inboundSchema,
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:35.791Z")
-                .transform((v) => new Date(v)),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                headers: v.headers,
-                id: v.id,
-                payload: v.payload,
-                projectId: v.projectId,
-                refId: v.refId,
-                status: v.status,
-                updatedAt: v.updatedAt,
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:35.791Z")
+            .transform((v) => new Date(v)),
+        headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
+        id: z.string(),
+        payload: z.nullable(z.lazy(() => WebhookPayload$.inboundSchema)),
+        projectId: z.string(),
+        refId: z.string(),
+        status: WebhookStatus$.inboundSchema,
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:35.791Z")
+            .transform((v) => new Date(v)),
+        url: z.string(),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -99,35 +85,21 @@ export namespace Webhook$ {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Webhook> = z
-        .object({
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:35.791Z"))
-                .transform((v) => v.toISOString()),
-            headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
-            id: z.string(),
-            payload: z.nullable(z.lazy(() => WebhookPayload$.outboundSchema)),
-            projectId: z.string(),
-            refId: z.string(),
-            status: WebhookStatus$.outboundSchema,
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:35.791Z"))
-                .transform((v) => v.toISOString()),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                headers: v.headers,
-                id: v.id,
-                payload: v.payload,
-                projectId: v.projectId,
-                refId: v.refId,
-                status: v.status,
-                updatedAt: v.updatedAt,
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Webhook> = z.object({
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:35.791Z"))
+            .transform((v) => v.toISOString()),
+        headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
+        id: z.string(),
+        payload: z.nullable(z.lazy(() => WebhookPayload$.outboundSchema)),
+        projectId: z.string(),
+        refId: z.string(),
+        status: WebhookStatus$.outboundSchema,
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:35.791Z"))
+            .transform((v) => v.toISOString()),
+        url: z.string(),
+    });
 }

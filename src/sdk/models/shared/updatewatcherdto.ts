@@ -28,27 +28,14 @@ export namespace UpdateWatcherDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateWatcherDto$ {
-    export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, unknown> = z
-        .object({
-            confirmationsBlocks: z.number().optional(),
-            description: z.nullable(z.string()).optional(),
-            metadata: z.lazy(() => UpdateWatcherDtoMetadata$.inboundSchema).optional(),
-            name: z.nullable(z.string()).optional(),
-            paused: z.boolean().optional(),
-            webhookUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.confirmationsBlocks === undefined
-                    ? null
-                    : { confirmationsBlocks: v.confirmationsBlocks }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.paused === undefined ? null : { paused: v.paused }),
-                ...(v.webhookUrl === undefined ? null : { webhookUrl: v.webhookUrl }),
-            };
-        });
+    export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, unknown> = z.object({
+        confirmationsBlocks: z.number().optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => UpdateWatcherDtoMetadata$.inboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        paused: z.boolean().optional(),
+        webhookUrl: z.string().optional(),
+    });
 
     export type Outbound = {
         confirmationsBlocks?: number | undefined;
@@ -59,25 +46,12 @@ export namespace UpdateWatcherDto$ {
         webhookUrl?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherDto> = z
-        .object({
-            confirmationsBlocks: z.number().optional(),
-            description: z.nullable(z.string()).optional(),
-            metadata: z.lazy(() => UpdateWatcherDtoMetadata$.outboundSchema).optional(),
-            name: z.nullable(z.string()).optional(),
-            paused: z.boolean().optional(),
-            webhookUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.confirmationsBlocks === undefined
-                    ? null
-                    : { confirmationsBlocks: v.confirmationsBlocks }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.paused === undefined ? null : { paused: v.paused }),
-                ...(v.webhookUrl === undefined ? null : { webhookUrl: v.webhookUrl }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherDto> = z.object({
+        confirmationsBlocks: z.number().optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => UpdateWatcherDtoMetadata$.outboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        paused: z.boolean().optional(),
+        webhookUrl: z.string().optional(),
+    });
 }

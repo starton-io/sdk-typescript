@@ -27,19 +27,11 @@ export namespace CreatePinDtoMetadata$ {
 
 /** @internal */
 export namespace CreatePinDto$ {
-    export const inboundSchema: z.ZodType<CreatePinDto, z.ZodTypeDef, unknown> = z
-        .object({
-            cid: z.string(),
-            metadata: z.lazy(() => CreatePinDtoMetadata$.inboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                cid: v.cid,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreatePinDto, z.ZodTypeDef, unknown> = z.object({
+        cid: z.string(),
+        metadata: z.lazy(() => CreatePinDtoMetadata$.inboundSchema).optional(),
+        name: z.string().optional(),
+    });
 
     export type Outbound = {
         cid: string;
@@ -47,17 +39,9 @@ export namespace CreatePinDto$ {
         name?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePinDto> = z
-        .object({
-            cid: z.string(),
-            metadata: z.lazy(() => CreatePinDtoMetadata$.outboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                cid: v.cid,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePinDto> = z.object({
+        cid: z.string(),
+        metadata: z.lazy(() => CreatePinDtoMetadata$.outboundSchema).optional(),
+        name: z.string().optional(),
+    });
 }

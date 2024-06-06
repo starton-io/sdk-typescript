@@ -26,21 +26,12 @@ export type GasPrices = {
 
 /** @internal */
 export namespace GasPrices$ {
-    export const inboundSchema: z.ZodType<GasPrices, z.ZodTypeDef, unknown> = z
-        .object({
-            average: GasPriceInfo$.inboundSchema,
-            fast: GasPriceInfo$.inboundSchema,
-            fastest: GasPriceInfo$.inboundSchema,
-            low: GasPriceInfo$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                average: v.average,
-                fast: v.fast,
-                fastest: v.fastest,
-                low: v.low,
-            };
-        });
+    export const inboundSchema: z.ZodType<GasPrices, z.ZodTypeDef, unknown> = z.object({
+        average: GasPriceInfo$.inboundSchema,
+        fast: GasPriceInfo$.inboundSchema,
+        fastest: GasPriceInfo$.inboundSchema,
+        low: GasPriceInfo$.inboundSchema,
+    });
 
     export type Outbound = {
         average: GasPriceInfo$.Outbound;
@@ -49,19 +40,10 @@ export namespace GasPrices$ {
         low: GasPriceInfo$.Outbound;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPrices> = z
-        .object({
-            average: GasPriceInfo$.outboundSchema,
-            fast: GasPriceInfo$.outboundSchema,
-            fastest: GasPriceInfo$.outboundSchema,
-            low: GasPriceInfo$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                average: v.average,
-                fast: v.fast,
-                fastest: v.fastest,
-                low: v.low,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPrices> = z.object({
+        average: GasPriceInfo$.outboundSchema,
+        fast: GasPriceInfo$.outboundSchema,
+        fastest: GasPriceInfo$.outboundSchema,
+        low: GasPriceInfo$.outboundSchema,
+    });
 }

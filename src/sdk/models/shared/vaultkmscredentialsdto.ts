@@ -38,8 +38,8 @@ export type VaultKmsCredentialsDto = {
 
 /** @internal */
 export namespace VaultKmsCredentialsDto$ {
-    export const inboundSchema: z.ZodType<VaultKmsCredentialsDto, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<VaultKmsCredentialsDto, z.ZodTypeDef, unknown> = z.object(
+        {
             baseUrl: z.string(),
             id: z.string(),
             loginPath: z.string(),
@@ -48,19 +48,8 @@ export namespace VaultKmsCredentialsDto$ {
             selfSigned: z.boolean(),
             timeout: z.number(),
             tokenPath: z.string(),
-        })
-        .transform((v) => {
-            return {
-                baseUrl: v.baseUrl,
-                id: v.id,
-                loginPath: v.loginPath,
-                role: v.role,
-                rootPath: v.rootPath,
-                selfSigned: v.selfSigned,
-                timeout: v.timeout,
-                tokenPath: v.tokenPath,
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         baseUrl: string;
@@ -73,8 +62,8 @@ export namespace VaultKmsCredentialsDto$ {
         tokenPath: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, VaultKmsCredentialsDto> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, VaultKmsCredentialsDto> =
+        z.object({
             baseUrl: z.string(),
             id: z.string(),
             loginPath: z.string(),
@@ -83,17 +72,5 @@ export namespace VaultKmsCredentialsDto$ {
             selfSigned: z.boolean(),
             timeout: z.number(),
             tokenPath: z.string(),
-        })
-        .transform((v) => {
-            return {
-                baseUrl: v.baseUrl,
-                id: v.id,
-                loginPath: v.loginPath,
-                role: v.role,
-                rootPath: v.rootPath,
-                selfSigned: v.selfSigned,
-                timeout: v.timeout,
-                tokenPath: v.tokenPath,
-            };
         });
 }

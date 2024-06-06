@@ -379,3 +379,13 @@ Based on:
 - [typescript v0.14.4] .
 ### Releases
 - [NPM v0.14.4] https://www.npmjs.com/package/@starton/sdk/v/0.14.4 - .
+
+## 2024-06-06 00:51:56
+### Changes
+Based on:
+- OpenAPI Doc 1.0 
+- Speakeasy CLI 1.300.0 (2.338.14) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.14.5] .
+### Releases
+- [NPM v0.14.5] https://www.npmjs.com/package/@starton/sdk/v/0.14.5 - .

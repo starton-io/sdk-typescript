@@ -66,31 +66,18 @@ export namespace Speed$ {
 
 /** @internal */
 export namespace CallDto$ {
-    export const inboundSchema: z.ZodType<CallDto, z.ZodTypeDef, unknown> = z
-        .object({
-            customGas: CustomGasDto$.inboundSchema.optional(),
-            functionName: z.string(),
-            gasLimit: z.string().optional(),
-            nonce: z.number().optional(),
-            params: z.array(
-                z.union([z.lazy(() => Three$.inboundSchema), z.string(), z.number(), z.boolean()])
-            ),
-            signerWallet: z.string(),
-            speed: Speed$.inboundSchema.optional(),
-            value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.customGas === undefined ? null : { customGas: v.customGas }),
-                functionName: v.functionName,
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                params: v.params,
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CallDto, z.ZodTypeDef, unknown> = z.object({
+        customGas: CustomGasDto$.inboundSchema.optional(),
+        functionName: z.string(),
+        gasLimit: z.string().optional(),
+        nonce: z.number().optional(),
+        params: z.array(
+            z.union([z.lazy(() => Three$.inboundSchema), z.string(), z.number(), z.boolean()])
+        ),
+        signerWallet: z.string(),
+        speed: Speed$.inboundSchema.optional(),
+        value: z.string().optional(),
+    });
 
     export type Outbound = {
         customGas?: CustomGasDto$.Outbound | undefined;
@@ -103,29 +90,16 @@ export namespace CallDto$ {
         value?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CallDto> = z
-        .object({
-            customGas: CustomGasDto$.outboundSchema.optional(),
-            functionName: z.string(),
-            gasLimit: z.string().optional(),
-            nonce: z.number().optional(),
-            params: z.array(
-                z.union([z.lazy(() => Three$.outboundSchema), z.string(), z.number(), z.boolean()])
-            ),
-            signerWallet: z.string(),
-            speed: Speed$.outboundSchema.optional(),
-            value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.customGas === undefined ? null : { customGas: v.customGas }),
-                functionName: v.functionName,
-                ...(v.gasLimit === undefined ? null : { gasLimit: v.gasLimit }),
-                ...(v.nonce === undefined ? null : { nonce: v.nonce }),
-                params: v.params,
-                signerWallet: v.signerWallet,
-                ...(v.speed === undefined ? null : { speed: v.speed }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CallDto> = z.object({
+        customGas: CustomGasDto$.outboundSchema.optional(),
+        functionName: z.string(),
+        gasLimit: z.string().optional(),
+        nonce: z.number().optional(),
+        params: z.array(
+            z.union([z.lazy(() => Three$.outboundSchema), z.string(), z.number(), z.boolean()])
+        ),
+        signerWallet: z.string(),
+        speed: Speed$.outboundSchema.optional(),
+        value: z.string().optional(),
+    });
 }

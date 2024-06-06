@@ -12,19 +12,11 @@ export type StorageUsed = {
 
 /** @internal */
 export namespace StorageUsed$ {
-    export const inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, unknown> = z
-        .object({
-            currentStorageUsed: z.number(),
-            freeSpaceRemaining: z.number(),
-            maxAllowed: z.number(),
-        })
-        .transform((v) => {
-            return {
-                currentStorageUsed: v.currentStorageUsed,
-                freeSpaceRemaining: v.freeSpaceRemaining,
-                maxAllowed: v.maxAllowed,
-            };
-        });
+    export const inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, unknown> = z.object({
+        currentStorageUsed: z.number(),
+        freeSpaceRemaining: z.number(),
+        maxAllowed: z.number(),
+    });
 
     export type Outbound = {
         currentStorageUsed: number;
@@ -32,17 +24,9 @@ export namespace StorageUsed$ {
         maxAllowed: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StorageUsed> = z
-        .object({
-            currentStorageUsed: z.number(),
-            freeSpaceRemaining: z.number(),
-            maxAllowed: z.number(),
-        })
-        .transform((v) => {
-            return {
-                currentStorageUsed: v.currentStorageUsed,
-                freeSpaceRemaining: v.freeSpaceRemaining,
-                maxAllowed: v.maxAllowed,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StorageUsed> = z.object({
+        currentStorageUsed: z.number(),
+        freeSpaceRemaining: z.number(),
+        maxAllowed: z.number(),
+    });
 }

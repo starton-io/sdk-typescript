@@ -25,19 +25,11 @@ export namespace UpdateWalletDtoMetadata$ {
 
 /** @internal */
 export namespace UpdateWalletDto$ {
-    export const inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string().optional(),
-            metadata: z.lazy(() => UpdateWalletDtoMetadata$.inboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, unknown> = z.object({
+        description: z.string().optional(),
+        metadata: z.lazy(() => UpdateWalletDtoMetadata$.inboundSchema).optional(),
+        name: z.string().optional(),
+    });
 
     export type Outbound = {
         description?: string | undefined;
@@ -45,17 +37,9 @@ export namespace UpdateWalletDto$ {
         name?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletDto> = z
-        .object({
-            description: z.string().optional(),
-            metadata: z.lazy(() => UpdateWalletDtoMetadata$.outboundSchema).optional(),
-            name: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletDto> = z.object({
+        description: z.string().optional(),
+        metadata: z.lazy(() => UpdateWalletDtoMetadata$.outboundSchema).optional(),
+        name: z.string().optional(),
+    });
 }

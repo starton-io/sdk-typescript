@@ -37,19 +37,11 @@ export namespace UploadJsonDtoMetadata$ {
 
 /** @internal */
 export namespace UploadJsonDto$ {
-    export const inboundSchema: z.ZodType<UploadJsonDto, z.ZodTypeDef, unknown> = z
-        .object({
-            content: z.lazy(() => Content$.inboundSchema),
-            metadata: z.lazy(() => UploadJsonDtoMetadata$.inboundSchema).optional(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                content: v.content,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<UploadJsonDto, z.ZodTypeDef, unknown> = z.object({
+        content: z.lazy(() => Content$.inboundSchema),
+        metadata: z.lazy(() => UploadJsonDtoMetadata$.inboundSchema).optional(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         content: Content$.Outbound;
@@ -57,17 +49,9 @@ export namespace UploadJsonDto$ {
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadJsonDto> = z
-        .object({
-            content: z.lazy(() => Content$.outboundSchema),
-            metadata: z.lazy(() => UploadJsonDtoMetadata$.outboundSchema).optional(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                content: v.content,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                name: v.name,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadJsonDto> = z.object({
+        content: z.lazy(() => Content$.outboundSchema),
+        metadata: z.lazy(() => UploadJsonDtoMetadata$.outboundSchema).optional(),
+        name: z.string(),
+    });
 }

@@ -45,50 +45,36 @@ export namespace ReadDtoParams$ {
 
 /** @internal */
 export namespace ReadDto$ {
-    export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, unknown> = z
-        .object({
-            functionName: z.string(),
-            params: z
-                .array(
-                    z.union([
-                        z.lazy(() => ReadDto3$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return {
-                functionName: v.functionName,
-                ...(v.params === undefined ? null : { params: v.params }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ReadDto, z.ZodTypeDef, unknown> = z.object({
+        functionName: z.string(),
+        params: z
+            .array(
+                z.union([
+                    z.lazy(() => ReadDto3$.inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+    });
 
     export type Outbound = {
         functionName: string;
         params?: Array<ReadDto3$.Outbound | string | number | boolean> | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto> = z
-        .object({
-            functionName: z.string(),
-            params: z
-                .array(
-                    z.union([
-                        z.lazy(() => ReadDto3$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return {
-                functionName: v.functionName,
-                ...(v.params === undefined ? null : { params: v.params }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadDto> = z.object({
+        functionName: z.string(),
+        params: z
+            .array(
+                z.union([
+                    z.lazy(() => ReadDto3$.outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+    });
 }

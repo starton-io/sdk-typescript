@@ -99,57 +99,35 @@ export namespace WatcherType$ {
 
 /** @internal */
 export namespace Watcher$ {
-    export const inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> = z
-        .object({
-            address: z.string(),
-            confirmationsBlocks: z.number(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.353Z")
-                .transform((v) => new Date(v)),
-            customEventAbi: z
-                .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema)))
-                .optional(),
-            customFilters: z.lazy(() => WatcherCustomFilters$.inboundSchema).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.string(),
-            metadata: z.nullable(z.lazy(() => WatcherMetadata$.inboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            network: z.string(),
-            paused: z.boolean(),
-            pausedReason: z.nullable(z.string()).optional(),
-            projectId: z.string(),
-            triggerType: TriggerType$.inboundSchema,
-            type: WatcherType$.inboundSchema,
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:36.353Z")
-                .transform((v) => new Date(v)),
-            webhookUrl: z.string(),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                confirmationsBlocks: v.confirmationsBlocks,
-                createdAt: v.createdAt,
-                ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
-                ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                id: v.id,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                network: v.network,
-                paused: v.paused,
-                ...(v.pausedReason === undefined ? null : { pausedReason: v.pausedReason }),
-                projectId: v.projectId,
-                triggerType: v.triggerType,
-                type: v.type,
-                updatedAt: v.updatedAt,
-                webhookUrl: v.webhookUrl,
-            };
-        });
+    export const inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> = z.object({
+        address: z.string(),
+        confirmationsBlocks: z.number(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.353Z")
+            .transform((v) => new Date(v)),
+        customEventAbi: z
+            .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema)))
+            .optional(),
+        customFilters: z.lazy(() => WatcherCustomFilters$.inboundSchema).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.string(),
+        metadata: z.nullable(z.lazy(() => WatcherMetadata$.inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        network: z.string(),
+        paused: z.boolean(),
+        pausedReason: z.nullable(z.string()).optional(),
+        projectId: z.string(),
+        triggerType: TriggerType$.inboundSchema,
+        type: WatcherType$.inboundSchema,
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:36.353Z")
+            .transform((v) => new Date(v)),
+        webhookUrl: z.string(),
+    });
 
     export type Outbound = {
         address: string;
@@ -171,53 +149,31 @@ export namespace Watcher$ {
         webhookUrl: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Watcher> = z
-        .object({
-            address: z.string(),
-            confirmationsBlocks: z.number(),
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.353Z"))
-                .transform((v) => v.toISOString()),
-            customEventAbi: z
-                .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema)))
-                .optional(),
-            customFilters: z.lazy(() => WatcherCustomFilters$.outboundSchema).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.string(),
-            metadata: z.nullable(z.lazy(() => WatcherMetadata$.outboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            network: z.string(),
-            paused: z.boolean(),
-            pausedReason: z.nullable(z.string()).optional(),
-            projectId: z.string(),
-            triggerType: TriggerType$.outboundSchema,
-            type: WatcherType$.outboundSchema,
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:36.353Z"))
-                .transform((v) => v.toISOString()),
-            webhookUrl: z.string(),
-        })
-        .transform((v) => {
-            return {
-                address: v.address,
-                confirmationsBlocks: v.confirmationsBlocks,
-                createdAt: v.createdAt,
-                ...(v.customEventAbi === undefined ? null : { customEventAbi: v.customEventAbi }),
-                ...(v.customFilters === undefined ? null : { customFilters: v.customFilters }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                id: v.id,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                network: v.network,
-                paused: v.paused,
-                ...(v.pausedReason === undefined ? null : { pausedReason: v.pausedReason }),
-                projectId: v.projectId,
-                triggerType: v.triggerType,
-                type: v.type,
-                updatedAt: v.updatedAt,
-                webhookUrl: v.webhookUrl,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Watcher> = z.object({
+        address: z.string(),
+        confirmationsBlocks: z.number(),
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.353Z"))
+            .transform((v) => v.toISOString()),
+        customEventAbi: z
+            .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema)))
+            .optional(),
+        customFilters: z.lazy(() => WatcherCustomFilters$.outboundSchema).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.string(),
+        metadata: z.nullable(z.lazy(() => WatcherMetadata$.outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        network: z.string(),
+        paused: z.boolean(),
+        pausedReason: z.nullable(z.string()).optional(),
+        projectId: z.string(),
+        triggerType: TriggerType$.outboundSchema,
+        type: WatcherType$.outboundSchema,
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:36.353Z"))
+            .transform((v) => v.toISOString()),
+        webhookUrl: z.string(),
+    });
 }

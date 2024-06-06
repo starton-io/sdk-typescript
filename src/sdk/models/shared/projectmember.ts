@@ -12,19 +12,11 @@ export type ProjectMember = {
 
 /** @internal */
 export namespace ProjectMember$ {
-    export const inboundSchema: z.ZodType<ProjectMember, z.ZodTypeDef, unknown> = z
-        .object({
-            email: z.string(),
-            fullName: z.string(),
-            id: z.string(),
-        })
-        .transform((v) => {
-            return {
-                email: v.email,
-                fullName: v.fullName,
-                id: v.id,
-            };
-        });
+    export const inboundSchema: z.ZodType<ProjectMember, z.ZodTypeDef, unknown> = z.object({
+        email: z.string(),
+        fullName: z.string(),
+        id: z.string(),
+    });
 
     export type Outbound = {
         email: string;
@@ -32,17 +24,9 @@ export namespace ProjectMember$ {
         id: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProjectMember> = z
-        .object({
-            email: z.string(),
-            fullName: z.string(),
-            id: z.string(),
-        })
-        .transform((v) => {
-            return {
-                email: v.email,
-                fullName: v.fullName,
-                id: v.id,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProjectMember> = z.object({
+        email: z.string(),
+        fullName: z.string(),
+        id: z.string(),
+    });
 }

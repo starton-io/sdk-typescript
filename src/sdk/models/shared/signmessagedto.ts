@@ -10,27 +10,15 @@ export type SignMessageDto = {
 
 /** @internal */
 export namespace SignMessageDto$ {
-    export const inboundSchema: z.ZodType<SignMessageDto, z.ZodTypeDef, unknown> = z
-        .object({
-            message: z.string(),
-        })
-        .transform((v) => {
-            return {
-                message: v.message,
-            };
-        });
+    export const inboundSchema: z.ZodType<SignMessageDto, z.ZodTypeDef, unknown> = z.object({
+        message: z.string(),
+    });
 
     export type Outbound = {
         message: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignMessageDto> = z
-        .object({
-            message: z.string(),
-        })
-        .transform((v) => {
-            return {
-                message: v.message,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignMessageDto> = z.object({
+        message: z.string(),
+    });
 }

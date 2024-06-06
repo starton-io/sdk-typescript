@@ -21,19 +21,11 @@ export type GasPriceInfo = {
 
 /** @internal */
 export namespace GasPriceInfo$ {
-    export const inboundSchema: z.ZodType<GasPriceInfo, z.ZodTypeDef, unknown> = z
-        .object({
-            gasPrice: z.nullable(z.string()),
-            maxFeePerGas: z.nullable(z.string()),
-            maxPriorityFeePerGas: z.nullable(z.string()),
-        })
-        .transform((v) => {
-            return {
-                gasPrice: v.gasPrice,
-                maxFeePerGas: v.maxFeePerGas,
-                maxPriorityFeePerGas: v.maxPriorityFeePerGas,
-            };
-        });
+    export const inboundSchema: z.ZodType<GasPriceInfo, z.ZodTypeDef, unknown> = z.object({
+        gasPrice: z.nullable(z.string()),
+        maxFeePerGas: z.nullable(z.string()),
+        maxPriorityFeePerGas: z.nullable(z.string()),
+    });
 
     export type Outbound = {
         gasPrice: string | null;
@@ -41,17 +33,9 @@ export namespace GasPriceInfo$ {
         maxPriorityFeePerGas: string | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPriceInfo> = z
-        .object({
-            gasPrice: z.nullable(z.string()),
-            maxFeePerGas: z.nullable(z.string()),
-            maxPriorityFeePerGas: z.nullable(z.string()),
-        })
-        .transform((v) => {
-            return {
-                gasPrice: v.gasPrice,
-                maxFeePerGas: v.maxFeePerGas,
-                maxPriorityFeePerGas: v.maxPriorityFeePerGas,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GasPriceInfo> = z.object({
+        gasPrice: z.nullable(z.string()),
+        maxFeePerGas: z.nullable(z.string()),
+        maxPriorityFeePerGas: z.nullable(z.string()),
+    });
 }

@@ -29,23 +29,13 @@ export type Erc20BalanceResponse = {
 
 /** @internal */
 export namespace Erc20BalanceResponse$ {
-    export const inboundSchema: z.ZodType<Erc20BalanceResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            balance: z.string(),
-            contractAddress: z.string(),
-            decimal: z.number(),
-            formatted: z.string(),
-            symbol: z.string(),
-        })
-        .transform((v) => {
-            return {
-                balance: v.balance,
-                contractAddress: v.contractAddress,
-                decimal: v.decimal,
-                formatted: v.formatted,
-                symbol: v.symbol,
-            };
-        });
+    export const inboundSchema: z.ZodType<Erc20BalanceResponse, z.ZodTypeDef, unknown> = z.object({
+        balance: z.string(),
+        contractAddress: z.string(),
+        decimal: z.number(),
+        formatted: z.string(),
+        symbol: z.string(),
+    });
 
     export type Outbound = {
         balance: string;
@@ -55,21 +45,13 @@ export namespace Erc20BalanceResponse$ {
         symbol: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Erc20BalanceResponse> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Erc20BalanceResponse> = z.object(
+        {
             balance: z.string(),
             contractAddress: z.string(),
             decimal: z.number(),
             formatted: z.string(),
             symbol: z.string(),
-        })
-        .transform((v) => {
-            return {
-                balance: v.balance,
-                contractAddress: v.contractAddress,
-                decimal: v.decimal,
-                formatted: v.formatted,
-                symbol: v.symbol,
-            };
-        });
+        }
+    );
 }

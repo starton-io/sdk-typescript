@@ -109,66 +109,40 @@ export namespace SmartContractStatus$ {
 
 /** @internal */
 export namespace SmartContract$ {
-    export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, unknown> = z
-        .object({
-            abi: z.array(z.lazy(() => Abi$.inboundSchema)).optional(),
-            address: z.string(),
-            blockNumber: z.nullable(z.number()).optional(),
-            compilationDetails: z
-                .nullable(z.lazy(() => CompilationDetails$.inboundSchema))
-                .optional(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.131Z")
-                .transform((v) => new Date(v)),
-            creationHash: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.string(),
-            minedDate: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            name: z.string(),
-            network: z.string(),
-            params: z.nullable(z.array(z.string())).optional(),
-            projectId: z.string(),
-            state: State$.inboundSchema,
-            status: SmartContractStatus$.inboundSchema,
-            templateId: z.nullable(z.string()).optional(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:38.131Z")
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                ...(v.abi === undefined ? null : { abi: v.abi }),
-                address: v.address,
-                ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
-                ...(v.compilationDetails === undefined
-                    ? null
-                    : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
-                ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                id: v.id,
-                ...(v.minedDate === undefined ? null : { minedDate: v.minedDate }),
-                name: v.name,
-                network: v.network,
-                ...(v.params === undefined ? null : { params: v.params }),
-                projectId: v.projectId,
-                state: v.state,
-                status: v.status,
-                ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, unknown> = z.object({
+        abi: z.array(z.lazy(() => Abi$.inboundSchema)).optional(),
+        address: z.string(),
+        blockNumber: z.nullable(z.number()).optional(),
+        compilationDetails: z.nullable(z.lazy(() => CompilationDetails$.inboundSchema)).optional(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.131Z")
+            .transform((v) => new Date(v)),
+        creationHash: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.string(),
+        minedDate: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        name: z.string(),
+        network: z.string(),
+        params: z.nullable(z.array(z.string())).optional(),
+        projectId: z.string(),
+        state: State$.inboundSchema,
+        status: SmartContractStatus$.inboundSchema,
+        templateId: z.nullable(z.string()).optional(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:38.131Z")
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         abi?: Array<Abi$.Outbound> | undefined;
@@ -190,55 +164,29 @@ export namespace SmartContract$ {
         updatedAt: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContract> = z
-        .object({
-            abi: z.array(z.lazy(() => Abi$.outboundSchema)).optional(),
-            address: z.string(),
-            blockNumber: z.nullable(z.number()).optional(),
-            compilationDetails: z
-                .nullable(z.lazy(() => CompilationDetails$.outboundSchema))
-                .optional(),
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.131Z"))
-                .transform((v) => v.toISOString()),
-            creationHash: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.string(),
-            minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            name: z.string(),
-            network: z.string(),
-            params: z.nullable(z.array(z.string())).optional(),
-            projectId: z.string(),
-            state: State$.outboundSchema,
-            status: SmartContractStatus$.outboundSchema,
-            templateId: z.nullable(z.string()).optional(),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-01-31T13:57:38.131Z"))
-                .transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                ...(v.abi === undefined ? null : { abi: v.abi }),
-                address: v.address,
-                ...(v.blockNumber === undefined ? null : { blockNumber: v.blockNumber }),
-                ...(v.compilationDetails === undefined
-                    ? null
-                    : { compilationDetails: v.compilationDetails }),
-                createdAt: v.createdAt,
-                ...(v.creationHash === undefined ? null : { creationHash: v.creationHash }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                id: v.id,
-                ...(v.minedDate === undefined ? null : { minedDate: v.minedDate }),
-                name: v.name,
-                network: v.network,
-                ...(v.params === undefined ? null : { params: v.params }),
-                projectId: v.projectId,
-                state: v.state,
-                status: v.status,
-                ...(v.templateId === undefined ? null : { templateId: v.templateId }),
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContract> = z.object({
+        abi: z.array(z.lazy(() => Abi$.outboundSchema)).optional(),
+        address: z.string(),
+        blockNumber: z.nullable(z.number()).optional(),
+        compilationDetails: z.nullable(z.lazy(() => CompilationDetails$.outboundSchema)).optional(),
+        createdAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.131Z"))
+            .transform((v) => v.toISOString()),
+        creationHash: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.string(),
+        minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        name: z.string(),
+        network: z.string(),
+        params: z.nullable(z.array(z.string())).optional(),
+        projectId: z.string(),
+        state: State$.outboundSchema,
+        status: SmartContractStatus$.outboundSchema,
+        templateId: z.nullable(z.string()).optional(),
+        updatedAt: z
+            .date()
+            .default(() => new Date("2024-01-31T13:57:38.131Z"))
+            .transform((v) => v.toISOString()),
+    });
 }

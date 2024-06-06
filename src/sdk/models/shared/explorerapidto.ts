@@ -23,19 +23,11 @@ export namespace ExplorerApiDtoType$ {
 
 /** @internal */
 export namespace ExplorerApiDto$ {
-    export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> = z
-        .object({
-            apiKey: z.string(),
-            type: ExplorerApiDtoType$.inboundSchema,
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                apiKey: v.apiKey,
-                type: v.type,
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> = z.object({
+        apiKey: z.string(),
+        type: ExplorerApiDtoType$.inboundSchema,
+        url: z.string(),
+    });
 
     export type Outbound = {
         apiKey: string;
@@ -43,17 +35,9 @@ export namespace ExplorerApiDto$ {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExplorerApiDto> = z
-        .object({
-            apiKey: z.string(),
-            type: ExplorerApiDtoType$.outboundSchema,
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                apiKey: v.apiKey,
-                type: v.type,
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExplorerApiDto> = z.object({
+        apiKey: z.string(),
+        type: ExplorerApiDtoType$.outboundSchema,
+        url: z.string(),
+    });
 }

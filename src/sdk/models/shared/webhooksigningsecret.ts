@@ -13,29 +13,20 @@ export type WebhookSigningSecret = {
 
 /** @internal */
 export namespace WebhookSigningSecret$ {
-    export const inboundSchema: z.ZodType<WebhookSigningSecret, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:35.786Z")
-                .transform((v) => new Date(v)),
-            projectId: z.string(),
-            secret: z.string(),
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .default("2024-01-31T13:57:35.786Z")
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                projectId: v.projectId,
-                secret: v.secret,
-                updatedAt: v.updatedAt,
-            };
-        });
+    export const inboundSchema: z.ZodType<WebhookSigningSecret, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:35.786Z")
+            .transform((v) => new Date(v)),
+        projectId: z.string(),
+        secret: z.string(),
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .default("2024-01-31T13:57:35.786Z")
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -44,8 +35,8 @@ export namespace WebhookSigningSecret$ {
         updatedAt: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WebhookSigningSecret> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WebhookSigningSecret> = z.object(
+        {
             createdAt: z
                 .date()
                 .default(() => new Date("2024-01-31T13:57:35.786Z"))
@@ -56,13 +47,6 @@ export namespace WebhookSigningSecret$ {
                 .date()
                 .default(() => new Date("2024-01-31T13:57:35.786Z"))
                 .transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                projectId: v.projectId,
-                secret: v.secret,
-                updatedAt: v.updatedAt,
-            };
-        });
+        }
+    );
 }

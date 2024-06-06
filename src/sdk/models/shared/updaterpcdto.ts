@@ -10,27 +10,15 @@ export type UpdateRpcDto = {
 
 /** @internal */
 export namespace UpdateRpcDto$ {
-    export const inboundSchema: z.ZodType<UpdateRpcDto, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const inboundSchema: z.ZodType<UpdateRpcDto, z.ZodTypeDef, unknown> = z.object({
+        url: z.string().optional(),
+    });
 
     export type Outbound = {
         url?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRpcDto> = z
-        .object({
-            url: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRpcDto> = z.object({
+        url: z.string().optional(),
+    });
 }
