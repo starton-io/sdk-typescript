@@ -2,7 +2,7 @@
 
 {
   "name": "@starton/sdk",
-  "version": "0.14.5",
+  "version": "0.14.6",
   "exports": {
     ".": "./src/index.ts",    
     "./sdk/models/errors": "./src/sdk/models/errors/index.ts",    

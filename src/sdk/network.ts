@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -68,7 +72,7 @@ export class Network extends ClientSDK {
             (value$) => shared.CreateNetworkDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/network")();
 
@@ -144,10 +148,7 @@ export class Network extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
@@ -225,21 +226,16 @@ export class Network extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/network")();
 
-        const query$ = [
-            enc$.encodeForm("id", payload$.id, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("testnet", payload$.testnet, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            id: payload$.id,
+            limit: payload$.limit,
+            page: payload$.page,
+            testnet: payload$.testnet,
+        });
 
         headers$.set(
             "origin",
-            enc$.encodeSimple("origin", payload$.origin, { explode: false, charEncoding: "none" })
+            encodeSimple$("origin", payload$.origin, { explode: false, charEncoding: "none" })
         );
 
         let security$;
@@ -343,10 +339,7 @@ export class Network extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
@@ -421,13 +414,10 @@ export class Network extends ClientSDK {
             (value$) => operations.UpdateNetworkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateNetworkDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateNetworkDto, { explode: true });
 
         const pathParams$ = {
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 

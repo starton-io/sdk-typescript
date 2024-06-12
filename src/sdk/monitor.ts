@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,7 +66,7 @@ export class Monitor extends ClientSDK {
             (value$) => shared.CreateWatcherDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/watcher")();
 
@@ -141,7 +145,7 @@ export class Monitor extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
@@ -219,31 +223,17 @@ export class Monitor extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/watcher")();
 
-        const query$ = [
-            enc$.encodeForm("address", payload$.address, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("confirmationsBlocks", payload$.confirmationsBlocks, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("network", payload$.network, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("paused", payload$.paused, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("type", payload$.type, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("webhookUrl", payload$.webhookUrl, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            paused: payload$.paused,
+            address: payload$.address,
+            name: payload$.name,
+            network: payload$.network,
+            page: payload$.page,
+            confirmationsBlocks: payload$.confirmationsBlocks,
+            limit: payload$.limit,
+            type: payload$.type,
+            webhookUrl: payload$.webhookUrl,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -346,16 +336,14 @@ export class Monitor extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/watcher/{id}/event")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            limit: payload$.limit,
+            page: payload$.page,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -460,7 +448,7 @@ export class Monitor extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 
@@ -537,11 +525,11 @@ export class Monitor extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            eventId: enc$.encodeSimple("eventId", payload$.eventId, {
+            eventId: encodeSimple$("eventId", payload$.eventId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/watcher/{id}/event/{eventId}")(pathParams$);
 
@@ -616,10 +604,10 @@ export class Monitor extends ClientSDK {
             (value$) => operations.UpdateWatcherRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateWatcherDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateWatcherDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/watcher/{id}")(pathParams$);
 

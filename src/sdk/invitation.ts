@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,7 +66,7 @@ export class Invitation extends ClientSDK {
             (value$) => shared.CreateInvitationDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/project-member/invitation")();
 
@@ -139,7 +143,7 @@ export class Invitation extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/project-member/invitation/{id}")(pathParams$);
 
@@ -217,12 +221,10 @@ export class Invitation extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/project-member/invitation")();
 
-        const query$ = [
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            limit: payload$.limit,
+            page: payload$.page,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {

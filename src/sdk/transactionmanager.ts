@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -67,18 +71,13 @@ export class TransactionManager extends ClientSDK {
             (value$) => operations.CreateTransactionRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CreateTransactionDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CreateTransactionDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/transaction")();
 
-        const query$ = [
-            enc$.encodeForm("simulate", payload$.simulate, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            simulate: payload$.simulate,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -158,26 +157,15 @@ export class TransactionManager extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/transaction")();
 
-        const query$ = [
-            enc$.encodeForm("from", payload$.from, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fromDate", payload$.fromDate, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("network", payload$.network, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("to", payload$.to, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("transactionHash", payload$.transactionHash, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            from: payload$.from,
+            fromDate: payload$.fromDate,
+            limit: payload$.limit,
+            network: payload$.network,
+            page: payload$.page,
+            to: payload$.to,
+            transactionHash: payload$.transactionHash,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -282,11 +270,11 @@ export class TransactionManager extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -376,7 +364,7 @@ export class TransactionManager extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/transaction/{id}")(pathParams$);
 
@@ -453,11 +441,11 @@ export class TransactionManager extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),

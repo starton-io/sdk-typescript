@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,7 +66,7 @@ export class Kms extends ClientSDK {
             (value$) => shared.CreateKmsDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/kms")();
 
@@ -138,7 +142,7 @@ export class Kms extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 
@@ -216,12 +220,10 @@ export class Kms extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/kms")();
 
-        const query$ = [
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            page: payload$.page,
+            limit: payload$.limit,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -324,7 +326,7 @@ export class Kms extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 
@@ -399,10 +401,10 @@ export class Kms extends ClientSDK {
             (value$) => operations.UpdateKmsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateKmsDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateKmsDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 

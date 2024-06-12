@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -64,7 +68,7 @@ export class Ipfs extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
@@ -142,19 +146,14 @@ export class Ipfs extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/ipfs/pin")();
 
-        const query$ = [
-            enc$.encodeForm("cid", payload$.cid, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("includeDirectoryContent", payload$.includeDirectoryContent, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("status", payload$.status, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            cid: payload$.cid,
+            includeDirectoryContent: payload$.includeDirectoryContent,
+            limit: payload$.limit,
+            name: payload$.name,
+            page: payload$.page,
+            status: payload$.status,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -257,18 +256,13 @@ export class Ipfs extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("includeDirectoryContent", payload$.includeDirectoryContent, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            includeDirectoryContent: payload$.includeDirectoryContent,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -400,7 +394,7 @@ export class Ipfs extends ClientSDK {
             (value$) => shared.CreatePinDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/ipfs/pin")();
 
@@ -475,10 +469,10 @@ export class Ipfs extends ClientSDK {
             (value$) => operations.UpdatePinRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdatePinDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdatePinDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
@@ -566,10 +560,7 @@ export class Ipfs extends ClientSDK {
             }
         }
         if (payload$.metadata !== undefined) {
-            body$.append(
-                "metadata",
-                enc$.encodeJSON("metadata", payload$.metadata, { explode: true })
-            );
+            body$.append("metadata", encodeJSON$("metadata", payload$.metadata, { explode: true }));
         }
 
         const path$ = this.templateURLComponent("/v3/ipfs/file")();
@@ -650,10 +641,7 @@ export class Ipfs extends ClientSDK {
             body$.append("files", String(payload$.files));
         }
         if (payload$.metadata !== undefined) {
-            body$.append(
-                "metadata",
-                enc$.encodeJSON("metadata", payload$.metadata, { explode: true })
-            );
+            body$.append("metadata", encodeJSON$("metadata", payload$.metadata, { explode: true }));
         }
 
         const path$ = this.templateURLComponent("/v3/ipfs/folder")();
@@ -729,7 +717,7 @@ export class Ipfs extends ClientSDK {
             (value$) => shared.UploadJsonDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/ipfs/json")();
 

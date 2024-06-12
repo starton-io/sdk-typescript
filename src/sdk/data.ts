@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -61,11 +64,11 @@ export class Data extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -148,11 +151,11 @@ export class Data extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            contractAddress: enc$.encodeSimple("contractAddress", payload$.contractAddress, {
+            contractAddress: encodeSimple$("contractAddress", payload$.contractAddress, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -161,14 +164,9 @@ export class Data extends ClientSDK {
             "/v3/data/{network}/erc20/{contractAddress}/balance"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("address", payload$.address, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            address: payload$.address,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -240,7 +238,7 @@ export class Data extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),

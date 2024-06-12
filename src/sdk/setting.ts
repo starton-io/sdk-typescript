@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -61,7 +61,7 @@ export class Setting extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -141,10 +141,10 @@ export class Setting extends ClientSDK {
             (value$) => operations.UpdateSettingRelayerRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateSettingRelayerDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateSettingRelayerDto, { explode: true });
 
         const pathParams$ = {
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),

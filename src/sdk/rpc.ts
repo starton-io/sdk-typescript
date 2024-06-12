@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -61,13 +65,10 @@ export class Rpc extends ClientSDK {
             (value$) => operations.CreateRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CreateRpcDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CreateRpcDto, { explode: true });
 
         const pathParams$ = {
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
@@ -144,11 +145,8 @@ export class Rpc extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
@@ -225,19 +223,14 @@ export class Rpc extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            limit: payload$.limit,
+            page: payload$.page,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -340,11 +333,8 @@ export class Rpc extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 
@@ -419,14 +409,11 @@ export class Rpc extends ClientSDK {
             (value$) => operations.UpdateRpcRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateRpcDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateRpcDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            name: enc$.encodeSimple("name", payload$.name, {
-                explode: false,
-                charEncoding: "percent",
-            }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            name: encodeSimple$("name", payload$.name, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/network/{name}/rpc/{id}")(pathParams$);
 

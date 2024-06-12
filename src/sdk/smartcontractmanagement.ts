@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,14 +66,14 @@ export class SmartContractManagement extends ClientSDK {
             (value$) => operations.CallSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CallDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CallDto, { explode: true });
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -78,14 +82,9 @@ export class SmartContractManagement extends ClientSDK {
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("simulate", payload$.simulate, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            simulate: payload$.simulate,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -164,11 +163,11 @@ export class SmartContractManagement extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -251,18 +250,13 @@ export class SmartContractManagement extends ClientSDK {
                 operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.DeployFromBytecodeDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.DeployFromBytecodeDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-bytecode")();
 
-        const query$ = [
-            enc$.encodeForm("simulate", payload$.simulate, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            simulate: payload$.simulate,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -348,18 +342,13 @@ export class SmartContractManagement extends ClientSDK {
                 operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.DeployFromTemplateDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.DeployFromTemplateDto, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/from-template")();
 
-        const query$ = [
-            enc$.encodeForm("simulate", payload$.simulate, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            simulate: payload$.simulate,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -442,28 +431,14 @@ export class SmartContractManagement extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/smart-contract")();
 
-        const query$ = [
-            enc$.encodeForm("address", payload$.address, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeAbi", payload$.includeAbi, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeCompilationDetails", payload$.includeCompilationDetails, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("network", payload$.network, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            page: payload$.page,
+            address: payload$.address,
+            includeAbi: payload$.includeAbi,
+            includeCompilationDetails: payload$.includeCompilationDetails,
+            limit: payload$.limit,
+            network: payload$.network,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -569,11 +544,11 @@ export class SmartContractManagement extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -667,11 +642,11 @@ export class SmartContractManagement extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -680,18 +655,10 @@ export class SmartContractManagement extends ClientSDK {
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("includeAbi", payload$.includeAbi, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeCompilationDetails", payload$.includeCompilationDetails, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            includeAbi: payload$.includeAbi,
+            includeCompilationDetails: payload$.includeCompilationDetails,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -764,7 +731,7 @@ export class SmartContractManagement extends ClientSDK {
             (value$) => shared.ImportSmartContractDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/smart-contract/import-existing")();
 
@@ -838,14 +805,14 @@ export class SmartContractManagement extends ClientSDK {
             (value$) => operations.ReadSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.ReadDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.ReadDto, { explode: true });
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -928,14 +895,14 @@ export class SmartContractManagement extends ClientSDK {
             (value$) => operations.UpdateSmartContractRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateSmartContractDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateSmartContractDto, { explode: true });
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),

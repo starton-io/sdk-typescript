@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -64,37 +67,17 @@ export class Template extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/smart-contract-template")();
 
-        const query$ = [
-            enc$.encodeForm("blockchain", payload$.blockchain, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("category", payload$.category, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeCompilationDetails", payload$.includeCompilationDetails, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeForm", payload$.includeForm, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("isActivated", payload$.isActivated, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("isAudited", payload$.isAudited, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            category: payload$.category,
+            includeForm: payload$.includeForm,
+            limit: payload$.limit,
+            name: payload$.name,
+            page: payload$.page,
+            blockchain: payload$.blockchain,
+            includeCompilationDetails: payload$.includeCompilationDetails,
+            isActivated: payload$.isActivated,
+            isAudited: payload$.isAudited,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -201,18 +184,13 @@ export class Template extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/v3/smart-contract-template/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("includeForm", payload$.includeForm, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            includeForm: payload$.includeForm,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {

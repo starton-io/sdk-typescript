@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,7 +66,7 @@ export class Wallet extends ClientSDK {
             (value$) => shared.CreateWalletDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/kms/wallet")();
 
@@ -138,21 +142,16 @@ export class Wallet extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/v3/kms/wallet/{address}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("deleteKeyOnKms", payload$.deleteKeyOnKms, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            deleteKeyOnKms: payload$.deleteKeyOnKms,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -226,13 +225,11 @@ export class Wallet extends ClientSDK {
 
         const path$ = this.templateURLComponent("/v3/kms/wallet")();
 
-        const query$ = [
-            enc$.encodeForm("limit", payload$.limit, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("name", payload$.name, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            limit: payload$.limit,
+            name: payload$.name,
+            page: payload$.page,
+        });
 
         let security$;
         if (typeof this.options$.startonApiKey === "function") {
@@ -335,7 +332,7 @@ export class Wallet extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -413,7 +410,7 @@ export class Wallet extends ClientSDK {
             (value$) => shared.ImportProviderKeyDto$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/v3/kms/wallet/import-provider-key")();
 
@@ -487,10 +484,10 @@ export class Wallet extends ClientSDK {
             (value$) => operations.ClaimFaucetRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequireFaucetDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.RequireFaucetDto, { explode: true });
 
         const pathParams$ = {
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -571,11 +568,11 @@ export class Wallet extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            network: enc$.encodeSimple("network", payload$.network, {
+            network: encodeSimple$("network", payload$.network, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -661,10 +658,10 @@ export class Wallet extends ClientSDK {
             (value$) => operations.SignMessageWalletRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.SignMessageDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.SignMessageDto, { explode: true });
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -744,10 +741,10 @@ export class Wallet extends ClientSDK {
             (value$) => operations.UpdateWalletRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UpdateWalletDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UpdateWalletDto, { explode: true });
 
         const pathParams$ = {
-            address: enc$.encodeSimple("address", payload$.address, {
+            address: encodeSimple$("address", payload$.address, {
                 explode: false,
                 charEncoding: "percent",
             }),
