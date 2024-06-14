@@ -432,12 +432,12 @@ export class SmartContractManagement extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/smart-contract")();
 
         const query$ = encodeFormQuery$({
-            page: payload$.page,
             address: payload$.address,
             includeAbi: payload$.includeAbi,
             includeCompilationDetails: payload$.includeCompilationDetails,
             limit: payload$.limit,
             network: payload$.network,
+            page: payload$.page,
         });
 
         let security$;

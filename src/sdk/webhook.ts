@@ -146,9 +146,9 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/webhook")();
 
         const query$ = encodeFormQuery$({
-            status: payload$.status,
             limit: payload$.limit,
             page: payload$.page,
+            status: payload$.status,
         });
 
         let security$;

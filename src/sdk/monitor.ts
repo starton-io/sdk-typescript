@@ -224,13 +224,13 @@ export class Monitor extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/watcher")();
 
         const query$ = encodeFormQuery$({
-            paused: payload$.paused,
             address: payload$.address,
+            confirmationsBlocks: payload$.confirmationsBlocks,
+            limit: payload$.limit,
             name: payload$.name,
             network: payload$.network,
             page: payload$.page,
-            confirmationsBlocks: payload$.confirmationsBlocks,
-            limit: payload$.limit,
+            paused: payload$.paused,
             type: payload$.type,
             webhookUrl: payload$.webhookUrl,
         });

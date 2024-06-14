@@ -68,15 +68,15 @@ export class Template extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/smart-contract-template")();
 
         const query$ = encodeFormQuery$({
+            blockchain: payload$.blockchain,
             category: payload$.category,
+            includeCompilationDetails: payload$.includeCompilationDetails,
             includeForm: payload$.includeForm,
+            isActivated: payload$.isActivated,
+            isAudited: payload$.isAudited,
             limit: payload$.limit,
             name: payload$.name,
             page: payload$.page,
-            blockchain: payload$.blockchain,
-            includeCompilationDetails: payload$.includeCompilationDetails,
-            isActivated: payload$.isActivated,
-            isAudited: payload$.isAudited,
         });
 
         let security$;

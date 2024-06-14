@@ -221,8 +221,8 @@ export class Kms extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/kms")();
 
         const query$ = encodeFormQuery$({
-            page: payload$.page,
             limit: payload$.limit,
+            page: payload$.page,
         });
 
         let security$;
