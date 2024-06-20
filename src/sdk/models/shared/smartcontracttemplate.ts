@@ -52,8 +52,8 @@ export namespace SmartContractTemplateAbi$ {
 
 /** @internal */
 export namespace Category$ {
-    export const inboundSchema = z.nativeEnum(Category);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+    export const outboundSchema: z.ZodNativeEnum<typeof Category> = inboundSchema;
 }
 
 /** @internal */

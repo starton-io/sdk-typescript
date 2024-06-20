@@ -23,10 +23,25 @@ If you have any questions, please reach out to us on [Discord](https://discord.s
 npm add @starton/sdk
 ```
 
+### PNPM
+
+```bash
+pnpm add @starton/sdk
+```
+
+### Bun
+
+```bash
+bun add @starton/sdk
+```
+
 ### Yarn
 
 ```bash
-yarn add @starton/sdk
+yarn add @starton/sdk zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 

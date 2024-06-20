@@ -17,8 +17,9 @@ export type ExplorerApiDto = {
 
 /** @internal */
 export namespace ExplorerApiDtoType$ {
-    export const inboundSchema = z.nativeEnum(ExplorerApiDtoType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
+        z.nativeEnum(ExplorerApiDtoType);
+    export const outboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> = inboundSchema;
 }
 
 /** @internal */

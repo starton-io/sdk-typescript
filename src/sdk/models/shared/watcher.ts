@@ -87,14 +87,14 @@ export namespace WatcherMetadata$ {
 
 /** @internal */
 export namespace TriggerType$ {
-    export const inboundSchema = z.nativeEnum(TriggerType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof TriggerType> = z.nativeEnum(TriggerType);
+    export const outboundSchema: z.ZodNativeEnum<typeof TriggerType> = inboundSchema;
 }
 
 /** @internal */
 export namespace WatcherType$ {
-    export const inboundSchema = z.nativeEnum(WatcherType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof WatcherType> = z.nativeEnum(WatcherType);
+    export const outboundSchema: z.ZodNativeEnum<typeof WatcherType> = inboundSchema;
 }
 
 /** @internal */

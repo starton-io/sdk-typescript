@@ -15,8 +15,8 @@ export type CreateInvitationDto = {
 
 /** @internal */
 export namespace Role$ {
-    export const inboundSchema = z.nativeEnum(Role);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
+    export const outboundSchema: z.ZodNativeEnum<typeof Role> = inboundSchema;
 }
 
 /** @internal */

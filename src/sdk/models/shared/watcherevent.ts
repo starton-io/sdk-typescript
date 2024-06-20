@@ -37,8 +37,9 @@ export namespace Payload$ {
 
 /** @internal */
 export namespace WatcherEventStatus$ {
-    export const inboundSchema = z.nativeEnum(WatcherEventStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> =
+        z.nativeEnum(WatcherEventStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> = inboundSchema;
 }
 
 /** @internal */

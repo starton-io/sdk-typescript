@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.14.7
+  version: 0.15.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -38,3 +38,4 @@ typescript:
   packageName: '@starton/sdk'
   responseFormat: envelope
   templateVersion: v2
+  useIndexModules: true

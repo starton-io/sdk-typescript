@@ -97,14 +97,15 @@ export namespace CompilationDetails$ {
 
 /** @internal */
 export namespace State$ {
-    export const inboundSchema = z.nativeEnum(State);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(State);
+    export const outboundSchema: z.ZodNativeEnum<typeof State> = inboundSchema;
 }
 
 /** @internal */
 export namespace SmartContractStatus$ {
-    export const inboundSchema = z.nativeEnum(SmartContractStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof SmartContractStatus> =
+        z.nativeEnum(SmartContractStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof SmartContractStatus> = inboundSchema;
 }
 
 /** @internal */

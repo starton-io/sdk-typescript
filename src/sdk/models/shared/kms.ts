@@ -47,8 +47,8 @@ export namespace KmsMetadata$ {
 
 /** @internal */
 export namespace KmsProvider$ {
-    export const inboundSchema = z.nativeEnum(KmsProvider);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof KmsProvider> = z.nativeEnum(KmsProvider);
+    export const outboundSchema: z.ZodNativeEnum<typeof KmsProvider> = inboundSchema;
 }
 
 /** @internal */

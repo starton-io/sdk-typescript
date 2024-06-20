@@ -19,8 +19,9 @@ export type Invitation = {
 
 /** @internal */
 export namespace InvitationRole$ {
-    export const inboundSchema = z.nativeEnum(InvitationRole);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof InvitationRole> =
+        z.nativeEnum(InvitationRole);
+    export const outboundSchema: z.ZodNativeEnum<typeof InvitationRole> = inboundSchema;
 }
 
 /** @internal */

@@ -47,8 +47,8 @@ export namespace WebhookPayload$ {
 
 /** @internal */
 export namespace WebhookStatus$ {
-    export const inboundSchema = z.nativeEnum(WebhookStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof WebhookStatus> = z.nativeEnum(WebhookStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof WebhookStatus> = inboundSchema;
 }
 
 /** @internal */
