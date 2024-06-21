@@ -115,8 +115,8 @@ export class Monitor extends ClientSDK {
             .json(400, errors.CreateWatcherResponseBody$, { err: true })
             .json(409, errors.CreateWatcherMonitorResponseBody$, { err: true })
             .json(412, errors.CreateWatcherMonitorResponseResponseBody$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.CreateWatcherMonitorResponse500ResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;

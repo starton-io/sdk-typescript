@@ -124,10 +124,10 @@ export class TransactionManager extends ClientSDK {
             .json(422, errors.CreateTransactionTransactionManagerResponseResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(500, errors.CreateTransactionTransactionManagerResponse500ResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -332,10 +332,10 @@ export class TransactionManager extends ClientSDK {
             .json(422, errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(500, errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -501,10 +501,10 @@ export class TransactionManager extends ClientSDK {
             .json(422, errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(500, errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;

@@ -537,8 +537,8 @@ export class Wallet extends ClientSDK {
         const [result$] = await this.matcher<operations.ClaimFaucetResponse>()
             .json(201, operations.ClaimFaucetResponse$, { key: "Faucet" })
             .json(400, errors.ClaimFaucetResponseBody$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.ClaimFaucetWalletResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
             .json("default", operations.ClaimFaucetResponse$, { key: "oneOf" })
             .match(response, { extraFields: responseFields$ });
 
@@ -628,10 +628,10 @@ export class Wallet extends ClientSDK {
             .json(422, errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(500, errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;

@@ -118,8 +118,8 @@ export class Member extends ClientSDK {
             .json(200, operations.DeleteProjectMemberResponse$, { key: "boolean" })
             .json(400, errors.DeleteProjectMemberResponseBody$, { err: true })
             .json(404, errors.DeleteProjectMemberProjectMemberResponseBody$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.DeleteProjectMemberProjectMemberResponseResponseBody$, { err: true })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;

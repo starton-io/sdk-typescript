@@ -131,10 +131,10 @@ export class SmartContractManagement extends ClientSDK {
             .json(422, errors.CallSmartContractSmartContractManagementResponseResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(500, errors.CallSmartContractSmartContractManagementResponse500ResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -309,12 +309,12 @@ export class SmartContractManagement extends ClientSDK {
                 errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$,
                 { err: true }
             )
-            .fail(["4XX", "5XX"])
             .json(
                 500,
                 errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$,
                 { err: true }
             )
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -396,12 +396,12 @@ export class SmartContractManagement extends ClientSDK {
             .json(404, errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$, {
                 err: true,
             })
-            .fail(["4XX", "5XX"])
             .json(
                 500,
                 errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$,
                 { err: true }
             )
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -608,12 +608,12 @@ export class SmartContractManagement extends ClientSDK {
                     errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$,
                     { err: true }
                 )
-                .fail(["4XX", "5XX"])
                 .json(
                     500,
                     errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$,
                     { err: true }
                 )
+                .fail(["4XX", "5XX"])
                 .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -865,10 +865,10 @@ export class SmartContractManagement extends ClientSDK {
             .json(201, operations.ReadSmartContractResponse$, { key: "ReadSmartContractResponse" })
             .json(400, errors.ReadSmartContractResponseBody$, { err: true })
             .json(404, errors.ReadSmartContractSmartContractManagementResponseBody$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.ReadSmartContractSmartContractManagementResponseResponseBody$, {
                 err: true,
             })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
