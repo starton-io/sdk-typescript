@@ -32,7 +32,7 @@ export type CouldNotAssignNonceData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasCOULDNOTASSIGNNONCEContext | undefined;
+    context?: SchemasCOULDNOTASSIGNNONCEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -65,7 +65,7 @@ export class CouldNotAssignNonce extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasCOULDNOTASSIGNNONCEContext | undefined;
+    context?: SchemasCOULDNOTASSIGNNONCEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -140,7 +140,9 @@ export namespace CouldNotAssignNonce$ {
             RawResponse3: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
             RawResponse5: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
             message: z.string().default("Could not assign nonce."),
             path: z.string(),
@@ -167,7 +169,7 @@ export namespace CouldNotAssignNonce$ {
         RawResponse3?: never | undefined;
         RawResponse4?: never | undefined;
         RawResponse5?: never | undefined;
-        context?: SchemasCOULDNOTASSIGNNONCEContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTASSIGNNONCEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -218,7 +220,7 @@ export namespace CouldNotAssignNonce$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
                     message: z.string().default("Could not assign nonce."),

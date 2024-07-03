@@ -24,7 +24,11 @@ export type NumericFaultData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNUMERICFAULTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasNUMERICFAULTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +53,11 @@ export class NumericFault extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNUMERICFAULTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasNUMERICFAULTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -73,6 +81,9 @@ export class NumericFault extends Error {
         }
         if (err.rawResponse3 != null) {
             this.rawResponse3 = err.rawResponse3;
+        }
+        if (err.rawResponse4 != null) {
+            this.rawResponse4 = err.rawResponse4;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -110,7 +121,8 @@ export namespace NumericFault$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasNUMERICFAULTContext$.inboundSchema).optional(),
+            RawResponse4: z.instanceof(Response).optional(),
+            context: z.nullable(z.lazy(() => SchemasNUMERICFAULTContext$.inboundSchema)).optional(),
             errorCode: z.string().default("NUMERIC_FAULT"),
             message: z.string().default("Illegal operations with numerical values."),
             path: z.string(),
@@ -123,6 +135,7 @@ export namespace NumericFault$ {
                 RawResponse1: "rawResponse1",
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
+                RawResponse4: "rawResponse4",
             });
 
             return new NumericFault(remapped);
@@ -133,7 +146,8 @@ export namespace NumericFault$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasNUMERICFAULTContext$.Outbound | undefined;
+        RawResponse4?: never | undefined;
+        context?: SchemasNUMERICFAULTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +185,15 @@ export namespace NumericFault$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasNUMERICFAULTContext$.outboundSchema).optional(),
+                    rawResponse4: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasNUMERICFAULTContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("NUMERIC_FAULT"),
                     message: z.string().default("Illegal operations with numerical values."),
                     path: z.string(),
@@ -184,6 +206,7 @@ export namespace NumericFault$ {
                         rawResponse1: "RawResponse1",
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
+                        rawResponse4: "RawResponse4",
                     });
                 })
         );

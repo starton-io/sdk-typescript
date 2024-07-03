@@ -66,7 +66,7 @@ export namespace Kms$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.167Z")
+            .default("2024-05-02T09:34:19.277Z")
             .transform((v) => new Date(v)),
         credentials: z.lazy(() => KmsCredentials$.inboundSchema),
         id: z.string(),
@@ -77,7 +77,7 @@ export namespace Kms$ {
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.167Z")
+            .default("2024-05-02T09:34:19.277Z")
             .transform((v) => new Date(v)),
         wallets: z.lazy(() => Wallets$.inboundSchema).optional(),
     });
@@ -97,7 +97,7 @@ export namespace Kms$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Kms> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.167Z"))
+            .default(() => new Date("2024-05-02T09:34:19.277Z"))
             .transform((v) => v.toISOString()),
         credentials: z.lazy(() => KmsCredentials$.outboundSchema),
         id: z.string(),
@@ -107,7 +107,7 @@ export namespace Kms$ {
         provider: KmsProvider$.outboundSchema,
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.167Z"))
+            .default(() => new Date("2024-05-02T09:34:19.277Z"))
             .transform((v) => v.toISOString()),
         wallets: z.lazy(() => Wallets$.outboundSchema).optional(),
     });

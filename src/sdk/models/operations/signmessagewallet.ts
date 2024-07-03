@@ -11,13 +11,12 @@ export type SignMessageWalletRequest = {
     address: string;
 };
 
-export type SignMessageWalletResponseBody = {};
-
 export type SignMessageWalletResponse = {
     /**
      * HTTP response content type for this operation
      */
     contentType: string;
+    signMessageResponse?: shared.SignMessageResponse | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -26,7 +25,6 @@ export type SignMessageWalletResponse = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse: Response;
-    object?: SignMessageWalletResponseBody | undefined;
 };
 
 /** @internal */
@@ -60,28 +58,18 @@ export namespace SignMessageWalletRequest$ {
 }
 
 /** @internal */
-export namespace SignMessageWalletResponseBody$ {
-    export const inboundSchema: z.ZodType<SignMessageWalletResponseBody, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignMessageWalletResponseBody> =
-        z.object({});
-}
-
-/** @internal */
 export namespace SignMessageWalletResponse$ {
     export const inboundSchema: z.ZodType<SignMessageWalletResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
+            SignMessageResponse: shared.SignMessageResponse$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
-            object: z.lazy(() => SignMessageWalletResponseBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return remap$(v, {
                 ContentType: "contentType",
+                SignMessageResponse: "signMessageResponse",
                 StatusCode: "statusCode",
                 RawResponse: "rawResponse",
             });
@@ -89,23 +77,24 @@ export namespace SignMessageWalletResponse$ {
 
     export type Outbound = {
         ContentType: string;
+        SignMessageResponse?: shared.SignMessageResponse$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
-        object?: SignMessageWalletResponseBody$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignMessageWalletResponse> = z
         .object({
             contentType: z.string(),
+            signMessageResponse: shared.SignMessageResponse$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
             }),
-            object: z.lazy(() => SignMessageWalletResponseBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return remap$(v, {
                 contentType: "ContentType",
+                signMessageResponse: "SignMessageResponse",
                 statusCode: "StatusCode",
                 rawResponse: "RawResponse",
             });

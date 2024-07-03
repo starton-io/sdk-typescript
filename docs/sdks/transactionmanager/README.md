@@ -24,7 +24,7 @@ import { Starton } from "@starton/sdk";
 import { CreateTransactionDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -79,7 +79,7 @@ Retrieves a list of transactions.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -129,7 +129,7 @@ Gets all available nonces for a wallet, ensuring transaction integrity on the bl
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -177,7 +177,7 @@ Retrieves the details of a specific transaction using its unique identifier.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -222,7 +222,7 @@ Updates the stored nonce values for a wallet, synchronizing them with the curren
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

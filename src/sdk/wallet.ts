@@ -73,21 +73,21 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
+        const doOptions = { context, errorCodes: ["400", "412", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -113,6 +113,7 @@ export class Wallet extends ClientSDK {
         const [result$] = await this.matcher<operations.CreateWalletResponse>()
             .json(201, operations.CreateWalletResponse$, { key: "Wallet" })
             .json(400, errors.CreateWalletResponseBody$, { err: true })
+            .json(412, errors.CreateWalletWalletResponseBody$, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -154,17 +155,17 @@ export class Wallet extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "deleteWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -232,17 +233,17 @@ export class Wallet extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -342,17 +343,17 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -417,17 +418,17 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "importProviderKeyWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -497,17 +498,17 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "claimFaucet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -584,17 +585,17 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "resyncNoncesWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -673,21 +674,21 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "signMessageWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
+        const doOptions = { context, errorCodes: ["400", "403", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -711,9 +712,10 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.SignMessageWalletResponse>()
-            .json(201, operations.SignMessageWalletResponse$, { key: "object" })
+            .json(201, operations.SignMessageWalletResponse$, { key: "SignMessageResponse" })
             .json(400, errors.SignMessageWalletResponseBody$, { err: true })
-            .json(404, errors.SignMessageWalletWalletResponseBody$, { err: true })
+            .json(403, errors.SignMessageWalletWalletResponseBody$, { err: true })
+            .json(404, errors.SignMessageWalletWalletResponseResponseBody$, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -754,17 +756,17 @@ export class Wallet extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "updateWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 

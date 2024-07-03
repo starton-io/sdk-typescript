@@ -73,17 +73,17 @@ export class Monitor extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createWatcher",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -152,17 +152,17 @@ export class Monitor extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "deleteWatcher",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -236,17 +236,17 @@ export class Monitor extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllWatcher",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -346,17 +346,17 @@ export class Monitor extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllWatcherEvent",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -455,17 +455,17 @@ export class Monitor extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneWatcher",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -536,17 +536,17 @@ export class Monitor extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneWatcherEvent",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -614,17 +614,17 @@ export class Monitor extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "updateWatcher",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 

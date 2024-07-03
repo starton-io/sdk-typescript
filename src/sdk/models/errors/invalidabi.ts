@@ -32,7 +32,11 @@ export type InvalidAbiData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasINVALIDABIContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse6?: Response | undefined;
+    context?: SchemasINVALIDABIContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -65,7 +69,11 @@ export class InvalidAbi extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasINVALIDABIContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse6?: Response | undefined;
+    context?: SchemasINVALIDABIContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -95,6 +103,9 @@ export class InvalidAbi extends Error {
         }
         if (err.rawResponse5 != null) {
             this.rawResponse5 = err.rawResponse5;
+        }
+        if (err.rawResponse6 != null) {
+            this.rawResponse6 = err.rawResponse6;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -134,7 +145,8 @@ export namespace InvalidAbi$ {
             RawResponse3: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
             RawResponse5: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDABIContext$.inboundSchema).optional(),
+            RawResponse6: z.instanceof(Response).optional(),
+            context: z.nullable(z.lazy(() => SchemasINVALIDABIContext$.inboundSchema)).optional(),
             errorCode: z.string().default("INVALID_ABI"),
             message: z.string().default("INVALID_ABI"),
             path: z.string(),
@@ -149,6 +161,7 @@ export namespace InvalidAbi$ {
                 RawResponse3: "rawResponse3",
                 RawResponse4: "rawResponse4",
                 RawResponse5: "rawResponse5",
+                RawResponse6: "rawResponse6",
             });
 
             return new InvalidAbi(remapped);
@@ -161,7 +174,8 @@ export namespace InvalidAbi$ {
         RawResponse3?: never | undefined;
         RawResponse4?: never | undefined;
         RawResponse5?: never | undefined;
-        context?: SchemasINVALIDABIContext$.Outbound | undefined;
+        RawResponse6?: never | undefined;
+        context?: SchemasINVALIDABIContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -211,7 +225,15 @@ export namespace InvalidAbi$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasINVALIDABIContext$.outboundSchema).optional(),
+                    rawResponse6: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasINVALIDABIContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("INVALID_ABI"),
                     message: z.string().default("INVALID_ABI"),
                     path: z.string(),
@@ -226,6 +248,7 @@ export namespace InvalidAbi$ {
                         rawResponse3: "RawResponse3",
                         rawResponse4: "RawResponse4",
                         rawResponse5: "RawResponse5",
+                        rawResponse6: "RawResponse6",
                     });
                 })
         );

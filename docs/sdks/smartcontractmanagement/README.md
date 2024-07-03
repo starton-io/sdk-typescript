@@ -14,6 +14,7 @@ The Smart contract management is an abstraction on top of our **Transaction Mana
 * [delete](#delete) - Delete a smart contract
 * [deployFromBytecode](#deployfrombytecode) - Deploy from bytecode (your own contract)
 * [deployFromTemplate](#deployfromtemplate) - Deploy Smart Contract from Template
+* [encode](#encode) - Encode data for a Smart Contract call
 * [getAll](#getall) - Get all smart contracts
 * [getFunctions](#getfunctions) - Retrieves Smart Contract Functions and Events
 * [getOne](#getone) - Get a single smart contract
@@ -31,7 +32,7 @@ Calls a specific function within a deployed smart contract, enabling interaction
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -90,7 +91,7 @@ Deletes a specific smart contract based on network and address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -137,7 +138,7 @@ import { Starton } from "@starton/sdk";
 import { Type } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -201,7 +202,7 @@ Deploy from Starton audited smart contract template.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -249,6 +250,62 @@ run();
 | errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody | 500                                                                               | application/json                                                                  |
 | errors.SDKError                                                                   | 4xx-5xx                                                                           | */*                                                                               |
 
+## encode
+
+Display the encoded data that is sent to a smart contract
+
+### Example Usage
+
+```typescript
+import { Starton } from "@starton/sdk";
+
+const starton = new Starton({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await starton.smartContractManagement.encode({
+    encodeDto: {
+      functionName: "<value>",
+      params: [
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+      ],
+    },
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.EncodeSmartContractRequest](../../sdk/models/operations/encodesmartcontractrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.EncodeSmartContractResponse](../../sdk/models/operations/encodesmartcontractresponse.md)\>**
+### Errors
+
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.EncodeSmartContractResponseBody                                | 400                                                                   | application/json                                                      |
+| errors.EncodeSmartContractSmartContractManagementResponseBody         | 404                                                                   | application/json                                                      |
+| errors.EncodeSmartContractSmartContractManagementResponseResponseBody | 500                                                                   | application/json                                                      |
+| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+
 ## getAll
 
 Fetches and returns the list of smart contracts.
@@ -259,7 +316,7 @@ Fetches and returns the list of smart contracts.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -309,7 +366,7 @@ Provides a list of the available read and write functions, as well as events, of
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -356,7 +413,7 @@ Fetches details of a specific smart contract based on network and address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -405,7 +462,7 @@ import { Starton } from "@starton/sdk";
 import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -470,7 +527,7 @@ Reads data from a smart contract by calling one of its functions without making 
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -526,7 +583,7 @@ Updates and returns details of a specific smart contract based on network and ad
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

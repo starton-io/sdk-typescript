@@ -4,16 +4,19 @@
 
 import { BadRequestException, BadRequestException$ } from "./badrequestexception.js";
 import { CouldNotFindResource, CouldNotFindResource$ } from "./couldnotfindresource.js";
+import { Forbidden, Forbidden$ } from "./forbidden.js";
 import * as z from "zod";
 
-export type SignMessageWalletWalletResponseBody = CouldNotFindResource;
+export type SignMessageWalletWalletResponseResponseBody = CouldNotFindResource;
+
+export type SignMessageWalletWalletResponseBody = Forbidden;
 
 export type SignMessageWalletResponseBody = BadRequestException;
 
 /** @internal */
-export namespace SignMessageWalletWalletResponseBody$ {
+export namespace SignMessageWalletWalletResponseResponseBody$ {
     export const inboundSchema: z.ZodType<
-        SignMessageWalletWalletResponseBody,
+        SignMessageWalletWalletResponseResponseBody,
         z.ZodTypeDef,
         unknown
     > = CouldNotFindResource$.inboundSchema;
@@ -22,8 +25,24 @@ export namespace SignMessageWalletWalletResponseBody$ {
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
-        SignMessageWalletWalletResponseBody
+        SignMessageWalletWalletResponseResponseBody
     > = CouldNotFindResource$.outboundSchema;
+}
+
+/** @internal */
+export namespace SignMessageWalletWalletResponseBody$ {
+    export const inboundSchema: z.ZodType<
+        SignMessageWalletWalletResponseBody,
+        z.ZodTypeDef,
+        unknown
+    > = Forbidden$.inboundSchema;
+
+    export type Outbound = Forbidden$.Outbound;
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        SignMessageWalletWalletResponseBody
+    > = Forbidden$.outboundSchema;
 }
 
 /** @internal */

@@ -24,7 +24,7 @@ import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -43,7 +43,7 @@ async function run() {
     },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
-    name: "optimism-functional-tests1706709455336",
+    name: "optimism-functional-tests1714642436107",
     symbol: "ETH",
   });
 
@@ -83,12 +83,12 @@ Removes a network from the project, available only for Enterprise plans.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await starton.network.delete({
-    name: "optimism-functional-tests1706709455337",
+    name: "optimism-functional-tests1714642436107",
   });
 
   // Handle the result
@@ -128,14 +128,18 @@ Fetches a paginated list of networks available in the current project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await starton.network.getAll({
+    chainIds: [
+      "<value>",
+    ],
     limit: 20,
     origin: "<value>",
     page: 0,
+    xPlatformHostname: "<value>",
   });
 
   for await (const page of result) {
@@ -175,7 +179,7 @@ Retrieves detailed information about a specific network based on its name.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -221,7 +225,7 @@ import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

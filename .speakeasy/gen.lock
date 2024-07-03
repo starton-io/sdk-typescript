@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
-  docChecksum: 608f31f07f4e6499a2c13d2e02cfdf93
+  docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.313.0
-  generationVersion: 2.347.8
-  releaseVersion: 0.15.1
-  configChecksum: 88c75d61666da9ff92421ff32ca7ca85
+  speakeasyVersion: 1.326.0
+  generationVersion: 2.359.0
+  releaseVersion: 0.16.0
+  configChecksum: ac9063d77662f37cbe734e0697ed1f14
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.10.1
+    core: 3.11.0
     devContainers: 2.90.0
     errorUnions: 0.1.0
     globalSecurity: 2.82.9
@@ -124,6 +124,7 @@ generatedFiles:
   - src/sdk/models/operations/deletesmartcontract.ts
   - src/sdk/models/operations/deployfrombytecodesmartcontract.ts
   - src/sdk/models/operations/deployfromtemplatesmartcontract.ts
+  - src/sdk/models/operations/encodesmartcontract.ts
   - src/sdk/models/operations/getallsmartcontract.ts
   - src/sdk/models/operations/getavailablefunctionssmartcontract.ts
   - src/sdk/models/operations/getonesmartcontract.ts
@@ -157,6 +158,7 @@ generatedFiles:
   - src/sdk/models/shared/faucet.ts
   - src/sdk/models/shared/requirefaucetdto.ts
   - src/sdk/models/shared/resyncnonce.ts
+  - src/sdk/models/shared/signmessageresponse.ts
   - src/sdk/models/shared/signmessagedto.ts
   - src/sdk/models/shared/updatewalletdto.ts
   - src/sdk/models/shared/pin.ts
@@ -196,6 +198,8 @@ generatedFiles:
   - src/sdk/models/shared/abioutputdto.ts
   - src/sdk/models/shared/abiinputdto.ts
   - src/sdk/models/shared/deployfromtemplatedto.ts
+  - src/sdk/models/shared/encodesmartcontractresponse.ts
+  - src/sdk/models/shared/encodedto.ts
   - src/sdk/models/shared/availablefunctions.ts
   - src/sdk/models/shared/importsmartcontractdto.ts
   - src/sdk/models/shared/readsmartcontractresponse.ts
@@ -214,6 +218,7 @@ generatedFiles:
   - src/sdk/models/errors/getbalanceerc20.ts
   - src/sdk/models/errors/getallgasprice.ts
   - src/sdk/models/errors/createwallet.ts
+  - src/sdk/models/errors/maximumwalletreached.ts
   - src/sdk/models/errors/deletewallet.ts
   - src/sdk/models/errors/couldnotfindresource.ts
   - src/sdk/models/errors/getallwallet.ts
@@ -226,6 +231,7 @@ generatedFiles:
   - src/sdk/models/errors/couldnotprocessentity.ts
   - src/sdk/models/errors/couldnotassignnonce.ts
   - src/sdk/models/errors/signmessagewallet.ts
+  - src/sdk/models/errors/forbidden.ts
   - src/sdk/models/errors/updatewallet.ts
   - src/sdk/models/errors/deletepin.ts
   - src/sdk/models/errors/getallpin.ts
@@ -292,11 +298,11 @@ generatedFiles:
   - src/sdk/models/errors/deployfrombytecodesmartcontract.ts
   - src/sdk/models/errors/deployfromtemplatesmartcontract.ts
   - src/sdk/models/errors/smartcontractnotactivated.ts
+  - src/sdk/models/errors/encodesmartcontract.ts
   - src/sdk/models/errors/getallsmartcontract.ts
   - src/sdk/models/errors/getavailablefunctionssmartcontract.ts
   - src/sdk/models/errors/getonesmartcontract.ts
   - src/sdk/models/errors/importexistingsmartcontract.ts
-  - src/sdk/models/errors/invalidcontractaddress.ts
   - src/sdk/models/errors/readsmartcontract.ts
   - src/sdk/models/errors/updatesmartcontract.ts
   - src/sdk/models/errors/getallsmartcontracttemplate.ts
@@ -342,7 +348,6 @@ generatedFiles:
   - docs/sdk/models/operations/resyncnonceswalletrequest.md
   - docs/sdk/models/operations/resyncnonceswalletresponse.md
   - docs/sdk/models/operations/signmessagewalletrequest.md
-  - docs/sdk/models/operations/signmessagewalletresponsebody.md
   - docs/sdk/models/operations/signmessagewalletresponse.md
   - docs/sdk/models/operations/updatewalletrequest.md
   - docs/sdk/models/operations/updatewalletresponse.md
@@ -429,6 +434,8 @@ generatedFiles:
   - docs/sdk/models/operations/deployfrombytecodesmartcontractresponse.md
   - docs/sdk/models/operations/deployfromtemplatesmartcontractrequest.md
   - docs/sdk/models/operations/deployfromtemplatesmartcontractresponse.md
+  - docs/sdk/models/operations/encodesmartcontractrequest.md
+  - docs/sdk/models/operations/encodesmartcontractresponse.md
   - docs/sdk/models/operations/getallsmartcontractrequest.md
   - docs/sdk/models/operations/getallsmartcontractsmartcontractpaginated.md
   - docs/sdk/models/operations/getallsmartcontractresponse.md
@@ -492,6 +499,7 @@ generatedFiles:
   - docs/sdk/models/shared/faucet.md
   - docs/sdk/models/shared/requirefaucetdto.md
   - docs/sdk/models/shared/resyncnonce.md
+  - docs/sdk/models/shared/signmessageresponse.md
   - docs/sdk/models/shared/signmessagedto.md
   - docs/sdk/models/shared/updatewalletdtometadata.md
   - docs/sdk/models/shared/updatewalletdto.md
@@ -545,8 +553,11 @@ generatedFiles:
   - docs/sdk/models/shared/explorerapidtotype.md
   - docs/sdk/models/shared/explorerapidto.md
   - docs/sdk/models/shared/updatenetworkdto.md
+  - docs/sdk/models/shared/rpctype.md
   - docs/sdk/models/shared/rpc.md
+  - docs/sdk/models/shared/createrpcdtotype.md
   - docs/sdk/models/shared/createrpcdto.md
+  - docs/sdk/models/shared/updaterpcdtotype.md
   - docs/sdk/models/shared/updaterpcdto.md
   - docs/sdk/models/shared/projectmember.md
   - docs/sdk/models/shared/invitationrole.md
@@ -560,12 +571,20 @@ generatedFiles:
   - docs/sdk/models/shared/deploysmartcontractresponse.md
   - docs/sdk/models/shared/abi.md
   - docs/sdk/models/shared/compilationdetails.md
+  - docs/sdk/models/shared/smartcontractmetadata.md
   - docs/sdk/models/shared/state.md
   - docs/sdk/models/shared/smartcontractstatus.md
+  - docs/sdk/models/shared/smartcontractdeploymethod.md
+  - docs/sdk/models/shared/smartcontractversion.md
+  - docs/sdk/models/shared/smartcontractuidata.md
   - docs/sdk/models/shared/smartcontract.md
+  - docs/sdk/models/shared/deployfrombytecodedtometadata.md
   - docs/sdk/models/shared/deployfrombytecodedto3.md
   - docs/sdk/models/shared/deployfrombytecodedtoparams.md
   - docs/sdk/models/shared/deployfrombytecodedtospeed.md
+  - docs/sdk/models/shared/deploymethod.md
+  - docs/sdk/models/shared/version.md
+  - docs/sdk/models/shared/uidata.md
   - docs/sdk/models/shared/deployfrombytecodedto.md
   - docs/sdk/models/shared/statemutability.md
   - docs/sdk/models/shared/type.md
@@ -574,13 +593,25 @@ generatedFiles:
   - docs/sdk/models/shared/abioutputdto.md
   - docs/sdk/models/shared/components.md
   - docs/sdk/models/shared/abiinputdto.md
+  - docs/sdk/models/shared/deployfromtemplatedtometadata.md
   - docs/sdk/models/shared/deployfromtemplatedto3.md
   - docs/sdk/models/shared/deployfromtemplatedtoparams.md
   - docs/sdk/models/shared/deployfromtemplatedtospeed.md
+  - docs/sdk/models/shared/deployfromtemplatedtodeploymethod.md
+  - docs/sdk/models/shared/deployfromtemplatedtoversion.md
+  - docs/sdk/models/shared/deployfromtemplatedtouidata.md
   - docs/sdk/models/shared/deployfromtemplatedto.md
+  - docs/sdk/models/shared/encodesmartcontractresponse.md
+  - docs/sdk/models/shared/encodedto3.md
+  - docs/sdk/models/shared/encodedtoparams.md
+  - docs/sdk/models/shared/encodedto.md
   - docs/sdk/models/shared/availablefunctions.md
+  - docs/sdk/models/shared/importsmartcontractdtometadata.md
   - docs/sdk/models/shared/importsmartcontractdto3.md
   - docs/sdk/models/shared/importsmartcontractdtoparams.md
+  - docs/sdk/models/shared/importsmartcontractdtodeploymethod.md
+  - docs/sdk/models/shared/importsmartcontractdtoversion.md
+  - docs/sdk/models/shared/importsmartcontractdtouidata.md
   - docs/sdk/models/shared/importsmartcontractdto.md
   - docs/sdk/models/shared/readsmartcontractresponse3.md
   - docs/sdk/models/shared/readsmartcontractresponseparams.md
@@ -624,7 +655,10 @@ generatedFiles:
   - docs/sdk/models/errors/badrequestexception.md
   - docs/sdk/models/errors/getbalanceerc20responsebody.md
   - docs/sdk/models/errors/getallgaspriceresponsebody.md
+  - docs/sdk/models/errors/createwalletwalletresponsebody.md
   - docs/sdk/models/errors/createwalletresponsebody.md
+  - docs/sdk/models/errors/schemasmaximumwalletreachedcontext.md
+  - docs/sdk/models/errors/maximumwalletreached.md
   - docs/sdk/models/errors/deletewalletwalletresponsebody.md
   - docs/sdk/models/errors/deletewalletresponsebody.md
   - docs/sdk/models/errors/schemascouldnotfindresourcecontext.md
@@ -647,8 +681,11 @@ generatedFiles:
   - docs/sdk/models/errors/couldnotprocessentity.md
   - docs/sdk/models/errors/schemascouldnotassignnoncecontext.md
   - docs/sdk/models/errors/couldnotassignnonce.md
+  - docs/sdk/models/errors/signmessagewalletwalletresponseresponsebody.md
   - docs/sdk/models/errors/signmessagewalletwalletresponsebody.md
   - docs/sdk/models/errors/signmessagewalletresponsebody.md
+  - docs/sdk/models/errors/schemasforbiddencontext.md
+  - docs/sdk/models/errors/forbidden.md
   - docs/sdk/models/errors/updatewalletwalletresponsebody.md
   - docs/sdk/models/errors/updatewalletresponsebody.md
   - docs/sdk/models/errors/deletepinipfsresponsebody.md
@@ -781,6 +818,9 @@ generatedFiles:
   - docs/sdk/models/errors/deployfromtemplatesmartcontractresponsebody.md
   - docs/sdk/models/errors/schemassmartcontractnotactivatedcontext.md
   - docs/sdk/models/errors/smartcontractnotactivated.md
+  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/encodesmartcontractresponsebody.md
   - docs/sdk/models/errors/getallsmartcontractresponsebody.md
   - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponseresponsebody.md
   - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponsebody.md
@@ -788,8 +828,6 @@ generatedFiles:
   - docs/sdk/models/errors/getonesmartcontractsmartcontractmanagementresponsebody.md
   - docs/sdk/models/errors/getonesmartcontractresponsebody.md
   - docs/sdk/models/errors/importexistingsmartcontractresponsebody.md
-  - docs/sdk/models/errors/schemasinvalidcontractaddresscontext.md
-  - docs/sdk/models/errors/invalidcontractaddress.md
   - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponseresponsebody.md
   - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponsebody.md
   - docs/sdk/models/errors/readsmartcontractresponsebody.md

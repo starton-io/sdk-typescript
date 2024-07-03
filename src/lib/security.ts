@@ -176,7 +176,7 @@ export function resolveGlobalSecurity(
         {
             fieldName: "x-api-key",
             type: "apiKey:header",
-            value: security?.startonApiKey,
+            value: security?.apiKey,
         },
     ]);
 }

@@ -32,7 +32,11 @@ export type UnknownData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasUNKNOWNContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse6?: Response | undefined;
+    context?: SchemasUNKNOWNContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -65,7 +69,11 @@ export class Unknown extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse5?: Response | undefined;
-    context?: SchemasUNKNOWNContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse6?: Response | undefined;
+    context?: SchemasUNKNOWNContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -95,6 +103,9 @@ export class Unknown extends Error {
         }
         if (err.rawResponse5 != null) {
             this.rawResponse5 = err.rawResponse5;
+        }
+        if (err.rawResponse6 != null) {
+            this.rawResponse6 = err.rawResponse6;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -135,7 +146,8 @@ export namespace Unknown$ {
             RawResponse3: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
             RawResponse5: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasUNKNOWNContext$.inboundSchema).optional(),
+            RawResponse6: z.instanceof(Response).optional(),
+            context: z.nullable(z.lazy(() => SchemasUNKNOWNContext$.inboundSchema)).optional(),
             errorCode: z.string().default("UNKNOWN"),
             message: z.string().default("Unknown error."),
             path: z.string(),
@@ -150,6 +162,7 @@ export namespace Unknown$ {
                 RawResponse3: "rawResponse3",
                 RawResponse4: "rawResponse4",
                 RawResponse5: "rawResponse5",
+                RawResponse6: "rawResponse6",
             });
 
             return new Unknown(remapped);
@@ -162,7 +175,8 @@ export namespace Unknown$ {
         RawResponse3?: never | undefined;
         RawResponse4?: never | undefined;
         RawResponse5?: never | undefined;
-        context?: SchemasUNKNOWNContext$.Outbound | undefined;
+        RawResponse6?: never | undefined;
+        context?: SchemasUNKNOWNContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -212,7 +226,15 @@ export namespace Unknown$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasUNKNOWNContext$.outboundSchema).optional(),
+                    rawResponse6: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasUNKNOWNContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("UNKNOWN"),
                     message: z.string().default("Unknown error."),
                     path: z.string(),
@@ -227,6 +249,7 @@ export namespace Unknown$ {
                         rawResponse3: "RawResponse3",
                         rawResponse4: "RawResponse4",
                         rawResponse5: "RawResponse5",
+                        rawResponse6: "RawResponse6",
                     });
                 })
         );

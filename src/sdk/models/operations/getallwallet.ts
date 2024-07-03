@@ -42,19 +42,19 @@ export type GetAllWalletResponse = {
 /** @internal */
 export namespace GetAllWalletRequest$ {
     export const inboundSchema: z.ZodType<GetAllWalletRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
     });
 
     export type Outbound = {
-        limit?: number | undefined;
+        limit: number;
         name?: string | undefined;
         page?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWalletRequest> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
     });

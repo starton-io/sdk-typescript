@@ -70,7 +70,7 @@ export namespace GetAllWatcherRequest$ {
     export const inboundSchema: z.ZodType<GetAllWatcherRequest, z.ZodTypeDef, unknown> = z.object({
         address: z.string().optional(),
         confirmationsBlocks: z.number().optional(),
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         network: z.string().optional(),
         page: z.number().int().optional(),
@@ -82,7 +82,7 @@ export namespace GetAllWatcherRequest$ {
     export type Outbound = {
         address?: string | undefined;
         confirmationsBlocks?: number | undefined;
-        limit?: number | undefined;
+        limit: number;
         name?: string | undefined;
         network?: string | undefined;
         page?: number | undefined;
@@ -95,7 +95,7 @@ export namespace GetAllWatcherRequest$ {
         {
             address: z.string().optional(),
             confirmationsBlocks: z.number().optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             name: z.string().optional(),
             network: z.string().optional(),
             page: z.number().int().optional(),

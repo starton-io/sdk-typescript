@@ -3,7 +3,7 @@
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

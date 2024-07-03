@@ -12,7 +12,7 @@ export type CouldNotPerformRequestData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTPERFORMREQUESTContext | undefined;
+    context?: SchemasCOULDNOTPERFORMREQUESTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class CouldNotPerformRequest extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTPERFORMREQUESTContext | undefined;
+    context?: SchemasCOULDNOTPERFORMREQUESTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -80,7 +80,9 @@ export namespace CouldNotPerformRequest$ {
     export const inboundSchema: z.ZodType<CouldNotPerformRequest, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
             message: z.string().default("Unexpected error occurred performing the request."),
             path: z.string(),
@@ -97,7 +99,7 @@ export namespace CouldNotPerformRequest$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTPERFORMREQUESTContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTPERFORMREQUESTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -118,7 +120,9 @@ export namespace CouldNotPerformRequest$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.outboundSchema)
+                        .nullable(
+                            z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.outboundSchema)
+                        )
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
                     message: z

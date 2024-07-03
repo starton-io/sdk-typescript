@@ -7,7 +7,7 @@ import * as z from "zod";
 export type Context = {};
 
 export type TooEarly = {
-    context?: Context | undefined;
+    context?: Context | null | undefined;
     errorCode?: string | undefined;
     message?: string | undefined;
     path: string;
@@ -27,7 +27,7 @@ export namespace Context$ {
 /** @internal */
 export namespace TooEarly$ {
     export const inboundSchema: z.ZodType<TooEarly, z.ZodTypeDef, unknown> = z.object({
-        context: z.lazy(() => Context$.inboundSchema).optional(),
+        context: z.nullable(z.lazy(() => Context$.inboundSchema)).optional(),
         errorCode: z.string().default("TOO_EARLY"),
         message: z.string().default("Please try later, you already tried too recently"),
         path: z.string(),
@@ -36,7 +36,7 @@ export namespace TooEarly$ {
     });
 
     export type Outbound = {
-        context?: Context$.Outbound | undefined;
+        context?: Context$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -45,7 +45,7 @@ export namespace TooEarly$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TooEarly> = z.object({
-        context: z.lazy(() => Context$.outboundSchema).optional(),
+        context: z.nullable(z.lazy(() => Context$.outboundSchema)).optional(),
         errorCode: z.string().default("TOO_EARLY"),
         message: z.string().default("Please try later, you already tried too recently"),
         path: z.string(),

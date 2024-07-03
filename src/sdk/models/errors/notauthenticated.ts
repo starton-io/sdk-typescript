@@ -16,7 +16,7 @@ export type NotAuthenticatedData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasNOTAUTHENTICATEDContext | undefined;
+    context?: SchemasNOTAUTHENTICATEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -33,7 +33,7 @@ export class NotAuthenticated extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasNOTAUTHENTICATEDContext | undefined;
+    context?: SchemasNOTAUTHENTICATEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -86,7 +86,9 @@ export namespace NotAuthenticated$ {
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasNOTAUTHENTICATEDContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasNOTAUTHENTICATEDContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("NOT_AUTHENTICATED"),
             message: z.string().default("Not authenticated."),
             path: z.string(),
@@ -105,7 +107,7 @@ export namespace NotAuthenticated$ {
     export type Outbound = {
         RawResponse?: never | undefined;
         RawResponse1?: never | undefined;
-        context?: SchemasNOTAUTHENTICATEDContext$.Outbound | undefined;
+        context?: SchemasNOTAUTHENTICATEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -132,7 +134,7 @@ export namespace NotAuthenticated$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasNOTAUTHENTICATEDContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasNOTAUTHENTICATEDContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("NOT_AUTHENTICATED"),
                     message: z.string().default("Not authenticated."),

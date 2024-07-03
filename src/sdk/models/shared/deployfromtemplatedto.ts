@@ -5,6 +5,8 @@
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto.js";
 import * as z from "zod";
 
+export type DeployFromTemplateDtoMetadata = {};
+
 export type DeployFromTemplateDto3 = {};
 
 export type DeployFromTemplateDtoParams = DeployFromTemplateDto3 | string | number | boolean;
@@ -20,6 +22,23 @@ export enum DeployFromTemplateDtoSpeed {
     Custom = "custom",
 }
 
+export enum DeployFromTemplateDtoDeployMethod {
+    Web3 = "web3",
+    Kms = "kms",
+}
+
+export enum DeployFromTemplateDtoVersion {
+    One = "1",
+}
+
+export type DeployFromTemplateDtoUiData = {
+    chainId?: number | undefined;
+    deployMethod: DeployFromTemplateDtoDeployMethod;
+    deployType?: string | undefined;
+    imported: boolean;
+    version: DeployFromTemplateDtoVersion;
+};
+
 export type DeployFromTemplateDto = {
     /**
      * Custom gas settings for deploy transaction, will be used if speed set to custom
@@ -33,6 +52,7 @@ export type DeployFromTemplateDto = {
      * Optional gas limit
      */
     gasLimit?: string | undefined;
+    metadata?: DeployFromTemplateDtoMetadata | undefined;
     /**
      * Contract name on Starton database (off-chain).
      */
@@ -61,11 +81,23 @@ export type DeployFromTemplateDto = {
      * Starton Library template to deploy.
      */
     templateId: string;
+    uiData?: DeployFromTemplateDtoUiData | null | undefined;
     /**
      * If you want to put value in your smart contract deployment (Example: payable constructor)
      */
     value?: string | undefined;
 };
+
+/** @internal */
+export namespace DeployFromTemplateDtoMetadata$ {
+    export const inboundSchema: z.ZodType<DeployFromTemplateDtoMetadata, z.ZodTypeDef, unknown> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoMetadata> =
+        z.object({});
+}
 
 /** @internal */
 export namespace DeployFromTemplateDto3$ {
@@ -108,11 +140,58 @@ export namespace DeployFromTemplateDtoSpeed$ {
 }
 
 /** @internal */
+export namespace DeployFromTemplateDtoDeployMethod$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof DeployFromTemplateDtoDeployMethod> =
+        z.nativeEnum(DeployFromTemplateDtoDeployMethod);
+    export const outboundSchema: z.ZodNativeEnum<typeof DeployFromTemplateDtoDeployMethod> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace DeployFromTemplateDtoVersion$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof DeployFromTemplateDtoVersion> = z.nativeEnum(
+        DeployFromTemplateDtoVersion
+    );
+    export const outboundSchema: z.ZodNativeEnum<typeof DeployFromTemplateDtoVersion> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace DeployFromTemplateDtoUiData$ {
+    export const inboundSchema: z.ZodType<DeployFromTemplateDtoUiData, z.ZodTypeDef, unknown> =
+        z.object({
+            chainId: z.number().optional(),
+            deployMethod: DeployFromTemplateDtoDeployMethod$.inboundSchema,
+            deployType: z.string().optional(),
+            imported: z.boolean(),
+            version: DeployFromTemplateDtoVersion$.inboundSchema,
+        });
+
+    export type Outbound = {
+        chainId?: number | undefined;
+        deployMethod: string;
+        deployType?: string | undefined;
+        imported: boolean;
+        version: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromTemplateDtoUiData> =
+        z.object({
+            chainId: z.number().optional(),
+            deployMethod: DeployFromTemplateDtoDeployMethod$.outboundSchema,
+            deployType: z.string().optional(),
+            imported: z.boolean(),
+            version: DeployFromTemplateDtoVersion$.outboundSchema,
+        });
+}
+
+/** @internal */
 export namespace DeployFromTemplateDto$ {
     export const inboundSchema: z.ZodType<DeployFromTemplateDto, z.ZodTypeDef, unknown> = z.object({
         customGas: CustomGasDto$.inboundSchema.optional(),
         description: z.string().optional(),
         gasLimit: z.string().optional(),
+        metadata: z.lazy(() => DeployFromTemplateDtoMetadata$.inboundSchema).optional(),
         name: z.string(),
         network: z.string(),
         nonce: z.number().optional(),
@@ -127,6 +206,7 @@ export namespace DeployFromTemplateDto$ {
         signerWallet: z.string(),
         speed: DeployFromTemplateDtoSpeed$.inboundSchema.optional(),
         templateId: z.string(),
+        uiData: z.nullable(z.lazy(() => DeployFromTemplateDtoUiData$.inboundSchema)).optional(),
         value: z.string().optional(),
     });
 
@@ -134,6 +214,7 @@ export namespace DeployFromTemplateDto$ {
         customGas?: CustomGasDto$.Outbound | undefined;
         description?: string | undefined;
         gasLimit?: string | undefined;
+        metadata?: DeployFromTemplateDtoMetadata$.Outbound | undefined;
         name: string;
         network: string;
         nonce?: number | undefined;
@@ -141,6 +222,7 @@ export namespace DeployFromTemplateDto$ {
         signerWallet: string;
         speed?: string | undefined;
         templateId: string;
+        uiData?: DeployFromTemplateDtoUiData$.Outbound | null | undefined;
         value?: string | undefined;
     };
 
@@ -149,6 +231,7 @@ export namespace DeployFromTemplateDto$ {
             customGas: CustomGasDto$.outboundSchema.optional(),
             description: z.string().optional(),
             gasLimit: z.string().optional(),
+            metadata: z.lazy(() => DeployFromTemplateDtoMetadata$.outboundSchema).optional(),
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
@@ -163,6 +246,9 @@ export namespace DeployFromTemplateDto$ {
             signerWallet: z.string(),
             speed: DeployFromTemplateDtoSpeed$.outboundSchema.optional(),
             templateId: z.string(),
+            uiData: z
+                .nullable(z.lazy(() => DeployFromTemplateDtoUiData$.outboundSchema))
+                .optional(),
             value: z.string().optional(),
         });
 }

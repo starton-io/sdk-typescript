@@ -16,7 +16,7 @@ export type PayloadTooLargeData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasPAYLOADTOOLARGEContext | undefined;
+    context?: SchemasPAYLOADTOOLARGEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -33,7 +33,7 @@ export class PayloadTooLarge extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasPAYLOADTOOLARGEContext | undefined;
+    context?: SchemasPAYLOADTOOLARGEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -86,7 +86,9 @@ export namespace PayloadTooLarge$ {
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasPAYLOADTOOLARGEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
             message: z.string().default("Payload too large."),
             path: z.string(),
@@ -105,7 +107,7 @@ export namespace PayloadTooLarge$ {
     export type Outbound = {
         RawResponse?: never | undefined;
         RawResponse1?: never | undefined;
-        context?: SchemasPAYLOADTOOLARGEContext$.Outbound | undefined;
+        context?: SchemasPAYLOADTOOLARGEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -131,7 +133,9 @@ export namespace PayloadTooLarge$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasPAYLOADTOOLARGEContext$.outboundSchema).optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
                     message: z.string().default("Payload too large."),
                     path: z.string(),

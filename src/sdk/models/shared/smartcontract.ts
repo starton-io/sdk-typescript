@@ -8,6 +8,8 @@ export type Abi = {};
 
 export type CompilationDetails = {};
 
+export type SmartContractMetadata = {};
+
 export enum State {
     Success = "SUCCESS",
     Pending = "PENDING",
@@ -55,6 +57,23 @@ export enum SmartContractStatus {
     MonitoringInterrupted = "MONITORING_INTERRUPTED",
 }
 
+export enum SmartContractDeployMethod {
+    Web3 = "web3",
+    Kms = "kms",
+}
+
+export enum SmartContractVersion {
+    One = "1",
+}
+
+export type SmartContractUiData = {
+    chainId?: number | undefined;
+    deployMethod: SmartContractDeployMethod;
+    deployType?: string | undefined;
+    imported: boolean;
+    version: SmartContractVersion;
+};
+
 export type SmartContract = {
     abi?: Array<Abi> | undefined;
     address: string;
@@ -64,6 +83,7 @@ export type SmartContract = {
     creationHash?: string | null | undefined;
     description?: string | null | undefined;
     id: string;
+    metadata?: SmartContractMetadata | null | undefined;
     minedDate?: Date | null | undefined;
     name: string;
     network: string;
@@ -72,6 +92,7 @@ export type SmartContract = {
     state: State;
     status: SmartContractStatus;
     templateId?: string | null | undefined;
+    uiData?: SmartContractUiData | null | undefined;
     updatedAt?: Date | undefined;
 };
 
@@ -96,6 +117,18 @@ export namespace CompilationDetails$ {
 }
 
 /** @internal */
+export namespace SmartContractMetadata$ {
+    export const inboundSchema: z.ZodType<SmartContractMetadata, z.ZodTypeDef, unknown> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractMetadata> =
+        z.object({});
+}
+
+/** @internal */
 export namespace State$ {
     export const inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(State);
     export const outboundSchema: z.ZodNativeEnum<typeof State> = inboundSchema;
@@ -109,6 +142,47 @@ export namespace SmartContractStatus$ {
 }
 
 /** @internal */
+export namespace SmartContractDeployMethod$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof SmartContractDeployMethod> =
+        z.nativeEnum(SmartContractDeployMethod);
+    export const outboundSchema: z.ZodNativeEnum<typeof SmartContractDeployMethod> = inboundSchema;
+}
+
+/** @internal */
+export namespace SmartContractVersion$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof SmartContractVersion> =
+        z.nativeEnum(SmartContractVersion);
+    export const outboundSchema: z.ZodNativeEnum<typeof SmartContractVersion> = inboundSchema;
+}
+
+/** @internal */
+export namespace SmartContractUiData$ {
+    export const inboundSchema: z.ZodType<SmartContractUiData, z.ZodTypeDef, unknown> = z.object({
+        chainId: z.number().optional(),
+        deployMethod: SmartContractDeployMethod$.inboundSchema,
+        deployType: z.string().optional(),
+        imported: z.boolean(),
+        version: SmartContractVersion$.inboundSchema,
+    });
+
+    export type Outbound = {
+        chainId?: number | undefined;
+        deployMethod: string;
+        deployType?: string | undefined;
+        imported: boolean;
+        version: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractUiData> = z.object({
+        chainId: z.number().optional(),
+        deployMethod: SmartContractDeployMethod$.outboundSchema,
+        deployType: z.string().optional(),
+        imported: z.boolean(),
+        version: SmartContractVersion$.outboundSchema,
+    });
+}
+
+/** @internal */
 export namespace SmartContract$ {
     export const inboundSchema: z.ZodType<SmartContract, z.ZodTypeDef, unknown> = z.object({
         abi: z.array(z.lazy(() => Abi$.inboundSchema)).optional(),
@@ -118,11 +192,12 @@ export namespace SmartContract$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.131Z")
+            .default("2024-05-02T09:34:19.243Z")
             .transform((v) => new Date(v)),
         creationHash: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         id: z.string(),
+        metadata: z.nullable(z.lazy(() => SmartContractMetadata$.inboundSchema)).optional(),
         minedDate: z
             .nullable(
                 z
@@ -138,10 +213,11 @@ export namespace SmartContract$ {
         state: State$.inboundSchema,
         status: SmartContractStatus$.inboundSchema,
         templateId: z.nullable(z.string()).optional(),
+        uiData: z.nullable(z.lazy(() => SmartContractUiData$.inboundSchema)).optional(),
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.131Z")
+            .default("2024-05-02T09:34:19.243Z")
             .transform((v) => new Date(v)),
     });
 
@@ -154,6 +230,7 @@ export namespace SmartContract$ {
         creationHash?: string | null | undefined;
         description?: string | null | undefined;
         id: string;
+        metadata?: SmartContractMetadata$.Outbound | null | undefined;
         minedDate?: string | null | undefined;
         name: string;
         network: string;
@@ -162,6 +239,7 @@ export namespace SmartContract$ {
         state: string;
         status: string;
         templateId?: string | null | undefined;
+        uiData?: SmartContractUiData$.Outbound | null | undefined;
         updatedAt: string;
     };
 
@@ -172,11 +250,12 @@ export namespace SmartContract$ {
         compilationDetails: z.nullable(z.lazy(() => CompilationDetails$.outboundSchema)).optional(),
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.131Z"))
+            .default(() => new Date("2024-05-02T09:34:19.243Z"))
             .transform((v) => v.toISOString()),
         creationHash: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         id: z.string(),
+        metadata: z.nullable(z.lazy(() => SmartContractMetadata$.outboundSchema)).optional(),
         minedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         name: z.string(),
         network: z.string(),
@@ -185,9 +264,10 @@ export namespace SmartContract$ {
         state: State$.outboundSchema,
         status: SmartContractStatus$.outboundSchema,
         templateId: z.nullable(z.string()).optional(),
+        uiData: z.nullable(z.lazy(() => SmartContractUiData$.outboundSchema)).optional(),
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.131Z"))
+            .default(() => new Date("2024-05-02T09:34:19.243Z"))
             .transform((v) => v.toISOString()),
     });
 }

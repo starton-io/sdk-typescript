@@ -12,7 +12,7 @@ export type SmartContractNotActivatedData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasSMARTCONTRACTNOTACTIVATEDContext | undefined;
+    context?: SchemasSMARTCONTRACTNOTACTIVATEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class SmartContractNotActivated extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasSMARTCONTRACTNOTACTIVATEDContext | undefined;
+    context?: SchemasSMARTCONTRACTNOTACTIVATEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -81,7 +81,7 @@ export namespace SmartContractNotActivated$ {
         .object({
             RawResponse: z.instanceof(Response).optional(),
             context: z
-                .lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.inboundSchema)
+                .nullable(z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.inboundSchema))
                 .optional(),
             errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
             message: z.string().default("This smart contract is not active."),
@@ -99,7 +99,7 @@ export namespace SmartContractNotActivated$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasSMARTCONTRACTNOTACTIVATEDContext$.Outbound | undefined;
+        context?: SchemasSMARTCONTRACTNOTACTIVATEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -120,7 +120,9 @@ export namespace SmartContractNotActivated$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.outboundSchema)
+                        .nullable(
+                            z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.outboundSchema)
+                        )
                         .optional(),
                     errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
                     message: z.string().default("This smart contract is not active."),

@@ -24,7 +24,7 @@ export type InsufficientFundsData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINSUFFICIENTFUNDSContext | undefined;
+    context?: SchemasINSUFFICIENTFUNDSContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class InsufficientFunds extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINSUFFICIENTFUNDSContext | undefined;
+    context?: SchemasINSUFFICIENTFUNDSContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -113,7 +113,9 @@ export namespace InsufficientFunds$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINSUFFICIENTFUNDSContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("INSUFFICIENT_FUNDS"),
             message: z.string().default("Your funds are insufficient."),
             path: z.string(),
@@ -136,7 +138,7 @@ export namespace InsufficientFunds$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasINSUFFICIENTFUNDSContext$.Outbound | undefined;
+        context?: SchemasINSUFFICIENTFUNDSContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -175,7 +177,7 @@ export namespace InsufficientFunds$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasINSUFFICIENTFUNDSContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("INSUFFICIENT_FUNDS"),
                     message: z.string().default("Your funds are insufficient."),

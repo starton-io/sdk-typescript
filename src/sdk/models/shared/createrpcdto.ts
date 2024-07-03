@@ -4,21 +4,37 @@
 
 import * as z from "zod";
 
+export enum CreateRpcDtoType {
+    Archive = "archive",
+    Full = "full",
+}
+
 export type CreateRpcDto = {
+    type: CreateRpcDtoType;
     url: string;
 };
 
 /** @internal */
+export namespace CreateRpcDtoType$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> =
+        z.nativeEnum(CreateRpcDtoType);
+    export const outboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> = inboundSchema;
+}
+
+/** @internal */
 export namespace CreateRpcDto$ {
     export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z.object({
+        type: CreateRpcDtoType$.inboundSchema,
         url: z.string(),
     });
 
     export type Outbound = {
+        type: string;
         url: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRpcDto> = z.object({
+        type: CreateRpcDtoType$.outboundSchema,
         url: z.string(),
     });
 }

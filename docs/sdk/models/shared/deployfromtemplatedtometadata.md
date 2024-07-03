@@ -1,4 +1,4 @@
-# SignMessageWalletResponseBody
+# DeployFromTemplateDtoMetadata
 
 
 ## Fields

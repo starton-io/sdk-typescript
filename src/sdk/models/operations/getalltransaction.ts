@@ -68,7 +68,7 @@ export namespace GetAllTransactionRequest$ {
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
                 .optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             network: z.string().optional(),
             page: z.number().int().optional(),
             to: z.string().optional(),
@@ -78,7 +78,7 @@ export namespace GetAllTransactionRequest$ {
     export type Outbound = {
         from?: string | undefined;
         fromDate?: string | undefined;
-        limit?: number | undefined;
+        limit: number;
         network?: string | undefined;
         page?: number | undefined;
         to?: string | undefined;
@@ -92,7 +92,7 @@ export namespace GetAllTransactionRequest$ {
                 .date()
                 .transform((v) => v.toISOString())
                 .optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             network: z.string().optional(),
             page: z.number().int().optional(),
             to: z.string().optional(),

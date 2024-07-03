@@ -11,7 +11,7 @@ export type Wallet = {
     createdAt?: Date | undefined;
     description?: string | null | undefined;
     kmsId: string;
-    metadata?: WalletMetadata | undefined;
+    metadata?: WalletMetadata | null | undefined;
     name?: string | null | undefined;
     projectId: string;
     providerKeyId: string;
@@ -34,18 +34,18 @@ export namespace Wallet$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.161Z")
+            .default("2024-05-02T09:34:19.272Z")
             .transform((v) => new Date(v)),
         description: z.nullable(z.string()).optional(),
         kmsId: z.string(),
-        metadata: z.lazy(() => WalletMetadata$.inboundSchema).optional(),
+        metadata: z.nullable(z.lazy(() => WalletMetadata$.inboundSchema)).optional(),
         name: z.nullable(z.string()).optional(),
         projectId: z.string(),
         providerKeyId: z.string(),
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.161Z")
+            .default("2024-05-02T09:34:19.272Z")
             .transform((v) => new Date(v)),
     });
 
@@ -54,7 +54,7 @@ export namespace Wallet$ {
         createdAt: string;
         description?: string | null | undefined;
         kmsId: string;
-        metadata?: WalletMetadata$.Outbound | undefined;
+        metadata?: WalletMetadata$.Outbound | null | undefined;
         name?: string | null | undefined;
         projectId: string;
         providerKeyId: string;
@@ -65,17 +65,17 @@ export namespace Wallet$ {
         address: z.string(),
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.161Z"))
+            .default(() => new Date("2024-05-02T09:34:19.272Z"))
             .transform((v) => v.toISOString()),
         description: z.nullable(z.string()).optional(),
         kmsId: z.string(),
-        metadata: z.lazy(() => WalletMetadata$.outboundSchema).optional(),
+        metadata: z.nullable(z.lazy(() => WalletMetadata$.outboundSchema)).optional(),
         name: z.nullable(z.string()).optional(),
         projectId: z.string(),
         providerKeyId: z.string(),
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.161Z"))
+            .default(() => new Date("2024-05-02T09:34:19.272Z"))
             .transform((v) => v.toISOString()),
     });
 }

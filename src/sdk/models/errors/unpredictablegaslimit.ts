@@ -24,7 +24,7 @@ export type UnpredictableGasLimitData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasUNPREDICTABLEGASLIMITContext | undefined;
+    context?: SchemasUNPREDICTABLEGASLIMITContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class UnpredictableGasLimit extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasUNPREDICTABLEGASLIMITContext | undefined;
+    context?: SchemasUNPREDICTABLEGASLIMITContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -116,7 +116,9 @@ export namespace UnpredictableGasLimit$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasUNPREDICTABLEGASLIMITContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasUNPREDICTABLEGASLIMITContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("UNPREDICTABLE_GAS_LIMIT"),
             message: z.string().default("Could not estimate gas limit for this transaction."),
             path: z.string(),
@@ -139,7 +141,7 @@ export namespace UnpredictableGasLimit$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasUNPREDICTABLEGASLIMITContext$.Outbound | undefined;
+        context?: SchemasUNPREDICTABLEGASLIMITContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -178,7 +180,7 @@ export namespace UnpredictableGasLimit$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasUNPREDICTABLEGASLIMITContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasUNPREDICTABLEGASLIMITContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("UNPREDICTABLE_GAS_LIMIT"),
                     message: z

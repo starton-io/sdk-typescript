@@ -24,7 +24,11 @@ export type UnexpectedArgumentData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasUNEXPECTEDARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasUNEXPECTEDARGUMENTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +53,11 @@ export class UnexpectedArgument extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasUNEXPECTEDARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasUNEXPECTEDARGUMENTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -73,6 +81,9 @@ export class UnexpectedArgument extends Error {
         }
         if (err.rawResponse3 != null) {
             this.rawResponse3 = err.rawResponse3;
+        }
+        if (err.rawResponse4 != null) {
+            this.rawResponse4 = err.rawResponse4;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -113,7 +124,10 @@ export namespace UnexpectedArgument$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasUNEXPECTEDARGUMENTContext$.inboundSchema).optional(),
+            RawResponse4: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasUNEXPECTEDARGUMENTContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("UNEXPECTED_ARGUMENT"),
             message: z.string().default("Your params are invalid."),
             path: z.string(),
@@ -126,6 +140,7 @@ export namespace UnexpectedArgument$ {
                 RawResponse1: "rawResponse1",
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
+                RawResponse4: "rawResponse4",
             });
 
             return new UnexpectedArgument(remapped);
@@ -136,7 +151,8 @@ export namespace UnexpectedArgument$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasUNEXPECTEDARGUMENTContext$.Outbound | undefined;
+        RawResponse4?: never | undefined;
+        context?: SchemasUNEXPECTEDARGUMENTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -174,8 +190,14 @@ export namespace UnexpectedArgument$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
+                    rawResponse4: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
                     context: z
-                        .lazy(() => SchemasUNEXPECTEDARGUMENTContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasUNEXPECTEDARGUMENTContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("UNEXPECTED_ARGUMENT"),
                     message: z.string().default("Your params are invalid."),
@@ -189,6 +211,7 @@ export namespace UnexpectedArgument$ {
                         rawResponse1: "RawResponse1",
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
+                        rawResponse4: "RawResponse4",
                     });
                 })
         );

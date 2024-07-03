@@ -12,7 +12,7 @@ export type ContractNotYetDeployedData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCONTRACTNOTYETDEPLOYEDContext | undefined;
+    context?: SchemasCONTRACTNOTYETDEPLOYEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class ContractNotYetDeployed extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCONTRACTNOTYETDEPLOYEDContext | undefined;
+    context?: SchemasCONTRACTNOTYETDEPLOYEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -80,7 +80,9 @@ export namespace ContractNotYetDeployed$ {
     export const inboundSchema: z.ZodType<ContractNotYetDeployed, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
             message: z.string().default("Smart contract is not deployed on the blockchain yet."),
             path: z.string(),
@@ -97,7 +99,7 @@ export namespace ContractNotYetDeployed$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasCONTRACTNOTYETDEPLOYEDContext$.Outbound | undefined;
+        context?: SchemasCONTRACTNOTYETDEPLOYEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -118,7 +120,9 @@ export namespace ContractNotYetDeployed$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.outboundSchema)
+                        .nullable(
+                            z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.outboundSchema)
+                        )
                         .optional(),
                     errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
                     message: z

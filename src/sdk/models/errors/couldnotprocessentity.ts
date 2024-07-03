@@ -16,7 +16,7 @@ export type CouldNotProcessEntityData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasCOULDNOTPROCESSENTITYContext | undefined;
+    context?: SchemasCOULDNOTPROCESSENTITYContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -33,7 +33,7 @@ export class CouldNotProcessEntity extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasCOULDNOTPROCESSENTITYContext | undefined;
+    context?: SchemasCOULDNOTPROCESSENTITYContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -92,7 +92,9 @@ export namespace CouldNotProcessEntity$ {
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTPROCESSENTITYContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTPROCESSENTITYContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_PROCESS_ENTITY"),
             message: z.string().default("Could not process entity."),
             path: z.string(),
@@ -111,7 +113,7 @@ export namespace CouldNotProcessEntity$ {
     export type Outbound = {
         RawResponse?: never | undefined;
         RawResponse1?: never | undefined;
-        context?: SchemasCOULDNOTPROCESSENTITYContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTPROCESSENTITYContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -138,7 +140,7 @@ export namespace CouldNotProcessEntity$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTPROCESSENTITYContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTPROCESSENTITYContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_PROCESS_ENTITY"),
                     message: z.string().default("Could not process entity."),

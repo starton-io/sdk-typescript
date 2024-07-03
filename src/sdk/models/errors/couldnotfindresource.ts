@@ -155,6 +155,10 @@ export type CouldNotFindResourceData = {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    rawResponse41?: Response | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     rawResponse5?: Response | undefined;
     /**
      * Raw HTTP response; suitable for custom response parsing
@@ -172,7 +176,7 @@ export type CouldNotFindResourceData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse9?: Response | undefined;
-    context?: SchemasCOULDNOTFINDRESOURCEContext | undefined;
+    context?: SchemasCOULDNOTFINDRESOURCEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -328,6 +332,10 @@ export class CouldNotFindResource extends Error {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    rawResponse41?: Response | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     rawResponse5?: Response | undefined;
     /**
      * Raw HTTP response; suitable for custom response parsing
@@ -345,7 +353,7 @@ export class CouldNotFindResource extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse9?: Response | undefined;
-    context?: SchemasCOULDNOTFINDRESOURCEContext | undefined;
+    context?: SchemasCOULDNOTFINDRESOURCEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -466,6 +474,9 @@ export class CouldNotFindResource extends Error {
         if (err.rawResponse40 != null) {
             this.rawResponse40 = err.rawResponse40;
         }
+        if (err.rawResponse41 != null) {
+            this.rawResponse41 = err.rawResponse41;
+        }
         if (err.rawResponse5 != null) {
             this.rawResponse5 = err.rawResponse5;
         }
@@ -555,12 +566,15 @@ export namespace CouldNotFindResource$ {
             RawResponse39: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
             RawResponse40: z.instanceof(Response).optional(),
+            RawResponse41: z.instanceof(Response).optional(),
             RawResponse5: z.instanceof(Response).optional(),
             RawResponse6: z.instanceof(Response).optional(),
             RawResponse7: z.instanceof(Response).optional(),
             RawResponse8: z.instanceof(Response).optional(),
             RawResponse9: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTFINDRESOURCEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTFINDRESOURCEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_FIND_RESOURCE"),
             message: z.string().default("Could not found resource."),
             path: z.string(),
@@ -605,6 +619,7 @@ export namespace CouldNotFindResource$ {
                 RawResponse39: "rawResponse39",
                 RawResponse4: "rawResponse4",
                 RawResponse40: "rawResponse40",
+                RawResponse41: "rawResponse41",
                 RawResponse5: "rawResponse5",
                 RawResponse6: "rawResponse6",
                 RawResponse7: "rawResponse7",
@@ -652,12 +667,13 @@ export namespace CouldNotFindResource$ {
         RawResponse39?: never | undefined;
         RawResponse4?: never | undefined;
         RawResponse40?: never | undefined;
+        RawResponse41?: never | undefined;
         RawResponse5?: never | undefined;
         RawResponse6?: never | undefined;
         RawResponse7?: never | undefined;
         RawResponse8?: never | undefined;
         RawResponse9?: never | undefined;
-        context?: SchemasCOULDNOTFINDRESOURCEContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTFINDRESOURCEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -887,6 +903,12 @@ export namespace CouldNotFindResource$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
+                    rawResponse41: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
                     rawResponse5: z
                         .instanceof(Response)
                         .transform(() => {
@@ -918,7 +940,7 @@ export namespace CouldNotFindResource$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTFINDRESOURCEContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTFINDRESOURCEContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_FIND_RESOURCE"),
                     message: z.string().default("Could not found resource."),
@@ -964,6 +986,7 @@ export namespace CouldNotFindResource$ {
                         rawResponse39: "RawResponse39",
                         rawResponse4: "RawResponse4",
                         rawResponse40: "RawResponse40",
+                        rawResponse41: "RawResponse41",
                         rawResponse5: "RawResponse5",
                         rawResponse6: "RawResponse6",
                         rawResponse7: "RawResponse7",

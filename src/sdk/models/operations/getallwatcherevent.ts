@@ -47,20 +47,20 @@ export namespace GetAllWatcherEventRequest$ {
     export const inboundSchema: z.ZodType<GetAllWatcherEventRequest, z.ZodTypeDef, unknown> =
         z.object({
             id: z.string(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             page: z.number().int().optional(),
         });
 
     export type Outbound = {
         id: string;
-        limit?: number | undefined;
+        limit: number;
         page?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWatcherEventRequest> =
         z.object({
             id: z.string(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             page: z.number().int().optional(),
         });
 }

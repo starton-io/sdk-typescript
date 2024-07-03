@@ -21,7 +21,7 @@ Checks the native balance of a given address on a specified blockchain network.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -66,7 +66,7 @@ Fetches the balance of ERC20 tokens held by a specific address. You must specify
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -112,7 +112,7 @@ Provides the current gas prices for the specified blockchain network, offering c
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

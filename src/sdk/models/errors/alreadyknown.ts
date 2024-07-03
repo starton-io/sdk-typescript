@@ -24,7 +24,7 @@ export type AlreadyKnownData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: Context | undefined;
+    context?: Context | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class AlreadyKnown extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: Context | undefined;
+    context?: Context | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -108,7 +108,7 @@ export namespace AlreadyKnown$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => Context$.inboundSchema).optional(),
+            context: z.nullable(z.lazy(() => Context$.inboundSchema)).optional(),
             errorCode: z.string().default("ALREADY_KNOWN"),
             message: z.string().default("This transaction is already known by the node."),
             path: z.string(),
@@ -131,7 +131,7 @@ export namespace AlreadyKnown$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: Context$.Outbound | undefined;
+        context?: Context$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -169,7 +169,7 @@ export namespace AlreadyKnown$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => Context$.outboundSchema).optional(),
+                    context: z.nullable(z.lazy(() => Context$.outboundSchema)).optional(),
                     errorCode: z.string().default("ALREADY_KNOWN"),
                     message: z.string().default("This transaction is already known by the node."),
                     path: z.string(),

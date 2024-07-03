@@ -21,10 +21,13 @@ export type CreateNetworkDto = {
     enableRelayer?: boolean | undefined;
     explorerApi?: ExplorerApiDto | undefined;
     explorerUrl?: string | undefined;
+    faucetUrl?: string | undefined;
     gasPriceRecommendation?: GasPriceRecommendationDto | undefined;
+    loadbalancerUrl?: string | undefined;
     logo: string;
     name: string;
     symbol: string;
+    tenantHostnames?: Array<string> | undefined;
     testnet?: boolean | undefined;
     verifyBlockIntegrity?: boolean | undefined;
     verifyTxIntegrity?: boolean | undefined;
@@ -44,10 +47,13 @@ export namespace CreateNetworkDto$ {
         enableRelayer: z.boolean().optional(),
         explorerApi: ExplorerApiDto$.inboundSchema.optional(),
         explorerUrl: z.string().optional(),
+        faucetUrl: z.string().optional(),
         gasPriceRecommendation: GasPriceRecommendationDto$.inboundSchema.optional(),
+        loadbalancerUrl: z.string().optional(),
         logo: z.string(),
         name: z.string(),
         symbol: z.string(),
+        tenantHostnames: z.array(z.string()).optional(),
         testnet: z.boolean().optional(),
         verifyBlockIntegrity: z.boolean().optional(),
         verifyTxIntegrity: z.boolean().optional(),
@@ -65,10 +71,13 @@ export namespace CreateNetworkDto$ {
         enableRelayer?: boolean | undefined;
         explorerApi?: ExplorerApiDto$.Outbound | undefined;
         explorerUrl?: string | undefined;
+        faucetUrl?: string | undefined;
         gasPriceRecommendation?: GasPriceRecommendationDto$.Outbound | undefined;
+        loadbalancerUrl?: string | undefined;
         logo: string;
         name: string;
         symbol: string;
+        tenantHostnames?: Array<string> | undefined;
         testnet?: boolean | undefined;
         verifyBlockIntegrity?: boolean | undefined;
         verifyTxIntegrity?: boolean | undefined;
@@ -86,10 +95,13 @@ export namespace CreateNetworkDto$ {
         enableRelayer: z.boolean().optional(),
         explorerApi: ExplorerApiDto$.outboundSchema.optional(),
         explorerUrl: z.string().optional(),
+        faucetUrl: z.string().optional(),
         gasPriceRecommendation: GasPriceRecommendationDto$.outboundSchema.optional(),
+        loadbalancerUrl: z.string().optional(),
         logo: z.string(),
         name: z.string(),
         symbol: z.string(),
+        tenantHostnames: z.array(z.string()).optional(),
         testnet: z.boolean().optional(),
         verifyBlockIntegrity: z.boolean().optional(),
         verifyTxIntegrity: z.boolean().optional(),

@@ -291,12 +291,16 @@ export type BadRequestExceptionData = {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    rawResponse72?: Response | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     rawResponse8?: Response | undefined;
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse9?: Response | undefined;
-    context?: SchemasContext | undefined;
+    context?: SchemasContext | null | undefined;
     errorCode: string;
     message: Array<string>;
     path: string;
@@ -588,12 +592,16 @@ export class BadRequestException extends Error {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    rawResponse72?: Response | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     rawResponse8?: Response | undefined;
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse9?: Response | undefined;
-    context?: SchemasContext | undefined;
+    context?: SchemasContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -816,6 +824,9 @@ export class BadRequestException extends Error {
         if (err.rawResponse71 != null) {
             this.rawResponse71 = err.rawResponse71;
         }
+        if (err.rawResponse72 != null) {
+            this.rawResponse72 = err.rawResponse72;
+        }
         if (err.rawResponse8 != null) {
             this.rawResponse8 = err.rawResponse8;
         }
@@ -922,9 +933,10 @@ export namespace BadRequestException$ {
             RawResponse7: z.instanceof(Response).optional(),
             RawResponse70: z.instanceof(Response).optional(),
             RawResponse71: z.instanceof(Response).optional(),
+            RawResponse72: z.instanceof(Response).optional(),
             RawResponse8: z.instanceof(Response).optional(),
             RawResponse9: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasContext$.inboundSchema).optional(),
+            context: z.nullable(z.lazy(() => SchemasContext$.inboundSchema)).optional(),
             errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
             message: z.array(z.string()),
             path: z.string(),
@@ -1003,6 +1015,7 @@ export namespace BadRequestException$ {
                 RawResponse7: "rawResponse7",
                 RawResponse70: "rawResponse70",
                 RawResponse71: "rawResponse71",
+                RawResponse72: "rawResponse72",
                 RawResponse8: "rawResponse8",
                 RawResponse9: "rawResponse9",
             });
@@ -1081,9 +1094,10 @@ export namespace BadRequestException$ {
         RawResponse7?: never | undefined;
         RawResponse70?: never | undefined;
         RawResponse71?: never | undefined;
+        RawResponse72?: never | undefined;
         RawResponse8?: never | undefined;
         RawResponse9?: never | undefined;
-        context?: SchemasContext$.Outbound | undefined;
+        context?: SchemasContext$.Outbound | null | undefined;
         errorCode: string;
         message: Array<string>;
         path: string;
@@ -1517,6 +1531,12 @@ export namespace BadRequestException$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
+                    rawResponse72: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
                     rawResponse8: z
                         .instanceof(Response)
                         .transform(() => {
@@ -1529,7 +1549,7 @@ export namespace BadRequestException$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasContext$.outboundSchema).optional(),
+                    context: z.nullable(z.lazy(() => SchemasContext$.outboundSchema)).optional(),
                     errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
                     message: z.array(z.string()),
                     path: z.string(),
@@ -1608,6 +1628,7 @@ export namespace BadRequestException$ {
                         rawResponse7: "RawResponse7",
                         rawResponse70: "RawResponse70",
                         rawResponse71: "RawResponse71",
+                        rawResponse72: "RawResponse72",
                         rawResponse8: "RawResponse8",
                         rawResponse9: "RawResponse9",
                     });

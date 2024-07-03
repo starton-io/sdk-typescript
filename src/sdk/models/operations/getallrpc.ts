@@ -42,19 +42,19 @@ export type GetAllRpcResponse = {
 /** @internal */
 export namespace GetAllRpcRequest$ {
     export const inboundSchema: z.ZodType<GetAllRpcRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string(),
         page: z.number().int().optional(),
     });
 
     export type Outbound = {
-        limit?: number | undefined;
+        limit: number;
         name: string;
         page?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllRpcRequest> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string(),
         page: z.number().int().optional(),
     });

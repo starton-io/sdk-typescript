@@ -24,7 +24,7 @@ export type CouldNotEstimateGasPriceData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTESTIMATEGASPRICEContext | undefined;
+    context?: SchemasCOULDNOTESTIMATEGASPRICEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class CouldNotEstimateGasPrice extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTESTIMATEGASPRICEContext | undefined;
+    context?: SchemasCOULDNOTESTIMATEGASPRICEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -116,7 +116,9 @@ export namespace CouldNotEstimateGasPrice$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
             message: z.string().default("Could not estimate gas price."),
             path: z.string(),
@@ -139,7 +141,7 @@ export namespace CouldNotEstimateGasPrice$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTESTIMATEGASPRICEContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTESTIMATEGASPRICEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -178,7 +180,9 @@ export namespace CouldNotEstimateGasPrice$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.outboundSchema)
+                        .nullable(
+                            z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.outboundSchema)
+                        )
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
                     message: z.string().default("Could not estimate gas price."),

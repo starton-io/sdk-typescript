@@ -24,7 +24,7 @@ export type MaximumStorageReachedData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMAXIMUMSTORAGEREACHEDContext | undefined;
+    context?: SchemasMAXIMUMSTORAGEREACHEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class MaximumStorageReached extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMAXIMUMSTORAGEREACHEDContext | undefined;
+    context?: SchemasMAXIMUMSTORAGEREACHEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -116,7 +116,9 @@ export namespace MaximumStorageReached$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasMAXIMUMSTORAGEREACHEDContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasMAXIMUMSTORAGEREACHEDContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("MAXIMUM_STORAGE_REACHED"),
             message: z
                 .string()
@@ -141,7 +143,7 @@ export namespace MaximumStorageReached$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasMAXIMUMSTORAGEREACHEDContext$.Outbound | undefined;
+        context?: SchemasMAXIMUMSTORAGEREACHEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -180,7 +182,7 @@ export namespace MaximumStorageReached$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasMAXIMUMSTORAGEREACHEDContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasMAXIMUMSTORAGEREACHEDContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("MAXIMUM_STORAGE_REACHED"),
                     message: z

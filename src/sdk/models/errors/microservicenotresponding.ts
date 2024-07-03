@@ -24,7 +24,7 @@ export type MicroserviceNotRespondingData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMICROSERVICENOTRESPONDINGContext | undefined;
+    context?: SchemasMICROSERVICENOTRESPONDINGContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class MicroserviceNotResponding extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMICROSERVICENOTRESPONDINGContext | undefined;
+    context?: SchemasMICROSERVICENOTRESPONDINGContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -117,7 +117,7 @@ export namespace MicroserviceNotResponding$ {
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
             context: z
-                .lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.inboundSchema)
+                .nullable(z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.inboundSchema))
                 .optional(),
             errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
             message: z.string().default("MICROSERVICE_NOT_RESPONDING"),
@@ -141,7 +141,7 @@ export namespace MicroserviceNotResponding$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasMICROSERVICENOTRESPONDINGContext$.Outbound | undefined;
+        context?: SchemasMICROSERVICENOTRESPONDINGContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -180,7 +180,9 @@ export namespace MicroserviceNotResponding$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.outboundSchema)
+                        .nullable(
+                            z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.outboundSchema)
+                        )
                         .optional(),
                     errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
                     message: z.string().default("MICROSERVICE_NOT_RESPONDING"),

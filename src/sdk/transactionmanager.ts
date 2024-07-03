@@ -80,17 +80,17 @@ export class TransactionManager extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createTransaction",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -168,17 +168,17 @@ export class TransactionManager extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllTransaction",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -286,17 +286,17 @@ export class TransactionManager extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAvailableNoncesWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -371,17 +371,17 @@ export class TransactionManager extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneTransaction",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -457,17 +457,17 @@ export class TransactionManager extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "resyncNoncesWallet",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 

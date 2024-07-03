@@ -24,7 +24,7 @@ export type CouldNotBroadcastData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTBROADCASTContext | undefined;
+    context?: SchemasCOULDNOTBROADCASTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class CouldNotBroadcast extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTBROADCASTContext | undefined;
+    context?: SchemasCOULDNOTBROADCASTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -113,7 +113,9 @@ export namespace CouldNotBroadcast$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTBROADCASTContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_BROADCAST"),
             message: z.string().default("Could not broadcast this transaction."),
             path: z.string(),
@@ -136,7 +138,7 @@ export namespace CouldNotBroadcast$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTBROADCASTContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTBROADCASTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -175,7 +177,7 @@ export namespace CouldNotBroadcast$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTBROADCASTContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_BROADCAST"),
                     message: z.string().default("Could not broadcast this transaction."),

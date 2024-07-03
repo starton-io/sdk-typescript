@@ -21,10 +21,13 @@ export type UpdateNetworkDto = {
     enableRelayer?: boolean | undefined;
     explorerApi?: ExplorerApiDto | undefined;
     explorerUrl?: string | undefined;
+    faucetUrl?: string | undefined;
     gasPriceRecommendation?: GasPriceRecommendationDto | undefined;
+    loadbalancerUrl?: string | undefined;
     logo?: string | undefined;
     name?: string | undefined;
     symbol?: string | undefined;
+    tenantHostnames?: Array<string> | undefined;
     testnet?: boolean | undefined;
     verifyBlockIntegrity?: boolean | undefined;
     verifyTxIntegrity?: boolean | undefined;
@@ -44,10 +47,13 @@ export namespace UpdateNetworkDto$ {
         enableRelayer: z.boolean().optional(),
         explorerApi: ExplorerApiDto$.inboundSchema.optional(),
         explorerUrl: z.string().optional(),
+        faucetUrl: z.string().optional(),
         gasPriceRecommendation: GasPriceRecommendationDto$.inboundSchema.optional(),
+        loadbalancerUrl: z.string().optional(),
         logo: z.string().optional(),
         name: z.string().optional(),
         symbol: z.string().optional(),
+        tenantHostnames: z.array(z.string()).optional(),
         testnet: z.boolean().optional(),
         verifyBlockIntegrity: z.boolean().optional(),
         verifyTxIntegrity: z.boolean().optional(),
@@ -65,10 +71,13 @@ export namespace UpdateNetworkDto$ {
         enableRelayer?: boolean | undefined;
         explorerApi?: ExplorerApiDto$.Outbound | undefined;
         explorerUrl?: string | undefined;
+        faucetUrl?: string | undefined;
         gasPriceRecommendation?: GasPriceRecommendationDto$.Outbound | undefined;
+        loadbalancerUrl?: string | undefined;
         logo?: string | undefined;
         name?: string | undefined;
         symbol?: string | undefined;
+        tenantHostnames?: Array<string> | undefined;
         testnet?: boolean | undefined;
         verifyBlockIntegrity?: boolean | undefined;
         verifyTxIntegrity?: boolean | undefined;
@@ -86,10 +95,13 @@ export namespace UpdateNetworkDto$ {
         enableRelayer: z.boolean().optional(),
         explorerApi: ExplorerApiDto$.outboundSchema.optional(),
         explorerUrl: z.string().optional(),
+        faucetUrl: z.string().optional(),
         gasPriceRecommendation: GasPriceRecommendationDto$.outboundSchema.optional(),
+        loadbalancerUrl: z.string().optional(),
         logo: z.string().optional(),
         name: z.string().optional(),
         symbol: z.string().optional(),
+        tenantHostnames: z.array(z.string()).optional(),
         testnet: z.boolean().optional(),
         verifyBlockIntegrity: z.boolean().optional(),
         verifyTxIntegrity: z.boolean().optional(),

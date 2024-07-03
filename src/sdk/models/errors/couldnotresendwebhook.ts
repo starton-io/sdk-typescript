@@ -12,7 +12,7 @@ export type CouldNotResendWebhookData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTRESENDWEBHOOKContext | undefined;
+    context?: SchemasCOULDNOTRESENDWEBHOOKContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class CouldNotResendWebhook extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTRESENDWEBHOOKContext | undefined;
+    context?: SchemasCOULDNOTRESENDWEBHOOKContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -80,7 +80,9 @@ export namespace CouldNotResendWebhook$ {
     export const inboundSchema: z.ZodType<CouldNotResendWebhook, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
             message: z.string().default("Could not resend webhook."),
             path: z.string(),
@@ -97,7 +99,7 @@ export namespace CouldNotResendWebhook$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTRESENDWEBHOOKContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTRESENDWEBHOOKContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -118,7 +120,7 @@ export namespace CouldNotResendWebhook$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
                     message: z.string().default("Could not resend webhook."),

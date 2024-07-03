@@ -4,13 +4,9 @@
 
 import { BadRequestException, BadRequestException$ } from "./badrequestexception.js";
 import { InvalidAbi, InvalidAbi$ } from "./invalidabi.js";
-import { InvalidContractAddress, InvalidContractAddress$ } from "./invalidcontractaddress.js";
 import * as z from "zod";
 
-export type ImportExistingSmartContractResponseBody =
-    | InvalidContractAddress
-    | InvalidAbi
-    | BadRequestException;
+export type ImportExistingSmartContractResponseBody = InvalidAbi | BadRequestException;
 
 /** @internal */
 export namespace ImportExistingSmartContractResponseBody$ {
@@ -18,23 +14,12 @@ export namespace ImportExistingSmartContractResponseBody$ {
         ImportExistingSmartContractResponseBody,
         z.ZodTypeDef,
         unknown
-    > = z.union([
-        InvalidContractAddress$.inboundSchema,
-        InvalidAbi$.inboundSchema,
-        BadRequestException$.inboundSchema,
-    ]);
+    > = z.union([InvalidAbi$.inboundSchema, BadRequestException$.inboundSchema]);
 
-    export type Outbound =
-        | InvalidContractAddress$.Outbound
-        | InvalidAbi$.Outbound
-        | BadRequestException$.Outbound;
+    export type Outbound = InvalidAbi$.Outbound | BadRequestException$.Outbound;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
         ImportExistingSmartContractResponseBody
-    > = z.union([
-        InvalidContractAddress$.outboundSchema,
-        InvalidAbi$.outboundSchema,
-        BadRequestException$.outboundSchema,
-    ]);
+    > = z.union([InvalidAbi$.outboundSchema, BadRequestException$.outboundSchema]);
 }

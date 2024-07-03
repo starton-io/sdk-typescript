@@ -24,7 +24,11 @@ export type MissingArgumentData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMISSINGARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasMISSINGARGUMENTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +53,11 @@ export class MissingArgument extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasMISSINGARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasMISSINGARGUMENTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -73,6 +81,9 @@ export class MissingArgument extends Error {
         }
         if (err.rawResponse3 != null) {
             this.rawResponse3 = err.rawResponse3;
+        }
+        if (err.rawResponse4 != null) {
+            this.rawResponse4 = err.rawResponse4;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -110,7 +121,10 @@ export namespace MissingArgument$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasMISSINGARGUMENTContext$.inboundSchema).optional(),
+            RawResponse4: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("MISSING_ARGUMENT"),
             message: z.string().default("Some params are missing."),
             path: z.string(),
@@ -123,6 +137,7 @@ export namespace MissingArgument$ {
                 RawResponse1: "rawResponse1",
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
+                RawResponse4: "rawResponse4",
             });
 
             return new MissingArgument(remapped);
@@ -133,7 +148,8 @@ export namespace MissingArgument$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasMISSINGARGUMENTContext$.Outbound | undefined;
+        RawResponse4?: never | undefined;
+        context?: SchemasMISSINGARGUMENTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +187,15 @@ export namespace MissingArgument$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasMISSINGARGUMENTContext$.outboundSchema).optional(),
+                    rawResponse4: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("MISSING_ARGUMENT"),
                     message: z.string().default("Some params are missing."),
                     path: z.string(),
@@ -184,6 +208,7 @@ export namespace MissingArgument$ {
                         rawResponse1: "RawResponse1",
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
+                        rawResponse4: "RawResponse4",
                     });
                 })
         );

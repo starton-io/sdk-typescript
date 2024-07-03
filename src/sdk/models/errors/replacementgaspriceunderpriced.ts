@@ -20,7 +20,7 @@ export type ReplacementGasPriceUnderpricedData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse2?: Response | undefined;
-    context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | undefined;
+    context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -41,7 +41,7 @@ export class ReplacementGasPriceUnderpriced extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse2?: Response | undefined;
-    context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | undefined;
+    context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -105,7 +105,7 @@ export namespace ReplacementGasPriceUnderpriced$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             context: z
-                .lazy(() => SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.inboundSchema)
+                .nullable(z.lazy(() => SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.inboundSchema))
                 .optional(),
             errorCode: z.string().default("REPLACEMENT_GAS_PRICE_UNDERPRICED"),
             message: z
@@ -131,7 +131,7 @@ export namespace ReplacementGasPriceUnderpriced$ {
         RawResponse?: never | undefined;
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
-        context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.Outbound | undefined;
+        context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -165,8 +165,11 @@ export namespace ReplacementGasPriceUnderpriced$ {
                             })
                             .optional(),
                         context: z
-                            .lazy(
-                                () => SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.outboundSchema
+                            .nullable(
+                                z.lazy(
+                                    () =>
+                                        SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$.outboundSchema
+                                )
                             )
                             .optional(),
                         errorCode: z.string().default("REPLACEMENT_GAS_PRICE_UNDERPRICED"),

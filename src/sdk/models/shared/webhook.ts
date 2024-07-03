@@ -57,7 +57,7 @@ export namespace Webhook$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:35.791Z")
+            .default("2024-05-02T09:34:00.636Z")
             .transform((v) => new Date(v)),
         headers: z.nullable(z.lazy(() => Headers$.inboundSchema)),
         id: z.string(),
@@ -68,7 +68,7 @@ export namespace Webhook$ {
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:35.791Z")
+            .default("2024-05-02T09:34:00.636Z")
             .transform((v) => new Date(v)),
         url: z.string(),
     });
@@ -88,7 +88,7 @@ export namespace Webhook$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Webhook> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:35.791Z"))
+            .default(() => new Date("2024-05-02T09:34:00.636Z"))
             .transform((v) => v.toISOString()),
         headers: z.nullable(z.lazy(() => Headers$.outboundSchema)),
         id: z.string(),
@@ -98,7 +98,7 @@ export namespace Webhook$ {
         status: WebhookStatus$.outboundSchema,
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:35.791Z"))
+            .default(() => new Date("2024-05-02T09:34:00.636Z"))
             .transform((v) => v.toISOString()),
         url: z.string(),
     });

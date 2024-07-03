@@ -5,15 +5,35 @@
 import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto.js";
 import * as z from "zod";
 
+export type ImportSmartContractDtoMetadata = {};
+
 export type ImportSmartContractDto3 = {};
 
 export type ImportSmartContractDtoParams = ImportSmartContractDto3 | string | number | boolean;
+
+export enum ImportSmartContractDtoDeployMethod {
+    Web3 = "web3",
+    Kms = "kms",
+}
+
+export enum ImportSmartContractDtoVersion {
+    One = "1",
+}
+
+export type ImportSmartContractDtoUiData = {
+    chainId?: number | undefined;
+    deployMethod: ImportSmartContractDtoDeployMethod;
+    deployType?: string | undefined;
+    imported: boolean;
+    version: ImportSmartContractDtoVersion;
+};
 
 export type ImportSmartContractDto = {
     abi: Array<AbiObjectDto>;
     address: string;
     creationHash?: string | undefined;
     description?: string | undefined;
+    metadata?: ImportSmartContractDtoMetadata | undefined;
     name: string;
     network: string;
     /**
@@ -21,7 +41,19 @@ export type ImportSmartContractDto = {
      */
     params?: Array<ImportSmartContractDto3 | string | number | boolean> | undefined;
     templateId?: string | undefined;
+    uiData?: ImportSmartContractDtoUiData | null | undefined;
 };
+
+/** @internal */
+export namespace ImportSmartContractDtoMetadata$ {
+    export const inboundSchema: z.ZodType<ImportSmartContractDtoMetadata, z.ZodTypeDef, unknown> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoMetadata> =
+        z.object({});
+}
 
 /** @internal */
 export namespace ImportSmartContractDto3$ {
@@ -55,6 +87,51 @@ export namespace ImportSmartContractDtoParams$ {
 }
 
 /** @internal */
+export namespace ImportSmartContractDtoDeployMethod$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof ImportSmartContractDtoDeployMethod> =
+        z.nativeEnum(ImportSmartContractDtoDeployMethod);
+    export const outboundSchema: z.ZodNativeEnum<typeof ImportSmartContractDtoDeployMethod> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace ImportSmartContractDtoVersion$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof ImportSmartContractDtoVersion> =
+        z.nativeEnum(ImportSmartContractDtoVersion);
+    export const outboundSchema: z.ZodNativeEnum<typeof ImportSmartContractDtoVersion> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace ImportSmartContractDtoUiData$ {
+    export const inboundSchema: z.ZodType<ImportSmartContractDtoUiData, z.ZodTypeDef, unknown> =
+        z.object({
+            chainId: z.number().optional(),
+            deployMethod: ImportSmartContractDtoDeployMethod$.inboundSchema,
+            deployType: z.string().optional(),
+            imported: z.boolean(),
+            version: ImportSmartContractDtoVersion$.inboundSchema,
+        });
+
+    export type Outbound = {
+        chainId?: number | undefined;
+        deployMethod: string;
+        deployType?: string | undefined;
+        imported: boolean;
+        version: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDtoUiData> =
+        z.object({
+            chainId: z.number().optional(),
+            deployMethod: ImportSmartContractDtoDeployMethod$.outboundSchema,
+            deployType: z.string().optional(),
+            imported: z.boolean(),
+            version: ImportSmartContractDtoVersion$.outboundSchema,
+        });
+}
+
+/** @internal */
 export namespace ImportSmartContractDto$ {
     export const inboundSchema: z.ZodType<ImportSmartContractDto, z.ZodTypeDef, unknown> = z.object(
         {
@@ -62,6 +139,7 @@ export namespace ImportSmartContractDto$ {
             address: z.string(),
             creationHash: z.string().optional(),
             description: z.string().optional(),
+            metadata: z.lazy(() => ImportSmartContractDtoMetadata$.inboundSchema).optional(),
             name: z.string(),
             network: z.string(),
             params: z
@@ -75,6 +153,9 @@ export namespace ImportSmartContractDto$ {
                 )
                 .optional(),
             templateId: z.string().optional(),
+            uiData: z
+                .nullable(z.lazy(() => ImportSmartContractDtoUiData$.inboundSchema))
+                .optional(),
         }
     );
 
@@ -83,10 +164,12 @@ export namespace ImportSmartContractDto$ {
         address: string;
         creationHash?: string | undefined;
         description?: string | undefined;
+        metadata?: ImportSmartContractDtoMetadata$.Outbound | undefined;
         name: string;
         network: string;
         params?: Array<ImportSmartContractDto3$.Outbound | string | number | boolean> | undefined;
         templateId?: string | undefined;
+        uiData?: ImportSmartContractDtoUiData$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportSmartContractDto> =
@@ -95,6 +178,7 @@ export namespace ImportSmartContractDto$ {
             address: z.string(),
             creationHash: z.string().optional(),
             description: z.string().optional(),
+            metadata: z.lazy(() => ImportSmartContractDtoMetadata$.outboundSchema).optional(),
             name: z.string(),
             network: z.string(),
             params: z
@@ -108,5 +192,8 @@ export namespace ImportSmartContractDto$ {
                 )
                 .optional(),
             templateId: z.string().optional(),
+            uiData: z
+                .nullable(z.lazy(() => ImportSmartContractDtoUiData$.outboundSchema))
+                .optional(),
         });
 }

@@ -4,13 +4,26 @@
 
 import * as z from "zod";
 
+export enum RpcType {
+    Archive = "archive",
+    Full = "full",
+}
+
 export type Rpc = {
     createdAt?: Date | undefined;
     id: string;
+    isPublic: boolean;
     networkName: string;
+    type: RpcType;
     updatedAt?: Date | undefined;
     url: string;
 };
+
+/** @internal */
+export namespace RpcType$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof RpcType> = z.nativeEnum(RpcType);
+    export const outboundSchema: z.ZodNativeEnum<typeof RpcType> = inboundSchema;
+}
 
 /** @internal */
 export namespace Rpc$ {
@@ -18,14 +31,16 @@ export namespace Rpc$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:36.269Z")
+            .default("2024-05-02T09:33:57.043Z")
             .transform((v) => new Date(v)),
         id: z.string(),
+        isPublic: z.boolean(),
         networkName: z.string(),
+        type: RpcType$.inboundSchema,
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:36.269Z")
+            .default("2024-05-02T09:33:57.043Z")
             .transform((v) => new Date(v)),
         url: z.string(),
     });
@@ -33,7 +48,9 @@ export namespace Rpc$ {
     export type Outbound = {
         createdAt: string;
         id: string;
+        isPublic: boolean;
         networkName: string;
+        type: string;
         updatedAt: string;
         url: string;
     };
@@ -41,13 +58,15 @@ export namespace Rpc$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Rpc> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:36.269Z"))
+            .default(() => new Date("2024-05-02T09:33:57.043Z"))
             .transform((v) => v.toISOString()),
         id: z.string(),
+        isPublic: z.boolean(),
         networkName: z.string(),
+        type: RpcType$.outboundSchema,
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:36.269Z"))
+            .default(() => new Date("2024-05-02T09:33:57.043Z"))
             .transform((v) => v.toISOString()),
         url: z.string(),
     });

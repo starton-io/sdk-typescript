@@ -27,7 +27,7 @@ Create a new wallet for the project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -56,10 +56,11 @@ run();
 **Promise\<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)\>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.CreateWalletResponseBody | 400                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.CreateWalletResponseBody       | 400                                   | application/json                      |
+| errors.CreateWalletWalletResponseBody | 412                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 ## delete
 
@@ -71,7 +72,7 @@ Removes a wallet from the Key Management System.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -116,7 +117,7 @@ Fetches the list of wallets of the project
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -162,7 +163,7 @@ Retrieves information about a specific wallet.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -208,7 +209,7 @@ import { Starton } from "@starton/sdk";
 import { ImportProviderKeyDtoProvider } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -252,7 +253,7 @@ Request tokens from the faucet, which can be used for testing and development pu
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -301,7 +302,7 @@ Updates the stored nonce values for a wallet, synchronizing them with the curren
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -349,7 +350,7 @@ Generates a cryptographic signature for a given message using a specified wallet
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -381,11 +382,12 @@ run();
 **Promise\<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)\>**
 ### Errors
 
-| Error Object                               | Status Code                                | Content Type                               |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| errors.SignMessageWalletResponseBody       | 400                                        | application/json                           |
-| errors.SignMessageWalletWalletResponseBody | 404                                        | application/json                           |
-| errors.SDKError                            | 4xx-5xx                                    | */*                                        |
+| Error Object                                       | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| errors.SignMessageWalletResponseBody               | 400                                                | application/json                                   |
+| errors.SignMessageWalletWalletResponseBody         | 403                                                | application/json                                   |
+| errors.SignMessageWalletWalletResponseResponseBody | 404                                                | application/json                                   |
+| errors.SDKError                                    | 4xx-5xx                                            | */*                                                |
 
 ## update
 
@@ -397,7 +399,7 @@ Modifies details of an existing wallet using its address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

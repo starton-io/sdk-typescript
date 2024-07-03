@@ -24,7 +24,7 @@ export type CouldNotSignData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTSIGNContext | undefined;
+    context?: SchemasCOULDNOTSIGNContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class CouldNotSign extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasCOULDNOTSIGNContext | undefined;
+    context?: SchemasCOULDNOTSIGNContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -110,7 +110,7 @@ export namespace CouldNotSign$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTSIGNContext$.inboundSchema).optional(),
+            context: z.nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$.inboundSchema)).optional(),
             errorCode: z.string().default("COULD_NOT_SIGN"),
             message: z.string().default("Could not sign transaction."),
             path: z.string(),
@@ -133,7 +133,7 @@ export namespace CouldNotSign$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTSIGNContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTSIGNContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +171,9 @@ export namespace CouldNotSign$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasCOULDNOTSIGNContext$.outboundSchema).optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("COULD_NOT_SIGN"),
                     message: z.string().default("Could not sign transaction."),
                     path: z.string(),

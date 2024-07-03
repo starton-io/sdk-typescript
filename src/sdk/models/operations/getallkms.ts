@@ -41,17 +41,17 @@ export type GetAllKmsResponse = {
 /** @internal */
 export namespace GetAllKmsRequest$ {
     export const inboundSchema: z.ZodType<GetAllKmsRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         page: z.number().int().optional(),
     });
 
     export type Outbound = {
-        limit?: number | undefined;
+        limit: number;
         page?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllKmsRequest> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         page: z.number().int().optional(),
     });
 }

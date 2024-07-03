@@ -49,7 +49,7 @@ export namespace GetAllSmartContractRequest$ {
             address: z.string().optional(),
             includeAbi: z.boolean().optional(),
             includeCompilationDetails: z.boolean().optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             network: z.string().optional(),
             page: z.number().int().optional(),
         });
@@ -58,7 +58,7 @@ export namespace GetAllSmartContractRequest$ {
         address?: string | undefined;
         includeAbi?: boolean | undefined;
         includeCompilationDetails?: boolean | undefined;
-        limit?: number | undefined;
+        limit: number;
         network?: string | undefined;
         page?: number | undefined;
     };
@@ -68,7 +68,7 @@ export namespace GetAllSmartContractRequest$ {
             address: z.string().optional(),
             includeAbi: z.boolean().optional(),
             includeCompilationDetails: z.boolean().optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             network: z.string().optional(),
             page: z.number().int().optional(),
         });

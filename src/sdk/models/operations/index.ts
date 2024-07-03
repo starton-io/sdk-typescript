@@ -25,6 +25,7 @@ export * from "./deletewallet.js";
 export * from "./deletewatcher.js";
 export * from "./deployfrombytecodesmartcontract.js";
 export * from "./deployfromtemplatesmartcontract.js";
+export * from "./encodesmartcontract.js";
 export * from "./getallgasprice.js";
 export * from "./getallinvitation.js";
 export * from "./getallkms.js";

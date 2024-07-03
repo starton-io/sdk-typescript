@@ -12,7 +12,7 @@ export type DatabaseDuplicateData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasDATABASEDUPLICATEContext | undefined;
+    context?: SchemasDATABASEDUPLICATEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class DatabaseDuplicate extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasDATABASEDUPLICATEContext | undefined;
+    context?: SchemasDATABASEDUPLICATEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -77,7 +77,9 @@ export namespace DatabaseDuplicate$ {
     export const inboundSchema: z.ZodType<DatabaseDuplicate, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasDATABASEDUPLICATEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasDATABASEDUPLICATEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("DATABASE_DUPLICATE"),
             message: z
                 .string()
@@ -96,7 +98,7 @@ export namespace DatabaseDuplicate$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasDATABASEDUPLICATEContext$.Outbound | undefined;
+        context?: SchemasDATABASEDUPLICATEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -117,7 +119,7 @@ export namespace DatabaseDuplicate$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasDATABASEDUPLICATEContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasDATABASEDUPLICATEContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("DATABASE_DUPLICATE"),
                     message: z

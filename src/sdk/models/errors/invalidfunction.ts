@@ -16,7 +16,11 @@ export type InvalidFunctionData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasINVALIDFUNCTIONContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse2?: Response | undefined;
+    context?: SchemasINVALIDFUNCTIONContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -33,7 +37,11 @@ export class InvalidFunction extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse1?: Response | undefined;
-    context?: SchemasINVALIDFUNCTIONContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse2?: Response | undefined;
+    context?: SchemasINVALIDFUNCTIONContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -51,6 +59,9 @@ export class InvalidFunction extends Error {
         }
         if (err.rawResponse1 != null) {
             this.rawResponse1 = err.rawResponse1;
+        }
+        if (err.rawResponse2 != null) {
+            this.rawResponse2 = err.rawResponse2;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -86,7 +97,10 @@ export namespace InvalidFunction$ {
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDFUNCTIONContext$.inboundSchema).optional(),
+            RawResponse2: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("INVALID_FUNCTION"),
             message: z.string().default("Some params are invalid."),
             path: z.string(),
@@ -97,6 +111,7 @@ export namespace InvalidFunction$ {
             const remapped = remap$(v, {
                 RawResponse: "rawResponse",
                 RawResponse1: "rawResponse1",
+                RawResponse2: "rawResponse2",
             });
 
             return new InvalidFunction(remapped);
@@ -105,7 +120,8 @@ export namespace InvalidFunction$ {
     export type Outbound = {
         RawResponse?: never | undefined;
         RawResponse1?: never | undefined;
-        context?: SchemasINVALIDFUNCTIONContext$.Outbound | undefined;
+        RawResponse2?: never | undefined;
+        context?: SchemasINVALIDFUNCTIONContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -131,7 +147,15 @@ export namespace InvalidFunction$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasINVALIDFUNCTIONContext$.outboundSchema).optional(),
+                    rawResponse2: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("INVALID_FUNCTION"),
                     message: z.string().default("Some params are invalid."),
                     path: z.string(),
@@ -142,6 +166,7 @@ export namespace InvalidFunction$ {
                     return remap$(v, {
                         rawResponse: "RawResponse",
                         rawResponse1: "RawResponse1",
+                        rawResponse2: "RawResponse2",
                     });
                 })
         );

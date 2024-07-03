@@ -6,32 +6,32 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
 export type Security = {
-    startonApiKey?: string | undefined;
+    apiKey?: string | undefined;
 };
 
 /** @internal */
 export namespace Security$ {
     export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
         .object({
-            "starton-api-key": z.string().optional(),
+            "api-key": z.string().optional(),
         })
         .transform((v) => {
             return remap$(v, {
-                "starton-api-key": "startonApiKey",
+                "api-key": "apiKey",
             });
         });
 
     export type Outbound = {
-        "starton-api-key"?: string | undefined;
+        "api-key"?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z
         .object({
-            startonApiKey: z.string().optional(),
+            apiKey: z.string().optional(),
         })
         .transform((v) => {
             return remap$(v, {
-                startonApiKey: "starton-api-key",
+                apiKey: "api-key",
             });
         });
 }

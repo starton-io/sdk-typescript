@@ -56,20 +56,20 @@ export namespace QueryParamStatus$ {
 /** @internal */
 export namespace GetAllWebhookRequest$ {
     export const inboundSchema: z.ZodType<GetAllWebhookRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         page: z.number().int().optional(),
         status: QueryParamStatus$.inboundSchema.optional(),
     });
 
     export type Outbound = {
-        limit?: number | undefined;
+        limit: number;
         page?: number | undefined;
         status?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookRequest> = z.object(
         {
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             page: z.number().int().optional(),
             status: QueryParamStatus$.outboundSchema.optional(),
         }

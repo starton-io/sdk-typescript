@@ -12,7 +12,7 @@ import { Params, pathToFunc } from "./url.js";
 export const ServerList = ["https://api.starton.com"] as const;
 
 export type SDKOptions = {
-    startonApiKey?: string | (() => Promise<string>);
+    apiKey?: string | (() => Promise<string>);
 
     httpClient?: HTTPClient;
     /**
@@ -49,7 +49,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "1.0",
-    sdkVersion: "0.15.1",
-    genVersion: "2.347.8",
-    userAgent: "speakeasy-sdk/typescript 0.15.1 2.347.8 1.0 @starton/sdk",
+    sdkVersion: "0.16.0",
+    genVersion: "2.359.0",
+    userAgent: "speakeasy-sdk/typescript 0.16.0 2.359.0 1.0 @starton/sdk",
 } as const;

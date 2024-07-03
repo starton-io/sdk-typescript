@@ -24,7 +24,7 @@ export type NonceExpiredData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNONCEEXPIREDContext | undefined;
+    context?: SchemasNONCEEXPIREDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class NonceExpired extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNONCEEXPIREDContext | undefined;
+    context?: SchemasNONCEEXPIREDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -110,7 +110,7 @@ export namespace NonceExpired$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasNONCEEXPIREDContext$.inboundSchema).optional(),
+            context: z.nullable(z.lazy(() => SchemasNONCEEXPIREDContext$.inboundSchema)).optional(),
             errorCode: z.string().default("NONCE_EXPIRED"),
             message: z.string().default("Your nonce is too low."),
             path: z.string(),
@@ -133,7 +133,7 @@ export namespace NonceExpired$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasNONCEEXPIREDContext$.Outbound | undefined;
+        context?: SchemasNONCEEXPIREDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +171,9 @@ export namespace NonceExpired$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasNONCEEXPIREDContext$.outboundSchema).optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasNONCEEXPIREDContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("NONCE_EXPIRED"),
                     message: z.string().default("Your nonce is too low."),
                     path: z.string(),

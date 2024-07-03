@@ -73,17 +73,17 @@ export class Invitation extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createInvitation",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -150,17 +150,17 @@ export class Invitation extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "deleteInvitation",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -227,17 +227,17 @@ export class Invitation extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllInvitation",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 

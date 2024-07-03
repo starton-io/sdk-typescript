@@ -28,7 +28,11 @@ export type InvalidBytecodeData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse4?: Response | undefined;
-    context?: SchemasINVALIDBYTECODEContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse5?: Response | undefined;
+    context?: SchemasINVALIDBYTECODEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -57,7 +61,11 @@ export class InvalidBytecode extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse4?: Response | undefined;
-    context?: SchemasINVALIDBYTECODEContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse5?: Response | undefined;
+    context?: SchemasINVALIDBYTECODEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -84,6 +92,9 @@ export class InvalidBytecode extends Error {
         }
         if (err.rawResponse4 != null) {
             this.rawResponse4 = err.rawResponse4;
+        }
+        if (err.rawResponse5 != null) {
+            this.rawResponse5 = err.rawResponse5;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -122,7 +133,10 @@ export namespace InvalidBytecode$ {
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDBYTECODEContext$.inboundSchema).optional(),
+            RawResponse5: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("INVALID_BYTECODE"),
             message: z.string().default("Your bytecode is invalid."),
             path: z.string(),
@@ -136,6 +150,7 @@ export namespace InvalidBytecode$ {
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
                 RawResponse4: "rawResponse4",
+                RawResponse5: "rawResponse5",
             });
 
             return new InvalidBytecode(remapped);
@@ -147,7 +162,8 @@ export namespace InvalidBytecode$ {
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
         RawResponse4?: never | undefined;
-        context?: SchemasINVALIDBYTECODEContext$.Outbound | undefined;
+        RawResponse5?: never | undefined;
+        context?: SchemasINVALIDBYTECODEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -191,7 +207,15 @@ export namespace InvalidBytecode$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasINVALIDBYTECODEContext$.outboundSchema).optional(),
+                    rawResponse5: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("INVALID_BYTECODE"),
                     message: z.string().default("Your bytecode is invalid."),
                     path: z.string(),
@@ -205,6 +229,7 @@ export namespace InvalidBytecode$ {
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
                         rawResponse4: "RawResponse4",
+                        rawResponse5: "RawResponse5",
                     });
                 })
         );

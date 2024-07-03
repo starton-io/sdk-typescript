@@ -73,17 +73,17 @@ export class Webhook extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "cancelWebhook",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -152,17 +152,17 @@ export class Webhook extends ClientSDK {
         });
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getAllWebhook",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -259,17 +259,17 @@ export class Webhook extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneWebhook",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -324,17 +324,17 @@ export class Webhook extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOneWebhookSigningSecret",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -389,17 +389,17 @@ export class Webhook extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createWebhookSigningSecret",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -467,17 +467,17 @@ export class Webhook extends ClientSDK {
         const query$ = "";
 
         let security$;
-        if (typeof this.options$.startonApiKey === "function") {
-            security$ = { startonApiKey: await this.options$.startonApiKey() };
-        } else if (this.options$.startonApiKey) {
-            security$ = { startonApiKey: this.options$.startonApiKey };
+        if (typeof this.options$.apiKey === "function") {
+            security$ = { apiKey: await this.options$.apiKey() };
+        } else if (this.options$.apiKey) {
+            security$ = { apiKey: this.options$.apiKey };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "resendWebhook",
             oAuth2Scopes: [],
-            securitySource: this.options$.startonApiKey,
+            securitySource: this.options$.apiKey,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 

@@ -41,7 +41,7 @@ export namespace Faucet$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.178Z")
+            .default("2024-05-02T09:34:19.286Z")
             .transform((v) => new Date(v)),
         id: z.string(),
         ip: z.string(),
@@ -64,7 +64,7 @@ export namespace Faucet$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Faucet> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.178Z"))
+            .default(() => new Date("2024-05-02T09:34:19.286Z"))
             .transform((v) => v.toISOString()),
         id: z.string(),
         ip: z.string(),

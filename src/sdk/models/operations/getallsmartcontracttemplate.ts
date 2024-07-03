@@ -75,7 +75,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
         includeForm: z.boolean().optional(),
         isActivated: z.boolean().optional(),
         isAudited: z.boolean().optional(),
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
     });
@@ -87,7 +87,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
         includeForm?: boolean | undefined;
         isActivated?: boolean | undefined;
         isAudited?: boolean | undefined;
-        limit?: number | undefined;
+        limit: number;
         name?: string | undefined;
         page?: number | undefined;
     };
@@ -103,7 +103,7 @@ export namespace GetAllSmartContractTemplateRequest$ {
         includeForm: z.boolean().optional(),
         isActivated: z.boolean().optional(),
         isAudited: z.boolean().optional(),
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
     });

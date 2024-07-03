@@ -21,18 +21,18 @@ export enum PinType {
 }
 
 export type Pin = {
-    cid?: string | undefined;
+    cid?: string | null | undefined;
     createdAt?: Date | undefined;
-    delegates?: Array<string> | undefined;
-    directoryContent?: Array<DirectoryContent> | undefined;
+    delegates?: Array<string> | null | undefined;
+    directoryContent?: Array<DirectoryContent> | null | undefined;
     id: string;
-    metadata?: PinMetadata | undefined;
-    name?: string | undefined;
-    origins?: Array<string> | undefined;
+    metadata?: PinMetadata | null | undefined;
+    name?: string | null | undefined;
+    origins?: Array<string> | null | undefined;
     projectId: string;
-    size?: number | undefined;
+    size?: number | null | undefined;
     status: Status;
-    type?: PinType | undefined;
+    type?: PinType | null | undefined;
     updatedAt?: Date | undefined;
 };
 
@@ -60,64 +60,64 @@ export namespace PinType$ {
 /** @internal */
 export namespace Pin$ {
     export const inboundSchema: z.ZodType<Pin, z.ZodTypeDef, unknown> = z.object({
-        cid: z.string().optional(),
+        cid: z.nullable(z.string()).optional(),
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:35.191Z")
+            .default("2024-05-02T09:33:57.821Z")
             .transform((v) => new Date(v)),
-        delegates: z.array(z.string()).optional(),
-        directoryContent: z.array(DirectoryContent$.inboundSchema).optional(),
+        delegates: z.nullable(z.array(z.string())).optional(),
+        directoryContent: z.nullable(z.array(DirectoryContent$.inboundSchema)).optional(),
         id: z.string(),
-        metadata: z.lazy(() => PinMetadata$.inboundSchema).optional(),
-        name: z.string().optional(),
-        origins: z.array(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => PinMetadata$.inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        origins: z.nullable(z.array(z.string())).optional(),
         projectId: z.string(),
-        size: z.number().optional(),
+        size: z.nullable(z.number()).optional(),
         status: Status$.inboundSchema,
-        type: PinType$.inboundSchema.optional(),
+        type: z.nullable(PinType$.inboundSchema).optional(),
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:35.191Z")
+            .default("2024-05-02T09:33:57.821Z")
             .transform((v) => new Date(v)),
     });
 
     export type Outbound = {
-        cid?: string | undefined;
+        cid?: string | null | undefined;
         createdAt: string;
-        delegates?: Array<string> | undefined;
-        directoryContent?: Array<DirectoryContent$.Outbound> | undefined;
+        delegates?: Array<string> | null | undefined;
+        directoryContent?: Array<DirectoryContent$.Outbound> | null | undefined;
         id: string;
-        metadata?: PinMetadata$.Outbound | undefined;
-        name?: string | undefined;
-        origins?: Array<string> | undefined;
+        metadata?: PinMetadata$.Outbound | null | undefined;
+        name?: string | null | undefined;
+        origins?: Array<string> | null | undefined;
         projectId: string;
-        size?: number | undefined;
+        size?: number | null | undefined;
         status: string;
-        type?: string | undefined;
+        type?: string | null | undefined;
         updatedAt: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Pin> = z.object({
-        cid: z.string().optional(),
+        cid: z.nullable(z.string()).optional(),
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:35.191Z"))
+            .default(() => new Date("2024-05-02T09:33:57.821Z"))
             .transform((v) => v.toISOString()),
-        delegates: z.array(z.string()).optional(),
-        directoryContent: z.array(DirectoryContent$.outboundSchema).optional(),
+        delegates: z.nullable(z.array(z.string())).optional(),
+        directoryContent: z.nullable(z.array(DirectoryContent$.outboundSchema)).optional(),
         id: z.string(),
-        metadata: z.lazy(() => PinMetadata$.outboundSchema).optional(),
-        name: z.string().optional(),
-        origins: z.array(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => PinMetadata$.outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        origins: z.nullable(z.array(z.string())).optional(),
         projectId: z.string(),
-        size: z.number().optional(),
+        size: z.nullable(z.number()).optional(),
         status: Status$.outboundSchema,
-        type: PinType$.outboundSchema.optional(),
+        type: z.nullable(PinType$.outboundSchema).optional(),
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:35.191Z"))
+            .default(() => new Date("2024-05-02T09:33:57.821Z"))
             .transform((v) => v.toISOString()),
     });
 }

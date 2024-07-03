@@ -7,6 +7,7 @@ import * as shared from "../shared/index.js";
 import * as z from "zod";
 
 export type GetAllNetworkRequest = {
+    chainIds: Array<string>;
     id?: string | undefined;
     /**
      * Number of entities returned on each page. By default this number is set to 100.
@@ -18,6 +19,7 @@ export type GetAllNetworkRequest = {
      */
     page?: number | undefined;
     testnet?: boolean | undefined;
+    xPlatformHostname: string;
 };
 
 export type GetAllNetworkNetworkPaginated = {
@@ -43,31 +45,47 @@ export type GetAllNetworkResponse = {
 
 /** @internal */
 export namespace GetAllNetworkRequest$ {
-    export const inboundSchema: z.ZodType<GetAllNetworkRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string().optional(),
-        limit: z.number().int().optional(),
-        origin: z.string(),
-        page: z.number().int().optional(),
-        testnet: z.boolean().optional(),
-    });
-
-    export type Outbound = {
-        id?: string | undefined;
-        limit?: number | undefined;
-        origin: string;
-        page?: number | undefined;
-        testnet?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllNetworkRequest> = z.object(
-        {
+    export const inboundSchema: z.ZodType<GetAllNetworkRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            chainIds: z.array(z.string()),
             id: z.string().optional(),
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             origin: z.string(),
             page: z.number().int().optional(),
             testnet: z.boolean().optional(),
-        }
-    );
+            "x-platform-hostname": z.string(),
+        })
+        .transform((v) => {
+            return remap$(v, {
+                "x-platform-hostname": "xPlatformHostname",
+            });
+        });
+
+    export type Outbound = {
+        chainIds: Array<string>;
+        id?: string | undefined;
+        limit: number;
+        origin: string;
+        page?: number | undefined;
+        testnet?: boolean | undefined;
+        "x-platform-hostname": string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllNetworkRequest> = z
+        .object({
+            chainIds: z.array(z.string()),
+            id: z.string().optional(),
+            limit: z.number().int().default(100),
+            origin: z.string(),
+            page: z.number().int().optional(),
+            testnet: z.boolean().optional(),
+            xPlatformHostname: z.string(),
+        })
+        .transform((v) => {
+            return remap$(v, {
+                xPlatformHostname: "x-platform-hostname",
+            });
+        });
 }
 
 /** @internal */

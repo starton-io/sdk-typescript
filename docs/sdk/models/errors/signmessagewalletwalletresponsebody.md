@@ -3,9 +3,9 @@
 
 ## Supported Types
 
-### `errors.CouldNotFindResource`
+### `errors.Forbidden`
 
 ```typescript
-const value: errors.CouldNotFindResource = /* values here */
+const value: errors.Forbidden = /* values here */
 ```
 

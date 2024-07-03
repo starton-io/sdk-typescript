@@ -24,7 +24,7 @@ export namespace SettingRelayer$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.175Z")
+            .default("2024-05-02T09:34:19.284Z")
             .transform((v) => new Date(v)),
         id: z.string(),
         network: z.string(),
@@ -38,7 +38,7 @@ export namespace SettingRelayer$ {
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:38.175Z")
+            .default("2024-05-02T09:34:19.284Z")
             .transform((v) => new Date(v)),
     });
 
@@ -59,7 +59,7 @@ export namespace SettingRelayer$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SettingRelayer> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.175Z"))
+            .default(() => new Date("2024-05-02T09:34:19.284Z"))
             .transform((v) => v.toISOString()),
         id: z.string(),
         network: z.string(),
@@ -72,7 +72,7 @@ export namespace SettingRelayer$ {
         unstuckMissingNonceDelay: z.number(),
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:38.175Z"))
+            .default(() => new Date("2024-05-02T09:34:19.284Z"))
             .transform((v) => v.toISOString()),
     });
 }

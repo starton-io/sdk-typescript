@@ -28,7 +28,11 @@ export type ExecutionWillFailData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse4?: Response | undefined;
-    context?: SchemasEXECUTIONWILLFAILContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse5?: Response | undefined;
+    context?: SchemasEXECUTIONWILLFAILContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -57,7 +61,11 @@ export class ExecutionWillFail extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse4?: Response | undefined;
-    context?: SchemasEXECUTIONWILLFAILContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse5?: Response | undefined;
+    context?: SchemasEXECUTIONWILLFAILContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -84,6 +92,9 @@ export class ExecutionWillFail extends Error {
         }
         if (err.rawResponse4 != null) {
             this.rawResponse4 = err.rawResponse4;
+        }
+        if (err.rawResponse5 != null) {
+            this.rawResponse5 = err.rawResponse5;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -125,7 +136,10 @@ export namespace ExecutionWillFail$ {
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
             RawResponse4: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasEXECUTIONWILLFAILContext$.inboundSchema).optional(),
+            RawResponse5: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("EXECUTION_WILL_FAIL"),
             message: z.string().default("This call will revert."),
             path: z.string(),
@@ -139,6 +153,7 @@ export namespace ExecutionWillFail$ {
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
                 RawResponse4: "rawResponse4",
+                RawResponse5: "rawResponse5",
             });
 
             return new ExecutionWillFail(remapped);
@@ -150,7 +165,8 @@ export namespace ExecutionWillFail$ {
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
         RawResponse4?: never | undefined;
-        context?: SchemasEXECUTIONWILLFAILContext$.Outbound | undefined;
+        RawResponse5?: never | undefined;
+        context?: SchemasEXECUTIONWILLFAILContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -194,8 +210,14 @@ export namespace ExecutionWillFail$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
+                    rawResponse5: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
                     context: z
-                        .lazy(() => SchemasEXECUTIONWILLFAILContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("EXECUTION_WILL_FAIL"),
                     message: z.string().default("This call will revert."),
@@ -210,6 +232,7 @@ export namespace ExecutionWillFail$ {
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
                         rawResponse4: "RawResponse4",
+                        rawResponse5: "RawResponse5",
                     });
                 })
         );

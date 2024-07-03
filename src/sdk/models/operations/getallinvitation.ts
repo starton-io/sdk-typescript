@@ -42,18 +42,18 @@ export type GetAllInvitationResponse = {
 export namespace GetAllInvitationRequest$ {
     export const inboundSchema: z.ZodType<GetAllInvitationRequest, z.ZodTypeDef, unknown> =
         z.object({
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             page: z.number().int().optional(),
         });
 
     export type Outbound = {
-        limit?: number | undefined;
+        limit: number;
         page?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllInvitationRequest> =
         z.object({
-            limit: z.number().int().optional(),
+            limit: z.number().int().default(100),
             page: z.number().int().optional(),
         });
 }

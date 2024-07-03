@@ -5,14 +5,14 @@
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
-export type SchemasINVALIDCONTRACTADDRESSContext = {};
+export type SchemasMAXIMUMWALLETREACHEDContext = {};
 
-export type InvalidContractAddressData = {
+export type MaximumWalletReachedData = {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasINVALIDCONTRACTADDRESSContext | undefined;
+    context?: SchemasMAXIMUMWALLETREACHEDContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -20,21 +20,21 @@ export type InvalidContractAddressData = {
     timestamp: string;
 };
 
-export class InvalidContractAddress extends Error {
+export class MaximumWalletReached extends Error {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasINVALIDCONTRACTADDRESSContext | undefined;
+    context?: SchemasMAXIMUMWALLETREACHEDContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
-    data$: InvalidContractAddressData;
+    data$: MaximumWalletReachedData;
 
-    constructor(err: InvalidContractAddressData) {
+    constructor(err: MaximumWalletReachedData) {
         super("");
         this.data$ = err;
 
@@ -54,14 +54,14 @@ export class InvalidContractAddress extends Error {
                 ? err.message
                 : "API error occurred";
 
-        this.name = "InvalidContractAddress";
+        this.name = "MaximumWalletReached";
     }
 }
 
 /** @internal */
-export namespace SchemasINVALIDCONTRACTADDRESSContext$ {
+export namespace SchemasMAXIMUMWALLETREACHEDContext$ {
     export const inboundSchema: z.ZodType<
-        SchemasINVALIDCONTRACTADDRESSContext,
+        SchemasMAXIMUMWALLETREACHEDContext,
         z.ZodTypeDef,
         unknown
     > = z.object({});
@@ -71,22 +71,26 @@ export namespace SchemasINVALIDCONTRACTADDRESSContext$ {
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
-        SchemasINVALIDCONTRACTADDRESSContext
+        SchemasMAXIMUMWALLETREACHEDContext
     > = z.object({});
 }
 
 /** @internal */
-export namespace InvalidContractAddress$ {
-    export const inboundSchema: z.ZodType<InvalidContractAddress, z.ZodTypeDef, unknown> = z
+export namespace MaximumWalletReached$ {
+    export const inboundSchema: z.ZodType<MaximumWalletReached, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDCONTRACTADDRESSContext$.inboundSchema).optional(),
-            errorCode: z.string().default("INVALID_CONTRACT_ADDRESS"),
+            context: z
+                .nullable(z.lazy(() => SchemasMAXIMUMWALLETREACHEDContext$.inboundSchema))
+                .optional(),
+            errorCode: z.string().default("MAXIMUM_WALLET_REACHED"),
             message: z
                 .string()
-                .default("This address doesn't refer to a smart-contract on this network."),
+                .default(
+                    "You can't create more than 1 address without your own KMS. You must specify AWS credentials to create more."
+                ),
             path: z.string(),
-            statusCode: z.number().default(400),
+            statusCode: z.number().default(412),
             timestamp: z.string(),
         })
         .transform((v) => {
@@ -94,12 +98,12 @@ export namespace InvalidContractAddress$ {
                 RawResponse: "rawResponse",
             });
 
-            return new InvalidContractAddress(remapped);
+            return new MaximumWalletReached(remapped);
         });
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasINVALIDCONTRACTADDRESSContext$.Outbound | undefined;
+        context?: SchemasMAXIMUMWALLETREACHEDContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -107,8 +111,8 @@ export namespace InvalidContractAddress$ {
         timestamp: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InvalidContractAddress> = z
-        .instanceof(InvalidContractAddress)
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MaximumWalletReached> = z
+        .instanceof(MaximumWalletReached)
         .transform((v) => v.data$)
         .pipe(
             z
@@ -120,14 +124,16 @@ export namespace InvalidContractAddress$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasINVALIDCONTRACTADDRESSContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasMAXIMUMWALLETREACHEDContext$.outboundSchema))
                         .optional(),
-                    errorCode: z.string().default("INVALID_CONTRACT_ADDRESS"),
+                    errorCode: z.string().default("MAXIMUM_WALLET_REACHED"),
                     message: z
                         .string()
-                        .default("This address doesn't refer to a smart-contract on this network."),
+                        .default(
+                            "You can't create more than 1 address without your own KMS. You must specify AWS credentials to create more."
+                        ),
                     path: z.string(),
-                    statusCode: z.number().default(400),
+                    statusCode: z.number().default(412),
                     timestamp: z.string(),
                 })
                 .transform((v) => {

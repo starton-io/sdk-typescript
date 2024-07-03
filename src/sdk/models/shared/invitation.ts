@@ -30,7 +30,7 @@ export namespace Invitation$ {
         createdAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:37.250Z")
+            .default("2024-05-02T09:34:07.024Z")
             .transform((v) => new Date(v)),
         email: z.string(),
         id: z.string(),
@@ -39,7 +39,7 @@ export namespace Invitation$ {
         updatedAt: z
             .string()
             .datetime({ offset: true })
-            .default("2024-01-31T13:57:37.250Z")
+            .default("2024-05-02T09:34:07.024Z")
             .transform((v) => new Date(v)),
     });
 
@@ -55,7 +55,7 @@ export namespace Invitation$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Invitation> = z.object({
         createdAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:37.250Z"))
+            .default(() => new Date("2024-05-02T09:34:07.024Z"))
             .transform((v) => v.toISOString()),
         email: z.string(),
         id: z.string(),
@@ -63,7 +63,7 @@ export namespace Invitation$ {
         role: InvitationRole$.outboundSchema,
         updatedAt: z
             .date()
-            .default(() => new Date("2024-01-31T13:57:37.250Z"))
+            .default(() => new Date("2024-05-02T09:34:07.024Z"))
             .transform((v) => v.toISOString()),
     });
 }

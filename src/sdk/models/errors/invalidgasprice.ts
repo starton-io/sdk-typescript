@@ -24,7 +24,7 @@ export type InvalidGasPriceData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINVALIDGASPRICEContext | undefined;
+    context?: SchemasINVALIDGASPRICEContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class InvalidGasPrice extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINVALIDGASPRICEContext | undefined;
+    context?: SchemasINVALIDGASPRICEContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -110,7 +110,9 @@ export namespace InvalidGasPrice$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDGASPRICEContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasINVALIDGASPRICEContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("INVALID_GAS_PRICE"),
             message: z.string().default("Wrong gas price."),
             path: z.string(),
@@ -133,7 +135,7 @@ export namespace InvalidGasPrice$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasINVALIDGASPRICEContext$.Outbound | undefined;
+        context?: SchemasINVALIDGASPRICEContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +173,9 @@ export namespace InvalidGasPrice$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasINVALIDGASPRICEContext$.outboundSchema).optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasINVALIDGASPRICEContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("INVALID_GAS_PRICE"),
                     message: z.string().default("Wrong gas price."),
                     path: z.string(),

@@ -26,12 +26,12 @@ import { Starton } from "@starton/sdk";
 import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await starton.monitor.create({
-    address: "0xd73da0912e663bf1c0180de8e3e5ed2cc456f018",
+    address: "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1",
     confirmationsBlocks: 0,
     description: "watcher tests",
     metadata: {},
@@ -80,7 +80,7 @@ Removes a specific watcher from the current project. This action is irreversible
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -126,7 +126,7 @@ import { Starton } from "@starton/sdk";
 import { Type } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -179,7 +179,7 @@ Fetches a list of all events linked to a specific watcher, identified by {id}.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -226,7 +226,7 @@ Retrieves detailed information about a specific watcher identified by its unique
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -271,7 +271,7 @@ Retrieves information about a specific watcher event.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -317,7 +317,7 @@ Modifies the properties of an existing watcher. Only the fields provided in the 
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

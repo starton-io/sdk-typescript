@@ -24,7 +24,11 @@ export type InvalidArgumentData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINVALIDARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasINVALIDARGUMENTContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +53,11 @@ export class InvalidArgument extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasINVALIDARGUMENTContext | undefined;
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    rawResponse4?: Response | undefined;
+    context?: SchemasINVALIDARGUMENTContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -73,6 +81,9 @@ export class InvalidArgument extends Error {
         }
         if (err.rawResponse3 != null) {
             this.rawResponse3 = err.rawResponse3;
+        }
+        if (err.rawResponse4 != null) {
+            this.rawResponse4 = err.rawResponse4;
         }
         if (err.context != null) {
             this.context = err.context;
@@ -110,7 +121,10 @@ export namespace InvalidArgument$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasINVALIDARGUMENTContext$.inboundSchema).optional(),
+            RawResponse4: z.instanceof(Response).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasINVALIDARGUMENTContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("INVALID_ARGUMENT"),
             message: z.string().default("Some params are invalid."),
             path: z.string(),
@@ -123,6 +137,7 @@ export namespace InvalidArgument$ {
                 RawResponse1: "rawResponse1",
                 RawResponse2: "rawResponse2",
                 RawResponse3: "rawResponse3",
+                RawResponse4: "rawResponse4",
             });
 
             return new InvalidArgument(remapped);
@@ -133,7 +148,8 @@ export namespace InvalidArgument$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasINVALIDARGUMENTContext$.Outbound | undefined;
+        RawResponse4?: never | undefined;
+        context?: SchemasINVALIDARGUMENTContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -171,7 +187,15 @@ export namespace InvalidArgument$ {
                             throw new Error("Response cannot be serialized");
                         })
                         .optional(),
-                    context: z.lazy(() => SchemasINVALIDARGUMENTContext$.outboundSchema).optional(),
+                    rawResponse4: z
+                        .instanceof(Response)
+                        .transform(() => {
+                            throw new Error("Response cannot be serialized");
+                        })
+                        .optional(),
+                    context: z
+                        .nullable(z.lazy(() => SchemasINVALIDARGUMENTContext$.outboundSchema))
+                        .optional(),
                     errorCode: z.string().default("INVALID_ARGUMENT"),
                     message: z.string().default("Some params are invalid."),
                     path: z.string(),
@@ -184,6 +208,7 @@ export namespace InvalidArgument$ {
                         rawResponse1: "RawResponse1",
                         rawResponse2: "RawResponse2",
                         rawResponse3: "RawResponse3",
+                        rawResponse4: "RawResponse4",
                     });
                 })
         );

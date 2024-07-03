@@ -17,15 +17,17 @@ Add a rpc for a specific network
 
 ```typescript
 import { Starton } from "@starton/sdk";
+import { CreateRpcDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await starton.network.rpc.create({
     createRpcDto: {
-      url: "http://limp-pastry.org",
+      type: CreateRpcDtoType.Archive,
+      url: "http://popular-street.info",
     },
     name: "optimism-functionnal-tests",
   });
@@ -67,7 +69,7 @@ Delete a rpc for a specific network
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -113,7 +115,7 @@ Return all rpc for a specific network
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -160,7 +162,7 @@ Return a specific rpc for a specific network
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -206,7 +208,7 @@ Update a specific rpc for a specific network
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  startonApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

@@ -148,6 +148,7 @@ sdk.data.getBalance({
 * [delete](docs/sdks/smartcontractmanagement/README.md#delete) - Delete a smart contract
 * [deployFromBytecode](docs/sdks/smartcontractmanagement/README.md#deployfrombytecode) - Deploy from bytecode (your own contract)
 * [deployFromTemplate](docs/sdks/smartcontractmanagement/README.md#deployfromtemplate) - Deploy Smart Contract from Template
+* [encode](docs/sdks/smartcontractmanagement/README.md#encode) - Encode data for a Smart Contract call
 * [getAll](docs/sdks/smartcontractmanagement/README.md#getall) - Get all smart contracts
 * [getFunctions](docs/sdks/smartcontractmanagement/README.md#getfunctions) - Retrieves Smart Contract Functions and Events
 * [getOne](docs/sdks/smartcontractmanagement/README.md#getone) - Get a single smart contract
@@ -250,7 +251,7 @@ Here's an example of one such pagination call:
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -280,16 +281,16 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name            | Type            | Scheme          |
-| --------------- | --------------- | --------------- |
-| `startonApiKey` | apiKey          | API key         |
+| Name     | Type     | Scheme   |
+| -------- | -------- | -------- |
+| `apiKey` | apiKey   | API key  |
 
-To authenticate with the API the `startonApiKey` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -325,7 +326,7 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    startonApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

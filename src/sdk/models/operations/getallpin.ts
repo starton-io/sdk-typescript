@@ -61,7 +61,7 @@ export namespace GetAllPinRequest$ {
     export const inboundSchema: z.ZodType<GetAllPinRequest, z.ZodTypeDef, unknown> = z.object({
         cid: z.string().optional(),
         includeDirectoryContent: z.boolean().optional(),
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
         status: Status$.inboundSchema.optional(),
@@ -70,7 +70,7 @@ export namespace GetAllPinRequest$ {
     export type Outbound = {
         cid?: string | undefined;
         includeDirectoryContent?: boolean | undefined;
-        limit?: number | undefined;
+        limit: number;
         name?: string | undefined;
         page?: number | undefined;
         status?: string | undefined;
@@ -79,7 +79,7 @@ export namespace GetAllPinRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllPinRequest> = z.object({
         cid: z.string().optional(),
         includeDirectoryContent: z.boolean().optional(),
-        limit: z.number().int().optional(),
+        limit: z.number().int().default(100),
         name: z.string().optional(),
         page: z.number().int().optional(),
         status: Status$.outboundSchema.optional(),

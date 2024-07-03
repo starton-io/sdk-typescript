@@ -12,7 +12,7 @@ export type CouldNotCancelWebhookData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTCANCELWEBHOOKContext | undefined;
+    context?: SchemasCOULDNOTCANCELWEBHOOKContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class CouldNotCancelWebhook extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasCOULDNOTCANCELWEBHOOKContext | undefined;
+    context?: SchemasCOULDNOTCANCELWEBHOOKContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -80,7 +80,9 @@ export namespace CouldNotCancelWebhook$ {
     export const inboundSchema: z.ZodType<CouldNotCancelWebhook, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
             message: z.string().default("Could not cancel webhook."),
             path: z.string(),
@@ -97,7 +99,7 @@ export namespace CouldNotCancelWebhook$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTCANCELWEBHOOKContext$.Outbound | undefined;
+        context?: SchemasCOULDNOTCANCELWEBHOOKContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -118,7 +120,7 @@ export namespace CouldNotCancelWebhook$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
                     message: z.string().default("Could not cancel webhook."),

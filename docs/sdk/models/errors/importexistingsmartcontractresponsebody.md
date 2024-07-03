@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### `errors.InvalidContractAddress`
-
-```typescript
-const value: errors.InvalidContractAddress = /* values here */
-```
-
 ### `errors.InvalidAbi`
 
 ```typescript

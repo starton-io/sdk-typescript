@@ -6,6 +6,8 @@ import { AbiObjectDto, AbiObjectDto$ } from "./abiobjectdto.js";
 import { CustomGasDto, CustomGasDto$ } from "./customgasdto.js";
 import * as z from "zod";
 
+export type DeployFromBytecodeDtoMetadata = {};
+
 export type DeployFromBytecodeDto3 = {};
 
 export type DeployFromBytecodeDtoParams = DeployFromBytecodeDto3 | string | number | boolean;
@@ -18,12 +20,30 @@ export enum DeployFromBytecodeDtoSpeed {
     Custom = "custom",
 }
 
+export enum DeployMethod {
+    Web3 = "web3",
+    Kms = "kms",
+}
+
+export enum Version {
+    One = "1",
+}
+
+export type UiData = {
+    chainId?: number | undefined;
+    deployMethod: DeployMethod;
+    deployType?: string | undefined;
+    imported: boolean;
+    version: Version;
+};
+
 export type DeployFromBytecodeDto = {
     abi: Array<AbiObjectDto>;
     bytecode: string;
     customGas?: CustomGasDto | undefined;
     description?: string | undefined;
     gasLimit?: string | undefined;
+    metadata?: DeployFromBytecodeDtoMetadata | undefined;
     name: string;
     network: string;
     nonce?: number | undefined;
@@ -33,8 +53,20 @@ export type DeployFromBytecodeDto = {
     params: Array<DeployFromBytecodeDto3 | string | number | boolean>;
     signerWallet: string;
     speed?: DeployFromBytecodeDtoSpeed | undefined;
+    uiData?: UiData | null | undefined;
     value?: string | undefined;
 };
+
+/** @internal */
+export namespace DeployFromBytecodeDtoMetadata$ {
+    export const inboundSchema: z.ZodType<DeployFromBytecodeDtoMetadata, z.ZodTypeDef, unknown> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeployFromBytecodeDtoMetadata> =
+        z.object({});
+}
 
 /** @internal */
 export namespace DeployFromBytecodeDto3$ {
@@ -77,6 +109,45 @@ export namespace DeployFromBytecodeDtoSpeed$ {
 }
 
 /** @internal */
+export namespace DeployMethod$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof DeployMethod> = z.nativeEnum(DeployMethod);
+    export const outboundSchema: z.ZodNativeEnum<typeof DeployMethod> = inboundSchema;
+}
+
+/** @internal */
+export namespace Version$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Version> = z.nativeEnum(Version);
+    export const outboundSchema: z.ZodNativeEnum<typeof Version> = inboundSchema;
+}
+
+/** @internal */
+export namespace UiData$ {
+    export const inboundSchema: z.ZodType<UiData, z.ZodTypeDef, unknown> = z.object({
+        chainId: z.number().optional(),
+        deployMethod: DeployMethod$.inboundSchema,
+        deployType: z.string().optional(),
+        imported: z.boolean(),
+        version: Version$.inboundSchema,
+    });
+
+    export type Outbound = {
+        chainId?: number | undefined;
+        deployMethod: string;
+        deployType?: string | undefined;
+        imported: boolean;
+        version: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UiData> = z.object({
+        chainId: z.number().optional(),
+        deployMethod: DeployMethod$.outboundSchema,
+        deployType: z.string().optional(),
+        imported: z.boolean(),
+        version: Version$.outboundSchema,
+    });
+}
+
+/** @internal */
 export namespace DeployFromBytecodeDto$ {
     export const inboundSchema: z.ZodType<DeployFromBytecodeDto, z.ZodTypeDef, unknown> = z.object({
         abi: z.array(AbiObjectDto$.inboundSchema),
@@ -84,6 +155,7 @@ export namespace DeployFromBytecodeDto$ {
         customGas: CustomGasDto$.inboundSchema.optional(),
         description: z.string().optional(),
         gasLimit: z.string().optional(),
+        metadata: z.lazy(() => DeployFromBytecodeDtoMetadata$.inboundSchema).optional(),
         name: z.string(),
         network: z.string(),
         nonce: z.number().optional(),
@@ -97,6 +169,7 @@ export namespace DeployFromBytecodeDto$ {
         ),
         signerWallet: z.string(),
         speed: DeployFromBytecodeDtoSpeed$.inboundSchema.optional(),
+        uiData: z.nullable(z.lazy(() => UiData$.inboundSchema)).optional(),
         value: z.string().optional(),
     });
 
@@ -106,12 +179,14 @@ export namespace DeployFromBytecodeDto$ {
         customGas?: CustomGasDto$.Outbound | undefined;
         description?: string | undefined;
         gasLimit?: string | undefined;
+        metadata?: DeployFromBytecodeDtoMetadata$.Outbound | undefined;
         name: string;
         network: string;
         nonce?: number | undefined;
         params: Array<DeployFromBytecodeDto3$.Outbound | string | number | boolean>;
         signerWallet: string;
         speed?: string | undefined;
+        uiData?: UiData$.Outbound | null | undefined;
         value?: string | undefined;
     };
 
@@ -122,6 +197,7 @@ export namespace DeployFromBytecodeDto$ {
             customGas: CustomGasDto$.outboundSchema.optional(),
             description: z.string().optional(),
             gasLimit: z.string().optional(),
+            metadata: z.lazy(() => DeployFromBytecodeDtoMetadata$.outboundSchema).optional(),
             name: z.string(),
             network: z.string(),
             nonce: z.number().optional(),
@@ -135,6 +211,7 @@ export namespace DeployFromBytecodeDto$ {
             ),
             signerWallet: z.string(),
             speed: DeployFromBytecodeDtoSpeed$.outboundSchema.optional(),
+            uiData: z.nullable(z.lazy(() => UiData$.outboundSchema)).optional(),
             value: z.string().optional(),
         });
 }

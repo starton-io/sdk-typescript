@@ -3,9 +3,22 @@
  */
 
 import { BadRequestException, BadRequestException$ } from "./badrequestexception.js";
+import { MaximumWalletReached, MaximumWalletReached$ } from "./maximumwalletreached.js";
 import * as z from "zod";
 
+export type CreateWalletWalletResponseBody = MaximumWalletReached;
+
 export type CreateWalletResponseBody = BadRequestException;
+
+/** @internal */
+export namespace CreateWalletWalletResponseBody$ {
+    export const inboundSchema: z.ZodType<CreateWalletWalletResponseBody, z.ZodTypeDef, unknown> =
+        MaximumWalletReached$.inboundSchema;
+
+    export type Outbound = MaximumWalletReached$.Outbound;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletWalletResponseBody> =
+        MaximumWalletReached$.outboundSchema;
+}
 
 /** @internal */
 export namespace CreateWalletResponseBody$ {

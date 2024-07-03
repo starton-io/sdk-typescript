@@ -24,7 +24,7 @@ export type NoProviderForNetworkData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNOPROVIDERFORNETWORKContext | undefined;
+    context?: SchemasNOPROVIDERFORNETWORKContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -49,7 +49,7 @@ export class NoProviderForNetwork extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse3?: Response | undefined;
-    context?: SchemasNOPROVIDERFORNETWORKContext | undefined;
+    context?: SchemasNOPROVIDERFORNETWORKContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -116,7 +116,9 @@ export namespace NoProviderForNetwork$ {
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
             message: z.string().default("No provider for network."),
             path: z.string(),
@@ -139,7 +141,7 @@ export namespace NoProviderForNetwork$ {
         RawResponse1?: never | undefined;
         RawResponse2?: never | undefined;
         RawResponse3?: never | undefined;
-        context?: SchemasNOPROVIDERFORNETWORKContext$.Outbound | undefined;
+        context?: SchemasNOPROVIDERFORNETWORKContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -178,7 +180,7 @@ export namespace NoProviderForNetwork$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasNOPROVIDERFORNETWORKContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
                     message: z.string().default("No provider for network."),

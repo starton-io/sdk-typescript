@@ -12,7 +12,7 @@ export type ServerNotRespondingData = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasSERVERNOTRESPONDINGContext | undefined;
+    context?: SchemasSERVERNOTRESPONDINGContext | null | undefined;
     errorCode: string;
     message: string;
     path: string;
@@ -25,7 +25,7 @@ export class ServerNotResponding extends Error {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse?: Response | undefined;
-    context?: SchemasSERVERNOTRESPONDINGContext | undefined;
+    context?: SchemasSERVERNOTRESPONDINGContext | null | undefined;
     errorCode: string;
     path: string;
     statusCode: number;
@@ -80,7 +80,9 @@ export namespace ServerNotResponding$ {
     export const inboundSchema: z.ZodType<ServerNotResponding, z.ZodTypeDef, unknown> = z
         .object({
             RawResponse: z.instanceof(Response).optional(),
-            context: z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.inboundSchema).optional(),
+            context: z
+                .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.inboundSchema))
+                .optional(),
             errorCode: z.string().default("SERVER_NOT_RESPONDING"),
             message: z.string().default("Your server that receive webhook is not responding."),
             path: z.string(),
@@ -97,7 +99,7 @@ export namespace ServerNotResponding$ {
 
     export type Outbound = {
         RawResponse?: never | undefined;
-        context?: SchemasSERVERNOTRESPONDINGContext$.Outbound | undefined;
+        context?: SchemasSERVERNOTRESPONDINGContext$.Outbound | null | undefined;
         errorCode: string;
         message: string;
         path: string;
@@ -118,7 +120,7 @@ export namespace ServerNotResponding$ {
                         })
                         .optional(),
                     context: z
-                        .lazy(() => SchemasSERVERNOTRESPONDINGContext$.outboundSchema)
+                        .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.outboundSchema))
                         .optional(),
                     errorCode: z.string().default("SERVER_NOT_RESPONDING"),
                     message: z
