@@ -20,7 +20,7 @@ If you have any questions, please reach out to us on [Discord](https://discord.s
 ### NPM
 
 ```bash
-npm add @starton/sdk
+npm install @starton/sdk
 ```
 
 ### PNPM
@@ -50,7 +50,7 @@ yarn add @starton/sdk zod
 import { Starton } from "@starton/sdk"
 
 const sdk = new Starton({
-    startonApiKey: "",
+    apiKey: "",
 })
 
 sdk.data.getBalance({
