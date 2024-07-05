@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -62,10 +62,6 @@ export class Network extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateNetworkResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -77,6 +73,11 @@ export class Network extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/network")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -93,7 +94,6 @@ export class Network extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -107,7 +107,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -136,9 +136,6 @@ export class Network extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeleteNetworkResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -153,6 +150,10 @@ export class Network extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -169,7 +170,6 @@ export class Network extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -183,7 +183,10 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -213,9 +216,6 @@ export class Network extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -234,17 +234,18 @@ export class Network extends ClientSDK {
             testnet: payload$.testnet,
         });
 
-        headers$.set(
-            "origin",
-            encodeSimple$("origin", payload$.origin, { explode: false, charEncoding: "none" })
-        );
-        headers$.set(
-            "x-platform-hostname",
-            encodeSimple$("x-platform-hostname", payload$["x-platform-hostname"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            origin: encodeSimple$("origin", payload$.origin, {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+            "x-platform-hostname": encodeSimple$(
+                "x-platform-hostname",
+                payload$["x-platform-hostname"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -261,7 +262,6 @@ export class Network extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -275,7 +275,7 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -335,9 +335,6 @@ export class Network extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetOneNetworkResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -352,6 +349,10 @@ export class Network extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -368,7 +369,6 @@ export class Network extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -382,7 +382,10 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -412,10 +415,6 @@ export class Network extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UpdateNetworkResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -430,6 +429,11 @@ export class Network extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/network/{name}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -446,7 +450,6 @@ export class Network extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -460,7 +463,10 @@ export class Network extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

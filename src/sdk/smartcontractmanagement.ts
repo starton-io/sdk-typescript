@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -56,10 +56,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CallSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -86,6 +82,11 @@ export class SmartContractManagement extends ClientSDK {
             simulate: payload$.simulate,
         });
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -101,7 +102,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -115,7 +115,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -151,9 +154,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeleteSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -178,6 +178,10 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -193,7 +197,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -207,7 +210,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -239,10 +245,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeployFromBytecodeSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -256,6 +258,11 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             simulate: payload$.simulate,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -273,7 +280,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "422", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -287,7 +293,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -331,10 +340,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeployFromTemplateSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -348,6 +353,11 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             simulate: payload$.simulate,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -365,7 +375,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -379,7 +388,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -418,10 +430,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.EncodeSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -446,6 +454,11 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -461,7 +474,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -475,7 +487,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -512,9 +527,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllSmartContractResponse>> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -534,6 +546,10 @@ export class SmartContractManagement extends ClientSDK {
             page: payload$.page,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -549,7 +565,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -563,7 +578,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -625,9 +640,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetAvailableFunctionsSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -653,6 +665,10 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -668,7 +684,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -682,7 +697,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -724,9 +742,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetOneSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -754,6 +769,10 @@ export class SmartContractManagement extends ClientSDK {
             includeCompilationDetails: payload$.includeCompilationDetails,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -769,7 +788,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -783,7 +801,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -815,10 +836,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ImportExistingSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -830,6 +847,11 @@ export class SmartContractManagement extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/smart-contract/import-existing")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -846,7 +868,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -860,7 +881,7 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -889,10 +910,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ReadSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -917,6 +934,11 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -932,7 +954,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -946,7 +967,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "500", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -979,10 +1003,6 @@ export class SmartContractManagement extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UpdateSmartContractResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1007,6 +1027,11 @@ export class SmartContractManagement extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -1022,7 +1047,6 @@ export class SmartContractManagement extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -1036,7 +1060,10 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

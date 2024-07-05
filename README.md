@@ -20,7 +20,7 @@ If you have any questions, please reach out to us on [Discord](https://discord.s
 ### NPM
 
 ```bash
-npm install @starton/sdk
+npm add @starton/sdk
 ```
 
 ### PNPM

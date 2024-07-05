@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -56,10 +56,6 @@ export class Kms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateKmsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -71,6 +67,11 @@ export class Kms extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/kms")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -87,7 +88,6 @@ export class Kms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,7 +101,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -130,9 +130,6 @@ export class Kms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeleteKmsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -147,6 +144,10 @@ export class Kms extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -163,7 +164,6 @@ export class Kms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -177,7 +177,10 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -207,9 +210,6 @@ export class Kms extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllKmsResponse>> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -223,6 +223,10 @@ export class Kms extends ClientSDK {
         const query$ = encodeFormQuery$({
             limit: payload$.limit,
             page: payload$.page,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -240,7 +244,6 @@ export class Kms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -254,7 +257,7 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -314,9 +317,6 @@ export class Kms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetOneKmsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -331,6 +331,10 @@ export class Kms extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -347,7 +351,6 @@ export class Kms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -361,7 +364,10 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -391,10 +397,6 @@ export class Kms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UpdateKmsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -409,6 +411,11 @@ export class Kms extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/kms/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -425,7 +432,6 @@ export class Kms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -439,7 +445,10 @@ export class Kms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

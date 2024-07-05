@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -54,9 +54,6 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CancelWebhookResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -71,6 +68,10 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/webhook/{id}/cancel")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -87,7 +88,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "412", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,7 +101,10 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "412", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -132,9 +135,6 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllWebhookResponse>> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -149,6 +149,10 @@ export class Webhook extends ClientSDK {
             limit: payload$.limit,
             page: payload$.page,
             status: payload$.status,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -166,7 +170,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -180,7 +183,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -240,9 +243,6 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetOneWebhookResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -257,6 +257,10 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/webhook/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -273,7 +277,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -287,7 +290,10 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -315,13 +321,13 @@ export class Webhook extends ClientSDK {
     async getSigningSecret(
         options?: RequestOptions
     ): Promise<operations.GetOneWebhookSigningSecretResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/v3/webhook/signing-secret")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -338,7 +344,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -351,7 +356,7 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -380,13 +385,13 @@ export class Webhook extends ClientSDK {
     async regenerateSigningSecret(
         options?: RequestOptions
     ): Promise<operations.CreateWebhookSigningSecretResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/v3/webhook/signing-secret/regenerate")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -403,7 +408,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "401", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -416,7 +420,10 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "401", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -448,9 +455,6 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ResendWebhookResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -465,6 +469,10 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/webhook/{id}/resend")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -481,7 +489,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "412", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -495,7 +502,10 @@ export class Webhook extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "412", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

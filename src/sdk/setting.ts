@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -49,9 +49,6 @@ export class Setting extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetAllSettingRelayerResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -70,6 +67,10 @@ export class Setting extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -85,7 +86,6 @@ export class Setting extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -99,7 +99,10 @@ export class Setting extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -131,10 +134,6 @@ export class Setting extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UpdateSettingRelayerResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -153,6 +152,11 @@ export class Setting extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -168,7 +172,6 @@ export class Setting extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -182,7 +185,10 @@ export class Setting extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

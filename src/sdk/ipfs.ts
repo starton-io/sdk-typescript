@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -57,9 +57,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.DeletePinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -74,6 +71,10 @@ export class Ipfs extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -90,7 +91,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -104,7 +104,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -134,9 +137,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.GetAllPinResponse>> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -156,6 +156,10 @@ export class Ipfs extends ClientSDK {
             status: payload$.status,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -171,7 +175,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -185,7 +188,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -245,9 +248,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetOnePinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -265,6 +265,10 @@ export class Ipfs extends ClientSDK {
             includeDirectoryContent: payload$.includeDirectoryContent,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -280,7 +284,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -294,7 +297,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -320,13 +326,13 @@ export class Ipfs extends ClientSDK {
      * Fetches the current storage utilization details for the project, providing insights into the used space, total allowance, and remaining free space.
      */
     async getStorageUsed(options?: RequestOptions): Promise<operations.GetStorageUsedPinResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/v3/ipfs/storage-used")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -343,7 +349,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -356,7 +361,7 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -385,10 +390,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreatePinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -400,6 +401,11 @@ export class Ipfs extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/ipfs/pin")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -416,7 +422,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -430,7 +435,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "413", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -460,10 +468,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UpdatePinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -478,6 +482,11 @@ export class Ipfs extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/ipfs/pin/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -494,7 +503,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "404", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -508,7 +516,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "404", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -538,9 +549,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UploadFromFilePinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -568,6 +576,10 @@ export class Ipfs extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -583,7 +595,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -597,7 +608,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "413", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -627,9 +641,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UploadFromFolderPinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -649,6 +660,10 @@ export class Ipfs extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.apiKey === "function") {
             security$ = { apiKey: await this.options$.apiKey() };
@@ -664,7 +679,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -678,7 +692,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "413", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -708,10 +725,6 @@ export class Ipfs extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UploadFromJsonPinResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -723,6 +736,11 @@ export class Ipfs extends ClientSDK {
         const path$ = this.templateURLComponent("/v3/ipfs/json")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.apiKey === "function") {
@@ -739,7 +757,6 @@ export class Ipfs extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["400", "413", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -753,7 +770,10 @@ export class Ipfs extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "413", "4XX", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
