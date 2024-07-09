@@ -51,7 +51,11 @@ export class InvalidFunction extends Error {
     data$: InvalidFunctionData;
 
     constructor(err: InvalidFunctionData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -71,103 +75,132 @@ export class InvalidFunction extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "InvalidFunction";
     }
 }
 
 /** @internal */
+export const SchemasINVALIDFUNCTIONContext$inboundSchema: z.ZodType<
+    SchemasINVALIDFUNCTIONContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasINVALIDFUNCTIONContext$Outbound = {};
+
+/** @internal */
+export const SchemasINVALIDFUNCTIONContext$outboundSchema: z.ZodType<
+    SchemasINVALIDFUNCTIONContext$Outbound,
+    z.ZodTypeDef,
+    SchemasINVALIDFUNCTIONContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasINVALIDFUNCTIONContext$ {
-    export const inboundSchema: z.ZodType<SchemasINVALIDFUNCTIONContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasINVALIDFUNCTIONContext> =
-        z.object({});
+    /** @deprecated use `SchemasINVALIDFUNCTIONContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasINVALIDFUNCTIONContext$inboundSchema;
+    /** @deprecated use `SchemasINVALIDFUNCTIONContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasINVALIDFUNCTIONContext$outboundSchema;
+    /** @deprecated use `SchemasINVALIDFUNCTIONContext$Outbound` instead. */
+    export type Outbound = SchemasINVALIDFUNCTIONContext$Outbound;
 }
 
 /** @internal */
-export namespace InvalidFunction$ {
-    export const inboundSchema: z.ZodType<InvalidFunction, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("INVALID_FUNCTION"),
-            message: z.string().default("Some params are invalid."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-            });
-
-            return new InvalidFunction(remapped);
+export const InvalidFunction$inboundSchema: z.ZodType<InvalidFunction, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$inboundSchema)).optional(),
+        errorCode: z.string().default("INVALID_FUNCTION"),
+        message: z.string().default("Some params are invalid."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        context?: SchemasINVALIDFUNCTIONContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new InvalidFunction(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InvalidFunction> = z
-        .instanceof(InvalidFunction)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("INVALID_FUNCTION"),
-                    message: z.string().default("Some params are invalid."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                    });
-                })
-        );
+/** @internal */
+export type InvalidFunction$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    context?: SchemasINVALIDFUNCTIONContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const InvalidFunction$outboundSchema: z.ZodType<
+    InvalidFunction$Outbound,
+    z.ZodTypeDef,
+    InvalidFunction
+> = z
+    .instanceof(InvalidFunction)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("INVALID_FUNCTION"),
+                message: z.string().default("Some params are invalid."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InvalidFunction$ {
+    /** @deprecated use `InvalidFunction$inboundSchema` instead. */
+    export const inboundSchema = InvalidFunction$inboundSchema;
+    /** @deprecated use `InvalidFunction$outboundSchema` instead. */
+    export const outboundSchema = InvalidFunction$outboundSchema;
+    /** @deprecated use `InvalidFunction$Outbound` instead. */
+    export type Outbound = InvalidFunction$Outbound;
 }

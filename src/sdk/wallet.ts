@@ -59,7 +59,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreateWalletDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreateWalletDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -114,9 +114,9 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateWalletResponse>()
-            .json(201, operations.CreateWalletResponse$, { key: "Wallet" })
-            .json(400, errors.CreateWalletResponseBody$, { err: true })
-            .json(412, errors.CreateWalletWalletResponseBody$, { err: true })
+            .json(201, operations.CreateWalletResponse$inboundSchema, { key: "Wallet" })
+            .json(400, errors.CreateWalletResponseBody$inboundSchema, { err: true })
+            .json(412, errors.CreateWalletWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -137,7 +137,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -199,9 +199,9 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteWalletResponse>()
-            .json(200, operations.DeleteWalletResponse$, { key: "number" })
-            .json(400, errors.DeleteWalletResponseBody$, { err: true })
-            .json(404, errors.DeleteWalletWalletResponseBody$, { err: true })
+            .json(200, operations.DeleteWalletResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteWalletWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -222,7 +222,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -277,8 +277,8 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllWalletResponse>()
-            .json(200, operations.GetAllWalletResponse$, { key: "WalletPaginated" })
-            .json(400, errors.GetAllWalletResponseBody$, { err: true })
+            .json(200, operations.GetAllWalletResponse$inboundSchema, { key: "WalletPaginated" })
+            .json(400, errors.GetAllWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -330,7 +330,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -390,9 +390,9 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneWalletResponse>()
-            .json(200, operations.GetOneWalletResponse$, { key: "Wallet" })
-            .json(400, errors.GetOneWalletResponseBody$, { err: true })
-            .json(404, errors.GetOneWalletWalletResponseBody$, { err: true })
+            .json(200, operations.GetOneWalletResponse$inboundSchema, { key: "Wallet" })
+            .json(400, errors.GetOneWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneWalletWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -413,7 +413,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.ImportProviderKeyDto$.outboundSchema.parse(value$),
+            (value$) => shared.ImportProviderKeyDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -465,8 +465,8 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ImportProviderKeyWalletResponse>()
-            .json(201, operations.ImportProviderKeyWalletResponse$, { key: "Wallet" })
-            .json(400, errors.ImportProviderKeyWalletResponseBody$, { err: true })
+            .json(201, operations.ImportProviderKeyWalletResponse$inboundSchema, { key: "Wallet" })
+            .json(400, errors.ImportProviderKeyWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -487,7 +487,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ClaimFaucetRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ClaimFaucetRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequireFaucetDto, { explode: true });
@@ -548,11 +548,11 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ClaimFaucetResponse>()
-            .json(201, operations.ClaimFaucetResponse$, { key: "Faucet" })
-            .json(400, errors.ClaimFaucetResponseBody$, { err: true })
-            .json(500, errors.ClaimFaucetWalletResponseBody$, { err: true })
+            .json(201, operations.ClaimFaucetResponse$inboundSchema, { key: "Faucet" })
+            .json(400, errors.ClaimFaucetResponseBody$inboundSchema, { err: true })
+            .json(500, errors.ClaimFaucetWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
-            .json("default", operations.ClaimFaucetResponse$, { key: "oneOf" })
+            .json("default", operations.ClaimFaucetResponse$inboundSchema, { key: "oneOf" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -572,7 +572,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ResyncNoncesWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ResyncNoncesWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -638,15 +638,19 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ResyncNoncesWalletResponse>()
-            .json(201, operations.ResyncNoncesWalletResponse$, { key: "resyncNonce" })
-            .json(400, errors.ResyncNoncesWalletResponseBody$, { err: true })
-            .json(404, errors.ResyncNoncesWalletWalletResponseBody$, { err: true })
-            .json(422, errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$, {
-                err: true,
-            })
-            .json(500, errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$, {
-                err: true,
-            })
+            .json(201, operations.ResyncNoncesWalletResponse$inboundSchema, { key: "resyncNonce" })
+            .json(400, errors.ResyncNoncesWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.ResyncNoncesWalletWalletResponseBody$inboundSchema, { err: true })
+            .json(
+                422,
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -667,7 +671,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.SignMessageWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.SignMessageWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.SignMessageDto, { explode: true });
@@ -730,10 +734,14 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.SignMessageWalletResponse>()
-            .json(201, operations.SignMessageWalletResponse$, { key: "SignMessageResponse" })
-            .json(400, errors.SignMessageWalletResponseBody$, { err: true })
-            .json(403, errors.SignMessageWalletWalletResponseBody$, { err: true })
-            .json(404, errors.SignMessageWalletWalletResponseResponseBody$, { err: true })
+            .json(201, operations.SignMessageWalletResponse$inboundSchema, {
+                key: "SignMessageResponse",
+            })
+            .json(400, errors.SignMessageWalletResponseBody$inboundSchema, { err: true })
+            .json(403, errors.SignMessageWalletWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.SignMessageWalletWalletResponseResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -754,7 +762,7 @@ export class Wallet extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateWalletDto, { explode: true });
@@ -815,9 +823,9 @@ export class Wallet extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateWalletResponse>()
-            .json(200, operations.UpdateWalletResponse$, { key: "Wallet" })
-            .json(400, errors.UpdateWalletResponseBody$, { err: true })
-            .json(404, errors.UpdateWalletWalletResponseBody$, { err: true })
+            .json(200, operations.UpdateWalletResponse$inboundSchema, { key: "Wallet" })
+            .json(400, errors.UpdateWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdateWalletWalletResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

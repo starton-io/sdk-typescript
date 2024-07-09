@@ -40,51 +40,89 @@ export type GetAllRpcResponse = {
 };
 
 /** @internal */
+export const GetAllRpcRequest$inboundSchema: z.ZodType<GetAllRpcRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        limit: z.number().int().default(100),
+        name: z.string(),
+        page: z.number().int().optional(),
+    });
+
+/** @internal */
+export type GetAllRpcRequest$Outbound = {
+    limit: number;
+    name: string;
+    page?: number | undefined;
+};
+
+/** @internal */
+export const GetAllRpcRequest$outboundSchema: z.ZodType<
+    GetAllRpcRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllRpcRequest
+> = z.object({
+    limit: z.number().int().default(100),
+    name: z.string(),
+    page: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllRpcRequest$ {
-    export const inboundSchema: z.ZodType<GetAllRpcRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().default(100),
-        name: z.string(),
-        page: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        limit: number;
-        name: string;
-        page?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllRpcRequest> = z.object({
-        limit: z.number().int().default(100),
-        name: z.string(),
-        page: z.number().int().optional(),
-    });
+    /** @deprecated use `GetAllRpcRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllRpcRequest$inboundSchema;
+    /** @deprecated use `GetAllRpcRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllRpcRequest$outboundSchema;
+    /** @deprecated use `GetAllRpcRequest$Outbound` instead. */
+    export type Outbound = GetAllRpcRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllRpcRpcPaginated$inboundSchema: z.ZodType<
+    GetAllRpcRpcPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Rpc$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllRpcRpcPaginated$Outbound = {
+    items: Array<shared.Rpc$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllRpcRpcPaginated$outboundSchema: z.ZodType<
+    GetAllRpcRpcPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllRpcRpcPaginated
+> = z.object({
+    items: z.array(shared.Rpc$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllRpcRpcPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllRpcRpcPaginated, z.ZodTypeDef, unknown> = z.object({
-        items: z.array(shared.Rpc$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.Rpc$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllRpcRpcPaginated> =
-        z.object({
-            items: z.array(shared.Rpc$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
+    /** @deprecated use `GetAllRpcRpcPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllRpcRpcPaginated$inboundSchema;
+    /** @deprecated use `GetAllRpcRpcPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllRpcRpcPaginated$outboundSchema;
+    /** @deprecated use `GetAllRpcRpcPaginated$Outbound` instead. */
+    export type Outbound = GetAllRpcRpcPaginated$Outbound;
 }
 
 /** @internal */
-export namespace GetAllRpcResponse$ {
-    export const inboundSchema: z.ZodType<GetAllRpcResponse, z.ZodTypeDef, unknown> = z
+export const GetAllRpcResponse$inboundSchema: z.ZodType<GetAllRpcResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            RpcPaginated: z.lazy(() => GetAllRpcRpcPaginated$.inboundSchema).optional(),
+            RpcPaginated: z.lazy(() => GetAllRpcRpcPaginated$inboundSchema).optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -97,28 +135,46 @@ export namespace GetAllRpcResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        RpcPaginated?: GetAllRpcRpcPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetAllRpcResponse$Outbound = {
+    ContentType: string;
+    RpcPaginated?: GetAllRpcRpcPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllRpcResponse> = z
-        .object({
-            contentType: z.string(),
-            rpcPaginated: z.lazy(() => GetAllRpcRpcPaginated$.outboundSchema).optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                rpcPaginated: "RpcPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetAllRpcResponse$outboundSchema: z.ZodType<
+    GetAllRpcResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllRpcResponse
+> = z
+    .object({
+        contentType: z.string(),
+        rpcPaginated: z.lazy(() => GetAllRpcRpcPaginated$outboundSchema).optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            rpcPaginated: "RpcPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllRpcResponse$ {
+    /** @deprecated use `GetAllRpcResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllRpcResponse$inboundSchema;
+    /** @deprecated use `GetAllRpcResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllRpcResponse$outboundSchema;
+    /** @deprecated use `GetAllRpcResponse$Outbound` instead. */
+    export type Outbound = GetAllRpcResponse$Outbound;
 }

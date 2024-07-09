@@ -34,79 +34,105 @@ export type GetAvailableFunctionsSmartContractResponse = {
 };
 
 /** @internal */
+export const GetAvailableFunctionsSmartContractRequest$inboundSchema: z.ZodType<
+    GetAvailableFunctionsSmartContractRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/** @internal */
+export type GetAvailableFunctionsSmartContractRequest$Outbound = {
+    address: string;
+    network: string;
+};
+
+/** @internal */
+export const GetAvailableFunctionsSmartContractRequest$outboundSchema: z.ZodType<
+    GetAvailableFunctionsSmartContractRequest$Outbound,
+    z.ZodTypeDef,
+    GetAvailableFunctionsSmartContractRequest
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAvailableFunctionsSmartContractRequest$ {
-    export const inboundSchema: z.ZodType<
-        GetAvailableFunctionsSmartContractRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        address: z.string(),
-        network: z.string(),
-    });
-
-    export type Outbound = {
-        address: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAvailableFunctionsSmartContractRequest
-    > = z.object({
-        address: z.string(),
-        network: z.string(),
-    });
+    /** @deprecated use `GetAvailableFunctionsSmartContractRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAvailableFunctionsSmartContractRequest$inboundSchema;
+    /** @deprecated use `GetAvailableFunctionsSmartContractRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAvailableFunctionsSmartContractRequest$outboundSchema;
+    /** @deprecated use `GetAvailableFunctionsSmartContractRequest$Outbound` instead. */
+    export type Outbound = GetAvailableFunctionsSmartContractRequest$Outbound;
 }
 
 /** @internal */
+export const GetAvailableFunctionsSmartContractResponse$inboundSchema: z.ZodType<
+    GetAvailableFunctionsSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AvailableFunctions: shared.AvailableFunctions$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AvailableFunctions: "availableFunctions",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAvailableFunctionsSmartContractResponse$Outbound = {
+    AvailableFunctions?: shared.AvailableFunctions$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAvailableFunctionsSmartContractResponse$outboundSchema: z.ZodType<
+    GetAvailableFunctionsSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    GetAvailableFunctionsSmartContractResponse
+> = z
+    .object({
+        availableFunctions: shared.AvailableFunctions$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            availableFunctions: "AvailableFunctions",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAvailableFunctionsSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<
-        GetAvailableFunctionsSmartContractResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            AvailableFunctions: shared.AvailableFunctions$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AvailableFunctions: "availableFunctions",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        AvailableFunctions?: shared.AvailableFunctions$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAvailableFunctionsSmartContractResponse
-    > = z
-        .object({
-            availableFunctions: shared.AvailableFunctions$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                availableFunctions: "AvailableFunctions",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAvailableFunctionsSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAvailableFunctionsSmartContractResponse$inboundSchema;
+    /** @deprecated use `GetAvailableFunctionsSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAvailableFunctionsSmartContractResponse$outboundSchema;
+    /** @deprecated use `GetAvailableFunctionsSmartContractResponse$Outbound` instead. */
+    export type Outbound = GetAvailableFunctionsSmartContractResponse$Outbound;
 }

@@ -58,7 +58,7 @@ export class Rpc extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateRpcRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateRpcRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CreateRpcDto, { explode: true });
@@ -116,9 +116,9 @@ export class Rpc extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateRpcResponse>()
-            .json(201, operations.CreateRpcResponse$, { key: "Rpc" })
-            .json(400, errors.CreateRpcResponseBody$, { err: true })
-            .json(404, errors.CreateRpcNetworkRpcResponseBody$, { err: true })
+            .json(201, operations.CreateRpcResponse$inboundSchema, { key: "Rpc" })
+            .json(400, errors.CreateRpcResponseBody$inboundSchema, { err: true })
+            .json(404, errors.CreateRpcNetworkRpcResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -139,7 +139,7 @@ export class Rpc extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteRpcRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteRpcRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -197,9 +197,9 @@ export class Rpc extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteRpcResponse>()
-            .json(200, operations.DeleteRpcResponse$, { key: "number" })
-            .json(400, errors.DeleteRpcResponseBody$, { err: true })
-            .json(404, errors.DeleteRpcNetworkRpcResponseBody$, { err: true })
+            .json(200, operations.DeleteRpcResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteRpcResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteRpcNetworkRpcResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -220,7 +220,7 @@ export class Rpc extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllRpcRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllRpcRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -277,8 +277,8 @@ export class Rpc extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllRpcResponse>()
-            .json(200, operations.GetAllRpcResponse$, { key: "RpcPaginated" })
-            .json(400, errors.GetAllRpcResponseBody$, { err: true })
+            .json(200, operations.GetAllRpcResponse$inboundSchema, { key: "RpcPaginated" })
+            .json(400, errors.GetAllRpcResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -330,7 +330,7 @@ export class Rpc extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneRpcRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneRpcRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -388,9 +388,9 @@ export class Rpc extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneRpcResponse>()
-            .json(200, operations.GetOneRpcResponse$, { key: "Rpc" })
-            .json(400, errors.GetOneRpcResponseBody$, { err: true })
-            .json(404, errors.GetOneRpcNetworkRpcResponseBody$, { err: true })
+            .json(200, operations.GetOneRpcResponse$inboundSchema, { key: "Rpc" })
+            .json(400, errors.GetOneRpcResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneRpcNetworkRpcResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -411,7 +411,7 @@ export class Rpc extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateRpcRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateRpcRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateRpcDto, { explode: true });
@@ -470,9 +470,9 @@ export class Rpc extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateRpcResponse>()
-            .json(200, operations.UpdateRpcResponse$, { key: "Rpc" })
-            .json(400, errors.UpdateRpcResponseBody$, { err: true })
-            .json(404, errors.UpdateRpcNetworkRpcResponseBody$, { err: true })
+            .json(200, operations.UpdateRpcResponse$inboundSchema, { key: "Rpc" })
+            .json(400, errors.UpdateRpcResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdateRpcNetworkRpcResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

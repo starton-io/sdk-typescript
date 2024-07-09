@@ -31,41 +31,58 @@ export type UpdateKmsResponse = {
 };
 
 /** @internal */
+export const UpdateKmsRequest$inboundSchema: z.ZodType<UpdateKmsRequest, z.ZodTypeDef, unknown> = z
+    .object({
+        UpdateKmsDto: shared.UpdateKmsDto$inboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdateKmsDto: "updateKmsDto",
+        });
+    });
+
+/** @internal */
+export type UpdateKmsRequest$Outbound = {
+    UpdateKmsDto: shared.UpdateKmsDto$Outbound;
+    id: string;
+};
+
+/** @internal */
+export const UpdateKmsRequest$outboundSchema: z.ZodType<
+    UpdateKmsRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateKmsRequest
+> = z
+    .object({
+        updateKmsDto: shared.UpdateKmsDto$outboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updateKmsDto: "UpdateKmsDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateKmsRequest$ {
-    export const inboundSchema: z.ZodType<UpdateKmsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            UpdateKmsDto: shared.UpdateKmsDto$.inboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdateKmsDto: "updateKmsDto",
-            });
-        });
-
-    export type Outbound = {
-        UpdateKmsDto: shared.UpdateKmsDto$.Outbound;
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateKmsRequest> = z
-        .object({
-            updateKmsDto: shared.UpdateKmsDto$.outboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updateKmsDto: "UpdateKmsDto",
-            });
-        });
+    /** @deprecated use `UpdateKmsRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateKmsRequest$inboundSchema;
+    /** @deprecated use `UpdateKmsRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateKmsRequest$outboundSchema;
+    /** @deprecated use `UpdateKmsRequest$Outbound` instead. */
+    export type Outbound = UpdateKmsRequest$Outbound;
 }
 
 /** @internal */
-export namespace UpdateKmsResponse$ {
-    export const inboundSchema: z.ZodType<UpdateKmsResponse, z.ZodTypeDef, unknown> = z
+export const UpdateKmsResponse$inboundSchema: z.ZodType<UpdateKmsResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Kms: shared.Kms$.inboundSchema.optional(),
+            Kms: shared.Kms$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -78,28 +95,46 @@ export namespace UpdateKmsResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Kms?: shared.Kms$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type UpdateKmsResponse$Outbound = {
+    ContentType: string;
+    Kms?: shared.Kms$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateKmsResponse> = z
-        .object({
-            contentType: z.string(),
-            kms: shared.Kms$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                kms: "Kms",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const UpdateKmsResponse$outboundSchema: z.ZodType<
+    UpdateKmsResponse$Outbound,
+    z.ZodTypeDef,
+    UpdateKmsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        kms: shared.Kms$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            kms: "Kms",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateKmsResponse$ {
+    /** @deprecated use `UpdateKmsResponse$inboundSchema` instead. */
+    export const inboundSchema = UpdateKmsResponse$inboundSchema;
+    /** @deprecated use `UpdateKmsResponse$outboundSchema` instead. */
+    export const outboundSchema = UpdateKmsResponse$outboundSchema;
+    /** @deprecated use `UpdateKmsResponse$Outbound` instead. */
+    export type Outbound = UpdateKmsResponse$Outbound;
 }

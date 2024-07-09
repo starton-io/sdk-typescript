@@ -39,95 +39,148 @@ export type GetAllInvitationResponse = {
 };
 
 /** @internal */
+export const GetAllInvitationRequest$inboundSchema: z.ZodType<
+    GetAllInvitationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    limit: z.number().int().default(100),
+    page: z.number().int().optional(),
+});
+
+/** @internal */
+export type GetAllInvitationRequest$Outbound = {
+    limit: number;
+    page?: number | undefined;
+};
+
+/** @internal */
+export const GetAllInvitationRequest$outboundSchema: z.ZodType<
+    GetAllInvitationRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllInvitationRequest
+> = z.object({
+    limit: z.number().int().default(100),
+    page: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllInvitationRequest$ {
-    export const inboundSchema: z.ZodType<GetAllInvitationRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            limit: z.number().int().default(100),
-            page: z.number().int().optional(),
-        });
-
-    export type Outbound = {
-        limit: number;
-        page?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllInvitationRequest> =
-        z.object({
-            limit: z.number().int().default(100),
-            page: z.number().int().optional(),
-        });
+    /** @deprecated use `GetAllInvitationRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllInvitationRequest$inboundSchema;
+    /** @deprecated use `GetAllInvitationRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllInvitationRequest$outboundSchema;
+    /** @deprecated use `GetAllInvitationRequest$Outbound` instead. */
+    export type Outbound = GetAllInvitationRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllInvitationInvitationPaginated$inboundSchema: z.ZodType<
+    GetAllInvitationInvitationPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Invitation$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllInvitationInvitationPaginated$Outbound = {
+    items: Array<shared.Invitation$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllInvitationInvitationPaginated$outboundSchema: z.ZodType<
+    GetAllInvitationInvitationPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllInvitationInvitationPaginated
+> = z.object({
+    items: z.array(shared.Invitation$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllInvitationInvitationPaginated$ {
-    export const inboundSchema: z.ZodType<
-        GetAllInvitationInvitationPaginated,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        items: z.array(shared.Invitation$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.Invitation$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAllInvitationInvitationPaginated
-    > = z.object({
-        items: z.array(shared.Invitation$.outboundSchema),
-        meta: shared.PaginationData$.outboundSchema,
-    });
+    /** @deprecated use `GetAllInvitationInvitationPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllInvitationInvitationPaginated$inboundSchema;
+    /** @deprecated use `GetAllInvitationInvitationPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllInvitationInvitationPaginated$outboundSchema;
+    /** @deprecated use `GetAllInvitationInvitationPaginated$Outbound` instead. */
+    export type Outbound = GetAllInvitationInvitationPaginated$Outbound;
 }
 
 /** @internal */
+export const GetAllInvitationResponse$inboundSchema: z.ZodType<
+    GetAllInvitationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        InvitationPaginated: z
+            .lazy(() => GetAllInvitationInvitationPaginated$inboundSchema)
+            .optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            InvitationPaginated: "invitationPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAllInvitationResponse$Outbound = {
+    ContentType: string;
+    InvitationPaginated?: GetAllInvitationInvitationPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAllInvitationResponse$outboundSchema: z.ZodType<
+    GetAllInvitationResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllInvitationResponse
+> = z
+    .object({
+        contentType: z.string(),
+        invitationPaginated: z
+            .lazy(() => GetAllInvitationInvitationPaginated$outboundSchema)
+            .optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            invitationPaginated: "InvitationPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllInvitationResponse$ {
-    export const inboundSchema: z.ZodType<GetAllInvitationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            InvitationPaginated: z
-                .lazy(() => GetAllInvitationInvitationPaginated$.inboundSchema)
-                .optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                InvitationPaginated: "invitationPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        InvitationPaginated?: GetAllInvitationInvitationPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllInvitationResponse> = z
-        .object({
-            contentType: z.string(),
-            invitationPaginated: z
-                .lazy(() => GetAllInvitationInvitationPaginated$.outboundSchema)
-                .optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                invitationPaginated: "InvitationPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAllInvitationResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllInvitationResponse$inboundSchema;
+    /** @deprecated use `GetAllInvitationResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllInvitationResponse$outboundSchema;
+    /** @deprecated use `GetAllInvitationResponse$Outbound` instead. */
+    export type Outbound = GetAllInvitationResponse$Outbound;
 }

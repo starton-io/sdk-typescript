@@ -30,26 +30,44 @@ export type GetOneKmsResponse = {
 };
 
 /** @internal */
+export const GetOneKmsRequest$inboundSchema: z.ZodType<GetOneKmsRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+    });
+
+/** @internal */
+export type GetOneKmsRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const GetOneKmsRequest$outboundSchema: z.ZodType<
+    GetOneKmsRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneKmsRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneKmsRequest$ {
-    export const inboundSchema: z.ZodType<GetOneKmsRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneKmsRequest> = z.object({
-        id: z.string(),
-    });
+    /** @deprecated use `GetOneKmsRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneKmsRequest$inboundSchema;
+    /** @deprecated use `GetOneKmsRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneKmsRequest$outboundSchema;
+    /** @deprecated use `GetOneKmsRequest$Outbound` instead. */
+    export type Outbound = GetOneKmsRequest$Outbound;
 }
 
 /** @internal */
-export namespace GetOneKmsResponse$ {
-    export const inboundSchema: z.ZodType<GetOneKmsResponse, z.ZodTypeDef, unknown> = z
+export const GetOneKmsResponse$inboundSchema: z.ZodType<GetOneKmsResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Kms: shared.Kms$.inboundSchema.optional(),
+            Kms: shared.Kms$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -62,28 +80,46 @@ export namespace GetOneKmsResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Kms?: shared.Kms$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetOneKmsResponse$Outbound = {
+    ContentType: string;
+    Kms?: shared.Kms$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneKmsResponse> = z
-        .object({
-            contentType: z.string(),
-            kms: shared.Kms$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                kms: "Kms",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetOneKmsResponse$outboundSchema: z.ZodType<
+    GetOneKmsResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneKmsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        kms: shared.Kms$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            kms: "Kms",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetOneKmsResponse$ {
+    /** @deprecated use `GetOneKmsResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneKmsResponse$inboundSchema;
+    /** @deprecated use `GetOneKmsResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneKmsResponse$outboundSchema;
+    /** @deprecated use `GetOneKmsResponse$Outbound` instead. */
+    export type Outbound = GetOneKmsResponse$Outbound;
 }

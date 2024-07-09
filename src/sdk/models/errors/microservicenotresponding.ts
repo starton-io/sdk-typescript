@@ -59,7 +59,11 @@ export class MicroserviceNotResponding extends Error {
     data$: MicroserviceNotRespondingData;
 
     constructor(err: MicroserviceNotRespondingData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,121 +86,148 @@ export class MicroserviceNotResponding extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "MicroserviceNotResponding";
     }
 }
 
 /** @internal */
+export const SchemasMICROSERVICENOTRESPONDINGContext$inboundSchema: z.ZodType<
+    SchemasMICROSERVICENOTRESPONDINGContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasMICROSERVICENOTRESPONDINGContext$Outbound = {};
+
+/** @internal */
+export const SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema: z.ZodType<
+    SchemasMICROSERVICENOTRESPONDINGContext$Outbound,
+    z.ZodTypeDef,
+    SchemasMICROSERVICENOTRESPONDINGContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasMICROSERVICENOTRESPONDINGContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasMICROSERVICENOTRESPONDINGContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasMICROSERVICENOTRESPONDINGContext
-    > = z.object({});
+    /** @deprecated use `SchemasMICROSERVICENOTRESPONDINGContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasMICROSERVICENOTRESPONDINGContext$inboundSchema;
+    /** @deprecated use `SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema;
+    /** @deprecated use `SchemasMICROSERVICENOTRESPONDINGContext$Outbound` instead. */
+    export type Outbound = SchemasMICROSERVICENOTRESPONDINGContext$Outbound;
 }
 
 /** @internal */
-export namespace MicroserviceNotResponding$ {
-    export const inboundSchema: z.ZodType<MicroserviceNotResponding, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
-            message: z.string().default("MICROSERVICE_NOT_RESPONDING"),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-            });
-
-            return new MicroserviceNotResponding(remapped);
+export const MicroserviceNotResponding$inboundSchema: z.ZodType<
+    MicroserviceNotResponding,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
+        message: z.string().default("MICROSERVICE_NOT_RESPONDING"),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasMICROSERVICENOTRESPONDINGContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new MicroserviceNotResponding(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MicroserviceNotResponding> = z
-        .instanceof(MicroserviceNotResponding)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(
-                            z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$.outboundSchema)
-                        )
-                        .optional(),
-                    errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
-                    message: z.string().default("MICROSERVICE_NOT_RESPONDING"),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export type MicroserviceNotResponding$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasMICROSERVICENOTRESPONDINGContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const MicroserviceNotResponding$outboundSchema: z.ZodType<
+    MicroserviceNotResponding$Outbound,
+    z.ZodTypeDef,
+    MicroserviceNotResponding
+> = z
+    .instanceof(MicroserviceNotResponding)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("MICROSERVICE_NOT_RESPONDING"),
+                message: z.string().default("MICROSERVICE_NOT_RESPONDING"),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MicroserviceNotResponding$ {
+    /** @deprecated use `MicroserviceNotResponding$inboundSchema` instead. */
+    export const inboundSchema = MicroserviceNotResponding$inboundSchema;
+    /** @deprecated use `MicroserviceNotResponding$outboundSchema` instead. */
+    export const outboundSchema = MicroserviceNotResponding$outboundSchema;
+    /** @deprecated use `MicroserviceNotResponding$Outbound` instead. */
+    export type Outbound = MicroserviceNotResponding$Outbound;
 }

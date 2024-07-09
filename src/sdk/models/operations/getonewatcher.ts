@@ -30,62 +30,102 @@ export type GetOneWatcherResponse = {
 };
 
 /** @internal */
+export const GetOneWatcherRequest$inboundSchema: z.ZodType<
+    GetOneWatcherRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type GetOneWatcherRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const GetOneWatcherRequest$outboundSchema: z.ZodType<
+    GetOneWatcherRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneWatcherRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneWatcherRequest$ {
-    export const inboundSchema: z.ZodType<GetOneWatcherRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWatcherRequest> = z.object(
-        {
-            id: z.string(),
-        }
-    );
+    /** @deprecated use `GetOneWatcherRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneWatcherRequest$inboundSchema;
+    /** @deprecated use `GetOneWatcherRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneWatcherRequest$outboundSchema;
+    /** @deprecated use `GetOneWatcherRequest$Outbound` instead. */
+    export type Outbound = GetOneWatcherRequest$Outbound;
 }
 
 /** @internal */
+export const GetOneWatcherResponse$inboundSchema: z.ZodType<
+    GetOneWatcherResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        Watcher: shared.Watcher$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            Watcher: "watcher",
+        });
+    });
+
+/** @internal */
+export type GetOneWatcherResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    Watcher?: shared.Watcher$Outbound | undefined;
+};
+
+/** @internal */
+export const GetOneWatcherResponse$outboundSchema: z.ZodType<
+    GetOneWatcherResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneWatcherResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        watcher: shared.Watcher$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            watcher: "Watcher",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneWatcherResponse$ {
-    export const inboundSchema: z.ZodType<GetOneWatcherResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            Watcher: shared.Watcher$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                Watcher: "watcher",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        Watcher?: shared.Watcher$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneWatcherResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            watcher: shared.Watcher$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                watcher: "Watcher",
-            });
-        });
+    /** @deprecated use `GetOneWatcherResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneWatcherResponse$inboundSchema;
+    /** @deprecated use `GetOneWatcherResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneWatcherResponse$outboundSchema;
+    /** @deprecated use `GetOneWatcherResponse$Outbound` instead. */
+    export type Outbound = GetOneWatcherResponse$Outbound;
 }

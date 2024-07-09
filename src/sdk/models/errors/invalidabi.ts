@@ -83,7 +83,11 @@ export class InvalidAbi extends Error {
     data$: InvalidAbiData;
 
     constructor(err: InvalidAbiData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -115,141 +119,168 @@ export class InvalidAbi extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "InvalidAbi";
     }
 }
 
 /** @internal */
+export const SchemasINVALIDABIContext$inboundSchema: z.ZodType<
+    SchemasINVALIDABIContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasINVALIDABIContext$Outbound = {};
+
+/** @internal */
+export const SchemasINVALIDABIContext$outboundSchema: z.ZodType<
+    SchemasINVALIDABIContext$Outbound,
+    z.ZodTypeDef,
+    SchemasINVALIDABIContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasINVALIDABIContext$ {
-    export const inboundSchema: z.ZodType<SchemasINVALIDABIContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasINVALIDABIContext> =
-        z.object({});
+    /** @deprecated use `SchemasINVALIDABIContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasINVALIDABIContext$inboundSchema;
+    /** @deprecated use `SchemasINVALIDABIContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasINVALIDABIContext$outboundSchema;
+    /** @deprecated use `SchemasINVALIDABIContext$Outbound` instead. */
+    export type Outbound = SchemasINVALIDABIContext$Outbound;
 }
 
 /** @internal */
-export namespace InvalidAbi$ {
-    export const inboundSchema: z.ZodType<InvalidAbi, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            RawResponse5: z.instanceof(Response).optional(),
-            RawResponse6: z.instanceof(Response).optional(),
-            context: z.nullable(z.lazy(() => SchemasINVALIDABIContext$.inboundSchema)).optional(),
-            errorCode: z.string().default("INVALID_ABI"),
-            message: z.string().default("INVALID_ABI"),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-                RawResponse5: "rawResponse5",
-                RawResponse6: "rawResponse6",
-            });
-
-            return new InvalidAbi(remapped);
+export const InvalidAbi$inboundSchema: z.ZodType<InvalidAbi, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        RawResponse5: z.instanceof(Response).optional(),
+        RawResponse6: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasINVALIDABIContext$inboundSchema)).optional(),
+        errorCode: z.string().default("INVALID_ABI"),
+        message: z.string().default("INVALID_ABI"),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
+            RawResponse5: "rawResponse5",
+            RawResponse6: "rawResponse6",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        RawResponse5?: never | undefined;
-        RawResponse6?: never | undefined;
-        context?: SchemasINVALIDABIContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new InvalidAbi(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InvalidAbi> = z
-        .instanceof(InvalidAbi)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse5: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse6: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasINVALIDABIContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("INVALID_ABI"),
-                    message: z.string().default("INVALID_ABI"),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                        rawResponse5: "RawResponse5",
-                        rawResponse6: "RawResponse6",
-                    });
-                })
-        );
+/** @internal */
+export type InvalidAbi$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    RawResponse5?: never | undefined;
+    RawResponse6?: never | undefined;
+    context?: SchemasINVALIDABIContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const InvalidAbi$outboundSchema: z.ZodType<InvalidAbi$Outbound, z.ZodTypeDef, InvalidAbi> = z
+    .instanceof(InvalidAbi)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse5: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse6: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasINVALIDABIContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("INVALID_ABI"),
+                message: z.string().default("INVALID_ABI"),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                    rawResponse5: "RawResponse5",
+                    rawResponse6: "RawResponse6",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InvalidAbi$ {
+    /** @deprecated use `InvalidAbi$inboundSchema` instead. */
+    export const inboundSchema = InvalidAbi$inboundSchema;
+    /** @deprecated use `InvalidAbi$outboundSchema` instead. */
+    export const outboundSchema = InvalidAbi$outboundSchema;
+    /** @deprecated use `InvalidAbi$Outbound` instead. */
+    export type Outbound = InvalidAbi$Outbound;
 }

@@ -67,7 +67,11 @@ export class NumericFault extends Error {
     data$: NumericFaultData;
 
     constructor(err: NumericFaultData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -93,121 +97,152 @@ export class NumericFault extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "NumericFault";
     }
 }
 
 /** @internal */
+export const SchemasNUMERICFAULTContext$inboundSchema: z.ZodType<
+    SchemasNUMERICFAULTContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasNUMERICFAULTContext$Outbound = {};
+
+/** @internal */
+export const SchemasNUMERICFAULTContext$outboundSchema: z.ZodType<
+    SchemasNUMERICFAULTContext$Outbound,
+    z.ZodTypeDef,
+    SchemasNUMERICFAULTContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasNUMERICFAULTContext$ {
-    export const inboundSchema: z.ZodType<SchemasNUMERICFAULTContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasNUMERICFAULTContext> =
-        z.object({});
+    /** @deprecated use `SchemasNUMERICFAULTContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasNUMERICFAULTContext$inboundSchema;
+    /** @deprecated use `SchemasNUMERICFAULTContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasNUMERICFAULTContext$outboundSchema;
+    /** @deprecated use `SchemasNUMERICFAULTContext$Outbound` instead. */
+    export type Outbound = SchemasNUMERICFAULTContext$Outbound;
 }
 
 /** @internal */
-export namespace NumericFault$ {
-    export const inboundSchema: z.ZodType<NumericFault, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            context: z.nullable(z.lazy(() => SchemasNUMERICFAULTContext$.inboundSchema)).optional(),
-            errorCode: z.string().default("NUMERIC_FAULT"),
-            message: z.string().default("Illegal operations with numerical values."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-            });
-
-            return new NumericFault(remapped);
+export const NumericFault$inboundSchema: z.ZodType<NumericFault, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasNUMERICFAULTContext$inboundSchema)).optional(),
+        errorCode: z.string().default("NUMERIC_FAULT"),
+        message: z.string().default("Illegal operations with numerical values."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        context?: SchemasNUMERICFAULTContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new NumericFault(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NumericFault> = z
-        .instanceof(NumericFault)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasNUMERICFAULTContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("NUMERIC_FAULT"),
-                    message: z.string().default("Illegal operations with numerical values."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                    });
-                })
-        );
+/** @internal */
+export type NumericFault$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    context?: SchemasNUMERICFAULTContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const NumericFault$outboundSchema: z.ZodType<
+    NumericFault$Outbound,
+    z.ZodTypeDef,
+    NumericFault
+> = z
+    .instanceof(NumericFault)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasNUMERICFAULTContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("NUMERIC_FAULT"),
+                message: z.string().default("Illegal operations with numerical values."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace NumericFault$ {
+    /** @deprecated use `NumericFault$inboundSchema` instead. */
+    export const inboundSchema = NumericFault$inboundSchema;
+    /** @deprecated use `NumericFault$outboundSchema` instead. */
+    export const outboundSchema = NumericFault$outboundSchema;
+    /** @deprecated use `NumericFault$Outbound` instead. */
+    export type Outbound = NumericFault$Outbound;
 }

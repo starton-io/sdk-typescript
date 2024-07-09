@@ -27,26 +27,44 @@ export type DeleteRpcResponse = {
 };
 
 /** @internal */
+export const DeleteRpcRequest$inboundSchema: z.ZodType<DeleteRpcRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+        name: z.any().optional(),
+    });
+
+/** @internal */
+export type DeleteRpcRequest$Outbound = {
+    id: string;
+    name?: any | undefined;
+};
+
+/** @internal */
+export const DeleteRpcRequest$outboundSchema: z.ZodType<
+    DeleteRpcRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteRpcRequest
+> = z.object({
+    id: z.string(),
+    name: z.any().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteRpcRequest$ {
-    export const inboundSchema: z.ZodType<DeleteRpcRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-        name: z.any().optional(),
-    });
-
-    export type Outbound = {
-        id: string;
-        name?: any | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteRpcRequest> = z.object({
-        id: z.string(),
-        name: z.any().optional(),
-    });
+    /** @deprecated use `DeleteRpcRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteRpcRequest$inboundSchema;
+    /** @deprecated use `DeleteRpcRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteRpcRequest$outboundSchema;
+    /** @deprecated use `DeleteRpcRequest$Outbound` instead. */
+    export type Outbound = DeleteRpcRequest$Outbound;
 }
 
 /** @internal */
-export namespace DeleteRpcResponse$ {
-    export const inboundSchema: z.ZodType<DeleteRpcResponse, z.ZodTypeDef, unknown> = z
+export const DeleteRpcResponse$inboundSchema: z.ZodType<DeleteRpcResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),
@@ -61,27 +79,45 @@ export namespace DeleteRpcResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        number?: number | undefined;
-    };
+/** @internal */
+export type DeleteRpcResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    number?: number | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteRpcResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const DeleteRpcResponse$outboundSchema: z.ZodType<
+    DeleteRpcResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteRpcResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DeleteRpcResponse$ {
+    /** @deprecated use `DeleteRpcResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteRpcResponse$inboundSchema;
+    /** @deprecated use `DeleteRpcResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteRpcResponse$outboundSchema;
+    /** @deprecated use `DeleteRpcResponse$Outbound` instead. */
+    export type Outbound = DeleteRpcResponse$Outbound;
 }

@@ -9,18 +9,37 @@ export type EncodeSmartContractResponse = {
 };
 
 /** @internal */
+export const EncodeSmartContractResponse$inboundSchema: z.ZodType<
+    EncodeSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    data: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type EncodeSmartContractResponse$Outbound = {
+    data?: string | null | undefined;
+};
+
+/** @internal */
+export const EncodeSmartContractResponse$outboundSchema: z.ZodType<
+    EncodeSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    EncodeSmartContractResponse
+> = z.object({
+    data: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EncodeSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<EncodeSmartContractResponse, z.ZodTypeDef, unknown> =
-        z.object({
-            data: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        data?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EncodeSmartContractResponse> =
-        z.object({
-            data: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `EncodeSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = EncodeSmartContractResponse$inboundSchema;
+    /** @deprecated use `EncodeSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = EncodeSmartContractResponse$outboundSchema;
+    /** @deprecated use `EncodeSmartContractResponse$Outbound` instead. */
+    export type Outbound = EncodeSmartContractResponse$Outbound;
 }

@@ -23,53 +23,66 @@ export type ImportExistingSmartContractResponse = {
 };
 
 /** @internal */
+export const ImportExistingSmartContractResponse$inboundSchema: z.ZodType<
+    ImportExistingSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SmartContract: shared.SmartContract$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SmartContract: "smartContract",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type ImportExistingSmartContractResponse$Outbound = {
+    ContentType: string;
+    SmartContract?: shared.SmartContract$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const ImportExistingSmartContractResponse$outboundSchema: z.ZodType<
+    ImportExistingSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    ImportExistingSmartContractResponse
+> = z
+    .object({
+        contentType: z.string(),
+        smartContract: shared.SmartContract$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            smartContract: "SmartContract",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ImportExistingSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<
-        ImportExistingSmartContractResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            SmartContract: shared.SmartContract$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SmartContract: "smartContract",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ImportExistingSmartContractResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            smartContract: shared.SmartContract$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                smartContract: "SmartContract",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `ImportExistingSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = ImportExistingSmartContractResponse$inboundSchema;
+    /** @deprecated use `ImportExistingSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = ImportExistingSmartContractResponse$outboundSchema;
+    /** @deprecated use `ImportExistingSmartContractResponse$Outbound` instead. */
+    export type Outbound = ImportExistingSmartContractResponse$Outbound;
 }

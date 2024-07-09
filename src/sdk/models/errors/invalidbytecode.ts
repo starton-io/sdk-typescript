@@ -75,7 +75,11 @@ export class InvalidBytecode extends Error {
     data$: InvalidBytecodeData;
 
     constructor(err: InvalidBytecodeData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -104,133 +108,162 @@ export class InvalidBytecode extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "InvalidBytecode";
     }
 }
 
 /** @internal */
+export const SchemasINVALIDBYTECODEContext$inboundSchema: z.ZodType<
+    SchemasINVALIDBYTECODEContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasINVALIDBYTECODEContext$Outbound = {};
+
+/** @internal */
+export const SchemasINVALIDBYTECODEContext$outboundSchema: z.ZodType<
+    SchemasINVALIDBYTECODEContext$Outbound,
+    z.ZodTypeDef,
+    SchemasINVALIDBYTECODEContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasINVALIDBYTECODEContext$ {
-    export const inboundSchema: z.ZodType<SchemasINVALIDBYTECODEContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasINVALIDBYTECODEContext> =
-        z.object({});
+    /** @deprecated use `SchemasINVALIDBYTECODEContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasINVALIDBYTECODEContext$inboundSchema;
+    /** @deprecated use `SchemasINVALIDBYTECODEContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasINVALIDBYTECODEContext$outboundSchema;
+    /** @deprecated use `SchemasINVALIDBYTECODEContext$Outbound` instead. */
+    export type Outbound = SchemasINVALIDBYTECODEContext$Outbound;
 }
 
 /** @internal */
-export namespace InvalidBytecode$ {
-    export const inboundSchema: z.ZodType<InvalidBytecode, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            RawResponse5: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("INVALID_BYTECODE"),
-            message: z.string().default("Your bytecode is invalid."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-                RawResponse5: "rawResponse5",
-            });
-
-            return new InvalidBytecode(remapped);
+export const InvalidBytecode$inboundSchema: z.ZodType<InvalidBytecode, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        RawResponse5: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$inboundSchema)).optional(),
+        errorCode: z.string().default("INVALID_BYTECODE"),
+        message: z.string().default("Your bytecode is invalid."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
+            RawResponse5: "rawResponse5",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        RawResponse5?: never | undefined;
-        context?: SchemasINVALIDBYTECODEContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new InvalidBytecode(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InvalidBytecode> = z
-        .instanceof(InvalidBytecode)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse5: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("INVALID_BYTECODE"),
-                    message: z.string().default("Your bytecode is invalid."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                        rawResponse5: "RawResponse5",
-                    });
-                })
-        );
+/** @internal */
+export type InvalidBytecode$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    RawResponse5?: never | undefined;
+    context?: SchemasINVALIDBYTECODEContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const InvalidBytecode$outboundSchema: z.ZodType<
+    InvalidBytecode$Outbound,
+    z.ZodTypeDef,
+    InvalidBytecode
+> = z
+    .instanceof(InvalidBytecode)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse5: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasINVALIDBYTECODEContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("INVALID_BYTECODE"),
+                message: z.string().default("Your bytecode is invalid."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                    rawResponse5: "RawResponse5",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InvalidBytecode$ {
+    /** @deprecated use `InvalidBytecode$inboundSchema` instead. */
+    export const inboundSchema = InvalidBytecode$inboundSchema;
+    /** @deprecated use `InvalidBytecode$outboundSchema` instead. */
+    export const outboundSchema = InvalidBytecode$outboundSchema;
+    /** @deprecated use `InvalidBytecode$Outbound` instead. */
+    export type Outbound = InvalidBytecode$Outbound;
 }

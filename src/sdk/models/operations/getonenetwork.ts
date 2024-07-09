@@ -30,62 +30,102 @@ export type GetOneNetworkResponse = {
 };
 
 /** @internal */
+export const GetOneNetworkRequest$inboundSchema: z.ZodType<
+    GetOneNetworkRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    name: z.string(),
+});
+
+/** @internal */
+export type GetOneNetworkRequest$Outbound = {
+    name: string;
+};
+
+/** @internal */
+export const GetOneNetworkRequest$outboundSchema: z.ZodType<
+    GetOneNetworkRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneNetworkRequest
+> = z.object({
+    name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneNetworkRequest$ {
-    export const inboundSchema: z.ZodType<GetOneNetworkRequest, z.ZodTypeDef, unknown> = z.object({
-        name: z.string(),
-    });
-
-    export type Outbound = {
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneNetworkRequest> = z.object(
-        {
-            name: z.string(),
-        }
-    );
+    /** @deprecated use `GetOneNetworkRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneNetworkRequest$inboundSchema;
+    /** @deprecated use `GetOneNetworkRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneNetworkRequest$outboundSchema;
+    /** @deprecated use `GetOneNetworkRequest$Outbound` instead. */
+    export type Outbound = GetOneNetworkRequest$Outbound;
 }
 
 /** @internal */
+export const GetOneNetworkResponse$inboundSchema: z.ZodType<
+    GetOneNetworkResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        Network: shared.Network$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            Network: "network",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetOneNetworkResponse$Outbound = {
+    ContentType: string;
+    Network?: shared.Network$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetOneNetworkResponse$outboundSchema: z.ZodType<
+    GetOneNetworkResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneNetworkResponse
+> = z
+    .object({
+        contentType: z.string(),
+        network: shared.Network$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            network: "Network",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneNetworkResponse$ {
-    export const inboundSchema: z.ZodType<GetOneNetworkResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            Network: shared.Network$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                Network: "network",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        Network?: shared.Network$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneNetworkResponse> = z
-        .object({
-            contentType: z.string(),
-            network: shared.Network$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                network: "Network",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetOneNetworkResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneNetworkResponse$inboundSchema;
+    /** @deprecated use `GetOneNetworkResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneNetworkResponse$outboundSchema;
+    /** @deprecated use `GetOneNetworkResponse$Outbound` instead. */
+    export type Outbound = GetOneNetworkResponse$Outbound;
 }

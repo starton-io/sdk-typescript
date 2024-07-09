@@ -59,7 +59,11 @@ export class CouldNotEstimateGasPrice extends Error {
     data$: CouldNotEstimateGasPriceData;
 
     constructor(err: CouldNotEstimateGasPriceData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,121 +86,148 @@ export class CouldNotEstimateGasPrice extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotEstimateGasPrice";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTESTIMATEGASPRICEContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTESTIMATEGASPRICEContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTESTIMATEGASPRICEContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTESTIMATEGASPRICEContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTESTIMATEGASPRICEContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTESTIMATEGASPRICEContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTESTIMATEGASPRICEContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCOULDNOTESTIMATEGASPRICEContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTESTIMATEGASPRICEContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTESTIMATEGASPRICEContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTESTIMATEGASPRICEContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTESTIMATEGASPRICEContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTESTIMATEGASPRICEContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTESTIMATEGASPRICEContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTESTIMATEGASPRICEContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotEstimateGasPrice$ {
-    export const inboundSchema: z.ZodType<CouldNotEstimateGasPrice, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
-            message: z.string().default("Could not estimate gas price."),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-            });
-
-            return new CouldNotEstimateGasPrice(remapped);
+export const CouldNotEstimateGasPrice$inboundSchema: z.ZodType<
+    CouldNotEstimateGasPrice,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
+        message: z.string().default("Could not estimate gas price."),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTESTIMATEGASPRICEContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotEstimateGasPrice(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotEstimateGasPrice> = z
-        .instanceof(CouldNotEstimateGasPrice)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(
-                            z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$.outboundSchema)
-                        )
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
-                    message: z.string().default("Could not estimate gas price."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotEstimateGasPrice$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasCOULDNOTESTIMATEGASPRICEContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotEstimateGasPrice$outboundSchema: z.ZodType<
+    CouldNotEstimateGasPrice$Outbound,
+    z.ZodTypeDef,
+    CouldNotEstimateGasPrice
+> = z
+    .instanceof(CouldNotEstimateGasPrice)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTESTIMATEGASPRICEContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_ESTIMATE_GAS_PRICE"),
+                message: z.string().default("Could not estimate gas price."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotEstimateGasPrice$ {
+    /** @deprecated use `CouldNotEstimateGasPrice$inboundSchema` instead. */
+    export const inboundSchema = CouldNotEstimateGasPrice$inboundSchema;
+    /** @deprecated use `CouldNotEstimateGasPrice$outboundSchema` instead. */
+    export const outboundSchema = CouldNotEstimateGasPrice$outboundSchema;
+    /** @deprecated use `CouldNotEstimateGasPrice$Outbound` instead. */
+    export type Outbound = CouldNotEstimateGasPrice$Outbound;
 }

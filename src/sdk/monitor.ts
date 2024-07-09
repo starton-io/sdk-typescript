@@ -59,7 +59,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreateWatcherDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreateWatcherDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -114,11 +114,13 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateWatcherResponse>()
-            .json(201, operations.CreateWatcherResponse$, { key: "Watcher" })
-            .json(400, errors.CreateWatcherResponseBody$, { err: true })
-            .json(409, errors.CreateWatcherMonitorResponseBody$, { err: true })
-            .json(412, errors.CreateWatcherMonitorResponseResponseBody$, { err: true })
-            .json(500, errors.CreateWatcherMonitorResponse500ResponseBody$, { err: true })
+            .json(201, operations.CreateWatcherResponse$inboundSchema, { key: "Watcher" })
+            .json(400, errors.CreateWatcherResponseBody$inboundSchema, { err: true })
+            .json(409, errors.CreateWatcherMonitorResponseBody$inboundSchema, { err: true })
+            .json(412, errors.CreateWatcherMonitorResponseResponseBody$inboundSchema, { err: true })
+            .json(500, errors.CreateWatcherMonitorResponse500ResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -139,7 +141,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteWatcherRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteWatcherRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -196,9 +198,9 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteWatcherResponse>()
-            .json(200, operations.DeleteWatcherResponse$, { key: "number" })
-            .json(400, errors.DeleteWatcherResponseBody$, { err: true })
-            .json(404, errors.DeleteWatcherMonitorResponseBody$, { err: true })
+            .json(200, operations.DeleteWatcherResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteWatcherResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteWatcherMonitorResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -219,7 +221,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllWatcherRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllWatcherRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -280,8 +282,8 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllWatcherResponse>()
-            .json(200, operations.GetAllWatcherResponse$, { key: "WatcherPaginated" })
-            .json(400, errors.GetAllWatcherResponseBody$, { err: true })
+            .json(200, operations.GetAllWatcherResponse$inboundSchema, { key: "WatcherPaginated" })
+            .json(400, errors.GetAllWatcherResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -333,7 +335,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllWatcherEventRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllWatcherEventRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -390,8 +392,10 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllWatcherEventResponse>()
-            .json(200, operations.GetAllWatcherEventResponse$, { key: "WatcherEventPaginated" })
-            .json(400, errors.GetAllWatcherEventResponseBody$, { err: true })
+            .json(200, operations.GetAllWatcherEventResponse$inboundSchema, {
+                key: "WatcherEventPaginated",
+            })
+            .json(400, errors.GetAllWatcherEventResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -445,7 +449,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneWatcherRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneWatcherRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -502,9 +506,9 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneWatcherResponse>()
-            .json(200, operations.GetOneWatcherResponse$, { key: "Watcher" })
-            .json(400, errors.GetOneWatcherResponseBody$, { err: true })
-            .json(404, errors.GetOneWatcherMonitorResponseBody$, { err: true })
+            .json(200, operations.GetOneWatcherResponse$inboundSchema, { key: "Watcher" })
+            .json(400, errors.GetOneWatcherResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneWatcherMonitorResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -525,7 +529,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneWatcherEventRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneWatcherEventRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -586,9 +590,9 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneWatcherEventResponse>()
-            .json(200, operations.GetOneWatcherEventResponse$, { key: "WatcherEvent" })
-            .json(400, errors.GetOneWatcherEventResponseBody$, { err: true })
-            .json(404, errors.GetOneWatcherEventMonitorResponseBody$, { err: true })
+            .json(200, operations.GetOneWatcherEventResponse$inboundSchema, { key: "WatcherEvent" })
+            .json(400, errors.GetOneWatcherEventResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneWatcherEventMonitorResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -609,7 +613,7 @@ export class Monitor extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateWatcherRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateWatcherRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateWatcherDto, { explode: true });
@@ -667,9 +671,9 @@ export class Monitor extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateWatcherResponse>()
-            .json(200, operations.UpdateWatcherResponse$, { key: "Watcher" })
-            .json(400, errors.UpdateWatcherResponseBody$, { err: true })
-            .json(404, errors.UpdateWatcherMonitorResponseBody$, { err: true })
+            .json(200, operations.UpdateWatcherResponse$inboundSchema, { key: "Watcher" })
+            .json(400, errors.UpdateWatcherResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdateWatcherMonitorResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

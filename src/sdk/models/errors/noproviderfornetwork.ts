@@ -59,7 +59,11 @@ export class NoProviderForNetwork extends Error {
     data$: NoProviderForNetworkData;
 
     constructor(err: NoProviderForNetworkData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,119 +86,148 @@ export class NoProviderForNetwork extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "NoProviderForNetwork";
     }
 }
 
 /** @internal */
+export const SchemasNOPROVIDERFORNETWORKContext$inboundSchema: z.ZodType<
+    SchemasNOPROVIDERFORNETWORKContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasNOPROVIDERFORNETWORKContext$Outbound = {};
+
+/** @internal */
+export const SchemasNOPROVIDERFORNETWORKContext$outboundSchema: z.ZodType<
+    SchemasNOPROVIDERFORNETWORKContext$Outbound,
+    z.ZodTypeDef,
+    SchemasNOPROVIDERFORNETWORKContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasNOPROVIDERFORNETWORKContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasNOPROVIDERFORNETWORKContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasNOPROVIDERFORNETWORKContext
-    > = z.object({});
+    /** @deprecated use `SchemasNOPROVIDERFORNETWORKContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasNOPROVIDERFORNETWORKContext$inboundSchema;
+    /** @deprecated use `SchemasNOPROVIDERFORNETWORKContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasNOPROVIDERFORNETWORKContext$outboundSchema;
+    /** @deprecated use `SchemasNOPROVIDERFORNETWORKContext$Outbound` instead. */
+    export type Outbound = SchemasNOPROVIDERFORNETWORKContext$Outbound;
 }
 
 /** @internal */
-export namespace NoProviderForNetwork$ {
-    export const inboundSchema: z.ZodType<NoProviderForNetwork, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
-            message: z.string().default("No provider for network."),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-            });
-
-            return new NoProviderForNetwork(remapped);
+export const NoProviderForNetwork$inboundSchema: z.ZodType<
+    NoProviderForNetwork,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
+        message: z.string().default("No provider for network."),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasNOPROVIDERFORNETWORKContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new NoProviderForNetwork(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoProviderForNetwork> = z
-        .instanceof(NoProviderForNetwork)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
-                    message: z.string().default("No provider for network."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export type NoProviderForNetwork$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasNOPROVIDERFORNETWORKContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const NoProviderForNetwork$outboundSchema: z.ZodType<
+    NoProviderForNetwork$Outbound,
+    z.ZodTypeDef,
+    NoProviderForNetwork
+> = z
+    .instanceof(NoProviderForNetwork)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasNOPROVIDERFORNETWORKContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("NO_PROVIDER_FOR_NETWORK"),
+                message: z.string().default("No provider for network."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace NoProviderForNetwork$ {
+    /** @deprecated use `NoProviderForNetwork$inboundSchema` instead. */
+    export const inboundSchema = NoProviderForNetwork$inboundSchema;
+    /** @deprecated use `NoProviderForNetwork$outboundSchema` instead. */
+    export const outboundSchema = NoProviderForNetwork$outboundSchema;
+    /** @deprecated use `NoProviderForNetwork$Outbound` instead. */
+    export type Outbound = NoProviderForNetwork$Outbound;
 }

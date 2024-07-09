@@ -34,41 +34,58 @@ export type UpdatePinResponse = {
 };
 
 /** @internal */
+export const UpdatePinRequest$inboundSchema: z.ZodType<UpdatePinRequest, z.ZodTypeDef, unknown> = z
+    .object({
+        UpdatePinDto: shared.UpdatePinDto$inboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdatePinDto: "updatePinDto",
+        });
+    });
+
+/** @internal */
+export type UpdatePinRequest$Outbound = {
+    UpdatePinDto: shared.UpdatePinDto$Outbound;
+    id: string;
+};
+
+/** @internal */
+export const UpdatePinRequest$outboundSchema: z.ZodType<
+    UpdatePinRequest$Outbound,
+    z.ZodTypeDef,
+    UpdatePinRequest
+> = z
+    .object({
+        updatePinDto: shared.UpdatePinDto$outboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatePinDto: "UpdatePinDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdatePinRequest$ {
-    export const inboundSchema: z.ZodType<UpdatePinRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            UpdatePinDto: shared.UpdatePinDto$.inboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdatePinDto: "updatePinDto",
-            });
-        });
-
-    export type Outbound = {
-        UpdatePinDto: shared.UpdatePinDto$.Outbound;
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdatePinRequest> = z
-        .object({
-            updatePinDto: shared.UpdatePinDto$.outboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatePinDto: "UpdatePinDto",
-            });
-        });
+    /** @deprecated use `UpdatePinRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdatePinRequest$inboundSchema;
+    /** @deprecated use `UpdatePinRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdatePinRequest$outboundSchema;
+    /** @deprecated use `UpdatePinRequest$Outbound` instead. */
+    export type Outbound = UpdatePinRequest$Outbound;
 }
 
 /** @internal */
-export namespace UpdatePinResponse$ {
-    export const inboundSchema: z.ZodType<UpdatePinResponse, z.ZodTypeDef, unknown> = z
+export const UpdatePinResponse$inboundSchema: z.ZodType<UpdatePinResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Pin: shared.Pin$.inboundSchema.optional(),
+            Pin: shared.Pin$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -81,28 +98,46 @@ export namespace UpdatePinResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type UpdatePinResponse$Outbound = {
+    ContentType: string;
+    Pin?: shared.Pin$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdatePinResponse> = z
-        .object({
-            contentType: z.string(),
-            pin: shared.Pin$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                pin: "Pin",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const UpdatePinResponse$outboundSchema: z.ZodType<
+    UpdatePinResponse$Outbound,
+    z.ZodTypeDef,
+    UpdatePinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        pin: shared.Pin$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            pin: "Pin",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdatePinResponse$ {
+    /** @deprecated use `UpdatePinResponse$inboundSchema` instead. */
+    export const inboundSchema = UpdatePinResponse$inboundSchema;
+    /** @deprecated use `UpdatePinResponse$outboundSchema` instead. */
+    export const outboundSchema = UpdatePinResponse$outboundSchema;
+    /** @deprecated use `UpdatePinResponse$Outbound` instead. */
+    export type Outbound = UpdatePinResponse$Outbound;
 }

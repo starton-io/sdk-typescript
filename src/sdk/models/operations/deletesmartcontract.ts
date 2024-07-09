@@ -30,63 +30,103 @@ export type DeleteSmartContractResponse = {
 };
 
 /** @internal */
+export const DeleteSmartContractRequest$inboundSchema: z.ZodType<
+    DeleteSmartContractRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/** @internal */
+export type DeleteSmartContractRequest$Outbound = {
+    address: string;
+    network: string;
+};
+
+/** @internal */
+export const DeleteSmartContractRequest$outboundSchema: z.ZodType<
+    DeleteSmartContractRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteSmartContractRequest
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteSmartContractRequest$ {
-    export const inboundSchema: z.ZodType<DeleteSmartContractRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            address: z.string(),
-            network: z.string(),
-        });
-
-    export type Outbound = {
-        address: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteSmartContractRequest> =
-        z.object({
-            address: z.string(),
-            network: z.string(),
-        });
+    /** @deprecated use `DeleteSmartContractRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteSmartContractRequest$inboundSchema;
+    /** @deprecated use `DeleteSmartContractRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteSmartContractRequest$outboundSchema;
+    /** @deprecated use `DeleteSmartContractRequest$Outbound` instead. */
+    export type Outbound = DeleteSmartContractRequest$Outbound;
 }
 
 /** @internal */
+export const DeleteSmartContractResponse$inboundSchema: z.ZodType<
+    DeleteSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeleteSmartContractResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    number?: number | undefined;
+};
+
+/** @internal */
+export const DeleteSmartContractResponse$outboundSchema: z.ZodType<
+    DeleteSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteSmartContractResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<DeleteSmartContractResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        number?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteSmartContractResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeleteSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteSmartContractResponse$inboundSchema;
+    /** @deprecated use `DeleteSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteSmartContractResponse$outboundSchema;
+    /** @deprecated use `DeleteSmartContractResponse$Outbound` instead. */
+    export type Outbound = DeleteSmartContractResponse$Outbound;
 }

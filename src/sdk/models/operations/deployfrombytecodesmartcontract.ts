@@ -31,93 +31,117 @@ export type DeployFromBytecodeSmartContractResponse = {
 };
 
 /** @internal */
+export const DeployFromBytecodeSmartContractRequest$inboundSchema: z.ZodType<
+    DeployFromBytecodeSmartContractRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        DeployFromBytecodeDto: shared.DeployFromBytecodeDto$inboundSchema,
+        simulate: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            DeployFromBytecodeDto: "deployFromBytecodeDto",
+        });
+    });
+
+/** @internal */
+export type DeployFromBytecodeSmartContractRequest$Outbound = {
+    DeployFromBytecodeDto: shared.DeployFromBytecodeDto$Outbound;
+    simulate?: boolean | undefined;
+};
+
+/** @internal */
+export const DeployFromBytecodeSmartContractRequest$outboundSchema: z.ZodType<
+    DeployFromBytecodeSmartContractRequest$Outbound,
+    z.ZodTypeDef,
+    DeployFromBytecodeSmartContractRequest
+> = z
+    .object({
+        deployFromBytecodeDto: shared.DeployFromBytecodeDto$outboundSchema,
+        simulate: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deployFromBytecodeDto: "DeployFromBytecodeDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeployFromBytecodeSmartContractRequest$ {
-    export const inboundSchema: z.ZodType<
-        DeployFromBytecodeSmartContractRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            DeployFromBytecodeDto: shared.DeployFromBytecodeDto$.inboundSchema,
-            simulate: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                DeployFromBytecodeDto: "deployFromBytecodeDto",
-            });
-        });
-
-    export type Outbound = {
-        DeployFromBytecodeDto: shared.DeployFromBytecodeDto$.Outbound;
-        simulate?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeployFromBytecodeSmartContractRequest
-    > = z
-        .object({
-            deployFromBytecodeDto: shared.DeployFromBytecodeDto$.outboundSchema,
-            simulate: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                deployFromBytecodeDto: "DeployFromBytecodeDto",
-            });
-        });
+    /** @deprecated use `DeployFromBytecodeSmartContractRequest$inboundSchema` instead. */
+    export const inboundSchema = DeployFromBytecodeSmartContractRequest$inboundSchema;
+    /** @deprecated use `DeployFromBytecodeSmartContractRequest$outboundSchema` instead. */
+    export const outboundSchema = DeployFromBytecodeSmartContractRequest$outboundSchema;
+    /** @deprecated use `DeployFromBytecodeSmartContractRequest$Outbound` instead. */
+    export type Outbound = DeployFromBytecodeSmartContractRequest$Outbound;
 }
 
 /** @internal */
+export const DeployFromBytecodeSmartContractResponse$inboundSchema: z.ZodType<
+    DeployFromBytecodeSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        DeploySmartContractResponse: shared.DeploySmartContractResponse$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            DeploySmartContractResponse: "deploySmartContractResponse",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeployFromBytecodeSmartContractResponse$Outbound = {
+    ContentType: string;
+    DeploySmartContractResponse?: shared.DeploySmartContractResponse$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const DeployFromBytecodeSmartContractResponse$outboundSchema: z.ZodType<
+    DeployFromBytecodeSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    DeployFromBytecodeSmartContractResponse
+> = z
+    .object({
+        contentType: z.string(),
+        deploySmartContractResponse: shared.DeploySmartContractResponse$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            deploySmartContractResponse: "DeploySmartContractResponse",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeployFromBytecodeSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<
-        DeployFromBytecodeSmartContractResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            DeploySmartContractResponse:
-                shared.DeploySmartContractResponse$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                DeploySmartContractResponse: "deploySmartContractResponse",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        DeploySmartContractResponse?: shared.DeploySmartContractResponse$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeployFromBytecodeSmartContractResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            deploySmartContractResponse:
-                shared.DeploySmartContractResponse$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                deploySmartContractResponse: "DeploySmartContractResponse",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeployFromBytecodeSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = DeployFromBytecodeSmartContractResponse$inboundSchema;
+    /** @deprecated use `DeployFromBytecodeSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = DeployFromBytecodeSmartContractResponse$outboundSchema;
+    /** @deprecated use `DeployFromBytecodeSmartContractResponse$Outbound` instead. */
+    export type Outbound = DeployFromBytecodeSmartContractResponse$Outbound;
 }

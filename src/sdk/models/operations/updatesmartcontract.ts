@@ -35,78 +35,120 @@ export type UpdateSmartContractResponse = {
 };
 
 /** @internal */
+export const UpdateSmartContractRequest$inboundSchema: z.ZodType<
+    UpdateSmartContractRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        UpdateSmartContractDto: shared.UpdateSmartContractDto$inboundSchema,
+        address: z.string(),
+        network: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdateSmartContractDto: "updateSmartContractDto",
+        });
+    });
+
+/** @internal */
+export type UpdateSmartContractRequest$Outbound = {
+    UpdateSmartContractDto: shared.UpdateSmartContractDto$Outbound;
+    address: string;
+    network: string;
+};
+
+/** @internal */
+export const UpdateSmartContractRequest$outboundSchema: z.ZodType<
+    UpdateSmartContractRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateSmartContractRequest
+> = z
+    .object({
+        updateSmartContractDto: shared.UpdateSmartContractDto$outboundSchema,
+        address: z.string(),
+        network: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updateSmartContractDto: "UpdateSmartContractDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateSmartContractRequest$ {
-    export const inboundSchema: z.ZodType<UpdateSmartContractRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            UpdateSmartContractDto: shared.UpdateSmartContractDto$.inboundSchema,
-            address: z.string(),
-            network: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdateSmartContractDto: "updateSmartContractDto",
-            });
-        });
-
-    export type Outbound = {
-        UpdateSmartContractDto: shared.UpdateSmartContractDto$.Outbound;
-        address: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSmartContractRequest> = z
-        .object({
-            updateSmartContractDto: shared.UpdateSmartContractDto$.outboundSchema,
-            address: z.string(),
-            network: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updateSmartContractDto: "UpdateSmartContractDto",
-            });
-        });
+    /** @deprecated use `UpdateSmartContractRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateSmartContractRequest$inboundSchema;
+    /** @deprecated use `UpdateSmartContractRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateSmartContractRequest$outboundSchema;
+    /** @deprecated use `UpdateSmartContractRequest$Outbound` instead. */
+    export type Outbound = UpdateSmartContractRequest$Outbound;
 }
 
 /** @internal */
+export const UpdateSmartContractResponse$inboundSchema: z.ZodType<
+    UpdateSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SmartContract: shared.SmartContract$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SmartContract: "smartContract",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type UpdateSmartContractResponse$Outbound = {
+    ContentType: string;
+    SmartContract?: shared.SmartContract$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const UpdateSmartContractResponse$outboundSchema: z.ZodType<
+    UpdateSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    UpdateSmartContractResponse
+> = z
+    .object({
+        contentType: z.string(),
+        smartContract: shared.SmartContract$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            smartContract: "SmartContract",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<UpdateSmartContractResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            SmartContract: shared.SmartContract$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SmartContract: "smartContract",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSmartContractResponse> = z
-        .object({
-            contentType: z.string(),
-            smartContract: shared.SmartContract$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                smartContract: "SmartContract",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UpdateSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = UpdateSmartContractResponse$inboundSchema;
+    /** @deprecated use `UpdateSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = UpdateSmartContractResponse$outboundSchema;
+    /** @deprecated use `UpdateSmartContractResponse$Outbound` instead. */
+    export type Outbound = UpdateSmartContractResponse$Outbound;
 }

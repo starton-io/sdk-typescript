@@ -31,79 +31,105 @@ export type GetOneSmartContractTemplateResponse = {
 };
 
 /** @internal */
+export const GetOneSmartContractTemplateRequest$inboundSchema: z.ZodType<
+    GetOneSmartContractTemplateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+    includeForm: z.boolean().optional(),
+});
+
+/** @internal */
+export type GetOneSmartContractTemplateRequest$Outbound = {
+    id: string;
+    includeForm?: boolean | undefined;
+};
+
+/** @internal */
+export const GetOneSmartContractTemplateRequest$outboundSchema: z.ZodType<
+    GetOneSmartContractTemplateRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneSmartContractTemplateRequest
+> = z.object({
+    id: z.string(),
+    includeForm: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneSmartContractTemplateRequest$ {
-    export const inboundSchema: z.ZodType<
-        GetOneSmartContractTemplateRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.string(),
-        includeForm: z.boolean().optional(),
-    });
-
-    export type Outbound = {
-        id: string;
-        includeForm?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetOneSmartContractTemplateRequest
-    > = z.object({
-        id: z.string(),
-        includeForm: z.boolean().optional(),
-    });
+    /** @deprecated use `GetOneSmartContractTemplateRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneSmartContractTemplateRequest$inboundSchema;
+    /** @deprecated use `GetOneSmartContractTemplateRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneSmartContractTemplateRequest$outboundSchema;
+    /** @deprecated use `GetOneSmartContractTemplateRequest$Outbound` instead. */
+    export type Outbound = GetOneSmartContractTemplateRequest$Outbound;
 }
 
 /** @internal */
+export const GetOneSmartContractTemplateResponse$inboundSchema: z.ZodType<
+    GetOneSmartContractTemplateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SmartContractTemplate: shared.SmartContractTemplate$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SmartContractTemplate: "smartContractTemplate",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetOneSmartContractTemplateResponse$Outbound = {
+    ContentType: string;
+    SmartContractTemplate?: shared.SmartContractTemplate$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetOneSmartContractTemplateResponse$outboundSchema: z.ZodType<
+    GetOneSmartContractTemplateResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneSmartContractTemplateResponse
+> = z
+    .object({
+        contentType: z.string(),
+        smartContractTemplate: shared.SmartContractTemplate$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            smartContractTemplate: "SmartContractTemplate",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneSmartContractTemplateResponse$ {
-    export const inboundSchema: z.ZodType<
-        GetOneSmartContractTemplateResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            SmartContractTemplate: shared.SmartContractTemplate$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SmartContractTemplate: "smartContractTemplate",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SmartContractTemplate?: shared.SmartContractTemplate$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetOneSmartContractTemplateResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            smartContractTemplate: shared.SmartContractTemplate$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                smartContractTemplate: "SmartContractTemplate",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetOneSmartContractTemplateResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneSmartContractTemplateResponse$inboundSchema;
+    /** @deprecated use `GetOneSmartContractTemplateResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneSmartContractTemplateResponse$outboundSchema;
+    /** @deprecated use `GetOneSmartContractTemplateResponse$Outbound` instead. */
+    export type Outbound = GetOneSmartContractTemplateResponse$Outbound;
 }

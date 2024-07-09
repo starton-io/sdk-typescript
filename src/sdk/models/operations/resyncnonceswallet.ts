@@ -34,63 +34,103 @@ export type ResyncNoncesWalletResponse = {
 };
 
 /** @internal */
+export const ResyncNoncesWalletRequest$inboundSchema: z.ZodType<
+    ResyncNoncesWalletRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/** @internal */
+export type ResyncNoncesWalletRequest$Outbound = {
+    address: string;
+    network: string;
+};
+
+/** @internal */
+export const ResyncNoncesWalletRequest$outboundSchema: z.ZodType<
+    ResyncNoncesWalletRequest$Outbound,
+    z.ZodTypeDef,
+    ResyncNoncesWalletRequest
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ResyncNoncesWalletRequest$ {
-    export const inboundSchema: z.ZodType<ResyncNoncesWalletRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            address: z.string(),
-            network: z.string(),
-        });
-
-    export type Outbound = {
-        address: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResyncNoncesWalletRequest> =
-        z.object({
-            address: z.string(),
-            network: z.string(),
-        });
+    /** @deprecated use `ResyncNoncesWalletRequest$inboundSchema` instead. */
+    export const inboundSchema = ResyncNoncesWalletRequest$inboundSchema;
+    /** @deprecated use `ResyncNoncesWalletRequest$outboundSchema` instead. */
+    export const outboundSchema = ResyncNoncesWalletRequest$outboundSchema;
+    /** @deprecated use `ResyncNoncesWalletRequest$Outbound` instead. */
+    export type Outbound = ResyncNoncesWalletRequest$Outbound;
 }
 
 /** @internal */
+export const ResyncNoncesWalletResponse$inboundSchema: z.ZodType<
+    ResyncNoncesWalletResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        resyncNonce: shared.ResyncNonce$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type ResyncNoncesWalletResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    resyncNonce?: shared.ResyncNonce$Outbound | undefined;
+};
+
+/** @internal */
+export const ResyncNoncesWalletResponse$outboundSchema: z.ZodType<
+    ResyncNoncesWalletResponse$Outbound,
+    z.ZodTypeDef,
+    ResyncNoncesWalletResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        resyncNonce: shared.ResyncNonce$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ResyncNoncesWalletResponse$ {
-    export const inboundSchema: z.ZodType<ResyncNoncesWalletResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            resyncNonce: shared.ResyncNonce$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        resyncNonce?: shared.ResyncNonce$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResyncNoncesWalletResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            resyncNonce: shared.ResyncNonce$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `ResyncNoncesWalletResponse$inboundSchema` instead. */
+    export const inboundSchema = ResyncNoncesWalletResponse$inboundSchema;
+    /** @deprecated use `ResyncNoncesWalletResponse$outboundSchema` instead. */
+    export const outboundSchema = ResyncNoncesWalletResponse$outboundSchema;
+    /** @deprecated use `ResyncNoncesWalletResponse$Outbound` instead. */
+    export type Outbound = ResyncNoncesWalletResponse$Outbound;
 }

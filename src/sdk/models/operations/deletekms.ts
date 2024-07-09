@@ -29,23 +29,41 @@ export type DeleteKmsResponse = {
 };
 
 /** @internal */
+export const DeleteKmsRequest$inboundSchema: z.ZodType<DeleteKmsRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+    });
+
+/** @internal */
+export type DeleteKmsRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const DeleteKmsRequest$outboundSchema: z.ZodType<
+    DeleteKmsRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteKmsRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteKmsRequest$ {
-    export const inboundSchema: z.ZodType<DeleteKmsRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteKmsRequest> = z.object({
-        id: z.string(),
-    });
+    /** @deprecated use `DeleteKmsRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteKmsRequest$inboundSchema;
+    /** @deprecated use `DeleteKmsRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteKmsRequest$outboundSchema;
+    /** @deprecated use `DeleteKmsRequest$Outbound` instead. */
+    export type Outbound = DeleteKmsRequest$Outbound;
 }
 
 /** @internal */
-export namespace DeleteKmsResponse$ {
-    export const inboundSchema: z.ZodType<DeleteKmsResponse, z.ZodTypeDef, unknown> = z
+export const DeleteKmsResponse$inboundSchema: z.ZodType<DeleteKmsResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),
@@ -60,27 +78,45 @@ export namespace DeleteKmsResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        number?: number | undefined;
-    };
+/** @internal */
+export type DeleteKmsResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    number?: number | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteKmsResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const DeleteKmsResponse$outboundSchema: z.ZodType<
+    DeleteKmsResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteKmsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DeleteKmsResponse$ {
+    /** @deprecated use `DeleteKmsResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteKmsResponse$inboundSchema;
+    /** @deprecated use `DeleteKmsResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteKmsResponse$outboundSchema;
+    /** @deprecated use `DeleteKmsResponse$Outbound` instead. */
+    export type Outbound = DeleteKmsResponse$Outbound;
 }

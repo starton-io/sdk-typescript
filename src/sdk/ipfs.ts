@@ -60,7 +60,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeletePinRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeletePinRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -117,9 +117,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeletePinResponse>()
-            .json(200, operations.DeletePinResponse$, { key: "boolean" })
-            .json(400, errors.DeletePinResponseBody$, { err: true })
-            .json(404, errors.DeletePinIpfsResponseBody$, { err: true })
+            .json(200, operations.DeletePinResponse$inboundSchema, { key: "boolean" })
+            .json(400, errors.DeletePinResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeletePinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -140,7 +140,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllPinRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllPinRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -198,8 +198,8 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllPinResponse>()
-            .json(200, operations.GetAllPinResponse$, { key: "PinPaginated" })
-            .json(400, errors.GetAllPinResponseBody$, { err: true })
+            .json(200, operations.GetAllPinResponse$inboundSchema, { key: "PinPaginated" })
+            .json(400, errors.GetAllPinResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -251,7 +251,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOnePinRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOnePinRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -310,9 +310,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOnePinResponse>()
-            .json(200, operations.GetOnePinResponse$, { key: "Pin" })
-            .json(400, errors.GetOnePinResponseBody$, { err: true })
-            .json(404, errors.GetOnePinIpfsResponseBody$, { err: true })
+            .json(200, operations.GetOnePinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.GetOnePinResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOnePinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -371,8 +371,8 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetStorageUsedPinResponse>()
-            .json(200, operations.GetStorageUsedPinResponse$, { key: "StorageUsed" })
-            .json(400, errors.GetStorageUsedPinResponseBody$, { err: true })
+            .json(200, operations.GetStorageUsedPinResponse$inboundSchema, { key: "StorageUsed" })
+            .json(400, errors.GetStorageUsedPinResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -393,7 +393,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreatePinDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreatePinDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -448,9 +448,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreatePinResponse>()
-            .json(201, operations.CreatePinResponse$, { key: "Pin" })
-            .json(400, errors.CreatePinResponseBody$, { err: true })
-            .json(413, errors.CreatePinIpfsResponseBody$, { err: true })
+            .json(201, operations.CreatePinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.CreatePinResponseBody$inboundSchema, { err: true })
+            .json(413, errors.CreatePinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -471,7 +471,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdatePinRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdatePinRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdatePinDto, { explode: true });
@@ -529,9 +529,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdatePinResponse>()
-            .json(200, operations.UpdatePinResponse$, { key: "Pin" })
-            .json(400, errors.UpdatePinResponseBody$, { err: true })
-            .json(404, errors.UpdatePinIpfsResponseBody$, { err: true })
+            .json(200, operations.UpdatePinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.UpdatePinResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdatePinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -552,7 +552,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadFromFilePinRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.UploadFromFilePinRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = new FormData();
@@ -621,9 +621,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadFromFilePinResponse>()
-            .json(201, operations.UploadFromFilePinResponse$, { key: "Pin" })
-            .json(400, errors.UploadFromFilePinResponseBody$, { err: true })
-            .json(413, errors.UploadFromFilePinIpfsResponseBody$, { err: true })
+            .json(201, operations.UploadFromFilePinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.UploadFromFilePinResponseBody$inboundSchema, { err: true })
+            .json(413, errors.UploadFromFilePinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -644,7 +644,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadFromFolderPinRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.UploadFromFolderPinRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = new FormData();
@@ -705,9 +705,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadFromFolderPinResponse>()
-            .json(201, operations.UploadFromFolderPinResponse$, { key: "Pin" })
-            .json(400, errors.UploadFromFolderPinResponseBody$, { err: true })
-            .json(413, errors.UploadFromFolderPinIpfsResponseBody$, { err: true })
+            .json(201, operations.UploadFromFolderPinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.UploadFromFolderPinResponseBody$inboundSchema, { err: true })
+            .json(413, errors.UploadFromFolderPinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -728,7 +728,7 @@ export class Ipfs extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.UploadJsonDto$.outboundSchema.parse(value$),
+            (value$) => shared.UploadJsonDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -783,9 +783,9 @@ export class Ipfs extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadFromJsonPinResponse>()
-            .json(201, operations.UploadFromJsonPinResponse$, { key: "Pin" })
-            .json(400, errors.UploadFromJsonPinResponseBody$, { err: true })
-            .json(413, errors.UploadFromJsonPinIpfsResponseBody$, { err: true })
+            .json(201, operations.UploadFromJsonPinResponse$inboundSchema, { key: "Pin" })
+            .json(400, errors.UploadFromJsonPinResponseBody$inboundSchema, { err: true })
+            .json(413, errors.UploadFromJsonPinIpfsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

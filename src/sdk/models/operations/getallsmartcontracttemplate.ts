@@ -57,142 +57,190 @@ export type GetAllSmartContractTemplateResponse = {
 };
 
 /** @internal */
+export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+
+/** @internal */
+export const Category$outboundSchema: z.ZodNativeEnum<typeof Category> = Category$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Category$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
-    export const outboundSchema: z.ZodNativeEnum<typeof Category> = inboundSchema;
+    /** @deprecated use `Category$inboundSchema` instead. */
+    export const inboundSchema = Category$inboundSchema;
+    /** @deprecated use `Category$outboundSchema` instead. */
+    export const outboundSchema = Category$outboundSchema;
 }
 
 /** @internal */
+export const GetAllSmartContractTemplateRequest$inboundSchema: z.ZodType<
+    GetAllSmartContractTemplateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    blockchain: z.string().optional(),
+    category: Category$inboundSchema.optional(),
+    includeCompilationDetails: z.boolean().optional(),
+    includeForm: z.boolean().optional(),
+    isActivated: z.boolean().optional(),
+    isAudited: z.boolean().optional(),
+    limit: z.number().int().default(100),
+    name: z.string().optional(),
+    page: z.number().int().optional(),
+});
+
+/** @internal */
+export type GetAllSmartContractTemplateRequest$Outbound = {
+    blockchain?: string | undefined;
+    category?: string | undefined;
+    includeCompilationDetails?: boolean | undefined;
+    includeForm?: boolean | undefined;
+    isActivated?: boolean | undefined;
+    isAudited?: boolean | undefined;
+    limit: number;
+    name?: string | undefined;
+    page?: number | undefined;
+};
+
+/** @internal */
+export const GetAllSmartContractTemplateRequest$outboundSchema: z.ZodType<
+    GetAllSmartContractTemplateRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllSmartContractTemplateRequest
+> = z.object({
+    blockchain: z.string().optional(),
+    category: Category$outboundSchema.optional(),
+    includeCompilationDetails: z.boolean().optional(),
+    includeForm: z.boolean().optional(),
+    isActivated: z.boolean().optional(),
+    isAudited: z.boolean().optional(),
+    limit: z.number().int().default(100),
+    name: z.string().optional(),
+    page: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllSmartContractTemplateRequest$ {
-    export const inboundSchema: z.ZodType<
-        GetAllSmartContractTemplateRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        blockchain: z.string().optional(),
-        category: Category$.inboundSchema.optional(),
-        includeCompilationDetails: z.boolean().optional(),
-        includeForm: z.boolean().optional(),
-        isActivated: z.boolean().optional(),
-        isAudited: z.boolean().optional(),
-        limit: z.number().int().default(100),
-        name: z.string().optional(),
-        page: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        blockchain?: string | undefined;
-        category?: string | undefined;
-        includeCompilationDetails?: boolean | undefined;
-        includeForm?: boolean | undefined;
-        isActivated?: boolean | undefined;
-        isAudited?: boolean | undefined;
-        limit: number;
-        name?: string | undefined;
-        page?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAllSmartContractTemplateRequest
-    > = z.object({
-        blockchain: z.string().optional(),
-        category: Category$.outboundSchema.optional(),
-        includeCompilationDetails: z.boolean().optional(),
-        includeForm: z.boolean().optional(),
-        isActivated: z.boolean().optional(),
-        isAudited: z.boolean().optional(),
-        limit: z.number().int().default(100),
-        name: z.string().optional(),
-        page: z.number().int().optional(),
-    });
+    /** @deprecated use `GetAllSmartContractTemplateRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllSmartContractTemplateRequest$inboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllSmartContractTemplateRequest$outboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateRequest$Outbound` instead. */
+    export type Outbound = GetAllSmartContractTemplateRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema: z.ZodType<
+    GetAllSmartContractTemplateSmartContractTemplatePaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.SmartContractTemplate$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound = {
+    items: Array<shared.SmartContractTemplate$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllSmartContractTemplateSmartContractTemplatePaginated$outboundSchema: z.ZodType<
+    GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllSmartContractTemplateSmartContractTemplatePaginated
+> = z.object({
+    items: z.array(shared.SmartContractTemplate$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllSmartContractTemplateSmartContractTemplatePaginated$ {
-    export const inboundSchema: z.ZodType<
-        GetAllSmartContractTemplateSmartContractTemplatePaginated,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        items: z.array(shared.SmartContractTemplate$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.SmartContractTemplate$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAllSmartContractTemplateSmartContractTemplatePaginated
-    > = z.object({
-        items: z.array(shared.SmartContractTemplate$.outboundSchema),
-        meta: shared.PaginationData$.outboundSchema,
-    });
+    /** @deprecated use `GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema` instead. */
+    export const inboundSchema =
+        GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateSmartContractTemplatePaginated$outboundSchema` instead. */
+    export const outboundSchema =
+        GetAllSmartContractTemplateSmartContractTemplatePaginated$outboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound` instead. */
+    export type Outbound = GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound;
 }
 
 /** @internal */
+export const GetAllSmartContractTemplateResponse$inboundSchema: z.ZodType<
+    GetAllSmartContractTemplateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SmartContractTemplatePaginated: z
+            .lazy(() => GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema)
+            .optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SmartContractTemplatePaginated: "smartContractTemplatePaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAllSmartContractTemplateResponse$Outbound = {
+    ContentType: string;
+    SmartContractTemplatePaginated?:
+        | GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound
+        | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAllSmartContractTemplateResponse$outboundSchema: z.ZodType<
+    GetAllSmartContractTemplateResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllSmartContractTemplateResponse
+> = z
+    .object({
+        contentType: z.string(),
+        smartContractTemplatePaginated: z
+            .lazy(() => GetAllSmartContractTemplateSmartContractTemplatePaginated$outboundSchema)
+            .optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            smartContractTemplatePaginated: "SmartContractTemplatePaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllSmartContractTemplateResponse$ {
-    export const inboundSchema: z.ZodType<
-        GetAllSmartContractTemplateResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            SmartContractTemplatePaginated: z
-                .lazy(
-                    () => GetAllSmartContractTemplateSmartContractTemplatePaginated$.inboundSchema
-                )
-                .optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SmartContractTemplatePaginated: "smartContractTemplatePaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SmartContractTemplatePaginated?:
-            | GetAllSmartContractTemplateSmartContractTemplatePaginated$.Outbound
-            | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAllSmartContractTemplateResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            smartContractTemplatePaginated: z
-                .lazy(
-                    () => GetAllSmartContractTemplateSmartContractTemplatePaginated$.outboundSchema
-                )
-                .optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                smartContractTemplatePaginated: "SmartContractTemplatePaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAllSmartContractTemplateResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllSmartContractTemplateResponse$inboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllSmartContractTemplateResponse$outboundSchema;
+    /** @deprecated use `GetAllSmartContractTemplateResponse$Outbound` instead. */
+    export type Outbound = GetAllSmartContractTemplateResponse$Outbound;
 }

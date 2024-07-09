@@ -52,7 +52,7 @@ export class Setting extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllSettingRelayerRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllSettingRelayerRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -112,11 +112,15 @@ export class Setting extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetAllSettingRelayerResponse>()
-            .json(200, operations.GetAllSettingRelayerResponse$, { key: "SettingRelayer" })
-            .json(400, errors.GetAllSettingRelayerResponseBody$, { err: true })
-            .json(404, errors.GetAllSettingRelayerTransactionManagerSettingResponseBody$, {
-                err: true,
+            .json(200, operations.GetAllSettingRelayerResponse$inboundSchema, {
+                key: "SettingRelayer",
             })
+            .json(400, errors.GetAllSettingRelayerResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.GetAllSettingRelayerTransactionManagerSettingResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -137,7 +141,7 @@ export class Setting extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateSettingRelayerRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateSettingRelayerRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateSettingRelayerDto, { explode: true });
@@ -198,11 +202,15 @@ export class Setting extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateSettingRelayerResponse>()
-            .json(200, operations.UpdateSettingRelayerResponse$, { key: "SettingRelayer" })
-            .json(400, errors.UpdateSettingRelayerResponseBody$, { err: true })
-            .json(404, errors.UpdateSettingRelayerTransactionManagerSettingResponseBody$, {
-                err: true,
+            .json(200, operations.UpdateSettingRelayerResponse$inboundSchema, {
+                key: "SettingRelayer",
             })
+            .json(400, errors.UpdateSettingRelayerResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.UpdateSettingRelayerTransactionManagerSettingResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

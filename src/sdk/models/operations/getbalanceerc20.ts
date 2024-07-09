@@ -38,69 +38,108 @@ export type GetBalanceErc20Response = {
 };
 
 /** @internal */
+export const GetBalanceErc20Request$inboundSchema: z.ZodType<
+    GetBalanceErc20Request,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    contractAddress: z.string(),
+    network: z.string(),
+});
+
+/** @internal */
+export type GetBalanceErc20Request$Outbound = {
+    address: string;
+    contractAddress: string;
+    network: string;
+};
+
+/** @internal */
+export const GetBalanceErc20Request$outboundSchema: z.ZodType<
+    GetBalanceErc20Request$Outbound,
+    z.ZodTypeDef,
+    GetBalanceErc20Request
+> = z.object({
+    address: z.string(),
+    contractAddress: z.string(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetBalanceErc20Request$ {
-    export const inboundSchema: z.ZodType<GetBalanceErc20Request, z.ZodTypeDef, unknown> = z.object(
-        {
-            address: z.string(),
-            contractAddress: z.string(),
-            network: z.string(),
-        }
-    );
-
-    export type Outbound = {
-        address: string;
-        contractAddress: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBalanceErc20Request> =
-        z.object({
-            address: z.string(),
-            contractAddress: z.string(),
-            network: z.string(),
-        });
+    /** @deprecated use `GetBalanceErc20Request$inboundSchema` instead. */
+    export const inboundSchema = GetBalanceErc20Request$inboundSchema;
+    /** @deprecated use `GetBalanceErc20Request$outboundSchema` instead. */
+    export const outboundSchema = GetBalanceErc20Request$outboundSchema;
+    /** @deprecated use `GetBalanceErc20Request$Outbound` instead. */
+    export type Outbound = GetBalanceErc20Request$Outbound;
 }
 
 /** @internal */
+export const GetBalanceErc20Response$inboundSchema: z.ZodType<
+    GetBalanceErc20Response,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        ERC20BalanceResponse: shared.Erc20BalanceResponse$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            ERC20BalanceResponse: "erc20BalanceResponse",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetBalanceErc20Response$Outbound = {
+    ContentType: string;
+    ERC20BalanceResponse?: shared.Erc20BalanceResponse$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetBalanceErc20Response$outboundSchema: z.ZodType<
+    GetBalanceErc20Response$Outbound,
+    z.ZodTypeDef,
+    GetBalanceErc20Response
+> = z
+    .object({
+        contentType: z.string(),
+        erc20BalanceResponse: shared.Erc20BalanceResponse$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            erc20BalanceResponse: "ERC20BalanceResponse",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetBalanceErc20Response$ {
-    export const inboundSchema: z.ZodType<GetBalanceErc20Response, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            ERC20BalanceResponse: shared.Erc20BalanceResponse$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                ERC20BalanceResponse: "erc20BalanceResponse",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        ERC20BalanceResponse?: shared.Erc20BalanceResponse$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBalanceErc20Response> = z
-        .object({
-            contentType: z.string(),
-            erc20BalanceResponse: shared.Erc20BalanceResponse$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                erc20BalanceResponse: "ERC20BalanceResponse",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetBalanceErc20Response$inboundSchema` instead. */
+    export const inboundSchema = GetBalanceErc20Response$inboundSchema;
+    /** @deprecated use `GetBalanceErc20Response$outboundSchema` instead. */
+    export const outboundSchema = GetBalanceErc20Response$outboundSchema;
+    /** @deprecated use `GetBalanceErc20Response$Outbound` instead. */
+    export type Outbound = GetBalanceErc20Response$Outbound;
 }

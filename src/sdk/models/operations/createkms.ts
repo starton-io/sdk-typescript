@@ -23,11 +23,11 @@ export type CreateKmsResponse = {
 };
 
 /** @internal */
-export namespace CreateKmsResponse$ {
-    export const inboundSchema: z.ZodType<CreateKmsResponse, z.ZodTypeDef, unknown> = z
+export const CreateKmsResponse$inboundSchema: z.ZodType<CreateKmsResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Kms: shared.Kms$.inboundSchema.optional(),
+            Kms: shared.Kms$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -40,28 +40,46 @@ export namespace CreateKmsResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Kms?: shared.Kms$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type CreateKmsResponse$Outbound = {
+    ContentType: string;
+    Kms?: shared.Kms$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateKmsResponse> = z
-        .object({
-            contentType: z.string(),
-            kms: shared.Kms$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                kms: "Kms",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const CreateKmsResponse$outboundSchema: z.ZodType<
+    CreateKmsResponse$Outbound,
+    z.ZodTypeDef,
+    CreateKmsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        kms: shared.Kms$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            kms: "Kms",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateKmsResponse$ {
+    /** @deprecated use `CreateKmsResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateKmsResponse$inboundSchema;
+    /** @deprecated use `CreateKmsResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateKmsResponse$outboundSchema;
+    /** @deprecated use `CreateKmsResponse$Outbound` instead. */
+    export type Outbound = CreateKmsResponse$Outbound;
 }

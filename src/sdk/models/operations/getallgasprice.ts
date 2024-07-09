@@ -30,61 +30,102 @@ export type GetAllGasPriceResponse = {
 };
 
 /** @internal */
+export const GetAllGasPriceRequest$inboundSchema: z.ZodType<
+    GetAllGasPriceRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: z.string(),
+});
+
+/** @internal */
+export type GetAllGasPriceRequest$Outbound = {
+    network: string;
+};
+
+/** @internal */
+export const GetAllGasPriceRequest$outboundSchema: z.ZodType<
+    GetAllGasPriceRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllGasPriceRequest
+> = z.object({
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllGasPriceRequest$ {
-    export const inboundSchema: z.ZodType<GetAllGasPriceRequest, z.ZodTypeDef, unknown> = z.object({
-        network: z.string(),
-    });
-
-    export type Outbound = {
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllGasPriceRequest> =
-        z.object({
-            network: z.string(),
-        });
+    /** @deprecated use `GetAllGasPriceRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllGasPriceRequest$inboundSchema;
+    /** @deprecated use `GetAllGasPriceRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllGasPriceRequest$outboundSchema;
+    /** @deprecated use `GetAllGasPriceRequest$Outbound` instead. */
+    export type Outbound = GetAllGasPriceRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllGasPriceResponse$inboundSchema: z.ZodType<
+    GetAllGasPriceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        GasPrices: shared.GasPrices$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            GasPrices: "gasPrices",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAllGasPriceResponse$Outbound = {
+    ContentType: string;
+    GasPrices?: shared.GasPrices$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAllGasPriceResponse$outboundSchema: z.ZodType<
+    GetAllGasPriceResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllGasPriceResponse
+> = z
+    .object({
+        contentType: z.string(),
+        gasPrices: shared.GasPrices$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            gasPrices: "GasPrices",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllGasPriceResponse$ {
-    export const inboundSchema: z.ZodType<GetAllGasPriceResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            GasPrices: shared.GasPrices$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                GasPrices: "gasPrices",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        GasPrices?: shared.GasPrices$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllGasPriceResponse> = z
-        .object({
-            contentType: z.string(),
-            gasPrices: shared.GasPrices$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                gasPrices: "GasPrices",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAllGasPriceResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllGasPriceResponse$inboundSchema;
+    /** @deprecated use `GetAllGasPriceResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllGasPriceResponse$outboundSchema;
+    /** @deprecated use `GetAllGasPriceResponse$Outbound` instead. */
+    export type Outbound = GetAllGasPriceResponse$Outbound;
 }

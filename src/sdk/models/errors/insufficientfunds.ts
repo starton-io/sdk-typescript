@@ -59,7 +59,11 @@ export class InsufficientFunds extends Error {
     data$: InsufficientFundsData;
 
     constructor(err: InsufficientFundsData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,39 +86,50 @@ export class InsufficientFunds extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "InsufficientFunds";
     }
 }
 
 /** @internal */
+export const SchemasINSUFFICIENTFUNDSContext$inboundSchema: z.ZodType<
+    SchemasINSUFFICIENTFUNDSContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasINSUFFICIENTFUNDSContext$Outbound = {};
+
+/** @internal */
+export const SchemasINSUFFICIENTFUNDSContext$outboundSchema: z.ZodType<
+    SchemasINSUFFICIENTFUNDSContext$Outbound,
+    z.ZodTypeDef,
+    SchemasINSUFFICIENTFUNDSContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasINSUFFICIENTFUNDSContext$ {
-    export const inboundSchema: z.ZodType<SchemasINSUFFICIENTFUNDSContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasINSUFFICIENTFUNDSContext
-    > = z.object({});
+    /** @deprecated use `SchemasINSUFFICIENTFUNDSContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasINSUFFICIENTFUNDSContext$inboundSchema;
+    /** @deprecated use `SchemasINSUFFICIENTFUNDSContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasINSUFFICIENTFUNDSContext$outboundSchema;
+    /** @deprecated use `SchemasINSUFFICIENTFUNDSContext$Outbound` instead. */
+    export type Outbound = SchemasINSUFFICIENTFUNDSContext$Outbound;
 }
 
 /** @internal */
-export namespace InsufficientFunds$ {
-    export const inboundSchema: z.ZodType<InsufficientFunds, z.ZodTypeDef, unknown> = z
+export const InsufficientFunds$inboundSchema: z.ZodType<InsufficientFunds, z.ZodTypeDef, unknown> =
+    z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
             context: z
-                .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$.inboundSchema))
+                .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$inboundSchema))
                 .optional(),
             errorCode: z.string().default("INSUFFICIENT_FUNDS"),
             message: z.string().default("Your funds are insufficient."),
@@ -133,65 +148,83 @@ export namespace InsufficientFunds$ {
             return new InsufficientFunds(remapped);
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasINSUFFICIENTFUNDSContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+/** @internal */
+export type InsufficientFunds$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasINSUFFICIENTFUNDSContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InsufficientFunds> = z
-        .instanceof(InsufficientFunds)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("INSUFFICIENT_FUNDS"),
-                    message: z.string().default("Your funds are insufficient."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export const InsufficientFunds$outboundSchema: z.ZodType<
+    InsufficientFunds$Outbound,
+    z.ZodTypeDef,
+    InsufficientFunds
+> = z
+    .instanceof(InsufficientFunds)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasINSUFFICIENTFUNDSContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("INSUFFICIENT_FUNDS"),
+                message: z.string().default("Your funds are insufficient."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InsufficientFunds$ {
+    /** @deprecated use `InsufficientFunds$inboundSchema` instead. */
+    export const inboundSchema = InsufficientFunds$inboundSchema;
+    /** @deprecated use `InsufficientFunds$outboundSchema` instead. */
+    export const outboundSchema = InsufficientFunds$outboundSchema;
+    /** @deprecated use `InsufficientFunds$Outbound` instead. */
+    export type Outbound = InsufficientFunds$Outbound;
 }

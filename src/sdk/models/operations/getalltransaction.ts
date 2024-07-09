@@ -59,117 +59,170 @@ export type GetAllTransactionResponse = {
 };
 
 /** @internal */
+export const GetAllTransactionRequest$inboundSchema: z.ZodType<
+    GetAllTransactionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    from: z.string().optional(),
+    fromDate: z
+        .string()
+        .datetime({ offset: true })
+        .transform((v) => new Date(v))
+        .optional(),
+    limit: z.number().int().default(100),
+    network: z.string().optional(),
+    page: z.number().int().optional(),
+    to: z.string().optional(),
+    transactionHash: z.string().optional(),
+});
+
+/** @internal */
+export type GetAllTransactionRequest$Outbound = {
+    from?: string | undefined;
+    fromDate?: string | undefined;
+    limit: number;
+    network?: string | undefined;
+    page?: number | undefined;
+    to?: string | undefined;
+    transactionHash?: string | undefined;
+};
+
+/** @internal */
+export const GetAllTransactionRequest$outboundSchema: z.ZodType<
+    GetAllTransactionRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllTransactionRequest
+> = z.object({
+    from: z.string().optional(),
+    fromDate: z
+        .date()
+        .transform((v) => v.toISOString())
+        .optional(),
+    limit: z.number().int().default(100),
+    network: z.string().optional(),
+    page: z.number().int().optional(),
+    to: z.string().optional(),
+    transactionHash: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllTransactionRequest$ {
-    export const inboundSchema: z.ZodType<GetAllTransactionRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            from: z.string().optional(),
-            fromDate: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            limit: z.number().int().default(100),
-            network: z.string().optional(),
-            page: z.number().int().optional(),
-            to: z.string().optional(),
-            transactionHash: z.string().optional(),
-        });
-
-    export type Outbound = {
-        from?: string | undefined;
-        fromDate?: string | undefined;
-        limit: number;
-        network?: string | undefined;
-        page?: number | undefined;
-        to?: string | undefined;
-        transactionHash?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllTransactionRequest> =
-        z.object({
-            from: z.string().optional(),
-            fromDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            limit: z.number().int().default(100),
-            network: z.string().optional(),
-            page: z.number().int().optional(),
-            to: z.string().optional(),
-            transactionHash: z.string().optional(),
-        });
+    /** @deprecated use `GetAllTransactionRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllTransactionRequest$inboundSchema;
+    /** @deprecated use `GetAllTransactionRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllTransactionRequest$outboundSchema;
+    /** @deprecated use `GetAllTransactionRequest$Outbound` instead. */
+    export type Outbound = GetAllTransactionRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllTransactionTransactionPaginated$inboundSchema: z.ZodType<
+    GetAllTransactionTransactionPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Transaction$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllTransactionTransactionPaginated$Outbound = {
+    items: Array<shared.Transaction$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllTransactionTransactionPaginated$outboundSchema: z.ZodType<
+    GetAllTransactionTransactionPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllTransactionTransactionPaginated
+> = z.object({
+    items: z.array(shared.Transaction$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllTransactionTransactionPaginated$ {
-    export const inboundSchema: z.ZodType<
-        GetAllTransactionTransactionPaginated,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        items: z.array(shared.Transaction$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.Transaction$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAllTransactionTransactionPaginated
-    > = z.object({
-        items: z.array(shared.Transaction$.outboundSchema),
-        meta: shared.PaginationData$.outboundSchema,
-    });
+    /** @deprecated use `GetAllTransactionTransactionPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllTransactionTransactionPaginated$inboundSchema;
+    /** @deprecated use `GetAllTransactionTransactionPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllTransactionTransactionPaginated$outboundSchema;
+    /** @deprecated use `GetAllTransactionTransactionPaginated$Outbound` instead. */
+    export type Outbound = GetAllTransactionTransactionPaginated$Outbound;
 }
 
 /** @internal */
+export const GetAllTransactionResponse$inboundSchema: z.ZodType<
+    GetAllTransactionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TransactionPaginated: z
+            .lazy(() => GetAllTransactionTransactionPaginated$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TransactionPaginated: "transactionPaginated",
+        });
+    });
+
+/** @internal */
+export type GetAllTransactionResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TransactionPaginated?: GetAllTransactionTransactionPaginated$Outbound | undefined;
+};
+
+/** @internal */
+export const GetAllTransactionResponse$outboundSchema: z.ZodType<
+    GetAllTransactionResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllTransactionResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        transactionPaginated: z
+            .lazy(() => GetAllTransactionTransactionPaginated$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            transactionPaginated: "TransactionPaginated",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllTransactionResponse$ {
-    export const inboundSchema: z.ZodType<GetAllTransactionResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TransactionPaginated: z
-                .lazy(() => GetAllTransactionTransactionPaginated$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TransactionPaginated: "transactionPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TransactionPaginated?: GetAllTransactionTransactionPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllTransactionResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            transactionPaginated: z
-                .lazy(() => GetAllTransactionTransactionPaginated$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                transactionPaginated: "TransactionPaginated",
-            });
-        });
+    /** @deprecated use `GetAllTransactionResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllTransactionResponse$inboundSchema;
+    /** @deprecated use `GetAllTransactionResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllTransactionResponse$outboundSchema;
+    /** @deprecated use `GetAllTransactionResponse$Outbound` instead. */
+    export type Outbound = GetAllTransactionResponse$Outbound;
 }

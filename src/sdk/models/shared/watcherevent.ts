@@ -27,76 +27,120 @@ export type WatcherEvent = {
 };
 
 /** @internal */
+export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Payload$Outbound = {};
+
+/** @internal */
+export const Payload$outboundSchema: z.ZodType<Payload$Outbound, z.ZodTypeDef, Payload> = z.object(
+    {}
+);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Payload$ {
-    export const inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Payload> = z.object({});
+    /** @deprecated use `Payload$inboundSchema` instead. */
+    export const inboundSchema = Payload$inboundSchema;
+    /** @deprecated use `Payload$outboundSchema` instead. */
+    export const outboundSchema = Payload$outboundSchema;
+    /** @deprecated use `Payload$Outbound` instead. */
+    export type Outbound = Payload$Outbound;
 }
 
 /** @internal */
+export const WatcherEventStatus$inboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> =
+    z.nativeEnum(WatcherEventStatus);
+
+/** @internal */
+export const WatcherEventStatus$outboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> =
+    WatcherEventStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherEventStatus$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> =
-        z.nativeEnum(WatcherEventStatus);
-    export const outboundSchema: z.ZodNativeEnum<typeof WatcherEventStatus> = inboundSchema;
+    /** @deprecated use `WatcherEventStatus$inboundSchema` instead. */
+    export const inboundSchema = WatcherEventStatus$inboundSchema;
+    /** @deprecated use `WatcherEventStatus$outboundSchema` instead. */
+    export const outboundSchema = WatcherEventStatus$outboundSchema;
 }
 
 /** @internal */
+export const WatcherEvent$inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, unknown> = z.object({
+    blockHash: z.string(),
+    blockNumber: z.number(),
+    createdAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:34:03.892Z")
+        .transform((v) => new Date(v)),
+    id: z.string(),
+    network: z.string(),
+    payload: z.lazy(() => Payload$inboundSchema),
+    projectId: z.string(),
+    status: WatcherEventStatus$inboundSchema,
+    txHash: z.string(),
+    updatedAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:34:03.892Z")
+        .transform((v) => new Date(v)),
+    watcherId: z.string(),
+});
+
+/** @internal */
+export type WatcherEvent$Outbound = {
+    blockHash: string;
+    blockNumber: number;
+    createdAt: string;
+    id: string;
+    network: string;
+    payload: Payload$Outbound;
+    projectId: string;
+    status: string;
+    txHash: string;
+    updatedAt: string;
+    watcherId: string;
+};
+
+/** @internal */
+export const WatcherEvent$outboundSchema: z.ZodType<
+    WatcherEvent$Outbound,
+    z.ZodTypeDef,
+    WatcherEvent
+> = z.object({
+    blockHash: z.string(),
+    blockNumber: z.number(),
+    createdAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:34:03.892Z"))
+        .transform((v) => v.toISOString()),
+    id: z.string(),
+    network: z.string(),
+    payload: z.lazy(() => Payload$outboundSchema),
+    projectId: z.string(),
+    status: WatcherEventStatus$outboundSchema,
+    txHash: z.string(),
+    updatedAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:34:03.892Z"))
+        .transform((v) => v.toISOString()),
+    watcherId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherEvent$ {
-    export const inboundSchema: z.ZodType<WatcherEvent, z.ZodTypeDef, unknown> = z.object({
-        blockHash: z.string(),
-        blockNumber: z.number(),
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:34:03.892Z")
-            .transform((v) => new Date(v)),
-        id: z.string(),
-        network: z.string(),
-        payload: z.lazy(() => Payload$.inboundSchema),
-        projectId: z.string(),
-        status: WatcherEventStatus$.inboundSchema,
-        txHash: z.string(),
-        updatedAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:34:03.892Z")
-            .transform((v) => new Date(v)),
-        watcherId: z.string(),
-    });
-
-    export type Outbound = {
-        blockHash: string;
-        blockNumber: number;
-        createdAt: string;
-        id: string;
-        network: string;
-        payload: Payload$.Outbound;
-        projectId: string;
-        status: string;
-        txHash: string;
-        updatedAt: string;
-        watcherId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherEvent> = z.object({
-        blockHash: z.string(),
-        blockNumber: z.number(),
-        createdAt: z
-            .date()
-            .default(() => new Date("2024-05-02T09:34:03.892Z"))
-            .transform((v) => v.toISOString()),
-        id: z.string(),
-        network: z.string(),
-        payload: z.lazy(() => Payload$.outboundSchema),
-        projectId: z.string(),
-        status: WatcherEventStatus$.outboundSchema,
-        txHash: z.string(),
-        updatedAt: z
-            .date()
-            .default(() => new Date("2024-05-02T09:34:03.892Z"))
-            .transform((v) => v.toISOString()),
-        watcherId: z.string(),
-    });
+    /** @deprecated use `WatcherEvent$inboundSchema` instead. */
+    export const inboundSchema = WatcherEvent$inboundSchema;
+    /** @deprecated use `WatcherEvent$outboundSchema` instead. */
+    export const outboundSchema = WatcherEvent$outboundSchema;
+    /** @deprecated use `WatcherEvent$Outbound` instead. */
+    export type Outbound = WatcherEvent$Outbound;
 }

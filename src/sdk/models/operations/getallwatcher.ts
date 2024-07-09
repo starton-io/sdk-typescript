@@ -60,114 +60,182 @@ export type GetAllWatcherResponse = {
 };
 
 /** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Type$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
-    export const outboundSchema: z.ZodNativeEnum<typeof Type> = inboundSchema;
+    /** @deprecated use `Type$inboundSchema` instead. */
+    export const inboundSchema = Type$inboundSchema;
+    /** @deprecated use `Type$outboundSchema` instead. */
+    export const outboundSchema = Type$outboundSchema;
 }
 
 /** @internal */
+export const GetAllWatcherRequest$inboundSchema: z.ZodType<
+    GetAllWatcherRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string().optional(),
+    confirmationsBlocks: z.number().optional(),
+    limit: z.number().int().default(100),
+    name: z.string().optional(),
+    network: z.string().optional(),
+    page: z.number().int().optional(),
+    paused: z.boolean().optional(),
+    type: Type$inboundSchema.optional(),
+    webhookUrl: z.string().optional(),
+});
+
+/** @internal */
+export type GetAllWatcherRequest$Outbound = {
+    address?: string | undefined;
+    confirmationsBlocks?: number | undefined;
+    limit: number;
+    name?: string | undefined;
+    network?: string | undefined;
+    page?: number | undefined;
+    paused?: boolean | undefined;
+    type?: string | undefined;
+    webhookUrl?: string | undefined;
+};
+
+/** @internal */
+export const GetAllWatcherRequest$outboundSchema: z.ZodType<
+    GetAllWatcherRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllWatcherRequest
+> = z.object({
+    address: z.string().optional(),
+    confirmationsBlocks: z.number().optional(),
+    limit: z.number().int().default(100),
+    name: z.string().optional(),
+    network: z.string().optional(),
+    page: z.number().int().optional(),
+    paused: z.boolean().optional(),
+    type: Type$outboundSchema.optional(),
+    webhookUrl: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllWatcherRequest$ {
-    export const inboundSchema: z.ZodType<GetAllWatcherRequest, z.ZodTypeDef, unknown> = z.object({
-        address: z.string().optional(),
-        confirmationsBlocks: z.number().optional(),
-        limit: z.number().int().default(100),
-        name: z.string().optional(),
-        network: z.string().optional(),
-        page: z.number().int().optional(),
-        paused: z.boolean().optional(),
-        type: Type$.inboundSchema.optional(),
-        webhookUrl: z.string().optional(),
+    /** @deprecated use `GetAllWatcherRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllWatcherRequest$inboundSchema;
+    /** @deprecated use `GetAllWatcherRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllWatcherRequest$outboundSchema;
+    /** @deprecated use `GetAllWatcherRequest$Outbound` instead. */
+    export type Outbound = GetAllWatcherRequest$Outbound;
+}
+
+/** @internal */
+export const GetAllWatcherWatcherPaginated$inboundSchema: z.ZodType<
+    GetAllWatcherWatcherPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Watcher$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllWatcherWatcherPaginated$Outbound = {
+    items: Array<shared.Watcher$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllWatcherWatcherPaginated$outboundSchema: z.ZodType<
+    GetAllWatcherWatcherPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllWatcherWatcherPaginated
+> = z.object({
+    items: z.array(shared.Watcher$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllWatcherWatcherPaginated$ {
+    /** @deprecated use `GetAllWatcherWatcherPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllWatcherWatcherPaginated$inboundSchema;
+    /** @deprecated use `GetAllWatcherWatcherPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllWatcherWatcherPaginated$outboundSchema;
+    /** @deprecated use `GetAllWatcherWatcherPaginated$Outbound` instead. */
+    export type Outbound = GetAllWatcherWatcherPaginated$Outbound;
+}
+
+/** @internal */
+export const GetAllWatcherResponse$inboundSchema: z.ZodType<
+    GetAllWatcherResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        WatcherPaginated: z.lazy(() => GetAllWatcherWatcherPaginated$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            WatcherPaginated: "watcherPaginated",
+        });
     });
 
-    export type Outbound = {
-        address?: string | undefined;
-        confirmationsBlocks?: number | undefined;
-        limit: number;
-        name?: string | undefined;
-        network?: string | undefined;
-        page?: number | undefined;
-        paused?: boolean | undefined;
-        type?: string | undefined;
-        webhookUrl?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWatcherRequest> = z.object(
-        {
-            address: z.string().optional(),
-            confirmationsBlocks: z.number().optional(),
-            limit: z.number().int().default(100),
-            name: z.string().optional(),
-            network: z.string().optional(),
-            page: z.number().int().optional(),
-            paused: z.boolean().optional(),
-            type: Type$.outboundSchema.optional(),
-            webhookUrl: z.string().optional(),
-        }
-    );
-}
+/** @internal */
+export type GetAllWatcherResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    WatcherPaginated?: GetAllWatcherWatcherPaginated$Outbound | undefined;
+};
 
 /** @internal */
-export namespace GetAllWatcherWatcherPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllWatcherWatcherPaginated, z.ZodTypeDef, unknown> =
-        z.object({
-            items: z.array(shared.Watcher$.inboundSchema),
-            meta: shared.PaginationData$.inboundSchema,
+export const GetAllWatcherResponse$outboundSchema: z.ZodType<
+    GetAllWatcherResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllWatcherResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        watcherPaginated: z.lazy(() => GetAllWatcherWatcherPaginated$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            watcherPaginated: "WatcherPaginated",
         });
+    });
 
-    export type Outbound = {
-        items: Array<shared.Watcher$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWatcherWatcherPaginated> =
-        z.object({
-            items: z.array(shared.Watcher$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
-}
-
-/** @internal */
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllWatcherResponse$ {
-    export const inboundSchema: z.ZodType<GetAllWatcherResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            WatcherPaginated: z.lazy(() => GetAllWatcherWatcherPaginated$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                WatcherPaginated: "watcherPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        WatcherPaginated?: GetAllWatcherWatcherPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWatcherResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            watcherPaginated: z
-                .lazy(() => GetAllWatcherWatcherPaginated$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                watcherPaginated: "WatcherPaginated",
-            });
-        });
+    /** @deprecated use `GetAllWatcherResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllWatcherResponse$inboundSchema;
+    /** @deprecated use `GetAllWatcherResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllWatcherResponse$outboundSchema;
+    /** @deprecated use `GetAllWatcherResponse$Outbound` instead. */
+    export type Outbound = GetAllWatcherResponse$Outbound;
 }

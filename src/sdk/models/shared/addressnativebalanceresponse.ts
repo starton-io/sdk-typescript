@@ -24,27 +24,46 @@ export type AddressNativeBalanceResponse = {
 };
 
 /** @internal */
+export const AddressNativeBalanceResponse$inboundSchema: z.ZodType<
+    AddressNativeBalanceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    balance: z.string(),
+    decimal: z.number(),
+    formatted: z.string(),
+    symbol: z.string(),
+});
+
+/** @internal */
+export type AddressNativeBalanceResponse$Outbound = {
+    balance: string;
+    decimal: number;
+    formatted: string;
+    symbol: string;
+};
+
+/** @internal */
+export const AddressNativeBalanceResponse$outboundSchema: z.ZodType<
+    AddressNativeBalanceResponse$Outbound,
+    z.ZodTypeDef,
+    AddressNativeBalanceResponse
+> = z.object({
+    balance: z.string(),
+    decimal: z.number(),
+    formatted: z.string(),
+    symbol: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AddressNativeBalanceResponse$ {
-    export const inboundSchema: z.ZodType<AddressNativeBalanceResponse, z.ZodTypeDef, unknown> =
-        z.object({
-            balance: z.string(),
-            decimal: z.number(),
-            formatted: z.string(),
-            symbol: z.string(),
-        });
-
-    export type Outbound = {
-        balance: string;
-        decimal: number;
-        formatted: string;
-        symbol: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddressNativeBalanceResponse> =
-        z.object({
-            balance: z.string(),
-            decimal: z.number(),
-            formatted: z.string(),
-            symbol: z.string(),
-        });
+    /** @deprecated use `AddressNativeBalanceResponse$inboundSchema` instead. */
+    export const inboundSchema = AddressNativeBalanceResponse$inboundSchema;
+    /** @deprecated use `AddressNativeBalanceResponse$outboundSchema` instead. */
+    export const outboundSchema = AddressNativeBalanceResponse$outboundSchema;
+    /** @deprecated use `AddressNativeBalanceResponse$Outbound` instead. */
+    export type Outbound = AddressNativeBalanceResponse$Outbound;
 }

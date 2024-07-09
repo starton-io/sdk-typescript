@@ -34,75 +34,117 @@ export type UpdateNetworkResponse = {
 };
 
 /** @internal */
+export const UpdateNetworkRequest$inboundSchema: z.ZodType<
+    UpdateNetworkRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        UpdateNetworkDto: shared.UpdateNetworkDto$inboundSchema,
+        name: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdateNetworkDto: "updateNetworkDto",
+        });
+    });
+
+/** @internal */
+export type UpdateNetworkRequest$Outbound = {
+    UpdateNetworkDto: shared.UpdateNetworkDto$Outbound;
+    name: string;
+};
+
+/** @internal */
+export const UpdateNetworkRequest$outboundSchema: z.ZodType<
+    UpdateNetworkRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateNetworkRequest
+> = z
+    .object({
+        updateNetworkDto: shared.UpdateNetworkDto$outboundSchema,
+        name: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updateNetworkDto: "UpdateNetworkDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateNetworkRequest$ {
-    export const inboundSchema: z.ZodType<UpdateNetworkRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            UpdateNetworkDto: shared.UpdateNetworkDto$.inboundSchema,
-            name: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdateNetworkDto: "updateNetworkDto",
-            });
-        });
-
-    export type Outbound = {
-        UpdateNetworkDto: shared.UpdateNetworkDto$.Outbound;
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateNetworkRequest> = z
-        .object({
-            updateNetworkDto: shared.UpdateNetworkDto$.outboundSchema,
-            name: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updateNetworkDto: "UpdateNetworkDto",
-            });
-        });
+    /** @deprecated use `UpdateNetworkRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateNetworkRequest$inboundSchema;
+    /** @deprecated use `UpdateNetworkRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateNetworkRequest$outboundSchema;
+    /** @deprecated use `UpdateNetworkRequest$Outbound` instead. */
+    export type Outbound = UpdateNetworkRequest$Outbound;
 }
 
 /** @internal */
+export const UpdateNetworkResponse$inboundSchema: z.ZodType<
+    UpdateNetworkResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        Network: shared.Network$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            Network: "network",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type UpdateNetworkResponse$Outbound = {
+    ContentType: string;
+    Network?: shared.Network$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const UpdateNetworkResponse$outboundSchema: z.ZodType<
+    UpdateNetworkResponse$Outbound,
+    z.ZodTypeDef,
+    UpdateNetworkResponse
+> = z
+    .object({
+        contentType: z.string(),
+        network: shared.Network$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            network: "Network",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateNetworkResponse$ {
-    export const inboundSchema: z.ZodType<UpdateNetworkResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            Network: shared.Network$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                Network: "network",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        Network?: shared.Network$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateNetworkResponse> = z
-        .object({
-            contentType: z.string(),
-            network: shared.Network$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                network: "Network",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UpdateNetworkResponse$inboundSchema` instead. */
+    export const inboundSchema = UpdateNetworkResponse$inboundSchema;
+    /** @deprecated use `UpdateNetworkResponse$outboundSchema` instead. */
+    export const outboundSchema = UpdateNetworkResponse$outboundSchema;
+    /** @deprecated use `UpdateNetworkResponse$Outbound` instead. */
+    export type Outbound = UpdateNetworkResponse$Outbound;
 }

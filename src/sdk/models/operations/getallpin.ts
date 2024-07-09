@@ -51,66 +51,115 @@ export type GetAllPinResponse = {
 };
 
 /** @internal */
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+
+/** @internal */
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = Status$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Status$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
-    export const outboundSchema: z.ZodNativeEnum<typeof Status> = inboundSchema;
+    /** @deprecated use `Status$inboundSchema` instead. */
+    export const inboundSchema = Status$inboundSchema;
+    /** @deprecated use `Status$outboundSchema` instead. */
+    export const outboundSchema = Status$outboundSchema;
 }
 
 /** @internal */
+export const GetAllPinRequest$inboundSchema: z.ZodType<GetAllPinRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        cid: z.string().optional(),
+        includeDirectoryContent: z.boolean().optional(),
+        limit: z.number().int().default(100),
+        name: z.string().optional(),
+        page: z.number().int().optional(),
+        status: Status$inboundSchema.optional(),
+    });
+
+/** @internal */
+export type GetAllPinRequest$Outbound = {
+    cid?: string | undefined;
+    includeDirectoryContent?: boolean | undefined;
+    limit: number;
+    name?: string | undefined;
+    page?: number | undefined;
+    status?: string | undefined;
+};
+
+/** @internal */
+export const GetAllPinRequest$outboundSchema: z.ZodType<
+    GetAllPinRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllPinRequest
+> = z.object({
+    cid: z.string().optional(),
+    includeDirectoryContent: z.boolean().optional(),
+    limit: z.number().int().default(100),
+    name: z.string().optional(),
+    page: z.number().int().optional(),
+    status: Status$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllPinRequest$ {
-    export const inboundSchema: z.ZodType<GetAllPinRequest, z.ZodTypeDef, unknown> = z.object({
-        cid: z.string().optional(),
-        includeDirectoryContent: z.boolean().optional(),
-        limit: z.number().int().default(100),
-        name: z.string().optional(),
-        page: z.number().int().optional(),
-        status: Status$.inboundSchema.optional(),
-    });
-
-    export type Outbound = {
-        cid?: string | undefined;
-        includeDirectoryContent?: boolean | undefined;
-        limit: number;
-        name?: string | undefined;
-        page?: number | undefined;
-        status?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllPinRequest> = z.object({
-        cid: z.string().optional(),
-        includeDirectoryContent: z.boolean().optional(),
-        limit: z.number().int().default(100),
-        name: z.string().optional(),
-        page: z.number().int().optional(),
-        status: Status$.outboundSchema.optional(),
-    });
+    /** @deprecated use `GetAllPinRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllPinRequest$inboundSchema;
+    /** @deprecated use `GetAllPinRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllPinRequest$outboundSchema;
+    /** @deprecated use `GetAllPinRequest$Outbound` instead. */
+    export type Outbound = GetAllPinRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllPinPinPaginated$inboundSchema: z.ZodType<
+    GetAllPinPinPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Pin$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllPinPinPaginated$Outbound = {
+    items: Array<shared.Pin$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllPinPinPaginated$outboundSchema: z.ZodType<
+    GetAllPinPinPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllPinPinPaginated
+> = z.object({
+    items: z.array(shared.Pin$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllPinPinPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllPinPinPaginated, z.ZodTypeDef, unknown> = z.object({
-        items: z.array(shared.Pin$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.Pin$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllPinPinPaginated> =
-        z.object({
-            items: z.array(shared.Pin$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
+    /** @deprecated use `GetAllPinPinPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllPinPinPaginated$inboundSchema;
+    /** @deprecated use `GetAllPinPinPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllPinPinPaginated$outboundSchema;
+    /** @deprecated use `GetAllPinPinPaginated$Outbound` instead. */
+    export type Outbound = GetAllPinPinPaginated$Outbound;
 }
 
 /** @internal */
-export namespace GetAllPinResponse$ {
-    export const inboundSchema: z.ZodType<GetAllPinResponse, z.ZodTypeDef, unknown> = z
+export const GetAllPinResponse$inboundSchema: z.ZodType<GetAllPinResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            PinPaginated: z.lazy(() => GetAllPinPinPaginated$.inboundSchema).optional(),
+            PinPaginated: z.lazy(() => GetAllPinPinPaginated$inboundSchema).optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -123,28 +172,46 @@ export namespace GetAllPinResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        PinPaginated?: GetAllPinPinPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetAllPinResponse$Outbound = {
+    ContentType: string;
+    PinPaginated?: GetAllPinPinPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllPinResponse> = z
-        .object({
-            contentType: z.string(),
-            pinPaginated: z.lazy(() => GetAllPinPinPaginated$.outboundSchema).optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                pinPaginated: "PinPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetAllPinResponse$outboundSchema: z.ZodType<
+    GetAllPinResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllPinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        pinPaginated: z.lazy(() => GetAllPinPinPaginated$outboundSchema).optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            pinPaginated: "PinPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllPinResponse$ {
+    /** @deprecated use `GetAllPinResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllPinResponse$inboundSchema;
+    /** @deprecated use `GetAllPinResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllPinResponse$outboundSchema;
+    /** @deprecated use `GetAllPinResponse$Outbound` instead. */
+    export type Outbound = GetAllPinResponse$Outbound;
 }

@@ -59,7 +59,7 @@ export class Kms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreateKmsDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreateKmsDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -111,8 +111,8 @@ export class Kms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateKmsResponse>()
-            .json(201, operations.CreateKmsResponse$, { key: "Kms" })
-            .json(400, errors.CreateKmsResponseBody$, { err: true })
+            .json(201, operations.CreateKmsResponse$inboundSchema, { key: "Kms" })
+            .json(400, errors.CreateKmsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -133,7 +133,7 @@ export class Kms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteKmsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteKmsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -190,9 +190,9 @@ export class Kms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteKmsResponse>()
-            .json(200, operations.DeleteKmsResponse$, { key: "number" })
-            .json(400, errors.DeleteKmsResponseBody$, { err: true })
-            .json(404, errors.DeleteKmsKmsResponseBody$, { err: true })
+            .json(200, operations.DeleteKmsResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteKmsResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteKmsKmsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -213,7 +213,7 @@ export class Kms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllKmsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllKmsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -267,8 +267,8 @@ export class Kms extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllKmsResponse>()
-            .json(200, operations.GetAllKmsResponse$, { key: "KmsPaginated" })
-            .json(400, errors.GetAllKmsResponseBody$, { err: true })
+            .json(200, operations.GetAllKmsResponse$inboundSchema, { key: "KmsPaginated" })
+            .json(400, errors.GetAllKmsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -320,7 +320,7 @@ export class Kms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneKmsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneKmsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -377,9 +377,9 @@ export class Kms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneKmsResponse>()
-            .json(200, operations.GetOneKmsResponse$, { key: "Kms" })
-            .json(400, errors.GetOneKmsResponseBody$, { err: true })
-            .json(404, errors.GetOneKmsKmsResponseBody$, { err: true })
+            .json(200, operations.GetOneKmsResponse$inboundSchema, { key: "Kms" })
+            .json(400, errors.GetOneKmsResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneKmsKmsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -400,7 +400,7 @@ export class Kms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateKmsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateKmsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateKmsDto, { explode: true });
@@ -458,9 +458,9 @@ export class Kms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateKmsResponse>()
-            .json(200, operations.UpdateKmsResponse$, { key: "Kms" })
-            .json(400, errors.UpdateKmsResponseBody$, { err: true })
-            .json(404, errors.UpdateKmsKmsResponseBody$, { err: true })
+            .json(200, operations.UpdateKmsResponse$inboundSchema, { key: "Kms" })
+            .json(400, errors.UpdateKmsResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdateKmsKmsResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

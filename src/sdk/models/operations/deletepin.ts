@@ -29,23 +29,41 @@ export type DeletePinResponse = {
 };
 
 /** @internal */
+export const DeletePinRequest$inboundSchema: z.ZodType<DeletePinRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+    });
+
+/** @internal */
+export type DeletePinRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const DeletePinRequest$outboundSchema: z.ZodType<
+    DeletePinRequest$Outbound,
+    z.ZodTypeDef,
+    DeletePinRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeletePinRequest$ {
-    export const inboundSchema: z.ZodType<DeletePinRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeletePinRequest> = z.object({
-        id: z.string(),
-    });
+    /** @deprecated use `DeletePinRequest$inboundSchema` instead. */
+    export const inboundSchema = DeletePinRequest$inboundSchema;
+    /** @deprecated use `DeletePinRequest$outboundSchema` instead. */
+    export const outboundSchema = DeletePinRequest$outboundSchema;
+    /** @deprecated use `DeletePinRequest$Outbound` instead. */
+    export type Outbound = DeletePinRequest$Outbound;
 }
 
 /** @internal */
-export namespace DeletePinResponse$ {
-    export const inboundSchema: z.ZodType<DeletePinResponse, z.ZodTypeDef, unknown> = z
+export const DeletePinResponse$inboundSchema: z.ZodType<DeletePinResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),
@@ -60,27 +78,45 @@ export namespace DeletePinResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        boolean?: boolean | undefined;
-    };
+/** @internal */
+export type DeletePinResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    boolean?: boolean | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeletePinResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            boolean: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const DeletePinResponse$outboundSchema: z.ZodType<
+    DeletePinResponse$Outbound,
+    z.ZodTypeDef,
+    DeletePinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        boolean: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DeletePinResponse$ {
+    /** @deprecated use `DeletePinResponse$inboundSchema` instead. */
+    export const inboundSchema = DeletePinResponse$inboundSchema;
+    /** @deprecated use `DeletePinResponse$outboundSchema` instead. */
+    export const outboundSchema = DeletePinResponse$outboundSchema;
+    /** @deprecated use `DeletePinResponse$Outbound` instead. */
+    export type Outbound = DeletePinResponse$Outbound;
 }

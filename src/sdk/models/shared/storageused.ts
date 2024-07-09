@@ -11,22 +11,39 @@ export type StorageUsed = {
 };
 
 /** @internal */
+export const StorageUsed$inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, unknown> = z.object({
+    currentStorageUsed: z.number(),
+    freeSpaceRemaining: z.number(),
+    maxAllowed: z.number(),
+});
+
+/** @internal */
+export type StorageUsed$Outbound = {
+    currentStorageUsed: number;
+    freeSpaceRemaining: number;
+    maxAllowed: number;
+};
+
+/** @internal */
+export const StorageUsed$outboundSchema: z.ZodType<
+    StorageUsed$Outbound,
+    z.ZodTypeDef,
+    StorageUsed
+> = z.object({
+    currentStorageUsed: z.number(),
+    freeSpaceRemaining: z.number(),
+    maxAllowed: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StorageUsed$ {
-    export const inboundSchema: z.ZodType<StorageUsed, z.ZodTypeDef, unknown> = z.object({
-        currentStorageUsed: z.number(),
-        freeSpaceRemaining: z.number(),
-        maxAllowed: z.number(),
-    });
-
-    export type Outbound = {
-        currentStorageUsed: number;
-        freeSpaceRemaining: number;
-        maxAllowed: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StorageUsed> = z.object({
-        currentStorageUsed: z.number(),
-        freeSpaceRemaining: z.number(),
-        maxAllowed: z.number(),
-    });
+    /** @deprecated use `StorageUsed$inboundSchema` instead. */
+    export const inboundSchema = StorageUsed$inboundSchema;
+    /** @deprecated use `StorageUsed$outboundSchema` instead. */
+    export const outboundSchema = StorageUsed$outboundSchema;
+    /** @deprecated use `StorageUsed$Outbound` instead. */
+    export type Outbound = StorageUsed$Outbound;
 }

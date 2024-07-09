@@ -75,7 +75,11 @@ export class CouldNotAssignNonce extends Error {
     data$: CouldNotAssignNonceData;
 
     constructor(err: CouldNotAssignNonceData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -104,139 +108,168 @@ export class CouldNotAssignNonce extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotAssignNonce";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTASSIGNNONCEContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTASSIGNNONCEContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTASSIGNNONCEContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTASSIGNNONCEContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTASSIGNNONCEContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTASSIGNNONCEContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTASSIGNNONCEContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCOULDNOTASSIGNNONCEContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTASSIGNNONCEContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTASSIGNNONCEContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTASSIGNNONCEContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTASSIGNNONCEContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTASSIGNNONCEContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTASSIGNNONCEContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTASSIGNNONCEContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotAssignNonce$ {
-    export const inboundSchema: z.ZodType<CouldNotAssignNonce, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            RawResponse5: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
-            message: z.string().default("Could not assign nonce."),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-                RawResponse5: "rawResponse5",
-            });
-
-            return new CouldNotAssignNonce(remapped);
+export const CouldNotAssignNonce$inboundSchema: z.ZodType<
+    CouldNotAssignNonce,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        RawResponse5: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
+        message: z.string().default("Could not assign nonce."),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
+            RawResponse5: "rawResponse5",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        RawResponse5?: never | undefined;
-        context?: SchemasCOULDNOTASSIGNNONCEContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotAssignNonce(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotAssignNonce> = z
-        .instanceof(CouldNotAssignNonce)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse5: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
-                    message: z.string().default("Could not assign nonce."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                        rawResponse5: "RawResponse5",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotAssignNonce$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    RawResponse5?: never | undefined;
+    context?: SchemasCOULDNOTASSIGNNONCEContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotAssignNonce$outboundSchema: z.ZodType<
+    CouldNotAssignNonce$Outbound,
+    z.ZodTypeDef,
+    CouldNotAssignNonce
+> = z
+    .instanceof(CouldNotAssignNonce)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse5: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTASSIGNNONCEContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_ASSIGN_NONCE"),
+                message: z.string().default("Could not assign nonce."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                    rawResponse5: "RawResponse5",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotAssignNonce$ {
+    /** @deprecated use `CouldNotAssignNonce$inboundSchema` instead. */
+    export const inboundSchema = CouldNotAssignNonce$inboundSchema;
+    /** @deprecated use `CouldNotAssignNonce$outboundSchema` instead. */
+    export const outboundSchema = CouldNotAssignNonce$outboundSchema;
+    /** @deprecated use `CouldNotAssignNonce$Outbound` instead. */
+    export type Outbound = CouldNotAssignNonce$Outbound;
 }

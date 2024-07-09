@@ -57,7 +57,7 @@ export class Webhook extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CancelWebhookRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CancelWebhookRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -114,10 +114,10 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CancelWebhookResponse>()
-            .json(201, operations.CancelWebhookResponse$, { key: "Webhook" })
-            .json(400, errors.CancelWebhookResponseBody$, { err: true })
-            .json(404, errors.CancelWebhookWebhookResponseBody$, { err: true })
-            .json(412, errors.CancelWebhookWebhookResponseResponseBody$, { err: true })
+            .json(201, operations.CancelWebhookResponse$inboundSchema, { key: "Webhook" })
+            .json(400, errors.CancelWebhookResponseBody$inboundSchema, { err: true })
+            .json(404, errors.CancelWebhookWebhookResponseBody$inboundSchema, { err: true })
+            .json(412, errors.CancelWebhookWebhookResponseResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -138,7 +138,7 @@ export class Webhook extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllWebhookRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllWebhookRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -193,8 +193,8 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllWebhookResponse>()
-            .json(200, operations.GetAllWebhookResponse$, { key: "WebhookPaginated" })
-            .json(400, errors.GetAllWebhookResponseBody$, { err: true })
+            .json(200, operations.GetAllWebhookResponse$inboundSchema, { key: "WebhookPaginated" })
+            .json(400, errors.GetAllWebhookResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -246,7 +246,7 @@ export class Webhook extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneWebhookRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneWebhookRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -303,9 +303,9 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneWebhookResponse>()
-            .json(200, operations.GetOneWebhookResponse$, { key: "Webhook" })
-            .json(400, errors.GetOneWebhookResponseBody$, { err: true })
-            .json(404, errors.GetOneWebhookWebhookResponseBody$, { err: true })
+            .json(200, operations.GetOneWebhookResponse$inboundSchema, { key: "Webhook" })
+            .json(400, errors.GetOneWebhookResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneWebhookWebhookResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -366,10 +366,10 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneWebhookSigningSecretResponse>()
-            .json(200, operations.GetOneWebhookSigningSecretResponse$, {
+            .json(200, operations.GetOneWebhookSigningSecretResponse$inboundSchema, {
                 key: "WebhookSigningSecret",
             })
-            .json(400, errors.GetOneWebhookSigningSecretResponseBody$, { err: true })
+            .json(400, errors.GetOneWebhookSigningSecretResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -433,11 +433,13 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateWebhookSigningSecretResponse>()
-            .json(201, operations.CreateWebhookSigningSecretResponse$, {
+            .json(201, operations.CreateWebhookSigningSecretResponse$inboundSchema, {
                 key: "WebhookSigningSecret",
             })
-            .json(400, errors.CreateWebhookSigningSecretResponseBody$, { err: true })
-            .json(401, errors.CreateWebhookSigningSecretWebhookResponseBody$, { err: true })
+            .json(400, errors.CreateWebhookSigningSecretResponseBody$inboundSchema, { err: true })
+            .json(401, errors.CreateWebhookSigningSecretWebhookResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -458,7 +460,7 @@ export class Webhook extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ResendWebhookRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ResendWebhookRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -515,10 +517,10 @@ export class Webhook extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ResendWebhookResponse>()
-            .json(201, operations.ResendWebhookResponse$, { key: "Webhook" })
-            .json(400, errors.ResendWebhookResponseBody$, { err: true })
-            .json(404, errors.ResendWebhookWebhookResponseBody$, { err: true })
-            .json(412, errors.ResendWebhookWebhookResponseResponseBody$, { err: true })
+            .json(201, operations.ResendWebhookResponse$inboundSchema, { key: "Webhook" })
+            .json(400, errors.ResendWebhookResponseBody$inboundSchema, { err: true })
+            .json(404, errors.ResendWebhookWebhookResponseBody$inboundSchema, { err: true })
+            .json(412, errors.ResendWebhookWebhookResponseResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

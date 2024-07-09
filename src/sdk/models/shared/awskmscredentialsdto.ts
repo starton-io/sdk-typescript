@@ -11,24 +11,43 @@ export type AwsKmsCredentialsDto = {
 };
 
 /** @internal */
+export const AwsKmsCredentialsDto$inboundSchema: z.ZodType<
+    AwsKmsCredentialsDto,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    accessKeyId: z.string(),
+    accountId: z.string(),
+    region: z.string(),
+});
+
+/** @internal */
+export type AwsKmsCredentialsDto$Outbound = {
+    accessKeyId: string;
+    accountId: string;
+    region: string;
+};
+
+/** @internal */
+export const AwsKmsCredentialsDto$outboundSchema: z.ZodType<
+    AwsKmsCredentialsDto$Outbound,
+    z.ZodTypeDef,
+    AwsKmsCredentialsDto
+> = z.object({
+    accessKeyId: z.string(),
+    accountId: z.string(),
+    region: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AwsKmsCredentialsDto$ {
-    export const inboundSchema: z.ZodType<AwsKmsCredentialsDto, z.ZodTypeDef, unknown> = z.object({
-        accessKeyId: z.string(),
-        accountId: z.string(),
-        region: z.string(),
-    });
-
-    export type Outbound = {
-        accessKeyId: string;
-        accountId: string;
-        region: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AwsKmsCredentialsDto> = z.object(
-        {
-            accessKeyId: z.string(),
-            accountId: z.string(),
-            region: z.string(),
-        }
-    );
+    /** @deprecated use `AwsKmsCredentialsDto$inboundSchema` instead. */
+    export const inboundSchema = AwsKmsCredentialsDto$inboundSchema;
+    /** @deprecated use `AwsKmsCredentialsDto$outboundSchema` instead. */
+    export const outboundSchema = AwsKmsCredentialsDto$outboundSchema;
+    /** @deprecated use `AwsKmsCredentialsDto$Outbound` instead. */
+    export type Outbound = AwsKmsCredentialsDto$Outbound;
 }

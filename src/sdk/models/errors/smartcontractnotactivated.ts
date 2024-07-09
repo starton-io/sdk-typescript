@@ -35,7 +35,11 @@ export class SmartContractNotActivated extends Error {
     data$: SmartContractNotActivatedData;
 
     constructor(err: SmartContractNotActivatedData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,91 +53,118 @@ export class SmartContractNotActivated extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "SmartContractNotActivated";
     }
 }
 
 /** @internal */
+export const SchemasSMARTCONTRACTNOTACTIVATEDContext$inboundSchema: z.ZodType<
+    SchemasSMARTCONTRACTNOTACTIVATEDContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasSMARTCONTRACTNOTACTIVATEDContext$Outbound = {};
+
+/** @internal */
+export const SchemasSMARTCONTRACTNOTACTIVATEDContext$outboundSchema: z.ZodType<
+    SchemasSMARTCONTRACTNOTACTIVATEDContext$Outbound,
+    z.ZodTypeDef,
+    SchemasSMARTCONTRACTNOTACTIVATEDContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasSMARTCONTRACTNOTACTIVATEDContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasSMARTCONTRACTNOTACTIVATEDContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasSMARTCONTRACTNOTACTIVATEDContext
-    > = z.object({});
+    /** @deprecated use `SchemasSMARTCONTRACTNOTACTIVATEDContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasSMARTCONTRACTNOTACTIVATEDContext$inboundSchema;
+    /** @deprecated use `SchemasSMARTCONTRACTNOTACTIVATEDContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasSMARTCONTRACTNOTACTIVATEDContext$outboundSchema;
+    /** @deprecated use `SchemasSMARTCONTRACTNOTACTIVATEDContext$Outbound` instead. */
+    export type Outbound = SchemasSMARTCONTRACTNOTACTIVATEDContext$Outbound;
 }
 
 /** @internal */
-export namespace SmartContractNotActivated$ {
-    export const inboundSchema: z.ZodType<SmartContractNotActivated, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
-            message: z.string().default("This smart contract is not active."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new SmartContractNotActivated(remapped);
+export const SmartContractNotActivated$inboundSchema: z.ZodType<
+    SmartContractNotActivated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
+        message: z.string().default("This smart contract is not active."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasSMARTCONTRACTNOTACTIVATEDContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new SmartContractNotActivated(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractNotActivated> = z
-        .instanceof(SmartContractNotActivated)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(
-                            z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$.outboundSchema)
-                        )
-                        .optional(),
-                    errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
-                    message: z.string().default("This smart contract is not active."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type SmartContractNotActivated$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasSMARTCONTRACTNOTACTIVATEDContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const SmartContractNotActivated$outboundSchema: z.ZodType<
+    SmartContractNotActivated$Outbound,
+    z.ZodTypeDef,
+    SmartContractNotActivated
+> = z
+    .instanceof(SmartContractNotActivated)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasSMARTCONTRACTNOTACTIVATEDContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("SMART_CONTRACT_NOT_ACTIVATED"),
+                message: z.string().default("This smart contract is not active."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SmartContractNotActivated$ {
+    /** @deprecated use `SmartContractNotActivated$inboundSchema` instead. */
+    export const inboundSchema = SmartContractNotActivated$inboundSchema;
+    /** @deprecated use `SmartContractNotActivated$outboundSchema` instead. */
+    export const outboundSchema = SmartContractNotActivated$outboundSchema;
+    /** @deprecated use `SmartContractNotActivated$Outbound` instead. */
+    export type Outbound = SmartContractNotActivated$Outbound;
 }

@@ -59,7 +59,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CallSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CallSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CallDto, { explode: true });
@@ -128,15 +128,21 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CallSmartContractResponse>()
-            .json(201, operations.CallSmartContractResponse$, { key: "Transaction" })
-            .json(400, errors.CallSmartContractResponseBody$, { err: true })
-            .json(404, errors.CallSmartContractSmartContractManagementResponseBody$, { err: true })
-            .json(422, errors.CallSmartContractSmartContractManagementResponseResponseBody$, {
+            .json(201, operations.CallSmartContractResponse$inboundSchema, { key: "Transaction" })
+            .json(400, errors.CallSmartContractResponseBody$inboundSchema, { err: true })
+            .json(404, errors.CallSmartContractSmartContractManagementResponseBody$inboundSchema, {
                 err: true,
             })
-            .json(500, errors.CallSmartContractSmartContractManagementResponse500ResponseBody$, {
-                err: true,
-            })
+            .json(
+                422,
+                errors.CallSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.CallSmartContractSmartContractManagementResponse500ResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -157,7 +163,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -223,11 +229,13 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteSmartContractResponse>()
-            .json(200, operations.DeleteSmartContractResponse$, { key: "number" })
-            .json(400, errors.DeleteSmartContractResponseBody$, { err: true })
-            .json(404, errors.DeleteSmartContractSmartContractManagementResponseBody$, {
-                err: true,
-            })
+            .json(200, operations.DeleteSmartContractResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteSmartContractResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.DeleteSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -249,7 +257,7 @@ export class SmartContractManagement extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.DeployFromBytecodeSmartContractRequest$.outboundSchema.parse(value$),
+                operations.DeployFromBytecodeSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.DeployFromBytecodeDto, { explode: true });
@@ -306,21 +314,25 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeployFromBytecodeSmartContractResponse>()
-            .json(201, operations.DeployFromBytecodeSmartContractResponse$, {
+            .json(201, operations.DeployFromBytecodeSmartContractResponse$inboundSchema, {
                 key: "DeploySmartContractResponse",
             })
-            .json(400, errors.DeployFromBytecodeSmartContractResponseBody$, { err: true })
-            .json(404, errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody$, {
+            .json(400, errors.DeployFromBytecodeSmartContractResponseBody$inboundSchema, {
                 err: true,
             })
             .json(
+                404,
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
                 422,
-                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$,
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
                 { err: true }
             )
             .json(
                 500,
-                errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$,
+                errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$inboundSchema,
                 { err: true }
             )
             .fail(["4XX", "5XX"])
@@ -344,7 +356,7 @@ export class SmartContractManagement extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.DeployFromTemplateSmartContractRequest$.outboundSchema.parse(value$),
+                operations.DeployFromTemplateSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.DeployFromTemplateDto, { explode: true });
@@ -401,16 +413,20 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeployFromTemplateSmartContractResponse>()
-            .json(201, operations.DeployFromTemplateSmartContractResponse$, {
+            .json(201, operations.DeployFromTemplateSmartContractResponse$inboundSchema, {
                 key: "DeploySmartContractResponse",
             })
-            .json(400, errors.DeployFromTemplateSmartContractResponseBody$, { err: true })
-            .json(404, errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$, {
+            .json(400, errors.DeployFromTemplateSmartContractResponseBody$inboundSchema, {
                 err: true,
             })
             .json(
+                404,
+                errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
                 500,
-                errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$,
+                errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
                 { err: true }
             )
             .fail(["4XX", "5XX"])
@@ -433,7 +449,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.EncodeSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.EncodeSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.EncodeDto, { explode: true });
@@ -500,16 +516,20 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.EncodeSmartContractResponse>()
-            .json(201, operations.EncodeSmartContractResponse$, {
+            .json(201, operations.EncodeSmartContractResponse$inboundSchema, {
                 key: "EncodeSmartContractResponse",
             })
-            .json(400, errors.EncodeSmartContractResponseBody$, { err: true })
-            .json(404, errors.EncodeSmartContractSmartContractManagementResponseBody$, {
-                err: true,
-            })
-            .json(500, errors.EncodeSmartContractSmartContractManagementResponseResponseBody$, {
-                err: true,
-            })
+            .json(400, errors.EncodeSmartContractResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.EncodeSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.EncodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -530,7 +550,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -588,8 +608,10 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllSmartContractResponse>()
-            .json(200, operations.GetAllSmartContractResponse$, { key: "SmartContractPaginated" })
-            .json(400, errors.GetAllSmartContractResponseBody$, { err: true })
+            .json(200, operations.GetAllSmartContractResponse$inboundSchema, {
+                key: "SmartContractPaginated",
+            })
+            .json(400, errors.GetAllSmartContractResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -644,7 +666,7 @@ export class SmartContractManagement extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.GetAvailableFunctionsSmartContractRequest$.outboundSchema.parse(value$),
+                operations.GetAvailableFunctionsSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -711,18 +733,20 @@ export class SmartContractManagement extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.GetAvailableFunctionsSmartContractResponse>()
-                .json(200, operations.GetAvailableFunctionsSmartContractResponse$, {
+                .json(200, operations.GetAvailableFunctionsSmartContractResponse$inboundSchema, {
                     key: "AvailableFunctions",
                 })
-                .json(400, errors.GetAvailableFunctionsSmartContractResponseBody$, { err: true })
+                .json(400, errors.GetAvailableFunctionsSmartContractResponseBody$inboundSchema, {
+                    err: true,
+                })
                 .json(
                     404,
-                    errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$,
+                    errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody$inboundSchema,
                     { err: true }
                 )
                 .json(
                     500,
-                    errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$,
+                    errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
                     { err: true }
                 )
                 .fail(["4XX", "5XX"])
@@ -745,7 +769,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -814,11 +838,15 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneSmartContractResponse>()
-            .json(200, operations.GetOneSmartContractResponse$, { key: "SmartContract" })
-            .json(400, errors.GetOneSmartContractResponseBody$, { err: true })
-            .json(404, errors.GetOneSmartContractSmartContractManagementResponseBody$, {
-                err: true,
+            .json(200, operations.GetOneSmartContractResponse$inboundSchema, {
+                key: "SmartContract",
             })
+            .json(400, errors.GetOneSmartContractResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.GetOneSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -839,7 +867,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.ImportSmartContractDto$.outboundSchema.parse(value$),
+            (value$) => shared.ImportSmartContractDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -891,8 +919,10 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ImportExistingSmartContractResponse>()
-            .json(201, operations.ImportExistingSmartContractResponse$, { key: "SmartContract" })
-            .json(400, errors.ImportExistingSmartContractResponseBody$, { err: true })
+            .json(201, operations.ImportExistingSmartContractResponse$inboundSchema, {
+                key: "SmartContract",
+            })
+            .json(400, errors.ImportExistingSmartContractResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -913,7 +943,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ReadSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ReadSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.ReadDto, { explode: true });
@@ -980,12 +1010,18 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ReadSmartContractResponse>()
-            .json(201, operations.ReadSmartContractResponse$, { key: "ReadSmartContractResponse" })
-            .json(400, errors.ReadSmartContractResponseBody$, { err: true })
-            .json(404, errors.ReadSmartContractSmartContractManagementResponseBody$, { err: true })
-            .json(500, errors.ReadSmartContractSmartContractManagementResponseResponseBody$, {
+            .json(201, operations.ReadSmartContractResponse$inboundSchema, {
+                key: "ReadSmartContractResponse",
+            })
+            .json(400, errors.ReadSmartContractResponseBody$inboundSchema, { err: true })
+            .json(404, errors.ReadSmartContractSmartContractManagementResponseBody$inboundSchema, {
                 err: true,
             })
+            .json(
+                500,
+                errors.ReadSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1006,7 +1042,7 @@ export class SmartContractManagement extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateSmartContractRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateSmartContractRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateSmartContractDto, { explode: true });
@@ -1073,11 +1109,15 @@ export class SmartContractManagement extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateSmartContractResponse>()
-            .json(200, operations.UpdateSmartContractResponse$, { key: "SmartContract" })
-            .json(400, errors.UpdateSmartContractResponseBody$, { err: true })
-            .json(404, errors.UpdateSmartContractSmartContractManagementResponseBody$, {
-                err: true,
+            .json(200, operations.UpdateSmartContractResponse$inboundSchema, {
+                key: "SmartContract",
             })
+            .json(400, errors.UpdateSmartContractResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.UpdateSmartContractSmartContractManagementResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

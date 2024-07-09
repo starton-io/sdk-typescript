@@ -27,61 +27,103 @@ export type DeleteWalletResponse = {
 };
 
 /** @internal */
+export const DeleteWalletRequest$inboundSchema: z.ZodType<
+    DeleteWalletRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    deleteKeyOnKms: z.boolean().optional(),
+});
+
+/** @internal */
+export type DeleteWalletRequest$Outbound = {
+    address: string;
+    deleteKeyOnKms?: boolean | undefined;
+};
+
+/** @internal */
+export const DeleteWalletRequest$outboundSchema: z.ZodType<
+    DeleteWalletRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteWalletRequest
+> = z.object({
+    address: z.string(),
+    deleteKeyOnKms: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteWalletRequest$ {
-    export const inboundSchema: z.ZodType<DeleteWalletRequest, z.ZodTypeDef, unknown> = z.object({
-        address: z.string(),
-        deleteKeyOnKms: z.boolean().optional(),
-    });
-
-    export type Outbound = {
-        address: string;
-        deleteKeyOnKms?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteWalletRequest> = z.object({
-        address: z.string(),
-        deleteKeyOnKms: z.boolean().optional(),
-    });
+    /** @deprecated use `DeleteWalletRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteWalletRequest$inboundSchema;
+    /** @deprecated use `DeleteWalletRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteWalletRequest$outboundSchema;
+    /** @deprecated use `DeleteWalletRequest$Outbound` instead. */
+    export type Outbound = DeleteWalletRequest$Outbound;
 }
 
 /** @internal */
+export const DeleteWalletResponse$inboundSchema: z.ZodType<
+    DeleteWalletResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeleteWalletResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    number?: number | undefined;
+};
+
+/** @internal */
+export const DeleteWalletResponse$outboundSchema: z.ZodType<
+    DeleteWalletResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteWalletResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        number: z.number().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteWalletResponse$ {
-    export const inboundSchema: z.ZodType<DeleteWalletResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        number?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteWalletResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            number: z.number().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeleteWalletResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteWalletResponse$inboundSchema;
+    /** @deprecated use `DeleteWalletResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteWalletResponse$outboundSchema;
+    /** @deprecated use `DeleteWalletResponse$Outbound` instead. */
+    export type Outbound = DeleteWalletResponse$Outbound;
 }

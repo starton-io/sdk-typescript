@@ -35,7 +35,11 @@ export class ServerNotResponding extends Error {
     data$: ServerNotRespondingData;
 
     constructor(err: ServerNotRespondingData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,91 +53,118 @@ export class ServerNotResponding extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "ServerNotResponding";
     }
 }
 
 /** @internal */
+export const SchemasSERVERNOTRESPONDINGContext$inboundSchema: z.ZodType<
+    SchemasSERVERNOTRESPONDINGContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasSERVERNOTRESPONDINGContext$Outbound = {};
+
+/** @internal */
+export const SchemasSERVERNOTRESPONDINGContext$outboundSchema: z.ZodType<
+    SchemasSERVERNOTRESPONDINGContext$Outbound,
+    z.ZodTypeDef,
+    SchemasSERVERNOTRESPONDINGContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasSERVERNOTRESPONDINGContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasSERVERNOTRESPONDINGContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasSERVERNOTRESPONDINGContext
-    > = z.object({});
+    /** @deprecated use `SchemasSERVERNOTRESPONDINGContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasSERVERNOTRESPONDINGContext$inboundSchema;
+    /** @deprecated use `SchemasSERVERNOTRESPONDINGContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasSERVERNOTRESPONDINGContext$outboundSchema;
+    /** @deprecated use `SchemasSERVERNOTRESPONDINGContext$Outbound` instead. */
+    export type Outbound = SchemasSERVERNOTRESPONDINGContext$Outbound;
 }
 
 /** @internal */
-export namespace ServerNotResponding$ {
-    export const inboundSchema: z.ZodType<ServerNotResponding, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("SERVER_NOT_RESPONDING"),
-            message: z.string().default("Your server that receive webhook is not responding."),
-            path: z.string(),
-            statusCode: z.number().default(412),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new ServerNotResponding(remapped);
+export const ServerNotResponding$inboundSchema: z.ZodType<
+    ServerNotResponding,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("SERVER_NOT_RESPONDING"),
+        message: z.string().default("Your server that receive webhook is not responding."),
+        path: z.string(),
+        statusCode: z.number().default(412),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasSERVERNOTRESPONDINGContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new ServerNotResponding(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ServerNotResponding> = z
-        .instanceof(ServerNotResponding)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("SERVER_NOT_RESPONDING"),
-                    message: z
-                        .string()
-                        .default("Your server that receive webhook is not responding."),
-                    path: z.string(),
-                    statusCode: z.number().default(412),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type ServerNotResponding$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasSERVERNOTRESPONDINGContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const ServerNotResponding$outboundSchema: z.ZodType<
+    ServerNotResponding$Outbound,
+    z.ZodTypeDef,
+    ServerNotResponding
+> = z
+    .instanceof(ServerNotResponding)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasSERVERNOTRESPONDINGContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("SERVER_NOT_RESPONDING"),
+                message: z.string().default("Your server that receive webhook is not responding."),
+                path: z.string(),
+                statusCode: z.number().default(412),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ServerNotResponding$ {
+    /** @deprecated use `ServerNotResponding$inboundSchema` instead. */
+    export const inboundSchema = ServerNotResponding$inboundSchema;
+    /** @deprecated use `ServerNotResponding$outboundSchema` instead. */
+    export const outboundSchema = ServerNotResponding$outboundSchema;
+    /** @deprecated use `ServerNotResponding$Outbound` instead. */
+    export type Outbound = ServerNotResponding$Outbound;
 }

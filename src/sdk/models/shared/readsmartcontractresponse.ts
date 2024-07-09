@@ -28,137 +28,219 @@ export type ReadSmartContractResponse = {
 };
 
 /** @internal */
+export const ReadSmartContractResponse3$inboundSchema: z.ZodType<
+    ReadSmartContractResponse3,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ReadSmartContractResponse3$Outbound = {};
+
+/** @internal */
+export const ReadSmartContractResponse3$outboundSchema: z.ZodType<
+    ReadSmartContractResponse3$Outbound,
+    z.ZodTypeDef,
+    ReadSmartContractResponse3
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ReadSmartContractResponse3$ {
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse3, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse3> =
-        z.object({});
+    /** @deprecated use `ReadSmartContractResponse3$inboundSchema` instead. */
+    export const inboundSchema = ReadSmartContractResponse3$inboundSchema;
+    /** @deprecated use `ReadSmartContractResponse3$outboundSchema` instead. */
+    export const outboundSchema = ReadSmartContractResponse3$outboundSchema;
+    /** @deprecated use `ReadSmartContractResponse3$Outbound` instead. */
+    export type Outbound = ReadSmartContractResponse3$Outbound;
 }
 
 /** @internal */
+export const ReadSmartContractResponseParams$inboundSchema: z.ZodType<
+    ReadSmartContractResponseParams,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => ReadSmartContractResponse3$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type ReadSmartContractResponseParams$Outbound =
+    | ReadSmartContractResponse3$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const ReadSmartContractResponseParams$outboundSchema: z.ZodType<
+    ReadSmartContractResponseParams$Outbound,
+    z.ZodTypeDef,
+    ReadSmartContractResponseParams
+> = z.union([
+    z.lazy(() => ReadSmartContractResponse3$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ReadSmartContractResponseParams$ {
-    export const inboundSchema: z.ZodType<ReadSmartContractResponseParams, z.ZodTypeDef, unknown> =
+    /** @deprecated use `ReadSmartContractResponseParams$inboundSchema` instead. */
+    export const inboundSchema = ReadSmartContractResponseParams$inboundSchema;
+    /** @deprecated use `ReadSmartContractResponseParams$outboundSchema` instead. */
+    export const outboundSchema = ReadSmartContractResponseParams$outboundSchema;
+    /** @deprecated use `ReadSmartContractResponseParams$Outbound` instead. */
+    export type Outbound = ReadSmartContractResponseParams$Outbound;
+}
+
+/** @internal */
+export const ReadSmartContractResponseSchemas3$inboundSchema: z.ZodType<
+    ReadSmartContractResponseSchemas3,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ReadSmartContractResponseSchemas3$Outbound = {};
+
+/** @internal */
+export const ReadSmartContractResponseSchemas3$outboundSchema: z.ZodType<
+    ReadSmartContractResponseSchemas3$Outbound,
+    z.ZodTypeDef,
+    ReadSmartContractResponseSchemas3
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ReadSmartContractResponseSchemas3$ {
+    /** @deprecated use `ReadSmartContractResponseSchemas3$inboundSchema` instead. */
+    export const inboundSchema = ReadSmartContractResponseSchemas3$inboundSchema;
+    /** @deprecated use `ReadSmartContractResponseSchemas3$outboundSchema` instead. */
+    export const outboundSchema = ReadSmartContractResponseSchemas3$outboundSchema;
+    /** @deprecated use `ReadSmartContractResponseSchemas3$Outbound` instead. */
+    export type Outbound = ReadSmartContractResponseSchemas3$Outbound;
+}
+
+/** @internal */
+export const Response$inboundSchema: z.ZodType<Response, z.ZodTypeDef, unknown> = z.union([
+    z.lazy(() => ReadSmartContractResponseSchemas3$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
+
+/** @internal */
+export type Response$Outbound =
+    | ReadSmartContractResponseSchemas3$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
+
+/** @internal */
+export const Response$outboundSchema: z.ZodType<Response$Outbound, z.ZodTypeDef, Response> =
+    z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Response$ {
+    /** @deprecated use `Response$inboundSchema` instead. */
+    export const inboundSchema = Response$inboundSchema;
+    /** @deprecated use `Response$outboundSchema` instead. */
+    export const outboundSchema = Response$outboundSchema;
+    /** @deprecated use `Response$Outbound` instead. */
+    export type Outbound = Response$Outbound;
+}
+
+/** @internal */
+export const ReadSmartContractResponse$inboundSchema: z.ZodType<
+    ReadSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    functionName: z.string(),
+    network: z.string(),
+    params: z.array(
         z.union([
-            z.lazy(() => ReadSmartContractResponse3$.inboundSchema),
+            z.lazy(() => ReadSmartContractResponse3$inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
-        ]);
-
-    export type Outbound = ReadSmartContractResponse3$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ReadSmartContractResponseParams
-    > = z.union([
-        z.lazy(() => ReadSmartContractResponse3$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-}
-
-/** @internal */
-export namespace ReadSmartContractResponseSchemas3$ {
-    export const inboundSchema: z.ZodType<
-        ReadSmartContractResponseSchemas3,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ReadSmartContractResponseSchemas3
-    > = z.object({});
-}
-
-/** @internal */
-export namespace Response$ {
-    export const inboundSchema: z.ZodType<Response, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
+        ])
+    ),
+    response: z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
         z.array(z.any()),
-    ]);
+    ]),
+});
 
-    export type Outbound =
-        | ReadSmartContractResponseSchemas3$.Outbound
-        | string
-        | number
-        | boolean
-        | Array<any>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Response> = z.union([
-        z.lazy(() => ReadSmartContractResponseSchemas3$.outboundSchema),
+/** @internal */
+export type ReadSmartContractResponse$Outbound = {
+    address: string;
+    functionName: string;
+    network: string;
+    params: Array<ReadSmartContractResponse3$Outbound | string | number | boolean>;
+    response: ReadSmartContractResponseSchemas3$Outbound | string | number | boolean | Array<any>;
+};
+
+/** @internal */
+export const ReadSmartContractResponse$outboundSchema: z.ZodType<
+    ReadSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    ReadSmartContractResponse
+> = z.object({
+    address: z.string(),
+    functionName: z.string(),
+    network: z.string(),
+    params: z.array(
+        z.union([
+            z.lazy(() => ReadSmartContractResponse3$outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ])
+    ),
+    response: z.union([
+        z.lazy(() => ReadSmartContractResponseSchemas3$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
         z.array(z.any()),
-    ]);
-}
+    ]),
+});
 
-/** @internal */
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ReadSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<ReadSmartContractResponse, z.ZodTypeDef, unknown> =
-        z.object({
-            address: z.string(),
-            functionName: z.string(),
-            network: z.string(),
-            params: z.array(
-                z.union([
-                    z.lazy(() => ReadSmartContractResponse3$.inboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            ),
-            response: z.union([
-                z.lazy(() => ReadSmartContractResponseSchemas3$.inboundSchema),
-                z.string(),
-                z.number(),
-                z.boolean(),
-                z.array(z.any()),
-            ]),
-        });
-
-    export type Outbound = {
-        address: string;
-        functionName: string;
-        network: string;
-        params: Array<ReadSmartContractResponse3$.Outbound | string | number | boolean>;
-        response:
-            | ReadSmartContractResponseSchemas3$.Outbound
-            | string
-            | number
-            | boolean
-            | Array<any>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReadSmartContractResponse> =
-        z.object({
-            address: z.string(),
-            functionName: z.string(),
-            network: z.string(),
-            params: z.array(
-                z.union([
-                    z.lazy(() => ReadSmartContractResponse3$.outboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            ),
-            response: z.union([
-                z.lazy(() => ReadSmartContractResponseSchemas3$.outboundSchema),
-                z.string(),
-                z.number(),
-                z.boolean(),
-                z.array(z.any()),
-            ]),
-        });
+    /** @deprecated use `ReadSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = ReadSmartContractResponse$inboundSchema;
+    /** @deprecated use `ReadSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = ReadSmartContractResponse$outboundSchema;
+    /** @deprecated use `ReadSmartContractResponse$Outbound` instead. */
+    export type Outbound = ReadSmartContractResponse$Outbound;
 }

@@ -31,75 +31,117 @@ export type UpdateWalletResponse = {
 };
 
 /** @internal */
+export const UpdateWalletRequest$inboundSchema: z.ZodType<
+    UpdateWalletRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        UpdateWalletDto: shared.UpdateWalletDto$inboundSchema,
+        address: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdateWalletDto: "updateWalletDto",
+        });
+    });
+
+/** @internal */
+export type UpdateWalletRequest$Outbound = {
+    UpdateWalletDto: shared.UpdateWalletDto$Outbound;
+    address: string;
+};
+
+/** @internal */
+export const UpdateWalletRequest$outboundSchema: z.ZodType<
+    UpdateWalletRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateWalletRequest
+> = z
+    .object({
+        updateWalletDto: shared.UpdateWalletDto$outboundSchema,
+        address: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updateWalletDto: "UpdateWalletDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWalletRequest$ {
-    export const inboundSchema: z.ZodType<UpdateWalletRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            UpdateWalletDto: shared.UpdateWalletDto$.inboundSchema,
-            address: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdateWalletDto: "updateWalletDto",
-            });
-        });
-
-    export type Outbound = {
-        UpdateWalletDto: shared.UpdateWalletDto$.Outbound;
-        address: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletRequest> = z
-        .object({
-            updateWalletDto: shared.UpdateWalletDto$.outboundSchema,
-            address: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updateWalletDto: "UpdateWalletDto",
-            });
-        });
+    /** @deprecated use `UpdateWalletRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateWalletRequest$inboundSchema;
+    /** @deprecated use `UpdateWalletRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateWalletRequest$outboundSchema;
+    /** @deprecated use `UpdateWalletRequest$Outbound` instead. */
+    export type Outbound = UpdateWalletRequest$Outbound;
 }
 
 /** @internal */
+export const UpdateWalletResponse$inboundSchema: z.ZodType<
+    UpdateWalletResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        Wallet: shared.Wallet$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            Wallet: "wallet",
+        });
+    });
+
+/** @internal */
+export type UpdateWalletResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    Wallet?: shared.Wallet$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateWalletResponse$outboundSchema: z.ZodType<
+    UpdateWalletResponse$Outbound,
+    z.ZodTypeDef,
+    UpdateWalletResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        wallet: shared.Wallet$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            wallet: "Wallet",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWalletResponse$ {
-    export const inboundSchema: z.ZodType<UpdateWalletResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            Wallet: shared.Wallet$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                Wallet: "wallet",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        Wallet?: shared.Wallet$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            wallet: shared.Wallet$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                wallet: "Wallet",
-            });
-        });
+    /** @deprecated use `UpdateWalletResponse$inboundSchema` instead. */
+    export const inboundSchema = UpdateWalletResponse$inboundSchema;
+    /** @deprecated use `UpdateWalletResponse$outboundSchema` instead. */
+    export const outboundSchema = UpdateWalletResponse$outboundSchema;
+    /** @deprecated use `UpdateWalletResponse$Outbound` instead. */
+    export type Outbound = UpdateWalletResponse$Outbound;
 }

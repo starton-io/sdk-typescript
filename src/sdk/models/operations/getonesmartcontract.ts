@@ -36,71 +36,111 @@ export type GetOneSmartContractResponse = {
 };
 
 /** @internal */
+export const GetOneSmartContractRequest$inboundSchema: z.ZodType<
+    GetOneSmartContractRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    includeAbi: z.boolean().optional(),
+    includeCompilationDetails: z.boolean().optional(),
+    network: z.string(),
+});
+
+/** @internal */
+export type GetOneSmartContractRequest$Outbound = {
+    address: string;
+    includeAbi?: boolean | undefined;
+    includeCompilationDetails?: boolean | undefined;
+    network: string;
+};
+
+/** @internal */
+export const GetOneSmartContractRequest$outboundSchema: z.ZodType<
+    GetOneSmartContractRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneSmartContractRequest
+> = z.object({
+    address: z.string(),
+    includeAbi: z.boolean().optional(),
+    includeCompilationDetails: z.boolean().optional(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneSmartContractRequest$ {
-    export const inboundSchema: z.ZodType<GetOneSmartContractRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            address: z.string(),
-            includeAbi: z.boolean().optional(),
-            includeCompilationDetails: z.boolean().optional(),
-            network: z.string(),
-        });
-
-    export type Outbound = {
-        address: string;
-        includeAbi?: boolean | undefined;
-        includeCompilationDetails?: boolean | undefined;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneSmartContractRequest> =
-        z.object({
-            address: z.string(),
-            includeAbi: z.boolean().optional(),
-            includeCompilationDetails: z.boolean().optional(),
-            network: z.string(),
-        });
+    /** @deprecated use `GetOneSmartContractRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneSmartContractRequest$inboundSchema;
+    /** @deprecated use `GetOneSmartContractRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneSmartContractRequest$outboundSchema;
+    /** @deprecated use `GetOneSmartContractRequest$Outbound` instead. */
+    export type Outbound = GetOneSmartContractRequest$Outbound;
 }
 
 /** @internal */
+export const GetOneSmartContractResponse$inboundSchema: z.ZodType<
+    GetOneSmartContractResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SmartContract: shared.SmartContract$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SmartContract: "smartContract",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetOneSmartContractResponse$Outbound = {
+    ContentType: string;
+    SmartContract?: shared.SmartContract$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetOneSmartContractResponse$outboundSchema: z.ZodType<
+    GetOneSmartContractResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneSmartContractResponse
+> = z
+    .object({
+        contentType: z.string(),
+        smartContract: shared.SmartContract$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            smartContract: "SmartContract",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneSmartContractResponse$ {
-    export const inboundSchema: z.ZodType<GetOneSmartContractResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            SmartContract: shared.SmartContract$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SmartContract: "smartContract",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SmartContract?: shared.SmartContract$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneSmartContractResponse> = z
-        .object({
-            contentType: z.string(),
-            smartContract: shared.SmartContract$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                smartContract: "SmartContract",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetOneSmartContractResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneSmartContractResponse$inboundSchema;
+    /** @deprecated use `GetOneSmartContractResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneSmartContractResponse$outboundSchema;
+    /** @deprecated use `GetOneSmartContractResponse$Outbound` instead. */
+    export type Outbound = GetOneSmartContractResponse$Outbound;
 }

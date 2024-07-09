@@ -23,11 +23,11 @@ export type CreatePinResponse = {
 };
 
 /** @internal */
-export namespace CreatePinResponse$ {
-    export const inboundSchema: z.ZodType<CreatePinResponse, z.ZodTypeDef, unknown> = z
+export const CreatePinResponse$inboundSchema: z.ZodType<CreatePinResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Pin: shared.Pin$.inboundSchema.optional(),
+            Pin: shared.Pin$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -40,28 +40,46 @@ export namespace CreatePinResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type CreatePinResponse$Outbound = {
+    ContentType: string;
+    Pin?: shared.Pin$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePinResponse> = z
-        .object({
-            contentType: z.string(),
-            pin: shared.Pin$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                pin: "Pin",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const CreatePinResponse$outboundSchema: z.ZodType<
+    CreatePinResponse$Outbound,
+    z.ZodTypeDef,
+    CreatePinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        pin: shared.Pin$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            pin: "Pin",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreatePinResponse$ {
+    /** @deprecated use `CreatePinResponse$inboundSchema` instead. */
+    export const inboundSchema = CreatePinResponse$inboundSchema;
+    /** @deprecated use `CreatePinResponse$outboundSchema` instead. */
+    export const outboundSchema = CreatePinResponse$outboundSchema;
+    /** @deprecated use `CreatePinResponse$Outbound` instead. */
+    export type Outbound = CreatePinResponse$Outbound;
 }

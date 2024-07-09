@@ -35,7 +35,11 @@ export class CouldNotCancelWebhook extends Error {
     data$: CouldNotCancelWebhookData;
 
     constructor(err: CouldNotCancelWebhookData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,89 +53,118 @@ export class CouldNotCancelWebhook extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotCancelWebhook";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTCANCELWEBHOOKContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTCANCELWEBHOOKContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTCANCELWEBHOOKContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTCANCELWEBHOOKContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTCANCELWEBHOOKContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTCANCELWEBHOOKContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCOULDNOTCANCELWEBHOOKContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTCANCELWEBHOOKContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTCANCELWEBHOOKContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTCANCELWEBHOOKContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTCANCELWEBHOOKContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTCANCELWEBHOOKContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotCancelWebhook$ {
-    export const inboundSchema: z.ZodType<CouldNotCancelWebhook, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
-            message: z.string().default("Could not cancel webhook."),
-            path: z.string(),
-            statusCode: z.number().default(412),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new CouldNotCancelWebhook(remapped);
+export const CouldNotCancelWebhook$inboundSchema: z.ZodType<
+    CouldNotCancelWebhook,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
+        message: z.string().default("Could not cancel webhook."),
+        path: z.string(),
+        statusCode: z.number().default(412),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTCANCELWEBHOOKContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotCancelWebhook(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotCancelWebhook> = z
-        .instanceof(CouldNotCancelWebhook)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
-                    message: z.string().default("Could not cancel webhook."),
-                    path: z.string(),
-                    statusCode: z.number().default(412),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotCancelWebhook$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasCOULDNOTCANCELWEBHOOKContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotCancelWebhook$outboundSchema: z.ZodType<
+    CouldNotCancelWebhook$Outbound,
+    z.ZodTypeDef,
+    CouldNotCancelWebhook
+> = z
+    .instanceof(CouldNotCancelWebhook)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_CANCEL_WEBHOOK"),
+                message: z.string().default("Could not cancel webhook."),
+                path: z.string(),
+                statusCode: z.number().default(412),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotCancelWebhook$ {
+    /** @deprecated use `CouldNotCancelWebhook$inboundSchema` instead. */
+    export const inboundSchema = CouldNotCancelWebhook$inboundSchema;
+    /** @deprecated use `CouldNotCancelWebhook$outboundSchema` instead. */
+    export const outboundSchema = CouldNotCancelWebhook$outboundSchema;
+    /** @deprecated use `CouldNotCancelWebhook$Outbound` instead. */
+    export type Outbound = CouldNotCancelWebhook$Outbound;
 }

@@ -30,62 +30,102 @@ export type GetAllSettingRelayerResponse = {
 };
 
 /** @internal */
+export const GetAllSettingRelayerRequest$inboundSchema: z.ZodType<
+    GetAllSettingRelayerRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: z.string(),
+});
+
+/** @internal */
+export type GetAllSettingRelayerRequest$Outbound = {
+    network: string;
+};
+
+/** @internal */
+export const GetAllSettingRelayerRequest$outboundSchema: z.ZodType<
+    GetAllSettingRelayerRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllSettingRelayerRequest
+> = z.object({
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllSettingRelayerRequest$ {
-    export const inboundSchema: z.ZodType<GetAllSettingRelayerRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            network: z.string(),
-        });
-
-    export type Outbound = {
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllSettingRelayerRequest> =
-        z.object({
-            network: z.string(),
-        });
+    /** @deprecated use `GetAllSettingRelayerRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllSettingRelayerRequest$inboundSchema;
+    /** @deprecated use `GetAllSettingRelayerRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllSettingRelayerRequest$outboundSchema;
+    /** @deprecated use `GetAllSettingRelayerRequest$Outbound` instead. */
+    export type Outbound = GetAllSettingRelayerRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllSettingRelayerResponse$inboundSchema: z.ZodType<
+    GetAllSettingRelayerResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        SettingRelayer: shared.SettingRelayer$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            SettingRelayer: "settingRelayer",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAllSettingRelayerResponse$Outbound = {
+    ContentType: string;
+    SettingRelayer?: shared.SettingRelayer$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAllSettingRelayerResponse$outboundSchema: z.ZodType<
+    GetAllSettingRelayerResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllSettingRelayerResponse
+> = z
+    .object({
+        contentType: z.string(),
+        settingRelayer: shared.SettingRelayer$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            settingRelayer: "SettingRelayer",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllSettingRelayerResponse$ {
-    export const inboundSchema: z.ZodType<GetAllSettingRelayerResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            SettingRelayer: shared.SettingRelayer$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                SettingRelayer: "settingRelayer",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        SettingRelayer?: shared.SettingRelayer$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllSettingRelayerResponse> = z
-        .object({
-            contentType: z.string(),
-            settingRelayer: shared.SettingRelayer$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                settingRelayer: "SettingRelayer",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAllSettingRelayerResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllSettingRelayerResponse$inboundSchema;
+    /** @deprecated use `GetAllSettingRelayerResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllSettingRelayerResponse$outboundSchema;
+    /** @deprecated use `GetAllSettingRelayerResponse$Outbound` instead. */
+    export type Outbound = GetAllSettingRelayerResponse$Outbound;
 }

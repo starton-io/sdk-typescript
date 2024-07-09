@@ -15,43 +15,94 @@ export type UploadJsonDto = {
 };
 
 /** @internal */
+export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Content$Outbound = {};
+
+/** @internal */
+export const Content$outboundSchema: z.ZodType<Content$Outbound, z.ZodTypeDef, Content> = z.object(
+    {}
+);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Content$ {
-    export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z.object({});
+    /** @deprecated use `Content$inboundSchema` instead. */
+    export const inboundSchema = Content$inboundSchema;
+    /** @deprecated use `Content$outboundSchema` instead. */
+    export const outboundSchema = Content$outboundSchema;
+    /** @deprecated use `Content$Outbound` instead. */
+    export type Outbound = Content$Outbound;
 }
 
 /** @internal */
+export const UploadJsonDtoMetadata$inboundSchema: z.ZodType<
+    UploadJsonDtoMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UploadJsonDtoMetadata$Outbound = {};
+
+/** @internal */
+export const UploadJsonDtoMetadata$outboundSchema: z.ZodType<
+    UploadJsonDtoMetadata$Outbound,
+    z.ZodTypeDef,
+    UploadJsonDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadJsonDtoMetadata$ {
-    export const inboundSchema: z.ZodType<UploadJsonDtoMetadata, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadJsonDtoMetadata> =
-        z.object({});
+    /** @deprecated use `UploadJsonDtoMetadata$inboundSchema` instead. */
+    export const inboundSchema = UploadJsonDtoMetadata$inboundSchema;
+    /** @deprecated use `UploadJsonDtoMetadata$outboundSchema` instead. */
+    export const outboundSchema = UploadJsonDtoMetadata$outboundSchema;
+    /** @deprecated use `UploadJsonDtoMetadata$Outbound` instead. */
+    export type Outbound = UploadJsonDtoMetadata$Outbound;
 }
 
 /** @internal */
+export const UploadJsonDto$inboundSchema: z.ZodType<UploadJsonDto, z.ZodTypeDef, unknown> =
+    z.object({
+        content: z.lazy(() => Content$inboundSchema),
+        metadata: z.lazy(() => UploadJsonDtoMetadata$inboundSchema).optional(),
+        name: z.string(),
+    });
+
+/** @internal */
+export type UploadJsonDto$Outbound = {
+    content: Content$Outbound;
+    metadata?: UploadJsonDtoMetadata$Outbound | undefined;
+    name: string;
+};
+
+/** @internal */
+export const UploadJsonDto$outboundSchema: z.ZodType<
+    UploadJsonDto$Outbound,
+    z.ZodTypeDef,
+    UploadJsonDto
+> = z.object({
+    content: z.lazy(() => Content$outboundSchema),
+    metadata: z.lazy(() => UploadJsonDtoMetadata$outboundSchema).optional(),
+    name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadJsonDto$ {
-    export const inboundSchema: z.ZodType<UploadJsonDto, z.ZodTypeDef, unknown> = z.object({
-        content: z.lazy(() => Content$.inboundSchema),
-        metadata: z.lazy(() => UploadJsonDtoMetadata$.inboundSchema).optional(),
-        name: z.string(),
-    });
-
-    export type Outbound = {
-        content: Content$.Outbound;
-        metadata?: UploadJsonDtoMetadata$.Outbound | undefined;
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadJsonDto> = z.object({
-        content: z.lazy(() => Content$.outboundSchema),
-        metadata: z.lazy(() => UploadJsonDtoMetadata$.outboundSchema).optional(),
-        name: z.string(),
-    });
+    /** @deprecated use `UploadJsonDto$inboundSchema` instead. */
+    export const inboundSchema = UploadJsonDto$inboundSchema;
+    /** @deprecated use `UploadJsonDto$outboundSchema` instead. */
+    export const outboundSchema = UploadJsonDto$outboundSchema;
+    /** @deprecated use `UploadJsonDto$Outbound` instead. */
+    export type Outbound = UploadJsonDto$Outbound;
 }

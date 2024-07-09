@@ -31,29 +31,47 @@ export type GetOnePinResponse = {
 };
 
 /** @internal */
+export const GetOnePinRequest$inboundSchema: z.ZodType<GetOnePinRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+        includeDirectoryContent: z.boolean().optional(),
+    });
+
+/** @internal */
+export type GetOnePinRequest$Outbound = {
+    id: string;
+    includeDirectoryContent?: boolean | undefined;
+};
+
+/** @internal */
+export const GetOnePinRequest$outboundSchema: z.ZodType<
+    GetOnePinRequest$Outbound,
+    z.ZodTypeDef,
+    GetOnePinRequest
+> = z.object({
+    id: z.string(),
+    includeDirectoryContent: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOnePinRequest$ {
-    export const inboundSchema: z.ZodType<GetOnePinRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-        includeDirectoryContent: z.boolean().optional(),
-    });
-
-    export type Outbound = {
-        id: string;
-        includeDirectoryContent?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOnePinRequest> = z.object({
-        id: z.string(),
-        includeDirectoryContent: z.boolean().optional(),
-    });
+    /** @deprecated use `GetOnePinRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOnePinRequest$inboundSchema;
+    /** @deprecated use `GetOnePinRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOnePinRequest$outboundSchema;
+    /** @deprecated use `GetOnePinRequest$Outbound` instead. */
+    export type Outbound = GetOnePinRequest$Outbound;
 }
 
 /** @internal */
-export namespace GetOnePinResponse$ {
-    export const inboundSchema: z.ZodType<GetOnePinResponse, z.ZodTypeDef, unknown> = z
+export const GetOnePinResponse$inboundSchema: z.ZodType<GetOnePinResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Pin: shared.Pin$.inboundSchema.optional(),
+            Pin: shared.Pin$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -66,28 +84,46 @@ export namespace GetOnePinResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetOnePinResponse$Outbound = {
+    ContentType: string;
+    Pin?: shared.Pin$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOnePinResponse> = z
-        .object({
-            contentType: z.string(),
-            pin: shared.Pin$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                pin: "Pin",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetOnePinResponse$outboundSchema: z.ZodType<
+    GetOnePinResponse$Outbound,
+    z.ZodTypeDef,
+    GetOnePinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        pin: shared.Pin$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            pin: "Pin",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetOnePinResponse$ {
+    /** @deprecated use `GetOnePinResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOnePinResponse$inboundSchema;
+    /** @deprecated use `GetOnePinResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOnePinResponse$outboundSchema;
+    /** @deprecated use `GetOnePinResponse$Outbound` instead. */
+    export type Outbound = GetOnePinResponse$Outbound;
 }

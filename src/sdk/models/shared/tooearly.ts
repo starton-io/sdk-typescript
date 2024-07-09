@@ -16,40 +16,69 @@ export type TooEarly = {
 };
 
 /** @internal */
+export const Context$inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Context$Outbound = {};
+
+/** @internal */
+export const Context$outboundSchema: z.ZodType<Context$Outbound, z.ZodTypeDef, Context> = z.object(
+    {}
+);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Context$ {
-    export const inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Context> = z.object({});
+    /** @deprecated use `Context$inboundSchema` instead. */
+    export const inboundSchema = Context$inboundSchema;
+    /** @deprecated use `Context$outboundSchema` instead. */
+    export const outboundSchema = Context$outboundSchema;
+    /** @deprecated use `Context$Outbound` instead. */
+    export type Outbound = Context$Outbound;
 }
 
 /** @internal */
+export const TooEarly$inboundSchema: z.ZodType<TooEarly, z.ZodTypeDef, unknown> = z.object({
+    context: z.nullable(z.lazy(() => Context$inboundSchema)).optional(),
+    errorCode: z.string().default("TOO_EARLY"),
+    message: z.string().default("Please try later, you already tried too recently"),
+    path: z.string(),
+    statusCode: z.number().default(425),
+    timestamp: z.string(),
+});
+
+/** @internal */
+export type TooEarly$Outbound = {
+    context?: Context$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const TooEarly$outboundSchema: z.ZodType<TooEarly$Outbound, z.ZodTypeDef, TooEarly> =
+    z.object({
+        context: z.nullable(z.lazy(() => Context$outboundSchema)).optional(),
+        errorCode: z.string().default("TOO_EARLY"),
+        message: z.string().default("Please try later, you already tried too recently"),
+        path: z.string(),
+        statusCode: z.number().default(425),
+        timestamp: z.string(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TooEarly$ {
-    export const inboundSchema: z.ZodType<TooEarly, z.ZodTypeDef, unknown> = z.object({
-        context: z.nullable(z.lazy(() => Context$.inboundSchema)).optional(),
-        errorCode: z.string().default("TOO_EARLY"),
-        message: z.string().default("Please try later, you already tried too recently"),
-        path: z.string(),
-        statusCode: z.number().default(425),
-        timestamp: z.string(),
-    });
-
-    export type Outbound = {
-        context?: Context$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TooEarly> = z.object({
-        context: z.nullable(z.lazy(() => Context$.outboundSchema)).optional(),
-        errorCode: z.string().default("TOO_EARLY"),
-        message: z.string().default("Please try later, you already tried too recently"),
-        path: z.string(),
-        statusCode: z.number().default(425),
-        timestamp: z.string(),
-    });
+    /** @deprecated use `TooEarly$inboundSchema` instead. */
+    export const inboundSchema = TooEarly$inboundSchema;
+    /** @deprecated use `TooEarly$outboundSchema` instead. */
+    export const outboundSchema = TooEarly$outboundSchema;
+    /** @deprecated use `TooEarly$Outbound` instead. */
+    export type Outbound = TooEarly$Outbound;
 }

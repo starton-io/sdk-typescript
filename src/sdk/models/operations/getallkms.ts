@@ -39,48 +39,86 @@ export type GetAllKmsResponse = {
 };
 
 /** @internal */
+export const GetAllKmsRequest$inboundSchema: z.ZodType<GetAllKmsRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        limit: z.number().int().default(100),
+        page: z.number().int().optional(),
+    });
+
+/** @internal */
+export type GetAllKmsRequest$Outbound = {
+    limit: number;
+    page?: number | undefined;
+};
+
+/** @internal */
+export const GetAllKmsRequest$outboundSchema: z.ZodType<
+    GetAllKmsRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllKmsRequest
+> = z.object({
+    limit: z.number().int().default(100),
+    page: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllKmsRequest$ {
-    export const inboundSchema: z.ZodType<GetAllKmsRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().default(100),
-        page: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        limit: number;
-        page?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllKmsRequest> = z.object({
-        limit: z.number().int().default(100),
-        page: z.number().int().optional(),
-    });
+    /** @deprecated use `GetAllKmsRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllKmsRequest$inboundSchema;
+    /** @deprecated use `GetAllKmsRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllKmsRequest$outboundSchema;
+    /** @deprecated use `GetAllKmsRequest$Outbound` instead. */
+    export type Outbound = GetAllKmsRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllKmsKmsPaginated$inboundSchema: z.ZodType<
+    GetAllKmsKmsPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Kms$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllKmsKmsPaginated$Outbound = {
+    items: Array<shared.Kms$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllKmsKmsPaginated$outboundSchema: z.ZodType<
+    GetAllKmsKmsPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllKmsKmsPaginated
+> = z.object({
+    items: z.array(shared.Kms$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllKmsKmsPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllKmsKmsPaginated, z.ZodTypeDef, unknown> = z.object({
-        items: z.array(shared.Kms$.inboundSchema),
-        meta: shared.PaginationData$.inboundSchema,
-    });
-
-    export type Outbound = {
-        items: Array<shared.Kms$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllKmsKmsPaginated> =
-        z.object({
-            items: z.array(shared.Kms$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
+    /** @deprecated use `GetAllKmsKmsPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllKmsKmsPaginated$inboundSchema;
+    /** @deprecated use `GetAllKmsKmsPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllKmsKmsPaginated$outboundSchema;
+    /** @deprecated use `GetAllKmsKmsPaginated$Outbound` instead. */
+    export type Outbound = GetAllKmsKmsPaginated$Outbound;
 }
 
 /** @internal */
-export namespace GetAllKmsResponse$ {
-    export const inboundSchema: z.ZodType<GetAllKmsResponse, z.ZodTypeDef, unknown> = z
+export const GetAllKmsResponse$inboundSchema: z.ZodType<GetAllKmsResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            KmsPaginated: z.lazy(() => GetAllKmsKmsPaginated$.inboundSchema).optional(),
+            KmsPaginated: z.lazy(() => GetAllKmsKmsPaginated$inboundSchema).optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -93,28 +131,46 @@ export namespace GetAllKmsResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        KmsPaginated?: GetAllKmsKmsPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetAllKmsResponse$Outbound = {
+    ContentType: string;
+    KmsPaginated?: GetAllKmsKmsPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllKmsResponse> = z
-        .object({
-            contentType: z.string(),
-            kmsPaginated: z.lazy(() => GetAllKmsKmsPaginated$.outboundSchema).optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                kmsPaginated: "KmsPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetAllKmsResponse$outboundSchema: z.ZodType<
+    GetAllKmsResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllKmsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        kmsPaginated: z.lazy(() => GetAllKmsKmsPaginated$outboundSchema).optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            kmsPaginated: "KmsPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllKmsResponse$ {
+    /** @deprecated use `GetAllKmsResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllKmsResponse$inboundSchema;
+    /** @deprecated use `GetAllKmsResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllKmsResponse$outboundSchema;
+    /** @deprecated use `GetAllKmsResponse$Outbound` instead. */
+    export type Outbound = GetAllKmsResponse$Outbound;
 }

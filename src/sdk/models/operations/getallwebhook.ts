@@ -47,97 +47,166 @@ export type GetAllWebhookResponse = {
 };
 
 /** @internal */
+export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<typeof QueryParamStatus> =
+    z.nativeEnum(QueryParamStatus);
+
+/** @internal */
+export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<typeof QueryParamStatus> =
+    QueryParamStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QueryParamStatus$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof QueryParamStatus> =
-        z.nativeEnum(QueryParamStatus);
-    export const outboundSchema: z.ZodNativeEnum<typeof QueryParamStatus> = inboundSchema;
+    /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
+    export const inboundSchema = QueryParamStatus$inboundSchema;
+    /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
+    export const outboundSchema = QueryParamStatus$outboundSchema;
 }
 
 /** @internal */
+export const GetAllWebhookRequest$inboundSchema: z.ZodType<
+    GetAllWebhookRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    limit: z.number().int().default(100),
+    page: z.number().int().optional(),
+    status: QueryParamStatus$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetAllWebhookRequest$Outbound = {
+    limit: number;
+    page?: number | undefined;
+    status?: string | undefined;
+};
+
+/** @internal */
+export const GetAllWebhookRequest$outboundSchema: z.ZodType<
+    GetAllWebhookRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllWebhookRequest
+> = z.object({
+    limit: z.number().int().default(100),
+    page: z.number().int().optional(),
+    status: QueryParamStatus$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllWebhookRequest$ {
-    export const inboundSchema: z.ZodType<GetAllWebhookRequest, z.ZodTypeDef, unknown> = z.object({
-        limit: z.number().int().default(100),
-        page: z.number().int().optional(),
-        status: QueryParamStatus$.inboundSchema.optional(),
+    /** @deprecated use `GetAllWebhookRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllWebhookRequest$inboundSchema;
+    /** @deprecated use `GetAllWebhookRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllWebhookRequest$outboundSchema;
+    /** @deprecated use `GetAllWebhookRequest$Outbound` instead. */
+    export type Outbound = GetAllWebhookRequest$Outbound;
+}
+
+/** @internal */
+export const GetAllWebhookWebhookPaginated$inboundSchema: z.ZodType<
+    GetAllWebhookWebhookPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Webhook$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllWebhookWebhookPaginated$Outbound = {
+    items: Array<shared.Webhook$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllWebhookWebhookPaginated$outboundSchema: z.ZodType<
+    GetAllWebhookWebhookPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllWebhookWebhookPaginated
+> = z.object({
+    items: z.array(shared.Webhook$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllWebhookWebhookPaginated$ {
+    /** @deprecated use `GetAllWebhookWebhookPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllWebhookWebhookPaginated$inboundSchema;
+    /** @deprecated use `GetAllWebhookWebhookPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllWebhookWebhookPaginated$outboundSchema;
+    /** @deprecated use `GetAllWebhookWebhookPaginated$Outbound` instead. */
+    export type Outbound = GetAllWebhookWebhookPaginated$Outbound;
+}
+
+/** @internal */
+export const GetAllWebhookResponse$inboundSchema: z.ZodType<
+    GetAllWebhookResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        WebhookPaginated: z.lazy(() => GetAllWebhookWebhookPaginated$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            WebhookPaginated: "webhookPaginated",
+        });
     });
 
-    export type Outbound = {
-        limit: number;
-        page?: number | undefined;
-        status?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookRequest> = z.object(
-        {
-            limit: z.number().int().default(100),
-            page: z.number().int().optional(),
-            status: QueryParamStatus$.outboundSchema.optional(),
-        }
-    );
-}
+/** @internal */
+export type GetAllWebhookResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    WebhookPaginated?: GetAllWebhookWebhookPaginated$Outbound | undefined;
+};
 
 /** @internal */
-export namespace GetAllWebhookWebhookPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllWebhookWebhookPaginated, z.ZodTypeDef, unknown> =
-        z.object({
-            items: z.array(shared.Webhook$.inboundSchema),
-            meta: shared.PaginationData$.inboundSchema,
+export const GetAllWebhookResponse$outboundSchema: z.ZodType<
+    GetAllWebhookResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllWebhookResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        webhookPaginated: z.lazy(() => GetAllWebhookWebhookPaginated$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            webhookPaginated: "WebhookPaginated",
         });
+    });
 
-    export type Outbound = {
-        items: Array<shared.Webhook$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookWebhookPaginated> =
-        z.object({
-            items: z.array(shared.Webhook$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
-}
-
-/** @internal */
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllWebhookResponse$ {
-    export const inboundSchema: z.ZodType<GetAllWebhookResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            WebhookPaginated: z.lazy(() => GetAllWebhookWebhookPaginated$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                WebhookPaginated: "webhookPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        WebhookPaginated?: GetAllWebhookWebhookPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllWebhookResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            webhookPaginated: z
-                .lazy(() => GetAllWebhookWebhookPaginated$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                webhookPaginated: "WebhookPaginated",
-            });
-        });
+    /** @deprecated use `GetAllWebhookResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllWebhookResponse$inboundSchema;
+    /** @deprecated use `GetAllWebhookResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllWebhookResponse$outboundSchema;
+    /** @deprecated use `GetAllWebhookResponse$Outbound` instead. */
+    export type Outbound = GetAllWebhookResponse$Outbound;
 }

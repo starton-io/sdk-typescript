@@ -34,88 +34,150 @@ export type ClaimFaucetResponse = {
 };
 
 /** @internal */
+export const ClaimFaucetRequest$inboundSchema: z.ZodType<
+    ClaimFaucetRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RequireFaucetDto: shared.RequireFaucetDto$inboundSchema,
+        network: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequireFaucetDto: "requireFaucetDto",
+        });
+    });
+
+/** @internal */
+export type ClaimFaucetRequest$Outbound = {
+    RequireFaucetDto: shared.RequireFaucetDto$Outbound;
+    network: string;
+};
+
+/** @internal */
+export const ClaimFaucetRequest$outboundSchema: z.ZodType<
+    ClaimFaucetRequest$Outbound,
+    z.ZodTypeDef,
+    ClaimFaucetRequest
+> = z
+    .object({
+        requireFaucetDto: shared.RequireFaucetDto$outboundSchema,
+        network: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requireFaucetDto: "RequireFaucetDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClaimFaucetRequest$ {
-    export const inboundSchema: z.ZodType<ClaimFaucetRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            RequireFaucetDto: shared.RequireFaucetDto$.inboundSchema,
-            network: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequireFaucetDto: "requireFaucetDto",
-            });
-        });
-
-    export type Outbound = {
-        RequireFaucetDto: shared.RequireFaucetDto$.Outbound;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetRequest> = z
-        .object({
-            requireFaucetDto: shared.RequireFaucetDto$.outboundSchema,
-            network: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requireFaucetDto: "RequireFaucetDto",
-            });
-        });
+    /** @deprecated use `ClaimFaucetRequest$inboundSchema` instead. */
+    export const inboundSchema = ClaimFaucetRequest$inboundSchema;
+    /** @deprecated use `ClaimFaucetRequest$outboundSchema` instead. */
+    export const outboundSchema = ClaimFaucetRequest$outboundSchema;
+    /** @deprecated use `ClaimFaucetRequest$Outbound` instead. */
+    export type Outbound = ClaimFaucetRequest$Outbound;
 }
 
 /** @internal */
+export const ClaimFaucetResponseBody$inboundSchema: z.ZodType<
+    ClaimFaucetResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = shared.TooEarly$inboundSchema;
+
+/** @internal */
+export type ClaimFaucetResponseBody$Outbound = shared.TooEarly$Outbound;
+
+/** @internal */
+export const ClaimFaucetResponseBody$outboundSchema: z.ZodType<
+    ClaimFaucetResponseBody$Outbound,
+    z.ZodTypeDef,
+    ClaimFaucetResponseBody
+> = shared.TooEarly$outboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClaimFaucetResponseBody$ {
-    export const inboundSchema: z.ZodType<ClaimFaucetResponseBody, z.ZodTypeDef, unknown> =
-        shared.TooEarly$.inboundSchema;
-
-    export type Outbound = shared.TooEarly$.Outbound;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponseBody> =
-        shared.TooEarly$.outboundSchema;
+    /** @deprecated use `ClaimFaucetResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ClaimFaucetResponseBody$inboundSchema;
+    /** @deprecated use `ClaimFaucetResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ClaimFaucetResponseBody$outboundSchema;
+    /** @deprecated use `ClaimFaucetResponseBody$Outbound` instead. */
+    export type Outbound = ClaimFaucetResponseBody$Outbound;
 }
 
 /** @internal */
+export const ClaimFaucetResponse$inboundSchema: z.ZodType<
+    ClaimFaucetResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        Faucet: shared.Faucet$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        oneOf: shared.TooEarly$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            Faucet: "faucet",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type ClaimFaucetResponse$Outbound = {
+    ContentType: string;
+    Faucet?: shared.Faucet$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+    oneOf?: shared.TooEarly$Outbound | undefined;
+};
+
+/** @internal */
+export const ClaimFaucetResponse$outboundSchema: z.ZodType<
+    ClaimFaucetResponse$Outbound,
+    z.ZodTypeDef,
+    ClaimFaucetResponse
+> = z
+    .object({
+        contentType: z.string(),
+        faucet: shared.Faucet$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        oneOf: shared.TooEarly$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            faucet: "Faucet",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClaimFaucetResponse$ {
-    export const inboundSchema: z.ZodType<ClaimFaucetResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            Faucet: shared.Faucet$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            oneOf: shared.TooEarly$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                Faucet: "faucet",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        Faucet?: shared.Faucet$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-        oneOf?: shared.TooEarly$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClaimFaucetResponse> = z
-        .object({
-            contentType: z.string(),
-            faucet: shared.Faucet$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            oneOf: shared.TooEarly$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                faucet: "Faucet",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `ClaimFaucetResponse$inboundSchema` instead. */
+    export const inboundSchema = ClaimFaucetResponse$inboundSchema;
+    /** @deprecated use `ClaimFaucetResponse$outboundSchema` instead. */
+    export const outboundSchema = ClaimFaucetResponse$outboundSchema;
+    /** @deprecated use `ClaimFaucetResponse$Outbound` instead. */
+    export type Outbound = ClaimFaucetResponse$Outbound;
 }

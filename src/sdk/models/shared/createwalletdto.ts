@@ -14,36 +14,73 @@ export type CreateWalletDto = {
 };
 
 /** @internal */
+export const CreateWalletDtoMetadata$inboundSchema: z.ZodType<
+    CreateWalletDtoMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type CreateWalletDtoMetadata$Outbound = {};
+
+/** @internal */
+export const CreateWalletDtoMetadata$outboundSchema: z.ZodType<
+    CreateWalletDtoMetadata$Outbound,
+    z.ZodTypeDef,
+    CreateWalletDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWalletDtoMetadata$ {
-    export const inboundSchema: z.ZodType<CreateWalletDtoMetadata, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletDtoMetadata> =
-        z.object({});
+    /** @deprecated use `CreateWalletDtoMetadata$inboundSchema` instead. */
+    export const inboundSchema = CreateWalletDtoMetadata$inboundSchema;
+    /** @deprecated use `CreateWalletDtoMetadata$outboundSchema` instead. */
+    export const outboundSchema = CreateWalletDtoMetadata$outboundSchema;
+    /** @deprecated use `CreateWalletDtoMetadata$Outbound` instead. */
+    export type Outbound = CreateWalletDtoMetadata$Outbound;
 }
 
 /** @internal */
+export const CreateWalletDto$inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, unknown> =
+    z.object({
+        description: z.string().optional(),
+        kmsId: z.string(),
+        metadata: z.lazy(() => CreateWalletDtoMetadata$inboundSchema).optional(),
+        name: z.string().optional(),
+    });
+
+/** @internal */
+export type CreateWalletDto$Outbound = {
+    description?: string | undefined;
+    kmsId: string;
+    metadata?: CreateWalletDtoMetadata$Outbound | undefined;
+    name?: string | undefined;
+};
+
+/** @internal */
+export const CreateWalletDto$outboundSchema: z.ZodType<
+    CreateWalletDto$Outbound,
+    z.ZodTypeDef,
+    CreateWalletDto
+> = z.object({
+    description: z.string().optional(),
+    kmsId: z.string(),
+    metadata: z.lazy(() => CreateWalletDtoMetadata$outboundSchema).optional(),
+    name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWalletDto$ {
-    export const inboundSchema: z.ZodType<CreateWalletDto, z.ZodTypeDef, unknown> = z.object({
-        description: z.string().optional(),
-        kmsId: z.string(),
-        metadata: z.lazy(() => CreateWalletDtoMetadata$.inboundSchema).optional(),
-        name: z.string().optional(),
-    });
-
-    export type Outbound = {
-        description?: string | undefined;
-        kmsId: string;
-        metadata?: CreateWalletDtoMetadata$.Outbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWalletDto> = z.object({
-        description: z.string().optional(),
-        kmsId: z.string(),
-        metadata: z.lazy(() => CreateWalletDtoMetadata$.outboundSchema).optional(),
-        name: z.string().optional(),
-    });
+    /** @deprecated use `CreateWalletDto$inboundSchema` instead. */
+    export const inboundSchema = CreateWalletDto$inboundSchema;
+    /** @deprecated use `CreateWalletDto$outboundSchema` instead. */
+    export const outboundSchema = CreateWalletDto$outboundSchema;
+    /** @deprecated use `CreateWalletDto$Outbound` instead. */
+    export type Outbound = CreateWalletDto$Outbound;
 }

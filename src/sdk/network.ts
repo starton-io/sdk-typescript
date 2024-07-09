@@ -65,7 +65,7 @@ export class Network extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreateNetworkDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreateNetworkDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -117,8 +117,8 @@ export class Network extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateNetworkResponse>()
-            .json(201, operations.CreateNetworkResponse$, { key: "Network" })
-            .json(400, errors.CreateNetworkResponseBody$, { err: true })
+            .json(201, operations.CreateNetworkResponse$inboundSchema, { key: "Network" })
+            .json(400, errors.CreateNetworkResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -139,7 +139,7 @@ export class Network extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteNetworkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteNetworkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -196,9 +196,9 @@ export class Network extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteNetworkResponse>()
-            .json(200, operations.DeleteNetworkResponse$, { key: "number" })
-            .json(400, errors.DeleteNetworkResponseBody$, { err: true })
-            .json(404, errors.DeleteNetworkNetworkResponseBody$, { err: true })
+            .json(200, operations.DeleteNetworkResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteNetworkResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteNetworkNetworkResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -219,7 +219,7 @@ export class Network extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllNetworkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllNetworkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -285,8 +285,8 @@ export class Network extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllNetworkResponse>()
-            .json(200, operations.GetAllNetworkResponse$, { key: "NetworkPaginated" })
-            .json(400, errors.GetAllNetworkResponseBody$, { err: true })
+            .json(200, operations.GetAllNetworkResponse$inboundSchema, { key: "NetworkPaginated" })
+            .json(400, errors.GetAllNetworkResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -338,7 +338,7 @@ export class Network extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneNetworkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneNetworkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -395,9 +395,9 @@ export class Network extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneNetworkResponse>()
-            .json(200, operations.GetOneNetworkResponse$, { key: "Network" })
-            .json(400, errors.GetOneNetworkResponseBody$, { err: true })
-            .json(404, errors.GetOneNetworkNetworkResponseBody$, { err: true })
+            .json(200, operations.GetOneNetworkResponse$inboundSchema, { key: "Network" })
+            .json(400, errors.GetOneNetworkResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneNetworkNetworkResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -418,7 +418,7 @@ export class Network extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateNetworkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateNetworkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateNetworkDto, { explode: true });
@@ -476,9 +476,9 @@ export class Network extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UpdateNetworkResponse>()
-            .json(200, operations.UpdateNetworkResponse$, { key: "Network" })
-            .json(400, errors.UpdateNetworkResponseBody$, { err: true })
-            .json(404, errors.UpdateNetworkNetworkResponseBody$, { err: true })
+            .json(200, operations.UpdateNetworkResponse$inboundSchema, { key: "Network" })
+            .json(400, errors.UpdateNetworkResponseBody$inboundSchema, { err: true })
+            .json(404, errors.UpdateNetworkNetworkResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

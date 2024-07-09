@@ -58,7 +58,7 @@ export class Member extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteProjectMemberRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteProjectMemberRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -118,10 +118,14 @@ export class Member extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteProjectMemberResponse>()
-            .json(200, operations.DeleteProjectMemberResponse$, { key: "boolean" })
-            .json(400, errors.DeleteProjectMemberResponseBody$, { err: true })
-            .json(404, errors.DeleteProjectMemberProjectMemberResponseBody$, { err: true })
-            .json(500, errors.DeleteProjectMemberProjectMemberResponseResponseBody$, { err: true })
+            .json(200, operations.DeleteProjectMemberResponse$inboundSchema, { key: "boolean" })
+            .json(400, errors.DeleteProjectMemberResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteProjectMemberProjectMemberResponseBody$inboundSchema, {
+                err: true,
+            })
+            .json(500, errors.DeleteProjectMemberProjectMemberResponseResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -180,8 +184,10 @@ export class Member extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetAllProjectMemberResponse>()
-            .json(200, operations.GetAllProjectMemberResponse$, { key: "ProjectMemberPaginated" })
-            .json(400, errors.GetAllProjectMemberResponseBody$, { err: true })
+            .json(200, operations.GetAllProjectMemberResponse$inboundSchema, {
+                key: "ProjectMemberPaginated",
+            })
+            .json(400, errors.GetAllProjectMemberResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

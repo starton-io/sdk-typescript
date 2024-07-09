@@ -16,42 +16,79 @@ export type UpdateWatcherDto = {
 };
 
 /** @internal */
+export const UpdateWatcherDtoMetadata$inboundSchema: z.ZodType<
+    UpdateWatcherDtoMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UpdateWatcherDtoMetadata$Outbound = {};
+
+/** @internal */
+export const UpdateWatcherDtoMetadata$outboundSchema: z.ZodType<
+    UpdateWatcherDtoMetadata$Outbound,
+    z.ZodTypeDef,
+    UpdateWatcherDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWatcherDtoMetadata$ {
-    export const inboundSchema: z.ZodType<UpdateWatcherDtoMetadata, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherDtoMetadata> =
-        z.object({});
+    /** @deprecated use `UpdateWatcherDtoMetadata$inboundSchema` instead. */
+    export const inboundSchema = UpdateWatcherDtoMetadata$inboundSchema;
+    /** @deprecated use `UpdateWatcherDtoMetadata$outboundSchema` instead. */
+    export const outboundSchema = UpdateWatcherDtoMetadata$outboundSchema;
+    /** @deprecated use `UpdateWatcherDtoMetadata$Outbound` instead. */
+    export type Outbound = UpdateWatcherDtoMetadata$Outbound;
 }
 
 /** @internal */
+export const UpdateWatcherDto$inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, unknown> =
+    z.object({
+        confirmationsBlocks: z.number().optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => UpdateWatcherDtoMetadata$inboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        paused: z.boolean().optional(),
+        webhookUrl: z.string().optional(),
+    });
+
+/** @internal */
+export type UpdateWatcherDto$Outbound = {
+    confirmationsBlocks?: number | undefined;
+    description?: string | null | undefined;
+    metadata?: UpdateWatcherDtoMetadata$Outbound | undefined;
+    name?: string | null | undefined;
+    paused?: boolean | undefined;
+    webhookUrl?: string | undefined;
+};
+
+/** @internal */
+export const UpdateWatcherDto$outboundSchema: z.ZodType<
+    UpdateWatcherDto$Outbound,
+    z.ZodTypeDef,
+    UpdateWatcherDto
+> = z.object({
+    confirmationsBlocks: z.number().optional(),
+    description: z.nullable(z.string()).optional(),
+    metadata: z.lazy(() => UpdateWatcherDtoMetadata$outboundSchema).optional(),
+    name: z.nullable(z.string()).optional(),
+    paused: z.boolean().optional(),
+    webhookUrl: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWatcherDto$ {
-    export const inboundSchema: z.ZodType<UpdateWatcherDto, z.ZodTypeDef, unknown> = z.object({
-        confirmationsBlocks: z.number().optional(),
-        description: z.nullable(z.string()).optional(),
-        metadata: z.lazy(() => UpdateWatcherDtoMetadata$.inboundSchema).optional(),
-        name: z.nullable(z.string()).optional(),
-        paused: z.boolean().optional(),
-        webhookUrl: z.string().optional(),
-    });
-
-    export type Outbound = {
-        confirmationsBlocks?: number | undefined;
-        description?: string | null | undefined;
-        metadata?: UpdateWatcherDtoMetadata$.Outbound | undefined;
-        name?: string | null | undefined;
-        paused?: boolean | undefined;
-        webhookUrl?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWatcherDto> = z.object({
-        confirmationsBlocks: z.number().optional(),
-        description: z.nullable(z.string()).optional(),
-        metadata: z.lazy(() => UpdateWatcherDtoMetadata$.outboundSchema).optional(),
-        name: z.nullable(z.string()).optional(),
-        paused: z.boolean().optional(),
-        webhookUrl: z.string().optional(),
-    });
+    /** @deprecated use `UpdateWatcherDto$inboundSchema` instead. */
+    export const inboundSchema = UpdateWatcherDto$inboundSchema;
+    /** @deprecated use `UpdateWatcherDto$outboundSchema` instead. */
+    export const outboundSchema = UpdateWatcherDto$outboundSchema;
+    /** @deprecated use `UpdateWatcherDto$Outbound` instead. */
+    export type Outbound = UpdateWatcherDto$Outbound;
 }

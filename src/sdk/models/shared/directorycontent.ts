@@ -17,32 +17,62 @@ export type DirectoryContent = {
 };
 
 /** @internal */
+export const DirectoryContentType$inboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> =
+    z.nativeEnum(DirectoryContentType);
+
+/** @internal */
+export const DirectoryContentType$outboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> =
+    DirectoryContentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DirectoryContentType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> =
-        z.nativeEnum(DirectoryContentType);
-    export const outboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> = inboundSchema;
+    /** @deprecated use `DirectoryContentType$inboundSchema` instead. */
+    export const inboundSchema = DirectoryContentType$inboundSchema;
+    /** @deprecated use `DirectoryContentType$outboundSchema` instead. */
+    export const outboundSchema = DirectoryContentType$outboundSchema;
 }
 
 /** @internal */
+export const DirectoryContent$inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> =
+    z.object({
+        cid: z.string(),
+        name: z.string(),
+        size: z.number(),
+        type: DirectoryContentType$inboundSchema.optional(),
+    });
+
+/** @internal */
+export type DirectoryContent$Outbound = {
+    cid: string;
+    name: string;
+    size: number;
+    type?: string | undefined;
+};
+
+/** @internal */
+export const DirectoryContent$outboundSchema: z.ZodType<
+    DirectoryContent$Outbound,
+    z.ZodTypeDef,
+    DirectoryContent
+> = z.object({
+    cid: z.string(),
+    name: z.string(),
+    size: z.number(),
+    type: DirectoryContentType$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DirectoryContent$ {
-    export const inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> = z.object({
-        cid: z.string(),
-        name: z.string(),
-        size: z.number(),
-        type: DirectoryContentType$.inboundSchema.optional(),
-    });
-
-    export type Outbound = {
-        cid: string;
-        name: string;
-        size: number;
-        type?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DirectoryContent> = z.object({
-        cid: z.string(),
-        name: z.string(),
-        size: z.number(),
-        type: DirectoryContentType$.outboundSchema.optional(),
-    });
+    /** @deprecated use `DirectoryContent$inboundSchema` instead. */
+    export const inboundSchema = DirectoryContent$inboundSchema;
+    /** @deprecated use `DirectoryContent$outboundSchema` instead. */
+    export const outboundSchema = DirectoryContent$outboundSchema;
+    /** @deprecated use `DirectoryContent$Outbound` instead. */
+    export type Outbound = DirectoryContent$Outbound;
 }

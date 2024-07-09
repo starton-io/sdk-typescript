@@ -59,7 +59,11 @@ export class CouldNotBroadcast extends Error {
     data$: CouldNotBroadcastData;
 
     constructor(err: CouldNotBroadcastData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,39 +86,50 @@ export class CouldNotBroadcast extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotBroadcast";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTBROADCASTContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTBROADCASTContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTBROADCASTContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTBROADCASTContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTBROADCASTContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTBROADCASTContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTBROADCASTContext$ {
-    export const inboundSchema: z.ZodType<SchemasCOULDNOTBROADCASTContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTBROADCASTContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTBROADCASTContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTBROADCASTContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTBROADCASTContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTBROADCASTContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTBROADCASTContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTBROADCASTContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotBroadcast$ {
-    export const inboundSchema: z.ZodType<CouldNotBroadcast, z.ZodTypeDef, unknown> = z
+export const CouldNotBroadcast$inboundSchema: z.ZodType<CouldNotBroadcast, z.ZodTypeDef, unknown> =
+    z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
             RawResponse2: z.instanceof(Response).optional(),
             RawResponse3: z.instanceof(Response).optional(),
             context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$.inboundSchema))
+                .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$inboundSchema))
                 .optional(),
             errorCode: z.string().default("COULD_NOT_BROADCAST"),
             message: z.string().default("Could not broadcast this transaction."),
@@ -133,65 +148,83 @@ export namespace CouldNotBroadcast$ {
             return new CouldNotBroadcast(remapped);
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTBROADCASTContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+/** @internal */
+export type CouldNotBroadcast$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasCOULDNOTBROADCASTContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotBroadcast> = z
-        .instanceof(CouldNotBroadcast)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_BROADCAST"),
-                    message: z.string().default("Could not broadcast this transaction."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export const CouldNotBroadcast$outboundSchema: z.ZodType<
+    CouldNotBroadcast$Outbound,
+    z.ZodTypeDef,
+    CouldNotBroadcast
+> = z
+    .instanceof(CouldNotBroadcast)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTBROADCASTContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_BROADCAST"),
+                message: z.string().default("Could not broadcast this transaction."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotBroadcast$ {
+    /** @deprecated use `CouldNotBroadcast$inboundSchema` instead. */
+    export const inboundSchema = CouldNotBroadcast$inboundSchema;
+    /** @deprecated use `CouldNotBroadcast$outboundSchema` instead. */
+    export const outboundSchema = CouldNotBroadcast$outboundSchema;
+    /** @deprecated use `CouldNotBroadcast$Outbound` instead. */
+    export type Outbound = CouldNotBroadcast$Outbound;
 }

@@ -57,7 +57,7 @@ export class Template extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllSmartContractTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllSmartContractTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -118,10 +118,10 @@ export class Template extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllSmartContractTemplateResponse>()
-            .json(200, operations.GetAllSmartContractTemplateResponse$, {
+            .json(200, operations.GetAllSmartContractTemplateResponse$inboundSchema, {
                 key: "SmartContractTemplatePaginated",
             })
-            .json(400, errors.GetAllSmartContractTemplateResponseBody$, { err: true })
+            .json(400, errors.GetAllSmartContractTemplateResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -175,7 +175,7 @@ export class Template extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneSmartContractTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneSmartContractTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -234,13 +234,15 @@ export class Template extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneSmartContractTemplateResponse>()
-            .json(200, operations.GetOneSmartContractTemplateResponse$, {
+            .json(200, operations.GetOneSmartContractTemplateResponse$inboundSchema, {
                 key: "SmartContractTemplate",
             })
-            .json(400, errors.GetOneSmartContractTemplateResponseBody$, { err: true })
-            .json(404, errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$, {
-                err: true,
-            })
+            .json(400, errors.GetOneSmartContractTemplateResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

@@ -13,33 +13,70 @@ export type UpdateWalletDto = {
 };
 
 /** @internal */
+export const UpdateWalletDtoMetadata$inboundSchema: z.ZodType<
+    UpdateWalletDtoMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UpdateWalletDtoMetadata$Outbound = {};
+
+/** @internal */
+export const UpdateWalletDtoMetadata$outboundSchema: z.ZodType<
+    UpdateWalletDtoMetadata$Outbound,
+    z.ZodTypeDef,
+    UpdateWalletDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWalletDtoMetadata$ {
-    export const inboundSchema: z.ZodType<UpdateWalletDtoMetadata, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletDtoMetadata> =
-        z.object({});
+    /** @deprecated use `UpdateWalletDtoMetadata$inboundSchema` instead. */
+    export const inboundSchema = UpdateWalletDtoMetadata$inboundSchema;
+    /** @deprecated use `UpdateWalletDtoMetadata$outboundSchema` instead. */
+    export const outboundSchema = UpdateWalletDtoMetadata$outboundSchema;
+    /** @deprecated use `UpdateWalletDtoMetadata$Outbound` instead. */
+    export type Outbound = UpdateWalletDtoMetadata$Outbound;
 }
 
 /** @internal */
+export const UpdateWalletDto$inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, unknown> =
+    z.object({
+        description: z.string().optional(),
+        metadata: z.lazy(() => UpdateWalletDtoMetadata$inboundSchema).optional(),
+        name: z.string().optional(),
+    });
+
+/** @internal */
+export type UpdateWalletDto$Outbound = {
+    description?: string | undefined;
+    metadata?: UpdateWalletDtoMetadata$Outbound | undefined;
+    name?: string | undefined;
+};
+
+/** @internal */
+export const UpdateWalletDto$outboundSchema: z.ZodType<
+    UpdateWalletDto$Outbound,
+    z.ZodTypeDef,
+    UpdateWalletDto
+> = z.object({
+    description: z.string().optional(),
+    metadata: z.lazy(() => UpdateWalletDtoMetadata$outboundSchema).optional(),
+    name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateWalletDto$ {
-    export const inboundSchema: z.ZodType<UpdateWalletDto, z.ZodTypeDef, unknown> = z.object({
-        description: z.string().optional(),
-        metadata: z.lazy(() => UpdateWalletDtoMetadata$.inboundSchema).optional(),
-        name: z.string().optional(),
-    });
-
-    export type Outbound = {
-        description?: string | undefined;
-        metadata?: UpdateWalletDtoMetadata$.Outbound | undefined;
-        name?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateWalletDto> = z.object({
-        description: z.string().optional(),
-        metadata: z.lazy(() => UpdateWalletDtoMetadata$.outboundSchema).optional(),
-        name: z.string().optional(),
-    });
+    /** @deprecated use `UpdateWalletDto$inboundSchema` instead. */
+    export const inboundSchema = UpdateWalletDto$inboundSchema;
+    /** @deprecated use `UpdateWalletDto$outboundSchema` instead. */
+    export const outboundSchema = UpdateWalletDto$outboundSchema;
+    /** @deprecated use `UpdateWalletDto$Outbound` instead. */
+    export type Outbound = UpdateWalletDto$Outbound;
 }

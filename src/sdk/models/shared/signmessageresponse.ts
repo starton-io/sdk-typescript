@@ -9,16 +9,37 @@ export type SignMessageResponse = {
 };
 
 /** @internal */
+export const SignMessageResponse$inboundSchema: z.ZodType<
+    SignMessageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    signature: z.string(),
+});
+
+/** @internal */
+export type SignMessageResponse$Outbound = {
+    signature: string;
+};
+
+/** @internal */
+export const SignMessageResponse$outboundSchema: z.ZodType<
+    SignMessageResponse$Outbound,
+    z.ZodTypeDef,
+    SignMessageResponse
+> = z.object({
+    signature: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SignMessageResponse$ {
-    export const inboundSchema: z.ZodType<SignMessageResponse, z.ZodTypeDef, unknown> = z.object({
-        signature: z.string(),
-    });
-
-    export type Outbound = {
-        signature: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignMessageResponse> = z.object({
-        signature: z.string(),
-    });
+    /** @deprecated use `SignMessageResponse$inboundSchema` instead. */
+    export const inboundSchema = SignMessageResponse$inboundSchema;
+    /** @deprecated use `SignMessageResponse$outboundSchema` instead. */
+    export const outboundSchema = SignMessageResponse$outboundSchema;
+    /** @deprecated use `SignMessageResponse$Outbound` instead. */
+    export type Outbound = SignMessageResponse$Outbound;
 }

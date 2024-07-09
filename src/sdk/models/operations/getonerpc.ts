@@ -28,29 +28,47 @@ export type GetOneRpcResponse = {
 };
 
 /** @internal */
+export const GetOneRpcRequest$inboundSchema: z.ZodType<GetOneRpcRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        id: z.string(),
+        name: z.string(),
+    });
+
+/** @internal */
+export type GetOneRpcRequest$Outbound = {
+    id: string;
+    name: string;
+};
+
+/** @internal */
+export const GetOneRpcRequest$outboundSchema: z.ZodType<
+    GetOneRpcRequest$Outbound,
+    z.ZodTypeDef,
+    GetOneRpcRequest
+> = z.object({
+    id: z.string(),
+    name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOneRpcRequest$ {
-    export const inboundSchema: z.ZodType<GetOneRpcRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-        name: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneRpcRequest> = z.object({
-        id: z.string(),
-        name: z.string(),
-    });
+    /** @deprecated use `GetOneRpcRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOneRpcRequest$inboundSchema;
+    /** @deprecated use `GetOneRpcRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOneRpcRequest$outboundSchema;
+    /** @deprecated use `GetOneRpcRequest$Outbound` instead. */
+    export type Outbound = GetOneRpcRequest$Outbound;
 }
 
 /** @internal */
-export namespace GetOneRpcResponse$ {
-    export const inboundSchema: z.ZodType<GetOneRpcResponse, z.ZodTypeDef, unknown> = z
+export const GetOneRpcResponse$inboundSchema: z.ZodType<GetOneRpcResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            Rpc: shared.Rpc$.inboundSchema.optional(),
+            Rpc: shared.Rpc$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -63,28 +81,46 @@ export namespace GetOneRpcResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        Rpc?: shared.Rpc$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type GetOneRpcResponse$Outbound = {
+    ContentType: string;
+    Rpc?: shared.Rpc$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOneRpcResponse> = z
-        .object({
-            contentType: z.string(),
-            rpc: shared.Rpc$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                rpc: "Rpc",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const GetOneRpcResponse$outboundSchema: z.ZodType<
+    GetOneRpcResponse$Outbound,
+    z.ZodTypeDef,
+    GetOneRpcResponse
+> = z
+    .object({
+        contentType: z.string(),
+        rpc: shared.Rpc$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            rpc: "Rpc",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetOneRpcResponse$ {
+    /** @deprecated use `GetOneRpcResponse$inboundSchema` instead. */
+    export const inboundSchema = GetOneRpcResponse$inboundSchema;
+    /** @deprecated use `GetOneRpcResponse$outboundSchema` instead. */
+    export const outboundSchema = GetOneRpcResponse$outboundSchema;
+    /** @deprecated use `GetOneRpcResponse$Outbound` instead. */
+    export type Outbound = GetOneRpcResponse$Outbound;
 }

@@ -32,33 +32,52 @@ export type UpdateSettingRelayerDto = {
 };
 
 /** @internal */
+export const UpdateSettingRelayerDto$inboundSchema: z.ZodType<
+    UpdateSettingRelayerDto,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    unstuckAutomaticGasPrice: z.boolean().optional(),
+    unstuckCustomGasPrice: z.boolean().optional(),
+    unstuckGasPriceDelay: z.number().optional(),
+    unstuckMaxGasPrice: z.string().optional(),
+    unstuckMissingNonce: z.boolean().optional(),
+    unstuckMissingNonceDelay: z.number().optional(),
+});
+
+/** @internal */
+export type UpdateSettingRelayerDto$Outbound = {
+    unstuckAutomaticGasPrice?: boolean | undefined;
+    unstuckCustomGasPrice?: boolean | undefined;
+    unstuckGasPriceDelay?: number | undefined;
+    unstuckMaxGasPrice?: string | undefined;
+    unstuckMissingNonce?: boolean | undefined;
+    unstuckMissingNonceDelay?: number | undefined;
+};
+
+/** @internal */
+export const UpdateSettingRelayerDto$outboundSchema: z.ZodType<
+    UpdateSettingRelayerDto$Outbound,
+    z.ZodTypeDef,
+    UpdateSettingRelayerDto
+> = z.object({
+    unstuckAutomaticGasPrice: z.boolean().optional(),
+    unstuckCustomGasPrice: z.boolean().optional(),
+    unstuckGasPriceDelay: z.number().optional(),
+    unstuckMaxGasPrice: z.string().optional(),
+    unstuckMissingNonce: z.boolean().optional(),
+    unstuckMissingNonceDelay: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateSettingRelayerDto$ {
-    export const inboundSchema: z.ZodType<UpdateSettingRelayerDto, z.ZodTypeDef, unknown> =
-        z.object({
-            unstuckAutomaticGasPrice: z.boolean().optional(),
-            unstuckCustomGasPrice: z.boolean().optional(),
-            unstuckGasPriceDelay: z.number().optional(),
-            unstuckMaxGasPrice: z.string().optional(),
-            unstuckMissingNonce: z.boolean().optional(),
-            unstuckMissingNonceDelay: z.number().optional(),
-        });
-
-    export type Outbound = {
-        unstuckAutomaticGasPrice?: boolean | undefined;
-        unstuckCustomGasPrice?: boolean | undefined;
-        unstuckGasPriceDelay?: number | undefined;
-        unstuckMaxGasPrice?: string | undefined;
-        unstuckMissingNonce?: boolean | undefined;
-        unstuckMissingNonceDelay?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateSettingRelayerDto> =
-        z.object({
-            unstuckAutomaticGasPrice: z.boolean().optional(),
-            unstuckCustomGasPrice: z.boolean().optional(),
-            unstuckGasPriceDelay: z.number().optional(),
-            unstuckMaxGasPrice: z.string().optional(),
-            unstuckMissingNonce: z.boolean().optional(),
-            unstuckMissingNonceDelay: z.number().optional(),
-        });
+    /** @deprecated use `UpdateSettingRelayerDto$inboundSchema` instead. */
+    export const inboundSchema = UpdateSettingRelayerDto$inboundSchema;
+    /** @deprecated use `UpdateSettingRelayerDto$outboundSchema` instead. */
+    export const outboundSchema = UpdateSettingRelayerDto$outboundSchema;
+    /** @deprecated use `UpdateSettingRelayerDto$Outbound` instead. */
+    export type Outbound = UpdateSettingRelayerDto$Outbound;
 }

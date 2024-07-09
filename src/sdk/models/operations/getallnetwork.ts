@@ -44,112 +44,171 @@ export type GetAllNetworkResponse = {
 };
 
 /** @internal */
+export const GetAllNetworkRequest$inboundSchema: z.ZodType<
+    GetAllNetworkRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        chainIds: z.array(z.string()),
+        id: z.string().optional(),
+        limit: z.number().int().default(100),
+        origin: z.string(),
+        page: z.number().int().optional(),
+        testnet: z.boolean().optional(),
+        "x-platform-hostname": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-platform-hostname": "xPlatformHostname",
+        });
+    });
+
+/** @internal */
+export type GetAllNetworkRequest$Outbound = {
+    chainIds: Array<string>;
+    id?: string | undefined;
+    limit: number;
+    origin: string;
+    page?: number | undefined;
+    testnet?: boolean | undefined;
+    "x-platform-hostname": string;
+};
+
+/** @internal */
+export const GetAllNetworkRequest$outboundSchema: z.ZodType<
+    GetAllNetworkRequest$Outbound,
+    z.ZodTypeDef,
+    GetAllNetworkRequest
+> = z
+    .object({
+        chainIds: z.array(z.string()),
+        id: z.string().optional(),
+        limit: z.number().int().default(100),
+        origin: z.string(),
+        page: z.number().int().optional(),
+        testnet: z.boolean().optional(),
+        xPlatformHostname: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xPlatformHostname: "x-platform-hostname",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllNetworkRequest$ {
-    export const inboundSchema: z.ZodType<GetAllNetworkRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            chainIds: z.array(z.string()),
-            id: z.string().optional(),
-            limit: z.number().int().default(100),
-            origin: z.string(),
-            page: z.number().int().optional(),
-            testnet: z.boolean().optional(),
-            "x-platform-hostname": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-platform-hostname": "xPlatformHostname",
-            });
-        });
-
-    export type Outbound = {
-        chainIds: Array<string>;
-        id?: string | undefined;
-        limit: number;
-        origin: string;
-        page?: number | undefined;
-        testnet?: boolean | undefined;
-        "x-platform-hostname": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllNetworkRequest> = z
-        .object({
-            chainIds: z.array(z.string()),
-            id: z.string().optional(),
-            limit: z.number().int().default(100),
-            origin: z.string(),
-            page: z.number().int().optional(),
-            testnet: z.boolean().optional(),
-            xPlatformHostname: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xPlatformHostname: "x-platform-hostname",
-            });
-        });
+    /** @deprecated use `GetAllNetworkRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAllNetworkRequest$inboundSchema;
+    /** @deprecated use `GetAllNetworkRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAllNetworkRequest$outboundSchema;
+    /** @deprecated use `GetAllNetworkRequest$Outbound` instead. */
+    export type Outbound = GetAllNetworkRequest$Outbound;
 }
 
 /** @internal */
+export const GetAllNetworkNetworkPaginated$inboundSchema: z.ZodType<
+    GetAllNetworkNetworkPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    items: z.array(shared.Network$inboundSchema),
+    meta: shared.PaginationData$inboundSchema,
+});
+
+/** @internal */
+export type GetAllNetworkNetworkPaginated$Outbound = {
+    items: Array<shared.Network$Outbound>;
+    meta: shared.PaginationData$Outbound;
+};
+
+/** @internal */
+export const GetAllNetworkNetworkPaginated$outboundSchema: z.ZodType<
+    GetAllNetworkNetworkPaginated$Outbound,
+    z.ZodTypeDef,
+    GetAllNetworkNetworkPaginated
+> = z.object({
+    items: z.array(shared.Network$outboundSchema),
+    meta: shared.PaginationData$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllNetworkNetworkPaginated$ {
-    export const inboundSchema: z.ZodType<GetAllNetworkNetworkPaginated, z.ZodTypeDef, unknown> =
-        z.object({
-            items: z.array(shared.Network$.inboundSchema),
-            meta: shared.PaginationData$.inboundSchema,
-        });
-
-    export type Outbound = {
-        items: Array<shared.Network$.Outbound>;
-        meta: shared.PaginationData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllNetworkNetworkPaginated> =
-        z.object({
-            items: z.array(shared.Network$.outboundSchema),
-            meta: shared.PaginationData$.outboundSchema,
-        });
+    /** @deprecated use `GetAllNetworkNetworkPaginated$inboundSchema` instead. */
+    export const inboundSchema = GetAllNetworkNetworkPaginated$inboundSchema;
+    /** @deprecated use `GetAllNetworkNetworkPaginated$outboundSchema` instead. */
+    export const outboundSchema = GetAllNetworkNetworkPaginated$outboundSchema;
+    /** @deprecated use `GetAllNetworkNetworkPaginated$Outbound` instead. */
+    export type Outbound = GetAllNetworkNetworkPaginated$Outbound;
 }
 
 /** @internal */
+export const GetAllNetworkResponse$inboundSchema: z.ZodType<
+    GetAllNetworkResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        NetworkPaginated: z.lazy(() => GetAllNetworkNetworkPaginated$inboundSchema).optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            NetworkPaginated: "networkPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetAllNetworkResponse$Outbound = {
+    ContentType: string;
+    NetworkPaginated?: GetAllNetworkNetworkPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAllNetworkResponse$outboundSchema: z.ZodType<
+    GetAllNetworkResponse$Outbound,
+    z.ZodTypeDef,
+    GetAllNetworkResponse
+> = z
+    .object({
+        contentType: z.string(),
+        networkPaginated: z.lazy(() => GetAllNetworkNetworkPaginated$outboundSchema).optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            networkPaginated: "NetworkPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAllNetworkResponse$ {
-    export const inboundSchema: z.ZodType<GetAllNetworkResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            NetworkPaginated: z.lazy(() => GetAllNetworkNetworkPaginated$.inboundSchema).optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                NetworkPaginated: "networkPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        NetworkPaginated?: GetAllNetworkNetworkPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAllNetworkResponse> = z
-        .object({
-            contentType: z.string(),
-            networkPaginated: z
-                .lazy(() => GetAllNetworkNetworkPaginated$.outboundSchema)
-                .optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                networkPaginated: "NetworkPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetAllNetworkResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAllNetworkResponse$inboundSchema;
+    /** @deprecated use `GetAllNetworkResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAllNetworkResponse$outboundSchema;
+    /** @deprecated use `GetAllNetworkResponse$Outbound` instead. */
+    export type Outbound = GetAllNetworkResponse$Outbound;
 }

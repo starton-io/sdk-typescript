@@ -52,128 +52,220 @@ export type Watcher = {
 };
 
 /** @internal */
+export const WatcherCustomEventAbi$inboundSchema: z.ZodType<
+    WatcherCustomEventAbi,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type WatcherCustomEventAbi$Outbound = {};
+
+/** @internal */
+export const WatcherCustomEventAbi$outboundSchema: z.ZodType<
+    WatcherCustomEventAbi$Outbound,
+    z.ZodTypeDef,
+    WatcherCustomEventAbi
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherCustomEventAbi$ {
-    export const inboundSchema: z.ZodType<WatcherCustomEventAbi, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherCustomEventAbi> =
-        z.object({});
+    /** @deprecated use `WatcherCustomEventAbi$inboundSchema` instead. */
+    export const inboundSchema = WatcherCustomEventAbi$inboundSchema;
+    /** @deprecated use `WatcherCustomEventAbi$outboundSchema` instead. */
+    export const outboundSchema = WatcherCustomEventAbi$outboundSchema;
+    /** @deprecated use `WatcherCustomEventAbi$Outbound` instead. */
+    export type Outbound = WatcherCustomEventAbi$Outbound;
 }
 
 /** @internal */
+export const WatcherCustomFilters$inboundSchema: z.ZodType<
+    WatcherCustomFilters,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type WatcherCustomFilters$Outbound = {};
+
+/** @internal */
+export const WatcherCustomFilters$outboundSchema: z.ZodType<
+    WatcherCustomFilters$Outbound,
+    z.ZodTypeDef,
+    WatcherCustomFilters
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherCustomFilters$ {
-    export const inboundSchema: z.ZodType<WatcherCustomFilters, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherCustomFilters> = z.object(
-        {}
-    );
+    /** @deprecated use `WatcherCustomFilters$inboundSchema` instead. */
+    export const inboundSchema = WatcherCustomFilters$inboundSchema;
+    /** @deprecated use `WatcherCustomFilters$outboundSchema` instead. */
+    export const outboundSchema = WatcherCustomFilters$outboundSchema;
+    /** @deprecated use `WatcherCustomFilters$Outbound` instead. */
+    export type Outbound = WatcherCustomFilters$Outbound;
 }
 
 /** @internal */
+export const WatcherMetadata$inboundSchema: z.ZodType<WatcherMetadata, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type WatcherMetadata$Outbound = {};
+
+/** @internal */
+export const WatcherMetadata$outboundSchema: z.ZodType<
+    WatcherMetadata$Outbound,
+    z.ZodTypeDef,
+    WatcherMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherMetadata$ {
-    export const inboundSchema: z.ZodType<WatcherMetadata, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WatcherMetadata> = z.object({});
+    /** @deprecated use `WatcherMetadata$inboundSchema` instead. */
+    export const inboundSchema = WatcherMetadata$inboundSchema;
+    /** @deprecated use `WatcherMetadata$outboundSchema` instead. */
+    export const outboundSchema = WatcherMetadata$outboundSchema;
+    /** @deprecated use `WatcherMetadata$Outbound` instead. */
+    export type Outbound = WatcherMetadata$Outbound;
 }
 
 /** @internal */
+export const TriggerType$inboundSchema: z.ZodNativeEnum<typeof TriggerType> =
+    z.nativeEnum(TriggerType);
+
+/** @internal */
+export const TriggerType$outboundSchema: z.ZodNativeEnum<typeof TriggerType> =
+    TriggerType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TriggerType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof TriggerType> = z.nativeEnum(TriggerType);
-    export const outboundSchema: z.ZodNativeEnum<typeof TriggerType> = inboundSchema;
+    /** @deprecated use `TriggerType$inboundSchema` instead. */
+    export const inboundSchema = TriggerType$inboundSchema;
+    /** @deprecated use `TriggerType$outboundSchema` instead. */
+    export const outboundSchema = TriggerType$outboundSchema;
 }
 
 /** @internal */
+export const WatcherType$inboundSchema: z.ZodNativeEnum<typeof WatcherType> =
+    z.nativeEnum(WatcherType);
+
+/** @internal */
+export const WatcherType$outboundSchema: z.ZodNativeEnum<typeof WatcherType> =
+    WatcherType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WatcherType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof WatcherType> = z.nativeEnum(WatcherType);
-    export const outboundSchema: z.ZodNativeEnum<typeof WatcherType> = inboundSchema;
+    /** @deprecated use `WatcherType$inboundSchema` instead. */
+    export const inboundSchema = WatcherType$inboundSchema;
+    /** @deprecated use `WatcherType$outboundSchema` instead. */
+    export const outboundSchema = WatcherType$outboundSchema;
 }
 
 /** @internal */
+export const Watcher$inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> = z.object({
+    address: z.string(),
+    confirmationsBlocks: z.number(),
+    createdAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:34:03.879Z")
+        .transform((v) => new Date(v)),
+    customEventAbi: z
+        .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$inboundSchema)))
+        .optional(),
+    customFilters: z.lazy(() => WatcherCustomFilters$inboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.string(),
+    metadata: z.nullable(z.lazy(() => WatcherMetadata$inboundSchema)).optional(),
+    name: z.nullable(z.string()).optional(),
+    network: z.string(),
+    paused: z.boolean(),
+    pausedReason: z.nullable(z.string()).optional(),
+    projectId: z.string(),
+    triggerType: TriggerType$inboundSchema,
+    type: WatcherType$inboundSchema,
+    updatedAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:34:03.879Z")
+        .transform((v) => new Date(v)),
+    webhookUrl: z.string(),
+});
+
+/** @internal */
+export type Watcher$Outbound = {
+    address: string;
+    confirmationsBlocks: number;
+    createdAt: string;
+    customEventAbi?: Array<WatcherCustomEventAbi$Outbound> | null | undefined;
+    customFilters?: WatcherCustomFilters$Outbound | undefined;
+    description?: string | null | undefined;
+    id: string;
+    metadata?: WatcherMetadata$Outbound | null | undefined;
+    name?: string | null | undefined;
+    network: string;
+    paused: boolean;
+    pausedReason?: string | null | undefined;
+    projectId: string;
+    triggerType: string;
+    type: string;
+    updatedAt: string;
+    webhookUrl: string;
+};
+
+/** @internal */
+export const Watcher$outboundSchema: z.ZodType<Watcher$Outbound, z.ZodTypeDef, Watcher> = z.object({
+    address: z.string(),
+    confirmationsBlocks: z.number(),
+    createdAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:34:03.879Z"))
+        .transform((v) => v.toISOString()),
+    customEventAbi: z
+        .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$outboundSchema)))
+        .optional(),
+    customFilters: z.lazy(() => WatcherCustomFilters$outboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.string(),
+    metadata: z.nullable(z.lazy(() => WatcherMetadata$outboundSchema)).optional(),
+    name: z.nullable(z.string()).optional(),
+    network: z.string(),
+    paused: z.boolean(),
+    pausedReason: z.nullable(z.string()).optional(),
+    projectId: z.string(),
+    triggerType: TriggerType$outboundSchema,
+    type: WatcherType$outboundSchema,
+    updatedAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:34:03.879Z"))
+        .transform((v) => v.toISOString()),
+    webhookUrl: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Watcher$ {
-    export const inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> = z.object({
-        address: z.string(),
-        confirmationsBlocks: z.number(),
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:34:03.879Z")
-            .transform((v) => new Date(v)),
-        customEventAbi: z
-            .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.inboundSchema)))
-            .optional(),
-        customFilters: z.lazy(() => WatcherCustomFilters$.inboundSchema).optional(),
-        description: z.nullable(z.string()).optional(),
-        id: z.string(),
-        metadata: z.nullable(z.lazy(() => WatcherMetadata$.inboundSchema)).optional(),
-        name: z.nullable(z.string()).optional(),
-        network: z.string(),
-        paused: z.boolean(),
-        pausedReason: z.nullable(z.string()).optional(),
-        projectId: z.string(),
-        triggerType: TriggerType$.inboundSchema,
-        type: WatcherType$.inboundSchema,
-        updatedAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:34:03.879Z")
-            .transform((v) => new Date(v)),
-        webhookUrl: z.string(),
-    });
-
-    export type Outbound = {
-        address: string;
-        confirmationsBlocks: number;
-        createdAt: string;
-        customEventAbi?: Array<WatcherCustomEventAbi$.Outbound> | null | undefined;
-        customFilters?: WatcherCustomFilters$.Outbound | undefined;
-        description?: string | null | undefined;
-        id: string;
-        metadata?: WatcherMetadata$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        network: string;
-        paused: boolean;
-        pausedReason?: string | null | undefined;
-        projectId: string;
-        triggerType: string;
-        type: string;
-        updatedAt: string;
-        webhookUrl: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Watcher> = z.object({
-        address: z.string(),
-        confirmationsBlocks: z.number(),
-        createdAt: z
-            .date()
-            .default(() => new Date("2024-05-02T09:34:03.879Z"))
-            .transform((v) => v.toISOString()),
-        customEventAbi: z
-            .nullable(z.array(z.lazy(() => WatcherCustomEventAbi$.outboundSchema)))
-            .optional(),
-        customFilters: z.lazy(() => WatcherCustomFilters$.outboundSchema).optional(),
-        description: z.nullable(z.string()).optional(),
-        id: z.string(),
-        metadata: z.nullable(z.lazy(() => WatcherMetadata$.outboundSchema)).optional(),
-        name: z.nullable(z.string()).optional(),
-        network: z.string(),
-        paused: z.boolean(),
-        pausedReason: z.nullable(z.string()).optional(),
-        projectId: z.string(),
-        triggerType: TriggerType$.outboundSchema,
-        type: WatcherType$.outboundSchema,
-        updatedAt: z
-            .date()
-            .default(() => new Date("2024-05-02T09:34:03.879Z"))
-            .transform((v) => v.toISOString()),
-        webhookUrl: z.string(),
-    });
+    /** @deprecated use `Watcher$inboundSchema` instead. */
+    export const inboundSchema = Watcher$inboundSchema;
+    /** @deprecated use `Watcher$outboundSchema` instead. */
+    export const outboundSchema = Watcher$outboundSchema;
+    /** @deprecated use `Watcher$Outbound` instead. */
+    export type Outbound = Watcher$Outbound;
 }

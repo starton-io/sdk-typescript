@@ -34,73 +34,105 @@ export type GetAvailableNoncesWalletResponse = {
 };
 
 /** @internal */
+export const GetAvailableNoncesWalletRequest$inboundSchema: z.ZodType<
+    GetAvailableNoncesWalletRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/** @internal */
+export type GetAvailableNoncesWalletRequest$Outbound = {
+    address: string;
+    network: string;
+};
+
+/** @internal */
+export const GetAvailableNoncesWalletRequest$outboundSchema: z.ZodType<
+    GetAvailableNoncesWalletRequest$Outbound,
+    z.ZodTypeDef,
+    GetAvailableNoncesWalletRequest
+> = z.object({
+    address: z.string(),
+    network: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAvailableNoncesWalletRequest$ {
-    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            address: z.string(),
-            network: z.string(),
-        });
-
-    export type Outbound = {
-        address: string;
-        network: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAvailableNoncesWalletRequest
-    > = z.object({
-        address: z.string(),
-        network: z.string(),
-    });
+    /** @deprecated use `GetAvailableNoncesWalletRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAvailableNoncesWalletRequest$inboundSchema;
+    /** @deprecated use `GetAvailableNoncesWalletRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAvailableNoncesWalletRequest$outboundSchema;
+    /** @deprecated use `GetAvailableNoncesWalletRequest$Outbound` instead. */
+    export type Outbound = GetAvailableNoncesWalletRequest$Outbound;
 }
 
 /** @internal */
-export namespace GetAvailableNoncesWalletResponse$ {
-    export const inboundSchema: z.ZodType<GetAvailableNoncesWalletResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                ContentType: z.string(),
-                NoncesAvailable: shared.NoncesAvailable$.inboundSchema.optional(),
-                StatusCode: z.number().int(),
-                RawResponse: z.instanceof(Response),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    ContentType: "contentType",
-                    NoncesAvailable: "noncesAvailable",
-                    StatusCode: "statusCode",
-                    RawResponse: "rawResponse",
-                });
-            });
-
-    export type Outbound = {
-        ContentType: string;
-        NoncesAvailable?: shared.NoncesAvailable$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetAvailableNoncesWalletResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            noncesAvailable: shared.NoncesAvailable$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                noncesAvailable: "NoncesAvailable",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+export const GetAvailableNoncesWalletResponse$inboundSchema: z.ZodType<
+    GetAvailableNoncesWalletResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        NoncesAvailable: shared.NoncesAvailable$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            NoncesAvailable: "noncesAvailable",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
+
+/** @internal */
+export type GetAvailableNoncesWalletResponse$Outbound = {
+    ContentType: string;
+    NoncesAvailable?: shared.NoncesAvailable$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const GetAvailableNoncesWalletResponse$outboundSchema: z.ZodType<
+    GetAvailableNoncesWalletResponse$Outbound,
+    z.ZodTypeDef,
+    GetAvailableNoncesWalletResponse
+> = z
+    .object({
+        contentType: z.string(),
+        noncesAvailable: shared.NoncesAvailable$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            noncesAvailable: "NoncesAvailable",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAvailableNoncesWalletResponse$ {
+    /** @deprecated use `GetAvailableNoncesWalletResponse$inboundSchema` instead. */
+    export const inboundSchema = GetAvailableNoncesWalletResponse$inboundSchema;
+    /** @deprecated use `GetAvailableNoncesWalletResponse$outboundSchema` instead. */
+    export const outboundSchema = GetAvailableNoncesWalletResponse$outboundSchema;
+    /** @deprecated use `GetAvailableNoncesWalletResponse$Outbound` instead. */
+    export type Outbound = GetAvailableNoncesWalletResponse$Outbound;
 }

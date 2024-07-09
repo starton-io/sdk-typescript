@@ -55,7 +55,7 @@ export class Data extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetBalanceAddressRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetBalanceAddressRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -118,10 +118,10 @@ export class Data extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetBalanceAddressResponse>()
-            .json(200, operations.GetBalanceAddressResponse$, {
+            .json(200, operations.GetBalanceAddressResponse$inboundSchema, {
                 key: "AddressNativeBalanceResponse",
             })
-            .json(400, errors.GetBalanceAddressResponseBody$, { err: true })
+            .json(400, errors.GetBalanceAddressResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -142,7 +142,7 @@ export class Data extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetBalanceErc20Request$.outboundSchema.parse(value$),
+            (value$) => operations.GetBalanceErc20Request$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -207,8 +207,10 @@ export class Data extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetBalanceErc20Response>()
-            .json(200, operations.GetBalanceErc20Response$, { key: "ERC20BalanceResponse" })
-            .json(400, errors.GetBalanceErc20ResponseBody$, { err: true })
+            .json(200, operations.GetBalanceErc20Response$inboundSchema, {
+                key: "ERC20BalanceResponse",
+            })
+            .json(400, errors.GetBalanceErc20ResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -229,7 +231,7 @@ export class Data extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllGasPriceRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllGasPriceRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -286,8 +288,8 @@ export class Data extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetAllGasPriceResponse>()
-            .json(200, operations.GetAllGasPriceResponse$, { key: "GasPrices" })
-            .json(400, errors.GetAllGasPriceResponseBody$, { err: true })
+            .json(200, operations.GetAllGasPriceResponse$inboundSchema, { key: "GasPrices" })
+            .json(400, errors.GetAllGasPriceResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

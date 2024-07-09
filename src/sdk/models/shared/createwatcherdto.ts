@@ -38,79 +38,164 @@ export type CreateWatcherDto = {
 };
 
 /** @internal */
+export const CustomEventAbi$inboundSchema: z.ZodType<CustomEventAbi, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type CustomEventAbi$Outbound = {};
+
+/** @internal */
+export const CustomEventAbi$outboundSchema: z.ZodType<
+    CustomEventAbi$Outbound,
+    z.ZodTypeDef,
+    CustomEventAbi
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CustomEventAbi$ {
-    export const inboundSchema: z.ZodType<CustomEventAbi, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CustomEventAbi> = z.object({});
+    /** @deprecated use `CustomEventAbi$inboundSchema` instead. */
+    export const inboundSchema = CustomEventAbi$inboundSchema;
+    /** @deprecated use `CustomEventAbi$outboundSchema` instead. */
+    export const outboundSchema = CustomEventAbi$outboundSchema;
+    /** @deprecated use `CustomEventAbi$Outbound` instead. */
+    export type Outbound = CustomEventAbi$Outbound;
 }
 
 /** @internal */
+export const CustomFilters$inboundSchema: z.ZodType<CustomFilters, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type CustomFilters$Outbound = {};
+
+/** @internal */
+export const CustomFilters$outboundSchema: z.ZodType<
+    CustomFilters$Outbound,
+    z.ZodTypeDef,
+    CustomFilters
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CustomFilters$ {
-    export const inboundSchema: z.ZodType<CustomFilters, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CustomFilters> = z.object({});
+    /** @deprecated use `CustomFilters$inboundSchema` instead. */
+    export const inboundSchema = CustomFilters$inboundSchema;
+    /** @deprecated use `CustomFilters$outboundSchema` instead. */
+    export const outboundSchema = CustomFilters$outboundSchema;
+    /** @deprecated use `CustomFilters$Outbound` instead. */
+    export type Outbound = CustomFilters$Outbound;
 }
 
 /** @internal */
+export const CreateWatcherDtoMetadata$inboundSchema: z.ZodType<
+    CreateWatcherDtoMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type CreateWatcherDtoMetadata$Outbound = {};
+
+/** @internal */
+export const CreateWatcherDtoMetadata$outboundSchema: z.ZodType<
+    CreateWatcherDtoMetadata$Outbound,
+    z.ZodTypeDef,
+    CreateWatcherDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWatcherDtoMetadata$ {
-    export const inboundSchema: z.ZodType<CreateWatcherDtoMetadata, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWatcherDtoMetadata> =
-        z.object({});
+    /** @deprecated use `CreateWatcherDtoMetadata$inboundSchema` instead. */
+    export const inboundSchema = CreateWatcherDtoMetadata$inboundSchema;
+    /** @deprecated use `CreateWatcherDtoMetadata$outboundSchema` instead. */
+    export const outboundSchema = CreateWatcherDtoMetadata$outboundSchema;
+    /** @deprecated use `CreateWatcherDtoMetadata$Outbound` instead. */
+    export type Outbound = CreateWatcherDtoMetadata$Outbound;
 }
 
 /** @internal */
+export const CreateWatcherDtoType$inboundSchema: z.ZodNativeEnum<typeof CreateWatcherDtoType> =
+    z.nativeEnum(CreateWatcherDtoType);
+
+/** @internal */
+export const CreateWatcherDtoType$outboundSchema: z.ZodNativeEnum<typeof CreateWatcherDtoType> =
+    CreateWatcherDtoType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWatcherDtoType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof CreateWatcherDtoType> =
-        z.nativeEnum(CreateWatcherDtoType);
-    export const outboundSchema: z.ZodNativeEnum<typeof CreateWatcherDtoType> = inboundSchema;
+    /** @deprecated use `CreateWatcherDtoType$inboundSchema` instead. */
+    export const inboundSchema = CreateWatcherDtoType$inboundSchema;
+    /** @deprecated use `CreateWatcherDtoType$outboundSchema` instead. */
+    export const outboundSchema = CreateWatcherDtoType$outboundSchema;
 }
 
 /** @internal */
+export const CreateWatcherDto$inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, unknown> =
+    z.object({
+        address: z.string(),
+        confirmationsBlocks: z.number(),
+        customEventAbi: z.lazy(() => CustomEventAbi$inboundSchema).optional(),
+        customFilters: z.lazy(() => CustomFilters$inboundSchema).optional(),
+        description: z.nullable(z.string()).optional(),
+        metadata: z.lazy(() => CreateWatcherDtoMetadata$inboundSchema).optional(),
+        name: z.nullable(z.string()).optional(),
+        network: z.string(),
+        type: CreateWatcherDtoType$inboundSchema,
+        webhookUrl: z.string(),
+    });
+
+/** @internal */
+export type CreateWatcherDto$Outbound = {
+    address: string;
+    confirmationsBlocks: number;
+    customEventAbi?: CustomEventAbi$Outbound | undefined;
+    customFilters?: CustomFilters$Outbound | undefined;
+    description?: string | null | undefined;
+    metadata?: CreateWatcherDtoMetadata$Outbound | undefined;
+    name?: string | null | undefined;
+    network: string;
+    type: string;
+    webhookUrl: string;
+};
+
+/** @internal */
+export const CreateWatcherDto$outboundSchema: z.ZodType<
+    CreateWatcherDto$Outbound,
+    z.ZodTypeDef,
+    CreateWatcherDto
+> = z.object({
+    address: z.string(),
+    confirmationsBlocks: z.number(),
+    customEventAbi: z.lazy(() => CustomEventAbi$outboundSchema).optional(),
+    customFilters: z.lazy(() => CustomFilters$outboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    metadata: z.lazy(() => CreateWatcherDtoMetadata$outboundSchema).optional(),
+    name: z.nullable(z.string()).optional(),
+    network: z.string(),
+    type: CreateWatcherDtoType$outboundSchema,
+    webhookUrl: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWatcherDto$ {
-    export const inboundSchema: z.ZodType<CreateWatcherDto, z.ZodTypeDef, unknown> = z.object({
-        address: z.string(),
-        confirmationsBlocks: z.number(),
-        customEventAbi: z.lazy(() => CustomEventAbi$.inboundSchema).optional(),
-        customFilters: z.lazy(() => CustomFilters$.inboundSchema).optional(),
-        description: z.nullable(z.string()).optional(),
-        metadata: z.lazy(() => CreateWatcherDtoMetadata$.inboundSchema).optional(),
-        name: z.nullable(z.string()).optional(),
-        network: z.string(),
-        type: CreateWatcherDtoType$.inboundSchema,
-        webhookUrl: z.string(),
-    });
-
-    export type Outbound = {
-        address: string;
-        confirmationsBlocks: number;
-        customEventAbi?: CustomEventAbi$.Outbound | undefined;
-        customFilters?: CustomFilters$.Outbound | undefined;
-        description?: string | null | undefined;
-        metadata?: CreateWatcherDtoMetadata$.Outbound | undefined;
-        name?: string | null | undefined;
-        network: string;
-        type: string;
-        webhookUrl: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWatcherDto> = z.object({
-        address: z.string(),
-        confirmationsBlocks: z.number(),
-        customEventAbi: z.lazy(() => CustomEventAbi$.outboundSchema).optional(),
-        customFilters: z.lazy(() => CustomFilters$.outboundSchema).optional(),
-        description: z.nullable(z.string()).optional(),
-        metadata: z.lazy(() => CreateWatcherDtoMetadata$.outboundSchema).optional(),
-        name: z.nullable(z.string()).optional(),
-        network: z.string(),
-        type: CreateWatcherDtoType$.outboundSchema,
-        webhookUrl: z.string(),
-    });
+    /** @deprecated use `CreateWatcherDto$inboundSchema` instead. */
+    export const inboundSchema = CreateWatcherDto$inboundSchema;
+    /** @deprecated use `CreateWatcherDto$outboundSchema` instead. */
+    export const outboundSchema = CreateWatcherDto$outboundSchema;
+    /** @deprecated use `CreateWatcherDto$Outbound` instead. */
+    export type Outbound = CreateWatcherDto$Outbound;
 }

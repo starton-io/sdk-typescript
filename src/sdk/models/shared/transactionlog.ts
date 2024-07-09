@@ -54,44 +54,92 @@ export type TransactionLog = {
 };
 
 /** @internal */
+export const TransactionLogContext$inboundSchema: z.ZodType<
+    TransactionLogContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type TransactionLogContext$Outbound = {};
+
+/** @internal */
+export const TransactionLogContext$outboundSchema: z.ZodType<
+    TransactionLogContext$Outbound,
+    z.ZodTypeDef,
+    TransactionLogContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TransactionLogContext$ {
-    export const inboundSchema: z.ZodType<TransactionLogContext, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLogContext> =
-        z.object({});
+    /** @deprecated use `TransactionLogContext$inboundSchema` instead. */
+    export const inboundSchema = TransactionLogContext$inboundSchema;
+    /** @deprecated use `TransactionLogContext$outboundSchema` instead. */
+    export const outboundSchema = TransactionLogContext$outboundSchema;
+    /** @deprecated use `TransactionLogContext$Outbound` instead. */
+    export type Outbound = TransactionLogContext$Outbound;
 }
 
 /** @internal */
+export const TransactionLogType$inboundSchema: z.ZodNativeEnum<typeof TransactionLogType> =
+    z.nativeEnum(TransactionLogType);
+
+/** @internal */
+export const TransactionLogType$outboundSchema: z.ZodNativeEnum<typeof TransactionLogType> =
+    TransactionLogType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TransactionLogType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof TransactionLogType> =
-        z.nativeEnum(TransactionLogType);
-    export const outboundSchema: z.ZodNativeEnum<typeof TransactionLogType> = inboundSchema;
+    /** @deprecated use `TransactionLogType$inboundSchema` instead. */
+    export const inboundSchema = TransactionLogType$inboundSchema;
+    /** @deprecated use `TransactionLogType$outboundSchema` instead. */
+    export const outboundSchema = TransactionLogType$outboundSchema;
 }
 
 /** @internal */
+export const TransactionLog$inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, unknown> =
+    z.object({
+        context: z.lazy(() => TransactionLogContext$inboundSchema).optional(),
+        createdAt: z.string(),
+        message: z.string(),
+        type: TransactionLogType$inboundSchema,
+    });
+
+/** @internal */
+export type TransactionLog$Outbound = {
+    context?: TransactionLogContext$Outbound | undefined;
+    createdAt: string;
+    message: string;
+    type: string;
+};
+
+/** @internal */
+export const TransactionLog$outboundSchema: z.ZodType<
+    TransactionLog$Outbound,
+    z.ZodTypeDef,
+    TransactionLog
+> = z.object({
+    context: z.lazy(() => TransactionLogContext$outboundSchema).optional(),
+    createdAt: z.string(),
+    message: z.string(),
+    type: TransactionLogType$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TransactionLog$ {
-    export const inboundSchema: z.ZodType<TransactionLog, z.ZodTypeDef, unknown> = z.object({
-        context: z.lazy(() => TransactionLogContext$.inboundSchema).optional(),
-        createdAt: z.string(),
-        message: z.string(),
-        type: TransactionLogType$.inboundSchema,
-    });
-
-    export type Outbound = {
-        context?: TransactionLogContext$.Outbound | undefined;
-        createdAt: string;
-        message: string;
-        type: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransactionLog> = z.object({
-        context: z.lazy(() => TransactionLogContext$.outboundSchema).optional(),
-        createdAt: z.string(),
-        message: z.string(),
-        type: TransactionLogType$.outboundSchema,
-    });
+    /** @deprecated use `TransactionLog$inboundSchema` instead. */
+    export const inboundSchema = TransactionLog$inboundSchema;
+    /** @deprecated use `TransactionLog$outboundSchema` instead. */
+    export const outboundSchema = TransactionLog$outboundSchema;
+    /** @deprecated use `TransactionLog$Outbound` instead. */
+    export type Outbound = TransactionLog$Outbound;
 }

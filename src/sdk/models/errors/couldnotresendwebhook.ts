@@ -35,7 +35,11 @@ export class CouldNotResendWebhook extends Error {
     data$: CouldNotResendWebhookData;
 
     constructor(err: CouldNotResendWebhookData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,89 +53,118 @@ export class CouldNotResendWebhook extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotResendWebhook";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTRESENDWEBHOOKContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTRESENDWEBHOOKContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTRESENDWEBHOOKContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTRESENDWEBHOOKContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTRESENDWEBHOOKContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTRESENDWEBHOOKContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCOULDNOTRESENDWEBHOOKContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTRESENDWEBHOOKContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTRESENDWEBHOOKContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTRESENDWEBHOOKContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTRESENDWEBHOOKContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTRESENDWEBHOOKContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotResendWebhook$ {
-    export const inboundSchema: z.ZodType<CouldNotResendWebhook, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
-            message: z.string().default("Could not resend webhook."),
-            path: z.string(),
-            statusCode: z.number().default(412),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new CouldNotResendWebhook(remapped);
+export const CouldNotResendWebhook$inboundSchema: z.ZodType<
+    CouldNotResendWebhook,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
+        message: z.string().default("Could not resend webhook."),
+        path: z.string(),
+        statusCode: z.number().default(412),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTRESENDWEBHOOKContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotResendWebhook(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotResendWebhook> = z
-        .instanceof(CouldNotResendWebhook)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
-                    message: z.string().default("Could not resend webhook."),
-                    path: z.string(),
-                    statusCode: z.number().default(412),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotResendWebhook$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasCOULDNOTRESENDWEBHOOKContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotResendWebhook$outboundSchema: z.ZodType<
+    CouldNotResendWebhook$Outbound,
+    z.ZodTypeDef,
+    CouldNotResendWebhook
+> = z
+    .instanceof(CouldNotResendWebhook)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_RESEND_WEBHOOK"),
+                message: z.string().default("Could not resend webhook."),
+                path: z.string(),
+                statusCode: z.number().default(412),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotResendWebhook$ {
+    /** @deprecated use `CouldNotResendWebhook$inboundSchema` instead. */
+    export const inboundSchema = CouldNotResendWebhook$inboundSchema;
+    /** @deprecated use `CouldNotResendWebhook$outboundSchema` instead. */
+    export const outboundSchema = CouldNotResendWebhook$outboundSchema;
+    /** @deprecated use `CouldNotResendWebhook$Outbound` instead. */
+    export type Outbound = CouldNotResendWebhook$Outbound;
 }

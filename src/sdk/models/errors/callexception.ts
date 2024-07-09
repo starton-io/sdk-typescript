@@ -67,7 +67,11 @@ export class CallException extends Error {
     data$: CallExceptionData;
 
     constructor(err: CallExceptionData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -93,123 +97,152 @@ export class CallException extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CallException";
     }
 }
 
 /** @internal */
+export const SchemasCALLEXCEPTIONContext$inboundSchema: z.ZodType<
+    SchemasCALLEXCEPTIONContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCALLEXCEPTIONContext$Outbound = {};
+
+/** @internal */
+export const SchemasCALLEXCEPTIONContext$outboundSchema: z.ZodType<
+    SchemasCALLEXCEPTIONContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCALLEXCEPTIONContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCALLEXCEPTIONContext$ {
-    export const inboundSchema: z.ZodType<SchemasCALLEXCEPTIONContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasCALLEXCEPTIONContext> =
-        z.object({});
+    /** @deprecated use `SchemasCALLEXCEPTIONContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCALLEXCEPTIONContext$inboundSchema;
+    /** @deprecated use `SchemasCALLEXCEPTIONContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCALLEXCEPTIONContext$outboundSchema;
+    /** @deprecated use `SchemasCALLEXCEPTIONContext$Outbound` instead. */
+    export type Outbound = SchemasCALLEXCEPTIONContext$Outbound;
 }
 
 /** @internal */
-export namespace CallException$ {
-    export const inboundSchema: z.ZodType<CallException, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCALLEXCEPTIONContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("CALL_EXCEPTION"),
-            message: z.string().default("Your call to the blockchain encounters revert."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-            });
-
-            return new CallException(remapped);
+export const CallException$inboundSchema: z.ZodType<CallException, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasCALLEXCEPTIONContext$inboundSchema)).optional(),
+        errorCode: z.string().default("CALL_EXCEPTION"),
+        message: z.string().default("Your call to the blockchain encounters revert."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        context?: SchemasCALLEXCEPTIONContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CallException(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CallException> = z
-        .instanceof(CallException)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCALLEXCEPTIONContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("CALL_EXCEPTION"),
-                    message: z.string().default("Your call to the blockchain encounters revert."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                    });
-                })
-        );
+/** @internal */
+export type CallException$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    context?: SchemasCALLEXCEPTIONContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CallException$outboundSchema: z.ZodType<
+    CallException$Outbound,
+    z.ZodTypeDef,
+    CallException
+> = z
+    .instanceof(CallException)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCALLEXCEPTIONContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("CALL_EXCEPTION"),
+                message: z.string().default("Your call to the blockchain encounters revert."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CallException$ {
+    /** @deprecated use `CallException$inboundSchema` instead. */
+    export const inboundSchema = CallException$inboundSchema;
+    /** @deprecated use `CallException$outboundSchema` instead. */
+    export const outboundSchema = CallException$outboundSchema;
+    /** @deprecated use `CallException$Outbound` instead. */
+    export type Outbound = CallException$Outbound;
 }

@@ -35,7 +35,11 @@ export class ContractNotYetDeployed extends Error {
     data$: ContractNotYetDeployedData;
 
     constructor(err: ContractNotYetDeployedData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,93 +53,120 @@ export class ContractNotYetDeployed extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "ContractNotYetDeployed";
     }
 }
 
 /** @internal */
+export const SchemasCONTRACTNOTYETDEPLOYEDContext$inboundSchema: z.ZodType<
+    SchemasCONTRACTNOTYETDEPLOYEDContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound = {};
+
+/** @internal */
+export const SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema: z.ZodType<
+    SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCONTRACTNOTYETDEPLOYEDContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCONTRACTNOTYETDEPLOYEDContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCONTRACTNOTYETDEPLOYEDContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCONTRACTNOTYETDEPLOYEDContext
-    > = z.object({});
+    /** @deprecated use `SchemasCONTRACTNOTYETDEPLOYEDContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCONTRACTNOTYETDEPLOYEDContext$inboundSchema;
+    /** @deprecated use `SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema;
+    /** @deprecated use `SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound` instead. */
+    export type Outbound = SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound;
 }
 
 /** @internal */
-export namespace ContractNotYetDeployed$ {
-    export const inboundSchema: z.ZodType<ContractNotYetDeployed, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
-            message: z.string().default("Smart contract is not deployed on the blockchain yet."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new ContractNotYetDeployed(remapped);
+export const ContractNotYetDeployed$inboundSchema: z.ZodType<
+    ContractNotYetDeployed,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
+        message: z.string().default("Smart contract is not deployed on the blockchain yet."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasCONTRACTNOTYETDEPLOYEDContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new ContractNotYetDeployed(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContractNotYetDeployed> = z
-        .instanceof(ContractNotYetDeployed)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(
-                            z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$.outboundSchema)
-                        )
-                        .optional(),
-                    errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
-                    message: z
-                        .string()
-                        .default("Smart contract is not deployed on the blockchain yet."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type ContractNotYetDeployed$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const ContractNotYetDeployed$outboundSchema: z.ZodType<
+    ContractNotYetDeployed$Outbound,
+    z.ZodTypeDef,
+    ContractNotYetDeployed
+> = z
+    .instanceof(ContractNotYetDeployed)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("CONTRACT_NOT_YET_DEPLOYED"),
+                message: z
+                    .string()
+                    .default("Smart contract is not deployed on the blockchain yet."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContractNotYetDeployed$ {
+    /** @deprecated use `ContractNotYetDeployed$inboundSchema` instead. */
+    export const inboundSchema = ContractNotYetDeployed$inboundSchema;
+    /** @deprecated use `ContractNotYetDeployed$outboundSchema` instead. */
+    export const outboundSchema = ContractNotYetDeployed$outboundSchema;
+    /** @deprecated use `ContractNotYetDeployed$Outbound` instead. */
+    export type Outbound = ContractNotYetDeployed$Outbound;
 }

@@ -15,26 +15,55 @@ export type CreateRpcDto = {
 };
 
 /** @internal */
+export const CreateRpcDtoType$inboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> =
+    z.nativeEnum(CreateRpcDtoType);
+
+/** @internal */
+export const CreateRpcDtoType$outboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> =
+    CreateRpcDtoType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateRpcDtoType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> =
-        z.nativeEnum(CreateRpcDtoType);
-    export const outboundSchema: z.ZodNativeEnum<typeof CreateRpcDtoType> = inboundSchema;
+    /** @deprecated use `CreateRpcDtoType$inboundSchema` instead. */
+    export const inboundSchema = CreateRpcDtoType$inboundSchema;
+    /** @deprecated use `CreateRpcDtoType$outboundSchema` instead. */
+    export const outboundSchema = CreateRpcDtoType$outboundSchema;
 }
 
 /** @internal */
+export const CreateRpcDto$inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z.object({
+    type: CreateRpcDtoType$inboundSchema,
+    url: z.string(),
+});
+
+/** @internal */
+export type CreateRpcDto$Outbound = {
+    type: string;
+    url: string;
+};
+
+/** @internal */
+export const CreateRpcDto$outboundSchema: z.ZodType<
+    CreateRpcDto$Outbound,
+    z.ZodTypeDef,
+    CreateRpcDto
+> = z.object({
+    type: CreateRpcDtoType$outboundSchema,
+    url: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateRpcDto$ {
-    export const inboundSchema: z.ZodType<CreateRpcDto, z.ZodTypeDef, unknown> = z.object({
-        type: CreateRpcDtoType$.inboundSchema,
-        url: z.string(),
-    });
-
-    export type Outbound = {
-        type: string;
-        url: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRpcDto> = z.object({
-        type: CreateRpcDtoType$.outboundSchema,
-        url: z.string(),
-    });
+    /** @deprecated use `CreateRpcDto$inboundSchema` instead. */
+    export const inboundSchema = CreateRpcDto$inboundSchema;
+    /** @deprecated use `CreateRpcDto$outboundSchema` instead. */
+    export const outboundSchema = CreateRpcDto$outboundSchema;
+    /** @deprecated use `CreateRpcDto$Outbound` instead. */
+    export type Outbound = CreateRpcDto$Outbound;
 }

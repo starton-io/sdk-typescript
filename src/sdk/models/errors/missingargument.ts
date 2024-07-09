@@ -67,7 +67,11 @@ export class MissingArgument extends Error {
     data$: MissingArgumentData;
 
     constructor(err: MissingArgumentData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -93,123 +97,152 @@ export class MissingArgument extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "MissingArgument";
     }
 }
 
 /** @internal */
+export const SchemasMISSINGARGUMENTContext$inboundSchema: z.ZodType<
+    SchemasMISSINGARGUMENTContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasMISSINGARGUMENTContext$Outbound = {};
+
+/** @internal */
+export const SchemasMISSINGARGUMENTContext$outboundSchema: z.ZodType<
+    SchemasMISSINGARGUMENTContext$Outbound,
+    z.ZodTypeDef,
+    SchemasMISSINGARGUMENTContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasMISSINGARGUMENTContext$ {
-    export const inboundSchema: z.ZodType<SchemasMISSINGARGUMENTContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasMISSINGARGUMENTContext> =
-        z.object({});
+    /** @deprecated use `SchemasMISSINGARGUMENTContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasMISSINGARGUMENTContext$inboundSchema;
+    /** @deprecated use `SchemasMISSINGARGUMENTContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasMISSINGARGUMENTContext$outboundSchema;
+    /** @deprecated use `SchemasMISSINGARGUMENTContext$Outbound` instead. */
+    export type Outbound = SchemasMISSINGARGUMENTContext$Outbound;
 }
 
 /** @internal */
-export namespace MissingArgument$ {
-    export const inboundSchema: z.ZodType<MissingArgument, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("MISSING_ARGUMENT"),
-            message: z.string().default("Some params are missing."),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-                RawResponse4: "rawResponse4",
-            });
-
-            return new MissingArgument(remapped);
+export const MissingArgument$inboundSchema: z.ZodType<MissingArgument, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$inboundSchema)).optional(),
+        errorCode: z.string().default("MISSING_ARGUMENT"),
+        message: z.string().default("Some params are missing."),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
+            RawResponse4: "rawResponse4",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        context?: SchemasMISSINGARGUMENTContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new MissingArgument(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MissingArgument> = z
-        .instanceof(MissingArgument)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("MISSING_ARGUMENT"),
-                    message: z.string().default("Some params are missing."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                    });
-                })
-        );
+/** @internal */
+export type MissingArgument$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    context?: SchemasMISSINGARGUMENTContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const MissingArgument$outboundSchema: z.ZodType<
+    MissingArgument$Outbound,
+    z.ZodTypeDef,
+    MissingArgument
+> = z
+    .instanceof(MissingArgument)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasMISSINGARGUMENTContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("MISSING_ARGUMENT"),
+                message: z.string().default("Some params are missing."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MissingArgument$ {
+    /** @deprecated use `MissingArgument$inboundSchema` instead. */
+    export const inboundSchema = MissingArgument$inboundSchema;
+    /** @deprecated use `MissingArgument$outboundSchema` instead. */
+    export const outboundSchema = MissingArgument$outboundSchema;
+    /** @deprecated use `MissingArgument$Outbound` instead. */
+    export type Outbound = MissingArgument$Outbound;
 }

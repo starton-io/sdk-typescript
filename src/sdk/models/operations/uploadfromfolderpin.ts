@@ -36,94 +36,166 @@ export type UploadFromFolderPinResponse = {
 };
 
 /** @internal */
+export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z.object({
+    content: b64$.zodInbound,
+    fileName: z.string(),
+});
+
+/** @internal */
+export type Files$Outbound = {
+    content: Uint8Array;
+    fileName: string;
+};
+
+/** @internal */
+export const Files$outboundSchema: z.ZodType<Files$Outbound, z.ZodTypeDef, Files> = z.object({
+    content: b64$.zodOutbound,
+    fileName: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Files$ {
-    export const inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z.object({
-        content: b64$.zodInbound,
-        fileName: z.string(),
-    });
-
-    export type Outbound = {
-        content: Uint8Array;
-        fileName: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Files> = z.object({
-        content: b64$.zodOutbound,
-        fileName: z.string(),
-    });
+    /** @deprecated use `Files$inboundSchema` instead. */
+    export const inboundSchema = Files$inboundSchema;
+    /** @deprecated use `Files$outboundSchema` instead. */
+    export const outboundSchema = Files$outboundSchema;
+    /** @deprecated use `Files$Outbound` instead. */
+    export type Outbound = Files$Outbound;
 }
 
 /** @internal */
+export const UploadFromFolderPinMetadata$inboundSchema: z.ZodType<
+    UploadFromFolderPinMetadata,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UploadFromFolderPinMetadata$Outbound = {};
+
+/** @internal */
+export const UploadFromFolderPinMetadata$outboundSchema: z.ZodType<
+    UploadFromFolderPinMetadata$Outbound,
+    z.ZodTypeDef,
+    UploadFromFolderPinMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadFromFolderPinMetadata$ {
-    export const inboundSchema: z.ZodType<UploadFromFolderPinMetadata, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFolderPinMetadata> =
-        z.object({});
+    /** @deprecated use `UploadFromFolderPinMetadata$inboundSchema` instead. */
+    export const inboundSchema = UploadFromFolderPinMetadata$inboundSchema;
+    /** @deprecated use `UploadFromFolderPinMetadata$outboundSchema` instead. */
+    export const outboundSchema = UploadFromFolderPinMetadata$outboundSchema;
+    /** @deprecated use `UploadFromFolderPinMetadata$Outbound` instead. */
+    export type Outbound = UploadFromFolderPinMetadata$Outbound;
 }
 
 /** @internal */
+export const UploadFromFolderPinRequestBody$inboundSchema: z.ZodType<
+    UploadFromFolderPinRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    files: z.array(z.lazy(() => Files$inboundSchema)).optional(),
+    metadata: z.lazy(() => UploadFromFolderPinMetadata$inboundSchema).optional(),
+});
+
+/** @internal */
+export type UploadFromFolderPinRequestBody$Outbound = {
+    files?: Array<Files$Outbound> | undefined;
+    metadata?: UploadFromFolderPinMetadata$Outbound | undefined;
+};
+
+/** @internal */
+export const UploadFromFolderPinRequestBody$outboundSchema: z.ZodType<
+    UploadFromFolderPinRequestBody$Outbound,
+    z.ZodTypeDef,
+    UploadFromFolderPinRequestBody
+> = z.object({
+    files: z.array(z.lazy(() => Files$outboundSchema)).optional(),
+    metadata: z.lazy(() => UploadFromFolderPinMetadata$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadFromFolderPinRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadFromFolderPinRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            files: z.array(z.lazy(() => Files$.inboundSchema)).optional(),
-            metadata: z.lazy(() => UploadFromFolderPinMetadata$.inboundSchema).optional(),
-        });
-
-    export type Outbound = {
-        files?: Array<Files$.Outbound> | undefined;
-        metadata?: UploadFromFolderPinMetadata$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFolderPinRequestBody> =
-        z.object({
-            files: z.array(z.lazy(() => Files$.outboundSchema)).optional(),
-            metadata: z.lazy(() => UploadFromFolderPinMetadata$.outboundSchema).optional(),
-        });
+    /** @deprecated use `UploadFromFolderPinRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UploadFromFolderPinRequestBody$inboundSchema;
+    /** @deprecated use `UploadFromFolderPinRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UploadFromFolderPinRequestBody$outboundSchema;
+    /** @deprecated use `UploadFromFolderPinRequestBody$Outbound` instead. */
+    export type Outbound = UploadFromFolderPinRequestBody$Outbound;
 }
 
 /** @internal */
+export const UploadFromFolderPinResponse$inboundSchema: z.ZodType<
+    UploadFromFolderPinResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        Pin: shared.Pin$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            Pin: "pin",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type UploadFromFolderPinResponse$Outbound = {
+    ContentType: string;
+    Pin?: shared.Pin$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const UploadFromFolderPinResponse$outboundSchema: z.ZodType<
+    UploadFromFolderPinResponse$Outbound,
+    z.ZodTypeDef,
+    UploadFromFolderPinResponse
+> = z
+    .object({
+        contentType: z.string(),
+        pin: shared.Pin$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            pin: "Pin",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadFromFolderPinResponse$ {
-    export const inboundSchema: z.ZodType<UploadFromFolderPinResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            Pin: shared.Pin$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                Pin: "pin",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        Pin?: shared.Pin$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadFromFolderPinResponse> = z
-        .object({
-            contentType: z.string(),
-            pin: shared.Pin$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                pin: "Pin",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UploadFromFolderPinResponse$inboundSchema` instead. */
+    export const inboundSchema = UploadFromFolderPinResponse$inboundSchema;
+    /** @deprecated use `UploadFromFolderPinResponse$outboundSchema` instead. */
+    export const outboundSchema = UploadFromFolderPinResponse$outboundSchema;
+    /** @deprecated use `UploadFromFolderPinResponse$Outbound` instead. */
+    export type Outbound = UploadFromFolderPinResponse$Outbound;
 }

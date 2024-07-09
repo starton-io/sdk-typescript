@@ -16,29 +16,59 @@ export type ExplorerApiDto = {
 };
 
 /** @internal */
+export const ExplorerApiDtoType$inboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
+    z.nativeEnum(ExplorerApiDtoType);
+
+/** @internal */
+export const ExplorerApiDtoType$outboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
+    ExplorerApiDtoType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ExplorerApiDtoType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
-        z.nativeEnum(ExplorerApiDtoType);
-    export const outboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> = inboundSchema;
+    /** @deprecated use `ExplorerApiDtoType$inboundSchema` instead. */
+    export const inboundSchema = ExplorerApiDtoType$inboundSchema;
+    /** @deprecated use `ExplorerApiDtoType$outboundSchema` instead. */
+    export const outboundSchema = ExplorerApiDtoType$outboundSchema;
 }
 
 /** @internal */
+export const ExplorerApiDto$inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> =
+    z.object({
+        apiKey: z.string(),
+        type: ExplorerApiDtoType$inboundSchema,
+        url: z.string(),
+    });
+
+/** @internal */
+export type ExplorerApiDto$Outbound = {
+    apiKey: string;
+    type: string;
+    url: string;
+};
+
+/** @internal */
+export const ExplorerApiDto$outboundSchema: z.ZodType<
+    ExplorerApiDto$Outbound,
+    z.ZodTypeDef,
+    ExplorerApiDto
+> = z.object({
+    apiKey: z.string(),
+    type: ExplorerApiDtoType$outboundSchema,
+    url: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ExplorerApiDto$ {
-    export const inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> = z.object({
-        apiKey: z.string(),
-        type: ExplorerApiDtoType$.inboundSchema,
-        url: z.string(),
-    });
-
-    export type Outbound = {
-        apiKey: string;
-        type: string;
-        url: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExplorerApiDto> = z.object({
-        apiKey: z.string(),
-        type: ExplorerApiDtoType$.outboundSchema,
-        url: z.string(),
-    });
+    /** @deprecated use `ExplorerApiDto$inboundSchema` instead. */
+    export const inboundSchema = ExplorerApiDto$inboundSchema;
+    /** @deprecated use `ExplorerApiDto$outboundSchema` instead. */
+    export const outboundSchema = ExplorerApiDto$outboundSchema;
+    /** @deprecated use `ExplorerApiDto$Outbound` instead. */
+    export type Outbound = ExplorerApiDto$Outbound;
 }

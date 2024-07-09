@@ -611,7 +611,11 @@ export class BadRequestException extends Error {
     data$: BadRequestExceptionData;
 
     constructor(err: BadRequestExceptionData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -841,797 +845,831 @@ export class BadRequestException extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "BadRequestException";
     }
 }
 
 /** @internal */
+export const SchemasContext$inboundSchema: z.ZodType<SchemasContext, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type SchemasContext$Outbound = {};
+
+/** @internal */
+export const SchemasContext$outboundSchema: z.ZodType<
+    SchemasContext$Outbound,
+    z.ZodTypeDef,
+    SchemasContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasContext$ {
-    export const inboundSchema: z.ZodType<SchemasContext, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasContext> = z.object({});
+    /** @deprecated use `SchemasContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasContext$inboundSchema;
+    /** @deprecated use `SchemasContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasContext$outboundSchema;
+    /** @deprecated use `SchemasContext$Outbound` instead. */
+    export type Outbound = SchemasContext$Outbound;
 }
 
 /** @internal */
-export namespace BadRequestException$ {
-    export const inboundSchema: z.ZodType<BadRequestException, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse10: z.instanceof(Response).optional(),
-            RawResponse11: z.instanceof(Response).optional(),
-            RawResponse12: z.instanceof(Response).optional(),
-            RawResponse13: z.instanceof(Response).optional(),
-            RawResponse14: z.instanceof(Response).optional(),
-            RawResponse15: z.instanceof(Response).optional(),
-            RawResponse16: z.instanceof(Response).optional(),
-            RawResponse17: z.instanceof(Response).optional(),
-            RawResponse18: z.instanceof(Response).optional(),
-            RawResponse19: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse20: z.instanceof(Response).optional(),
-            RawResponse21: z.instanceof(Response).optional(),
-            RawResponse22: z.instanceof(Response).optional(),
-            RawResponse23: z.instanceof(Response).optional(),
-            RawResponse24: z.instanceof(Response).optional(),
-            RawResponse25: z.instanceof(Response).optional(),
-            RawResponse26: z.instanceof(Response).optional(),
-            RawResponse27: z.instanceof(Response).optional(),
-            RawResponse28: z.instanceof(Response).optional(),
-            RawResponse29: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            RawResponse30: z.instanceof(Response).optional(),
-            RawResponse31: z.instanceof(Response).optional(),
-            RawResponse32: z.instanceof(Response).optional(),
-            RawResponse33: z.instanceof(Response).optional(),
-            RawResponse34: z.instanceof(Response).optional(),
-            RawResponse35: z.instanceof(Response).optional(),
-            RawResponse36: z.instanceof(Response).optional(),
-            RawResponse37: z.instanceof(Response).optional(),
-            RawResponse38: z.instanceof(Response).optional(),
-            RawResponse39: z.instanceof(Response).optional(),
-            RawResponse4: z.instanceof(Response).optional(),
-            RawResponse40: z.instanceof(Response).optional(),
-            RawResponse41: z.instanceof(Response).optional(),
-            RawResponse42: z.instanceof(Response).optional(),
-            RawResponse43: z.instanceof(Response).optional(),
-            RawResponse44: z.instanceof(Response).optional(),
-            RawResponse45: z.instanceof(Response).optional(),
-            RawResponse46: z.instanceof(Response).optional(),
-            RawResponse47: z.instanceof(Response).optional(),
-            RawResponse48: z.instanceof(Response).optional(),
-            RawResponse49: z.instanceof(Response).optional(),
-            RawResponse5: z.instanceof(Response).optional(),
-            RawResponse50: z.instanceof(Response).optional(),
-            RawResponse51: z.instanceof(Response).optional(),
-            RawResponse52: z.instanceof(Response).optional(),
-            RawResponse53: z.instanceof(Response).optional(),
-            RawResponse54: z.instanceof(Response).optional(),
-            RawResponse55: z.instanceof(Response).optional(),
-            RawResponse56: z.instanceof(Response).optional(),
-            RawResponse57: z.instanceof(Response).optional(),
-            RawResponse58: z.instanceof(Response).optional(),
-            RawResponse59: z.instanceof(Response).optional(),
-            RawResponse6: z.instanceof(Response).optional(),
-            RawResponse60: z.instanceof(Response).optional(),
-            RawResponse61: z.instanceof(Response).optional(),
-            RawResponse62: z.instanceof(Response).optional(),
-            RawResponse63: z.instanceof(Response).optional(),
-            RawResponse64: z.instanceof(Response).optional(),
-            RawResponse65: z.instanceof(Response).optional(),
-            RawResponse66: z.instanceof(Response).optional(),
-            RawResponse67: z.instanceof(Response).optional(),
-            RawResponse68: z.instanceof(Response).optional(),
-            RawResponse69: z.instanceof(Response).optional(),
-            RawResponse7: z.instanceof(Response).optional(),
-            RawResponse70: z.instanceof(Response).optional(),
-            RawResponse71: z.instanceof(Response).optional(),
-            RawResponse72: z.instanceof(Response).optional(),
-            RawResponse8: z.instanceof(Response).optional(),
-            RawResponse9: z.instanceof(Response).optional(),
-            context: z.nullable(z.lazy(() => SchemasContext$.inboundSchema)).optional(),
-            errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
-            message: z.array(z.string()),
-            path: z.string(),
-            statusCode: z.number().default(400),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse10: "rawResponse10",
-                RawResponse11: "rawResponse11",
-                RawResponse12: "rawResponse12",
-                RawResponse13: "rawResponse13",
-                RawResponse14: "rawResponse14",
-                RawResponse15: "rawResponse15",
-                RawResponse16: "rawResponse16",
-                RawResponse17: "rawResponse17",
-                RawResponse18: "rawResponse18",
-                RawResponse19: "rawResponse19",
-                RawResponse2: "rawResponse2",
-                RawResponse20: "rawResponse20",
-                RawResponse21: "rawResponse21",
-                RawResponse22: "rawResponse22",
-                RawResponse23: "rawResponse23",
-                RawResponse24: "rawResponse24",
-                RawResponse25: "rawResponse25",
-                RawResponse26: "rawResponse26",
-                RawResponse27: "rawResponse27",
-                RawResponse28: "rawResponse28",
-                RawResponse29: "rawResponse29",
-                RawResponse3: "rawResponse3",
-                RawResponse30: "rawResponse30",
-                RawResponse31: "rawResponse31",
-                RawResponse32: "rawResponse32",
-                RawResponse33: "rawResponse33",
-                RawResponse34: "rawResponse34",
-                RawResponse35: "rawResponse35",
-                RawResponse36: "rawResponse36",
-                RawResponse37: "rawResponse37",
-                RawResponse38: "rawResponse38",
-                RawResponse39: "rawResponse39",
-                RawResponse4: "rawResponse4",
-                RawResponse40: "rawResponse40",
-                RawResponse41: "rawResponse41",
-                RawResponse42: "rawResponse42",
-                RawResponse43: "rawResponse43",
-                RawResponse44: "rawResponse44",
-                RawResponse45: "rawResponse45",
-                RawResponse46: "rawResponse46",
-                RawResponse47: "rawResponse47",
-                RawResponse48: "rawResponse48",
-                RawResponse49: "rawResponse49",
-                RawResponse5: "rawResponse5",
-                RawResponse50: "rawResponse50",
-                RawResponse51: "rawResponse51",
-                RawResponse52: "rawResponse52",
-                RawResponse53: "rawResponse53",
-                RawResponse54: "rawResponse54",
-                RawResponse55: "rawResponse55",
-                RawResponse56: "rawResponse56",
-                RawResponse57: "rawResponse57",
-                RawResponse58: "rawResponse58",
-                RawResponse59: "rawResponse59",
-                RawResponse6: "rawResponse6",
-                RawResponse60: "rawResponse60",
-                RawResponse61: "rawResponse61",
-                RawResponse62: "rawResponse62",
-                RawResponse63: "rawResponse63",
-                RawResponse64: "rawResponse64",
-                RawResponse65: "rawResponse65",
-                RawResponse66: "rawResponse66",
-                RawResponse67: "rawResponse67",
-                RawResponse68: "rawResponse68",
-                RawResponse69: "rawResponse69",
-                RawResponse7: "rawResponse7",
-                RawResponse70: "rawResponse70",
-                RawResponse71: "rawResponse71",
-                RawResponse72: "rawResponse72",
-                RawResponse8: "rawResponse8",
-                RawResponse9: "rawResponse9",
-            });
-
-            return new BadRequestException(remapped);
+export const BadRequestException$inboundSchema: z.ZodType<
+    BadRequestException,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse10: z.instanceof(Response).optional(),
+        RawResponse11: z.instanceof(Response).optional(),
+        RawResponse12: z.instanceof(Response).optional(),
+        RawResponse13: z.instanceof(Response).optional(),
+        RawResponse14: z.instanceof(Response).optional(),
+        RawResponse15: z.instanceof(Response).optional(),
+        RawResponse16: z.instanceof(Response).optional(),
+        RawResponse17: z.instanceof(Response).optional(),
+        RawResponse18: z.instanceof(Response).optional(),
+        RawResponse19: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse20: z.instanceof(Response).optional(),
+        RawResponse21: z.instanceof(Response).optional(),
+        RawResponse22: z.instanceof(Response).optional(),
+        RawResponse23: z.instanceof(Response).optional(),
+        RawResponse24: z.instanceof(Response).optional(),
+        RawResponse25: z.instanceof(Response).optional(),
+        RawResponse26: z.instanceof(Response).optional(),
+        RawResponse27: z.instanceof(Response).optional(),
+        RawResponse28: z.instanceof(Response).optional(),
+        RawResponse29: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        RawResponse30: z.instanceof(Response).optional(),
+        RawResponse31: z.instanceof(Response).optional(),
+        RawResponse32: z.instanceof(Response).optional(),
+        RawResponse33: z.instanceof(Response).optional(),
+        RawResponse34: z.instanceof(Response).optional(),
+        RawResponse35: z.instanceof(Response).optional(),
+        RawResponse36: z.instanceof(Response).optional(),
+        RawResponse37: z.instanceof(Response).optional(),
+        RawResponse38: z.instanceof(Response).optional(),
+        RawResponse39: z.instanceof(Response).optional(),
+        RawResponse4: z.instanceof(Response).optional(),
+        RawResponse40: z.instanceof(Response).optional(),
+        RawResponse41: z.instanceof(Response).optional(),
+        RawResponse42: z.instanceof(Response).optional(),
+        RawResponse43: z.instanceof(Response).optional(),
+        RawResponse44: z.instanceof(Response).optional(),
+        RawResponse45: z.instanceof(Response).optional(),
+        RawResponse46: z.instanceof(Response).optional(),
+        RawResponse47: z.instanceof(Response).optional(),
+        RawResponse48: z.instanceof(Response).optional(),
+        RawResponse49: z.instanceof(Response).optional(),
+        RawResponse5: z.instanceof(Response).optional(),
+        RawResponse50: z.instanceof(Response).optional(),
+        RawResponse51: z.instanceof(Response).optional(),
+        RawResponse52: z.instanceof(Response).optional(),
+        RawResponse53: z.instanceof(Response).optional(),
+        RawResponse54: z.instanceof(Response).optional(),
+        RawResponse55: z.instanceof(Response).optional(),
+        RawResponse56: z.instanceof(Response).optional(),
+        RawResponse57: z.instanceof(Response).optional(),
+        RawResponse58: z.instanceof(Response).optional(),
+        RawResponse59: z.instanceof(Response).optional(),
+        RawResponse6: z.instanceof(Response).optional(),
+        RawResponse60: z.instanceof(Response).optional(),
+        RawResponse61: z.instanceof(Response).optional(),
+        RawResponse62: z.instanceof(Response).optional(),
+        RawResponse63: z.instanceof(Response).optional(),
+        RawResponse64: z.instanceof(Response).optional(),
+        RawResponse65: z.instanceof(Response).optional(),
+        RawResponse66: z.instanceof(Response).optional(),
+        RawResponse67: z.instanceof(Response).optional(),
+        RawResponse68: z.instanceof(Response).optional(),
+        RawResponse69: z.instanceof(Response).optional(),
+        RawResponse7: z.instanceof(Response).optional(),
+        RawResponse70: z.instanceof(Response).optional(),
+        RawResponse71: z.instanceof(Response).optional(),
+        RawResponse72: z.instanceof(Response).optional(),
+        RawResponse8: z.instanceof(Response).optional(),
+        RawResponse9: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasContext$inboundSchema)).optional(),
+        errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
+        message: z.array(z.string()),
+        path: z.string(),
+        statusCode: z.number().default(400),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse10: "rawResponse10",
+            RawResponse11: "rawResponse11",
+            RawResponse12: "rawResponse12",
+            RawResponse13: "rawResponse13",
+            RawResponse14: "rawResponse14",
+            RawResponse15: "rawResponse15",
+            RawResponse16: "rawResponse16",
+            RawResponse17: "rawResponse17",
+            RawResponse18: "rawResponse18",
+            RawResponse19: "rawResponse19",
+            RawResponse2: "rawResponse2",
+            RawResponse20: "rawResponse20",
+            RawResponse21: "rawResponse21",
+            RawResponse22: "rawResponse22",
+            RawResponse23: "rawResponse23",
+            RawResponse24: "rawResponse24",
+            RawResponse25: "rawResponse25",
+            RawResponse26: "rawResponse26",
+            RawResponse27: "rawResponse27",
+            RawResponse28: "rawResponse28",
+            RawResponse29: "rawResponse29",
+            RawResponse3: "rawResponse3",
+            RawResponse30: "rawResponse30",
+            RawResponse31: "rawResponse31",
+            RawResponse32: "rawResponse32",
+            RawResponse33: "rawResponse33",
+            RawResponse34: "rawResponse34",
+            RawResponse35: "rawResponse35",
+            RawResponse36: "rawResponse36",
+            RawResponse37: "rawResponse37",
+            RawResponse38: "rawResponse38",
+            RawResponse39: "rawResponse39",
+            RawResponse4: "rawResponse4",
+            RawResponse40: "rawResponse40",
+            RawResponse41: "rawResponse41",
+            RawResponse42: "rawResponse42",
+            RawResponse43: "rawResponse43",
+            RawResponse44: "rawResponse44",
+            RawResponse45: "rawResponse45",
+            RawResponse46: "rawResponse46",
+            RawResponse47: "rawResponse47",
+            RawResponse48: "rawResponse48",
+            RawResponse49: "rawResponse49",
+            RawResponse5: "rawResponse5",
+            RawResponse50: "rawResponse50",
+            RawResponse51: "rawResponse51",
+            RawResponse52: "rawResponse52",
+            RawResponse53: "rawResponse53",
+            RawResponse54: "rawResponse54",
+            RawResponse55: "rawResponse55",
+            RawResponse56: "rawResponse56",
+            RawResponse57: "rawResponse57",
+            RawResponse58: "rawResponse58",
+            RawResponse59: "rawResponse59",
+            RawResponse6: "rawResponse6",
+            RawResponse60: "rawResponse60",
+            RawResponse61: "rawResponse61",
+            RawResponse62: "rawResponse62",
+            RawResponse63: "rawResponse63",
+            RawResponse64: "rawResponse64",
+            RawResponse65: "rawResponse65",
+            RawResponse66: "rawResponse66",
+            RawResponse67: "rawResponse67",
+            RawResponse68: "rawResponse68",
+            RawResponse69: "rawResponse69",
+            RawResponse7: "rawResponse7",
+            RawResponse70: "rawResponse70",
+            RawResponse71: "rawResponse71",
+            RawResponse72: "rawResponse72",
+            RawResponse8: "rawResponse8",
+            RawResponse9: "rawResponse9",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse10?: never | undefined;
-        RawResponse11?: never | undefined;
-        RawResponse12?: never | undefined;
-        RawResponse13?: never | undefined;
-        RawResponse14?: never | undefined;
-        RawResponse15?: never | undefined;
-        RawResponse16?: never | undefined;
-        RawResponse17?: never | undefined;
-        RawResponse18?: never | undefined;
-        RawResponse19?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse20?: never | undefined;
-        RawResponse21?: never | undefined;
-        RawResponse22?: never | undefined;
-        RawResponse23?: never | undefined;
-        RawResponse24?: never | undefined;
-        RawResponse25?: never | undefined;
-        RawResponse26?: never | undefined;
-        RawResponse27?: never | undefined;
-        RawResponse28?: never | undefined;
-        RawResponse29?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse30?: never | undefined;
-        RawResponse31?: never | undefined;
-        RawResponse32?: never | undefined;
-        RawResponse33?: never | undefined;
-        RawResponse34?: never | undefined;
-        RawResponse35?: never | undefined;
-        RawResponse36?: never | undefined;
-        RawResponse37?: never | undefined;
-        RawResponse38?: never | undefined;
-        RawResponse39?: never | undefined;
-        RawResponse4?: never | undefined;
-        RawResponse40?: never | undefined;
-        RawResponse41?: never | undefined;
-        RawResponse42?: never | undefined;
-        RawResponse43?: never | undefined;
-        RawResponse44?: never | undefined;
-        RawResponse45?: never | undefined;
-        RawResponse46?: never | undefined;
-        RawResponse47?: never | undefined;
-        RawResponse48?: never | undefined;
-        RawResponse49?: never | undefined;
-        RawResponse5?: never | undefined;
-        RawResponse50?: never | undefined;
-        RawResponse51?: never | undefined;
-        RawResponse52?: never | undefined;
-        RawResponse53?: never | undefined;
-        RawResponse54?: never | undefined;
-        RawResponse55?: never | undefined;
-        RawResponse56?: never | undefined;
-        RawResponse57?: never | undefined;
-        RawResponse58?: never | undefined;
-        RawResponse59?: never | undefined;
-        RawResponse6?: never | undefined;
-        RawResponse60?: never | undefined;
-        RawResponse61?: never | undefined;
-        RawResponse62?: never | undefined;
-        RawResponse63?: never | undefined;
-        RawResponse64?: never | undefined;
-        RawResponse65?: never | undefined;
-        RawResponse66?: never | undefined;
-        RawResponse67?: never | undefined;
-        RawResponse68?: never | undefined;
-        RawResponse69?: never | undefined;
-        RawResponse7?: never | undefined;
-        RawResponse70?: never | undefined;
-        RawResponse71?: never | undefined;
-        RawResponse72?: never | undefined;
-        RawResponse8?: never | undefined;
-        RawResponse9?: never | undefined;
-        context?: SchemasContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: Array<string>;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new BadRequestException(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BadRequestException> = z
-        .instanceof(BadRequestException)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse10: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse11: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse12: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse13: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse14: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse15: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse16: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse17: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse18: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse19: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse20: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse21: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse22: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse23: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse24: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse25: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse26: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse27: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse28: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse29: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse30: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse31: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse32: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse33: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse34: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse35: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse36: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse37: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse38: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse39: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse40: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse41: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse42: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse43: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse44: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse45: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse46: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse47: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse48: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse49: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse5: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse50: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse51: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse52: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse53: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse54: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse55: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse56: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse57: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse58: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse59: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse6: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse60: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse61: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse62: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse63: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse64: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse65: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse66: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse67: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse68: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse69: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse7: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse70: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse71: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse72: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse8: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse9: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z.nullable(z.lazy(() => SchemasContext$.outboundSchema)).optional(),
-                    errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
-                    message: z.array(z.string()),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse10: "RawResponse10",
-                        rawResponse11: "RawResponse11",
-                        rawResponse12: "RawResponse12",
-                        rawResponse13: "RawResponse13",
-                        rawResponse14: "RawResponse14",
-                        rawResponse15: "RawResponse15",
-                        rawResponse16: "RawResponse16",
-                        rawResponse17: "RawResponse17",
-                        rawResponse18: "RawResponse18",
-                        rawResponse19: "RawResponse19",
-                        rawResponse2: "RawResponse2",
-                        rawResponse20: "RawResponse20",
-                        rawResponse21: "RawResponse21",
-                        rawResponse22: "RawResponse22",
-                        rawResponse23: "RawResponse23",
-                        rawResponse24: "RawResponse24",
-                        rawResponse25: "RawResponse25",
-                        rawResponse26: "RawResponse26",
-                        rawResponse27: "RawResponse27",
-                        rawResponse28: "RawResponse28",
-                        rawResponse29: "RawResponse29",
-                        rawResponse3: "RawResponse3",
-                        rawResponse30: "RawResponse30",
-                        rawResponse31: "RawResponse31",
-                        rawResponse32: "RawResponse32",
-                        rawResponse33: "RawResponse33",
-                        rawResponse34: "RawResponse34",
-                        rawResponse35: "RawResponse35",
-                        rawResponse36: "RawResponse36",
-                        rawResponse37: "RawResponse37",
-                        rawResponse38: "RawResponse38",
-                        rawResponse39: "RawResponse39",
-                        rawResponse4: "RawResponse4",
-                        rawResponse40: "RawResponse40",
-                        rawResponse41: "RawResponse41",
-                        rawResponse42: "RawResponse42",
-                        rawResponse43: "RawResponse43",
-                        rawResponse44: "RawResponse44",
-                        rawResponse45: "RawResponse45",
-                        rawResponse46: "RawResponse46",
-                        rawResponse47: "RawResponse47",
-                        rawResponse48: "RawResponse48",
-                        rawResponse49: "RawResponse49",
-                        rawResponse5: "RawResponse5",
-                        rawResponse50: "RawResponse50",
-                        rawResponse51: "RawResponse51",
-                        rawResponse52: "RawResponse52",
-                        rawResponse53: "RawResponse53",
-                        rawResponse54: "RawResponse54",
-                        rawResponse55: "RawResponse55",
-                        rawResponse56: "RawResponse56",
-                        rawResponse57: "RawResponse57",
-                        rawResponse58: "RawResponse58",
-                        rawResponse59: "RawResponse59",
-                        rawResponse6: "RawResponse6",
-                        rawResponse60: "RawResponse60",
-                        rawResponse61: "RawResponse61",
-                        rawResponse62: "RawResponse62",
-                        rawResponse63: "RawResponse63",
-                        rawResponse64: "RawResponse64",
-                        rawResponse65: "RawResponse65",
-                        rawResponse66: "RawResponse66",
-                        rawResponse67: "RawResponse67",
-                        rawResponse68: "RawResponse68",
-                        rawResponse69: "RawResponse69",
-                        rawResponse7: "RawResponse7",
-                        rawResponse70: "RawResponse70",
-                        rawResponse71: "RawResponse71",
-                        rawResponse72: "RawResponse72",
-                        rawResponse8: "RawResponse8",
-                        rawResponse9: "RawResponse9",
-                    });
-                })
-        );
+/** @internal */
+export type BadRequestException$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse10?: never | undefined;
+    RawResponse11?: never | undefined;
+    RawResponse12?: never | undefined;
+    RawResponse13?: never | undefined;
+    RawResponse14?: never | undefined;
+    RawResponse15?: never | undefined;
+    RawResponse16?: never | undefined;
+    RawResponse17?: never | undefined;
+    RawResponse18?: never | undefined;
+    RawResponse19?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse20?: never | undefined;
+    RawResponse21?: never | undefined;
+    RawResponse22?: never | undefined;
+    RawResponse23?: never | undefined;
+    RawResponse24?: never | undefined;
+    RawResponse25?: never | undefined;
+    RawResponse26?: never | undefined;
+    RawResponse27?: never | undefined;
+    RawResponse28?: never | undefined;
+    RawResponse29?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse30?: never | undefined;
+    RawResponse31?: never | undefined;
+    RawResponse32?: never | undefined;
+    RawResponse33?: never | undefined;
+    RawResponse34?: never | undefined;
+    RawResponse35?: never | undefined;
+    RawResponse36?: never | undefined;
+    RawResponse37?: never | undefined;
+    RawResponse38?: never | undefined;
+    RawResponse39?: never | undefined;
+    RawResponse4?: never | undefined;
+    RawResponse40?: never | undefined;
+    RawResponse41?: never | undefined;
+    RawResponse42?: never | undefined;
+    RawResponse43?: never | undefined;
+    RawResponse44?: never | undefined;
+    RawResponse45?: never | undefined;
+    RawResponse46?: never | undefined;
+    RawResponse47?: never | undefined;
+    RawResponse48?: never | undefined;
+    RawResponse49?: never | undefined;
+    RawResponse5?: never | undefined;
+    RawResponse50?: never | undefined;
+    RawResponse51?: never | undefined;
+    RawResponse52?: never | undefined;
+    RawResponse53?: never | undefined;
+    RawResponse54?: never | undefined;
+    RawResponse55?: never | undefined;
+    RawResponse56?: never | undefined;
+    RawResponse57?: never | undefined;
+    RawResponse58?: never | undefined;
+    RawResponse59?: never | undefined;
+    RawResponse6?: never | undefined;
+    RawResponse60?: never | undefined;
+    RawResponse61?: never | undefined;
+    RawResponse62?: never | undefined;
+    RawResponse63?: never | undefined;
+    RawResponse64?: never | undefined;
+    RawResponse65?: never | undefined;
+    RawResponse66?: never | undefined;
+    RawResponse67?: never | undefined;
+    RawResponse68?: never | undefined;
+    RawResponse69?: never | undefined;
+    RawResponse7?: never | undefined;
+    RawResponse70?: never | undefined;
+    RawResponse71?: never | undefined;
+    RawResponse72?: never | undefined;
+    RawResponse8?: never | undefined;
+    RawResponse9?: never | undefined;
+    context?: SchemasContext$Outbound | null | undefined;
+    errorCode: string;
+    message: Array<string>;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const BadRequestException$outboundSchema: z.ZodType<
+    BadRequestException$Outbound,
+    z.ZodTypeDef,
+    BadRequestException
+> = z
+    .instanceof(BadRequestException)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse10: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse11: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse12: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse13: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse14: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse15: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse16: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse17: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse18: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse19: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse20: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse21: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse22: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse23: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse24: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse25: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse26: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse27: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse28: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse29: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse30: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse31: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse32: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse33: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse34: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse35: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse36: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse37: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse38: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse39: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse40: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse41: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse42: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse43: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse44: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse45: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse46: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse47: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse48: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse49: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse5: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse50: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse51: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse52: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse53: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse54: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse55: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse56: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse57: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse58: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse59: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse6: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse60: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse61: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse62: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse63: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse64: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse65: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse66: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse67: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse68: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse69: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse7: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse70: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse71: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse72: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse8: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse9: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z.nullable(z.lazy(() => SchemasContext$outboundSchema)).optional(),
+                errorCode: z.string().default("BAD_REQUEST_EXCEPTION"),
+                message: z.array(z.string()),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse10: "RawResponse10",
+                    rawResponse11: "RawResponse11",
+                    rawResponse12: "RawResponse12",
+                    rawResponse13: "RawResponse13",
+                    rawResponse14: "RawResponse14",
+                    rawResponse15: "RawResponse15",
+                    rawResponse16: "RawResponse16",
+                    rawResponse17: "RawResponse17",
+                    rawResponse18: "RawResponse18",
+                    rawResponse19: "RawResponse19",
+                    rawResponse2: "RawResponse2",
+                    rawResponse20: "RawResponse20",
+                    rawResponse21: "RawResponse21",
+                    rawResponse22: "RawResponse22",
+                    rawResponse23: "RawResponse23",
+                    rawResponse24: "RawResponse24",
+                    rawResponse25: "RawResponse25",
+                    rawResponse26: "RawResponse26",
+                    rawResponse27: "RawResponse27",
+                    rawResponse28: "RawResponse28",
+                    rawResponse29: "RawResponse29",
+                    rawResponse3: "RawResponse3",
+                    rawResponse30: "RawResponse30",
+                    rawResponse31: "RawResponse31",
+                    rawResponse32: "RawResponse32",
+                    rawResponse33: "RawResponse33",
+                    rawResponse34: "RawResponse34",
+                    rawResponse35: "RawResponse35",
+                    rawResponse36: "RawResponse36",
+                    rawResponse37: "RawResponse37",
+                    rawResponse38: "RawResponse38",
+                    rawResponse39: "RawResponse39",
+                    rawResponse4: "RawResponse4",
+                    rawResponse40: "RawResponse40",
+                    rawResponse41: "RawResponse41",
+                    rawResponse42: "RawResponse42",
+                    rawResponse43: "RawResponse43",
+                    rawResponse44: "RawResponse44",
+                    rawResponse45: "RawResponse45",
+                    rawResponse46: "RawResponse46",
+                    rawResponse47: "RawResponse47",
+                    rawResponse48: "RawResponse48",
+                    rawResponse49: "RawResponse49",
+                    rawResponse5: "RawResponse5",
+                    rawResponse50: "RawResponse50",
+                    rawResponse51: "RawResponse51",
+                    rawResponse52: "RawResponse52",
+                    rawResponse53: "RawResponse53",
+                    rawResponse54: "RawResponse54",
+                    rawResponse55: "RawResponse55",
+                    rawResponse56: "RawResponse56",
+                    rawResponse57: "RawResponse57",
+                    rawResponse58: "RawResponse58",
+                    rawResponse59: "RawResponse59",
+                    rawResponse6: "RawResponse6",
+                    rawResponse60: "RawResponse60",
+                    rawResponse61: "RawResponse61",
+                    rawResponse62: "RawResponse62",
+                    rawResponse63: "RawResponse63",
+                    rawResponse64: "RawResponse64",
+                    rawResponse65: "RawResponse65",
+                    rawResponse66: "RawResponse66",
+                    rawResponse67: "RawResponse67",
+                    rawResponse68: "RawResponse68",
+                    rawResponse69: "RawResponse69",
+                    rawResponse7: "RawResponse7",
+                    rawResponse70: "RawResponse70",
+                    rawResponse71: "RawResponse71",
+                    rawResponse72: "RawResponse72",
+                    rawResponse8: "RawResponse8",
+                    rawResponse9: "RawResponse9",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BadRequestException$ {
+    /** @deprecated use `BadRequestException$inboundSchema` instead. */
+    export const inboundSchema = BadRequestException$inboundSchema;
+    /** @deprecated use `BadRequestException$outboundSchema` instead. */
+    export const outboundSchema = BadRequestException$outboundSchema;
+    /** @deprecated use `BadRequestException$Outbound` instead. */
+    export type Outbound = BadRequestException$Outbound;
 }

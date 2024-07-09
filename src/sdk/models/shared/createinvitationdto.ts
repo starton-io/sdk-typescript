@@ -14,25 +14,57 @@ export type CreateInvitationDto = {
 };
 
 /** @internal */
+export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
+
+/** @internal */
+export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> = Role$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Role$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
-    export const outboundSchema: z.ZodNativeEnum<typeof Role> = inboundSchema;
+    /** @deprecated use `Role$inboundSchema` instead. */
+    export const inboundSchema = Role$inboundSchema;
+    /** @deprecated use `Role$outboundSchema` instead. */
+    export const outboundSchema = Role$outboundSchema;
 }
 
 /** @internal */
+export const CreateInvitationDto$inboundSchema: z.ZodType<
+    CreateInvitationDto,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    email: z.string(),
+    role: Role$inboundSchema,
+});
+
+/** @internal */
+export type CreateInvitationDto$Outbound = {
+    email: string;
+    role: string;
+};
+
+/** @internal */
+export const CreateInvitationDto$outboundSchema: z.ZodType<
+    CreateInvitationDto$Outbound,
+    z.ZodTypeDef,
+    CreateInvitationDto
+> = z.object({
+    email: z.string(),
+    role: Role$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateInvitationDto$ {
-    export const inboundSchema: z.ZodType<CreateInvitationDto, z.ZodTypeDef, unknown> = z.object({
-        email: z.string(),
-        role: Role$.inboundSchema,
-    });
-
-    export type Outbound = {
-        email: string;
-        role: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateInvitationDto> = z.object({
-        email: z.string(),
-        role: Role$.outboundSchema,
-    });
+    /** @deprecated use `CreateInvitationDto$inboundSchema` instead. */
+    export const inboundSchema = CreateInvitationDto$inboundSchema;
+    /** @deprecated use `CreateInvitationDto$outboundSchema` instead. */
+    export const outboundSchema = CreateInvitationDto$outboundSchema;
+    /** @deprecated use `CreateInvitationDto$Outbound` instead. */
+    export type Outbound = CreateInvitationDto$Outbound;
 }

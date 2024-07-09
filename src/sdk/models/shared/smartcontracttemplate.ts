@@ -40,126 +40,202 @@ export type SmartContractTemplate = {
 };
 
 /** @internal */
+export const SmartContractTemplateAbi$inboundSchema: z.ZodType<
+    SmartContractTemplateAbi,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SmartContractTemplateAbi$Outbound = {};
+
+/** @internal */
+export const SmartContractTemplateAbi$outboundSchema: z.ZodType<
+    SmartContractTemplateAbi$Outbound,
+    z.ZodTypeDef,
+    SmartContractTemplateAbi
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SmartContractTemplateAbi$ {
-    export const inboundSchema: z.ZodType<SmartContractTemplateAbi, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractTemplateAbi> =
-        z.object({});
+    /** @deprecated use `SmartContractTemplateAbi$inboundSchema` instead. */
+    export const inboundSchema = SmartContractTemplateAbi$inboundSchema;
+    /** @deprecated use `SmartContractTemplateAbi$outboundSchema` instead. */
+    export const outboundSchema = SmartContractTemplateAbi$outboundSchema;
+    /** @deprecated use `SmartContractTemplateAbi$Outbound` instead. */
+    export type Outbound = SmartContractTemplateAbi$Outbound;
 }
 
 /** @internal */
+export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+
+/** @internal */
+export const Category$outboundSchema: z.ZodNativeEnum<typeof Category> = Category$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Category$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
-    export const outboundSchema: z.ZodNativeEnum<typeof Category> = inboundSchema;
+    /** @deprecated use `Category$inboundSchema` instead. */
+    export const inboundSchema = Category$inboundSchema;
+    /** @deprecated use `Category$outboundSchema` instead. */
+    export const outboundSchema = Category$outboundSchema;
 }
 
 /** @internal */
+export const SmartContractTemplateCompilationDetails$inboundSchema: z.ZodType<
+    SmartContractTemplateCompilationDetails,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SmartContractTemplateCompilationDetails$Outbound = {};
+
+/** @internal */
+export const SmartContractTemplateCompilationDetails$outboundSchema: z.ZodType<
+    SmartContractTemplateCompilationDetails$Outbound,
+    z.ZodTypeDef,
+    SmartContractTemplateCompilationDetails
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SmartContractTemplateCompilationDetails$ {
-    export const inboundSchema: z.ZodType<
-        SmartContractTemplateCompilationDetails,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SmartContractTemplateCompilationDetails
-    > = z.object({});
+    /** @deprecated use `SmartContractTemplateCompilationDetails$inboundSchema` instead. */
+    export const inboundSchema = SmartContractTemplateCompilationDetails$inboundSchema;
+    /** @deprecated use `SmartContractTemplateCompilationDetails$outboundSchema` instead. */
+    export const outboundSchema = SmartContractTemplateCompilationDetails$outboundSchema;
+    /** @deprecated use `SmartContractTemplateCompilationDetails$Outbound` instead. */
+    export type Outbound = SmartContractTemplateCompilationDetails$Outbound;
 }
 
 /** @internal */
+export const Form$inboundSchema: z.ZodType<Form, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Form$Outbound = {};
+
+/** @internal */
+export const Form$outboundSchema: z.ZodType<Form$Outbound, z.ZodTypeDef, Form> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Form$ {
-    export const inboundSchema: z.ZodType<Form, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Form> = z.object({});
+    /** @deprecated use `Form$inboundSchema` instead. */
+    export const inboundSchema = Form$inboundSchema;
+    /** @deprecated use `Form$outboundSchema` instead. */
+    export const outboundSchema = Form$outboundSchema;
+    /** @deprecated use `Form$Outbound` instead. */
+    export type Outbound = Form$Outbound;
 }
 
 /** @internal */
+export const SmartContractTemplate$inboundSchema: z.ZodType<
+    SmartContractTemplate,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    abi: z.array(z.lazy(() => SmartContractTemplateAbi$inboundSchema)),
+    blockchains: z.array(z.string()),
+    category: Category$inboundSchema,
+    compilationDetails: z
+        .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$inboundSchema))
+        .optional(),
+    createdAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:33:57.362Z")
+        .transform((v) => new Date(v)),
+    description: z.string(),
+    form: z.nullable(z.lazy(() => Form$inboundSchema)).optional(),
+    githubUrl: z.string(),
+    humanReadableAbi: z.array(z.string()),
+    id: z.string(),
+    isActivated: z.boolean().default(true),
+    isAudited: z.boolean().default(false),
+    name: z.string(),
+    order: z.number().default(0),
+    shortDescription: z.string(),
+    tags: z.array(z.string()),
+    updatedAt: z
+        .string()
+        .datetime({ offset: true })
+        .default("2024-05-02T09:33:57.362Z")
+        .transform((v) => new Date(v)),
+});
+
+/** @internal */
+export type SmartContractTemplate$Outbound = {
+    abi: Array<SmartContractTemplateAbi$Outbound>;
+    blockchains: Array<string>;
+    category: string;
+    compilationDetails?: SmartContractTemplateCompilationDetails$Outbound | null | undefined;
+    createdAt: string;
+    description: string;
+    form?: Form$Outbound | null | undefined;
+    githubUrl: string;
+    humanReadableAbi: Array<string>;
+    id: string;
+    isActivated: boolean;
+    isAudited: boolean;
+    name: string;
+    order: number;
+    shortDescription: string;
+    tags: Array<string>;
+    updatedAt: string;
+};
+
+/** @internal */
+export const SmartContractTemplate$outboundSchema: z.ZodType<
+    SmartContractTemplate$Outbound,
+    z.ZodTypeDef,
+    SmartContractTemplate
+> = z.object({
+    abi: z.array(z.lazy(() => SmartContractTemplateAbi$outboundSchema)),
+    blockchains: z.array(z.string()),
+    category: Category$outboundSchema,
+    compilationDetails: z
+        .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$outboundSchema))
+        .optional(),
+    createdAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:33:57.362Z"))
+        .transform((v) => v.toISOString()),
+    description: z.string(),
+    form: z.nullable(z.lazy(() => Form$outboundSchema)).optional(),
+    githubUrl: z.string(),
+    humanReadableAbi: z.array(z.string()),
+    id: z.string(),
+    isActivated: z.boolean().default(true),
+    isAudited: z.boolean().default(false),
+    name: z.string(),
+    order: z.number().default(0),
+    shortDescription: z.string(),
+    tags: z.array(z.string()),
+    updatedAt: z
+        .date()
+        .default(() => new Date("2024-05-02T09:33:57.362Z"))
+        .transform((v) => v.toISOString()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SmartContractTemplate$ {
-    export const inboundSchema: z.ZodType<SmartContractTemplate, z.ZodTypeDef, unknown> = z.object({
-        abi: z.array(z.lazy(() => SmartContractTemplateAbi$.inboundSchema)),
-        blockchains: z.array(z.string()),
-        category: Category$.inboundSchema,
-        compilationDetails: z
-            .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.inboundSchema))
-            .optional(),
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:33:57.362Z")
-            .transform((v) => new Date(v)),
-        description: z.string(),
-        form: z.nullable(z.lazy(() => Form$.inboundSchema)).optional(),
-        githubUrl: z.string(),
-        humanReadableAbi: z.array(z.string()),
-        id: z.string(),
-        isActivated: z.boolean().default(true),
-        isAudited: z.boolean().default(false),
-        name: z.string(),
-        order: z.number().default(0),
-        shortDescription: z.string(),
-        tags: z.array(z.string()),
-        updatedAt: z
-            .string()
-            .datetime({ offset: true })
-            .default("2024-05-02T09:33:57.362Z")
-            .transform((v) => new Date(v)),
-    });
-
-    export type Outbound = {
-        abi: Array<SmartContractTemplateAbi$.Outbound>;
-        blockchains: Array<string>;
-        category: string;
-        compilationDetails?: SmartContractTemplateCompilationDetails$.Outbound | null | undefined;
-        createdAt: string;
-        description: string;
-        form?: Form$.Outbound | null | undefined;
-        githubUrl: string;
-        humanReadableAbi: Array<string>;
-        id: string;
-        isActivated: boolean;
-        isAudited: boolean;
-        name: string;
-        order: number;
-        shortDescription: string;
-        tags: Array<string>;
-        updatedAt: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SmartContractTemplate> =
-        z.object({
-            abi: z.array(z.lazy(() => SmartContractTemplateAbi$.outboundSchema)),
-            blockchains: z.array(z.string()),
-            category: Category$.outboundSchema,
-            compilationDetails: z
-                .nullable(z.lazy(() => SmartContractTemplateCompilationDetails$.outboundSchema))
-                .optional(),
-            createdAt: z
-                .date()
-                .default(() => new Date("2024-05-02T09:33:57.362Z"))
-                .transform((v) => v.toISOString()),
-            description: z.string(),
-            form: z.nullable(z.lazy(() => Form$.outboundSchema)).optional(),
-            githubUrl: z.string(),
-            humanReadableAbi: z.array(z.string()),
-            id: z.string(),
-            isActivated: z.boolean().default(true),
-            isAudited: z.boolean().default(false),
-            name: z.string(),
-            order: z.number().default(0),
-            shortDescription: z.string(),
-            tags: z.array(z.string()),
-            updatedAt: z
-                .date()
-                .default(() => new Date("2024-05-02T09:33:57.362Z"))
-                .transform((v) => v.toISOString()),
-        });
+    /** @deprecated use `SmartContractTemplate$inboundSchema` instead. */
+    export const inboundSchema = SmartContractTemplate$inboundSchema;
+    /** @deprecated use `SmartContractTemplate$outboundSchema` instead. */
+    export const outboundSchema = SmartContractTemplate$outboundSchema;
+    /** @deprecated use `SmartContractTemplate$Outbound` instead. */
+    export type Outbound = SmartContractTemplate$Outbound;
 }

@@ -59,7 +59,11 @@ export class CouldNotSign extends Error {
     data$: CouldNotSignData;
 
     constructor(err: CouldNotSignData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -82,111 +86,142 @@ export class CouldNotSign extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotSign";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTSIGNContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTSIGNContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTSIGNContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTSIGNContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTSIGNContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTSIGNContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTSIGNContext$ {
-    export const inboundSchema: z.ZodType<SchemasCOULDNOTSIGNContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasCOULDNOTSIGNContext> =
-        z.object({});
+    /** @deprecated use `SchemasCOULDNOTSIGNContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTSIGNContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTSIGNContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTSIGNContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTSIGNContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTSIGNContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotSign$ {
-    export const inboundSchema: z.ZodType<CouldNotSign, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            RawResponse2: z.instanceof(Response).optional(),
-            RawResponse3: z.instanceof(Response).optional(),
-            context: z.nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$.inboundSchema)).optional(),
-            errorCode: z.string().default("COULD_NOT_SIGN"),
-            message: z.string().default("Could not sign transaction."),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-                RawResponse2: "rawResponse2",
-                RawResponse3: "rawResponse3",
-            });
-
-            return new CouldNotSign(remapped);
+export const CouldNotSign$inboundSchema: z.ZodType<CouldNotSign, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        RawResponse2: z.instanceof(Response).optional(),
+        RawResponse3: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$inboundSchema)).optional(),
+        errorCode: z.string().default("COULD_NOT_SIGN"),
+        message: z.string().default("Could not sign transaction."),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
+            RawResponse2: "rawResponse2",
+            RawResponse3: "rawResponse3",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        context?: SchemasCOULDNOTSIGNContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotSign(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotSign> = z
-        .instanceof(CouldNotSign)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_SIGN"),
-                    message: z.string().default("Could not sign transaction."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotSign$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    context?: SchemasCOULDNOTSIGNContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotSign$outboundSchema: z.ZodType<
+    CouldNotSign$Outbound,
+    z.ZodTypeDef,
+    CouldNotSign
+> = z
+    .instanceof(CouldNotSign)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTSIGNContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_SIGN"),
+                message: z.string().default("Could not sign transaction."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotSign$ {
+    /** @deprecated use `CouldNotSign$inboundSchema` instead. */
+    export const inboundSchema = CouldNotSign$inboundSchema;
+    /** @deprecated use `CouldNotSign$outboundSchema` instead. */
+    export const outboundSchema = CouldNotSign$outboundSchema;
+    /** @deprecated use `CouldNotSign$Outbound` instead. */
+    export type Outbound = CouldNotSign$Outbound;
 }

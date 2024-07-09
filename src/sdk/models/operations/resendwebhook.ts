@@ -30,62 +30,102 @@ export type ResendWebhookResponse = {
 };
 
 /** @internal */
+export const ResendWebhookRequest$inboundSchema: z.ZodType<
+    ResendWebhookRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type ResendWebhookRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const ResendWebhookRequest$outboundSchema: z.ZodType<
+    ResendWebhookRequest$Outbound,
+    z.ZodTypeDef,
+    ResendWebhookRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ResendWebhookRequest$ {
-    export const inboundSchema: z.ZodType<ResendWebhookRequest, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResendWebhookRequest> = z.object(
-        {
-            id: z.string(),
-        }
-    );
+    /** @deprecated use `ResendWebhookRequest$inboundSchema` instead. */
+    export const inboundSchema = ResendWebhookRequest$inboundSchema;
+    /** @deprecated use `ResendWebhookRequest$outboundSchema` instead. */
+    export const outboundSchema = ResendWebhookRequest$outboundSchema;
+    /** @deprecated use `ResendWebhookRequest$Outbound` instead. */
+    export type Outbound = ResendWebhookRequest$Outbound;
 }
 
 /** @internal */
+export const ResendWebhookResponse$inboundSchema: z.ZodType<
+    ResendWebhookResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        Webhook: shared.Webhook$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            Webhook: "webhook",
+        });
+    });
+
+/** @internal */
+export type ResendWebhookResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    Webhook?: shared.Webhook$Outbound | undefined;
+};
+
+/** @internal */
+export const ResendWebhookResponse$outboundSchema: z.ZodType<
+    ResendWebhookResponse$Outbound,
+    z.ZodTypeDef,
+    ResendWebhookResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        webhook: shared.Webhook$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            webhook: "Webhook",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ResendWebhookResponse$ {
-    export const inboundSchema: z.ZodType<ResendWebhookResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            Webhook: shared.Webhook$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                Webhook: "webhook",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        Webhook?: shared.Webhook$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResendWebhookResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            webhook: shared.Webhook$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                webhook: "Webhook",
-            });
-        });
+    /** @deprecated use `ResendWebhookResponse$inboundSchema` instead. */
+    export const inboundSchema = ResendWebhookResponse$inboundSchema;
+    /** @deprecated use `ResendWebhookResponse$outboundSchema` instead. */
+    export const outboundSchema = ResendWebhookResponse$outboundSchema;
+    /** @deprecated use `ResendWebhookResponse$Outbound` instead. */
+    export type Outbound = ResendWebhookResponse$Outbound;
 }

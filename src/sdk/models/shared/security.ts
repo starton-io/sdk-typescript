@@ -10,28 +10,41 @@ export type Security = {
 };
 
 /** @internal */
+export const Security$inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
+    .object({
+        "api-key": z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "api-key": "apiKey",
+        });
+    });
+
+/** @internal */
+export type Security$Outbound = {
+    "api-key"?: string | undefined;
+};
+
+/** @internal */
+export const Security$outboundSchema: z.ZodType<Security$Outbound, z.ZodTypeDef, Security> = z
+    .object({
+        apiKey: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            apiKey: "api-key",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Security$ {
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
-        .object({
-            "api-key": z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "api-key": "apiKey",
-            });
-        });
-
-    export type Outbound = {
-        "api-key"?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z
-        .object({
-            apiKey: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                apiKey: "api-key",
-            });
-        });
+    /** @deprecated use `Security$inboundSchema` instead. */
+    export const inboundSchema = Security$inboundSchema;
+    /** @deprecated use `Security$outboundSchema` instead. */
+    export const outboundSchema = Security$outboundSchema;
+    /** @deprecated use `Security$Outbound` instead. */
+    export type Outbound = Security$Outbound;
 }

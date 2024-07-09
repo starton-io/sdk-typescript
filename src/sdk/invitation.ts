@@ -59,7 +59,7 @@ export class Invitation extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.CreateInvitationDto$.outboundSchema.parse(value$),
+            (value$) => shared.CreateInvitationDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -114,9 +114,11 @@ export class Invitation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateInvitationResponse>()
-            .json(201, operations.CreateInvitationResponse$, { key: "Invitation" })
-            .json(400, errors.CreateInvitationResponseBody$, { err: true })
-            .json(401, errors.CreateInvitationProjectMemberInvitationResponseBody$, { err: true })
+            .json(201, operations.CreateInvitationResponse$inboundSchema, { key: "Invitation" })
+            .json(400, errors.CreateInvitationResponseBody$inboundSchema, { err: true })
+            .json(401, errors.CreateInvitationProjectMemberInvitationResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -137,7 +139,7 @@ export class Invitation extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteInvitationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteInvitationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -194,9 +196,11 @@ export class Invitation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteInvitationResponse>()
-            .json(200, operations.DeleteInvitationResponse$, { key: "number" })
-            .json(400, errors.DeleteInvitationResponseBody$, { err: true })
-            .json(404, errors.DeleteInvitationProjectMemberInvitationResponseBody$, { err: true })
+            .json(200, operations.DeleteInvitationResponse$inboundSchema, { key: "number" })
+            .json(400, errors.DeleteInvitationResponseBody$inboundSchema, { err: true })
+            .json(404, errors.DeleteInvitationProjectMemberInvitationResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -217,7 +221,7 @@ export class Invitation extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllInvitationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllInvitationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -271,8 +275,10 @@ export class Invitation extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllInvitationResponse>()
-            .json(200, operations.GetAllInvitationResponse$, { key: "InvitationPaginated" })
-            .json(400, errors.GetAllInvitationResponseBody$, { err: true })
+            .json(200, operations.GetAllInvitationResponse$inboundSchema, {
+                key: "InvitationPaginated",
+            })
+            .json(400, errors.GetAllInvitationResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

@@ -64,7 +64,7 @@ export class TransactionManager extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateTransactionRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateTransactionRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CreateTransactionDto, { explode: true });
@@ -121,15 +121,21 @@ export class TransactionManager extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateTransactionResponse>()
-            .json(201, operations.CreateTransactionResponse$, { key: "Transaction" })
-            .json(400, errors.CreateTransactionResponseBody$, { err: true })
-            .json(404, errors.CreateTransactionTransactionManagerResponseBody$, { err: true })
-            .json(422, errors.CreateTransactionTransactionManagerResponseResponseBody$, {
+            .json(201, operations.CreateTransactionResponse$inboundSchema, { key: "Transaction" })
+            .json(400, errors.CreateTransactionResponseBody$inboundSchema, { err: true })
+            .json(404, errors.CreateTransactionTransactionManagerResponseBody$inboundSchema, {
                 err: true,
             })
-            .json(500, errors.CreateTransactionTransactionManagerResponse500ResponseBody$, {
-                err: true,
-            })
+            .json(
+                422,
+                errors.CreateTransactionTransactionManagerResponseResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.CreateTransactionTransactionManagerResponse500ResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -150,7 +156,7 @@ export class TransactionManager extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAllTransactionRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAllTransactionRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -209,8 +215,10 @@ export class TransactionManager extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.GetAllTransactionResponse>()
-            .json(200, operations.GetAllTransactionResponse$, { key: "TransactionPaginated" })
-            .json(400, errors.GetAllTransactionResponseBody$, { err: true })
+            .json(200, operations.GetAllTransactionResponse$inboundSchema, {
+                key: "TransactionPaginated",
+            })
+            .json(400, errors.GetAllTransactionResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -264,7 +272,7 @@ export class TransactionManager extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAvailableNoncesWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAvailableNoncesWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -330,17 +338,25 @@ export class TransactionManager extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetAvailableNoncesWalletResponse>()
-            .json(200, operations.GetAvailableNoncesWalletResponse$, { key: "NoncesAvailable" })
-            .json(400, errors.GetAvailableNoncesWalletResponseBody$, { err: true })
-            .json(404, errors.GetAvailableNoncesWalletTransactionManagerResponseBody$, {
-                err: true,
+            .json(200, operations.GetAvailableNoncesWalletResponse$inboundSchema, {
+                key: "NoncesAvailable",
             })
-            .json(422, errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$, {
-                err: true,
-            })
-            .json(500, errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$, {
-                err: true,
-            })
+            .json(400, errors.GetAvailableNoncesWalletResponseBody$inboundSchema, { err: true })
+            .json(
+                404,
+                errors.GetAvailableNoncesWalletTransactionManagerResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                422,
+                errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -361,7 +377,7 @@ export class TransactionManager extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOneTransactionRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOneTransactionRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -418,9 +434,11 @@ export class TransactionManager extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetOneTransactionResponse>()
-            .json(200, operations.GetOneTransactionResponse$, { key: "Transaction" })
-            .json(400, errors.GetOneTransactionResponseBody$, { err: true })
-            .json(404, errors.GetOneTransactionTransactionManagerResponseBody$, { err: true })
+            .json(200, operations.GetOneTransactionResponse$inboundSchema, { key: "Transaction" })
+            .json(400, errors.GetOneTransactionResponseBody$inboundSchema, { err: true })
+            .json(404, errors.GetOneTransactionTransactionManagerResponseBody$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -441,7 +459,7 @@ export class TransactionManager extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ResyncNoncesWalletRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ResyncNoncesWalletRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -507,15 +525,19 @@ export class TransactionManager extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ResyncNoncesWalletResponse>()
-            .json(201, operations.ResyncNoncesWalletResponse$, { key: "resyncNonce" })
-            .json(400, errors.ResyncNoncesWalletResponseBody$, { err: true })
-            .json(404, errors.ResyncNoncesWalletWalletResponseBody$, { err: true })
-            .json(422, errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$, {
-                err: true,
-            })
-            .json(500, errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$, {
-                err: true,
-            })
+            .json(201, operations.ResyncNoncesWalletResponse$inboundSchema, { key: "resyncNonce" })
+            .json(400, errors.ResyncNoncesWalletResponseBody$inboundSchema, { err: true })
+            .json(404, errors.ResyncNoncesWalletWalletResponseBody$inboundSchema, { err: true })
+            .json(
+                422,
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseBody$inboundSchema,
+                { err: true }
+            )
+            .json(
+                500,
+                errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$inboundSchema,
+                { err: true }
+            )
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

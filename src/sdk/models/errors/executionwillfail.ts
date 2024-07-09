@@ -75,7 +75,11 @@ export class ExecutionWillFail extends Error {
     data$: ExecutionWillFailData;
 
     constructor(err: ExecutionWillFailData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -104,32 +108,43 @@ export class ExecutionWillFail extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "ExecutionWillFail";
     }
 }
 
 /** @internal */
+export const SchemasEXECUTIONWILLFAILContext$inboundSchema: z.ZodType<
+    SchemasEXECUTIONWILLFAILContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasEXECUTIONWILLFAILContext$Outbound = {};
+
+/** @internal */
+export const SchemasEXECUTIONWILLFAILContext$outboundSchema: z.ZodType<
+    SchemasEXECUTIONWILLFAILContext$Outbound,
+    z.ZodTypeDef,
+    SchemasEXECUTIONWILLFAILContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasEXECUTIONWILLFAILContext$ {
-    export const inboundSchema: z.ZodType<SchemasEXECUTIONWILLFAILContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasEXECUTIONWILLFAILContext
-    > = z.object({});
+    /** @deprecated use `SchemasEXECUTIONWILLFAILContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasEXECUTIONWILLFAILContext$inboundSchema;
+    /** @deprecated use `SchemasEXECUTIONWILLFAILContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasEXECUTIONWILLFAILContext$outboundSchema;
+    /** @deprecated use `SchemasEXECUTIONWILLFAILContext$Outbound` instead. */
+    export type Outbound = SchemasEXECUTIONWILLFAILContext$Outbound;
 }
 
 /** @internal */
-export namespace ExecutionWillFail$ {
-    export const inboundSchema: z.ZodType<ExecutionWillFail, z.ZodTypeDef, unknown> = z
+export const ExecutionWillFail$inboundSchema: z.ZodType<ExecutionWillFail, z.ZodTypeDef, unknown> =
+    z
         .object({
             RawResponse: z.instanceof(Response).optional(),
             RawResponse1: z.instanceof(Response).optional(),
@@ -138,7 +153,7 @@ export namespace ExecutionWillFail$ {
             RawResponse4: z.instanceof(Response).optional(),
             RawResponse5: z.instanceof(Response).optional(),
             context: z
-                .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$.inboundSchema))
+                .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$inboundSchema))
                 .optional(),
             errorCode: z.string().default("EXECUTION_WILL_FAIL"),
             message: z.string().default("This call will revert."),
@@ -159,81 +174,99 @@ export namespace ExecutionWillFail$ {
             return new ExecutionWillFail(remapped);
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        RawResponse2?: never | undefined;
-        RawResponse3?: never | undefined;
-        RawResponse4?: never | undefined;
-        RawResponse5?: never | undefined;
-        context?: SchemasEXECUTIONWILLFAILContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+/** @internal */
+export type ExecutionWillFail$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    RawResponse2?: never | undefined;
+    RawResponse3?: never | undefined;
+    RawResponse4?: never | undefined;
+    RawResponse5?: never | undefined;
+    context?: SchemasEXECUTIONWILLFAILContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExecutionWillFail> = z
-        .instanceof(ExecutionWillFail)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse2: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse3: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse4: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse5: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("EXECUTION_WILL_FAIL"),
-                    message: z.string().default("This call will revert."),
-                    path: z.string(),
-                    statusCode: z.number().default(400),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                        rawResponse2: "RawResponse2",
-                        rawResponse3: "RawResponse3",
-                        rawResponse4: "RawResponse4",
-                        rawResponse5: "RawResponse5",
-                    });
-                })
-        );
+/** @internal */
+export const ExecutionWillFail$outboundSchema: z.ZodType<
+    ExecutionWillFail$Outbound,
+    z.ZodTypeDef,
+    ExecutionWillFail
+> = z
+    .instanceof(ExecutionWillFail)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse2: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse3: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse4: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse5: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasEXECUTIONWILLFAILContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("EXECUTION_WILL_FAIL"),
+                message: z.string().default("This call will revert."),
+                path: z.string(),
+                statusCode: z.number().default(400),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                    rawResponse2: "RawResponse2",
+                    rawResponse3: "RawResponse3",
+                    rawResponse4: "RawResponse4",
+                    rawResponse5: "RawResponse5",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExecutionWillFail$ {
+    /** @deprecated use `ExecutionWillFail$inboundSchema` instead. */
+    export const inboundSchema = ExecutionWillFail$inboundSchema;
+    /** @deprecated use `ExecutionWillFail$outboundSchema` instead. */
+    export const outboundSchema = ExecutionWillFail$outboundSchema;
+    /** @deprecated use `ExecutionWillFail$Outbound` instead. */
+    export type Outbound = ExecutionWillFail$Outbound;
 }

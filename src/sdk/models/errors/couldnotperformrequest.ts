@@ -35,7 +35,11 @@ export class CouldNotPerformRequest extends Error {
     data$: CouldNotPerformRequestData;
 
     constructor(err: CouldNotPerformRequestData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -49,93 +53,118 @@ export class CouldNotPerformRequest extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "CouldNotPerformRequest";
     }
 }
 
 /** @internal */
+export const SchemasCOULDNOTPERFORMREQUESTContext$inboundSchema: z.ZodType<
+    SchemasCOULDNOTPERFORMREQUESTContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasCOULDNOTPERFORMREQUESTContext$Outbound = {};
+
+/** @internal */
+export const SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema: z.ZodType<
+    SchemasCOULDNOTPERFORMREQUESTContext$Outbound,
+    z.ZodTypeDef,
+    SchemasCOULDNOTPERFORMREQUESTContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasCOULDNOTPERFORMREQUESTContext$ {
-    export const inboundSchema: z.ZodType<
-        SchemasCOULDNOTPERFORMREQUESTContext,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        SchemasCOULDNOTPERFORMREQUESTContext
-    > = z.object({});
+    /** @deprecated use `SchemasCOULDNOTPERFORMREQUESTContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasCOULDNOTPERFORMREQUESTContext$inboundSchema;
+    /** @deprecated use `SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema;
+    /** @deprecated use `SchemasCOULDNOTPERFORMREQUESTContext$Outbound` instead. */
+    export type Outbound = SchemasCOULDNOTPERFORMREQUESTContext$Outbound;
 }
 
 /** @internal */
-export namespace CouldNotPerformRequest$ {
-    export const inboundSchema: z.ZodType<CouldNotPerformRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
-            message: z.string().default("Unexpected error occurred performing the request."),
-            path: z.string(),
-            statusCode: z.number().default(500),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-            });
-
-            return new CouldNotPerformRequest(remapped);
+export const CouldNotPerformRequest$inboundSchema: z.ZodType<
+    CouldNotPerformRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        context: z
+            .nullable(z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$inboundSchema))
+            .optional(),
+        errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
+        message: z.string().default("Unexpected error occurred performing the request."),
+        path: z.string(),
+        statusCode: z.number().default(500),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        context?: SchemasCOULDNOTPERFORMREQUESTContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new CouldNotPerformRequest(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CouldNotPerformRequest> = z
-        .instanceof(CouldNotPerformRequest)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(
-                            z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$.outboundSchema)
-                        )
-                        .optional(),
-                    errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
-                    message: z
-                        .string()
-                        .default("Unexpected error occurred performing the request."),
-                    path: z.string(),
-                    statusCode: z.number().default(500),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                    });
-                })
-        );
+/** @internal */
+export type CouldNotPerformRequest$Outbound = {
+    RawResponse?: never | undefined;
+    context?: SchemasCOULDNOTPERFORMREQUESTContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const CouldNotPerformRequest$outboundSchema: z.ZodType<
+    CouldNotPerformRequest$Outbound,
+    z.ZodTypeDef,
+    CouldNotPerformRequest
+> = z
+    .instanceof(CouldNotPerformRequest)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("COULD_NOT_PERFORM_REQUEST"),
+                message: z.string().default("Unexpected error occurred performing the request."),
+                path: z.string(),
+                statusCode: z.number().default(500),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CouldNotPerformRequest$ {
+    /** @deprecated use `CouldNotPerformRequest$inboundSchema` instead. */
+    export const inboundSchema = CouldNotPerformRequest$inboundSchema;
+    /** @deprecated use `CouldNotPerformRequest$outboundSchema` instead. */
+    export const outboundSchema = CouldNotPerformRequest$outboundSchema;
+    /** @deprecated use `CouldNotPerformRequest$Outbound` instead. */
+    export type Outbound = CouldNotPerformRequest$Outbound;
 }

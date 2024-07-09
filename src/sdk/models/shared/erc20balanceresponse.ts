@@ -28,30 +28,49 @@ export type Erc20BalanceResponse = {
 };
 
 /** @internal */
+export const Erc20BalanceResponse$inboundSchema: z.ZodType<
+    Erc20BalanceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    balance: z.string(),
+    contractAddress: z.string(),
+    decimal: z.number(),
+    formatted: z.string(),
+    symbol: z.string(),
+});
+
+/** @internal */
+export type Erc20BalanceResponse$Outbound = {
+    balance: string;
+    contractAddress: string;
+    decimal: number;
+    formatted: string;
+    symbol: string;
+};
+
+/** @internal */
+export const Erc20BalanceResponse$outboundSchema: z.ZodType<
+    Erc20BalanceResponse$Outbound,
+    z.ZodTypeDef,
+    Erc20BalanceResponse
+> = z.object({
+    balance: z.string(),
+    contractAddress: z.string(),
+    decimal: z.number(),
+    formatted: z.string(),
+    symbol: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Erc20BalanceResponse$ {
-    export const inboundSchema: z.ZodType<Erc20BalanceResponse, z.ZodTypeDef, unknown> = z.object({
-        balance: z.string(),
-        contractAddress: z.string(),
-        decimal: z.number(),
-        formatted: z.string(),
-        symbol: z.string(),
-    });
-
-    export type Outbound = {
-        balance: string;
-        contractAddress: string;
-        decimal: number;
-        formatted: string;
-        symbol: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Erc20BalanceResponse> = z.object(
-        {
-            balance: z.string(),
-            contractAddress: z.string(),
-            decimal: z.number(),
-            formatted: z.string(),
-            symbol: z.string(),
-        }
-    );
+    /** @deprecated use `Erc20BalanceResponse$inboundSchema` instead. */
+    export const inboundSchema = Erc20BalanceResponse$inboundSchema;
+    /** @deprecated use `Erc20BalanceResponse$outboundSchema` instead. */
+    export const outboundSchema = Erc20BalanceResponse$outboundSchema;
+    /** @deprecated use `Erc20BalanceResponse$Outbound` instead. */
+    export type Outbound = Erc20BalanceResponse$Outbound;
 }

@@ -43,7 +43,11 @@ export class PayloadTooLarge extends Error {
     data$: PayloadTooLargeData;
 
     constructor(err: PayloadTooLargeData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         if (err.rawResponse != null) {
@@ -60,93 +64,122 @@ export class PayloadTooLarge extends Error {
         this.statusCode = err.statusCode;
         this.timestamp = err.timestamp;
 
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
-
         this.name = "PayloadTooLarge";
     }
 }
 
 /** @internal */
+export const SchemasPAYLOADTOOLARGEContext$inboundSchema: z.ZodType<
+    SchemasPAYLOADTOOLARGEContext,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type SchemasPAYLOADTOOLARGEContext$Outbound = {};
+
+/** @internal */
+export const SchemasPAYLOADTOOLARGEContext$outboundSchema: z.ZodType<
+    SchemasPAYLOADTOOLARGEContext$Outbound,
+    z.ZodTypeDef,
+    SchemasPAYLOADTOOLARGEContext
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SchemasPAYLOADTOOLARGEContext$ {
-    export const inboundSchema: z.ZodType<SchemasPAYLOADTOOLARGEContext, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SchemasPAYLOADTOOLARGEContext> =
-        z.object({});
+    /** @deprecated use `SchemasPAYLOADTOOLARGEContext$inboundSchema` instead. */
+    export const inboundSchema = SchemasPAYLOADTOOLARGEContext$inboundSchema;
+    /** @deprecated use `SchemasPAYLOADTOOLARGEContext$outboundSchema` instead. */
+    export const outboundSchema = SchemasPAYLOADTOOLARGEContext$outboundSchema;
+    /** @deprecated use `SchemasPAYLOADTOOLARGEContext$Outbound` instead. */
+    export type Outbound = SchemasPAYLOADTOOLARGEContext$Outbound;
 }
 
 /** @internal */
-export namespace PayloadTooLarge$ {
-    export const inboundSchema: z.ZodType<PayloadTooLarge, z.ZodTypeDef, unknown> = z
-        .object({
-            RawResponse: z.instanceof(Response).optional(),
-            RawResponse1: z.instanceof(Response).optional(),
-            context: z
-                .nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$.inboundSchema))
-                .optional(),
-            errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
-            message: z.string().default("Payload too large."),
-            path: z.string(),
-            statusCode: z.number().default(413),
-            timestamp: z.string(),
-        })
-        .transform((v) => {
-            const remapped = remap$(v, {
-                RawResponse: "rawResponse",
-                RawResponse1: "rawResponse1",
-            });
-
-            return new PayloadTooLarge(remapped);
+export const PayloadTooLarge$inboundSchema: z.ZodType<PayloadTooLarge, z.ZodTypeDef, unknown> = z
+    .object({
+        RawResponse: z.instanceof(Response).optional(),
+        RawResponse1: z.instanceof(Response).optional(),
+        context: z.nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$inboundSchema)).optional(),
+        errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
+        message: z.string().default("Payload too large."),
+        path: z.string(),
+        statusCode: z.number().default(413),
+        timestamp: z.string(),
+    })
+    .transform((v) => {
+        const remapped = remap$(v, {
+            RawResponse: "rawResponse",
+            RawResponse1: "rawResponse1",
         });
 
-    export type Outbound = {
-        RawResponse?: never | undefined;
-        RawResponse1?: never | undefined;
-        context?: SchemasPAYLOADTOOLARGEContext$.Outbound | null | undefined;
-        errorCode: string;
-        message: string;
-        path: string;
-        statusCode: number;
-        timestamp: string;
-    };
+        return new PayloadTooLarge(remapped);
+    });
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PayloadTooLarge> = z
-        .instanceof(PayloadTooLarge)
-        .transform((v) => v.data$)
-        .pipe(
-            z
-                .object({
-                    rawResponse: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    rawResponse1: z
-                        .instanceof(Response)
-                        .transform(() => {
-                            throw new Error("Response cannot be serialized");
-                        })
-                        .optional(),
-                    context: z
-                        .nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$.outboundSchema))
-                        .optional(),
-                    errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
-                    message: z.string().default("Payload too large."),
-                    path: z.string(),
-                    statusCode: z.number().default(413),
-                    timestamp: z.string(),
-                })
-                .transform((v) => {
-                    return remap$(v, {
-                        rawResponse: "RawResponse",
-                        rawResponse1: "RawResponse1",
-                    });
-                })
-        );
+/** @internal */
+export type PayloadTooLarge$Outbound = {
+    RawResponse?: never | undefined;
+    RawResponse1?: never | undefined;
+    context?: SchemasPAYLOADTOOLARGEContext$Outbound | null | undefined;
+    errorCode: string;
+    message: string;
+    path: string;
+    statusCode: number;
+    timestamp: string;
+};
+
+/** @internal */
+export const PayloadTooLarge$outboundSchema: z.ZodType<
+    PayloadTooLarge$Outbound,
+    z.ZodTypeDef,
+    PayloadTooLarge
+> = z
+    .instanceof(PayloadTooLarge)
+    .transform((v) => v.data$)
+    .pipe(
+        z
+            .object({
+                rawResponse: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                rawResponse1: z
+                    .instanceof(Response)
+                    .transform(() => {
+                        throw new Error("Response cannot be serialized");
+                    })
+                    .optional(),
+                context: z
+                    .nullable(z.lazy(() => SchemasPAYLOADTOOLARGEContext$outboundSchema))
+                    .optional(),
+                errorCode: z.string().default("PAYLOAD_TOO_LARGE"),
+                message: z.string().default("Payload too large."),
+                path: z.string(),
+                statusCode: z.number().default(413),
+                timestamp: z.string(),
+            })
+            .transform((v) => {
+                return remap$(v, {
+                    rawResponse: "RawResponse",
+                    rawResponse1: "RawResponse1",
+                });
+            })
+    );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadTooLarge$ {
+    /** @deprecated use `PayloadTooLarge$inboundSchema` instead. */
+    export const inboundSchema = PayloadTooLarge$inboundSchema;
+    /** @deprecated use `PayloadTooLarge$outboundSchema` instead. */
+    export const outboundSchema = PayloadTooLarge$outboundSchema;
+    /** @deprecated use `PayloadTooLarge$Outbound` instead. */
+    export type Outbound = PayloadTooLarge$Outbound;
 }
