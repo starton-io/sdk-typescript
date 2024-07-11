@@ -4,6 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { dlv } from "../lib/dlv.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -16,7 +17,6 @@ import * as errors from "./models/errors/index.js";
 import * as operations from "./models/operations/index.js";
 import * as shared from "./models/shared/index.js";
 import { createPageIterator, PageIterator, Paginator } from "./types/operations.js";
-import jp from "jsonpath";
 
 export class Monitor extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -290,7 +290,7 @@ export class Monitor extends ClientSDK {
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllWatcherResponse> => {
             const page = input$.page || 0;
             const nextPage = page + 1;
-            const numPages = jp.value(responseData, "$.meta.totalPages");
+            const numPages = dlv(responseData, "metatotalPages");
             if (numPages == null || numPages <= page) {
                 return () => null;
             }
@@ -298,7 +298,8 @@ export class Monitor extends ClientSDK {
             if (!responseData) {
                 return () => null;
             }
-            const results = jp.value(responseData, "$.items");
+
+            const results = dlv(responseData, "items");
             if (!results.length) {
                 return () => null;
             }
@@ -404,7 +405,7 @@ export class Monitor extends ClientSDK {
         ): Paginator<operations.GetAllWatcherEventResponse> => {
             const page = input$.page || 0;
             const nextPage = page + 1;
-            const numPages = jp.value(responseData, "$.meta.totalPages");
+            const numPages = dlv(responseData, "metatotalPages");
             if (numPages == null || numPages <= page) {
                 return () => null;
             }
@@ -412,7 +413,8 @@ export class Monitor extends ClientSDK {
             if (!responseData) {
                 return () => null;
             }
-            const results = jp.value(responseData, "$.items");
+
+            const results = dlv(responseData, "items");
             if (!results.length) {
                 return () => null;
             }
