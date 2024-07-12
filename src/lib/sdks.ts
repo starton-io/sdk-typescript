@@ -12,6 +12,16 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { HookContext } from "../hooks/types.js";
 
 export type RequestOptions = {
+    /**
+     * Sets a timeout, in milliseconds, on HTTP requests made by an SDK method. If
+     * `fetchOptions.signal` is set then it will take precedence over this option.
+     */
+    timeoutMs?: number;
+    /**
+     * Sets various request options on the `fetch` call made by an SDK method.
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options|Request}
+     */
     fetchOptions?: Omit<RequestInit, "method" | "body">;
 };
 
@@ -24,6 +34,7 @@ type RequestConfig = {
     headers?: HeadersInit;
     security?: SecurityState | null;
     uaHeader?: string;
+    timeoutMs?: number;
 };
 
 const gt: unknown = typeof globalThis === "undefined" ? null : globalThis;
@@ -119,10 +130,20 @@ export class ClientSDK {
             headers.set(conf.uaHeader ?? "user-agent", SDK_METADATA.userAgent);
         }
 
+        let fetchOptions = options?.fetchOptions;
+        if (!fetchOptions?.signal && conf.timeoutMs && conf.timeoutMs > 0) {
+            const timeoutSignal = AbortSignal.timeout(conf.timeoutMs);
+            if (!fetchOptions) {
+                fetchOptions = { signal: timeoutSignal };
+            } else {
+                fetchOptions.signal = timeoutSignal;
+            }
+        }
+
         const input = this.hooks$.beforeCreateRequest(context, {
             url: reqURL,
             options: {
-                ...options?.fetchOptions,
+                ...fetchOptions,
                 body: conf.body ?? null,
                 headers,
                 method,

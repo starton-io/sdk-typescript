@@ -97,6 +97,7 @@ export class Kms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -173,6 +174,7 @@ export class Kms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -253,6 +255,7 @@ export class Kms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -275,7 +278,7 @@ export class Kms extends ClientSDK {
         const nextFunc = (responseData: unknown): Paginator<operations.GetAllKmsResponse> => {
             const page = input$.page || 0;
             const nextPage = page + 1;
-            const numPages = dlv(responseData, "metatotalPages");
+            const numPages = dlv(responseData, "meta.totalPages");
             if (numPages == null || numPages <= page) {
                 return () => null;
             }
@@ -361,6 +364,7 @@ export class Kms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -442,6 +446,7 @@ export class Kms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
