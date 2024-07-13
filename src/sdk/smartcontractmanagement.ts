@@ -119,6 +119,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -221,6 +223,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -307,6 +311,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -407,6 +413,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -511,6 +519,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -604,7 +614,12 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -730,6 +745,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -837,6 +854,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -919,7 +938,12 @@ export class SmartContractManagement extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, { context, errorCodes: ["400", "4XX", "5XX"] });
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1011,6 +1035,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1111,6 +1137,8 @@ export class SmartContractManagement extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "404", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {

@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.333.0
-  generationVersion: 2.366.1
-  releaseVersion: 0.16.5
-  configChecksum: 51b525983585ea07317d9b8a4ced7279
+  speakeasyVersion: 1.335.0
+  generationVersion: 2.370.2
+  releaseVersion: 0.17.0
+  configChecksum: 06f7e4f2ea819ecdd84a1eeaef0b75a0
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -16,6 +16,7 @@ features:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
     core: 3.11.6
+    defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     errorUnions: 0.1.0
     globalSecurity: 2.82.9
@@ -25,8 +26,9 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.4
+    pagination: 2.82.5
     responseFormat: 0.2.3
+    retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.5
 generatedFiles:
@@ -872,6 +874,7 @@ generatedFiles:
   - docs/sdk/models/errors/schemascouldnotresendwebhookcontext.md
   - docs/sdk/models/errors/couldnotresendwebhook.md
   - docs/sdks/starton/README.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/data/README.md
   - docs/sdks/wallet/README.md
   - docs/sdks/ipfs/README.md
