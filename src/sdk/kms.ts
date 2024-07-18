@@ -298,9 +298,8 @@ export class Kms extends ClientSDK {
             if (!responseData) {
                 return () => null;
             }
-
             const results = dlv(responseData, "items");
-            if (!results.length) {
+            if (!Array.isArray(results) || !results.length) {
                 return () => null;
             }
             const limit = input$.limit || 0;
