@@ -27,7 +27,7 @@ Create a new wallet for the project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -73,7 +73,7 @@ Removes a wallet from the Key Management System.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -119,7 +119,7 @@ Fetches the list of wallets of the project
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -166,7 +166,7 @@ Retrieves information about a specific wallet.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -213,7 +213,7 @@ import { Starton } from "@starton/sdk";
 import { ImportProviderKeyDtoProvider } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -258,7 +258,7 @@ Request tokens from the faucet, which can be used for testing and development pu
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -308,7 +308,7 @@ Updates the stored nonce values for a wallet, synchronizing them with the curren
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -357,7 +357,7 @@ Generates a cryptographic signature for a given message using a specified wallet
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -407,7 +407,7 @@ Modifies details of an existing wallet using its address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {

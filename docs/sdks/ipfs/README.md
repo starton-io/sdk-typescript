@@ -27,7 +27,7 @@ Unpin a previously pinned file by providing the specific {id} associated with th
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -73,7 +73,7 @@ Retrieve a list of files that have been pinned on IPFS.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -120,7 +120,7 @@ Fetches the details of a specific file that has been previously uploaded to IPFS
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -166,7 +166,7 @@ Fetches the current storage utilization details for the project, providing insig
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -208,7 +208,7 @@ Requests Starton to retain a copy of a file that has already been uploaded to IP
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -255,7 +255,7 @@ Modifies the name or metadata of an existing file stored in IPFS. Note that dire
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -302,7 +302,7 @@ Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retr
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -346,7 +346,7 @@ Upload an entire folder to IPFS, ensuring secure pinning of its contents for rel
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -390,7 +390,7 @@ Upload a JSON file to IPFS with pinning for reliable access, associating it with
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {

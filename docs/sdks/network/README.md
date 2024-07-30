@@ -24,7 +24,7 @@ import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -84,7 +84,7 @@ Removes a network from the project, available only for Enterprise plans.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -130,7 +130,7 @@ Fetches a paginated list of networks available in the current project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -182,7 +182,7 @@ Retrieves detailed information about a specific network based on its name.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -229,7 +229,7 @@ import { Starton } from "@starton/sdk";
 import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {

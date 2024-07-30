@@ -18,7 +18,7 @@ import { Starton } from "@starton/sdk";
 import { Role } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -65,7 +65,7 @@ Deletes an invitation that was previously sent. The user needs to have the neces
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -111,7 +111,7 @@ Fetch all member invitations for a project. The user needs to have the appropria
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {

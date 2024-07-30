@@ -251,7 +251,7 @@ Here's an example of one such pagination call:
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -290,7 +290,7 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -326,7 +326,7 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -357,7 +357,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -403,7 +403,7 @@ const starton = new Starton({
         },
         retryConnectionErrors: false,
     },
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
