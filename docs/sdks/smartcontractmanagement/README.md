@@ -38,14 +38,12 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.call({
     callDto: {
-      functionName: "<value>",
+      functionName: "mint",
       params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
         "0x298e760768c8481780397eE28A127eAd584df4ee",
+        "1000000000000000000",
       ],
-      signerWallet: "<value>",
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
     },
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
@@ -137,7 +135,7 @@ Deploys a smart contract from bytecode and returns transaction details.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { Type } from "@starton/sdk/sdk/models/shared";
+import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
   apiKey: process.env.API_KEY,
@@ -148,19 +146,21 @@ async function run() {
     deployFromBytecodeDto: {
       abi: [
         {
-          type: Type.Event,
+          inputs: {
+            name: "<value>",
+            type: "<value>",
+          },
+          stateMutability: StateMutability.Nonpayable,
+          type: Type.Constructor,
         },
       ],
-      bytecode: "<value>",
-      name: "<value>",
-      network: "<value>",
+      bytecode: "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220543af7de4c3e10d25def66e7de6e0ecaf799771e226c96cf4620087585c071fd64736f6c63430008120033",
+      name: "Minimal test contract",
+      network: "polygon-mumbai",
       params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
-        "0x298e760768c8481780397eE28A127eAd584df4ee",
+        "<value>",
       ],
-      signerWallet: "<value>",
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
     },
     simulate: false,
   });
@@ -220,7 +220,7 @@ async function run() {
         "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-      templateId: "ERC20_META_TRANSACTION",
+      templateId: "ERC20_MINT_META_TRANSACTION",
     },
     simulate: false,
   });
@@ -270,12 +270,10 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.encode({
     encodeDto: {
-      functionName: "<value>",
+      functionName: "mint",
       params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
         "0x298e760768c8481780397eE28A127eAd584df4ee",
+        "1000000000000000000",
       ],
     },
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
@@ -542,11 +540,8 @@ const starton = new Starton({
 async function run() {
   const result = await starton.smartContractManagement.read({
     readDto: {
-      functionName: "<value>",
+      functionName: "balanceOf",
       params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
         "0x298e760768c8481780397eE28A127eAd584df4ee",
       ],
     },
@@ -598,7 +593,11 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContractManagement.update({
-    updateSmartContractDto: {},
+    updateSmartContractDto: {
+      description: "Test description",
+      metadata: {},
+      name: "Test smart contract",
+    },
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });

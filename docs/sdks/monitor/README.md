@@ -333,7 +333,7 @@ async function run() {
       description: "watcher tests",
       metadata: {},
       name: "watcher tests",
-      paused: true,
+      paused: false,
       webhookUrl: "",
     },
     id: "ntif_f94e4a79611947d48254537a8861265d",

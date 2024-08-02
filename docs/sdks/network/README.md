@@ -235,6 +235,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.network.update({
     updateNetworkDto: {
+      displayName: "optimism-private-tests",
       explorerApi: {
         apiKey: "<value>",
         type: ExplorerApiDtoType.Etherscan,

@@ -27,7 +27,7 @@ async function run() {
   const result = await starton.network.rpc.create({
     createRpcDto: {
       type: CreateRpcDtoType.Archive,
-      url: "http://popular-street.info",
+      url: "https://optimism.publicnode.com",
     },
     name: "optimism-functionnal-tests",
   });
@@ -217,7 +217,9 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.rpc.update({
-    updateRpcDto: {},
+    updateRpcDto: {
+      url: "https://optimism.publicnode.com",
+    },
     id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d",
     name: "optimism-functionnal-tests",
   });
