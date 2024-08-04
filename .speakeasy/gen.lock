@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.351.3
-  generationVersion: 2.384.4
-  releaseVersion: 0.18.1
-  configChecksum: 41b4526f3a674939c230fa934bd0a117
+  speakeasyVersion: 1.352.1
+  generationVersion: 2.385.1
+  releaseVersion: 0.18.2
+  configChecksum: 7fde83057efbbd6bad2503593ca0a818
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,10 +15,10 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.12
+    core: 3.11.13
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
-    envVarSecurityUsage: 0.1.0
+    envVarSecurityUsage: 0.1.1
     errorUnions: 0.1.0
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
@@ -62,6 +62,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -69,10 +70,12 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/sdk/models/errors/httpclienterrors.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/enums.ts
+  - src/sdk/types/fp.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
