@@ -32,7 +32,7 @@ Calls a specific function within a deployed smart contract, enabling interaction
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -90,7 +90,7 @@ Deletes a specific smart contract based on network and address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -138,7 +138,7 @@ import { Starton } from "@starton/sdk";
 import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -205,7 +205,7 @@ Deploy from Starton audited smart contract template.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -264,7 +264,7 @@ Display the encoded data that is sent to a smart contract
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -319,7 +319,7 @@ Fetches and returns the list of smart contracts.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -370,7 +370,7 @@ Provides a list of the available read and write functions, as well as events, of
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -418,7 +418,7 @@ Fetches details of a specific smart contract based on network and address.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -468,7 +468,7 @@ import { Starton } from "@starton/sdk";
 import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -534,7 +534,7 @@ Reads data from a smart contract by calling one of its functions without making 
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -588,7 +588,7 @@ Updates and returns details of a specific smart contract based on network and ad
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

@@ -24,7 +24,7 @@ Terminates the designated webhook, identified by its {id}, preventing any furthe
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -72,7 +72,7 @@ import { Starton } from "@starton/sdk";
 import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -120,7 +120,7 @@ Fetches the details of a specific webhook dispatched by Starton, identified uniq
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -166,7 +166,7 @@ Fetches the signing secret associated with your project. Use this secret to secu
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -208,7 +208,7 @@ Generates a new signing secret for your project, invalidating the old one. All s
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -251,7 +251,7 @@ Initiates the resend process for a particular webhook to your server, facilitati
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

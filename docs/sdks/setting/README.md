@@ -16,7 +16,7 @@ Retrieve the Relayer settings for a specific network within the current project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -62,7 +62,7 @@ Update the Relayer settings for a specific network within the current project.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

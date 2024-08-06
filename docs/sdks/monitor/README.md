@@ -26,7 +26,7 @@ import { Starton } from "@starton/sdk";
 import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -81,7 +81,7 @@ Removes a specific watcher from the current project. This action is irreversible
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -128,7 +128,7 @@ import { Starton } from "@starton/sdk";
 import { Type } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -182,7 +182,7 @@ Fetches a list of all events linked to a specific watcher, identified by {id}.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -230,7 +230,7 @@ Retrieves detailed information about a specific watcher identified by its unique
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -276,7 +276,7 @@ Retrieves information about a specific watcher event.
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -323,7 +323,7 @@ Modifies the properties of an existing watcher. Only the fields provided in the 
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

@@ -17,7 +17,7 @@ import { Starton } from "@starton/sdk";
 import { Category } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -71,7 +71,7 @@ Fetches the details of a particular smart contract template using its unique ide
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
