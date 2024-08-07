@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 0.18.3
-  configChecksum: d1f62238b4e07eda878bce0aafa80eb7
+  speakeasyVersion: 1.355.0
+  generationVersion: 2.387.0
+  releaseVersion: 0.19.0
+  configChecksum: e4b1e68b96fa25530b24e7a298606e9f
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -14,8 +14,8 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.13
+    constsAndDefaults: 0.1.6
+    core: 3.12.1
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
@@ -33,6 +33,80 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
+  - src/funcs/dataGetBalance.ts
+  - src/funcs/dataGetErc20Balance.ts
+  - src/funcs/dataGetGasPrice.ts
+  - src/funcs/walletCreate.ts
+  - src/funcs/walletDelete.ts
+  - src/funcs/walletGetAll.ts
+  - src/funcs/walletGetOne.ts
+  - src/funcs/walletImport.ts
+  - src/funcs/walletRequestFaucet.ts
+  - src/funcs/walletResyncNonce.ts
+  - src/funcs/walletSign.ts
+  - src/funcs/walletUpdate.ts
+  - src/funcs/ipfsDelete.ts
+  - src/funcs/ipfsGetAll.ts
+  - src/funcs/ipfsGetOne.ts
+  - src/funcs/ipfsGetStorageUsed.ts
+  - src/funcs/ipfsPinExistingFile.ts
+  - src/funcs/ipfsUpdate.ts
+  - src/funcs/ipfsUploadFile.ts
+  - src/funcs/ipfsUploadFolder.ts
+  - src/funcs/ipfsUploadJson.ts
+  - src/funcs/kmsCreate.ts
+  - src/funcs/kmsDelete.ts
+  - src/funcs/kmsGetAll.ts
+  - src/funcs/kmsGetOne.ts
+  - src/funcs/kmsUpdate.ts
+  - src/funcs/transactionManagerCreate.ts
+  - src/funcs/transactionManagerGetAll.ts
+  - src/funcs/transactionManagerGetAvailableNonces.ts
+  - src/funcs/transactionManagerGetOne.ts
+  - src/funcs/transactionManagerResyncNonce.ts
+  - src/funcs/networkCreate.ts
+  - src/funcs/networkDelete.ts
+  - src/funcs/networkGetAll.ts
+  - src/funcs/networkGetOne.ts
+  - src/funcs/networkUpdate.ts
+  - src/funcs/smartContractManagementCall.ts
+  - src/funcs/smartContractManagementDelete.ts
+  - src/funcs/smartContractManagementDeployFromBytecode.ts
+  - src/funcs/smartContractManagementDeployFromTemplate.ts
+  - src/funcs/smartContractManagementEncode.ts
+  - src/funcs/smartContractManagementGetAll.ts
+  - src/funcs/smartContractManagementGetFunctions.ts
+  - src/funcs/smartContractManagementGetOne.ts
+  - src/funcs/smartContractManagementImportExisting.ts
+  - src/funcs/smartContractManagementRead.ts
+  - src/funcs/smartContractManagementUpdate.ts
+  - src/funcs/monitorCreate.ts
+  - src/funcs/monitorDelete.ts
+  - src/funcs/monitorGetAll.ts
+  - src/funcs/monitorGetAllEvents.ts
+  - src/funcs/monitorGetOne.ts
+  - src/funcs/monitorGetOneEvent.ts
+  - src/funcs/monitorUpdate.ts
+  - src/funcs/webhookCancel.ts
+  - src/funcs/webhookGetAll.ts
+  - src/funcs/webhookGetOne.ts
+  - src/funcs/webhookGetSigningSecret.ts
+  - src/funcs/webhookRegenerateSigningSecret.ts
+  - src/funcs/webhookResend.ts
+  - src/funcs/transactionManagerSettingGet.ts
+  - src/funcs/transactionManagerSettingUpdate.ts
+  - src/funcs/networkRpcCreate.ts
+  - src/funcs/networkRpcDelete.ts
+  - src/funcs/networkRpcGetAll.ts
+  - src/funcs/networkRpcGetOne.ts
+  - src/funcs/networkRpcUpdate.ts
+  - src/funcs/projectMemberDelete.ts
+  - src/funcs/projectMemberGetAll.ts
+  - src/funcs/smartContractTemplateGetAll.ts
+  - src/funcs/smartContractTemplateGetOne.ts
+  - src/funcs/projectMemberInvitationCreate.ts
+  - src/funcs/projectMemberInvitationDelete.ts
+  - src/funcs/projectMemberInvitationGetAll.ts
   - src/sdk/data.ts
   - src/sdk/wallet.ts
   - src/sdk/ipfs.ts
@@ -55,6 +129,7 @@ generatedFiles:
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts

@@ -74,7 +74,7 @@ export class ClientSDK {
     private readonly httpClient: HTTPClient;
     protected readonly baseURL: URL | null;
     protected readonly hooks$: SDKHooks;
-    protected readonly options$: SDKOptions & { hooks?: SDKHooks };
+    public readonly options$: SDKOptions & { hooks?: SDKHooks };
 
     constructor(options: SDKOptions = {}) {
         const opt = options as unknown;
@@ -102,7 +102,7 @@ export class ClientSDK {
         this.httpClient = client;
     }
 
-    protected createRequest$(
+    public createRequest$(
         context: HookContext,
         conf: RequestConfig,
         options?: RequestOptions
@@ -197,7 +197,7 @@ export class ClientSDK {
         return OK(new Request(input.url, input.options));
     }
 
-    protected async do$(
+    public async do$(
         request: Request,
         options: {
             context: HookContext;
