@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.355.0
-  generationVersion: 2.387.0
-  releaseVersion: 0.19.0
-  configChecksum: e4b1e68b96fa25530b24e7a298606e9f
+  speakeasyVersion: 1.357.3
+  generationVersion: 2.390.0
+  releaseVersion: 0.19.1
+  configChecksum: 80c8ba572c601bec53584baf4ce29dfe
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,12 +15,12 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.12.1
+    core: 3.12.2
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
     errorUnions: 0.1.0
-    globalSecurity: 2.82.10
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
