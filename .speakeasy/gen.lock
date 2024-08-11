@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.361.0
-  generationVersion: 2.392.0
-  releaseVersion: 0.20.0
-  configChecksum: 908658784c6fdbb0ab6f26e577e65377
+  speakeasyVersion: 1.361.1
+  generationVersion: 2.393.4
+  releaseVersion: 0.20.1
+  configChecksum: 3b08f9664917e993f885b009986da35f
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -14,8 +14,8 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.6
-    core: 3.13.0
+    constsAndDefaults: 0.1.7
+    core: 3.13.1
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
@@ -31,7 +31,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.6
+    unions: 2.85.7
 generatedFiles:
   - src/funcs/dataGetBalance.ts
   - src/funcs/dataGetErc20Balance.ts
@@ -150,6 +150,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
+  - src/sdk/types/constdatetime.ts
   - src/sdk/types/enums.ts
   - src/sdk/types/fp.ts
   - src/sdk/types/index.ts

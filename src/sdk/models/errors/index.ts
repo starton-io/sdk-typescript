@@ -75,6 +75,7 @@ export * from "./getonewatcherevent.js";
 export * from "./getonewebhook.js";
 export * from "./getonewebhooksigningsecret.js";
 export * from "./getstorageusedpin.js";
+export * from "./httpclienterrors.js";
 export * from "./importexistingsmartcontract.js";
 export * from "./importproviderkeywallet.js";
 export * from "./insufficientfunds.js";
