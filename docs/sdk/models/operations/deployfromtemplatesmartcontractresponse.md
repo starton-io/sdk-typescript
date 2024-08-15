@@ -1,5 +1,18 @@
 # DeployFromTemplateSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { DeployFromTemplateSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: DeployFromTemplateSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 120196,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

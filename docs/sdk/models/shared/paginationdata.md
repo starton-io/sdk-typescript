@@ -1,5 +1,16 @@
 # PaginationData
 
+## Example Usage
+
+```typescript
+import { PaginationData } from "@starton/sdk/sdk/models/shared";
+
+let value: PaginationData = {
+    currentPage: 5332.06,
+    itemCount: 9560.84,
+    itemsPerPage: 2305.33,
+};
+```
 
 ## Fields
 

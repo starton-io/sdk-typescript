@@ -1,5 +1,22 @@
 # UpdateNetworkRequest
 
+## Example Usage
+
+```typescript
+import { UpdateNetworkRequest } from "@starton/sdk/sdk/models/operations";
+import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateNetworkRequest = {
+    updateNetworkDto: {
+        explorerApi: {
+            apiKey: "<value>",
+            type: ExplorerApiDtoType.Etherscan,
+            url: "http://colorless-ribbon.biz",
+        },
+    },
+    name: "optimism-functional-tests",
+};
+```
 
 ## Fields
 

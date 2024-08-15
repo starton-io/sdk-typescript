@@ -1,5 +1,31 @@
 # Network
 
+## Example Usage
+
+```typescript
+import { Network } from "@starton/sdk/sdk/models/shared";
+
+let value: Network = {
+    blockchain: "<value>",
+    chainId: 972.6,
+    confirmationBlocks: 4358.65,
+    decimal: 9840.43,
+    displayName: "Simeon_Gibson70",
+    eip1159: false,
+    enableExternalWallet: false,
+    enableListener: false,
+    enableRelayer: false,
+    explorerUrl: "<value>",
+    loadbalancerUrl: "<value>",
+    logo: "<value>",
+    name: "<value>",
+    owner: "<value>",
+    symbol: "<value>",
+    testnet: false,
+    verifyBlockIntegrity: false,
+    verifyTxIntegrity: false,
+};
+```
 
 ## Fields
 

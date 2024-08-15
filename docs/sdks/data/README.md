@@ -37,6 +37,40 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { dataGetBalance } from "@starton/sdk/funcs/dataGetBalance.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await dataGetBalance(starton, {
+    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -84,6 +118,41 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { dataGetErc20Balance } from "@starton/sdk/funcs/dataGetErc20Balance.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await dataGetErc20Balance(starton, {
+    address: "0x24cd470f549b136ec93ccd42c087124cf3ea3233",
+    contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -121,6 +190,39 @@ async function run() {
   const result = await starton.data.getGasPrice({
     network: "polygon-mainnet",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { dataGetGasPrice } from "@starton/sdk/funcs/dataGetGasPrice.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await dataGetGasPrice(starton, {
+    network: "polygon-mainnet",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

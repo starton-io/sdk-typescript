@@ -1,5 +1,22 @@
 # GetAllWatcherRequest
 
+## Example Usage
+
+```typescript
+import { GetAllWatcherRequest, Type } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllWatcherRequest = {
+    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    confirmationsBlocks: 0,
+    limit: 20,
+    name: "watcher",
+    network: "polygon-mumbai",
+    page: 0,
+    paused: false,
+    type: Type.AddressActivity,
+    webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CouldNotProcessEntity
 
+## Example Usage
+
+```typescript
+import { CouldNotProcessEntity } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # EncodeDtoParams
 
+## Example Usage
+
+```typescript
+import { EncodeDtoParams } from "@starton/sdk/sdk/models/shared";
+
+let value: EncodeDtoParams = false;
+```
 
 ## Supported Types
 

@@ -1,5 +1,14 @@
 # ImportProviderKeyDto
 
+## Example Usage
+
+```typescript
+import { ImportProviderKeyDto, ImportProviderKeyDtoProvider } from "@starton/sdk/sdk/models/shared";
+
+let value: ImportProviderKeyDto = {
+    provider: ImportProviderKeyDtoProvider.Aws,
+};
+```
 
 ## Fields
 

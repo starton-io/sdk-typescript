@@ -1,5 +1,12 @@
 # GetOneKmsResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOneKmsResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

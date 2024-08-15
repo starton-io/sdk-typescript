@@ -1,5 +1,15 @@
 # CreateInvitationDto
 
+## Example Usage
+
+```typescript
+import { CreateInvitationDto, Role } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateInvitationDto = {
+    email: "Eulalia.Lebsack@gmail.com",
+    role: Role.Owner,
+};
+```
 
 ## Fields
 

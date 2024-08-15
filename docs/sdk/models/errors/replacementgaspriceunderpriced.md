@@ -1,5 +1,12 @@
 # ReplacementGasPriceUnderpriced
 
+## Example Usage
+
+```typescript
+import { ReplacementGasPriceUnderpriced } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

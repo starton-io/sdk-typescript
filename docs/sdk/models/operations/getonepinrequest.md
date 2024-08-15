@@ -1,5 +1,14 @@
 # GetOnePinRequest
 
+## Example Usage
+
+```typescript
+import { GetOnePinRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOnePinRequest = {
+    id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
+};
+```
 
 ## Fields
 

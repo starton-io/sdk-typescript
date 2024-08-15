@@ -57,6 +57,49 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementCall } from "@starton/sdk/funcs/smartContractManagementCall.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementCall(starton, {
+    callDto: {
+      functionName: "mint",
+      params: [
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+        "1000000000000000000",
+      ],
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    },
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+    simulate: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -98,6 +141,40 @@ async function run() {
     address: "8653 Vaughn Hills",
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementDelete } from "@starton/sdk/funcs/smartContractManagementDelete.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementDelete(starton, {
+    address: "640 Pollich Lodge",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -172,6 +249,59 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementDeployFromBytecode } from "@starton/sdk/funcs/smartContractManagementDeployFromBytecode.js";
+import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementDeployFromBytecode(starton, {
+    deployFromBytecodeDto: {
+      abi: [
+        {
+          inputs: {
+            name: "<value>",
+            type: "<value>",
+          },
+          stateMutability: StateMutability.Nonpayable,
+          type: Type.Constructor,
+        },
+      ],
+      bytecode: "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220543af7de4c3e10d25def66e7de6e0ecaf799771e226c96cf4620087585c071fd64736f6c63430008120033",
+      name: "Minimal test contract",
+      network: "polygon-mumbai",
+      params: [
+        "<value>",
+      ],
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    },
+    simulate: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -224,6 +354,51 @@ async function run() {
     },
     simulate: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementDeployFromTemplate } from "@starton/sdk/funcs/smartContractManagementDeployFromTemplate.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementDeployFromTemplate(starton, {
+    deployFromTemplateDto: {
+      name: "TestToken",
+      network: "polygon-mumbai",
+      params: [
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+      ],
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      templateId: "ERC20_MINT_META_TRANSACTION",
+    },
+    simulate: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -287,6 +462,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementEncode } from "@starton/sdk/funcs/smartContractManagementEncode.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementEncode(starton, {
+    encodeDto: {
+      functionName: "mint",
+      params: [
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+        "1000000000000000000",
+      ],
+    },
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -331,6 +547,45 @@ async function run() {
     network: "polygon-mumbai",
     page: 0,
   });
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementGetAll } from "@starton/sdk/funcs/smartContractManagementGetAll.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementGetAll(starton, {
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    includeAbi: true,
+    includeCompilationDetails: true,
+    limit: 20,
+    network: "polygon-mumbai",
+    page: 0,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   for await (const page of result) {
     // handle page
@@ -386,6 +641,40 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementGetFunctions } from "@starton/sdk/funcs/smartContractManagementGetFunctions.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementGetFunctions(starton, {
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -428,6 +717,42 @@ async function run() {
     includeCompilationDetails: true,
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementGetOne } from "@starton/sdk/funcs/smartContractManagementGetOne.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementGetOne(starton, {
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    includeAbi: true,
+    includeCompilationDetails: true,
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -504,6 +829,61 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementImportExisting } from "@starton/sdk/funcs/smartContractManagementImportExisting.js";
+import { StateMutability, Type } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementImportExisting(starton, {
+    abi: [
+      {
+        inputs: {
+          name: "<value>",
+          type: "<value>",
+        },
+        stateMutability: StateMutability.Nonpayable,
+        type: Type.Constructor,
+      },
+    ],
+    address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
+    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
+    description: "Test minimal contract tests.",
+    name: "Minimal contract tests.",
+    network: "polygon-mumbai",
+    params: [
+      "TestToken",
+      "TEST",
+      "1000000000000000000000000",
+      "0x298e760768c8481780397eE28A127eAd584df4ee",
+    ],
+    templateId: "ERC721_META_TRANSACTION",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -548,6 +928,46 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementRead } from "@starton/sdk/funcs/smartContractManagementRead.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementRead(starton, {
+    readDto: {
+      functionName: "balanceOf",
+      params: [
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+      ],
+    },
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -601,6 +1021,45 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { smartContractManagementUpdate } from "@starton/sdk/funcs/smartContractManagementUpdate.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await smartContractManagementUpdate(starton, {
+    updateSmartContractDto: {
+      description: "Test description",
+      metadata: {},
+      name: "Test smart contract",
+    },
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

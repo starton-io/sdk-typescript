@@ -1,5 +1,12 @@
 # Params
 
+## Example Usage
+
+```typescript
+import { Params } from "@starton/sdk/sdk/models/shared";
+
+let value: Params = 1999.96;
+```
 
 ## Supported Types
 

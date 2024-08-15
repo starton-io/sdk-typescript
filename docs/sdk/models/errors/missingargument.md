@@ -1,5 +1,12 @@
 # MissingArgument
 
+## Example Usage
+
+```typescript
+import { MissingArgument } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

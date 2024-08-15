@@ -1,5 +1,30 @@
 # ReadSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { ReadSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: ReadSmartContractResponse = {
+    contentType: "<value>",
+    readSmartContractResponse: {
+        address: "95092 Adele Point",
+        functionName: "<value>",
+        network: "<value>",
+        params: [
+            "TestToken",
+            "TEST",
+            "1000000000000000000000000",
+            "0x298e760768c8481780397eE28A127eAd584df4ee",
+        ],
+        response: ["<value>"],
+    },
+    statusCode: 131797,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # GetOneTransactionTransactionManagerResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOneTransactionTransactionManagerResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

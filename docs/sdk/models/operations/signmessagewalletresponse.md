@@ -1,5 +1,18 @@
 # SignMessageWalletResponse
 
+## Example Usage
+
+```typescript
+import { SignMessageWalletResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: SignMessageWalletResponse = {
+    contentType: "<value>",
+    statusCode: 812169,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # DeleteProjectMemberProjectMemberResponseBody
 
+## Example Usage
+
+```typescript
+import { DeleteProjectMemberProjectMemberResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,18 @@
 # GetAllProjectMemberResponse
 
+## Example Usage
+
+```typescript
+import { GetAllProjectMemberResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllProjectMemberResponse = {
+    contentType: "<value>",
+    statusCode: 368725,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

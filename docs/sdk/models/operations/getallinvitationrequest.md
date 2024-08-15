@@ -1,5 +1,15 @@
 # GetAllInvitationRequest
 
+## Example Usage
+
+```typescript
+import { GetAllInvitationRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllInvitationRequest = {
+    limit: 20,
+    page: 0,
+};
+```
 
 ## Fields
 

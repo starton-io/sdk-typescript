@@ -1,5 +1,19 @@
 # CreateRpcRequest
 
+## Example Usage
+
+```typescript
+import { CreateRpcRequest } from "@starton/sdk/sdk/models/operations";
+import { CreateRpcDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateRpcRequest = {
+    createRpcDto: {
+        type: CreateRpcDtoType.Archive,
+        url: "http://nippy-apse.info",
+    },
+    name: "optimism-functionnal-tests",
+};
+```
 
 ## Fields
 

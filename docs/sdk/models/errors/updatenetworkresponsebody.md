@@ -1,5 +1,12 @@
 # UpdateNetworkResponseBody
 
+## Example Usage
+
+```typescript
+import { UpdateNetworkResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

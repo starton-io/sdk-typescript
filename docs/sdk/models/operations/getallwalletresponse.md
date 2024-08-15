@@ -1,5 +1,18 @@
 # GetAllWalletResponse
 
+## Example Usage
+
+```typescript
+import { GetAllWalletResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllWalletResponse = {
+    contentType: "<value>",
+    statusCode: 56713,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

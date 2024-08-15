@@ -1,5 +1,18 @@
 # UpdateSettingRelayerResponse
 
+## Example Usage
+
+```typescript
+import { UpdateSettingRelayerResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateSettingRelayerResponse = {
+    contentType: "<value>",
+    statusCode: 681820,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

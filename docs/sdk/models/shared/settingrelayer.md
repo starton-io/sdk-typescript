@@ -1,5 +1,22 @@
 # SettingRelayer
 
+## Example Usage
+
+```typescript
+import { SettingRelayer } from "@starton/sdk/sdk/models/shared";
+
+let value: SettingRelayer = {
+    id: "<id>",
+    network: "<value>",
+    projectId: "<value>",
+    unstuckAutomaticGasPrice: false,
+    unstuckCustomGasPrice: false,
+    unstuckGasPriceDelay: 1412.64,
+    unstuckMaxGasPrice: "<value>",
+    unstuckMissingNonce: false,
+    unstuckMissingNonceDelay: 3675.62,
+};
+```
 
 ## Fields
 

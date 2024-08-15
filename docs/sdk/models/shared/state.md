@@ -1,5 +1,12 @@
 # State
 
+## Example Usage
+
+```typescript
+import { State } from "@starton/sdk/sdk/models/shared";
+
+let value: State = State.ManualActionRequired;
+```
 
 ## Values
 

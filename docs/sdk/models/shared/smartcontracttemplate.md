@@ -1,5 +1,23 @@
 # SmartContractTemplate
 
+## Example Usage
+
+```typescript
+import { Category, SmartContractTemplate } from "@starton/sdk/sdk/models/shared";
+
+let value: SmartContractTemplate = {
+    abi: [{}],
+    blockchains: ["<value>"],
+    category: Category.Deprecated,
+    description: "Ameliorated systematic application",
+    githubUrl: "<value>",
+    humanReadableAbi: ["<value>"],
+    id: "<id>",
+    name: "<value>",
+    shortDescription: "<value>",
+    tags: ["<value>"],
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CouldNotAssignNonce
 
+## Example Usage
+
+```typescript
+import { CouldNotAssignNonce } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

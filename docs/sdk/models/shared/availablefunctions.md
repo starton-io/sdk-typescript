@@ -1,5 +1,16 @@
 # AvailableFunctions
 
+## Example Usage
+
+```typescript
+import { AvailableFunctions } from "@starton/sdk/sdk/models/shared";
+
+let value: AvailableFunctions = {
+    call: ["<value>"],
+    events: ["<value>"],
+    read: ["<value>"],
+};
+```
 
 ## Fields
 

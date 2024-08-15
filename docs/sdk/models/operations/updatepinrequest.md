@@ -1,5 +1,15 @@
 # UpdatePinRequest
 
+## Example Usage
+
+```typescript
+import { UpdatePinRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdatePinRequest = {
+    updatePinDto: {},
+    id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # GetAllWatcherResponse
 
+## Example Usage
+
+```typescript
+import { GetAllWatcherResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllWatcherResponse = {
+    contentType: "<value>",
+    statusCode: 396098,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

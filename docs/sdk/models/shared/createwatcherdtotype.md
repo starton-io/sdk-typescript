@@ -1,5 +1,12 @@
 # CreateWatcherDtoType
 
+## Example Usage
+
+```typescript
+import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateWatcherDtoType = CreateWatcherDtoType.AddressActivity;
+```
 
 ## Values
 

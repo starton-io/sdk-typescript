@@ -1,5 +1,18 @@
 # GetAllTransactionResponse
 
+## Example Usage
+
+```typescript
+import { GetAllTransactionResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllTransactionResponse = {
+    contentType: "<value>",
+    statusCode: 616934,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

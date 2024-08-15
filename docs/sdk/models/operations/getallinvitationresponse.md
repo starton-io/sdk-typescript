@@ -1,5 +1,18 @@
 # GetAllInvitationResponse
 
+## Example Usage
+
+```typescript
+import { GetAllInvitationResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllInvitationResponse = {
+    contentType: "<value>",
+    statusCode: 468651,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

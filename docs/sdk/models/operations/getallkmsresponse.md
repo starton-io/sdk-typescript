@@ -1,5 +1,18 @@
 # GetAllKmsResponse
 
+## Example Usage
+
+```typescript
+import { GetAllKmsResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllKmsResponse = {
+    contentType: "<value>",
+    statusCode: 736918,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

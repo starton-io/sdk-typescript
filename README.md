@@ -436,6 +436,100 @@ const sdk = new Starton({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
 
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [dataGetBalance](docs/sdks/data/README.md#getbalance)
+- [dataGetErc20Balance](docs/sdks/data/README.md#geterc20balance)
+- [dataGetGasPrice](docs/sdks/data/README.md#getgasprice)
+- [ipfsDelete](docs/sdks/ipfs/README.md#delete)
+- [ipfsGetAll](docs/sdks/ipfs/README.md#getall)
+- [ipfsGetOne](docs/sdks/ipfs/README.md#getone)
+- [ipfsGetStorageUsed](docs/sdks/ipfs/README.md#getstorageused)
+- [ipfsPinExistingFile](docs/sdks/ipfs/README.md#pinexistingfile)
+- [ipfsUpdate](docs/sdks/ipfs/README.md#update)
+- [ipfsUploadFile](docs/sdks/ipfs/README.md#uploadfile)
+- [ipfsUploadFolder](docs/sdks/ipfs/README.md#uploadfolder)
+- [ipfsUploadJson](docs/sdks/ipfs/README.md#uploadjson)
+- [kmsCreate](docs/sdks/kms/README.md#create)
+- [kmsDelete](docs/sdks/kms/README.md#delete)
+- [kmsGetAll](docs/sdks/kms/README.md#getall)
+- [kmsGetOne](docs/sdks/kms/README.md#getone)
+- [kmsUpdate](docs/sdks/kms/README.md#update)
+- [monitorCreate](docs/sdks/monitor/README.md#create)
+- [monitorDelete](docs/sdks/monitor/README.md#delete)
+- [monitorGetAllEvents](docs/sdks/monitor/README.md#getallevents)
+- [monitorGetAll](docs/sdks/monitor/README.md#getall)
+- [monitorGetOneEvent](docs/sdks/monitor/README.md#getoneevent)
+- [monitorGetOne](docs/sdks/monitor/README.md#getone)
+- [monitorUpdate](docs/sdks/monitor/README.md#update)
+- [networkCreate](docs/sdks/network/README.md#create)
+- [networkDelete](docs/sdks/network/README.md#delete)
+- [networkGetAll](docs/sdks/network/README.md#getall)
+- [networkGetOne](docs/sdks/network/README.md#getone)
+- [networkRpcCreate](docs/sdks/rpc/README.md#create)
+- [networkRpcDelete](docs/sdks/rpc/README.md#delete)
+- [networkRpcGetAll](docs/sdks/rpc/README.md#getall)
+- [networkRpcGetOne](docs/sdks/rpc/README.md#getone)
+- [networkRpcUpdate](docs/sdks/rpc/README.md#update)
+- [networkUpdate](docs/sdks/network/README.md#update)
+- [projectMemberDelete](docs/sdks/member/README.md#delete)
+- [projectMemberGetAll](docs/sdks/member/README.md#getall)
+- [projectMemberInvitationCreate](docs/sdks/invitation/README.md#create)
+- [projectMemberInvitationDelete](docs/sdks/invitation/README.md#delete)
+- [projectMemberInvitationGetAll](docs/sdks/invitation/README.md#getall)
+- [smartContractManagementCall](docs/sdks/smartcontractmanagement/README.md#call)
+- [smartContractManagementDelete](docs/sdks/smartcontractmanagement/README.md#delete)
+- [smartContractManagementDeployFromBytecode](docs/sdks/smartcontractmanagement/README.md#deployfrombytecode)
+- [smartContractManagementDeployFromTemplate](docs/sdks/smartcontractmanagement/README.md#deployfromtemplate)
+- [smartContractManagementEncode](docs/sdks/smartcontractmanagement/README.md#encode)
+- [smartContractManagementGetAll](docs/sdks/smartcontractmanagement/README.md#getall)
+- [smartContractManagementGetFunctions](docs/sdks/smartcontractmanagement/README.md#getfunctions)
+- [smartContractManagementGetOne](docs/sdks/smartcontractmanagement/README.md#getone)
+- [smartContractManagementImportExisting](docs/sdks/smartcontractmanagement/README.md#importexisting)
+- [smartContractManagementRead](docs/sdks/smartcontractmanagement/README.md#read)
+- [smartContractManagementUpdate](docs/sdks/smartcontractmanagement/README.md#update)
+- [smartContractTemplateGetAll](docs/sdks/template/README.md#getall)
+- [smartContractTemplateGetOne](docs/sdks/template/README.md#getone)
+- [transactionManagerCreate](docs/sdks/transactionmanager/README.md#create)
+- [transactionManagerGetAll](docs/sdks/transactionmanager/README.md#getall)
+- [transactionManagerGetAvailableNonces](docs/sdks/transactionmanager/README.md#getavailablenonces)
+- [transactionManagerGetOne](docs/sdks/transactionmanager/README.md#getone)
+- [transactionManagerResyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce)
+- [transactionManagerSettingGet](docs/sdks/setting/README.md#get)
+- [transactionManagerSettingUpdate](docs/sdks/setting/README.md#update)
+- [walletCreate](docs/sdks/wallet/README.md#create)
+- [walletDelete](docs/sdks/wallet/README.md#delete)
+- [walletGetAll](docs/sdks/wallet/README.md#getall)
+- [walletGetOne](docs/sdks/wallet/README.md#getone)
+- [walletImport](docs/sdks/wallet/README.md#import)
+- [walletRequestFaucet](docs/sdks/wallet/README.md#requestfaucet)
+- [walletResyncNonce](docs/sdks/wallet/README.md#resyncnonce)
+- [walletSign](docs/sdks/wallet/README.md#sign)
+- [walletUpdate](docs/sdks/wallet/README.md#update)
+- [webhookCancel](docs/sdks/webhook/README.md#cancel)
+- [webhookGetAll](docs/sdks/webhook/README.md#getall)
+- [webhookGetOne](docs/sdks/webhook/README.md#getone)
+- [webhookGetSigningSecret](docs/sdks/webhook/README.md#getsigningsecret)
+- [webhookRegenerateSigningSecret](docs/sdks/webhook/README.md#regeneratesigningsecret)
+- [webhookResend](docs/sdks/webhook/README.md#resend)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

@@ -1,5 +1,22 @@
 # GetAllSmartContractTemplateRequest
 
+## Example Usage
+
+```typescript
+import { Category, GetAllSmartContractTemplateRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllSmartContractTemplateRequest = {
+    blockchain: "polygon",
+    category: Category.Nft,
+    includeCompilationDetails: true,
+    includeForm: true,
+    isActivated: true,
+    isAudited: true,
+    limit: 20,
+    name: "ERC",
+    page: 0,
+};
+```
 
 ## Fields
 

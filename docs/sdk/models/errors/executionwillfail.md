@@ -1,5 +1,12 @@
 # ExecutionWillFail
 
+## Example Usage
+
+```typescript
+import { ExecutionWillFail } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

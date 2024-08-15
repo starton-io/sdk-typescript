@@ -1,5 +1,18 @@
 # GetBalanceAddressResponse
 
+## Example Usage
+
+```typescript
+import { GetBalanceAddressResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetBalanceAddressResponse = {
+    contentType: "<value>",
+    statusCode: 548814,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

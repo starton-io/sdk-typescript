@@ -1,5 +1,12 @@
 # GetAllGasPriceResponseBody
 
+## Example Usage
+
+```typescript
+import { GetAllGasPriceResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

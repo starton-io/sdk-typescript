@@ -1,5 +1,12 @@
 # EnsNotSupported
 
+## Example Usage
+
+```typescript
+import { EnsNotSupported } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # GetOneWatcherResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOneWatcherResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

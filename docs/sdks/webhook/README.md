@@ -39,6 +39,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookCancel } from "@starton/sdk/funcs/webhookCancel.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookCancel(starton, {
+    id: "wh_4c2905f7276b415fac02ee3682189940",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -81,6 +114,43 @@ async function run() {
     page: 0,
     status: QueryParamStatus.Successful,
   });
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookGetAll } from "@starton/sdk/funcs/webhookGetAll.js";
+import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookGetAll(starton, {
+    limit: 20,
+    page: 0,
+    status: QueryParamStatus.Successful,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   for await (const page of result) {
     // handle page
@@ -135,6 +205,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookGetOne } from "@starton/sdk/funcs/webhookGetOne.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookGetOne(starton, {
+    id: "wh_4c2905f7276b415fac02ee3682189940",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -171,6 +274,37 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.webhook.getSigningSecret();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookGetSigningSecret } from "@starton/sdk/funcs/webhookGetSigningSecret.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookGetSigningSecret(starton);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -221,6 +355,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookRegenerateSigningSecret } from "@starton/sdk/funcs/webhookRegenerateSigningSecret.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookRegenerateSigningSecret(starton);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -258,6 +423,39 @@ async function run() {
   const result = await starton.webhook.resend({
     id: "wh_4c2905f7276b415fac02ee3682189940",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { webhookResend } from "@starton/sdk/funcs/webhookResend.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhookResend(starton, {
+    id: "wh_4c2905f7276b415fac02ee3682189940",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

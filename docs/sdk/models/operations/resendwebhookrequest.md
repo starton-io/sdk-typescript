@@ -1,5 +1,14 @@
 # ResendWebhookRequest
 
+## Example Usage
+
+```typescript
+import { ResendWebhookRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: ResendWebhookRequest = {
+    id: "wh_4c2905f7276b415fac02ee3682189940",
+};
+```
 
 ## Fields
 

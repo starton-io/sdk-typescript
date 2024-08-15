@@ -1,5 +1,12 @@
 # GetOneRpcResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOneRpcResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

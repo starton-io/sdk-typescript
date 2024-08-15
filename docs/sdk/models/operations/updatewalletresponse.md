@@ -1,5 +1,18 @@
 # UpdateWalletResponse
 
+## Example Usage
+
+```typescript
+import { UpdateWalletResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateWalletResponse = {
+    contentType: "<value>",
+    statusCode: 528895,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

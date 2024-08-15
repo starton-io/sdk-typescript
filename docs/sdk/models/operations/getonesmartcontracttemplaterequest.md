@@ -1,5 +1,15 @@
 # GetOneSmartContractTemplateRequest
 
+## Example Usage
+
+```typescript
+import { GetOneSmartContractTemplateRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneSmartContractTemplateRequest = {
+    id: "ERC721_META_TRANSACTION",
+    includeForm: true,
+};
+```
 
 ## Fields
 

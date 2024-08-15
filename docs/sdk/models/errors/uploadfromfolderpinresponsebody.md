@@ -1,5 +1,12 @@
 # UploadFromFolderPinResponseBody
 
+## Example Usage
+
+```typescript
+import { UploadFromFolderPinResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

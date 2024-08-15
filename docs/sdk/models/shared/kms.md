@@ -1,5 +1,18 @@
 # Kms
 
+## Example Usage
+
+```typescript
+import { Kms, KmsProvider } from "@starton/sdk/sdk/models/shared";
+
+let value: Kms = {
+    credentials: {},
+    id: "<id>",
+    name: "<value>",
+    projectId: "<value>",
+    provider: KmsProvider.Vault,
+};
+```
 
 ## Fields
 

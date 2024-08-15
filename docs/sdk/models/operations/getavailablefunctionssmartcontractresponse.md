@@ -1,5 +1,18 @@
 # GetAvailableFunctionsSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { GetAvailableFunctionsSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAvailableFunctionsSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 508969,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

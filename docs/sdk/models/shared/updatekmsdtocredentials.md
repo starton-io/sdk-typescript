@@ -1,5 +1,21 @@
 # UpdateKmsDtoCredentials
 
+## Example Usage
+
+```typescript
+import { UpdateKmsDtoCredentials } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateKmsDtoCredentials = {
+    baseUrl: "<value>",
+    id: "<id>",
+    loginPath: "<value>",
+    role: "<value>",
+    rootPath: "<value>",
+    selfSigned: false,
+    timeout: 3540.47,
+    tokenPath: "<value>",
+};
+```
 
 ## Supported Types
 

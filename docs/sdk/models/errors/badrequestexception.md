@@ -1,5 +1,12 @@
 # BadRequestException
 
+## Example Usage
+
+```typescript
+import { BadRequestException } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

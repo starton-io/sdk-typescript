@@ -1,5 +1,17 @@
 # Wallet
 
+## Example Usage
+
+```typescript
+import { Wallet } from "@starton/sdk/sdk/models/shared";
+
+let value: Wallet = {
+    address: "965 Olson Lodge",
+    kmsId: "<value>",
+    projectId: "<value>",
+    providerKeyId: "<value>",
+};
+```
 
 ## Fields
 

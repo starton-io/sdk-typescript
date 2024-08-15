@@ -48,6 +48,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorCreate } from "@starton/sdk/funcs/monitorCreate.js";
+import { CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorCreate(starton, {
+    address: "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1",
+    confirmationsBlocks: 0,
+    description: "watcher tests",
+    metadata: {},
+    name: "watcher test",
+    network: "polygon-mumbai",
+    type: CreateWatcherDtoType.AddressActivity,
+    webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -88,6 +129,39 @@ async function run() {
   const result = await starton.monitor.delete({
     id: "<id>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorDelete } from "@starton/sdk/funcs/monitorDelete.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorDelete(starton, {
+    id: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -152,6 +226,49 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorGetAll } from "@starton/sdk/funcs/monitorGetAll.js";
+import { Type } from "@starton/sdk/sdk/models/operations";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorGetAll(starton, {
+    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    confirmationsBlocks: 0,
+    limit: 20,
+    name: "watcher",
+    network: "polygon-mumbai",
+    page: 0,
+    paused: false,
+    type: Type.AddressActivity,
+    webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -200,6 +317,42 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorGetAllEvents } from "@starton/sdk/funcs/monitorGetAllEvents.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorGetAllEvents(starton, {
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+    limit: 20,
+    page: 0,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -237,6 +390,39 @@ async function run() {
   const result = await starton.monitor.getOne({
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorGetOne } from "@starton/sdk/funcs/monitorGetOne.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorGetOne(starton, {
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -292,6 +478,40 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorGetOneEvent } from "@starton/sdk/funcs/monitorGetOneEvent.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorGetOneEvent(starton, {
+    eventId: "wevent_437e18e7470944099bd094e1c936e4cd",
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -338,6 +558,47 @@ async function run() {
     },
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { monitorUpdate } from "@starton/sdk/funcs/monitorUpdate.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await monitorUpdate(starton, {
+    updateWatcherDto: {
+      confirmationsBlocks: 0,
+      description: "watcher tests",
+      metadata: {},
+      name: "watcher tests",
+      paused: false,
+      webhookUrl: "",
+    },
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

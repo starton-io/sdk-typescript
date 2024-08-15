@@ -1,5 +1,17 @@
 # GetOneSmartContractRequest
 
+## Example Usage
+
+```typescript
+import { GetOneSmartContractRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneSmartContractRequest = {
+    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+    includeAbi: true,
+    includeCompilationDetails: true,
+    network: "polygon-mumbai",
+};
+```
 
 ## Fields
 

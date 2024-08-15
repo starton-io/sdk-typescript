@@ -1,5 +1,18 @@
 # CreateTransactionResponse
 
+## Example Usage
+
+```typescript
+import { CreateTransactionResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: CreateTransactionResponse = {
+    contentType: "<value>",
+    statusCode: 568434,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

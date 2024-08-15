@@ -1,5 +1,12 @@
 # UpdateSettingRelayerResponseBody
 
+## Example Usage
+
+```typescript
+import { UpdateSettingRelayerResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

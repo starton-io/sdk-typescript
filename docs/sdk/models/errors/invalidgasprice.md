@@ -1,5 +1,12 @@
 # InvalidGasPrice
 
+## Example Usage
+
+```typescript
+import { InvalidGasPrice } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

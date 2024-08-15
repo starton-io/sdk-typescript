@@ -1,5 +1,18 @@
 # DeleteSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { DeleteSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: DeleteSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 441711,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

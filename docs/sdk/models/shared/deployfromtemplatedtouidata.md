@@ -1,5 +1,20 @@
 # DeployFromTemplateDtoUiData
 
+## Example Usage
+
+```typescript
+import {
+  DeployFromTemplateDtoDeployMethod,
+  DeployFromTemplateDtoUiData,
+  DeployFromTemplateDtoVersion,
+} from "@starton/sdk/sdk/models/shared";
+
+let value: DeployFromTemplateDtoUiData = {
+    deployMethod: DeployFromTemplateDtoDeployMethod.Web3,
+    imported: false,
+    version: DeployFromTemplateDtoVersion.One,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CreateTransactionTransactionManagerResponseBody
 
+## Example Usage
+
+```typescript
+import { CreateTransactionTransactionManagerResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,12 @@
 # WebhookStatus
 
+## Example Usage
+
+```typescript
+import { WebhookStatus } from "@starton/sdk/sdk/models/shared";
+
+let value: WebhookStatus = WebhookStatus.Retrying;
+```
 
 ## Values
 

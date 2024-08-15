@@ -1,5 +1,12 @@
 # DeleteSmartContractResponseBody
 
+## Example Usage
+
+```typescript
+import { DeleteSmartContractResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

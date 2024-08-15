@@ -1,5 +1,18 @@
 # UploadFromFilePinResponse
 
+## Example Usage
+
+```typescript
+import { UploadFromFilePinResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UploadFromFilePinResponse = {
+    contentType: "<value>",
+    statusCode: 461479,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

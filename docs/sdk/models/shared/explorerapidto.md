@@ -1,5 +1,16 @@
 # ExplorerApiDto
 
+## Example Usage
+
+```typescript
+import { ExplorerApiDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: ExplorerApiDto = {
+    apiKey: "<value>",
+    type: ExplorerApiDtoType.Etherscan,
+    url: "https://triangular-apprehension.com",
+};
+```
 
 ## Fields
 

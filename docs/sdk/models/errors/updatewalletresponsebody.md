@@ -1,5 +1,12 @@
 # UpdateWalletResponseBody
 
+## Example Usage
+
+```typescript
+import { UpdateWalletResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,28 @@
 # GetAllRpcRpcPaginated
 
+## Example Usage
+
+```typescript
+import { GetAllRpcRpcPaginated } from "@starton/sdk/sdk/models/operations";
+import { RpcType } from "@starton/sdk/sdk/models/shared";
+
+let value: GetAllRpcRpcPaginated = {
+    items: [
+        {
+            id: "<id>",
+            isPublic: false,
+            networkName: "<value>",
+            type: RpcType.Full,
+            url: "http://prize-cornmeal.name",
+        },
+    ],
+    meta: {
+        currentPage: 1613.09,
+        itemCount: 9953,
+        itemsPerPage: 6531.08,
+    },
+};
+```
 
 ## Fields
 

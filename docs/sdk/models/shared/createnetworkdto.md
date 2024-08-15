@@ -1,5 +1,25 @@
 # CreateNetworkDto
 
+## Example Usage
+
+```typescript
+import { CreateNetworkDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateNetworkDto = {
+    blockchain: "<value>",
+    chainId: 4479.26,
+    confirmationBlocks: 1002.26,
+    displayName: "Bailee_VonRueden",
+    explorerApi: {
+        apiKey: "<value>",
+        type: ExplorerApiDtoType.Etherscan,
+        url: "http://zesty-sprinter.com",
+    },
+    logo: "<value>",
+    name: "<value>",
+    symbol: "<value>",
+};
+```
 
 ## Fields
 

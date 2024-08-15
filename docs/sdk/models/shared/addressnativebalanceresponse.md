@@ -1,5 +1,17 @@
 # AddressNativeBalanceResponse
 
+## Example Usage
+
+```typescript
+import { AddressNativeBalanceResponse } from "@starton/sdk/sdk/models/shared";
+
+let value: AddressNativeBalanceResponse = {
+    balance: "<value>",
+    decimal: 3132.18,
+    formatted: "<value>",
+    symbol: "<value>",
+};
+```
 
 ## Fields
 

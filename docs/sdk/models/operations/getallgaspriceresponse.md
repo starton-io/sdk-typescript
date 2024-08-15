@@ -1,5 +1,18 @@
 # GetAllGasPriceResponse
 
+## Example Usage
+
+```typescript
+import { GetAllGasPriceResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllGasPriceResponse = {
+    contentType: "<value>",
+    statusCode: 715190,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

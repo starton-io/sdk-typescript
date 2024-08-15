@@ -1,5 +1,17 @@
 # Faucet
 
+## Example Usage
+
+```typescript
+import { Faucet } from "@starton/sdk/sdk/models/shared";
+
+let value: Faucet = {
+    id: "<id>",
+    ip: "158.155.121.4",
+    network: "<value>",
+    wallet: "<value>",
+};
+```
 
 ## Fields
 

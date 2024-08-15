@@ -1,5 +1,12 @@
 # ServerNotResponding
 
+## Example Usage
+
+```typescript
+import { ServerNotResponding } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

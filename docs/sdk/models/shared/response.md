@@ -1,5 +1,12 @@
 # Response
 
+## Example Usage
+
+```typescript
+import { Response } from "@starton/sdk/sdk/models/shared";
+
+let value: Response = 6805.45;
+```
 
 ## Supported Types
 

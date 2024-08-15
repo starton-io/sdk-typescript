@@ -1,5 +1,16 @@
 # AwsKmsCredentialsDto
 
+## Example Usage
+
+```typescript
+import { AwsKmsCredentialsDto } from "@starton/sdk/sdk/models/shared";
+
+let value: AwsKmsCredentialsDto = {
+    accessKeyId: "<value>",
+    accountId: "<value>",
+    region: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # Type
 
+## Example Usage
+
+```typescript
+import { Type } from "@starton/sdk/sdk/models/operations";
+
+let value: Type = Type.AddressActivity;
+```
 
 ## Values
 

@@ -1,5 +1,12 @@
 # GetOnePinIpfsResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOnePinIpfsResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

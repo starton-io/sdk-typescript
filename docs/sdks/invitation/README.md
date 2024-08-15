@@ -34,6 +34,41 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { projectMemberInvitationCreate } from "@starton/sdk/funcs/projectMemberInvitationCreate.js";
+import { Role } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await projectMemberInvitationCreate(starton, {
+    email: "Silas.Abbott@hotmail.com",
+    role: Role.Owner,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -72,6 +107,39 @@ async function run() {
   const result = await starton.project.member.invitation.delete({
     id: "invit_f9701ff8e2ea4a1d964e0d6d40564801",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { projectMemberInvitationDelete } from "@starton/sdk/funcs/projectMemberInvitationDelete.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await projectMemberInvitationDelete(starton, {
+    id: "invit_f9701ff8e2ea4a1d964e0d6d40564801",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -119,6 +187,41 @@ async function run() {
     limit: 20,
     page: 0,
   });
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { projectMemberInvitationGetAll } from "@starton/sdk/funcs/projectMemberInvitationGetAll.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await projectMemberInvitationGetAll(starton, {
+    limit: 20,
+    page: 0,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   for await (const page of result) {
     // handle page

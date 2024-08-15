@@ -1,5 +1,18 @@
 # ImportExistingSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { ImportExistingSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: ImportExistingSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 916723,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ImportSmartContractDtoDeployMethod
 
+## Example Usage
+
+```typescript
+import { ImportSmartContractDtoDeployMethod } from "@starton/sdk/sdk/models/shared";
+
+let value: ImportSmartContractDtoDeployMethod = ImportSmartContractDtoDeployMethod.Kms;
+```
 
 ## Values
 

@@ -1,5 +1,12 @@
 # UnpredictableGasLimit
 
+## Example Usage
+
+```typescript
+import { UnpredictableGasLimit } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

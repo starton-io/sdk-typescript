@@ -1,5 +1,12 @@
 # DatabaseDuplicate
 
+## Example Usage
+
+```typescript
+import { DatabaseDuplicate } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

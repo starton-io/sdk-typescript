@@ -1,5 +1,12 @@
 # DeployFromBytecodeDtoParams
 
+## Example Usage
+
+```typescript
+import { DeployFromBytecodeDtoParams } from "@starton/sdk/sdk/models/shared";
+
+let value: DeployFromBytecodeDtoParams = {};
+```
 
 ## Supported Types
 

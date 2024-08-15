@@ -1,5 +1,16 @@
 # GetAllWebhookRequest
 
+## Example Usage
+
+```typescript
+import { GetAllWebhookRequest, QueryParamStatus } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllWebhookRequest = {
+    limit: 20,
+    page: 0,
+    status: QueryParamStatus.Successful,
+};
+```
 
 ## Fields
 

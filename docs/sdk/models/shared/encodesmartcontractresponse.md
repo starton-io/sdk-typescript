@@ -1,5 +1,12 @@
 # EncodeSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { EncodeSmartContractResponse } from "@starton/sdk/sdk/models/shared";
+
+let value: EncodeSmartContractResponse = {};
+```
 
 ## Fields
 

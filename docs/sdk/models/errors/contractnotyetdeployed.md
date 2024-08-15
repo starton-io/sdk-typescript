@@ -1,5 +1,12 @@
 # ContractNotYetDeployed
 
+## Example Usage
+
+```typescript
+import { ContractNotYetDeployed } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

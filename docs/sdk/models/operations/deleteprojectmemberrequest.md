@@ -1,5 +1,14 @@
 # DeleteProjectMemberRequest
 
+## Example Usage
+
+```typescript
+import { DeleteProjectMemberRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: DeleteProjectMemberRequest = {
+    userId: "<value>",
+};
+```
 
 ## Fields
 

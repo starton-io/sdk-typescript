@@ -1,5 +1,18 @@
 # GetAllSettingRelayerResponse
 
+## Example Usage
+
+```typescript
+import { GetAllSettingRelayerResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllSettingRelayerResponse = {
+    contentType: "<value>",
+    statusCode: 902599,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

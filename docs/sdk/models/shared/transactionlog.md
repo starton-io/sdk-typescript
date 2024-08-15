@@ -1,5 +1,16 @@
 # TransactionLog
 
+## Example Usage
+
+```typescript
+import { TransactionLog, TransactionLogType } from "@starton/sdk/sdk/models/shared";
+
+let value: TransactionLog = {
+    createdAt: "<value>",
+    message: "<value>",
+    type: TransactionLogType.InsufficientFunds,
+};
+```
 
 ## Fields
 

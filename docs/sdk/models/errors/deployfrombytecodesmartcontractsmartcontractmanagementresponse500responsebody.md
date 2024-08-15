@@ -1,5 +1,12 @@
 # DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody
 
+## Example Usage
+
+```typescript
+import { DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

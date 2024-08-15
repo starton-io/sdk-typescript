@@ -1,5 +1,16 @@
 # GasPriceInfo
 
+## Example Usage
+
+```typescript
+import { GasPriceInfo } from "@starton/sdk/sdk/models/shared";
+
+let value: GasPriceInfo = {
+    gasPrice: "<value>",
+    maxFeePerGas: "<value>",
+    maxPriorityFeePerGas: "<value>",
+};
+```
 
 ## Fields
 

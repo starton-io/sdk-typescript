@@ -1,5 +1,18 @@
 # CreateInvitationResponse
 
+## Example Usage
+
+```typescript
+import { CreateInvitationResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: CreateInvitationResponse = {
+    contentType: "<value>",
+    statusCode: 662527,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

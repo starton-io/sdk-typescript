@@ -1,5 +1,14 @@
 # GetAllGasPriceRequest
 
+## Example Usage
+
+```typescript
+import { GetAllGasPriceRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllGasPriceRequest = {
+    network: "polygon-mainnet",
+};
+```
 
 ## Fields
 

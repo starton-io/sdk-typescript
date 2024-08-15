@@ -54,6 +54,55 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { networkCreate } from "@starton/sdk/funcs/networkCreate.js";
+import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await networkCreate(starton, {
+    blockchain: "optimism",
+    chainId: 10,
+    confirmationBlocks: 128,
+    displayName: "optimism-private",
+    enableExternalWallet: false,
+    enableListener: false,
+    enableRelayer: false,
+    explorerApi: {
+      apiKey: "<value>",
+      type: ExplorerApiDtoType.Etherscan,
+      url: "http://yummy-shift.info",
+    },
+    explorerUrl: "https://optimism-invalid-test-explorer.com",
+    logo: "https://optimism-invalid-test-logo.com",
+    name: "optimism-functional-tests1714642436107",
+    symbol: "ETH",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -91,6 +140,39 @@ async function run() {
   const result = await starton.network.delete({
     name: "optimism-functional-tests1714642436107",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { networkDelete } from "@starton/sdk/funcs/networkDelete.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await networkDelete(starton, {
+    name: "optimism-functional-tests1714642436107",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -152,6 +234,46 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { networkGetAll } from "@starton/sdk/funcs/networkGetAll.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await networkGetAll(starton, {
+    chainIds: [
+      "<value>",
+    ],
+    limit: 20,
+    origin: "<value>",
+    page: 0,
+    xPlatformHostname: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -189,6 +311,39 @@ async function run() {
   const result = await starton.network.getOne({
     name: "optimism-functional-tests",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { networkGetOne } from "@starton/sdk/funcs/networkGetOne.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await networkGetOne(starton, {
+    name: "optimism-functional-tests",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -244,6 +399,48 @@ async function run() {
     },
     name: "optimism-functional-tests",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { networkUpdate } from "@starton/sdk/funcs/networkUpdate.js";
+import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await networkUpdate(starton, {
+    updateNetworkDto: {
+      displayName: "optimism-private-tests",
+      explorerApi: {
+        apiKey: "<value>",
+        type: ExplorerApiDtoType.Etherscan,
+        url: "https://realistic-kill.info",
+      },
+    },
+    name: "optimism-functional-tests",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

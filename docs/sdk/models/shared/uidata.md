@@ -1,5 +1,16 @@
 # UiData
 
+## Example Usage
+
+```typescript
+import { DeployMethod, UiData, Version } from "@starton/sdk/sdk/models/shared";
+
+let value: UiData = {
+    deployMethod: DeployMethod.Kms,
+    imported: false,
+    version: Version.One,
+};
+```
 
 ## Fields
 

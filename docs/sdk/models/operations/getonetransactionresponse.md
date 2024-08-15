@@ -1,5 +1,18 @@
 # GetOneTransactionResponse
 
+## Example Usage
+
+```typescript
+import { GetOneTransactionResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneTransactionResponse = {
+    contentType: "<value>",
+    statusCode: 943749,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

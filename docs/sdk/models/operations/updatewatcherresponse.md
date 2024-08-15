@@ -1,5 +1,18 @@
 # UpdateWatcherResponse
 
+## Example Usage
+
+```typescript
+import { UpdateWatcherResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateWatcherResponse = {
+    contentType: "<value>",
+    statusCode: 447125,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

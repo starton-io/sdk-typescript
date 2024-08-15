@@ -1,5 +1,18 @@
 # CreateRpcResponse
 
+## Example Usage
+
+```typescript
+import { CreateRpcResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: CreateRpcResponse = {
+    contentType: "<value>",
+    statusCode: 634274,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

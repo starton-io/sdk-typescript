@@ -1,5 +1,12 @@
 # GetAllWebhookResponseBody
 
+## Example Usage
+
+```typescript
+import { GetAllWebhookResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,19 @@
 # UpdateWatcherDto
 
+## Example Usage
+
+```typescript
+import { UpdateWatcherDto } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateWatcherDto = {
+    confirmationsBlocks: 0,
+    description: "watcher tests",
+    metadata: {},
+    name: "watcher tests",
+    paused: true,
+    webhookUrl: "",
+};
+```
 
 ## Fields
 

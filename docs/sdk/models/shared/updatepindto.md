@@ -1,5 +1,12 @@
 # UpdatePinDto
 
+## Example Usage
+
+```typescript
+import { UpdatePinDto } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdatePinDto = {};
+```
 
 ## Fields
 

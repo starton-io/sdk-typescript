@@ -1,5 +1,12 @@
 # TransactionLogType
 
+## Example Usage
+
+```typescript
+import { TransactionLogType } from "@starton/sdk/sdk/models/shared";
+
+let value: TransactionLogType = TransactionLogType.CouldNotEstimateGasLimit;
+```
 
 ## Values
 

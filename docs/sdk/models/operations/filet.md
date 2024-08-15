@@ -1,5 +1,15 @@
 # FileT
 
+## Example Usage
+
+```typescript
+import { FileT } from "@starton/sdk/sdk/models/operations";
+
+let value: FileT = {
+    content: new TextEncoder().encode("0xCFB3DDFaBB"),
+    fileName: "your_file_here",
+};
+```
 
 ## Fields
 

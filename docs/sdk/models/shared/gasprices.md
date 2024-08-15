@@ -1,5 +1,33 @@
 # GasPrices
 
+## Example Usage
+
+```typescript
+import { GasPrices } from "@starton/sdk/sdk/models/shared";
+
+let value: GasPrices = {
+    average: {
+        gasPrice: "<value>",
+        maxFeePerGas: "<value>",
+        maxPriorityFeePerGas: "<value>",
+    },
+    fast: {
+        gasPrice: "<value>",
+        maxFeePerGas: "<value>",
+        maxPriorityFeePerGas: "<value>",
+    },
+    fastest: {
+        gasPrice: "<value>",
+        maxFeePerGas: "<value>",
+        maxPriorityFeePerGas: "<value>",
+    },
+    low: {
+        gasPrice: "<value>",
+        maxFeePerGas: "<value>",
+        maxPriorityFeePerGas: "<value>",
+    },
+};
+```
 
 ## Fields
 

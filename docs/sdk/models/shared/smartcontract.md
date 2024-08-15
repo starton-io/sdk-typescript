@@ -1,5 +1,20 @@
 # SmartContract
 
+## Example Usage
+
+```typescript
+import { SmartContract, SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
+
+let value: SmartContract = {
+    address: "299 Lessie Port",
+    id: "<id>",
+    name: "<value>",
+    network: "<value>",
+    projectId: "<value>",
+    state: State.ManualActionRequired,
+    status: SmartContractStatus.StuckByPreviousTransaction,
+};
+```
 
 ## Fields
 

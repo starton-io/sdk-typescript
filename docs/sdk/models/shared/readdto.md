@@ -1,5 +1,20 @@
 # ReadDto
 
+## Example Usage
+
+```typescript
+import { ReadDto } from "@starton/sdk/sdk/models/shared";
+
+let value: ReadDto = {
+    functionName: "<value>",
+    params: [
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+    ],
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ClaimFaucetResponseBody
 
+## Example Usage
+
+```typescript
+import { ClaimFaucetResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

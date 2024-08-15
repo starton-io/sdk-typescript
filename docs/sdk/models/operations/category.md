@@ -1,5 +1,12 @@
 # Category
 
+## Example Usage
+
+```typescript
+import { Category } from "@starton/sdk/sdk/models/operations";
+
+let value: Category = Category.Nft;
+```
 
 ## Values
 

@@ -1,5 +1,12 @@
 # QueryParamStatus
 
+## Example Usage
+
+```typescript
+import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
+
+let value: QueryParamStatus = QueryParamStatus.Successful;
+```
 
 ## Values
 

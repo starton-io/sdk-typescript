@@ -1,5 +1,15 @@
 # WebhookSigningSecret
 
+## Example Usage
+
+```typescript
+import { WebhookSigningSecret } from "@starton/sdk/sdk/models/shared";
+
+let value: WebhookSigningSecret = {
+    projectId: "<value>",
+    secret: "<value>",
+};
+```
 
 ## Fields
 

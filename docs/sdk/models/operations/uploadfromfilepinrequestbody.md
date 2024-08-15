@@ -1,5 +1,12 @@
 # UploadFromFilePinRequestBody
 
+## Example Usage
+
+```typescript
+import { UploadFromFilePinRequestBody } from "@starton/sdk/sdk/models/operations";
+
+let value: UploadFromFilePinRequestBody = {};
+```
 
 ## Fields
 

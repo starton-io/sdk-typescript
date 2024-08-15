@@ -1,5 +1,20 @@
 # Webhook
 
+## Example Usage
+
+```typescript
+import { Webhook, WebhookStatus } from "@starton/sdk/sdk/models/shared";
+
+let value: Webhook = {
+    headers: {},
+    id: "<id>",
+    payload: {},
+    projectId: "<value>",
+    refId: "<value>",
+    status: WebhookStatus.Retrying,
+    url: "http://sizzling-syrup.biz",
+};
+```
 
 ## Fields
 

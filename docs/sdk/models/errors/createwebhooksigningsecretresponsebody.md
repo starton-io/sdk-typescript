@@ -1,5 +1,12 @@
 # CreateWebhookSigningSecretResponseBody
 
+## Example Usage
+
+```typescript
+import { CreateWebhookSigningSecretResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

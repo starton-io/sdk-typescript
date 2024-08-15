@@ -1,5 +1,12 @@
 # GetAllWatcherResponseBody
 
+## Example Usage
+
+```typescript
+import { GetAllWatcherResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

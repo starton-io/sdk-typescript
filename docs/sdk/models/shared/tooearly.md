@@ -1,5 +1,15 @@
 # TooEarly
 
+## Example Usage
+
+```typescript
+import { TooEarly } from "@starton/sdk/sdk/models/shared";
+
+let value: TooEarly = {
+    path: "/opt/sbin",
+    timestamp: "<value>",
+};
+```
 
 ## Fields
 

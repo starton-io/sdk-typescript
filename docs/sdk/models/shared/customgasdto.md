@@ -1,5 +1,12 @@
 # CustomGasDto
 
+## Example Usage
+
+```typescript
+import { CustomGasDto } from "@starton/sdk/sdk/models/shared";
+
+let value: CustomGasDto = {};
+```
 
 ## Fields
 

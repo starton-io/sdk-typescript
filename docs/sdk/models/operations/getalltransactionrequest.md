@@ -1,5 +1,19 @@
 # GetAllTransactionRequest
 
+## Example Usage
+
+```typescript
+import { GetAllTransactionRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllTransactionRequest = {
+    from: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    limit: 20,
+    network: "polygon-mumbai",
+    page: 0,
+    to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5",
+};
+```
 
 ## Fields
 

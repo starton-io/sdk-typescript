@@ -1,5 +1,14 @@
 # AbiObjectDto
 
+## Example Usage
+
+```typescript
+import { AbiObjectDto, Type } from "@starton/sdk/sdk/models/shared";
+
+let value: AbiObjectDto = {
+    type: Type.Event,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # UploadFromJsonPinResponse
 
+## Example Usage
+
+```typescript
+import { UploadFromJsonPinResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UploadFromJsonPinResponse = {
+    contentType: "<value>",
+    statusCode: 521848,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

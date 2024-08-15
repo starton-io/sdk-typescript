@@ -1,5 +1,15 @@
 # GetAllWalletRequest
 
+## Example Usage
+
+```typescript
+import { GetAllWalletRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllWalletRequest = {
+    limit: 20,
+    page: 0,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # DeleteRpcNetworkRpcResponseBody
 
+## Example Usage
+
+```typescript
+import { DeleteRpcNetworkRpcResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

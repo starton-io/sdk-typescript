@@ -1,5 +1,12 @@
 # CreatePinResponseBody
 
+## Example Usage
+
+```typescript
+import { CreatePinResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

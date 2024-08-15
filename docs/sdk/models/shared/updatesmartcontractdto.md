@@ -1,5 +1,12 @@
 # UpdateSmartContractDto
 
+## Example Usage
+
+```typescript
+import { UpdateSmartContractDto } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateSmartContractDto = {};
+```
 
 ## Fields
 

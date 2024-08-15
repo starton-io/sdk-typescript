@@ -1,5 +1,18 @@
 # UpdateRpcResponse
 
+## Example Usage
+
+```typescript
+import { UpdateRpcResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateRpcResponse = {
+    contentType: "<value>",
+    statusCode: 414369,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

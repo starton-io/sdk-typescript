@@ -1,5 +1,22 @@
 # WatcherEvent
 
+## Example Usage
+
+```typescript
+import { WatcherEvent, WatcherEventStatus } from "@starton/sdk/sdk/models/shared";
+
+let value: WatcherEvent = {
+    blockHash: "<value>",
+    blockNumber: 9064.18,
+    id: "<id>",
+    network: "<value>",
+    payload: {},
+    projectId: "<value>",
+    status: WatcherEventStatus.PendingValidation,
+    txHash: "<value>",
+    watcherId: "<value>",
+};
+```
 
 ## Fields
 

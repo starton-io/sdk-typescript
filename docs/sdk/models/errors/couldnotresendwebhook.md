@@ -1,5 +1,12 @@
 # CouldNotResendWebhook
 
+## Example Usage
+
+```typescript
+import { CouldNotResendWebhook } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,21 @@
 # VaultKmsCredentialsDto
 
+## Example Usage
+
+```typescript
+import { VaultKmsCredentialsDto } from "@starton/sdk/sdk/models/shared";
+
+let value: VaultKmsCredentialsDto = {
+    baseUrl: "<value>",
+    id: "<id>",
+    loginPath: "<value>",
+    role: "<value>",
+    rootPath: "<value>",
+    selfSigned: false,
+    timeout: 923.73,
+    tokenPath: "<value>",
+};
+```
 
 ## Fields
 

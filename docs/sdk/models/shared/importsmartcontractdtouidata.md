@@ -1,5 +1,20 @@
 # ImportSmartContractDtoUiData
 
+## Example Usage
+
+```typescript
+import {
+  ImportSmartContractDtoDeployMethod,
+  ImportSmartContractDtoUiData,
+  ImportSmartContractDtoVersion,
+} from "@starton/sdk/sdk/models/shared";
+
+let value: ImportSmartContractDtoUiData = {
+    deployMethod: ImportSmartContractDtoDeployMethod.Web3,
+    imported: false,
+    version: ImportSmartContractDtoVersion.One,
+};
+```
 
 ## Fields
 

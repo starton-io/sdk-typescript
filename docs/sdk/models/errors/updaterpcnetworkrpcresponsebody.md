@@ -1,5 +1,12 @@
 # UpdateRpcNetworkRpcResponseBody
 
+## Example Usage
+
+```typescript
+import { UpdateRpcNetworkRpcResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,21 @@
 # CreateWatcherDto
 
+## Example Usage
+
+```typescript
+import { CreateWatcherDto, CreateWatcherDtoType } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateWatcherDto = {
+    address: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    confirmationsBlocks: 0,
+    description: "watcher tests",
+    metadata: {},
+    name: "watcher tests",
+    network: "polygon-mumbai",
+    type: CreateWatcherDtoType.AddressActivity,
+    webhookUrl: "",
+};
+```
 
 ## Fields
 

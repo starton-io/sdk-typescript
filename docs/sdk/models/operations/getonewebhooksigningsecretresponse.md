@@ -1,5 +1,18 @@
 # GetOneWebhookSigningSecretResponse
 
+## Example Usage
+
+```typescript
+import { GetOneWebhookSigningSecretResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneWebhookSigningSecretResponse = {
+    contentType: "<value>",
+    statusCode: 881104,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

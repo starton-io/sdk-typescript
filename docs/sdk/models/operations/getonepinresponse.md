@@ -1,5 +1,18 @@
 # GetOnePinResponse
 
+## Example Usage
+
+```typescript
+import { GetOnePinResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOnePinResponse = {
+    contentType: "<value>",
+    statusCode: 87129,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

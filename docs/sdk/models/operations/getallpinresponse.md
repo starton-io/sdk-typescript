@@ -1,5 +1,18 @@
 # GetAllPinResponse
 
+## Example Usage
+
+```typescript
+import { GetAllPinResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllPinResponse = {
+    contentType: "<value>",
+    statusCode: 337396,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

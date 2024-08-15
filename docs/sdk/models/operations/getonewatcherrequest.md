@@ -1,5 +1,14 @@
 # GetOneWatcherRequest
 
+## Example Usage
+
+```typescript
+import { GetOneWatcherRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneWatcherRequest = {
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+};
+```
 
 ## Fields
 

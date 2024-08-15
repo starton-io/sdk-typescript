@@ -1,5 +1,18 @@
 # CreateWebhookSigningSecretResponse
 
+## Example Usage
+
+```typescript
+import { CreateWebhookSigningSecretResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: CreateWebhookSigningSecretResponse = {
+    contentType: "<value>",
+    statusCode: 249796,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

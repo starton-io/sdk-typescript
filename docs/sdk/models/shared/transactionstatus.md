@@ -1,5 +1,12 @@
 # TransactionStatus
 
+## Example Usage
+
+```typescript
+import { TransactionStatus } from "@starton/sdk/sdk/models/shared";
+
+let value: TransactionStatus = TransactionStatus.CouldNotSign;
+```
 
 ## Values
 

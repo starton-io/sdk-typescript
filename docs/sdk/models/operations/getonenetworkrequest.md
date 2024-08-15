@@ -1,5 +1,14 @@
 # GetOneNetworkRequest
 
+## Example Usage
+
+```typescript
+import { GetOneNetworkRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneNetworkRequest = {
+    name: "optimism-functional-tests",
+};
+```
 
 ## Fields
 

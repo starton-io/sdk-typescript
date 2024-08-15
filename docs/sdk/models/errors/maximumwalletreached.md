@@ -1,5 +1,12 @@
 # MaximumWalletReached
 
+## Example Usage
+
+```typescript
+import { MaximumWalletReached } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

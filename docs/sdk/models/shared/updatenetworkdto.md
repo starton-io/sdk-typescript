@@ -1,5 +1,18 @@
 # UpdateNetworkDto
 
+## Example Usage
+
+```typescript
+import { ExplorerApiDtoType, UpdateNetworkDto } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateNetworkDto = {
+    explorerApi: {
+        apiKey: "<value>",
+        type: ExplorerApiDtoType.Etherscan,
+        url: "https://perfect-clause.com",
+    },
+};
+```
 
 ## Fields
 

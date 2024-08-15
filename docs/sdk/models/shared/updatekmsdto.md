@@ -1,5 +1,12 @@
 # UpdateKmsDto
 
+## Example Usage
+
+```typescript
+import { UpdateKmsDto } from "@starton/sdk/sdk/models/shared";
+
+let value: UpdateKmsDto = {};
+```
 
 ## Fields
 

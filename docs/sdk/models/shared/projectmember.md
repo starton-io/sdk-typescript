@@ -1,5 +1,16 @@
 # ProjectMember
 
+## Example Usage
+
+```typescript
+import { ProjectMember } from "@starton/sdk/sdk/models/shared";
+
+let value: ProjectMember = {
+    email: "Heidi86@yahoo.com",
+    fullName: "Camille Armstrong",
+    id: "<id>",
+};
+```
 
 ## Fields
 

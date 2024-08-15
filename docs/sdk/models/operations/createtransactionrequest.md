@@ -1,5 +1,23 @@
 # CreateTransactionRequest
 
+## Example Usage
+
+```typescript
+import { CreateTransactionRequest } from "@starton/sdk/sdk/models/operations";
+import { CreateTransactionDtoSpeed } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateTransactionRequest = {
+    createTransactionDto: {
+        data: "0x1234",
+        network: "polygon-mumbai",
+        signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+        speed: CreateTransactionDtoSpeed.Low,
+        to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+        value: "0",
+    },
+    simulate: false,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # Forbidden
 
+## Example Usage
+
+```typescript
+import { Forbidden } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # GetAvailableFunctionsSmartContractResponseBody
 
+## Example Usage
+
+```typescript
+import { GetAvailableFunctionsSmartContractResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

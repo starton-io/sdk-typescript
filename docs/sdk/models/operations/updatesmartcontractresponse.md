@@ -1,5 +1,18 @@
 # UpdateSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { UpdateSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 647174,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

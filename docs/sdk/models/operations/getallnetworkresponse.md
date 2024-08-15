@@ -1,5 +1,18 @@
 # GetAllNetworkResponse
 
+## Example Usage
+
+```typescript
+import { GetAllNetworkResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllNetworkResponse = {
+    contentType: "<value>",
+    statusCode: 170909,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

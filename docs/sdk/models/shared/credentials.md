@@ -1,5 +1,16 @@
 # Credentials
 
+## Example Usage
+
+```typescript
+import { Credentials } from "@starton/sdk/sdk/models/shared";
+
+let value: Credentials = {
+    accessKeyId: "<value>",
+    accountId: "<value>",
+    region: "<value>",
+};
+```
 
 ## Supported Types
 

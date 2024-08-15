@@ -31,6 +31,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerSettingGet } from "@starton/sdk/funcs/transactionManagerSettingGet.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerSettingGet(starton, {
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -77,6 +110,47 @@ async function run() {
     },
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerSettingUpdate } from "@starton/sdk/funcs/transactionManagerSettingUpdate.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerSettingUpdate(starton, {
+    updateSettingRelayerDto: {
+      unstuckAutomaticGasPrice: true,
+      unstuckCustomGasPrice: true,
+      unstuckGasPriceDelay: 300,
+      unstuckMaxGasPrice: "150000000000",
+      unstuckMissingNonce: true,
+      unstuckMissingNonceDelay: 300,
+    },
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

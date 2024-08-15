@@ -1,5 +1,12 @@
 # MicroserviceNotResponding
 
+## Example Usage
+
+```typescript
+import { MicroserviceNotResponding } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # DeleteKmsResponse
 
+## Example Usage
+
+```typescript
+import { DeleteKmsResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: DeleteKmsResponse = {
+    contentType: "<value>",
+    statusCode: 414662,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

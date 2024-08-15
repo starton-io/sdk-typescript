@@ -47,6 +47,48 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerCreate } from "@starton/sdk/funcs/transactionManagerCreate.js";
+import { CreateTransactionDtoSpeed } from "@starton/sdk/sdk/models/shared";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerCreate(starton, {
+    createTransactionDto: {
+      data: "0x1234",
+      network: "polygon-mumbai",
+      signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      speed: CreateTransactionDtoSpeed.Low,
+      to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+      value: "0",
+    },
+    simulate: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -101,6 +143,45 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerGetAll } from "@starton/sdk/funcs/transactionManagerGetAll.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerGetAll(starton, {
+    from: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    limit: 20,
+    network: "polygon-mumbai",
+    page: 0,
+    to: "0x298e760768c8481780397eE28A127eAd584df4ee",
+    transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -139,6 +220,40 @@ async function run() {
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerGetAvailableNonces } from "@starton/sdk/funcs/transactionManagerGetAvailableNonces.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerGetAvailableNonces(starton, {
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -195,6 +310,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerGetOne } from "@starton/sdk/funcs/transactionManagerGetOne.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerGetOne(starton, {
+    id: "tx_1abfa87e04814cb7a669d614d1fe5f78",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -234,6 +382,40 @@ async function run() {
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
     network: "polygon-mumbai",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StartonCore } from "@starton/sdk/core.js";
+import { transactionManagerResyncNonce } from "@starton/sdk/funcs/transactionManagerResyncNonce.js";
+
+// Use `StartonCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const starton = new StartonCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await transactionManagerResyncNonce(starton, {
+    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+    network: "polygon-mumbai",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

@@ -1,5 +1,12 @@
 # ResyncNoncesWalletWalletTransactionManagerResponseResponseBody
 
+## Example Usage
+
+```typescript
+import { ResyncNoncesWalletWalletTransactionManagerResponseResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

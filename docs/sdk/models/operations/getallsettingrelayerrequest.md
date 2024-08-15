@@ -1,5 +1,14 @@
 # GetAllSettingRelayerRequest
 
+## Example Usage
+
+```typescript
+import { GetAllSettingRelayerRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllSettingRelayerRequest = {
+    network: "polygon-mumbai",
+};
+```
 
 ## Fields
 

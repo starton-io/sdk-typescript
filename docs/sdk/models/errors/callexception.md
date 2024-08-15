@@ -1,5 +1,12 @@
 # CallException
 
+## Example Usage
+
+```typescript
+import { CallException } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

@@ -1,5 +1,22 @@
 # Watcher
 
+## Example Usage
+
+```typescript
+import { TriggerType, Watcher, WatcherType } from "@starton/sdk/sdk/models/shared";
+
+let value: Watcher = {
+    address: "4656 Rau Well",
+    confirmationsBlocks: 4694.97,
+    id: "<id>",
+    network: "<value>",
+    paused: false,
+    projectId: "<value>",
+    triggerType: TriggerType.Block,
+    type: WatcherType.Erc721EventTransfer,
+    webhookUrl: "<value>",
+};
+```
 
 ## Fields
 

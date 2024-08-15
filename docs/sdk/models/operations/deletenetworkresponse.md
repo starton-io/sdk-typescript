@@ -1,5 +1,18 @@
 # DeleteNetworkResponse
 
+## Example Usage
+
+```typescript
+import { DeleteNetworkResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: DeleteNetworkResponse = {
+    contentType: "<value>",
+    statusCode: 359508,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

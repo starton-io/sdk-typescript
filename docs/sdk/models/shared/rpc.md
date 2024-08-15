@@ -1,5 +1,18 @@
 # Rpc
 
+## Example Usage
+
+```typescript
+import { Rpc, RpcType } from "@starton/sdk/sdk/models/shared";
+
+let value: Rpc = {
+    id: "<id>",
+    isPublic: false,
+    networkName: "<value>",
+    type: RpcType.Full,
+    url: "https://steel-handicap.name",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CouldNotFindResource
 
+## Example Usage
+
+```typescript
+import { CouldNotFindResource } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

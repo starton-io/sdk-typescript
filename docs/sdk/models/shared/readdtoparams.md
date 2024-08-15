@@ -1,5 +1,12 @@
 # ReadDtoParams
 
+## Example Usage
+
+```typescript
+import { ReadDtoParams } from "@starton/sdk/sdk/models/shared";
+
+let value: ReadDtoParams = 6176.58;
+```
 
 ## Supported Types
 

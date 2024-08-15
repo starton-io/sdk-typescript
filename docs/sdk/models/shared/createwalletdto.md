@@ -1,5 +1,14 @@
 # CreateWalletDto
 
+## Example Usage
+
+```typescript
+import { CreateWalletDto } from "@starton/sdk/sdk/models/shared";
+
+let value: CreateWalletDto = {
+    kmsId: "<value>",
+};
+```
 
 ## Fields
 

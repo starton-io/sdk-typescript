@@ -1,5 +1,15 @@
 # AbiInputDto
 
+## Example Usage
+
+```typescript
+import { AbiInputDto } from "@starton/sdk/sdk/models/shared";
+
+let value: AbiInputDto = {
+    name: "<value>",
+    type: "<value>",
+};
+```
 
 ## Fields
 

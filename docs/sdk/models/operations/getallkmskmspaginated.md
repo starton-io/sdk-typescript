@@ -1,5 +1,28 @@
 # GetAllKmsKmsPaginated
 
+## Example Usage
+
+```typescript
+import { GetAllKmsKmsPaginated } from "@starton/sdk/sdk/models/operations";
+import { KmsProvider } from "@starton/sdk/sdk/models/shared";
+
+let value: GetAllKmsKmsPaginated = {
+    items: [
+        {
+            credentials: {},
+            id: "<id>",
+            name: "<value>",
+            projectId: "<value>",
+            provider: KmsProvider.Aws,
+        },
+    ],
+    meta: {
+        currentPage: 2645.55,
+        itemCount: 1863.32,
+        itemsPerPage: 7742.34,
+    },
+};
+```
 
 ## Fields
 

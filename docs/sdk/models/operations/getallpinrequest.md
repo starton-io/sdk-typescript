@@ -1,5 +1,15 @@
 # GetAllPinRequest
 
+## Example Usage
+
+```typescript
+import { GetAllPinRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllPinRequest = {
+    limit: 20,
+    page: 0,
+};
+```
 
 ## Fields
 

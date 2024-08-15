@@ -1,5 +1,12 @@
 # GetOneSmartContractTemplateResponseBody
 
+## Example Usage
+
+```typescript
+import { GetOneSmartContractTemplateResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

@@ -1,5 +1,18 @@
 # GetAvailableNoncesWalletResponse
 
+## Example Usage
+
+```typescript
+import { GetAvailableNoncesWalletResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAvailableNoncesWalletResponse = {
+    contentType: "<value>",
+    statusCode: 386489,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

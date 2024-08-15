@@ -1,5 +1,31 @@
 # Transaction
 
+## Example Usage
+
+```typescript
+import { Transaction, TransactionLogType, TransactionState, TransactionStatus } from "@starton/sdk/sdk/models/shared";
+
+let value: Transaction = {
+    automaticNonce: false,
+    chainId: 336.25,
+    from: "<value>",
+    id: "<id>",
+    isDeployTransaction: false,
+    logs: [
+        {
+            createdAt: "<value>",
+            message: "<value>",
+            type: TransactionLogType.CouldNotBroadcast,
+        },
+    ],
+    network: "<value>",
+    projectId: "<value>",
+    signerWallet: "<value>",
+    state: TransactionState.Error,
+    status: TransactionStatus.CouldNotBroadcast,
+    value: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,35 @@
 # ImportSmartContractDto
 
+## Example Usage
+
+```typescript
+import { ImportSmartContractDto, StateMutability, Type } from "@starton/sdk/sdk/models/shared";
+
+let value: ImportSmartContractDto = {
+    abi: [
+        {
+            inputs: {
+                name: "<value>",
+                type: "<value>",
+            },
+            stateMutability: StateMutability.Nonpayable,
+            type: Type.Constructor,
+        },
+    ],
+    address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
+    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
+    description: "Minimal smart contract description.",
+    name: "Minimal Contract Test.",
+    network: "polygon-mumbai",
+    params: [
+        "TestToken",
+        "TEST",
+        "1000000000000000000000000",
+        "0x298e760768c8481780397eE28A127eAd584df4ee",
+    ],
+    templateId: "ERC721_META_TRANSACTION",
+};
+```
 
 ## Fields
 

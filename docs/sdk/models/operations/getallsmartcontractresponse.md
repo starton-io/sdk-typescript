@@ -1,5 +1,18 @@
 # GetAllSmartContractResponse
 
+## Example Usage
+
+```typescript
+import { GetAllSmartContractResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetAllSmartContractResponse = {
+    contentType: "<value>",
+    statusCode: 265389,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

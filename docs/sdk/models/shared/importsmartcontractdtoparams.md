@@ -1,5 +1,12 @@
 # ImportSmartContractDtoParams
 
+## Example Usage
+
+```typescript
+import { ImportSmartContractDtoParams } from "@starton/sdk/sdk/models/shared";
+
+let value: ImportSmartContractDtoParams = {};
+```
 
 ## Supported Types
 

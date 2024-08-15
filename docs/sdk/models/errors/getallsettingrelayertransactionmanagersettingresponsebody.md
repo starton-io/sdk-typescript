@@ -1,5 +1,12 @@
 # GetAllSettingRelayerTransactionManagerSettingResponseBody
 
+## Example Usage
+
+```typescript
+import { GetAllSettingRelayerTransactionManagerSettingResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

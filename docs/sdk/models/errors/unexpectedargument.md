@@ -1,5 +1,12 @@
 # UnexpectedArgument
 
+## Example Usage
+
+```typescript
+import { UnexpectedArgument } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

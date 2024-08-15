@@ -1,5 +1,12 @@
 # UploadFromFilePinIpfsResponseBody
 
+## Example Usage
+
+```typescript
+import { UploadFromFilePinIpfsResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

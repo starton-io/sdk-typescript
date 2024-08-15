@@ -1,5 +1,12 @@
 # Status
 
+## Example Usage
+
+```typescript
+import { Status } from "@starton/sdk/sdk/models/operations";
+
+let value: Status = Status.Pinned;
+```
 
 ## Values
 

@@ -1,5 +1,18 @@
 # GetOneWatcherResponse
 
+## Example Usage
+
+```typescript
+import { GetOneWatcherResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneWatcherResponse = {
+    contentType: "<value>",
+    statusCode: 952749,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

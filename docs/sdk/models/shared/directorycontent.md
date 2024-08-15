@@ -1,5 +1,16 @@
 # DirectoryContent
 
+## Example Usage
+
+```typescript
+import { DirectoryContent } from "@starton/sdk/sdk/models/shared";
+
+let value: DirectoryContent = {
+    cid: "<value>",
+    name: "<value>",
+    size: 2900.77,
+};
+```
 
 ## Fields
 

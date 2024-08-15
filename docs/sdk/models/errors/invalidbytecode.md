@@ -1,5 +1,12 @@
 # InvalidBytecode
 
+## Example Usage
+
+```typescript
+import { InvalidBytecode } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

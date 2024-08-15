@@ -1,5 +1,12 @@
 # CouldNotPerformRequest
 
+## Example Usage
+
+```typescript
+import { CouldNotPerformRequest } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

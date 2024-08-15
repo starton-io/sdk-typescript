@@ -1,5 +1,12 @@
 # DeployFromTemplateDtoParams
 
+## Example Usage
+
+```typescript
+import { DeployFromTemplateDtoParams } from "@starton/sdk/sdk/models/shared";
+
+let value: DeployFromTemplateDtoParams = "<value>";
+```
 
 ## Supported Types
 

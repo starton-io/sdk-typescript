@@ -1,5 +1,12 @@
 # Category
 
+## Example Usage
+
+```typescript
+import { Category } from "@starton/sdk/sdk/models/shared";
+
+let value: Category = Category.Fungible;
+```
 
 ## Values
 

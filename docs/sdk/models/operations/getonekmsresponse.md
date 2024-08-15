@@ -1,5 +1,18 @@
 # GetOneKmsResponse
 
+## Example Usage
+
+```typescript
+import { GetOneKmsResponse } from "@starton/sdk/sdk/models/operations";
+
+let value: GetOneKmsResponse = {
+    contentType: "<value>",
+    statusCode: 456150,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

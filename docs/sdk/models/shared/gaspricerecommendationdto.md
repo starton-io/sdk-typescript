@@ -1,5 +1,16 @@
 # GasPriceRecommendationDto
 
+## Example Usage
+
+```typescript
+import { GasPriceRecommendationDto } from "@starton/sdk/sdk/models/shared";
+
+let value: GasPriceRecommendationDto = {
+    defaultRelayerUnstuck: "<value>",
+    lowest: "<value>",
+    max: "<value>",
+};
+```
 
 ## Fields
 

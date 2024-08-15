@@ -1,5 +1,22 @@
 # UpdateWatcherRequest
 
+## Example Usage
+
+```typescript
+import { UpdateWatcherRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: UpdateWatcherRequest = {
+    updateWatcherDto: {
+        confirmationsBlocks: 0,
+        description: "watcher tests",
+        metadata: {},
+        name: "watcher tests",
+        paused: true,
+        webhookUrl: "",
+    },
+    id: "ntif_f94e4a79611947d48254537a8861265d",
+};
+```
 
 ## Fields
 

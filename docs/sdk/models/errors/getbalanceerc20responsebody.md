@@ -1,5 +1,12 @@
 # GetBalanceErc20ResponseBody
 
+## Example Usage
+
+```typescript
+import { GetBalanceErc20ResponseBody } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

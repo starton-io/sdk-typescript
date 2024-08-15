@@ -1,5 +1,15 @@
 # DeleteSmartContractRequest
 
+## Example Usage
+
+```typescript
+import { DeleteSmartContractRequest } from "@starton/sdk/sdk/models/operations";
+
+let value: DeleteSmartContractRequest = {
+    address: "064 Aufderhar Burgs",
+    network: "polygon-mumbai",
+};
+```
 
 ## Fields
 

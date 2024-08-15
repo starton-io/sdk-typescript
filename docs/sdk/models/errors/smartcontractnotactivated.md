@@ -1,5 +1,12 @@
 # SmartContractNotActivated
 
+## Example Usage
+
+```typescript
+import { SmartContractNotActivated } from "@starton/sdk/sdk/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 
