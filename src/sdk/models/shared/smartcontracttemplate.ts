@@ -161,7 +161,7 @@ export const SmartContractTemplate$inboundSchema: z.ZodType<
     humanReadableAbi: z.array(z.string()),
     id: z.string(),
     isActivated: z.boolean().default(true),
-    isAudited: z.boolean().default(false),
+    isAudited: z.boolean(),
     name: z.string(),
     order: z.number().default(0),
     shortDescription: z.string(),
