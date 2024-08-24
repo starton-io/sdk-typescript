@@ -1,6 +1,8 @@
 # Invitation
 (*project.member.invitation*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Send an invitation to the project
@@ -33,7 +35,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -78,10 +79,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateInvitationResponse](../../sdk/models/operations/createinvitationresponse.md)\>**
+
 ### Errors
 
 | Error Object                                               | Status Code                                                | Content Type                                               |
@@ -89,6 +90,7 @@ run();
 | errors.CreateInvitationResponseBody                        | 400                                                        | application/json                                           |
 | errors.CreateInvitationProjectMemberInvitationResponseBody | 401                                                        | application/json                                           |
 | errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
+
 
 ## delete
 
@@ -114,7 +116,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -157,10 +158,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteInvitationResponse](../../sdk/models/operations/deleteinvitationresponse.md)\>**
+
 ### Errors
 
 | Error Object                                               | Status Code                                                | Content Type                                               |
@@ -168,6 +169,7 @@ run();
 | errors.DeleteInvitationResponseBody                        | 400                                                        | application/json                                           |
 | errors.DeleteInvitationProjectMemberInvitationResponseBody | 404                                                        | application/json                                           |
 | errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
+
 
 ## getAll
 
@@ -195,7 +197,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -240,10 +241,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllInvitationResponse](../../sdk/models/operations/getallinvitationresponse.md)\>**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

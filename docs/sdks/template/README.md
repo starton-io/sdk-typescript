@@ -1,6 +1,8 @@
 # Template
 (*smartContract.template*)
 
+## Overview
+
 ### Available Operations
 
 * [getAll](#getall) - Fetch the list of Smart Contract Templates
@@ -40,7 +42,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -93,16 +94,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllSmartContractTemplateResponse](../../sdk/models/operations/getallsmartcontracttemplateresponse.md)\>**
+
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | errors.GetAllSmartContractTemplateResponseBody | 400                                            | application/json                               |
 | errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+
 
 ## getOne
 
@@ -129,7 +131,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -173,10 +174,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneSmartContractTemplateResponse](../../sdk/models/operations/getonesmartcontracttemplateresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                        | Status Code                                                         | Content Type                                                        |

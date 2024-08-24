@@ -1,6 +1,8 @@
 # Member
 (*project.member*)
 
+## Overview
+
 ### Available Operations
 
 * [delete](#delete) - Remove a user from a project.
@@ -30,7 +32,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -73,10 +74,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteProjectMemberResponse](../../sdk/models/operations/deleteprojectmemberresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                | Status Code                                                 | Content Type                                                |
@@ -85,6 +86,7 @@ run();
 | errors.DeleteProjectMemberProjectMemberResponseBody         | 404                                                         | application/json                                            |
 | errors.DeleteProjectMemberProjectMemberResponseResponseBody | 500                                                         | application/json                                            |
 | errors.SDKError                                             | 4xx-5xx                                                     | */*                                                         |
+
 
 ## getAll
 
@@ -108,7 +110,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -148,10 +149,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllProjectMemberResponse](../../sdk/models/operations/getallprojectmemberresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |

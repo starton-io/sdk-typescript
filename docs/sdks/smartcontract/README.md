@@ -1,5 +1,2 @@
 # SmartContract
 (*smartContract*)
-
-### Available Operations
-

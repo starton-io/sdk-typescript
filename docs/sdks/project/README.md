@@ -1,5 +1,2 @@
 # Project
 (*project*)
-
-### Available Operations
-

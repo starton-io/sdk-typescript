@@ -57,7 +57,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -109,10 +108,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CallSmartContractResponse](../../sdk/models/operations/callsmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                           | Status Code                                                            | Content Type                                                           |
@@ -122,6 +121,7 @@ run();
 | errors.CallSmartContractSmartContractManagementResponseResponseBody    | 422                                                                    | application/json                                                       |
 | errors.CallSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                    | application/json                                                       |
 | errors.SDKError                                                        | 4xx-5xx                                                                | */*                                                                    |
+
 
 ## delete
 
@@ -148,7 +148,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -192,10 +191,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteSmartContractResponse](../../sdk/models/operations/deletesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |
@@ -203,6 +202,7 @@ run();
 | errors.DeleteSmartContractResponseBody                        | 400                                                           | application/json                                              |
 | errors.DeleteSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
 | errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
+
 
 ## deployFromBytecode
 
@@ -248,7 +248,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -311,10 +310,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeployFromBytecodeSmartContractResponse](../../sdk/models/operations/deployfrombytecodesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
@@ -324,6 +323,7 @@ run();
 | errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody    | 422                                                                                  | application/json                                                                     |
 | errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                                  | application/json                                                                     |
 | errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
+
 
 ## deployFromTemplate
 
@@ -361,7 +361,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -416,10 +415,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeployFromTemplateSmartContractResponse](../../sdk/models/operations/deployfromtemplatesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                                      | Status Code                                                                       | Content Type                                                                      |
@@ -428,6 +427,7 @@ run();
 | errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody         | 404                                                                               | application/json                                                                  |
 | errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody | 500                                                                               | application/json                                                                  |
 | errors.SDKError                                                                   | 4xx-5xx                                                                           | */*                                                                               |
+
 
 ## encode
 
@@ -461,7 +461,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -512,10 +511,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.EncodeSmartContractResponse](../../sdk/models/operations/encodesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                          | Status Code                                                           | Content Type                                                          |
@@ -524,6 +523,7 @@ run();
 | errors.EncodeSmartContractSmartContractManagementResponseBody         | 404                                                                   | application/json                                                      |
 | errors.EncodeSmartContractSmartContractManagementResponseResponseBody | 500                                                                   | application/json                                                      |
 | errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+
 
 ## getAll
 
@@ -555,7 +555,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -604,16 +603,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllSmartContractResponse](../../sdk/models/operations/getallsmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- |
 | errors.GetAllSmartContractResponseBody | 400                                    | application/json                       |
 | errors.SDKError                        | 4xx-5xx                                | */*                                    |
+
 
 ## getFunctions
 
@@ -640,7 +640,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -684,10 +683,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAvailableFunctionsSmartContractResponse](../../sdk/models/operations/getavailablefunctionssmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
@@ -696,6 +695,7 @@ run();
 | errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody         | 404                                                                                  | application/json                                                                     |
 | errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody | 500                                                                                  | application/json                                                                     |
 | errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
+
 
 ## getOne
 
@@ -724,7 +724,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -770,10 +769,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneSmartContractResponse](../../sdk/models/operations/getonesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |
@@ -781,6 +780,7 @@ run();
 | errors.GetOneSmartContractResponseBody                        | 400                                                           | application/json                                              |
 | errors.GetOneSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
 | errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
+
 
 ## importExisting
 
@@ -828,7 +828,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -893,16 +892,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ImportExistingSmartContractResponse](../../sdk/models/operations/importexistingsmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | errors.ImportExistingSmartContractResponseBody | 400                                            | application/json                               |
 | errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+
 
 ## read
 
@@ -935,7 +935,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -985,10 +984,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ReadSmartContractResponse](../../sdk/models/operations/readsmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                        | Status Code                                                         | Content Type                                                        |
@@ -997,6 +996,7 @@ run();
 | errors.ReadSmartContractSmartContractManagementResponseBody         | 404                                                                 | application/json                                                    |
 | errors.ReadSmartContractSmartContractManagementResponseResponseBody | 500                                                                 | application/json                                                    |
 | errors.SDKError                                                     | 4xx-5xx                                                             | */*                                                                 |
+
 
 ## update
 
@@ -1028,7 +1028,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -1077,10 +1076,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdateSmartContractResponse](../../sdk/models/operations/updatesmartcontractresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                  | Status Code                                                   | Content Type                                                  |

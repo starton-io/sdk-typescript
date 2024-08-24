@@ -54,7 +54,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -112,16 +111,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateNetworkResponse](../../sdk/models/operations/createnetworkresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.CreateNetworkResponseBody | 400                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## delete
 
@@ -147,7 +147,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -190,10 +189,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteNetworkResponse](../../sdk/models/operations/deletenetworkresponse.md)\>**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -201,6 +200,7 @@ run();
 | errors.DeleteNetworkResponseBody        | 400                                     | application/json                        |
 | errors.DeleteNetworkNetworkResponseBody | 404                                     | application/json                        |
 | errors.SDKError                         | 4xx-5xx                                 | */*                                     |
+
 
 ## getAll
 
@@ -233,7 +233,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -283,16 +282,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllNetworkResponse](../../sdk/models/operations/getallnetworkresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.GetAllNetworkResponseBody | 400                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## getOne
 
@@ -318,7 +318,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -361,10 +360,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneNetworkResponse](../../sdk/models/operations/getonenetworkresponse.md)\>**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -372,6 +371,7 @@ run();
 | errors.GetOneNetworkResponseBody        | 400                                     | application/json                        |
 | errors.GetOneNetworkNetworkResponseBody | 404                                     | application/json                        |
 | errors.SDKError                         | 4xx-5xx                                 | */*                                     |
+
 
 ## update
 
@@ -406,7 +406,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -458,10 +457,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdateNetworkResponse](../../sdk/models/operations/updatenetworkresponse.md)\>**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

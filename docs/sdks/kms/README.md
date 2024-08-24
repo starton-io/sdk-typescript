@@ -41,7 +41,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -86,16 +85,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateKmsResponse](../../sdk/models/operations/createkmsresponse.md)\>**
+
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.CreateKmsResponseBody | 400                          | application/json             |
 | errors.SDKError              | 4xx-5xx                      | */*                          |
+
 
 ## delete
 
@@ -121,7 +121,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -164,10 +163,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteKmsResponse](../../sdk/models/operations/deletekmsresponse.md)\>**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -175,6 +174,7 @@ run();
 | errors.DeleteKmsResponseBody    | 400                             | application/json                |
 | errors.DeleteKmsKmsResponseBody | 404                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## getAll
 
@@ -202,7 +202,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -247,16 +246,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllKmsResponse](../../sdk/models/operations/getallkmsresponse.md)\>**
+
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.GetAllKmsResponseBody | 400                          | application/json             |
 | errors.SDKError              | 4xx-5xx                      | */*                          |
+
 
 ## getOne
 
@@ -282,7 +282,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -325,10 +324,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneKmsResponse](../../sdk/models/operations/getonekmsresponse.md)\>**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -336,6 +335,7 @@ run();
 | errors.GetOneKmsResponseBody    | 400                             | application/json                |
 | errors.GetOneKmsKmsResponseBody | 404                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## update
 
@@ -362,7 +362,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -406,10 +405,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdateKmsResponse](../../sdk/models/operations/updatekmsresponse.md)\>**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

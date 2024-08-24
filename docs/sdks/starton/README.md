@@ -1,6 +1,5 @@
 # Starton SDK
 
-
 ## Overview
 
 Starton API: Documentation: # Introduction
@@ -69,7 +68,3 @@ Depending on your plan, you will benefit from a specific rate limit.
 | Free      | 50 requests/min          |
 | Developer | 100 requests/min         |
 | Business  | up to 10000 requests/min |
-
-
-### Available Operations
-

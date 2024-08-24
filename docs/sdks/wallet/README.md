@@ -42,7 +42,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -84,10 +83,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -95,6 +94,7 @@ run();
 | errors.CreateWalletResponseBody       | 400                                   | application/json                      |
 | errors.CreateWalletWalletResponseBody | 412                                   | application/json                      |
 | errors.SDKError                       | 4xx-5xx                               | */*                                   |
+
 
 ## delete
 
@@ -120,7 +120,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -163,10 +162,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteWalletResponse](../../sdk/models/operations/deletewalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -174,6 +173,7 @@ run();
 | errors.DeleteWalletResponseBody       | 400                                   | application/json                      |
 | errors.DeleteWalletWalletResponseBody | 404                                   | application/json                      |
 | errors.SDKError                       | 4xx-5xx                               | */*                                   |
+
 
 ## getAll
 
@@ -201,7 +201,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -246,16 +245,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllWalletResponse](../../sdk/models/operations/getallwalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.GetAllWalletResponseBody | 400                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## getOne
 
@@ -281,7 +281,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -324,10 +323,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneWalletResponse](../../sdk/models/operations/getonewalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |
@@ -335,6 +334,7 @@ run();
 | errors.GetOneWalletResponseBody       | 400                                   | application/json                      |
 | errors.GetOneWalletWalletResponseBody | 404                                   | application/json                      |
 | errors.SDKError                       | 4xx-5xx                               | */*                                   |
+
 
 ## import
 
@@ -361,7 +361,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -405,16 +404,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ImportProviderKeyWalletResponse](../../sdk/models/operations/importproviderkeywalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                               | Status Code                                | Content Type                               |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | errors.ImportProviderKeyWalletResponseBody | 400                                        | application/json                           |
 | errors.SDKError                            | 4xx-5xx                                    | */*                                        |
+
 
 ## requestFaucet
 
@@ -444,7 +444,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -491,10 +490,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ClaimFaucetResponse](../../sdk/models/operations/claimfaucetresponse.md)\>**
+
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
@@ -502,6 +501,7 @@ run();
 | errors.ClaimFaucetResponseBody       | 400                                  | application/json                     |
 | errors.ClaimFaucetWalletResponseBody | 500                                  | application/json                     |
 | errors.SDKError                      | 4xx-5xx                              | */*                                  |
+
 
 ## resyncNonce
 
@@ -528,7 +528,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -572,10 +571,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ResyncNoncesWalletResponse](../../sdk/models/operations/resyncnonceswalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                                                          | Status Code                                                           | Content Type                                                          |
@@ -585,6 +584,7 @@ run();
 | errors.ResyncNoncesWalletWalletTransactionManagerResponseBody         | 422                                                                   | application/json                                                      |
 | errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody | 500                                                                   | application/json                                                      |
 | errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+
 
 ## sign
 
@@ -613,7 +613,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -659,10 +658,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.SignMessageWalletResponse](../../sdk/models/operations/signmessagewalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |
@@ -671,6 +670,7 @@ run();
 | errors.SignMessageWalletWalletResponseBody         | 403                                                | application/json                                   |
 | errors.SignMessageWalletWalletResponseResponseBody | 404                                                | application/json                                   |
 | errors.SDKError                                    | 4xx-5xx                                            | */*                                                |
+
 
 ## update
 
@@ -697,7 +697,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -741,10 +740,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)\>**
+
 ### Errors
 
 | Error Object                          | Status Code                           | Content Type                          |

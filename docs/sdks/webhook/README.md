@@ -39,7 +39,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -81,10 +80,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CancelWebhookResponse](../../sdk/models/operations/cancelwebhookresponse.md)\>**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
@@ -93,6 +92,7 @@ run();
 | errors.CancelWebhookWebhookResponseBody         | 404                                             | application/json                                |
 | errors.CancelWebhookWebhookResponseResponseBody | 412                                             | application/json                                |
 | errors.SDKError                                 | 4xx-5xx                                         | */*                                             |
+
 
 ## getAll
 
@@ -122,7 +122,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -169,16 +168,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllWebhookResponse](../../sdk/models/operations/getallwebhookresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.GetAllWebhookResponseBody | 400                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## getOne
 
@@ -204,7 +204,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -247,10 +246,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneWebhookResponse](../../sdk/models/operations/getonewebhookresponse.md)\>**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -258,6 +257,7 @@ run();
 | errors.GetOneWebhookResponseBody        | 400                                     | application/json                        |
 | errors.GetOneWebhookWebhookResponseBody | 404                                     | application/json                        |
 | errors.SDKError                         | 4xx-5xx                                 | */*                                     |
+
 
 ## getSigningSecret
 
@@ -281,7 +281,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -321,16 +320,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneWebhookSigningSecretResponse](../../sdk/models/operations/getonewebhooksigningsecretresponse.md)\>**
+
 ### Errors
 
 | Error Object                                  | Status Code                                   | Content Type                                  |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | errors.GetOneWebhookSigningSecretResponseBody | 400                                           | application/json                              |
 | errors.SDKError                               | 4xx-5xx                                       | */*                                           |
+
 
 ## regenerateSigningSecret
 
@@ -354,7 +354,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -394,10 +393,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateWebhookSigningSecretResponse](../../sdk/models/operations/createwebhooksigningsecretresponse.md)\>**
+
 ### Errors
 
 | Error Object                                         | Status Code                                          | Content Type                                         |
@@ -405,6 +404,7 @@ run();
 | errors.CreateWebhookSigningSecretResponseBody        | 400                                                  | application/json                                     |
 | errors.CreateWebhookSigningSecretWebhookResponseBody | 401                                                  | application/json                                     |
 | errors.SDKError                                      | 4xx-5xx                                              | */*                                                  |
+
 
 ## resend
 
@@ -430,7 +430,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -473,10 +472,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ResendWebhookResponse](../../sdk/models/operations/resendwebhookresponse.md)\>**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |

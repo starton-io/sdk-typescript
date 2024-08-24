@@ -1,6 +1,8 @@
 # Rpc
 (*network.rpc*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Add a rpc (enterprise)
@@ -38,7 +40,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -86,10 +87,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateRpcResponse](../../sdk/models/operations/createrpcresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -97,6 +98,7 @@ run();
 | errors.CreateRpcResponseBody           | 400                                    | application/json                       |
 | errors.CreateRpcNetworkRpcResponseBody | 404                                    | application/json                       |
 | errors.SDKError                        | 4xx-5xx                                | */*                                    |
+
 
 ## delete
 
@@ -123,7 +125,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -167,10 +168,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteRpcResponse](../../sdk/models/operations/deleterpcresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -178,6 +179,7 @@ run();
 | errors.DeleteRpcResponseBody           | 400                                    | application/json                       |
 | errors.DeleteRpcNetworkRpcResponseBody | 404                                    | application/json                       |
 | errors.SDKError                        | 4xx-5xx                                | */*                                    |
+
 
 ## getAll
 
@@ -206,7 +208,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -252,16 +253,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllRpcResponse](../../sdk/models/operations/getallrpcresponse.md)\>**
+
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.GetAllRpcResponseBody | 400                          | application/json             |
 | errors.SDKError              | 4xx-5xx                      | */*                          |
+
 
 ## getOne
 
@@ -288,7 +290,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -332,10 +333,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOneRpcResponse](../../sdk/models/operations/getonerpcresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |
@@ -343,6 +344,7 @@ run();
 | errors.GetOneRpcResponseBody           | 400                                    | application/json                       |
 | errors.GetOneRpcNetworkRpcResponseBody | 404                                    | application/json                       |
 | errors.SDKError                        | 4xx-5xx                                | */*                                    |
+
 
 ## update
 
@@ -372,7 +374,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -419,10 +420,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdateRpcResponse](../../sdk/models/operations/updaterpcresponse.md)\>**
+
 ### Errors
 
 | Error Object                           | Status Code                            | Content Type                           |

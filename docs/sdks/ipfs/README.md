@@ -42,7 +42,6 @@ async function run() {
 run();
 ```
 
-
 ### Standalone function
 
 The standalone function version of this method:
@@ -84,10 +83,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeletePinResponse](../../sdk/models/operations/deletepinresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -95,6 +94,7 @@ run();
 | errors.DeletePinResponseBody     | 400                              | application/json                 |
 | errors.DeletePinIpfsResponseBody | 404                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## getAll
 
@@ -122,7 +122,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -167,16 +166,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAllPinResponse](../../sdk/models/operations/getallpinresponse.md)\>**
+
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.GetAllPinResponseBody | 400                          | application/json             |
 | errors.SDKError              | 4xx-5xx                      | */*                          |
+
 
 ## getOne
 
@@ -202,7 +202,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -245,10 +244,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetOnePinResponse](../../sdk/models/operations/getonepinresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -256,6 +255,7 @@ run();
 | errors.GetOnePinResponseBody     | 400                              | application/json                 |
 | errors.GetOnePinIpfsResponseBody | 404                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## getStorageUsed
 
@@ -279,7 +279,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -319,16 +318,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetStorageUsedPinResponse](../../sdk/models/operations/getstorageusedpinresponse.md)\>**
+
 ### Errors
 
 | Error Object                         | Status Code                          | Content Type                         |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | errors.GetStorageUsedPinResponseBody | 400                                  | application/json                     |
 | errors.SDKError                      | 4xx-5xx                              | */*                                  |
+
 
 ## pinExistingFile
 
@@ -355,7 +355,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -399,10 +398,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreatePinResponse](../../sdk/models/operations/createpinresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -410,6 +409,7 @@ run();
 | errors.CreatePinResponseBody     | 400                              | application/json                 |
 | errors.CreatePinIpfsResponseBody | 413                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## update
 
@@ -439,7 +439,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -486,10 +485,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UpdatePinResponse](../../sdk/models/operations/updatepinresponse.md)\>**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
@@ -497,6 +496,7 @@ run();
 | errors.UpdatePinResponseBody     | 400                              | application/json                 |
 | errors.UpdatePinIpfsResponseBody | 404                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## uploadFile
 
@@ -520,7 +520,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -561,10 +560,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UploadFromFilePinResponse](../../sdk/models/operations/uploadfromfilepinresponse.md)\>**
+
 ### Errors
 
 | Error Object                             | Status Code                              | Content Type                             |
@@ -572,6 +571,7 @@ run();
 | errors.UploadFromFilePinResponseBody     | 400                                      | application/json                         |
 | errors.UploadFromFilePinIpfsResponseBody | 413                                      | application/json                         |
 | errors.SDKError                          | 4xx-5xx                                  | */*                                      |
+
 
 ## uploadFolder
 
@@ -595,7 +595,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -636,10 +635,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UploadFromFolderPinResponse](../../sdk/models/operations/uploadfromfolderpinresponse.md)\>**
+
 ### Errors
 
 | Error Object                               | Status Code                                | Content Type                               |
@@ -647,6 +646,7 @@ run();
 | errors.UploadFromFolderPinResponseBody     | 400                                        | application/json                           |
 | errors.UploadFromFolderPinIpfsResponseBody | 413                                        | application/json                           |
 | errors.SDKError                            | 4xx-5xx                                    | */*                                        |
+
 
 ## uploadJson
 
@@ -673,7 +673,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -717,10 +716,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UploadFromJsonPinResponse](../../sdk/models/operations/uploadfromjsonpinresponse.md)\>**
+
 ### Errors
 
 | Error Object                             | Status Code                              | Content Type                             |
