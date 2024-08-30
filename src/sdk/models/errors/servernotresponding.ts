@@ -13,10 +13,10 @@ export type ServerNotRespondingData = {
      */
     rawResponse?: Response | undefined;
     context?: SchemasSERVERNOTRESPONDINGContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -26,9 +26,9 @@ export class ServerNotResponding extends Error {
      */
     rawResponse?: Response | undefined;
     context?: SchemasSERVERNOTRESPONDINGContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -48,9 +48,13 @@ export class ServerNotResponding extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "ServerNotResponding";
@@ -116,10 +120,10 @@ export const ServerNotResponding$inboundSchema: z.ZodType<
 export type ServerNotResponding$Outbound = {
     RawResponse?: never | undefined;
     context?: SchemasSERVERNOTRESPONDINGContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

@@ -114,13 +114,34 @@ run();
 
 ### Errors
 
-| Error Object                                                           | Status Code                                                            | Content Type                                                           |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| errors.CallSmartContractResponseBody                                   | 400                                                                    | application/json                                                       |
-| errors.CallSmartContractSmartContractManagementResponseBody            | 404                                                                    | application/json                                                       |
-| errors.CallSmartContractSmartContractManagementResponseResponseBody    | 422                                                                    | application/json                                                       |
-| errors.CallSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                    | application/json                                                       |
-| errors.SDKError                                                        | 4xx-5xx                                                                | */*                                                                    |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.InvalidBytecode                | 400                                   | application/json                      |
+| errors.InvalidAbi                     | 400                                   | application/json                      |
+| errors.InvalidFunction                | 400                                   | application/json                      |
+| errors.MissingArgument                | 400                                   | application/json                      |
+| errors.UnexpectedArgument             | 400                                   | application/json                      |
+| errors.InvalidArgument                | 400                                   | application/json                      |
+| errors.CallException                  | 400                                   | application/json                      |
+| errors.NumericFault                   | 400                                   | application/json                      |
+| errors.EnsNotSupported                | 400                                   | application/json                      |
+| errors.UnpredictableGasLimit          | 400                                   | application/json                      |
+| errors.ExecutionWillFail              | 400                                   | application/json                      |
+| errors.InvalidGasPrice                | 400                                   | application/json                      |
+| errors.InsufficientFunds              | 400                                   | application/json                      |
+| errors.AlreadyKnown                   | 400                                   | application/json                      |
+| errors.NonceExpired                   | 400                                   | application/json                      |
+| errors.ContractNotYetDeployed         | 400                                   | application/json                      |
+| errors.BadRequestException            | 400                                   | application/json                      |
+| errors.CouldNotFindResource           | 404                                   | application/json                      |
+| errors.ReplacementGasPriceUnderpriced | 422                                   | application/json                      |
+| errors.Unknown                        | 500                                   | application/json                      |
+| errors.CouldNotBroadcast              | 500                                   | application/json                      |
+| errors.NoProviderForNetwork           | 500                                   | application/json                      |
+| errors.CouldNotEstimateGasPrice       | 500                                   | application/json                      |
+| errors.CouldNotAssignNonce            | 500                                   | application/json                      |
+| errors.CouldNotSign                   | 500                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 
 ## delete
@@ -197,11 +218,11 @@ run();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| errors.DeleteSmartContractResponseBody                        | 400                                                           | application/json                                              |
-| errors.DeleteSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
-| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## deployFromBytecode
@@ -316,13 +337,32 @@ run();
 
 ### Errors
 
-| Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| errors.DeployFromBytecodeSmartContractResponseBody                                   | 400                                                                                  | application/json                                                                     |
-| errors.DeployFromBytecodeSmartContractSmartContractManagementResponseBody            | 404                                                                                  | application/json                                                                     |
-| errors.DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody    | 422                                                                                  | application/json                                                                     |
-| errors.DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody | 500                                                                                  | application/json                                                                     |
-| errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.InvalidBytecode                | 400                                   | application/json                      |
+| errors.InvalidAbi                     | 400                                   | application/json                      |
+| errors.MissingArgument                | 400                                   | application/json                      |
+| errors.UnexpectedArgument             | 400                                   | application/json                      |
+| errors.InvalidArgument                | 400                                   | application/json                      |
+| errors.CallException                  | 400                                   | application/json                      |
+| errors.NumericFault                   | 400                                   | application/json                      |
+| errors.EnsNotSupported                | 400                                   | application/json                      |
+| errors.ExecutionWillFail              | 400                                   | application/json                      |
+| errors.InvalidGasPrice                | 400                                   | application/json                      |
+| errors.InsufficientFunds              | 400                                   | application/json                      |
+| errors.AlreadyKnown                   | 400                                   | application/json                      |
+| errors.NonceExpired                   | 400                                   | application/json                      |
+| errors.UnpredictableGasLimit          | 400                                   | application/json                      |
+| errors.BadRequestException            | 400                                   | application/json                      |
+| errors.CouldNotFindResource           | 404                                   | application/json                      |
+| errors.ReplacementGasPriceUnderpriced | 422                                   | application/json                      |
+| errors.Unknown                        | 500                                   | application/json                      |
+| errors.NoProviderForNetwork           | 500                                   | application/json                      |
+| errors.CouldNotEstimateGasPrice       | 500                                   | application/json                      |
+| errors.CouldNotSign                   | 500                                   | application/json                      |
+| errors.CouldNotAssignNonce            | 500                                   | application/json                      |
+| errors.CouldNotBroadcast              | 500                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 
 ## deployFromTemplate
@@ -421,12 +461,33 @@ run();
 
 ### Errors
 
-| Error Object                                                                      | Status Code                                                                       | Content Type                                                                      |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| errors.DeployFromTemplateSmartContractResponseBody                                | 400                                                                               | application/json                                                                  |
-| errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody         | 404                                                                               | application/json                                                                  |
-| errors.DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody | 500                                                                               | application/json                                                                  |
-| errors.SDKError                                                                   | 4xx-5xx                                                                           | */*                                                                               |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.SmartContractNotActivated | 400                              | application/json                 |
+| errors.InvalidBytecode           | 400                              | application/json                 |
+| errors.InvalidAbi                | 400                              | application/json                 |
+| errors.MissingArgument           | 400                              | application/json                 |
+| errors.UnexpectedArgument        | 400                              | application/json                 |
+| errors.InvalidArgument           | 400                              | application/json                 |
+| errors.CallException             | 400                              | application/json                 |
+| errors.NumericFault              | 400                              | application/json                 |
+| errors.EnsNotSupported           | 400                              | application/json                 |
+| errors.ExecutionWillFail         | 400                              | application/json                 |
+| errors.InvalidGasPrice           | 400                              | application/json                 |
+| errors.InsufficientFunds         | 400                              | application/json                 |
+| errors.AlreadyKnown              | 400                              | application/json                 |
+| errors.NonceExpired              | 400                              | application/json                 |
+| errors.UnpredictableGasLimit     | 400                              | application/json                 |
+| errors.BadRequestException       | 400                              | application/json                 |
+| errors.CouldNotFindResource      | 404                              | application/json                 |
+| errors.MicroserviceNotResponding | 500                              | application/json                 |
+| errors.Unknown                   | 500                              | application/json                 |
+| errors.CouldNotEstimateGasPrice  | 500                              | application/json                 |
+| errors.CouldNotBroadcast         | 500                              | application/json                 |
+| errors.CouldNotAssignNonce       | 500                              | application/json                 |
+| errors.CouldNotSign              | 500                              | application/json                 |
+| errors.NoProviderForNetwork      | 500                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 
 ## encode
@@ -517,12 +578,22 @@ run();
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| errors.EncodeSmartContractResponseBody                                | 400                                                                   | application/json                                                      |
-| errors.EncodeSmartContractSmartContractManagementResponseBody         | 404                                                                   | application/json                                                      |
-| errors.EncodeSmartContractSmartContractManagementResponseResponseBody | 500                                                                   | application/json                                                      |
-| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.InvalidBytecode      | 400                         | application/json            |
+| errors.InvalidAbi           | 400                         | application/json            |
+| errors.InvalidFunction      | 400                         | application/json            |
+| errors.MissingArgument      | 400                         | application/json            |
+| errors.UnexpectedArgument   | 400                         | application/json            |
+| errors.InvalidArgument      | 400                         | application/json            |
+| errors.CallException        | 400                         | application/json            |
+| errors.NumericFault         | 400                         | application/json            |
+| errors.ExecutionWillFail    | 400                         | application/json            |
+| errors.EnsNotSupported      | 400                         | application/json            |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.Unknown              | 500                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## getAll
@@ -549,7 +620,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -587,7 +659,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -609,10 +682,10 @@ run();
 
 ### Errors
 
-| Error Object                           | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.GetAllSmartContractResponseBody | 400                                    | application/json                       |
-| errors.SDKError                        | 4xx-5xx                                | */*                                    |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getFunctions
@@ -689,12 +762,14 @@ run();
 
 ### Errors
 
-| Error Object                                                                         | Status Code                                                                          | Content Type                                                                         |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| errors.GetAvailableFunctionsSmartContractResponseBody                                | 400                                                                                  | application/json                                                                     |
-| errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseBody         | 404                                                                                  | application/json                                                                     |
-| errors.GetAvailableFunctionsSmartContractSmartContractManagementResponseResponseBody | 500                                                                                  | application/json                                                                     |
-| errors.SDKError                                                                      | 4xx-5xx                                                                              | */*                                                                                  |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.InvalidBytecode      | 400                         | application/json            |
+| errors.InvalidAbi           | 400                         | application/json            |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.Unknown              | 500                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## getOne
@@ -775,11 +850,11 @@ run();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| errors.GetOneSmartContractResponseBody                        | 400                                                           | application/json                                              |
-| errors.GetOneSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
-| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## importExisting
@@ -898,10 +973,11 @@ run();
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| errors.ImportExistingSmartContractResponseBody | 400                                            | application/json                               |
-| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.InvalidAbi          | 400                        | application/json           |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## read
@@ -990,12 +1066,22 @@ run();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| errors.ReadSmartContractResponseBody                                | 400                                                                 | application/json                                                    |
-| errors.ReadSmartContractSmartContractManagementResponseBody         | 404                                                                 | application/json                                                    |
-| errors.ReadSmartContractSmartContractManagementResponseResponseBody | 500                                                                 | application/json                                                    |
-| errors.SDKError                                                     | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.InvalidBytecode      | 400                         | application/json            |
+| errors.InvalidAbi           | 400                         | application/json            |
+| errors.InvalidFunction      | 400                         | application/json            |
+| errors.MissingArgument      | 400                         | application/json            |
+| errors.UnexpectedArgument   | 400                         | application/json            |
+| errors.InvalidArgument      | 400                         | application/json            |
+| errors.CallException        | 400                         | application/json            |
+| errors.NumericFault         | 400                         | application/json            |
+| errors.ExecutionWillFail    | 400                         | application/json            |
+| errors.EnsNotSupported      | 400                         | application/json            |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.Unknown              | 500                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## update
@@ -1082,8 +1168,8 @@ run();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| errors.UpdateSmartContractResponseBody                        | 400                                                           | application/json                                              |
-| errors.UpdateSmartContractSmartContractManagementResponseBody | 404                                                           | application/json                                              |
-| errors.SDKError                                               | 4xx-5xx                                                       | */*                                                           |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

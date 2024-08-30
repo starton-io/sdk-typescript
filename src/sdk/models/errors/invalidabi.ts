@@ -37,10 +37,10 @@ export type InvalidAbiData = {
      */
     rawResponse6?: Response | undefined;
     context?: SchemasINVALIDABIContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -74,9 +74,9 @@ export class InvalidAbi extends Error {
      */
     rawResponse6?: Response | undefined;
     context?: SchemasINVALIDABIContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -114,9 +114,13 @@ export class InvalidAbi extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "InvalidAbi";
@@ -194,10 +198,10 @@ export type InvalidAbi$Outbound = {
     RawResponse5?: never | undefined;
     RawResponse6?: never | undefined;
     context?: SchemasINVALIDABIContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

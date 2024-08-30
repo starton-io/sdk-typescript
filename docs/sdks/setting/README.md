@@ -80,11 +80,11 @@ run();
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| errors.GetAllSettingRelayerResponseBody                          | 400                                                              | application/json                                                 |
-| errors.GetAllSettingRelayerTransactionManagerSettingResponseBody | 404                                                              | application/json                                                 |
-| errors.SDKError                                                  | 4xx-5xx                                                          | */*                                                              |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## update
@@ -175,8 +175,8 @@ run();
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| errors.UpdateSettingRelayerResponseBody                          | 400                                                              | application/json                                                 |
-| errors.UpdateSettingRelayerTransactionManagerSettingResponseBody | 404                                                              | application/json                                                 |
-| errors.SDKError                                                  | 4xx-5xx                                                          | */*                                                              |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

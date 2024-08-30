@@ -80,12 +80,12 @@ run();
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| errors.DeleteProjectMemberResponseBody                      | 400                                                         | application/json                                            |
-| errors.DeleteProjectMemberProjectMemberResponseBody         | 404                                                         | application/json                                            |
-| errors.DeleteProjectMemberProjectMemberResponseResponseBody | 500                                                         | application/json                                            |
-| errors.SDKError                                             | 4xx-5xx                                                     | */*                                                         |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.BadRequestException       | 400                              | application/json                 |
+| errors.CouldNotFindResource      | 404                              | application/json                 |
+| errors.MicroserviceNotResponding | 500                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 
 ## getAll
@@ -155,7 +155,7 @@ run();
 
 ### Errors
 
-| Error Object                           | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.GetAllProjectMemberResponseBody | 400                                    | application/json                       |
-| errors.SDKError                        | 4xx-5xx                                | */*                                    |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

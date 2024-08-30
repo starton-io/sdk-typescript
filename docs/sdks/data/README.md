@@ -85,10 +85,10 @@ run();
 
 ### Errors
 
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| errors.GetBalanceAddressResponseBody | 400                                  | application/json                     |
-| errors.SDKError                      | 4xx-5xx                              | */*                                  |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getErc20Balance
@@ -167,10 +167,10 @@ run();
 
 ### Errors
 
-| Error Object                       | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.GetBalanceErc20ResponseBody | 400                                | application/json                   |
-| errors.SDKError                    | 4xx-5xx                            | */*                                |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getGasPrice
@@ -245,7 +245,7 @@ run();
 
 ### Errors
 
-| Error Object                      | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.GetAllGasPriceResponseBody | 400                               | application/json                  |
-| errors.SDKError                   | 4xx-5xx                           | */*                               |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

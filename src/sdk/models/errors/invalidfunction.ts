@@ -21,10 +21,10 @@ export type InvalidFunctionData = {
      */
     rawResponse2?: Response | undefined;
     context?: SchemasINVALIDFUNCTIONContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -42,9 +42,9 @@ export class InvalidFunction extends Error {
      */
     rawResponse2?: Response | undefined;
     context?: SchemasINVALIDFUNCTIONContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -70,9 +70,13 @@ export class InvalidFunction extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "InvalidFunction";
@@ -138,10 +142,10 @@ export type InvalidFunction$Outbound = {
     RawResponse1?: never | undefined;
     RawResponse2?: never | undefined;
     context?: SchemasINVALIDFUNCTIONContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

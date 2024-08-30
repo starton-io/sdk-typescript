@@ -177,10 +177,10 @@ export type CouldNotFindResourceData = {
      */
     rawResponse9?: Response | undefined;
     context?: SchemasCOULDNOTFINDRESOURCEContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -354,9 +354,9 @@ export class CouldNotFindResource extends Error {
      */
     rawResponse9?: Response | undefined;
     context?: SchemasCOULDNOTFINDRESOURCEContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -499,9 +499,13 @@ export class CouldNotFindResource extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "CouldNotFindResource";
@@ -690,10 +694,10 @@ export type CouldNotFindResource$Outbound = {
     RawResponse8?: never | undefined;
     RawResponse9?: never | undefined;
     context?: SchemasCOULDNOTFINDRESOURCEContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

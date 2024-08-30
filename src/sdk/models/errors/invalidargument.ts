@@ -29,10 +29,10 @@ export type InvalidArgumentData = {
      */
     rawResponse4?: Response | undefined;
     context?: SchemasINVALIDARGUMENTContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -58,9 +58,9 @@ export class InvalidArgument extends Error {
      */
     rawResponse4?: Response | undefined;
     context?: SchemasINVALIDARGUMENTContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -92,9 +92,13 @@ export class InvalidArgument extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "InvalidArgument";
@@ -166,10 +170,10 @@ export type InvalidArgument$Outbound = {
     RawResponse3?: never | undefined;
     RawResponse4?: never | undefined;
     context?: SchemasINVALIDARGUMENTContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

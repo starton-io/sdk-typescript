@@ -301,10 +301,10 @@ export type BadRequestExceptionData = {
      */
     rawResponse9?: Response | undefined;
     context?: SchemasContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     message: Array<string>;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -602,9 +602,9 @@ export class BadRequestException extends Error {
      */
     rawResponse9?: Response | undefined;
     context?: SchemasContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -840,9 +840,13 @@ export class BadRequestException extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "BadRequestException";
@@ -1119,10 +1123,10 @@ export type BadRequestException$Outbound = {
     RawResponse8?: never | undefined;
     RawResponse9?: never | undefined;
     context?: SchemasContext$Outbound | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     message: Array<string>;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

@@ -33,10 +33,10 @@ export type CouldNotAssignNonceData = {
      */
     rawResponse5?: Response | undefined;
     context?: SchemasCOULDNOTASSIGNNONCEContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -66,9 +66,9 @@ export class CouldNotAssignNonce extends Error {
      */
     rawResponse5?: Response | undefined;
     context?: SchemasCOULDNOTASSIGNNONCEContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -103,9 +103,13 @@ export class CouldNotAssignNonce extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "CouldNotAssignNonce";
@@ -186,10 +190,10 @@ export type CouldNotAssignNonce$Outbound = {
     RawResponse4?: never | undefined;
     RawResponse5?: never | undefined;
     context?: SchemasCOULDNOTASSIGNNONCEContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

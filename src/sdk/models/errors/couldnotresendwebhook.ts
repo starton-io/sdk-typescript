@@ -13,10 +13,10 @@ export type CouldNotResendWebhookData = {
      */
     rawResponse?: Response | undefined;
     context?: SchemasCOULDNOTRESENDWEBHOOKContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -26,9 +26,9 @@ export class CouldNotResendWebhook extends Error {
      */
     rawResponse?: Response | undefined;
     context?: SchemasCOULDNOTRESENDWEBHOOKContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -48,9 +48,13 @@ export class CouldNotResendWebhook extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "CouldNotResendWebhook";
@@ -116,10 +120,10 @@ export const CouldNotResendWebhook$inboundSchema: z.ZodType<
 export type CouldNotResendWebhook$Outbound = {
     RawResponse?: never | undefined;
     context?: SchemasCOULDNOTRESENDWEBHOOKContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

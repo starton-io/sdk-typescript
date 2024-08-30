@@ -29,10 +29,10 @@ export type EnsNotSupportedData = {
      */
     rawResponse4?: Response | undefined;
     context?: SchemasENSNOTSUPPORTEDContext | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 
@@ -58,9 +58,9 @@ export class EnsNotSupported extends Error {
      */
     rawResponse4?: Response | undefined;
     context?: SchemasENSNOTSUPPORTEDContext | null | undefined;
-    errorCode: string;
+    errorCode?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 
     /** The original data that was passed to this error instance. */
@@ -92,9 +92,13 @@ export class EnsNotSupported extends Error {
         if (err.context != null) {
             this.context = err.context;
         }
-        this.errorCode = err.errorCode;
+        if (err.errorCode != null) {
+            this.errorCode = err.errorCode;
+        }
         this.path = err.path;
-        this.statusCode = err.statusCode;
+        if (err.statusCode != null) {
+            this.statusCode = err.statusCode;
+        }
         this.timestamp = err.timestamp;
 
         this.name = "EnsNotSupported";
@@ -166,10 +170,10 @@ export type EnsNotSupported$Outbound = {
     RawResponse3?: never | undefined;
     RawResponse4?: never | undefined;
     context?: SchemasENSNOTSUPPORTEDContext$Outbound | null | undefined;
-    errorCode: string;
-    message: string;
+    errorCode?: string;
+    message?: string;
     path: string;
-    statusCode: number;
+    statusCode?: number;
     timestamp: string;
 };
 

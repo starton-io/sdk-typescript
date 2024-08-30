@@ -86,12 +86,12 @@ run();
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| errors.CancelWebhookResponseBody                | 400                                             | application/json                                |
-| errors.CancelWebhookWebhookResponseBody         | 404                                             | application/json                                |
-| errors.CancelWebhookWebhookResponseResponseBody | 412                                             | application/json                                |
-| errors.SDKError                                 | 4xx-5xx                                         | */*                                             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.BadRequestException   | 400                          | application/json             |
+| errors.CouldNotFindResource  | 404                          | application/json             |
+| errors.CouldNotCancelWebhook | 412                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 
 ## getAll
@@ -116,7 +116,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -152,7 +153,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -174,10 +176,10 @@ run();
 
 ### Errors
 
-| Error Object                     | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.GetAllWebhookResponseBody | 400                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getOne
@@ -252,11 +254,11 @@ run();
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| errors.GetOneWebhookResponseBody        | 400                                     | application/json                        |
-| errors.GetOneWebhookWebhookResponseBody | 404                                     | application/json                        |
-| errors.SDKError                         | 4xx-5xx                                 | */*                                     |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## getSigningSecret
@@ -326,10 +328,10 @@ run();
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| errors.GetOneWebhookSigningSecretResponseBody | 400                                           | application/json                              |
-| errors.SDKError                               | 4xx-5xx                                       | */*                                           |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## regenerateSigningSecret
@@ -399,11 +401,11 @@ run();
 
 ### Errors
 
-| Error Object                                         | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| errors.CreateWebhookSigningSecretResponseBody        | 400                                                  | application/json                                     |
-| errors.CreateWebhookSigningSecretWebhookResponseBody | 401                                                  | application/json                                     |
-| errors.SDKError                                      | 4xx-5xx                                              | */*                                                  |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.NotAuthenticated    | 401                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## resend
@@ -478,9 +480,9 @@ run();
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| errors.ResendWebhookResponseBody                | 400                                             | application/json                                |
-| errors.ResendWebhookWebhookResponseBody         | 404                                             | application/json                                |
-| errors.ResendWebhookWebhookResponseResponseBody | 412                                             | application/json                                |
-| errors.SDKError                                 | 4xx-5xx                                         | */*                                             |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.BadRequestException   | 400                          | application/json             |
+| errors.CouldNotFindResource  | 404                          | application/json             |
+| errors.CouldNotResendWebhook | 412                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |

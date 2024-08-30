@@ -85,11 +85,11 @@ run();
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| errors.CreateInvitationResponseBody                        | 400                                                        | application/json                                           |
-| errors.CreateInvitationProjectMemberInvitationResponseBody | 401                                                        | application/json                                           |
-| errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.NotAuthenticated    | 401                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## delete
@@ -164,11 +164,11 @@ run();
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| errors.DeleteInvitationResponseBody                        | 400                                                        | application/json                                           |
-| errors.DeleteInvitationProjectMemberInvitationResponseBody | 404                                                        | application/json                                           |
-| errors.SDKError                                            | 4xx-5xx                                                    | */*                                                        |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## getAll
@@ -191,7 +191,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -225,7 +226,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -247,7 +249,7 @@ run();
 
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.GetAllInvitationResponseBody | 400                                 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

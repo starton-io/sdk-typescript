@@ -89,11 +89,11 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.CreateWalletResponseBody       | 400                                   | application/json                      |
-| errors.CreateWalletWalletResponseBody | 412                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.MaximumWalletReached | 412                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## delete
@@ -168,11 +168,11 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.DeleteWalletResponseBody       | 400                                   | application/json                      |
-| errors.DeleteWalletWalletResponseBody | 404                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## getAll
@@ -195,7 +195,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -229,7 +230,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -251,10 +253,10 @@ run();
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.GetAllWalletResponseBody | 400                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getOne
@@ -329,11 +331,11 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.GetOneWalletResponseBody       | 400                                   | application/json                      |
-| errors.GetOneWalletWalletResponseBody | 404                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## import
@@ -410,10 +412,10 @@ run();
 
 ### Errors
 
-| Error Object                               | Status Code                                | Content Type                               |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| errors.ImportProviderKeyWalletResponseBody | 400                                        | application/json                           |
-| errors.SDKError                            | 4xx-5xx                                    | */*                                        |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## requestFaucet
@@ -496,11 +498,12 @@ run();
 
 ### Errors
 
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| errors.ClaimFaucetResponseBody       | 400                                  | application/json                     |
-| errors.ClaimFaucetWalletResponseBody | 500                                  | application/json                     |
-| errors.SDKError                      | 4xx-5xx                              | */*                                  |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.BadRequestException       | 400                              | application/json                 |
+| errors.MicroserviceNotResponding | 500                              | application/json                 |
+| errors.CouldNotPerformRequest    | 500                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 
 ## resyncNonce
@@ -577,13 +580,13 @@ run();
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| errors.ResyncNoncesWalletResponseBody                                 | 400                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletResponseBody                           | 404                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletTransactionManagerResponseBody         | 422                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody | 500                                                                   | application/json                                                      |
-| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.BadRequestException   | 400                          | application/json             |
+| errors.CouldNotFindResource  | 404                          | application/json             |
+| errors.CouldNotProcessEntity | 422                          | application/json             |
+| errors.CouldNotAssignNonce   | 500                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 
 ## sign
@@ -664,12 +667,12 @@ run();
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| errors.SignMessageWalletResponseBody               | 400                                                | application/json                                   |
-| errors.SignMessageWalletWalletResponseBody         | 403                                                | application/json                                   |
-| errors.SignMessageWalletWalletResponseResponseBody | 404                                                | application/json                                   |
-| errors.SDKError                                    | 4xx-5xx                                            | */*                                                |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.Forbidden            | 403                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## update
@@ -746,8 +749,8 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.UpdateWalletResponseBody       | 400                                   | application/json                      |
-| errors.UpdateWalletWalletResponseBody | 404                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

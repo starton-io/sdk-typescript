@@ -103,13 +103,24 @@ run();
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| errors.CreateTransactionResponseBody                              | 400                                                               | application/json                                                  |
-| errors.CreateTransactionTransactionManagerResponseBody            | 404                                                               | application/json                                                  |
-| errors.CreateTransactionTransactionManagerResponseResponseBody    | 422                                                               | application/json                                                  |
-| errors.CreateTransactionTransactionManagerResponse500ResponseBody | 500                                                               | application/json                                                  |
-| errors.SDKError                                                   | 4xx-5xx                                                           | */*                                                               |
+| Error Object                          | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.NonceExpired                   | 400                                   | application/json                      |
+| errors.ExecutionWillFail              | 400                                   | application/json                      |
+| errors.InvalidGasPrice                | 400                                   | application/json                      |
+| errors.InsufficientFunds              | 400                                   | application/json                      |
+| errors.AlreadyKnown                   | 400                                   | application/json                      |
+| errors.UnpredictableGasLimit          | 400                                   | application/json                      |
+| errors.BadRequestException            | 400                                   | application/json                      |
+| errors.CouldNotFindResource           | 404                                   | application/json                      |
+| errors.ReplacementGasPriceUnderpriced | 422                                   | application/json                      |
+| errors.CouldNotAssignNonce            | 500                                   | application/json                      |
+| errors.CouldNotBroadcast              | 500                                   | application/json                      |
+| errors.CouldNotEstimateGasPrice       | 500                                   | application/json                      |
+| errors.NoProviderForNetwork           | 500                                   | application/json                      |
+| errors.CouldNotSign                   | 500                                   | application/json                      |
+| errors.Unknown                        | 500                                   | application/json                      |
+| errors.SDKError                       | 4xx-5xx                               | */*                                   |
 
 
 ## getAll
@@ -136,7 +147,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -174,7 +186,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -196,10 +209,10 @@ run();
 
 ### Errors
 
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| errors.GetAllTransactionResponseBody | 400                                  | application/json                     |
-| errors.SDKError                      | 4xx-5xx                              | */*                                  |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getAvailableNonces
@@ -276,13 +289,13 @@ run();
 
 ### Errors
 
-| Error Object                                                             | Status Code                                                              | Content Type                                                             |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| errors.GetAvailableNoncesWalletResponseBody                              | 400                                                                      | application/json                                                         |
-| errors.GetAvailableNoncesWalletTransactionManagerResponseBody            | 404                                                                      | application/json                                                         |
-| errors.GetAvailableNoncesWalletTransactionManagerResponseResponseBody    | 422                                                                      | application/json                                                         |
-| errors.GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody | 500                                                                      | application/json                                                         |
-| errors.SDKError                                                          | 4xx-5xx                                                                  | */*                                                                      |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.BadRequestException   | 400                          | application/json             |
+| errors.CouldNotFindResource  | 404                          | application/json             |
+| errors.CouldNotProcessEntity | 422                          | application/json             |
+| errors.CouldNotAssignNonce   | 500                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 
 ## getOne
@@ -357,11 +370,11 @@ run();
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| errors.GetOneTransactionResponseBody                   | 400                                                    | application/json                                       |
-| errors.GetOneTransactionTransactionManagerResponseBody | 404                                                    | application/json                                       |
-| errors.SDKError                                        | 4xx-5xx                                                | */*                                                    |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## resyncNonce
@@ -438,10 +451,10 @@ run();
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| errors.ResyncNoncesWalletResponseBody                                 | 400                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletResponseBody                           | 404                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletTransactionManagerResponseBody         | 422                                                                   | application/json                                                      |
-| errors.ResyncNoncesWalletWalletTransactionManagerResponseResponseBody | 500                                                                   | application/json                                                      |
-| errors.SDKError                                                       | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.BadRequestException   | 400                          | application/json             |
+| errors.CouldNotFindResource  | 404                          | application/json             |
+| errors.CouldNotProcessEntity | 422                          | application/json             |
+| errors.CouldNotAssignNonce   | 500                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |

@@ -36,7 +36,8 @@ async function run() {
   });
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -78,7 +79,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -100,10 +102,10 @@ run();
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| errors.GetAllSmartContractTemplateResponseBody | 400                                            | application/json                               |
-| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequestException | 400                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## getOne
@@ -180,8 +182,8 @@ run();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| errors.GetOneSmartContractTemplateResponseBody                      | 400                                                                 | application/json                                                    |
-| errors.GetOneSmartContractTemplateSmartContractTemplateResponseBody | 404                                                                 | application/json                                                    |
-| errors.SDKError                                                     | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.BadRequestException  | 400                         | application/json            |
+| errors.CouldNotFindResource | 404                         | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
