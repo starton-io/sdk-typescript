@@ -5,7 +5,7 @@
 ```typescript
 import { WatcherType } from "@starton/sdk/sdk/models/shared";
 
-let value: WatcherType = WatcherType.Erc1155EventTransferBatch;
+let value: WatcherType = WatcherType.EventTransfer;
 ```
 
 ## Values

@@ -5,15 +5,12 @@
 ```typescript
 import { Files } from "@starton/sdk/sdk/models/operations";
 
-let value: Files = {
-    content: new TextEncoder().encode("0xbBe2fec3bE"),
-    fileName: "your_file_here",
-};
+// No examples available for this model
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `content`          | *Uint8Array*       | :heavy_check_mark: | N/A                |
-| `fileName`         | *string*           | :heavy_check_mark: | N/A                |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `content`                    | *ReadableStream<Uint8Array>* | :heavy_check_mark:           | N/A                          |
+| `fileName`                   | *string*                     | :heavy_check_mark:           | N/A                          |

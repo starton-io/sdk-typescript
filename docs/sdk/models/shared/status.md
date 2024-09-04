@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "@starton/sdk/sdk/models/shared";
 
-let value: Status = Status.Pinning;
+let value: Status = Status.Failed;
 ```
 
 ## Values

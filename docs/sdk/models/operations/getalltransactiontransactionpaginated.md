@@ -10,7 +10,7 @@ let value: GetAllTransactionTransactionPaginated = {
     items: [
         {
             automaticNonce: false,
-            chainId: 1352.18,
+            chainId: 6788.8,
             from: "<value>",
             id: "<id>",
             isDeployTransaction: false,
@@ -18,21 +18,21 @@ let value: GetAllTransactionTransactionPaginated = {
                 {
                     createdAt: "<value>",
                     message: "<value>",
-                    type: TransactionLogType.Unsigned,
+                    type: TransactionLogType.ReceivedByStarton,
                 },
             ],
             network: "<value>",
             projectId: "<value>",
             signerWallet: "<value>",
-            state: TransactionState.Pending,
-            status: TransactionStatus.Signed,
+            state: TransactionState.ManualActionRequired,
+            status: TransactionStatus.SentToMempool,
             value: "<value>",
         },
     ],
     meta: {
-        currentPage: 1496.75,
-        itemCount: 6120.96,
-        itemsPerPage: 2223.21,
+        currentPage: 5820.2,
+        itemCount: 1433.53,
+        itemsPerPage: 5373.73,
     },
 };
 ```

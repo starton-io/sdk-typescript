@@ -9,8 +9,8 @@ let value: Rpc = {
     id: "<id>",
     isPublic: false,
     networkName: "<value>",
-    type: RpcType.Full,
-    url: "https://steel-handicap.name",
+    type: RpcType.Archive,
+    url: "https://miserly-pruner.info",
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { ImportSmartContractDtoDeployMethod } from "@starton/sdk/sdk/models/shared";
 
-let value: ImportSmartContractDtoDeployMethod = ImportSmartContractDtoDeployMethod.Kms;
+let value: ImportSmartContractDtoDeployMethod = ImportSmartContractDtoDeployMethod.Web3;
 ```
 
 ## Values

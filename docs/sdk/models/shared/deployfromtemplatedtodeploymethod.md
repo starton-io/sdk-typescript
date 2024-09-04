@@ -5,7 +5,7 @@
 ```typescript
 import { DeployFromTemplateDtoDeployMethod } from "@starton/sdk/sdk/models/shared";
 
-let value: DeployFromTemplateDtoDeployMethod = DeployFromTemplateDtoDeployMethod.Web3;
+let value: DeployFromTemplateDtoDeployMethod = DeployFromTemplateDtoDeployMethod.Kms;
 ```
 
 ## Values

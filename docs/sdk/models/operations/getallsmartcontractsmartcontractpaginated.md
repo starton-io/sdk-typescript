@@ -9,19 +9,19 @@ import { SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 let value: GetAllSmartContractSmartContractPaginated = {
     items: [
         {
-            address: "41638 Terrill Causeway",
+            address: "099 Koss Mall",
             id: "<id>",
             name: "<value>",
             network: "<value>",
             projectId: "<value>",
-            state: State.Success,
-            status: SmartContractStatus.AlreadyKnown,
+            state: State.Error,
+            status: SmartContractStatus.ErrorPublish,
         },
     ],
     meta: {
-        currentPage: 5651.89,
-        itemCount: 5666.02,
-        itemsPerPage: 8651.03,
+        currentPage: 6048.46,
+        itemCount: 4511.59,
+        itemsPerPage: 7392.64,
     },
 };
 ```

@@ -6,7 +6,7 @@
 import { DeleteSmartContractRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteSmartContractRequest = {
-    address: "064 Aufderhar Burgs",
+    address: "3171 Hills Plaza",
     network: "polygon-mumbai",
 };
 ```

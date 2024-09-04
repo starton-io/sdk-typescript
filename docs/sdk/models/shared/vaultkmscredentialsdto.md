@@ -12,7 +12,7 @@ let value: VaultKmsCredentialsDto = {
     role: "<value>",
     rootPath: "<value>",
     selfSigned: false,
-    timeout: 923.73,
+    timeout: 2305.33,
     tokenPath: "<value>",
 };
 ```

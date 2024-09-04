@@ -5,7 +5,7 @@
 ```typescript
 import { Speed } from "@starton/sdk/sdk/models/shared";
 
-let value: Speed = Speed.Low;
+let value: Speed = Speed.Fastest;
 ```
 
 ## Values

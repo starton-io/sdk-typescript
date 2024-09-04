@@ -11,8 +11,8 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
         {
             abi: [{}],
             blockchains: ["<value>"],
-            category: Category.Sale,
-            description: "Switchable discrete data-warehouse",
+            category: Category.Nft,
+            description: "Down-sized needs-based knowledge base",
             githubUrl: "<value>",
             humanReadableAbi: ["<value>"],
             id: "<id>",
@@ -22,9 +22,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
         },
     ],
     meta: {
-        currentPage: 1831.91,
-        itemCount: 3978.21,
-        itemsPerPage: 5865.13,
+        currentPage: 5666.02,
+        itemCount: 8651.03,
+        itemsPerPage: 2653.89,
     },
 };
 ```

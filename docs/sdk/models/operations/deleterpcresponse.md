@@ -7,7 +7,7 @@ import { DeleteRpcResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteRpcResponse = {
     contentType: "<value>",
-    statusCode: 988374,
+    statusCode: 697631,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

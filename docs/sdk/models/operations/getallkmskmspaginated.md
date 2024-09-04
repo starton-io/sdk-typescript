@@ -13,13 +13,13 @@ let value: GetAllKmsKmsPaginated = {
             id: "<id>",
             name: "<value>",
             projectId: "<value>",
-            provider: KmsProvider.Aws,
+            provider: KmsProvider.Vault,
         },
     ],
     meta: {
-        currentPage: 2645.55,
-        itemCount: 1863.32,
-        itemsPerPage: 7742.34,
+        currentPage: 9786.19,
+        itemCount: 4736.08,
+        itemsPerPage: 7991.59,
     },
 };
 ```

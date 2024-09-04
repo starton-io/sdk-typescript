@@ -5,7 +5,7 @@
 ```typescript
 import { DirectoryContentType } from "@starton/sdk/sdk/models/shared";
 
-let value: DirectoryContentType = DirectoryContentType.Directory;
+let value: DirectoryContentType = DirectoryContentType.File;
 ```
 
 ## Values

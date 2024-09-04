@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionLogType } from "@starton/sdk/sdk/models/shared";
 
-let value: TransactionLogType = TransactionLogType.CouldNotEstimateGasLimit;
+let value: TransactionLogType = TransactionLogType.Mined;
 ```
 
 ## Values

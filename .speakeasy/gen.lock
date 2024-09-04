@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.383.2
-  generationVersion: 2.407.0
-  releaseVersion: 0.21.2
-  configChecksum: cd4880603c9e8062f5f932af24bb8488
+  speakeasyVersion: 1.390.1
+  generationVersion: 2.409.0
+  releaseVersion: 0.22.0
+  configChecksum: d98c27ae2603ddf1b20a1f254753f7c6
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.14.1
+    core: 3.16.0
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
@@ -32,6 +32,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.7
+    uploadStreams: 0.1.0
 generatedFiles:
   - src/funcs/dataGetBalance.ts
   - src/funcs/dataGetErc20Balance.ts
@@ -136,6 +137,7 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
   - src/lib/logger.ts
@@ -157,6 +159,7 @@ generatedFiles:
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
+  - src/sdk/types/streams.ts
   - tsconfig.json
   - src/sdk/models/operations/getbalanceaddress.ts
   - src/sdk/models/operations/getbalanceerc20.ts

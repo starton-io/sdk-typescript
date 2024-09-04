@@ -5,7 +5,7 @@
 ```typescript
 import { ImportSmartContractDtoParams } from "@starton/sdk/sdk/models/shared";
 
-let value: ImportSmartContractDtoParams = {};
+let value: ImportSmartContractDtoParams = false;
 ```
 
 ## Supported Types

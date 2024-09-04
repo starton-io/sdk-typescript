@@ -8,7 +8,7 @@ import { DeployFromBytecodeDto, Type } from "@starton/sdk/sdk/models/shared";
 let value: DeployFromBytecodeDto = {
     abi: [
         {
-            type: Type.Event,
+            type: Type.Fallback,
         },
     ],
     bytecode: "<value>",

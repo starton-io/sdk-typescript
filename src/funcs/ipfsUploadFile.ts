@@ -4,6 +4,7 @@
 
 import { StartonCore } from "../core.js";
 import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
+import { readableStreamToArrayBuffer } from "../lib/files.js";
 import * as m$ from "../lib/matchers.js";
 import * as schemas$ from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -22,6 +23,7 @@ import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { isBlobLike } from "../sdk/types/blobs.js";
 import { Result } from "../sdk/types/fp.js";
+import { isReadableStream } from "../sdk/types/streams.js";
 
 /**
  * Upload a file
@@ -63,6 +65,10 @@ export async function ipfsUploadFile(
     if (payload$.file !== undefined) {
         if (isBlobLike(payload$.file)) {
             body$.append("file", payload$.file);
+        } else if (isReadableStream(payload$.file.content)) {
+            const buffer = await readableStreamToArrayBuffer(payload$.file.content);
+            const blob = new Blob([buffer], { type: "application/octet-stream" });
+            body$.append("file", blob);
         } else {
             body$.append(
                 "file",

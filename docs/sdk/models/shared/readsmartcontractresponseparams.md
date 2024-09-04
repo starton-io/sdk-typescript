@@ -5,7 +5,7 @@
 ```typescript
 import { ReadSmartContractResponseParams } from "@starton/sdk/sdk/models/shared";
 
-let value: ReadSmartContractResponseParams = 9702.37;
+let value: ReadSmartContractResponseParams = {};
 ```
 
 ## Supported Types

@@ -7,12 +7,12 @@ import { WatcherEvent, WatcherEventStatus } from "@starton/sdk/sdk/models/shared
 
 let value: WatcherEvent = {
     blockHash: "<value>",
-    blockNumber: 9064.18,
+    blockNumber: 6963.44,
     id: "<id>",
     network: "<value>",
     payload: {},
     projectId: "<value>",
-    status: WatcherEventStatus.PendingValidation,
+    status: WatcherEventStatus.Canceled,
     txHash: "<value>",
     watcherId: "<value>",
 };

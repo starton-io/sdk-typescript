@@ -7,7 +7,7 @@ import { CancelWebhookResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CancelWebhookResponse = {
     contentType: "<value>",
-    statusCode: 449198,
+    statusCode: 4695,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

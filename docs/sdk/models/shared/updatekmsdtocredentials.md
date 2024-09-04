@@ -12,7 +12,7 @@ let value: UpdateKmsDtoCredentials = {
     role: "<value>",
     rootPath: "<value>",
     selfSigned: false,
-    timeout: 3540.47,
+    timeout: 3948.69,
     tokenPath: "<value>",
 };
 ```

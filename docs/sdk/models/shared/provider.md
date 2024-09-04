@@ -5,7 +5,7 @@
 ```typescript
 import { Provider } from "@starton/sdk/sdk/models/shared";
 
-let value: Provider = Provider.Aws;
+let value: Provider = Provider.Vault;
 ```
 
 ## Values

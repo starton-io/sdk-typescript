@@ -12,14 +12,14 @@ let value: GetAllRpcRpcPaginated = {
             id: "<id>",
             isPublic: false,
             networkName: "<value>",
-            type: RpcType.Full,
-            url: "http://prize-cornmeal.name",
+            type: RpcType.Archive,
+            url: "http://wiggly-plane.name",
         },
     ],
     meta: {
-        currentPage: 1613.09,
-        itemCount: 9953,
-        itemsPerPage: 6531.08,
+        currentPage: 6706.38,
+        itemCount: 1709.09,
+        itemsPerPage: 2103.82,
     },
 };
 ```

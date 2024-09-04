@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateRpcDtoType } from "@starton/sdk/sdk/models/shared";
 
-let value: UpdateRpcDtoType = UpdateRpcDtoType.Archive;
+let value: UpdateRpcDtoType = UpdateRpcDtoType.Full;
 ```
 
 ## Values

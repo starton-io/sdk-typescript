@@ -11,8 +11,8 @@ let value: Webhook = {
     payload: {},
     projectId: "<value>",
     refId: "<value>",
-    status: WebhookStatus.Retrying,
-    url: "http://sizzling-syrup.biz",
+    status: WebhookStatus.Failed,
+    url: "http://monstrous-ambassador.org",
 };
 ```
 

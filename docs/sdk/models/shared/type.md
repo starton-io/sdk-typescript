@@ -5,7 +5,7 @@
 ```typescript
 import { Type } from "@starton/sdk/sdk/models/shared";
 
-let value: Type = Type.Function;
+let value: Type = Type.Receive;
 ```
 
 ## Values

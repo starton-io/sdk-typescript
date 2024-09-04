@@ -7,7 +7,7 @@ import { DeployFromTemplateSmartContractResponse } from "@starton/sdk/sdk/models
 
 let value: DeployFromTemplateSmartContractResponse = {
     contentType: "<value>",
-    statusCode: 120196,
+    statusCode: 622846,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

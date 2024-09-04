@@ -7,7 +7,7 @@ import { GetAllKmsResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllKmsResponse = {
     contentType: "<value>",
-    statusCode: 736918,
+    statusCode: 800911,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),
