@@ -33,7 +33,7 @@ async function run() {
     },
     name: "optimism-functionnal-tests",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -118,7 +118,7 @@ async function run() {
     id: "rpc_c3d39f5a79be4599b0cdff667ffd1df3",
     name: "optimism-functionnal-tests",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -200,7 +200,7 @@ async function run() {
     name: "optimism-functionnal-tests",
     page: 0,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -285,7 +285,7 @@ async function run() {
     id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d",
     name: "optimism-functionnal-tests",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -369,7 +369,7 @@ async function run() {
     id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d",
     name: "optimism-functionnal-tests",
   });
-
+  
   // Handle the result
   console.log(result)
 }

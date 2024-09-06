@@ -28,7 +28,7 @@ async function run() {
     email: "Jena.Nienow28@yahoo.com",
     role: Role.Owner,
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -109,7 +109,7 @@ async function run() {
   const result = await starton.project.member.invitation.delete({
     id: "invit_f9701ff8e2ea4a1d964e0d6d40564801",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -189,7 +189,7 @@ async function run() {
     limit: 20,
     page: 0,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);

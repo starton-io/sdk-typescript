@@ -34,7 +34,7 @@ async function run() {
     name: "ERC",
     page: 0,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -126,7 +126,7 @@ async function run() {
     id: "ERC721_META_TRANSACTION",
     includeForm: true,
   });
-
+  
   // Handle the result
   console.log(result)
 }

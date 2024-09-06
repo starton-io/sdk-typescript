@@ -34,7 +34,7 @@ async function run() {
   const result = await starton.ipfs.delete({
     id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -114,7 +114,7 @@ async function run() {
     limit: 20,
     page: 0,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -197,7 +197,7 @@ async function run() {
   const result = await starton.ipfs.getOne({
     id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -274,7 +274,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.getStorageUsed();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -350,7 +350,7 @@ async function run() {
     cid: "bafkreiae3nprvu6qp6twwpokfk5lbd5qev34d6zrwmnv3jxetuc2zwmegq",
     name: "my file",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -434,7 +434,7 @@ async function run() {
     },
     id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -515,7 +515,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.uploadFile({});
-
+  
   // Handle the result
   console.log(result)
 }
@@ -591,7 +591,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.ipfs.uploadFolder({});
-
+  
   // Handle the result
   console.log(result)
 }
@@ -670,7 +670,7 @@ async function run() {
     content: {},
     name: "my file",
   });
-
+  
   // Handle the result
   console.log(result)
 }

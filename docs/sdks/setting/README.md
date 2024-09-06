@@ -25,7 +25,7 @@ async function run() {
   const result = await starton.transactionManager.setting.get({
     network: "polygon-mumbai",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -112,7 +112,7 @@ async function run() {
     },
     network: "polygon-mumbai",
   });
-
+  
   // Handle the result
   console.log(result)
 }

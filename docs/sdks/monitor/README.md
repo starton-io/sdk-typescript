@@ -40,7 +40,7 @@ async function run() {
     type: CreateWatcherDtoType.AddressActivity,
     webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -129,7 +129,7 @@ async function run() {
   const result = await starton.monitor.delete({
     id: "<id>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -217,7 +217,7 @@ async function run() {
     type: Type.AddressActivity,
     webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -310,7 +310,7 @@ async function run() {
     limit: 20,
     page: 0,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -394,7 +394,7 @@ async function run() {
   const result = await starton.monitor.getOne({
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -474,7 +474,7 @@ async function run() {
     eventId: "wevent_437e18e7470944099bd094e1c936e4cd",
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -562,7 +562,7 @@ async function run() {
     },
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
-
+  
   // Handle the result
   console.log(result)
 }

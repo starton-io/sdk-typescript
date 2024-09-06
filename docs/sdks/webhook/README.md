@@ -31,7 +31,7 @@ async function run() {
   const result = await starton.webhook.cancel({
     id: "wh_4c2905f7276b415fac02ee3682189940",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -114,7 +114,7 @@ async function run() {
     page: 0,
     status: QueryParamStatus.Successful,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -199,7 +199,7 @@ async function run() {
   const result = await starton.webhook.getOne({
     id: "wh_4c2905f7276b415fac02ee3682189940",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -276,7 +276,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.webhook.getSigningSecret();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -349,7 +349,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.webhook.regenerateSigningSecret();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -425,7 +425,7 @@ async function run() {
   const result = await starton.webhook.resend({
     id: "wh_4c2905f7276b415fac02ee3682189940",
   });
-
+  
   // Handle the result
   console.log(result)
 }

@@ -29,7 +29,7 @@ async function run() {
     address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
     network: "polygon-mainnet",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -110,7 +110,7 @@ async function run() {
     contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
     network: "polygon-mainnet",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -190,7 +190,7 @@ async function run() {
   const result = await starton.data.getGasPrice({
     network: "polygon-mainnet",
   });
-
+  
   // Handle the result
   console.log(result)
 }
