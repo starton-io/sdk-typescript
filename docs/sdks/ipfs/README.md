@@ -429,7 +429,6 @@ const starton = new Starton({
 async function run() {
   const result = await starton.ipfs.update({
     updatePinDto: {
-      metadata: {},
       name: "My new name",
     },
     id: "req_f9701ff8e2ea4a1d964e0d6d40564801",
@@ -459,7 +458,6 @@ const starton = new StartonCore({
 async function run() {
   const res = await ipfsUpdate(starton, {
     updatePinDto: {
-      metadata: {},
       name: "My new name",
     },
     id: "req_f9701ff8e2ea4a1d964e0d6d40564801",

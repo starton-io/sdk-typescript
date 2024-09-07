@@ -59,7 +59,7 @@ const starton = new StartonCore({
 async function run() {
   const res = await kmsCreate(starton, {
     name: "<value>",
-    provider: Provider.Vault,
+    provider: Provider.Aws,
     secret: "<value>",
   });
 

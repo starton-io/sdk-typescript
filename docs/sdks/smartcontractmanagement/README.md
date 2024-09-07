@@ -186,7 +186,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await smartContractManagementDelete(starton, {
-    address: "640 Pollich Lodge",
+    address: "8653 Vaughn Hills",
     network: "polygon-mumbai",
   });
 
@@ -1101,7 +1101,6 @@ async function run() {
   const result = await starton.smartContractManagement.update({
     updateSmartContractDto: {
       description: "Test description",
-      metadata: {},
       name: "Test smart contract",
     },
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
@@ -1133,7 +1132,6 @@ async function run() {
   const res = await smartContractManagementUpdate(starton, {
     updateSmartContractDto: {
       description: "Test description",
-      metadata: {},
       name: "Test smart contract",
     },
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",

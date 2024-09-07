@@ -53,7 +53,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await projectMemberInvitationCreate(starton, {
-    email: "Silas.Abbott@hotmail.com",
+    email: "Jena.Nienow28@yahoo.com",
     role: Role.Owner,
   });
 

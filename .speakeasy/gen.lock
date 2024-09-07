@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.390.7
-  generationVersion: 2.409.8
-  releaseVersion: 0.22.1
-  configChecksum: d018fff6056aa72ed9360ac15dc90410
+  speakeasyVersion: 1.392.1
+  generationVersion: 2.411.9
+  releaseVersion: 0.22.2
+  configChecksum: 303824aeb80a6bddef6430ed059cb6cf
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.16.1
+    core: 3.16.4
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
@@ -34,18 +34,583 @@ features:
     unions: 2.85.7
     uploadStreams: 0.1.0
 generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .eslintrc.cjs
+  - .gitattributes
+  - .npmignore
+  - CONTRIBUTING.md
+  - FUNCTIONS.md
+  - RUNTIMES.md
+  - USAGE.md
+  - docs/lib/utils/retryconfig.md
+  - docs/sdk/models/errors/alreadyknown.md
+  - docs/sdk/models/errors/badrequestexception.md
+  - docs/sdk/models/errors/callexception.md
+  - docs/sdk/models/errors/callsmartcontractresponsebody.md
+  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponse500responsebody.md
+  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/cancelwebhookresponsebody.md
+  - docs/sdk/models/errors/cancelwebhookwebhookresponsebody.md
+  - docs/sdk/models/errors/cancelwebhookwebhookresponseresponsebody.md
+  - docs/sdk/models/errors/claimfaucetresponsebody.md
+  - docs/sdk/models/errors/claimfaucetwalletresponsebody.md
+  - docs/sdk/models/errors/context.md
+  - docs/sdk/models/errors/contractnotyetdeployed.md
+  - docs/sdk/models/errors/couldnotassignnonce.md
+  - docs/sdk/models/errors/couldnotbroadcast.md
+  - docs/sdk/models/errors/couldnotcancelwebhook.md
+  - docs/sdk/models/errors/couldnotestimategasprice.md
+  - docs/sdk/models/errors/couldnotfindresource.md
+  - docs/sdk/models/errors/couldnotperformrequest.md
+  - docs/sdk/models/errors/couldnotprocessentity.md
+  - docs/sdk/models/errors/couldnotresendwebhook.md
+  - docs/sdk/models/errors/couldnotsign.md
+  - docs/sdk/models/errors/createinvitationprojectmemberinvitationresponsebody.md
+  - docs/sdk/models/errors/createinvitationresponsebody.md
+  - docs/sdk/models/errors/createkmsresponsebody.md
+  - docs/sdk/models/errors/createnetworkresponsebody.md
+  - docs/sdk/models/errors/createpinipfsresponsebody.md
+  - docs/sdk/models/errors/createpinresponsebody.md
+  - docs/sdk/models/errors/createrpcnetworkrpcresponsebody.md
+  - docs/sdk/models/errors/createrpcresponsebody.md
+  - docs/sdk/models/errors/createtransactionresponsebody.md
+  - docs/sdk/models/errors/createtransactiontransactionmanagerresponse500responsebody.md
+  - docs/sdk/models/errors/createtransactiontransactionmanagerresponsebody.md
+  - docs/sdk/models/errors/createtransactiontransactionmanagerresponseresponsebody.md
+  - docs/sdk/models/errors/createwalletresponsebody.md
+  - docs/sdk/models/errors/createwalletwalletresponsebody.md
+  - docs/sdk/models/errors/createwatchermonitorresponse500responsebody.md
+  - docs/sdk/models/errors/createwatchermonitorresponsebody.md
+  - docs/sdk/models/errors/createwatchermonitorresponseresponsebody.md
+  - docs/sdk/models/errors/createwatcherresponsebody.md
+  - docs/sdk/models/errors/createwebhooksigningsecretresponsebody.md
+  - docs/sdk/models/errors/createwebhooksigningsecretwebhookresponsebody.md
+  - docs/sdk/models/errors/databaseduplicate.md
+  - docs/sdk/models/errors/deleteinvitationprojectmemberinvitationresponsebody.md
+  - docs/sdk/models/errors/deleteinvitationresponsebody.md
+  - docs/sdk/models/errors/deletekmskmsresponsebody.md
+  - docs/sdk/models/errors/deletekmsresponsebody.md
+  - docs/sdk/models/errors/deletenetworknetworkresponsebody.md
+  - docs/sdk/models/errors/deletenetworkresponsebody.md
+  - docs/sdk/models/errors/deletepinipfsresponsebody.md
+  - docs/sdk/models/errors/deletepinresponsebody.md
+  - docs/sdk/models/errors/deleteprojectmemberprojectmemberresponsebody.md
+  - docs/sdk/models/errors/deleteprojectmemberprojectmemberresponseresponsebody.md
+  - docs/sdk/models/errors/deleteprojectmemberresponsebody.md
+  - docs/sdk/models/errors/deleterpcnetworkrpcresponsebody.md
+  - docs/sdk/models/errors/deleterpcresponsebody.md
+  - docs/sdk/models/errors/deletesmartcontractresponsebody.md
+  - docs/sdk/models/errors/deletesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/deletewalletresponsebody.md
+  - docs/sdk/models/errors/deletewalletwalletresponsebody.md
+  - docs/sdk/models/errors/deletewatchermonitorresponsebody.md
+  - docs/sdk/models/errors/deletewatcherresponsebody.md
+  - docs/sdk/models/errors/deployfrombytecodesmartcontractresponsebody.md
+  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponse500responsebody.md
+  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/deployfromtemplatesmartcontractresponsebody.md
+  - docs/sdk/models/errors/deployfromtemplatesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/deployfromtemplatesmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/encodesmartcontractresponsebody.md
+  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/ensnotsupported.md
+  - docs/sdk/models/errors/executionwillfail.md
+  - docs/sdk/models/errors/forbidden.md
+  - docs/sdk/models/errors/getallgaspriceresponsebody.md
+  - docs/sdk/models/errors/getallinvitationresponsebody.md
+  - docs/sdk/models/errors/getallkmsresponsebody.md
+  - docs/sdk/models/errors/getallnetworkresponsebody.md
+  - docs/sdk/models/errors/getallpinresponsebody.md
+  - docs/sdk/models/errors/getallprojectmemberresponsebody.md
+  - docs/sdk/models/errors/getallrpcresponsebody.md
+  - docs/sdk/models/errors/getallsettingrelayerresponsebody.md
+  - docs/sdk/models/errors/getallsettingrelayertransactionmanagersettingresponsebody.md
+  - docs/sdk/models/errors/getallsmartcontractresponsebody.md
+  - docs/sdk/models/errors/getallsmartcontracttemplateresponsebody.md
+  - docs/sdk/models/errors/getalltransactionresponsebody.md
+  - docs/sdk/models/errors/getallwalletresponsebody.md
+  - docs/sdk/models/errors/getallwatchereventresponsebody.md
+  - docs/sdk/models/errors/getallwatcherresponsebody.md
+  - docs/sdk/models/errors/getallwebhookresponsebody.md
+  - docs/sdk/models/errors/getavailablefunctionssmartcontractresponsebody.md
+  - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/getavailablenonceswalletresponsebody.md
+  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponse500responsebody.md
+  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponsebody.md
+  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponseresponsebody.md
+  - docs/sdk/models/errors/getbalanceaddressresponsebody.md
+  - docs/sdk/models/errors/getbalanceerc20responsebody.md
+  - docs/sdk/models/errors/getonekmskmsresponsebody.md
+  - docs/sdk/models/errors/getonekmsresponsebody.md
+  - docs/sdk/models/errors/getonenetworknetworkresponsebody.md
+  - docs/sdk/models/errors/getonenetworkresponsebody.md
+  - docs/sdk/models/errors/getonepinipfsresponsebody.md
+  - docs/sdk/models/errors/getonepinresponsebody.md
+  - docs/sdk/models/errors/getonerpcnetworkrpcresponsebody.md
+  - docs/sdk/models/errors/getonerpcresponsebody.md
+  - docs/sdk/models/errors/getonesmartcontractresponsebody.md
+  - docs/sdk/models/errors/getonesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/getonesmartcontracttemplateresponsebody.md
+  - docs/sdk/models/errors/getonesmartcontracttemplatesmartcontracttemplateresponsebody.md
+  - docs/sdk/models/errors/getonetransactionresponsebody.md
+  - docs/sdk/models/errors/getonetransactiontransactionmanagerresponsebody.md
+  - docs/sdk/models/errors/getonewalletresponsebody.md
+  - docs/sdk/models/errors/getonewalletwalletresponsebody.md
+  - docs/sdk/models/errors/getonewatchereventmonitorresponsebody.md
+  - docs/sdk/models/errors/getonewatchereventresponsebody.md
+  - docs/sdk/models/errors/getonewatchermonitorresponsebody.md
+  - docs/sdk/models/errors/getonewatcherresponsebody.md
+  - docs/sdk/models/errors/getonewebhookresponsebody.md
+  - docs/sdk/models/errors/getonewebhooksigningsecretresponsebody.md
+  - docs/sdk/models/errors/getonewebhookwebhookresponsebody.md
+  - docs/sdk/models/errors/getstorageusedpinresponsebody.md
+  - docs/sdk/models/errors/importexistingsmartcontractresponsebody.md
+  - docs/sdk/models/errors/importproviderkeywalletresponsebody.md
+  - docs/sdk/models/errors/insufficientfunds.md
+  - docs/sdk/models/errors/invalidabi.md
+  - docs/sdk/models/errors/invalidargument.md
+  - docs/sdk/models/errors/invalidbytecode.md
+  - docs/sdk/models/errors/invalidfunction.md
+  - docs/sdk/models/errors/invalidgasprice.md
+  - docs/sdk/models/errors/maximumstoragereached.md
+  - docs/sdk/models/errors/maximumwalletreached.md
+  - docs/sdk/models/errors/microservicenotresponding.md
+  - docs/sdk/models/errors/missingargument.md
+  - docs/sdk/models/errors/nonceexpired.md
+  - docs/sdk/models/errors/noproviderfornetwork.md
+  - docs/sdk/models/errors/notauthenticated.md
+  - docs/sdk/models/errors/numericfault.md
+  - docs/sdk/models/errors/payloadtoolarge.md
+  - docs/sdk/models/errors/readsmartcontractresponsebody.md
+  - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponseresponsebody.md
+  - docs/sdk/models/errors/replacementgaspriceunderpriced.md
+  - docs/sdk/models/errors/resendwebhookresponsebody.md
+  - docs/sdk/models/errors/resendwebhookwebhookresponsebody.md
+  - docs/sdk/models/errors/resendwebhookwebhookresponseresponsebody.md
+  - docs/sdk/models/errors/resyncnonceswalletresponsebody.md
+  - docs/sdk/models/errors/resyncnonceswalletwalletresponsebody.md
+  - docs/sdk/models/errors/resyncnonceswalletwallettransactionmanagerresponsebody.md
+  - docs/sdk/models/errors/resyncnonceswalletwallettransactionmanagerresponseresponsebody.md
+  - docs/sdk/models/errors/schemascallexceptioncontext.md
+  - docs/sdk/models/errors/schemascontext.md
+  - docs/sdk/models/errors/schemascontractnotyetdeployedcontext.md
+  - docs/sdk/models/errors/schemascouldnotassignnoncecontext.md
+  - docs/sdk/models/errors/schemascouldnotbroadcastcontext.md
+  - docs/sdk/models/errors/schemascouldnotcancelwebhookcontext.md
+  - docs/sdk/models/errors/schemascouldnotestimategaspricecontext.md
+  - docs/sdk/models/errors/schemascouldnotfindresourcecontext.md
+  - docs/sdk/models/errors/schemascouldnotperformrequestcontext.md
+  - docs/sdk/models/errors/schemascouldnotprocessentitycontext.md
+  - docs/sdk/models/errors/schemascouldnotresendwebhookcontext.md
+  - docs/sdk/models/errors/schemascouldnotsigncontext.md
+  - docs/sdk/models/errors/schemasdatabaseduplicatecontext.md
+  - docs/sdk/models/errors/schemasensnotsupportedcontext.md
+  - docs/sdk/models/errors/schemasexecutionwillfailcontext.md
+  - docs/sdk/models/errors/schemasforbiddencontext.md
+  - docs/sdk/models/errors/schemasinsufficientfundscontext.md
+  - docs/sdk/models/errors/schemasinvalidabicontext.md
+  - docs/sdk/models/errors/schemasinvalidargumentcontext.md
+  - docs/sdk/models/errors/schemasinvalidbytecodecontext.md
+  - docs/sdk/models/errors/schemasinvalidfunctioncontext.md
+  - docs/sdk/models/errors/schemasinvalidgaspricecontext.md
+  - docs/sdk/models/errors/schemasmaximumstoragereachedcontext.md
+  - docs/sdk/models/errors/schemasmaximumwalletreachedcontext.md
+  - docs/sdk/models/errors/schemasmicroservicenotrespondingcontext.md
+  - docs/sdk/models/errors/schemasmissingargumentcontext.md
+  - docs/sdk/models/errors/schemasnonceexpiredcontext.md
+  - docs/sdk/models/errors/schemasnoproviderfornetworkcontext.md
+  - docs/sdk/models/errors/schemasnotauthenticatedcontext.md
+  - docs/sdk/models/errors/schemasnumericfaultcontext.md
+  - docs/sdk/models/errors/schemaspayloadtoolargecontext.md
+  - docs/sdk/models/errors/schemasreplacementgaspriceunderpricedcontext.md
+  - docs/sdk/models/errors/schemasservernotrespondingcontext.md
+  - docs/sdk/models/errors/schemassmartcontractnotactivatedcontext.md
+  - docs/sdk/models/errors/schemasunexpectedargumentcontext.md
+  - docs/sdk/models/errors/schemasunknowncontext.md
+  - docs/sdk/models/errors/schemasunpredictablegaslimitcontext.md
+  - docs/sdk/models/errors/servernotresponding.md
+  - docs/sdk/models/errors/signmessagewalletresponsebody.md
+  - docs/sdk/models/errors/signmessagewalletwalletresponsebody.md
+  - docs/sdk/models/errors/signmessagewalletwalletresponseresponsebody.md
+  - docs/sdk/models/errors/smartcontractnotactivated.md
+  - docs/sdk/models/errors/unexpectedargument.md
+  - docs/sdk/models/errors/unknown.md
+  - docs/sdk/models/errors/unpredictablegaslimit.md
+  - docs/sdk/models/errors/updatekmskmsresponsebody.md
+  - docs/sdk/models/errors/updatekmsresponsebody.md
+  - docs/sdk/models/errors/updatenetworknetworkresponsebody.md
+  - docs/sdk/models/errors/updatenetworkresponsebody.md
+  - docs/sdk/models/errors/updatepinipfsresponsebody.md
+  - docs/sdk/models/errors/updatepinresponsebody.md
+  - docs/sdk/models/errors/updaterpcnetworkrpcresponsebody.md
+  - docs/sdk/models/errors/updaterpcresponsebody.md
+  - docs/sdk/models/errors/updatesettingrelayerresponsebody.md
+  - docs/sdk/models/errors/updatesettingrelayertransactionmanagersettingresponsebody.md
+  - docs/sdk/models/errors/updatesmartcontractresponsebody.md
+  - docs/sdk/models/errors/updatesmartcontractsmartcontractmanagementresponsebody.md
+  - docs/sdk/models/errors/updatewalletresponsebody.md
+  - docs/sdk/models/errors/updatewalletwalletresponsebody.md
+  - docs/sdk/models/errors/updatewatchermonitorresponsebody.md
+  - docs/sdk/models/errors/updatewatcherresponsebody.md
+  - docs/sdk/models/errors/uploadfromfilepinipfsresponsebody.md
+  - docs/sdk/models/errors/uploadfromfilepinresponsebody.md
+  - docs/sdk/models/errors/uploadfromfolderpinipfsresponsebody.md
+  - docs/sdk/models/errors/uploadfromfolderpinresponsebody.md
+  - docs/sdk/models/errors/uploadfromjsonpinipfsresponsebody.md
+  - docs/sdk/models/errors/uploadfromjsonpinresponsebody.md
+  - docs/sdk/models/operations/callsmartcontractrequest.md
+  - docs/sdk/models/operations/callsmartcontractresponse.md
+  - docs/sdk/models/operations/cancelwebhookrequest.md
+  - docs/sdk/models/operations/cancelwebhookresponse.md
+  - docs/sdk/models/operations/category.md
+  - docs/sdk/models/operations/claimfaucetrequest.md
+  - docs/sdk/models/operations/claimfaucetresponse.md
+  - docs/sdk/models/operations/claimfaucetresponsebody.md
+  - docs/sdk/models/operations/createinvitationresponse.md
+  - docs/sdk/models/operations/createkmsresponse.md
+  - docs/sdk/models/operations/createnetworkresponse.md
+  - docs/sdk/models/operations/createpinresponse.md
+  - docs/sdk/models/operations/createrpcrequest.md
+  - docs/sdk/models/operations/createrpcresponse.md
+  - docs/sdk/models/operations/createtransactionrequest.md
+  - docs/sdk/models/operations/createtransactionresponse.md
+  - docs/sdk/models/operations/createwalletresponse.md
+  - docs/sdk/models/operations/createwatcherresponse.md
+  - docs/sdk/models/operations/createwebhooksigningsecretresponse.md
+  - docs/sdk/models/operations/deleteinvitationrequest.md
+  - docs/sdk/models/operations/deleteinvitationresponse.md
+  - docs/sdk/models/operations/deletekmsrequest.md
+  - docs/sdk/models/operations/deletekmsresponse.md
+  - docs/sdk/models/operations/deletenetworkrequest.md
+  - docs/sdk/models/operations/deletenetworkresponse.md
+  - docs/sdk/models/operations/deletepinrequest.md
+  - docs/sdk/models/operations/deletepinresponse.md
+  - docs/sdk/models/operations/deleteprojectmemberrequest.md
+  - docs/sdk/models/operations/deleteprojectmemberresponse.md
+  - docs/sdk/models/operations/deleterpcrequest.md
+  - docs/sdk/models/operations/deleterpcresponse.md
+  - docs/sdk/models/operations/deletesmartcontractrequest.md
+  - docs/sdk/models/operations/deletesmartcontractresponse.md
+  - docs/sdk/models/operations/deletewalletrequest.md
+  - docs/sdk/models/operations/deletewalletresponse.md
+  - docs/sdk/models/operations/deletewatcherrequest.md
+  - docs/sdk/models/operations/deletewatcherresponse.md
+  - docs/sdk/models/operations/deployfrombytecodesmartcontractrequest.md
+  - docs/sdk/models/operations/deployfrombytecodesmartcontractresponse.md
+  - docs/sdk/models/operations/deployfromtemplatesmartcontractrequest.md
+  - docs/sdk/models/operations/deployfromtemplatesmartcontractresponse.md
+  - docs/sdk/models/operations/encodesmartcontractrequest.md
+  - docs/sdk/models/operations/encodesmartcontractresponse.md
+  - docs/sdk/models/operations/files.md
+  - docs/sdk/models/operations/filet.md
+  - docs/sdk/models/operations/getallgaspricerequest.md
+  - docs/sdk/models/operations/getallgaspriceresponse.md
+  - docs/sdk/models/operations/getallinvitationinvitationpaginated.md
+  - docs/sdk/models/operations/getallinvitationrequest.md
+  - docs/sdk/models/operations/getallinvitationresponse.md
+  - docs/sdk/models/operations/getallkmskmspaginated.md
+  - docs/sdk/models/operations/getallkmsrequest.md
+  - docs/sdk/models/operations/getallkmsresponse.md
+  - docs/sdk/models/operations/getallnetworknetworkpaginated.md
+  - docs/sdk/models/operations/getallnetworkrequest.md
+  - docs/sdk/models/operations/getallnetworkresponse.md
+  - docs/sdk/models/operations/getallpinpinpaginated.md
+  - docs/sdk/models/operations/getallpinrequest.md
+  - docs/sdk/models/operations/getallpinresponse.md
+  - docs/sdk/models/operations/getallprojectmemberprojectmemberpaginated.md
+  - docs/sdk/models/operations/getallprojectmemberresponse.md
+  - docs/sdk/models/operations/getallrpcrequest.md
+  - docs/sdk/models/operations/getallrpcresponse.md
+  - docs/sdk/models/operations/getallrpcrpcpaginated.md
+  - docs/sdk/models/operations/getallsettingrelayerrequest.md
+  - docs/sdk/models/operations/getallsettingrelayerresponse.md
+  - docs/sdk/models/operations/getallsmartcontractrequest.md
+  - docs/sdk/models/operations/getallsmartcontractresponse.md
+  - docs/sdk/models/operations/getallsmartcontractsmartcontractpaginated.md
+  - docs/sdk/models/operations/getallsmartcontracttemplaterequest.md
+  - docs/sdk/models/operations/getallsmartcontracttemplateresponse.md
+  - docs/sdk/models/operations/getallsmartcontracttemplatesmartcontracttemplatepaginated.md
+  - docs/sdk/models/operations/getalltransactionrequest.md
+  - docs/sdk/models/operations/getalltransactionresponse.md
+  - docs/sdk/models/operations/getalltransactiontransactionpaginated.md
+  - docs/sdk/models/operations/getallwalletrequest.md
+  - docs/sdk/models/operations/getallwalletresponse.md
+  - docs/sdk/models/operations/getallwalletwalletpaginated.md
+  - docs/sdk/models/operations/getallwatchereventrequest.md
+  - docs/sdk/models/operations/getallwatchereventresponse.md
+  - docs/sdk/models/operations/getallwatchereventwatchereventpaginated.md
+  - docs/sdk/models/operations/getallwatcherrequest.md
+  - docs/sdk/models/operations/getallwatcherresponse.md
+  - docs/sdk/models/operations/getallwatcherwatcherpaginated.md
+  - docs/sdk/models/operations/getallwebhookrequest.md
+  - docs/sdk/models/operations/getallwebhookresponse.md
+  - docs/sdk/models/operations/getallwebhookwebhookpaginated.md
+  - docs/sdk/models/operations/getavailablefunctionssmartcontractrequest.md
+  - docs/sdk/models/operations/getavailablefunctionssmartcontractresponse.md
+  - docs/sdk/models/operations/getavailablenonceswalletrequest.md
+  - docs/sdk/models/operations/getavailablenonceswalletresponse.md
+  - docs/sdk/models/operations/getbalanceaddressrequest.md
+  - docs/sdk/models/operations/getbalanceaddressresponse.md
+  - docs/sdk/models/operations/getbalanceerc20request.md
+  - docs/sdk/models/operations/getbalanceerc20response.md
+  - docs/sdk/models/operations/getonekmsrequest.md
+  - docs/sdk/models/operations/getonekmsresponse.md
+  - docs/sdk/models/operations/getonenetworkrequest.md
+  - docs/sdk/models/operations/getonenetworkresponse.md
+  - docs/sdk/models/operations/getonepinrequest.md
+  - docs/sdk/models/operations/getonepinresponse.md
+  - docs/sdk/models/operations/getonerpcrequest.md
+  - docs/sdk/models/operations/getonerpcresponse.md
+  - docs/sdk/models/operations/getonesmartcontractrequest.md
+  - docs/sdk/models/operations/getonesmartcontractresponse.md
+  - docs/sdk/models/operations/getonesmartcontracttemplaterequest.md
+  - docs/sdk/models/operations/getonesmartcontracttemplateresponse.md
+  - docs/sdk/models/operations/getonetransactionrequest.md
+  - docs/sdk/models/operations/getonetransactionresponse.md
+  - docs/sdk/models/operations/getonewalletrequest.md
+  - docs/sdk/models/operations/getonewalletresponse.md
+  - docs/sdk/models/operations/getonewatchereventrequest.md
+  - docs/sdk/models/operations/getonewatchereventresponse.md
+  - docs/sdk/models/operations/getonewatcherrequest.md
+  - docs/sdk/models/operations/getonewatcherresponse.md
+  - docs/sdk/models/operations/getonewebhookrequest.md
+  - docs/sdk/models/operations/getonewebhookresponse.md
+  - docs/sdk/models/operations/getonewebhooksigningsecretresponse.md
+  - docs/sdk/models/operations/getstorageusedpinresponse.md
+  - docs/sdk/models/operations/importexistingsmartcontractresponse.md
+  - docs/sdk/models/operations/importproviderkeywalletresponse.md
+  - docs/sdk/models/operations/metadata.md
+  - docs/sdk/models/operations/queryparamstatus.md
+  - docs/sdk/models/operations/readsmartcontractrequest.md
+  - docs/sdk/models/operations/readsmartcontractresponse.md
+  - docs/sdk/models/operations/resendwebhookrequest.md
+  - docs/sdk/models/operations/resendwebhookresponse.md
+  - docs/sdk/models/operations/resyncnonceswalletrequest.md
+  - docs/sdk/models/operations/resyncnonceswalletresponse.md
+  - docs/sdk/models/operations/signmessagewalletrequest.md
+  - docs/sdk/models/operations/signmessagewalletresponse.md
+  - docs/sdk/models/operations/status.md
+  - docs/sdk/models/operations/type.md
+  - docs/sdk/models/operations/updatekmsrequest.md
+  - docs/sdk/models/operations/updatekmsresponse.md
+  - docs/sdk/models/operations/updatenetworkrequest.md
+  - docs/sdk/models/operations/updatenetworkresponse.md
+  - docs/sdk/models/operations/updatepinrequest.md
+  - docs/sdk/models/operations/updatepinresponse.md
+  - docs/sdk/models/operations/updaterpcrequest.md
+  - docs/sdk/models/operations/updaterpcresponse.md
+  - docs/sdk/models/operations/updatesettingrelayerrequest.md
+  - docs/sdk/models/operations/updatesettingrelayerresponse.md
+  - docs/sdk/models/operations/updatesmartcontractrequest.md
+  - docs/sdk/models/operations/updatesmartcontractresponse.md
+  - docs/sdk/models/operations/updatewalletrequest.md
+  - docs/sdk/models/operations/updatewalletresponse.md
+  - docs/sdk/models/operations/updatewatcherrequest.md
+  - docs/sdk/models/operations/updatewatcherresponse.md
+  - docs/sdk/models/operations/uploadfromfilepinrequestbody.md
+  - docs/sdk/models/operations/uploadfromfilepinresponse.md
+  - docs/sdk/models/operations/uploadfromfolderpinmetadata.md
+  - docs/sdk/models/operations/uploadfromfolderpinrequestbody.md
+  - docs/sdk/models/operations/uploadfromfolderpinresponse.md
+  - docs/sdk/models/operations/uploadfromjsonpinresponse.md
+  - docs/sdk/models/shared/abi.md
+  - docs/sdk/models/shared/abiinputdto.md
+  - docs/sdk/models/shared/abiobjectdto.md
+  - docs/sdk/models/shared/abioutputdto.md
+  - docs/sdk/models/shared/abioutputdtocomponents.md
+  - docs/sdk/models/shared/addressnativebalanceresponse.md
+  - docs/sdk/models/shared/availablefunctions.md
+  - docs/sdk/models/shared/awskmscredentialsdto.md
+  - docs/sdk/models/shared/calldto.md
+  - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/compilationdetails.md
+  - docs/sdk/models/shared/components.md
+  - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/context.md
+  - docs/sdk/models/shared/createinvitationdto.md
+  - docs/sdk/models/shared/createkmsdto.md
+  - docs/sdk/models/shared/createnetworkdto.md
+  - docs/sdk/models/shared/createpindto.md
+  - docs/sdk/models/shared/createpindtometadata.md
+  - docs/sdk/models/shared/createrpcdto.md
+  - docs/sdk/models/shared/createrpcdtotype.md
+  - docs/sdk/models/shared/createtransactiondto.md
+  - docs/sdk/models/shared/createtransactiondtometadata.md
+  - docs/sdk/models/shared/createtransactiondtospeed.md
+  - docs/sdk/models/shared/createwalletdto.md
+  - docs/sdk/models/shared/createwalletdtometadata.md
+  - docs/sdk/models/shared/createwatcherdto.md
+  - docs/sdk/models/shared/createwatcherdtometadata.md
+  - docs/sdk/models/shared/createwatcherdtotype.md
+  - docs/sdk/models/shared/credentials.md
+  - docs/sdk/models/shared/customeventabi.md
+  - docs/sdk/models/shared/customfilters.md
+  - docs/sdk/models/shared/customgasdto.md
+  - docs/sdk/models/shared/deployfrombytecodedto.md
+  - docs/sdk/models/shared/deployfrombytecodedto3.md
+  - docs/sdk/models/shared/deployfrombytecodedtometadata.md
+  - docs/sdk/models/shared/deployfrombytecodedtoparams.md
+  - docs/sdk/models/shared/deployfrombytecodedtospeed.md
+  - docs/sdk/models/shared/deployfromtemplatedto.md
+  - docs/sdk/models/shared/deployfromtemplatedto3.md
+  - docs/sdk/models/shared/deployfromtemplatedtodeploymethod.md
+  - docs/sdk/models/shared/deployfromtemplatedtometadata.md
+  - docs/sdk/models/shared/deployfromtemplatedtoparams.md
+  - docs/sdk/models/shared/deployfromtemplatedtospeed.md
+  - docs/sdk/models/shared/deployfromtemplatedtouidata.md
+  - docs/sdk/models/shared/deployfromtemplatedtoversion.md
+  - docs/sdk/models/shared/deploymethod.md
+  - docs/sdk/models/shared/deploysmartcontractresponse.md
+  - docs/sdk/models/shared/directorycontent.md
+  - docs/sdk/models/shared/directorycontenttype.md
+  - docs/sdk/models/shared/encodedto.md
+  - docs/sdk/models/shared/encodedto3.md
+  - docs/sdk/models/shared/encodedtoparams.md
+  - docs/sdk/models/shared/encodesmartcontractresponse.md
+  - docs/sdk/models/shared/erc20balanceresponse.md
+  - docs/sdk/models/shared/explorerapidto.md
+  - docs/sdk/models/shared/explorerapidtotype.md
+  - docs/sdk/models/shared/faucet.md
+  - docs/sdk/models/shared/form.md
+  - docs/sdk/models/shared/gaspriceinfo.md
+  - docs/sdk/models/shared/gaspricerecommendation.md
+  - docs/sdk/models/shared/gaspricerecommendationdto.md
+  - docs/sdk/models/shared/gasprices.md
+  - docs/sdk/models/shared/headers.md
+  - docs/sdk/models/shared/importproviderkeydto.md
+  - docs/sdk/models/shared/importproviderkeydtometadata.md
+  - docs/sdk/models/shared/importproviderkeydtoprovider.md
+  - docs/sdk/models/shared/importsmartcontractdto.md
+  - docs/sdk/models/shared/importsmartcontractdto3.md
+  - docs/sdk/models/shared/importsmartcontractdtodeploymethod.md
+  - docs/sdk/models/shared/importsmartcontractdtometadata.md
+  - docs/sdk/models/shared/importsmartcontractdtoparams.md
+  - docs/sdk/models/shared/importsmartcontractdtouidata.md
+  - docs/sdk/models/shared/importsmartcontractdtoversion.md
+  - docs/sdk/models/shared/invitation.md
+  - docs/sdk/models/shared/invitationrole.md
+  - docs/sdk/models/shared/kms.md
+  - docs/sdk/models/shared/kmscredentials.md
+  - docs/sdk/models/shared/kmsmetadata.md
+  - docs/sdk/models/shared/kmsprovider.md
+  - docs/sdk/models/shared/metadata.md
+  - docs/sdk/models/shared/network.md
+  - docs/sdk/models/shared/noncesavailable.md
+  - docs/sdk/models/shared/paginationdata.md
+  - docs/sdk/models/shared/params.md
+  - docs/sdk/models/shared/payload.md
+  - docs/sdk/models/shared/pin.md
+  - docs/sdk/models/shared/pinmetadata.md
+  - docs/sdk/models/shared/pintype.md
+  - docs/sdk/models/shared/projectmember.md
+  - docs/sdk/models/shared/provider.md
+  - docs/sdk/models/shared/readdto.md
+  - docs/sdk/models/shared/readdto3.md
+  - docs/sdk/models/shared/readdtoparams.md
+  - docs/sdk/models/shared/readsmartcontractresponse.md
+  - docs/sdk/models/shared/readsmartcontractresponse3.md
+  - docs/sdk/models/shared/readsmartcontractresponseparams.md
+  - docs/sdk/models/shared/readsmartcontractresponseschemas3.md
+  - docs/sdk/models/shared/requirefaucetdto.md
+  - docs/sdk/models/shared/response.md
+  - docs/sdk/models/shared/resyncnonce.md
+  - docs/sdk/models/shared/role.md
+  - docs/sdk/models/shared/rpc.md
+  - docs/sdk/models/shared/rpctype.md
+  - docs/sdk/models/shared/security.md
+  - docs/sdk/models/shared/settingrelayer.md
+  - docs/sdk/models/shared/signmessagedto.md
+  - docs/sdk/models/shared/signmessageresponse.md
+  - docs/sdk/models/shared/smartcontract.md
+  - docs/sdk/models/shared/smartcontractdeploymethod.md
+  - docs/sdk/models/shared/smartcontractmetadata.md
+  - docs/sdk/models/shared/smartcontractstatus.md
+  - docs/sdk/models/shared/smartcontracttemplate.md
+  - docs/sdk/models/shared/smartcontracttemplateabi.md
+  - docs/sdk/models/shared/smartcontracttemplatecompilationdetails.md
+  - docs/sdk/models/shared/smartcontractuidata.md
+  - docs/sdk/models/shared/smartcontractversion.md
+  - docs/sdk/models/shared/speed.md
+  - docs/sdk/models/shared/state.md
+  - docs/sdk/models/shared/statemutability.md
+  - docs/sdk/models/shared/status.md
+  - docs/sdk/models/shared/storageused.md
+  - docs/sdk/models/shared/three.md
+  - docs/sdk/models/shared/tooearly.md
+  - docs/sdk/models/shared/transaction.md
+  - docs/sdk/models/shared/transactionlog.md
+  - docs/sdk/models/shared/transactionlogcontext.md
+  - docs/sdk/models/shared/transactionlogtype.md
+  - docs/sdk/models/shared/transactionmetadata.md
+  - docs/sdk/models/shared/transactionspeed.md
+  - docs/sdk/models/shared/transactionstate.md
+  - docs/sdk/models/shared/transactionstatus.md
+  - docs/sdk/models/shared/triggertype.md
+  - docs/sdk/models/shared/type.md
+  - docs/sdk/models/shared/uidata.md
+  - docs/sdk/models/shared/updatekmsdto.md
+  - docs/sdk/models/shared/updatekmsdtocredentials.md
+  - docs/sdk/models/shared/updatekmsdtometadata.md
+  - docs/sdk/models/shared/updatenetworkdto.md
+  - docs/sdk/models/shared/updatepindto.md
+  - docs/sdk/models/shared/updatepindtometadata.md
+  - docs/sdk/models/shared/updaterpcdto.md
+  - docs/sdk/models/shared/updaterpcdtotype.md
+  - docs/sdk/models/shared/updatesettingrelayerdto.md
+  - docs/sdk/models/shared/updatesmartcontractdto.md
+  - docs/sdk/models/shared/updatesmartcontractdtometadata.md
+  - docs/sdk/models/shared/updatewalletdto.md
+  - docs/sdk/models/shared/updatewalletdtometadata.md
+  - docs/sdk/models/shared/updatewatcherdto.md
+  - docs/sdk/models/shared/updatewatcherdtometadata.md
+  - docs/sdk/models/shared/uploadjsondto.md
+  - docs/sdk/models/shared/uploadjsondtometadata.md
+  - docs/sdk/models/shared/vaultkmscredentialsdto.md
+  - docs/sdk/models/shared/version.md
+  - docs/sdk/models/shared/wallet.md
+  - docs/sdk/models/shared/walletmetadata.md
+  - docs/sdk/models/shared/wallets.md
+  - docs/sdk/models/shared/watcher.md
+  - docs/sdk/models/shared/watchercustomeventabi.md
+  - docs/sdk/models/shared/watchercustomfilters.md
+  - docs/sdk/models/shared/watcherevent.md
+  - docs/sdk/models/shared/watchereventstatus.md
+  - docs/sdk/models/shared/watchermetadata.md
+  - docs/sdk/models/shared/watchertype.md
+  - docs/sdk/models/shared/webhook.md
+  - docs/sdk/models/shared/webhookpayload.md
+  - docs/sdk/models/shared/webhooksigningsecret.md
+  - docs/sdk/models/shared/webhookstatus.md
+  - docs/sdks/data/README.md
+  - docs/sdks/invitation/README.md
+  - docs/sdks/ipfs/README.md
+  - docs/sdks/kms/README.md
+  - docs/sdks/member/README.md
+  - docs/sdks/monitor/README.md
+  - docs/sdks/network/README.md
+  - docs/sdks/project/README.md
+  - docs/sdks/rpc/README.md
+  - docs/sdks/setting/README.md
+  - docs/sdks/smartcontract/README.md
+  - docs/sdks/smartcontractmanagement/README.md
+  - docs/sdks/starton/README.md
+  - docs/sdks/template/README.md
+  - docs/sdks/transactionmanager/README.md
+  - docs/sdks/wallet/README.md
+  - docs/sdks/webhook/README.md
+  - jsr.json
+  - package.json
+  - src/core.ts
   - src/funcs/dataGetBalance.ts
   - src/funcs/dataGetErc20Balance.ts
   - src/funcs/dataGetGasPrice.ts
-  - src/funcs/walletCreate.ts
-  - src/funcs/walletDelete.ts
-  - src/funcs/walletGetAll.ts
-  - src/funcs/walletGetOne.ts
-  - src/funcs/walletImport.ts
-  - src/funcs/walletRequestFaucet.ts
-  - src/funcs/walletResyncNonce.ts
-  - src/funcs/walletSign.ts
-  - src/funcs/walletUpdate.ts
   - src/funcs/ipfsDelete.ts
   - src/funcs/ipfsGetAll.ts
   - src/funcs/ipfsGetOne.ts
@@ -60,16 +625,28 @@ generatedFiles:
   - src/funcs/kmsGetAll.ts
   - src/funcs/kmsGetOne.ts
   - src/funcs/kmsUpdate.ts
-  - src/funcs/transactionManagerCreate.ts
-  - src/funcs/transactionManagerGetAll.ts
-  - src/funcs/transactionManagerGetAvailableNonces.ts
-  - src/funcs/transactionManagerGetOne.ts
-  - src/funcs/transactionManagerResyncNonce.ts
+  - src/funcs/monitorCreate.ts
+  - src/funcs/monitorDelete.ts
+  - src/funcs/monitorGetAll.ts
+  - src/funcs/monitorGetAllEvents.ts
+  - src/funcs/monitorGetOne.ts
+  - src/funcs/monitorGetOneEvent.ts
+  - src/funcs/monitorUpdate.ts
   - src/funcs/networkCreate.ts
   - src/funcs/networkDelete.ts
   - src/funcs/networkGetAll.ts
   - src/funcs/networkGetOne.ts
+  - src/funcs/networkRpcCreate.ts
+  - src/funcs/networkRpcDelete.ts
+  - src/funcs/networkRpcGetAll.ts
+  - src/funcs/networkRpcGetOne.ts
+  - src/funcs/networkRpcUpdate.ts
   - src/funcs/networkUpdate.ts
+  - src/funcs/projectMemberDelete.ts
+  - src/funcs/projectMemberGetAll.ts
+  - src/funcs/projectMemberInvitationCreate.ts
+  - src/funcs/projectMemberInvitationDelete.ts
+  - src/funcs/projectMemberInvitationGetAll.ts
   - src/funcs/smartContractManagementCall.ts
   - src/funcs/smartContractManagementDelete.ts
   - src/funcs/smartContractManagementDeployFromBytecode.ts
@@ -81,57 +658,33 @@ generatedFiles:
   - src/funcs/smartContractManagementImportExisting.ts
   - src/funcs/smartContractManagementRead.ts
   - src/funcs/smartContractManagementUpdate.ts
-  - src/funcs/monitorCreate.ts
-  - src/funcs/monitorDelete.ts
-  - src/funcs/monitorGetAll.ts
-  - src/funcs/monitorGetAllEvents.ts
-  - src/funcs/monitorGetOne.ts
-  - src/funcs/monitorGetOneEvent.ts
-  - src/funcs/monitorUpdate.ts
+  - src/funcs/smartContractTemplateGetAll.ts
+  - src/funcs/smartContractTemplateGetOne.ts
+  - src/funcs/transactionManagerCreate.ts
+  - src/funcs/transactionManagerGetAll.ts
+  - src/funcs/transactionManagerGetAvailableNonces.ts
+  - src/funcs/transactionManagerGetOne.ts
+  - src/funcs/transactionManagerResyncNonce.ts
+  - src/funcs/transactionManagerSettingGet.ts
+  - src/funcs/transactionManagerSettingUpdate.ts
+  - src/funcs/walletCreate.ts
+  - src/funcs/walletDelete.ts
+  - src/funcs/walletGetAll.ts
+  - src/funcs/walletGetOne.ts
+  - src/funcs/walletImport.ts
+  - src/funcs/walletRequestFaucet.ts
+  - src/funcs/walletResyncNonce.ts
+  - src/funcs/walletSign.ts
+  - src/funcs/walletUpdate.ts
   - src/funcs/webhookCancel.ts
   - src/funcs/webhookGetAll.ts
   - src/funcs/webhookGetOne.ts
   - src/funcs/webhookGetSigningSecret.ts
   - src/funcs/webhookRegenerateSigningSecret.ts
   - src/funcs/webhookResend.ts
-  - src/funcs/transactionManagerSettingGet.ts
-  - src/funcs/transactionManagerSettingUpdate.ts
-  - src/funcs/networkRpcCreate.ts
-  - src/funcs/networkRpcDelete.ts
-  - src/funcs/networkRpcGetAll.ts
-  - src/funcs/networkRpcGetOne.ts
-  - src/funcs/networkRpcUpdate.ts
-  - src/funcs/projectMemberDelete.ts
-  - src/funcs/projectMemberGetAll.ts
-  - src/funcs/smartContractTemplateGetAll.ts
-  - src/funcs/smartContractTemplateGetOne.ts
-  - src/funcs/projectMemberInvitationCreate.ts
-  - src/funcs/projectMemberInvitationDelete.ts
-  - src/funcs/projectMemberInvitationGetAll.ts
-  - src/sdk/data.ts
-  - src/sdk/wallet.ts
-  - src/sdk/ipfs.ts
-  - src/sdk/kms.ts
-  - src/sdk/setting.ts
-  - src/sdk/transactionmanager.ts
-  - src/sdk/rpc.ts
-  - src/sdk/network.ts
-  - src/sdk/invitation.ts
-  - src/sdk/member.ts
-  - src/sdk/project.ts
-  - src/sdk/smartcontractmanagement.ts
-  - src/sdk/template.ts
-  - src/sdk/smartcontract.ts
-  - src/sdk/monitor.ts
-  - src/sdk/webhook.ts
-  - src/sdk/sdk.ts
-  - .eslintrc.cjs
-  - .npmignore
-  - FUNCTIONS.md
-  - RUNTIMES.md
-  - jsr.json
-  - package.json
-  - src/core.ts
+  - src/hooks/hooks.ts
+  - src/hooks/index.ts
+  - src/hooks/types.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
@@ -148,10 +701,279 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/sdk/data.ts
   - src/sdk/index.ts
+  - src/sdk/invitation.ts
+  - src/sdk/ipfs.ts
+  - src/sdk/kms.ts
+  - src/sdk/member.ts
+  - src/sdk/models/errors/alreadyknown.ts
+  - src/sdk/models/errors/badrequestexception.ts
+  - src/sdk/models/errors/callexception.ts
+  - src/sdk/models/errors/callsmartcontract.ts
+  - src/sdk/models/errors/cancelwebhook.ts
+  - src/sdk/models/errors/claimfaucet.ts
+  - src/sdk/models/errors/contractnotyetdeployed.ts
+  - src/sdk/models/errors/couldnotassignnonce.ts
+  - src/sdk/models/errors/couldnotbroadcast.ts
+  - src/sdk/models/errors/couldnotcancelwebhook.ts
+  - src/sdk/models/errors/couldnotestimategasprice.ts
+  - src/sdk/models/errors/couldnotfindresource.ts
+  - src/sdk/models/errors/couldnotperformrequest.ts
+  - src/sdk/models/errors/couldnotprocessentity.ts
+  - src/sdk/models/errors/couldnotresendwebhook.ts
+  - src/sdk/models/errors/couldnotsign.ts
+  - src/sdk/models/errors/createinvitation.ts
+  - src/sdk/models/errors/createkms.ts
+  - src/sdk/models/errors/createnetwork.ts
+  - src/sdk/models/errors/createpin.ts
+  - src/sdk/models/errors/createrpc.ts
+  - src/sdk/models/errors/createtransaction.ts
+  - src/sdk/models/errors/createwallet.ts
+  - src/sdk/models/errors/createwatcher.ts
+  - src/sdk/models/errors/createwebhooksigningsecret.ts
+  - src/sdk/models/errors/databaseduplicate.ts
+  - src/sdk/models/errors/deleteinvitation.ts
+  - src/sdk/models/errors/deletekms.ts
+  - src/sdk/models/errors/deletenetwork.ts
+  - src/sdk/models/errors/deletepin.ts
+  - src/sdk/models/errors/deleteprojectmember.ts
+  - src/sdk/models/errors/deleterpc.ts
+  - src/sdk/models/errors/deletesmartcontract.ts
+  - src/sdk/models/errors/deletewallet.ts
+  - src/sdk/models/errors/deletewatcher.ts
+  - src/sdk/models/errors/deployfrombytecodesmartcontract.ts
+  - src/sdk/models/errors/deployfromtemplatesmartcontract.ts
+  - src/sdk/models/errors/encodesmartcontract.ts
+  - src/sdk/models/errors/ensnotsupported.ts
+  - src/sdk/models/errors/executionwillfail.ts
+  - src/sdk/models/errors/forbidden.ts
+  - src/sdk/models/errors/getallgasprice.ts
+  - src/sdk/models/errors/getallinvitation.ts
+  - src/sdk/models/errors/getallkms.ts
+  - src/sdk/models/errors/getallnetwork.ts
+  - src/sdk/models/errors/getallpin.ts
+  - src/sdk/models/errors/getallprojectmember.ts
+  - src/sdk/models/errors/getallrpc.ts
+  - src/sdk/models/errors/getallsettingrelayer.ts
+  - src/sdk/models/errors/getallsmartcontract.ts
+  - src/sdk/models/errors/getallsmartcontracttemplate.ts
+  - src/sdk/models/errors/getalltransaction.ts
+  - src/sdk/models/errors/getallwallet.ts
+  - src/sdk/models/errors/getallwatcher.ts
+  - src/sdk/models/errors/getallwatcherevent.ts
+  - src/sdk/models/errors/getallwebhook.ts
+  - src/sdk/models/errors/getavailablefunctionssmartcontract.ts
+  - src/sdk/models/errors/getavailablenonceswallet.ts
+  - src/sdk/models/errors/getbalanceaddress.ts
+  - src/sdk/models/errors/getbalanceerc20.ts
+  - src/sdk/models/errors/getonekms.ts
+  - src/sdk/models/errors/getonenetwork.ts
+  - src/sdk/models/errors/getonepin.ts
+  - src/sdk/models/errors/getonerpc.ts
+  - src/sdk/models/errors/getonesmartcontract.ts
+  - src/sdk/models/errors/getonesmartcontracttemplate.ts
+  - src/sdk/models/errors/getonetransaction.ts
+  - src/sdk/models/errors/getonewallet.ts
+  - src/sdk/models/errors/getonewatcher.ts
+  - src/sdk/models/errors/getonewatcherevent.ts
+  - src/sdk/models/errors/getonewebhook.ts
+  - src/sdk/models/errors/getonewebhooksigningsecret.ts
+  - src/sdk/models/errors/getstorageusedpin.ts
   - src/sdk/models/errors/httpclienterrors.ts
+  - src/sdk/models/errors/importexistingsmartcontract.ts
+  - src/sdk/models/errors/importproviderkeywallet.ts
+  - src/sdk/models/errors/index.ts
+  - src/sdk/models/errors/insufficientfunds.ts
+  - src/sdk/models/errors/invalidabi.ts
+  - src/sdk/models/errors/invalidargument.ts
+  - src/sdk/models/errors/invalidbytecode.ts
+  - src/sdk/models/errors/invalidfunction.ts
+  - src/sdk/models/errors/invalidgasprice.ts
+  - src/sdk/models/errors/maximumstoragereached.ts
+  - src/sdk/models/errors/maximumwalletreached.ts
+  - src/sdk/models/errors/microservicenotresponding.ts
+  - src/sdk/models/errors/missingargument.ts
+  - src/sdk/models/errors/nonceexpired.ts
+  - src/sdk/models/errors/noproviderfornetwork.ts
+  - src/sdk/models/errors/notauthenticated.ts
+  - src/sdk/models/errors/numericfault.ts
+  - src/sdk/models/errors/payloadtoolarge.ts
+  - src/sdk/models/errors/readsmartcontract.ts
+  - src/sdk/models/errors/replacementgaspriceunderpriced.ts
+  - src/sdk/models/errors/resendwebhook.ts
+  - src/sdk/models/errors/resyncnonceswallet.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
+  - src/sdk/models/errors/servernotresponding.ts
+  - src/sdk/models/errors/signmessagewallet.ts
+  - src/sdk/models/errors/smartcontractnotactivated.ts
+  - src/sdk/models/errors/unexpectedargument.ts
+  - src/sdk/models/errors/unknown.ts
+  - src/sdk/models/errors/unpredictablegaslimit.ts
+  - src/sdk/models/errors/updatekms.ts
+  - src/sdk/models/errors/updatenetwork.ts
+  - src/sdk/models/errors/updatepin.ts
+  - src/sdk/models/errors/updaterpc.ts
+  - src/sdk/models/errors/updatesettingrelayer.ts
+  - src/sdk/models/errors/updatesmartcontract.ts
+  - src/sdk/models/errors/updatewallet.ts
+  - src/sdk/models/errors/updatewatcher.ts
+  - src/sdk/models/errors/uploadfromfilepin.ts
+  - src/sdk/models/errors/uploadfromfolderpin.ts
+  - src/sdk/models/errors/uploadfromjsonpin.ts
+  - src/sdk/models/operations/callsmartcontract.ts
+  - src/sdk/models/operations/cancelwebhook.ts
+  - src/sdk/models/operations/claimfaucet.ts
+  - src/sdk/models/operations/createinvitation.ts
+  - src/sdk/models/operations/createkms.ts
+  - src/sdk/models/operations/createnetwork.ts
+  - src/sdk/models/operations/createpin.ts
+  - src/sdk/models/operations/createrpc.ts
+  - src/sdk/models/operations/createtransaction.ts
+  - src/sdk/models/operations/createwallet.ts
+  - src/sdk/models/operations/createwatcher.ts
+  - src/sdk/models/operations/createwebhooksigningsecret.ts
+  - src/sdk/models/operations/deleteinvitation.ts
+  - src/sdk/models/operations/deletekms.ts
+  - src/sdk/models/operations/deletenetwork.ts
+  - src/sdk/models/operations/deletepin.ts
+  - src/sdk/models/operations/deleteprojectmember.ts
+  - src/sdk/models/operations/deleterpc.ts
+  - src/sdk/models/operations/deletesmartcontract.ts
+  - src/sdk/models/operations/deletewallet.ts
+  - src/sdk/models/operations/deletewatcher.ts
+  - src/sdk/models/operations/deployfrombytecodesmartcontract.ts
+  - src/sdk/models/operations/deployfromtemplatesmartcontract.ts
+  - src/sdk/models/operations/encodesmartcontract.ts
+  - src/sdk/models/operations/getallgasprice.ts
+  - src/sdk/models/operations/getallinvitation.ts
+  - src/sdk/models/operations/getallkms.ts
+  - src/sdk/models/operations/getallnetwork.ts
+  - src/sdk/models/operations/getallpin.ts
+  - src/sdk/models/operations/getallprojectmember.ts
+  - src/sdk/models/operations/getallrpc.ts
+  - src/sdk/models/operations/getallsettingrelayer.ts
+  - src/sdk/models/operations/getallsmartcontract.ts
+  - src/sdk/models/operations/getallsmartcontracttemplate.ts
+  - src/sdk/models/operations/getalltransaction.ts
+  - src/sdk/models/operations/getallwallet.ts
+  - src/sdk/models/operations/getallwatcher.ts
+  - src/sdk/models/operations/getallwatcherevent.ts
+  - src/sdk/models/operations/getallwebhook.ts
+  - src/sdk/models/operations/getavailablefunctionssmartcontract.ts
+  - src/sdk/models/operations/getavailablenonceswallet.ts
+  - src/sdk/models/operations/getbalanceaddress.ts
+  - src/sdk/models/operations/getbalanceerc20.ts
+  - src/sdk/models/operations/getonekms.ts
+  - src/sdk/models/operations/getonenetwork.ts
+  - src/sdk/models/operations/getonepin.ts
+  - src/sdk/models/operations/getonerpc.ts
+  - src/sdk/models/operations/getonesmartcontract.ts
+  - src/sdk/models/operations/getonesmartcontracttemplate.ts
+  - src/sdk/models/operations/getonetransaction.ts
+  - src/sdk/models/operations/getonewallet.ts
+  - src/sdk/models/operations/getonewatcher.ts
+  - src/sdk/models/operations/getonewatcherevent.ts
+  - src/sdk/models/operations/getonewebhook.ts
+  - src/sdk/models/operations/getonewebhooksigningsecret.ts
+  - src/sdk/models/operations/getstorageusedpin.ts
+  - src/sdk/models/operations/importexistingsmartcontract.ts
+  - src/sdk/models/operations/importproviderkeywallet.ts
+  - src/sdk/models/operations/index.ts
+  - src/sdk/models/operations/readsmartcontract.ts
+  - src/sdk/models/operations/resendwebhook.ts
+  - src/sdk/models/operations/resyncnonceswallet.ts
+  - src/sdk/models/operations/signmessagewallet.ts
+  - src/sdk/models/operations/updatekms.ts
+  - src/sdk/models/operations/updatenetwork.ts
+  - src/sdk/models/operations/updatepin.ts
+  - src/sdk/models/operations/updaterpc.ts
+  - src/sdk/models/operations/updatesettingrelayer.ts
+  - src/sdk/models/operations/updatesmartcontract.ts
+  - src/sdk/models/operations/updatewallet.ts
+  - src/sdk/models/operations/updatewatcher.ts
+  - src/sdk/models/operations/uploadfromfilepin.ts
+  - src/sdk/models/operations/uploadfromfolderpin.ts
+  - src/sdk/models/operations/uploadfromjsonpin.ts
+  - src/sdk/models/shared/abiinputdto.ts
+  - src/sdk/models/shared/abiobjectdto.ts
+  - src/sdk/models/shared/abioutputdto.ts
+  - src/sdk/models/shared/addressnativebalanceresponse.ts
+  - src/sdk/models/shared/availablefunctions.ts
+  - src/sdk/models/shared/awskmscredentialsdto.ts
+  - src/sdk/models/shared/calldto.ts
+  - src/sdk/models/shared/createinvitationdto.ts
+  - src/sdk/models/shared/createkmsdto.ts
+  - src/sdk/models/shared/createnetworkdto.ts
+  - src/sdk/models/shared/createpindto.ts
+  - src/sdk/models/shared/createrpcdto.ts
+  - src/sdk/models/shared/createtransactiondto.ts
+  - src/sdk/models/shared/createwalletdto.ts
+  - src/sdk/models/shared/createwatcherdto.ts
+  - src/sdk/models/shared/customgasdto.ts
+  - src/sdk/models/shared/deployfrombytecodedto.ts
+  - src/sdk/models/shared/deployfromtemplatedto.ts
+  - src/sdk/models/shared/deploysmartcontractresponse.ts
+  - src/sdk/models/shared/directorycontent.ts
+  - src/sdk/models/shared/encodedto.ts
+  - src/sdk/models/shared/encodesmartcontractresponse.ts
+  - src/sdk/models/shared/erc20balanceresponse.ts
+  - src/sdk/models/shared/explorerapidto.ts
+  - src/sdk/models/shared/faucet.ts
+  - src/sdk/models/shared/gaspriceinfo.ts
+  - src/sdk/models/shared/gaspricerecommendationdto.ts
+  - src/sdk/models/shared/gasprices.ts
+  - src/sdk/models/shared/importproviderkeydto.ts
+  - src/sdk/models/shared/importsmartcontractdto.ts
+  - src/sdk/models/shared/index.ts
+  - src/sdk/models/shared/invitation.ts
+  - src/sdk/models/shared/kms.ts
+  - src/sdk/models/shared/network.ts
+  - src/sdk/models/shared/noncesavailable.ts
+  - src/sdk/models/shared/paginationdata.ts
+  - src/sdk/models/shared/pin.ts
+  - src/sdk/models/shared/projectmember.ts
+  - src/sdk/models/shared/readdto.ts
+  - src/sdk/models/shared/readsmartcontractresponse.ts
+  - src/sdk/models/shared/requirefaucetdto.ts
+  - src/sdk/models/shared/resyncnonce.ts
+  - src/sdk/models/shared/rpc.ts
+  - src/sdk/models/shared/security.ts
+  - src/sdk/models/shared/settingrelayer.ts
+  - src/sdk/models/shared/signmessagedto.ts
+  - src/sdk/models/shared/signmessageresponse.ts
+  - src/sdk/models/shared/smartcontract.ts
+  - src/sdk/models/shared/smartcontracttemplate.ts
+  - src/sdk/models/shared/storageused.ts
+  - src/sdk/models/shared/tooearly.ts
+  - src/sdk/models/shared/transaction.ts
+  - src/sdk/models/shared/transactionlog.ts
+  - src/sdk/models/shared/updatekmsdto.ts
+  - src/sdk/models/shared/updatenetworkdto.ts
+  - src/sdk/models/shared/updatepindto.ts
+  - src/sdk/models/shared/updaterpcdto.ts
+  - src/sdk/models/shared/updatesettingrelayerdto.ts
+  - src/sdk/models/shared/updatesmartcontractdto.ts
+  - src/sdk/models/shared/updatewalletdto.ts
+  - src/sdk/models/shared/updatewatcherdto.ts
+  - src/sdk/models/shared/uploadjsondto.ts
+  - src/sdk/models/shared/vaultkmscredentialsdto.ts
+  - src/sdk/models/shared/wallet.ts
+  - src/sdk/models/shared/watcher.ts
+  - src/sdk/models/shared/watcherevent.ts
+  - src/sdk/models/shared/webhook.ts
+  - src/sdk/models/shared/webhooksigningsecret.ts
+  - src/sdk/monitor.ts
+  - src/sdk/network.ts
+  - src/sdk/project.ts
+  - src/sdk/rpc.ts
+  - src/sdk/sdk.ts
+  - src/sdk/setting.ts
+  - src/sdk/smartcontract.ts
+  - src/sdk/smartcontractmanagement.ts
+  - src/sdk/template.ts
+  - src/sdk/transactionmanager.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/constdatetime.ts
   - src/sdk/types/enums.ts
@@ -160,828 +982,539 @@ generatedFiles:
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
   - src/sdk/types/streams.ts
+  - src/sdk/wallet.ts
+  - src/sdk/webhook.ts
   - tsconfig.json
-  - src/sdk/models/operations/getbalanceaddress.ts
-  - src/sdk/models/operations/getbalanceerc20.ts
-  - src/sdk/models/operations/getallgasprice.ts
-  - src/sdk/models/operations/createwallet.ts
-  - src/sdk/models/operations/deletewallet.ts
-  - src/sdk/models/operations/getallwallet.ts
-  - src/sdk/models/operations/getonewallet.ts
-  - src/sdk/models/operations/importproviderkeywallet.ts
-  - src/sdk/models/operations/claimfaucet.ts
-  - src/sdk/models/operations/resyncnonceswallet.ts
-  - src/sdk/models/operations/signmessagewallet.ts
-  - src/sdk/models/operations/updatewallet.ts
-  - src/sdk/models/operations/deletepin.ts
-  - src/sdk/models/operations/getallpin.ts
-  - src/sdk/models/operations/getonepin.ts
-  - src/sdk/models/operations/getstorageusedpin.ts
-  - src/sdk/models/operations/createpin.ts
-  - src/sdk/models/operations/updatepin.ts
-  - src/sdk/models/operations/uploadfromfilepin.ts
-  - src/sdk/models/operations/uploadfromfolderpin.ts
-  - src/sdk/models/operations/uploadfromjsonpin.ts
-  - src/sdk/models/operations/createkms.ts
-  - src/sdk/models/operations/deletekms.ts
-  - src/sdk/models/operations/getallkms.ts
-  - src/sdk/models/operations/getonekms.ts
-  - src/sdk/models/operations/updatekms.ts
-  - src/sdk/models/operations/createtransaction.ts
-  - src/sdk/models/operations/getalltransaction.ts
-  - src/sdk/models/operations/getavailablenonceswallet.ts
-  - src/sdk/models/operations/getonetransaction.ts
-  - src/sdk/models/operations/getallsettingrelayer.ts
-  - src/sdk/models/operations/updatesettingrelayer.ts
-  - src/sdk/models/operations/createnetwork.ts
-  - src/sdk/models/operations/deletenetwork.ts
-  - src/sdk/models/operations/getallnetwork.ts
-  - src/sdk/models/operations/getonenetwork.ts
-  - src/sdk/models/operations/updatenetwork.ts
-  - src/sdk/models/operations/createrpc.ts
-  - src/sdk/models/operations/deleterpc.ts
-  - src/sdk/models/operations/getallrpc.ts
-  - src/sdk/models/operations/getonerpc.ts
-  - src/sdk/models/operations/updaterpc.ts
-  - src/sdk/models/operations/deleteprojectmember.ts
-  - src/sdk/models/operations/getallprojectmember.ts
-  - src/sdk/models/operations/createinvitation.ts
-  - src/sdk/models/operations/deleteinvitation.ts
-  - src/sdk/models/operations/getallinvitation.ts
-  - src/sdk/models/operations/callsmartcontract.ts
-  - src/sdk/models/operations/deletesmartcontract.ts
-  - src/sdk/models/operations/deployfrombytecodesmartcontract.ts
-  - src/sdk/models/operations/deployfromtemplatesmartcontract.ts
-  - src/sdk/models/operations/encodesmartcontract.ts
-  - src/sdk/models/operations/getallsmartcontract.ts
-  - src/sdk/models/operations/getavailablefunctionssmartcontract.ts
-  - src/sdk/models/operations/getonesmartcontract.ts
-  - src/sdk/models/operations/importexistingsmartcontract.ts
-  - src/sdk/models/operations/readsmartcontract.ts
-  - src/sdk/models/operations/updatesmartcontract.ts
-  - src/sdk/models/operations/getallsmartcontracttemplate.ts
-  - src/sdk/models/operations/getonesmartcontracttemplate.ts
-  - src/sdk/models/operations/createwatcher.ts
-  - src/sdk/models/operations/deletewatcher.ts
-  - src/sdk/models/operations/getallwatcher.ts
-  - src/sdk/models/operations/getallwatcherevent.ts
-  - src/sdk/models/operations/getonewatcher.ts
-  - src/sdk/models/operations/getonewatcherevent.ts
-  - src/sdk/models/operations/updatewatcher.ts
-  - src/sdk/models/operations/cancelwebhook.ts
-  - src/sdk/models/operations/getallwebhook.ts
-  - src/sdk/models/operations/getonewebhook.ts
-  - src/sdk/models/operations/getonewebhooksigningsecret.ts
-  - src/sdk/models/operations/createwebhooksigningsecret.ts
-  - src/sdk/models/operations/resendwebhook.ts
-  - src/sdk/models/shared/addressnativebalanceresponse.ts
-  - src/sdk/models/shared/erc20balanceresponse.ts
-  - src/sdk/models/shared/gasprices.ts
-  - src/sdk/models/shared/gaspriceinfo.ts
-  - src/sdk/models/shared/wallet.ts
-  - src/sdk/models/shared/createwalletdto.ts
-  - src/sdk/models/shared/paginationdata.ts
-  - src/sdk/models/shared/importproviderkeydto.ts
-  - src/sdk/models/shared/tooearly.ts
-  - src/sdk/models/shared/faucet.ts
-  - src/sdk/models/shared/requirefaucetdto.ts
-  - src/sdk/models/shared/resyncnonce.ts
-  - src/sdk/models/shared/signmessageresponse.ts
-  - src/sdk/models/shared/signmessagedto.ts
-  - src/sdk/models/shared/updatewalletdto.ts
-  - src/sdk/models/shared/pin.ts
-  - src/sdk/models/shared/directorycontent.ts
-  - src/sdk/models/shared/storageused.ts
-  - src/sdk/models/shared/createpindto.ts
-  - src/sdk/models/shared/updatepindto.ts
-  - src/sdk/models/shared/uploadjsondto.ts
-  - src/sdk/models/shared/kms.ts
-  - src/sdk/models/shared/createkmsdto.ts
-  - src/sdk/models/shared/awskmscredentialsdto.ts
-  - src/sdk/models/shared/vaultkmscredentialsdto.ts
-  - src/sdk/models/shared/updatekmsdto.ts
-  - src/sdk/models/shared/transaction.ts
-  - src/sdk/models/shared/transactionlog.ts
-  - src/sdk/models/shared/createtransactiondto.ts
-  - src/sdk/models/shared/customgasdto.ts
-  - src/sdk/models/shared/noncesavailable.ts
-  - src/sdk/models/shared/settingrelayer.ts
-  - src/sdk/models/shared/updatesettingrelayerdto.ts
-  - src/sdk/models/shared/network.ts
-  - src/sdk/models/shared/createnetworkdto.ts
-  - src/sdk/models/shared/gaspricerecommendationdto.ts
-  - src/sdk/models/shared/explorerapidto.ts
-  - src/sdk/models/shared/updatenetworkdto.ts
-  - src/sdk/models/shared/rpc.ts
-  - src/sdk/models/shared/createrpcdto.ts
-  - src/sdk/models/shared/updaterpcdto.ts
-  - src/sdk/models/shared/projectmember.ts
-  - src/sdk/models/shared/invitation.ts
-  - src/sdk/models/shared/createinvitationdto.ts
-  - src/sdk/models/shared/calldto.ts
-  - src/sdk/models/shared/deploysmartcontractresponse.ts
-  - src/sdk/models/shared/smartcontract.ts
-  - src/sdk/models/shared/deployfrombytecodedto.ts
-  - src/sdk/models/shared/abiobjectdto.ts
-  - src/sdk/models/shared/abioutputdto.ts
-  - src/sdk/models/shared/abiinputdto.ts
-  - src/sdk/models/shared/deployfromtemplatedto.ts
-  - src/sdk/models/shared/encodesmartcontractresponse.ts
-  - src/sdk/models/shared/encodedto.ts
-  - src/sdk/models/shared/availablefunctions.ts
-  - src/sdk/models/shared/importsmartcontractdto.ts
-  - src/sdk/models/shared/readsmartcontractresponse.ts
-  - src/sdk/models/shared/readdto.ts
-  - src/sdk/models/shared/updatesmartcontractdto.ts
-  - src/sdk/models/shared/smartcontracttemplate.ts
-  - src/sdk/models/shared/watcher.ts
-  - src/sdk/models/shared/createwatcherdto.ts
-  - src/sdk/models/shared/watcherevent.ts
-  - src/sdk/models/shared/updatewatcherdto.ts
-  - src/sdk/models/shared/webhook.ts
-  - src/sdk/models/shared/webhooksigningsecret.ts
-  - src/sdk/models/shared/security.ts
-  - src/sdk/models/errors/getbalanceaddress.ts
-  - src/sdk/models/errors/badrequestexception.ts
-  - src/sdk/models/errors/getbalanceerc20.ts
-  - src/sdk/models/errors/getallgasprice.ts
-  - src/sdk/models/errors/createwallet.ts
-  - src/sdk/models/errors/maximumwalletreached.ts
-  - src/sdk/models/errors/deletewallet.ts
-  - src/sdk/models/errors/couldnotfindresource.ts
-  - src/sdk/models/errors/getallwallet.ts
-  - src/sdk/models/errors/getonewallet.ts
-  - src/sdk/models/errors/importproviderkeywallet.ts
-  - src/sdk/models/errors/claimfaucet.ts
-  - src/sdk/models/errors/microservicenotresponding.ts
-  - src/sdk/models/errors/couldnotperformrequest.ts
-  - src/sdk/models/errors/resyncnonceswallet.ts
-  - src/sdk/models/errors/couldnotprocessentity.ts
-  - src/sdk/models/errors/couldnotassignnonce.ts
-  - src/sdk/models/errors/signmessagewallet.ts
-  - src/sdk/models/errors/forbidden.ts
-  - src/sdk/models/errors/updatewallet.ts
-  - src/sdk/models/errors/deletepin.ts
-  - src/sdk/models/errors/getallpin.ts
-  - src/sdk/models/errors/getonepin.ts
-  - src/sdk/models/errors/getstorageusedpin.ts
-  - src/sdk/models/errors/createpin.ts
-  - src/sdk/models/errors/maximumstoragereached.ts
-  - src/sdk/models/errors/updatepin.ts
-  - src/sdk/models/errors/uploadfromfilepin.ts
-  - src/sdk/models/errors/payloadtoolarge.ts
-  - src/sdk/models/errors/uploadfromfolderpin.ts
-  - src/sdk/models/errors/uploadfromjsonpin.ts
-  - src/sdk/models/errors/createkms.ts
-  - src/sdk/models/errors/deletekms.ts
-  - src/sdk/models/errors/getallkms.ts
-  - src/sdk/models/errors/getonekms.ts
-  - src/sdk/models/errors/updatekms.ts
-  - src/sdk/models/errors/createtransaction.ts
-  - src/sdk/models/errors/nonceexpired.ts
-  - src/sdk/models/errors/executionwillfail.ts
-  - src/sdk/models/errors/invalidgasprice.ts
-  - src/sdk/models/errors/insufficientfunds.ts
-  - src/sdk/models/errors/alreadyknown.ts
-  - src/sdk/models/errors/unpredictablegaslimit.ts
-  - src/sdk/models/errors/replacementgaspriceunderpriced.ts
-  - src/sdk/models/errors/couldnotbroadcast.ts
-  - src/sdk/models/errors/couldnotestimategasprice.ts
-  - src/sdk/models/errors/noproviderfornetwork.ts
-  - src/sdk/models/errors/couldnotsign.ts
-  - src/sdk/models/errors/unknown.ts
-  - src/sdk/models/errors/getalltransaction.ts
-  - src/sdk/models/errors/getavailablenonceswallet.ts
-  - src/sdk/models/errors/getonetransaction.ts
-  - src/sdk/models/errors/getallsettingrelayer.ts
-  - src/sdk/models/errors/updatesettingrelayer.ts
-  - src/sdk/models/errors/createnetwork.ts
-  - src/sdk/models/errors/deletenetwork.ts
-  - src/sdk/models/errors/getallnetwork.ts
-  - src/sdk/models/errors/getonenetwork.ts
-  - src/sdk/models/errors/updatenetwork.ts
-  - src/sdk/models/errors/createrpc.ts
-  - src/sdk/models/errors/deleterpc.ts
-  - src/sdk/models/errors/getallrpc.ts
-  - src/sdk/models/errors/getonerpc.ts
-  - src/sdk/models/errors/updaterpc.ts
-  - src/sdk/models/errors/deleteprojectmember.ts
-  - src/sdk/models/errors/getallprojectmember.ts
-  - src/sdk/models/errors/createinvitation.ts
-  - src/sdk/models/errors/notauthenticated.ts
-  - src/sdk/models/errors/deleteinvitation.ts
-  - src/sdk/models/errors/getallinvitation.ts
-  - src/sdk/models/errors/callsmartcontract.ts
-  - src/sdk/models/errors/invalidbytecode.ts
-  - src/sdk/models/errors/invalidabi.ts
-  - src/sdk/models/errors/invalidfunction.ts
-  - src/sdk/models/errors/missingargument.ts
-  - src/sdk/models/errors/unexpectedargument.ts
-  - src/sdk/models/errors/invalidargument.ts
-  - src/sdk/models/errors/callexception.ts
-  - src/sdk/models/errors/numericfault.ts
-  - src/sdk/models/errors/ensnotsupported.ts
-  - src/sdk/models/errors/contractnotyetdeployed.ts
-  - src/sdk/models/errors/deletesmartcontract.ts
-  - src/sdk/models/errors/deployfrombytecodesmartcontract.ts
-  - src/sdk/models/errors/deployfromtemplatesmartcontract.ts
-  - src/sdk/models/errors/smartcontractnotactivated.ts
-  - src/sdk/models/errors/encodesmartcontract.ts
-  - src/sdk/models/errors/getallsmartcontract.ts
-  - src/sdk/models/errors/getavailablefunctionssmartcontract.ts
-  - src/sdk/models/errors/getonesmartcontract.ts
-  - src/sdk/models/errors/importexistingsmartcontract.ts
-  - src/sdk/models/errors/readsmartcontract.ts
-  - src/sdk/models/errors/updatesmartcontract.ts
-  - src/sdk/models/errors/getallsmartcontracttemplate.ts
-  - src/sdk/models/errors/getonesmartcontracttemplate.ts
-  - src/sdk/models/errors/createwatcher.ts
-  - src/sdk/models/errors/databaseduplicate.ts
-  - src/sdk/models/errors/servernotresponding.ts
-  - src/sdk/models/errors/deletewatcher.ts
-  - src/sdk/models/errors/getallwatcher.ts
-  - src/sdk/models/errors/getallwatcherevent.ts
-  - src/sdk/models/errors/getonewatcher.ts
-  - src/sdk/models/errors/getonewatcherevent.ts
-  - src/sdk/models/errors/updatewatcher.ts
-  - src/sdk/models/errors/cancelwebhook.ts
-  - src/sdk/models/errors/couldnotcancelwebhook.ts
-  - src/sdk/models/errors/getallwebhook.ts
-  - src/sdk/models/errors/getonewebhook.ts
-  - src/sdk/models/errors/getonewebhooksigningsecret.ts
-  - src/sdk/models/errors/createwebhooksigningsecret.ts
-  - src/sdk/models/errors/resendwebhook.ts
-  - src/sdk/models/errors/couldnotresendwebhook.ts
-  - src/sdk/models/errors/index.ts
-  - src/sdk/models/operations/index.ts
-  - src/sdk/models/shared/index.ts
-  - docs/sdk/models/operations/getbalanceaddressrequest.md
-  - docs/sdk/models/operations/getbalanceaddressresponse.md
-  - docs/sdk/models/operations/getbalanceerc20request.md
-  - docs/sdk/models/operations/getbalanceerc20response.md
-  - docs/sdk/models/operations/getallgaspricerequest.md
-  - docs/sdk/models/operations/getallgaspriceresponse.md
-  - docs/sdk/models/operations/createwalletresponse.md
-  - docs/sdk/models/operations/deletewalletrequest.md
-  - docs/sdk/models/operations/deletewalletresponse.md
-  - docs/sdk/models/operations/getallwalletrequest.md
-  - docs/sdk/models/operations/getallwalletwalletpaginated.md
-  - docs/sdk/models/operations/getallwalletresponse.md
-  - docs/sdk/models/operations/getonewalletrequest.md
-  - docs/sdk/models/operations/getonewalletresponse.md
-  - docs/sdk/models/operations/importproviderkeywalletresponse.md
-  - docs/sdk/models/operations/claimfaucetrequest.md
-  - docs/sdk/models/operations/claimfaucetresponsebody.md
-  - docs/sdk/models/operations/claimfaucetresponse.md
-  - docs/sdk/models/operations/resyncnonceswalletrequest.md
-  - docs/sdk/models/operations/resyncnonceswalletresponse.md
-  - docs/sdk/models/operations/signmessagewalletrequest.md
-  - docs/sdk/models/operations/signmessagewalletresponse.md
-  - docs/sdk/models/operations/updatewalletrequest.md
-  - docs/sdk/models/operations/updatewalletresponse.md
-  - docs/sdk/models/operations/deletepinrequest.md
-  - docs/sdk/models/operations/deletepinresponse.md
-  - docs/sdk/models/operations/status.md
-  - docs/sdk/models/operations/getallpinrequest.md
-  - docs/sdk/models/operations/getallpinpinpaginated.md
-  - docs/sdk/models/operations/getallpinresponse.md
-  - docs/sdk/models/operations/getonepinrequest.md
-  - docs/sdk/models/operations/getonepinresponse.md
-  - docs/sdk/models/operations/getstorageusedpinresponse.md
-  - docs/sdk/models/operations/createpinresponse.md
-  - docs/sdk/models/operations/updatepinrequest.md
-  - docs/sdk/models/operations/updatepinresponse.md
-  - docs/sdk/models/operations/filet.md
-  - docs/sdk/models/operations/metadata.md
-  - docs/sdk/models/operations/uploadfromfilepinrequestbody.md
-  - docs/sdk/models/operations/uploadfromfilepinresponse.md
-  - docs/sdk/models/operations/files.md
-  - docs/sdk/models/operations/uploadfromfolderpinmetadata.md
-  - docs/sdk/models/operations/uploadfromfolderpinrequestbody.md
-  - docs/sdk/models/operations/uploadfromfolderpinresponse.md
-  - docs/sdk/models/operations/uploadfromjsonpinresponse.md
-  - docs/sdk/models/operations/createkmsresponse.md
-  - docs/sdk/models/operations/deletekmsrequest.md
-  - docs/sdk/models/operations/deletekmsresponse.md
-  - docs/sdk/models/operations/getallkmsrequest.md
-  - docs/sdk/models/operations/getallkmskmspaginated.md
-  - docs/sdk/models/operations/getallkmsresponse.md
-  - docs/sdk/models/operations/getonekmsrequest.md
-  - docs/sdk/models/operations/getonekmsresponse.md
-  - docs/sdk/models/operations/updatekmsrequest.md
-  - docs/sdk/models/operations/updatekmsresponse.md
-  - docs/sdk/models/operations/createtransactionrequest.md
-  - docs/sdk/models/operations/createtransactionresponse.md
-  - docs/sdk/models/operations/getalltransactionrequest.md
-  - docs/sdk/models/operations/getalltransactiontransactionpaginated.md
-  - docs/sdk/models/operations/getalltransactionresponse.md
-  - docs/sdk/models/operations/getavailablenonceswalletrequest.md
-  - docs/sdk/models/operations/getavailablenonceswalletresponse.md
-  - docs/sdk/models/operations/getonetransactionrequest.md
-  - docs/sdk/models/operations/getonetransactionresponse.md
-  - docs/sdk/models/operations/getallsettingrelayerrequest.md
-  - docs/sdk/models/operations/getallsettingrelayerresponse.md
-  - docs/sdk/models/operations/updatesettingrelayerrequest.md
-  - docs/sdk/models/operations/updatesettingrelayerresponse.md
-  - docs/sdk/models/operations/createnetworkresponse.md
-  - docs/sdk/models/operations/deletenetworkrequest.md
-  - docs/sdk/models/operations/deletenetworkresponse.md
-  - docs/sdk/models/operations/getallnetworkrequest.md
-  - docs/sdk/models/operations/getallnetworknetworkpaginated.md
-  - docs/sdk/models/operations/getallnetworkresponse.md
-  - docs/sdk/models/operations/getonenetworkrequest.md
-  - docs/sdk/models/operations/getonenetworkresponse.md
-  - docs/sdk/models/operations/updatenetworkrequest.md
-  - docs/sdk/models/operations/updatenetworkresponse.md
-  - docs/sdk/models/operations/createrpcrequest.md
-  - docs/sdk/models/operations/createrpcresponse.md
-  - docs/sdk/models/operations/deleterpcrequest.md
-  - docs/sdk/models/operations/deleterpcresponse.md
-  - docs/sdk/models/operations/getallrpcrequest.md
-  - docs/sdk/models/operations/getallrpcrpcpaginated.md
-  - docs/sdk/models/operations/getallrpcresponse.md
-  - docs/sdk/models/operations/getonerpcrequest.md
-  - docs/sdk/models/operations/getonerpcresponse.md
-  - docs/sdk/models/operations/updaterpcrequest.md
-  - docs/sdk/models/operations/updaterpcresponse.md
-  - docs/sdk/models/operations/deleteprojectmemberrequest.md
-  - docs/sdk/models/operations/deleteprojectmemberresponse.md
-  - docs/sdk/models/operations/getallprojectmemberprojectmemberpaginated.md
-  - docs/sdk/models/operations/getallprojectmemberresponse.md
-  - docs/sdk/models/operations/createinvitationresponse.md
-  - docs/sdk/models/operations/deleteinvitationrequest.md
-  - docs/sdk/models/operations/deleteinvitationresponse.md
-  - docs/sdk/models/operations/getallinvitationrequest.md
-  - docs/sdk/models/operations/getallinvitationinvitationpaginated.md
-  - docs/sdk/models/operations/getallinvitationresponse.md
-  - docs/sdk/models/operations/callsmartcontractrequest.md
-  - docs/sdk/models/operations/callsmartcontractresponse.md
-  - docs/sdk/models/operations/deletesmartcontractrequest.md
-  - docs/sdk/models/operations/deletesmartcontractresponse.md
-  - docs/sdk/models/operations/deployfrombytecodesmartcontractrequest.md
-  - docs/sdk/models/operations/deployfrombytecodesmartcontractresponse.md
-  - docs/sdk/models/operations/deployfromtemplatesmartcontractrequest.md
-  - docs/sdk/models/operations/deployfromtemplatesmartcontractresponse.md
-  - docs/sdk/models/operations/encodesmartcontractrequest.md
-  - docs/sdk/models/operations/encodesmartcontractresponse.md
-  - docs/sdk/models/operations/getallsmartcontractrequest.md
-  - docs/sdk/models/operations/getallsmartcontractsmartcontractpaginated.md
-  - docs/sdk/models/operations/getallsmartcontractresponse.md
-  - docs/sdk/models/operations/getavailablefunctionssmartcontractrequest.md
-  - docs/sdk/models/operations/getavailablefunctionssmartcontractresponse.md
-  - docs/sdk/models/operations/getonesmartcontractrequest.md
-  - docs/sdk/models/operations/getonesmartcontractresponse.md
-  - docs/sdk/models/operations/importexistingsmartcontractresponse.md
-  - docs/sdk/models/operations/readsmartcontractrequest.md
-  - docs/sdk/models/operations/readsmartcontractresponse.md
-  - docs/sdk/models/operations/updatesmartcontractrequest.md
-  - docs/sdk/models/operations/updatesmartcontractresponse.md
-  - docs/sdk/models/operations/category.md
-  - docs/sdk/models/operations/getallsmartcontracttemplaterequest.md
-  - docs/sdk/models/operations/getallsmartcontracttemplatesmartcontracttemplatepaginated.md
-  - docs/sdk/models/operations/getallsmartcontracttemplateresponse.md
-  - docs/sdk/models/operations/getonesmartcontracttemplaterequest.md
-  - docs/sdk/models/operations/getonesmartcontracttemplateresponse.md
-  - docs/sdk/models/operations/createwatcherresponse.md
-  - docs/sdk/models/operations/deletewatcherrequest.md
-  - docs/sdk/models/operations/deletewatcherresponse.md
-  - docs/sdk/models/operations/type.md
-  - docs/sdk/models/operations/getallwatcherrequest.md
-  - docs/sdk/models/operations/getallwatcherwatcherpaginated.md
-  - docs/sdk/models/operations/getallwatcherresponse.md
-  - docs/sdk/models/operations/getallwatchereventrequest.md
-  - docs/sdk/models/operations/getallwatchereventwatchereventpaginated.md
-  - docs/sdk/models/operations/getallwatchereventresponse.md
-  - docs/sdk/models/operations/getonewatcherrequest.md
-  - docs/sdk/models/operations/getonewatcherresponse.md
-  - docs/sdk/models/operations/getonewatchereventrequest.md
-  - docs/sdk/models/operations/getonewatchereventresponse.md
-  - docs/sdk/models/operations/updatewatcherrequest.md
-  - docs/sdk/models/operations/updatewatcherresponse.md
-  - docs/sdk/models/operations/cancelwebhookrequest.md
-  - docs/sdk/models/operations/cancelwebhookresponse.md
-  - docs/sdk/models/operations/queryparamstatus.md
-  - docs/sdk/models/operations/getallwebhookrequest.md
-  - docs/sdk/models/operations/getallwebhookwebhookpaginated.md
-  - docs/sdk/models/operations/getallwebhookresponse.md
-  - docs/sdk/models/operations/getonewebhookrequest.md
-  - docs/sdk/models/operations/getonewebhookresponse.md
-  - docs/sdk/models/operations/getonewebhooksigningsecretresponse.md
-  - docs/sdk/models/operations/createwebhooksigningsecretresponse.md
-  - docs/sdk/models/operations/resendwebhookrequest.md
-  - docs/sdk/models/operations/resendwebhookresponse.md
-  - docs/sdk/models/shared/addressnativebalanceresponse.md
-  - docs/sdk/models/shared/erc20balanceresponse.md
-  - docs/sdk/models/shared/gasprices.md
-  - docs/sdk/models/shared/gaspriceinfo.md
-  - docs/sdk/models/shared/walletmetadata.md
-  - docs/sdk/models/shared/wallet.md
-  - docs/sdk/models/shared/createwalletdtometadata.md
-  - docs/sdk/models/shared/createwalletdto.md
-  - docs/sdk/models/shared/paginationdata.md
-  - docs/sdk/models/shared/importproviderkeydtometadata.md
-  - docs/sdk/models/shared/importproviderkeydtoprovider.md
-  - docs/sdk/models/shared/importproviderkeydto.md
-  - docs/sdk/models/shared/context.md
-  - docs/sdk/models/shared/tooearly.md
-  - docs/sdk/models/shared/faucet.md
-  - docs/sdk/models/shared/requirefaucetdto.md
-  - docs/sdk/models/shared/resyncnonce.md
-  - docs/sdk/models/shared/signmessageresponse.md
-  - docs/sdk/models/shared/signmessagedto.md
-  - docs/sdk/models/shared/updatewalletdtometadata.md
-  - docs/sdk/models/shared/updatewalletdto.md
-  - docs/sdk/models/shared/pinmetadata.md
-  - docs/sdk/models/shared/status.md
-  - docs/sdk/models/shared/pintype.md
-  - docs/sdk/models/shared/pin.md
-  - docs/sdk/models/shared/directorycontenttype.md
-  - docs/sdk/models/shared/directorycontent.md
-  - docs/sdk/models/shared/storageused.md
-  - docs/sdk/models/shared/createpindtometadata.md
-  - docs/sdk/models/shared/createpindto.md
-  - docs/sdk/models/shared/updatepindtometadata.md
-  - docs/sdk/models/shared/updatepindto.md
-  - docs/sdk/models/shared/content.md
-  - docs/sdk/models/shared/uploadjsondtometadata.md
-  - docs/sdk/models/shared/uploadjsondto.md
-  - docs/sdk/models/shared/kmscredentials.md
-  - docs/sdk/models/shared/kmsmetadata.md
-  - docs/sdk/models/shared/kmsprovider.md
-  - docs/sdk/models/shared/wallets.md
-  - docs/sdk/models/shared/kms.md
-  - docs/sdk/models/shared/credentials.md
-  - docs/sdk/models/shared/metadata.md
-  - docs/sdk/models/shared/provider.md
-  - docs/sdk/models/shared/createkmsdto.md
-  - docs/sdk/models/shared/awskmscredentialsdto.md
-  - docs/sdk/models/shared/vaultkmscredentialsdto.md
-  - docs/sdk/models/shared/updatekmsdtocredentials.md
-  - docs/sdk/models/shared/updatekmsdtometadata.md
-  - docs/sdk/models/shared/updatekmsdto.md
-  - docs/sdk/models/shared/transactionmetadata.md
-  - docs/sdk/models/shared/transactionspeed.md
-  - docs/sdk/models/shared/transactionstate.md
-  - docs/sdk/models/shared/transactionstatus.md
-  - docs/sdk/models/shared/transaction.md
-  - docs/sdk/models/shared/transactionlogcontext.md
-  - docs/sdk/models/shared/transactionlogtype.md
-  - docs/sdk/models/shared/transactionlog.md
-  - docs/sdk/models/shared/createtransactiondtometadata.md
-  - docs/sdk/models/shared/createtransactiondtospeed.md
-  - docs/sdk/models/shared/createtransactiondto.md
-  - docs/sdk/models/shared/customgasdto.md
-  - docs/sdk/models/shared/noncesavailable.md
-  - docs/sdk/models/shared/settingrelayer.md
-  - docs/sdk/models/shared/updatesettingrelayerdto.md
-  - docs/sdk/models/shared/gaspricerecommendation.md
-  - docs/sdk/models/shared/network.md
-  - docs/sdk/models/shared/createnetworkdto.md
-  - docs/sdk/models/shared/gaspricerecommendationdto.md
-  - docs/sdk/models/shared/explorerapidtotype.md
-  - docs/sdk/models/shared/explorerapidto.md
-  - docs/sdk/models/shared/updatenetworkdto.md
-  - docs/sdk/models/shared/rpctype.md
-  - docs/sdk/models/shared/rpc.md
-  - docs/sdk/models/shared/createrpcdtotype.md
-  - docs/sdk/models/shared/createrpcdto.md
-  - docs/sdk/models/shared/updaterpcdtotype.md
-  - docs/sdk/models/shared/updaterpcdto.md
-  - docs/sdk/models/shared/projectmember.md
-  - docs/sdk/models/shared/invitationrole.md
-  - docs/sdk/models/shared/invitation.md
-  - docs/sdk/models/shared/role.md
-  - docs/sdk/models/shared/createinvitationdto.md
-  - docs/sdk/models/shared/three.md
-  - docs/sdk/models/shared/params.md
-  - docs/sdk/models/shared/speed.md
-  - docs/sdk/models/shared/calldto.md
-  - docs/sdk/models/shared/deploysmartcontractresponse.md
-  - docs/sdk/models/shared/abi.md
-  - docs/sdk/models/shared/compilationdetails.md
-  - docs/sdk/models/shared/smartcontractmetadata.md
-  - docs/sdk/models/shared/state.md
-  - docs/sdk/models/shared/smartcontractstatus.md
-  - docs/sdk/models/shared/smartcontractdeploymethod.md
-  - docs/sdk/models/shared/smartcontractversion.md
-  - docs/sdk/models/shared/smartcontractuidata.md
-  - docs/sdk/models/shared/smartcontract.md
-  - docs/sdk/models/shared/deployfrombytecodedtometadata.md
-  - docs/sdk/models/shared/deployfrombytecodedto3.md
-  - docs/sdk/models/shared/deployfrombytecodedtoparams.md
-  - docs/sdk/models/shared/deployfrombytecodedtospeed.md
-  - docs/sdk/models/shared/deploymethod.md
-  - docs/sdk/models/shared/version.md
-  - docs/sdk/models/shared/uidata.md
-  - docs/sdk/models/shared/deployfrombytecodedto.md
-  - docs/sdk/models/shared/statemutability.md
-  - docs/sdk/models/shared/type.md
-  - docs/sdk/models/shared/abiobjectdto.md
-  - docs/sdk/models/shared/abioutputdtocomponents.md
-  - docs/sdk/models/shared/abioutputdto.md
-  - docs/sdk/models/shared/components.md
-  - docs/sdk/models/shared/abiinputdto.md
-  - docs/sdk/models/shared/deployfromtemplatedtometadata.md
-  - docs/sdk/models/shared/deployfromtemplatedto3.md
-  - docs/sdk/models/shared/deployfromtemplatedtoparams.md
-  - docs/sdk/models/shared/deployfromtemplatedtospeed.md
-  - docs/sdk/models/shared/deployfromtemplatedtodeploymethod.md
-  - docs/sdk/models/shared/deployfromtemplatedtoversion.md
-  - docs/sdk/models/shared/deployfromtemplatedtouidata.md
-  - docs/sdk/models/shared/deployfromtemplatedto.md
-  - docs/sdk/models/shared/encodesmartcontractresponse.md
-  - docs/sdk/models/shared/encodedto3.md
-  - docs/sdk/models/shared/encodedtoparams.md
-  - docs/sdk/models/shared/encodedto.md
-  - docs/sdk/models/shared/availablefunctions.md
-  - docs/sdk/models/shared/importsmartcontractdtometadata.md
-  - docs/sdk/models/shared/importsmartcontractdto3.md
-  - docs/sdk/models/shared/importsmartcontractdtoparams.md
-  - docs/sdk/models/shared/importsmartcontractdtodeploymethod.md
-  - docs/sdk/models/shared/importsmartcontractdtoversion.md
-  - docs/sdk/models/shared/importsmartcontractdtouidata.md
-  - docs/sdk/models/shared/importsmartcontractdto.md
-  - docs/sdk/models/shared/readsmartcontractresponse3.md
-  - docs/sdk/models/shared/readsmartcontractresponseparams.md
-  - docs/sdk/models/shared/readsmartcontractresponseschemas3.md
-  - docs/sdk/models/shared/response.md
-  - docs/sdk/models/shared/readsmartcontractresponse.md
-  - docs/sdk/models/shared/readdto3.md
-  - docs/sdk/models/shared/readdtoparams.md
-  - docs/sdk/models/shared/readdto.md
-  - docs/sdk/models/shared/updatesmartcontractdtometadata.md
-  - docs/sdk/models/shared/updatesmartcontractdto.md
-  - docs/sdk/models/shared/smartcontracttemplateabi.md
-  - docs/sdk/models/shared/category.md
-  - docs/sdk/models/shared/smartcontracttemplatecompilationdetails.md
-  - docs/sdk/models/shared/form.md
-  - docs/sdk/models/shared/smartcontracttemplate.md
-  - docs/sdk/models/shared/watchercustomeventabi.md
-  - docs/sdk/models/shared/watchercustomfilters.md
-  - docs/sdk/models/shared/watchermetadata.md
-  - docs/sdk/models/shared/triggertype.md
-  - docs/sdk/models/shared/watchertype.md
-  - docs/sdk/models/shared/watcher.md
-  - docs/sdk/models/shared/customeventabi.md
-  - docs/sdk/models/shared/customfilters.md
-  - docs/sdk/models/shared/createwatcherdtometadata.md
-  - docs/sdk/models/shared/createwatcherdtotype.md
-  - docs/sdk/models/shared/createwatcherdto.md
-  - docs/sdk/models/shared/payload.md
-  - docs/sdk/models/shared/watchereventstatus.md
-  - docs/sdk/models/shared/watcherevent.md
-  - docs/sdk/models/shared/updatewatcherdtometadata.md
-  - docs/sdk/models/shared/updatewatcherdto.md
-  - docs/sdk/models/shared/headers.md
-  - docs/sdk/models/shared/webhookpayload.md
-  - docs/sdk/models/shared/webhookstatus.md
-  - docs/sdk/models/shared/webhook.md
-  - docs/sdk/models/shared/webhooksigningsecret.md
-  - docs/sdk/models/shared/security.md
-  - docs/sdk/models/errors/getbalanceaddressresponsebody.md
-  - docs/sdk/models/errors/schemascontext.md
-  - docs/sdk/models/errors/badrequestexception.md
-  - docs/sdk/models/errors/getbalanceerc20responsebody.md
-  - docs/sdk/models/errors/getallgaspriceresponsebody.md
-  - docs/sdk/models/errors/createwalletwalletresponsebody.md
-  - docs/sdk/models/errors/createwalletresponsebody.md
-  - docs/sdk/models/errors/schemasmaximumwalletreachedcontext.md
-  - docs/sdk/models/errors/maximumwalletreached.md
-  - docs/sdk/models/errors/deletewalletwalletresponsebody.md
-  - docs/sdk/models/errors/deletewalletresponsebody.md
-  - docs/sdk/models/errors/schemascouldnotfindresourcecontext.md
-  - docs/sdk/models/errors/couldnotfindresource.md
-  - docs/sdk/models/errors/getallwalletresponsebody.md
-  - docs/sdk/models/errors/getonewalletwalletresponsebody.md
-  - docs/sdk/models/errors/getonewalletresponsebody.md
-  - docs/sdk/models/errors/importproviderkeywalletresponsebody.md
-  - docs/sdk/models/errors/claimfaucetwalletresponsebody.md
-  - docs/sdk/models/errors/claimfaucetresponsebody.md
-  - docs/sdk/models/errors/schemasmicroservicenotrespondingcontext.md
-  - docs/sdk/models/errors/microservicenotresponding.md
-  - docs/sdk/models/errors/schemascouldnotperformrequestcontext.md
-  - docs/sdk/models/errors/couldnotperformrequest.md
-  - docs/sdk/models/errors/resyncnonceswalletwallettransactionmanagerresponseresponsebody.md
-  - docs/sdk/models/errors/resyncnonceswalletwallettransactionmanagerresponsebody.md
-  - docs/sdk/models/errors/resyncnonceswalletwalletresponsebody.md
-  - docs/sdk/models/errors/resyncnonceswalletresponsebody.md
-  - docs/sdk/models/errors/schemascouldnotprocessentitycontext.md
-  - docs/sdk/models/errors/couldnotprocessentity.md
-  - docs/sdk/models/errors/schemascouldnotassignnoncecontext.md
-  - docs/sdk/models/errors/couldnotassignnonce.md
-  - docs/sdk/models/errors/signmessagewalletwalletresponseresponsebody.md
-  - docs/sdk/models/errors/signmessagewalletwalletresponsebody.md
-  - docs/sdk/models/errors/signmessagewalletresponsebody.md
-  - docs/sdk/models/errors/schemasforbiddencontext.md
-  - docs/sdk/models/errors/forbidden.md
-  - docs/sdk/models/errors/updatewalletwalletresponsebody.md
-  - docs/sdk/models/errors/updatewalletresponsebody.md
-  - docs/sdk/models/errors/deletepinipfsresponsebody.md
-  - docs/sdk/models/errors/deletepinresponsebody.md
-  - docs/sdk/models/errors/getallpinresponsebody.md
-  - docs/sdk/models/errors/getonepinipfsresponsebody.md
-  - docs/sdk/models/errors/getonepinresponsebody.md
-  - docs/sdk/models/errors/getstorageusedpinresponsebody.md
-  - docs/sdk/models/errors/createpinipfsresponsebody.md
-  - docs/sdk/models/errors/createpinresponsebody.md
-  - docs/sdk/models/errors/schemasmaximumstoragereachedcontext.md
-  - docs/sdk/models/errors/maximumstoragereached.md
-  - docs/sdk/models/errors/updatepinipfsresponsebody.md
-  - docs/sdk/models/errors/updatepinresponsebody.md
-  - docs/sdk/models/errors/uploadfromfilepinipfsresponsebody.md
-  - docs/sdk/models/errors/uploadfromfilepinresponsebody.md
-  - docs/sdk/models/errors/schemaspayloadtoolargecontext.md
-  - docs/sdk/models/errors/payloadtoolarge.md
-  - docs/sdk/models/errors/uploadfromfolderpinipfsresponsebody.md
-  - docs/sdk/models/errors/uploadfromfolderpinresponsebody.md
-  - docs/sdk/models/errors/uploadfromjsonpinipfsresponsebody.md
-  - docs/sdk/models/errors/uploadfromjsonpinresponsebody.md
-  - docs/sdk/models/errors/createkmsresponsebody.md
-  - docs/sdk/models/errors/deletekmskmsresponsebody.md
-  - docs/sdk/models/errors/deletekmsresponsebody.md
-  - docs/sdk/models/errors/getallkmsresponsebody.md
-  - docs/sdk/models/errors/getonekmskmsresponsebody.md
-  - docs/sdk/models/errors/getonekmsresponsebody.md
-  - docs/sdk/models/errors/updatekmskmsresponsebody.md
-  - docs/sdk/models/errors/updatekmsresponsebody.md
-  - docs/sdk/models/errors/createtransactiontransactionmanagerresponse500responsebody.md
-  - docs/sdk/models/errors/createtransactiontransactionmanagerresponseresponsebody.md
-  - docs/sdk/models/errors/createtransactiontransactionmanagerresponsebody.md
-  - docs/sdk/models/errors/createtransactionresponsebody.md
-  - docs/sdk/models/errors/schemasnonceexpiredcontext.md
-  - docs/sdk/models/errors/nonceexpired.md
-  - docs/sdk/models/errors/schemasexecutionwillfailcontext.md
-  - docs/sdk/models/errors/executionwillfail.md
-  - docs/sdk/models/errors/schemasinvalidgaspricecontext.md
-  - docs/sdk/models/errors/invalidgasprice.md
-  - docs/sdk/models/errors/schemasinsufficientfundscontext.md
-  - docs/sdk/models/errors/insufficientfunds.md
-  - docs/sdk/models/errors/context.md
-  - docs/sdk/models/errors/alreadyknown.md
-  - docs/sdk/models/errors/schemasunpredictablegaslimitcontext.md
-  - docs/sdk/models/errors/unpredictablegaslimit.md
-  - docs/sdk/models/errors/schemasreplacementgaspriceunderpricedcontext.md
-  - docs/sdk/models/errors/replacementgaspriceunderpriced.md
-  - docs/sdk/models/errors/schemascouldnotbroadcastcontext.md
-  - docs/sdk/models/errors/couldnotbroadcast.md
-  - docs/sdk/models/errors/schemascouldnotestimategaspricecontext.md
-  - docs/sdk/models/errors/couldnotestimategasprice.md
-  - docs/sdk/models/errors/schemasnoproviderfornetworkcontext.md
-  - docs/sdk/models/errors/noproviderfornetwork.md
-  - docs/sdk/models/errors/schemascouldnotsigncontext.md
-  - docs/sdk/models/errors/couldnotsign.md
-  - docs/sdk/models/errors/schemasunknowncontext.md
-  - docs/sdk/models/errors/unknown.md
-  - docs/sdk/models/errors/getalltransactionresponsebody.md
-  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponse500responsebody.md
-  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponseresponsebody.md
-  - docs/sdk/models/errors/getavailablenonceswallettransactionmanagerresponsebody.md
-  - docs/sdk/models/errors/getavailablenonceswalletresponsebody.md
-  - docs/sdk/models/errors/getonetransactiontransactionmanagerresponsebody.md
-  - docs/sdk/models/errors/getonetransactionresponsebody.md
-  - docs/sdk/models/errors/getallsettingrelayertransactionmanagersettingresponsebody.md
-  - docs/sdk/models/errors/getallsettingrelayerresponsebody.md
-  - docs/sdk/models/errors/updatesettingrelayertransactionmanagersettingresponsebody.md
-  - docs/sdk/models/errors/updatesettingrelayerresponsebody.md
-  - docs/sdk/models/errors/createnetworkresponsebody.md
-  - docs/sdk/models/errors/deletenetworknetworkresponsebody.md
-  - docs/sdk/models/errors/deletenetworkresponsebody.md
-  - docs/sdk/models/errors/getallnetworkresponsebody.md
-  - docs/sdk/models/errors/getonenetworknetworkresponsebody.md
-  - docs/sdk/models/errors/getonenetworkresponsebody.md
-  - docs/sdk/models/errors/updatenetworknetworkresponsebody.md
-  - docs/sdk/models/errors/updatenetworkresponsebody.md
-  - docs/sdk/models/errors/createrpcnetworkrpcresponsebody.md
-  - docs/sdk/models/errors/createrpcresponsebody.md
-  - docs/sdk/models/errors/deleterpcnetworkrpcresponsebody.md
-  - docs/sdk/models/errors/deleterpcresponsebody.md
-  - docs/sdk/models/errors/getallrpcresponsebody.md
-  - docs/sdk/models/errors/getonerpcnetworkrpcresponsebody.md
-  - docs/sdk/models/errors/getonerpcresponsebody.md
-  - docs/sdk/models/errors/updaterpcnetworkrpcresponsebody.md
-  - docs/sdk/models/errors/updaterpcresponsebody.md
-  - docs/sdk/models/errors/deleteprojectmemberprojectmemberresponseresponsebody.md
-  - docs/sdk/models/errors/deleteprojectmemberprojectmemberresponsebody.md
-  - docs/sdk/models/errors/deleteprojectmemberresponsebody.md
-  - docs/sdk/models/errors/getallprojectmemberresponsebody.md
-  - docs/sdk/models/errors/createinvitationprojectmemberinvitationresponsebody.md
-  - docs/sdk/models/errors/createinvitationresponsebody.md
-  - docs/sdk/models/errors/schemasnotauthenticatedcontext.md
-  - docs/sdk/models/errors/notauthenticated.md
-  - docs/sdk/models/errors/deleteinvitationprojectmemberinvitationresponsebody.md
-  - docs/sdk/models/errors/deleteinvitationresponsebody.md
-  - docs/sdk/models/errors/getallinvitationresponsebody.md
-  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponse500responsebody.md
-  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/callsmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/callsmartcontractresponsebody.md
-  - docs/sdk/models/errors/schemasinvalidbytecodecontext.md
-  - docs/sdk/models/errors/invalidbytecode.md
-  - docs/sdk/models/errors/schemasinvalidabicontext.md
-  - docs/sdk/models/errors/invalidabi.md
-  - docs/sdk/models/errors/schemasinvalidfunctioncontext.md
-  - docs/sdk/models/errors/invalidfunction.md
-  - docs/sdk/models/errors/schemasmissingargumentcontext.md
-  - docs/sdk/models/errors/missingargument.md
-  - docs/sdk/models/errors/schemasunexpectedargumentcontext.md
-  - docs/sdk/models/errors/unexpectedargument.md
-  - docs/sdk/models/errors/schemasinvalidargumentcontext.md
-  - docs/sdk/models/errors/invalidargument.md
-  - docs/sdk/models/errors/schemascallexceptioncontext.md
-  - docs/sdk/models/errors/callexception.md
-  - docs/sdk/models/errors/schemasnumericfaultcontext.md
-  - docs/sdk/models/errors/numericfault.md
-  - docs/sdk/models/errors/schemasensnotsupportedcontext.md
-  - docs/sdk/models/errors/ensnotsupported.md
-  - docs/sdk/models/errors/schemascontractnotyetdeployedcontext.md
-  - docs/sdk/models/errors/contractnotyetdeployed.md
-  - docs/sdk/models/errors/deletesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/deletesmartcontractresponsebody.md
-  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponse500responsebody.md
-  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/deployfrombytecodesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/deployfrombytecodesmartcontractresponsebody.md
-  - docs/sdk/models/errors/deployfromtemplatesmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/deployfromtemplatesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/deployfromtemplatesmartcontractresponsebody.md
-  - docs/sdk/models/errors/schemassmartcontractnotactivatedcontext.md
-  - docs/sdk/models/errors/smartcontractnotactivated.md
-  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/encodesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/encodesmartcontractresponsebody.md
-  - docs/sdk/models/errors/getallsmartcontractresponsebody.md
-  - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/getavailablefunctionssmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/getavailablefunctionssmartcontractresponsebody.md
-  - docs/sdk/models/errors/getonesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/getonesmartcontractresponsebody.md
-  - docs/sdk/models/errors/importexistingsmartcontractresponsebody.md
-  - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponseresponsebody.md
-  - docs/sdk/models/errors/readsmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/readsmartcontractresponsebody.md
-  - docs/sdk/models/errors/updatesmartcontractsmartcontractmanagementresponsebody.md
-  - docs/sdk/models/errors/updatesmartcontractresponsebody.md
-  - docs/sdk/models/errors/getallsmartcontracttemplateresponsebody.md
-  - docs/sdk/models/errors/getonesmartcontracttemplatesmartcontracttemplateresponsebody.md
-  - docs/sdk/models/errors/getonesmartcontracttemplateresponsebody.md
-  - docs/sdk/models/errors/createwatchermonitorresponse500responsebody.md
-  - docs/sdk/models/errors/createwatchermonitorresponseresponsebody.md
-  - docs/sdk/models/errors/createwatchermonitorresponsebody.md
-  - docs/sdk/models/errors/createwatcherresponsebody.md
-  - docs/sdk/models/errors/schemasdatabaseduplicatecontext.md
-  - docs/sdk/models/errors/databaseduplicate.md
-  - docs/sdk/models/errors/schemasservernotrespondingcontext.md
-  - docs/sdk/models/errors/servernotresponding.md
-  - docs/sdk/models/errors/deletewatchermonitorresponsebody.md
-  - docs/sdk/models/errors/deletewatcherresponsebody.md
-  - docs/sdk/models/errors/getallwatcherresponsebody.md
-  - docs/sdk/models/errors/getallwatchereventresponsebody.md
-  - docs/sdk/models/errors/getonewatchermonitorresponsebody.md
-  - docs/sdk/models/errors/getonewatcherresponsebody.md
-  - docs/sdk/models/errors/getonewatchereventmonitorresponsebody.md
-  - docs/sdk/models/errors/getonewatchereventresponsebody.md
-  - docs/sdk/models/errors/updatewatchermonitorresponsebody.md
-  - docs/sdk/models/errors/updatewatcherresponsebody.md
-  - docs/sdk/models/errors/cancelwebhookwebhookresponseresponsebody.md
-  - docs/sdk/models/errors/cancelwebhookwebhookresponsebody.md
-  - docs/sdk/models/errors/cancelwebhookresponsebody.md
-  - docs/sdk/models/errors/schemascouldnotcancelwebhookcontext.md
-  - docs/sdk/models/errors/couldnotcancelwebhook.md
-  - docs/sdk/models/errors/getallwebhookresponsebody.md
-  - docs/sdk/models/errors/getonewebhookwebhookresponsebody.md
-  - docs/sdk/models/errors/getonewebhookresponsebody.md
-  - docs/sdk/models/errors/getonewebhooksigningsecretresponsebody.md
-  - docs/sdk/models/errors/createwebhooksigningsecretwebhookresponsebody.md
-  - docs/sdk/models/errors/createwebhooksigningsecretresponsebody.md
-  - docs/sdk/models/errors/resendwebhookwebhookresponseresponsebody.md
-  - docs/sdk/models/errors/resendwebhookwebhookresponsebody.md
-  - docs/sdk/models/errors/resendwebhookresponsebody.md
-  - docs/sdk/models/errors/schemascouldnotresendwebhookcontext.md
-  - docs/sdk/models/errors/couldnotresendwebhook.md
-  - docs/sdks/starton/README.md
-  - docs/lib/utils/retryconfig.md
-  - docs/sdks/data/README.md
-  - docs/sdks/wallet/README.md
-  - docs/sdks/ipfs/README.md
-  - docs/sdks/kms/README.md
-  - docs/sdks/transactionmanager/README.md
-  - docs/sdks/setting/README.md
-  - docs/sdks/network/README.md
-  - docs/sdks/rpc/README.md
-  - docs/sdks/project/README.md
-  - docs/sdks/member/README.md
-  - docs/sdks/invitation/README.md
-  - docs/sdks/smartcontractmanagement/README.md
-  - docs/sdks/smartcontract/README.md
-  - docs/sdks/template/README.md
-  - docs/sdks/monitor/README.md
-  - docs/sdks/webhook/README.md
-  - USAGE.md
-  - .gitattributes
-  - .devcontainer/README.md
-  - .devcontainer/devcontainer.json
-  - .devcontainer/setup.sh
-  - src/hooks/hooks.ts
-  - src/hooks/types.ts
-  - src/hooks/index.ts
-  - CONTRIBUTING.md
+examples:
+  getBalanceAddress:
+    "":
+      parameters:
+        path:
+          network: "polygon-mainnet"
+          address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+  getBalanceErc20:
+    "":
+      parameters:
+        path:
+          network: "polygon-mainnet"
+          contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+        query:
+          address: "0x24cd470f549b136ec93ccd42c087124cf3ea3233"
+      responses:
+        "200":
+          application/json: {"balance": "0", "contractAddress": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", "decimal": 6, "formatted": "0.0", "symbol": "USDT"}
+        "400": {}
+  getAllGasPrice:
+    "":
+      parameters:
+        path:
+          network: "polygon-mainnet"
+  createWallet:
+    speakeasy-default-create-wallet:
+      requestBody:
+        application/json: {"kmsId": "<value>"}
+  deleteWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+        query: {}
+  getAllWallet:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+  getOneWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+  importProviderKeyWallet:
+    speakeasy-default-import-provider-key-wallet:
+      requestBody:
+        application/json: {"provider": "AWS"}
+  claimFaucet:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+      requestBody:
+        application/json: {"captchaToken": "testCaptchaToken", "wallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+  resyncNoncesWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+          network: "polygon-mumbai"
+  signMessageWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+      requestBody:
+        application/json: {"message": "<value>"}
+  updateWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+  deletePin:
+    "":
+      parameters:
+        path:
+          id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+  getAllPin:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+  getOnePin:
+    "":
+      parameters:
+        path:
+          id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+        query: {}
+  getStorageUsedPin:
+    speakeasy-default-get-storage-used-pin: {}
+  createPin:
+    a:
+      requestBody:
+        application/json: {"cid": "bafkreiae3nprvu6qp6twwpokfk5lbd5qev34d6zrwmnv3jxetuc2zwmegq", "name": "my file"}
+  updatePin:
+    a:
+      parameters:
+        path:
+          id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+      requestBody:
+        application/json: {"name": "My new name"}
+    "":
+      parameters:
+        path:
+          id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+  uploadFromFilePin:
+    speakeasy-default-upload-from-file-pin: {}
+  uploadFromFolderPin:
+    speakeasy-default-upload-from-folder-pin: {}
+  uploadFromJsonPin:
+    a:
+      requestBody:
+        application/json: {"name": "my file"}
+  createKms:
+    speakeasy-default-create-kms:
+      requestBody:
+        application/json: {"name": "<value>", "provider": "AWS", "secret": "<value>"}
+  deleteKms:
+    "":
+      parameters:
+        path:
+          id: "kms_000"
+  getAllKms:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+  getOneKms:
+    "":
+      parameters:
+        path:
+          id: "kms_000"
+  updateKms:
+    "":
+      parameters:
+        path:
+          id: "kms_000"
+  createTransaction:
+    a:
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"data": "0x1234", "network": "polygon-mumbai", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "low", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+    b:
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"customGas": {"gasPrice": "5000000000"}, "data": "0x1234", "network": "binance-testnet", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "custom", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+    "":
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"data": "0x1234", "network": "polygon-mumbai", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "low", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+  getAllTransaction:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          network: "polygon-mumbai"
+          transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5"
+          to: "0x298e760768c8481780397eE28A127eAd584df4ee"
+          from: "0x298e760768c8481780397eE28A127eAd584df4ee"
+  getAvailableNoncesWallet:
+    "":
+      parameters:
+        path:
+          address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+          network: "polygon-mumbai"
+  getOneTransaction:
+    "":
+      parameters:
+        path:
+          id: "tx_1abfa87e04814cb7a669d614d1fe5f78"
+  getAllSettingRelayer:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+  updateSettingRelayer:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+      requestBody:
+        application/json: {"unstuckAutomaticGasPrice": true, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": 300, "unstuckMaxGasPrice": "150000000000", "unstuckMissingNonce": true, "unstuckMissingNonceDelay": 300}
+  createNetwork:
+    a:
+      requestBody:
+        application/json: {"blockchain": "optimism", "chainId": 10, "confirmationBlocks": 128, "displayName": "optimism-private", "enableExternalWallet": false, "enableListener": false, "enableRelayer": false, "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://limp-pastry.org"}, "explorerUrl": "https://optimism-invalid-test-explorer.com", "logo": "https://optimism-invalid-test-logo.com", "name": "optimism-functional-tests1714642436107", "symbol": "ETH"}
+  deleteNetwork:
+    "":
+      parameters:
+        path:
+          name: "optimism-functional-tests1714642436107"
+  getAllNetwork:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          chainIds: []
+        header:
+          origin: "<value>"
+          x-platform-hostname: "<value>"
+  getOneNetwork:
+    "":
+      parameters:
+        path:
+          name: "optimism-functional-tests"
+  updateNetwork:
+    a:
+      parameters:
+        path:
+          name: "optimism-functional-tests"
+      requestBody:
+        application/json: {"displayName": "optimism-private-tests", "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "https://alarming-nondisclosure.com"}}
+    "":
+      parameters:
+        path:
+          name: "optimism-functional-tests"
+      requestBody:
+        application/json: {"explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://rubbery-wrap.biz"}}
+  createRpc:
+    a:
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+      requestBody:
+        application/json: {"type": "archive", "url": "https://optimism.publicnode.com"}
+    "":
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+      requestBody:
+        application/json: {"type": "archive", "url": "https://timely-haven.biz"}
+  deleteRpc:
+    "":
+      parameters:
+        path:
+          id: "rpc_c3d39f5a79be4599b0cdff667ffd1df3"
+          name: "optimism-functionnal-tests"
+  getAllRpc:
+    "":
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+        query:
+          page: 0
+          limit: 20
+  getOneRpc:
+    "":
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+          id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+  updateRpc:
+    a:
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+          id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+      requestBody:
+        application/json: {"url": "https://optimism.publicnode.com"}
+    "":
+      parameters:
+        path:
+          name: "optimism-functionnal-tests"
+          id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+  deleteProjectMember:
+    speakeasy-default-delete-project-member:
+      parameters:
+        path:
+          userId: "<value>"
+  getAllProjectMember:
+    speakeasy-default-get-all-project-member: {}
+  createInvitation:
+    speakeasy-default-create-invitation:
+      requestBody:
+        application/json: {"email": "Jena.Nienow28@yahoo.com", "role": "owner"}
+  deleteInvitation:
+    "":
+      parameters:
+        path:
+          id: "invit_f9701ff8e2ea4a1d964e0d6d40564801"
+  getAllInvitation:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+  callSmartContract:
+    a:
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"functionName": "mint", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee", "1000000000000000000"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "<value>"}
+  deleteSmartContract:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "8653 Vaughn Hills"
+  deployFromBytecodeSmartContract:
+    a:
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"abi": [{"inputs": {}, "stateMutability": "nonpayable", "type": "constructor"}], "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220543af7de4c3e10d25def66e7de6e0ecaf799771e226c96cf4620087585c071fd64736f6c63430008120033", "name": "Minimal test contract", "network": "polygon-mumbai", "params": [], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+    "":
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"abi": [], "bytecode": "<value>", "name": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "<value>"}
+  deployFromTemplateSmartContract:
+    a:
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"name": "TestToken", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "templateId": "ERC20_MINT_META_TRANSACTION"}
+    "":
+      parameters:
+        query:
+          simulate: false
+      requestBody:
+        application/json: {"name": "TestToken", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "templateId": "ERC20_META_TRANSACTION"}
+  encodeSmartContract:
+    a:
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {"functionName": "mint", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee", "1000000000000000000"]}
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"]}
+  getAllSmartContract:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+          includeAbi: true
+          includeCompilationDetails: true
+  getAvailableFunctionsSmartContract:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+  getOneSmartContract:
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+        query:
+          includeAbi: true
+          includeCompilationDetails: true
+  importExistingSmartContract:
+    a:
+      requestBody:
+        application/json: {"abi": [{"inputs": {}, "stateMutability": "nonpayable", "type": "constructor"}], "address": "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e", "creationHash": "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da", "description": "Test minimal contract tests.", "name": "Minimal contract tests.", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "templateId": "ERC721_META_TRANSACTION"}
+  readSmartContract:
+    a:
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {"functionName": "balanceOf", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee"]}
+      responses:
+        "201":
+          application/json: {"address": "660 Romaine Highway", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": false}
+        "400": {}
+        "404": {}
+        "500": {}
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"]}
+      responses:
+        "201":
+          application/json: {"address": "742 Feil Lane", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": false}
+        "400": {}
+        "404": {}
+        "500": {}
+  updateSmartContract:
+    a:
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {"description": "Test description", "name": "Test smart contract"}
+    "":
+      parameters:
+        path:
+          network: "polygon-mumbai"
+          address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+  getAllSmartContractTemplate:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          isAudited: true
+          isActivated: true
+          name: "ERC"
+          blockchain: "polygon"
+          category: "NFT"
+          includeCompilationDetails: true
+          includeForm: true
+  getOneSmartContractTemplate:
+    "":
+      parameters:
+        path:
+          id: "ERC721_META_TRANSACTION"
+        query:
+          includeForm: true
+  createWatcher:
+    a:
+      requestBody:
+        application/json: {"address": "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1", "confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher test", "network": "polygon-mumbai", "type": "ADDRESS_ACTIVITY", "webhookUrl": "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"}
+  deleteWatcher:
+    speakeasy-default-delete-watcher:
+      parameters:
+        path:
+          id: "<id>"
+  getAllWatcher:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          name: "watcher"
+          address: "0x298e760768c8481780397eE28A127eAd584df4ee"
+          network: "polygon-mumbai"
+          type: "ADDRESS_ACTIVITY"
+          webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"
+          confirmationsBlocks: 0
+          paused: false
+  getAllWatcherEvent:
+    "":
+      parameters:
+        path:
+          id: "ntif_f94e4a79611947d48254537a8861265d"
+        query:
+          page: 0
+          limit: 20
+  getOneWatcher:
+    "":
+      parameters:
+        path:
+          id: "ntif_f94e4a79611947d48254537a8861265d"
+  getOneWatcherEvent:
+    "":
+      parameters:
+        path:
+          id: "ntif_f94e4a79611947d48254537a8861265d"
+          eventId: "wevent_437e18e7470944099bd094e1c936e4cd"
+  updateWatcher:
+    a:
+      parameters:
+        path:
+          id: "ntif_f94e4a79611947d48254537a8861265d"
+      requestBody:
+        application/json: {"confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher tests", "paused": false, "webhookUrl": ""}
+    "":
+      parameters:
+        path:
+          id: "ntif_f94e4a79611947d48254537a8861265d"
+      requestBody:
+        application/json: {"confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher tests", "paused": true, "webhookUrl": ""}
+  cancelWebhook:
+    "":
+      parameters:
+        path:
+          id: "wh_4c2905f7276b415fac02ee3682189940"
+  getAllWebhook:
+    "":
+      parameters:
+        query:
+          page: 0
+          limit: 20
+          status: "SUCCESSFUL"
+  getOneWebhook:
+    "":
+      parameters:
+        path:
+          id: "wh_4c2905f7276b415fac02ee3682189940"
+  getOneWebhookSigningSecret:
+    speakeasy-default-get-one-webhook-signing-secret: {}
+  createWebhookSigningSecret:
+    speakeasy-default-create-webhook-signing-secret: {}
+  resendWebhook:
+    "":
+      parameters:
+        path:
+          id: "wh_4c2905f7276b415fac02ee3682189940"

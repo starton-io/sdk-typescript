@@ -81,7 +81,7 @@ async function run() {
     explorerApi: {
       apiKey: "<value>",
       type: ExplorerApiDtoType.Etherscan,
-      url: "http://yummy-shift.info",
+      url: "http://limp-pastry.org",
     },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
@@ -431,7 +431,7 @@ async function run() {
       explorerApi: {
         apiKey: "<value>",
         type: ExplorerApiDtoType.Etherscan,
-        url: "https://realistic-kill.info",
+        url: "https://alarming-nondisclosure.com",
       },
     },
     name: "optimism-functional-tests",

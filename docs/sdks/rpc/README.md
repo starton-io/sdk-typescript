@@ -59,7 +59,7 @@ const starton = new StartonCore({
 async function run() {
   const res = await networkRpcCreate(starton, {
     createRpcDto: {
-      type: CreateRpcDtoType.Full,
+      type: CreateRpcDtoType.Archive,
       url: "https://optimism.publicnode.com",
     },
     name: "optimism-functionnal-tests",
