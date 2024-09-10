@@ -6,7 +6,7 @@
 import { GetOneKmsRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneKmsRequest = {
-    id: "kms_000",
+  id: "kms_000",
 };
 ```
 

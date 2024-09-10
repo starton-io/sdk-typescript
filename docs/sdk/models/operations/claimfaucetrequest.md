@@ -6,11 +6,11 @@
 import { ClaimFaucetRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: ClaimFaucetRequest = {
-    requireFaucetDto: {
-        captchaToken: "testCaptchaToken",
-        wallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-    },
-    network: "polygon-mumbai",
+  requireFaucetDto: {
+    captchaToken: "testCaptchaToken",
+    wallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+  },
+  network: "polygon-mumbai",
 };
 ```
 

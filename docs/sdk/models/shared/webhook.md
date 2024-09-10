@@ -6,13 +6,13 @@
 import { Webhook, WebhookStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: Webhook = {
-    headers: {},
-    id: "<id>",
-    payload: {},
-    projectId: "<value>",
-    refId: "<value>",
-    status: WebhookStatus.Failed,
-    url: "http://monstrous-ambassador.org",
+  headers: {},
+  id: "<id>",
+  payload: {},
+  projectId: "<value>",
+  refId: "<value>",
+  status: WebhookStatus.Failed,
+  url: "http://monstrous-ambassador.org",
 };
 ```
 

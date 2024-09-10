@@ -6,7 +6,7 @@
 import { Security } from "@starton/sdk/sdk/models/shared";
 
 let value: Security = {
-    apiKey: "<value>",
+  apiKey: "<value>",
 };
 ```
 

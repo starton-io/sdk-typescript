@@ -6,11 +6,11 @@
 import { Rpc, RpcType } from "@starton/sdk/sdk/models/shared";
 
 let value: Rpc = {
-    id: "<id>",
-    isPublic: false,
-    networkName: "<value>",
-    type: RpcType.Archive,
-    url: "https://miserly-pruner.info",
+  id: "<id>",
+  isPublic: false,
+  networkName: "<value>",
+  type: RpcType.Archive,
+  url: "https://miserly-pruner.info",
 };
 ```
 

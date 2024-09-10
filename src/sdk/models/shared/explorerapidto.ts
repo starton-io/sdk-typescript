@@ -5,59 +5,64 @@
 import * as z from "zod";
 
 export enum ExplorerApiDtoType {
-    Etherscan = "etherscan",
-    Blockscout = "blockscout",
+  Etherscan = "etherscan",
+  Blockscout = "blockscout",
 }
 
 export type ExplorerApiDto = {
-    apiKey: string;
-    type: ExplorerApiDtoType;
-    url: string;
+  apiKey: string;
+  type: ExplorerApiDtoType;
+  url: string;
 };
 
 /** @internal */
-export const ExplorerApiDtoType$inboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
-    z.nativeEnum(ExplorerApiDtoType);
+export const ExplorerApiDtoType$inboundSchema: z.ZodNativeEnum<
+  typeof ExplorerApiDtoType
+> = z.nativeEnum(ExplorerApiDtoType);
 
 /** @internal */
-export const ExplorerApiDtoType$outboundSchema: z.ZodNativeEnum<typeof ExplorerApiDtoType> =
-    ExplorerApiDtoType$inboundSchema;
+export const ExplorerApiDtoType$outboundSchema: z.ZodNativeEnum<
+  typeof ExplorerApiDtoType
+> = ExplorerApiDtoType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ExplorerApiDtoType$ {
-    /** @deprecated use `ExplorerApiDtoType$inboundSchema` instead. */
-    export const inboundSchema = ExplorerApiDtoType$inboundSchema;
-    /** @deprecated use `ExplorerApiDtoType$outboundSchema` instead. */
-    export const outboundSchema = ExplorerApiDtoType$outboundSchema;
+  /** @deprecated use `ExplorerApiDtoType$inboundSchema` instead. */
+  export const inboundSchema = ExplorerApiDtoType$inboundSchema;
+  /** @deprecated use `ExplorerApiDtoType$outboundSchema` instead. */
+  export const outboundSchema = ExplorerApiDtoType$outboundSchema;
 }
 
 /** @internal */
-export const ExplorerApiDto$inboundSchema: z.ZodType<ExplorerApiDto, z.ZodTypeDef, unknown> =
-    z.object({
-        apiKey: z.string(),
-        type: ExplorerApiDtoType$inboundSchema,
-        url: z.string(),
-    });
+export const ExplorerApiDto$inboundSchema: z.ZodType<
+  ExplorerApiDto,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  apiKey: z.string(),
+  type: ExplorerApiDtoType$inboundSchema,
+  url: z.string(),
+});
 
 /** @internal */
 export type ExplorerApiDto$Outbound = {
-    apiKey: string;
-    type: string;
-    url: string;
+  apiKey: string;
+  type: string;
+  url: string;
 };
 
 /** @internal */
 export const ExplorerApiDto$outboundSchema: z.ZodType<
-    ExplorerApiDto$Outbound,
-    z.ZodTypeDef,
-    ExplorerApiDto
+  ExplorerApiDto$Outbound,
+  z.ZodTypeDef,
+  ExplorerApiDto
 > = z.object({
-    apiKey: z.string(),
-    type: ExplorerApiDtoType$outboundSchema,
-    url: z.string(),
+  apiKey: z.string(),
+  type: ExplorerApiDtoType$outboundSchema,
+  url: z.string(),
 });
 
 /**
@@ -65,10 +70,10 @@ export const ExplorerApiDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ExplorerApiDto$ {
-    /** @deprecated use `ExplorerApiDto$inboundSchema` instead. */
-    export const inboundSchema = ExplorerApiDto$inboundSchema;
-    /** @deprecated use `ExplorerApiDto$outboundSchema` instead. */
-    export const outboundSchema = ExplorerApiDto$outboundSchema;
-    /** @deprecated use `ExplorerApiDto$Outbound` instead. */
-    export type Outbound = ExplorerApiDto$Outbound;
+  /** @deprecated use `ExplorerApiDto$inboundSchema` instead. */
+  export const inboundSchema = ExplorerApiDto$inboundSchema;
+  /** @deprecated use `ExplorerApiDto$outboundSchema` instead. */
+  export const outboundSchema = ExplorerApiDto$outboundSchema;
+  /** @deprecated use `ExplorerApiDto$Outbound` instead. */
+  export type Outbound = ExplorerApiDto$Outbound;
 }

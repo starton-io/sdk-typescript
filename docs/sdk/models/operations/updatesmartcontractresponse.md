@@ -6,11 +6,11 @@
 import { UpdateSmartContractResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateSmartContractResponse = {
-    contentType: "<value>",
-    statusCode: 918236,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 918236,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

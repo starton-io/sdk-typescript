@@ -5,55 +5,58 @@
 import * as z from "zod";
 
 export enum Role {
-    Owner = "owner",
+  Owner = "owner",
 }
 
 export type CreateInvitationDto = {
-    email: string;
-    role: Role;
+  email: string;
+  role: Role;
 };
 
 /** @internal */
-export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
+export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
+  Role,
+);
 
 /** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> = Role$inboundSchema;
+export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
+  Role$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Role$ {
-    /** @deprecated use `Role$inboundSchema` instead. */
-    export const inboundSchema = Role$inboundSchema;
-    /** @deprecated use `Role$outboundSchema` instead. */
-    export const outboundSchema = Role$outboundSchema;
+  /** @deprecated use `Role$inboundSchema` instead. */
+  export const inboundSchema = Role$inboundSchema;
+  /** @deprecated use `Role$outboundSchema` instead. */
+  export const outboundSchema = Role$outboundSchema;
 }
 
 /** @internal */
 export const CreateInvitationDto$inboundSchema: z.ZodType<
-    CreateInvitationDto,
-    z.ZodTypeDef,
-    unknown
+  CreateInvitationDto,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    email: z.string(),
-    role: Role$inboundSchema,
+  email: z.string(),
+  role: Role$inboundSchema,
 });
 
 /** @internal */
 export type CreateInvitationDto$Outbound = {
-    email: string;
-    role: string;
+  email: string;
+  role: string;
 };
 
 /** @internal */
 export const CreateInvitationDto$outboundSchema: z.ZodType<
-    CreateInvitationDto$Outbound,
-    z.ZodTypeDef,
-    CreateInvitationDto
+  CreateInvitationDto$Outbound,
+  z.ZodTypeDef,
+  CreateInvitationDto
 > = z.object({
-    email: z.string(),
-    role: Role$outboundSchema,
+  email: z.string(),
+  role: Role$outboundSchema,
 });
 
 /**
@@ -61,10 +64,10 @@ export const CreateInvitationDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CreateInvitationDto$ {
-    /** @deprecated use `CreateInvitationDto$inboundSchema` instead. */
-    export const inboundSchema = CreateInvitationDto$inboundSchema;
-    /** @deprecated use `CreateInvitationDto$outboundSchema` instead. */
-    export const outboundSchema = CreateInvitationDto$outboundSchema;
-    /** @deprecated use `CreateInvitationDto$Outbound` instead. */
-    export type Outbound = CreateInvitationDto$Outbound;
+  /** @deprecated use `CreateInvitationDto$inboundSchema` instead. */
+  export const inboundSchema = CreateInvitationDto$inboundSchema;
+  /** @deprecated use `CreateInvitationDto$outboundSchema` instead. */
+  export const outboundSchema = CreateInvitationDto$outboundSchema;
+  /** @deprecated use `CreateInvitationDto$Outbound` instead. */
+  export type Outbound = CreateInvitationDto$Outbound;
 }

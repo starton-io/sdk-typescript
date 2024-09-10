@@ -5,38 +5,38 @@
 import * as z from "zod";
 
 export type GasPriceRecommendationDto = {
-    defaultRelayerUnstuck: string;
-    lowest: string;
-    max: string;
+  defaultRelayerUnstuck: string;
+  lowest: string;
+  max: string;
 };
 
 /** @internal */
 export const GasPriceRecommendationDto$inboundSchema: z.ZodType<
-    GasPriceRecommendationDto,
-    z.ZodTypeDef,
-    unknown
+  GasPriceRecommendationDto,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    defaultRelayerUnstuck: z.string(),
-    lowest: z.string(),
-    max: z.string(),
+  defaultRelayerUnstuck: z.string(),
+  lowest: z.string(),
+  max: z.string(),
 });
 
 /** @internal */
 export type GasPriceRecommendationDto$Outbound = {
-    defaultRelayerUnstuck: string;
-    lowest: string;
-    max: string;
+  defaultRelayerUnstuck: string;
+  lowest: string;
+  max: string;
 };
 
 /** @internal */
 export const GasPriceRecommendationDto$outboundSchema: z.ZodType<
-    GasPriceRecommendationDto$Outbound,
-    z.ZodTypeDef,
-    GasPriceRecommendationDto
+  GasPriceRecommendationDto$Outbound,
+  z.ZodTypeDef,
+  GasPriceRecommendationDto
 > = z.object({
-    defaultRelayerUnstuck: z.string(),
-    lowest: z.string(),
-    max: z.string(),
+  defaultRelayerUnstuck: z.string(),
+  lowest: z.string(),
+  max: z.string(),
 });
 
 /**
@@ -44,10 +44,10 @@ export const GasPriceRecommendationDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GasPriceRecommendationDto$ {
-    /** @deprecated use `GasPriceRecommendationDto$inboundSchema` instead. */
-    export const inboundSchema = GasPriceRecommendationDto$inboundSchema;
-    /** @deprecated use `GasPriceRecommendationDto$outboundSchema` instead. */
-    export const outboundSchema = GasPriceRecommendationDto$outboundSchema;
-    /** @deprecated use `GasPriceRecommendationDto$Outbound` instead. */
-    export type Outbound = GasPriceRecommendationDto$Outbound;
+  /** @deprecated use `GasPriceRecommendationDto$inboundSchema` instead. */
+  export const inboundSchema = GasPriceRecommendationDto$inboundSchema;
+  /** @deprecated use `GasPriceRecommendationDto$outboundSchema` instead. */
+  export const outboundSchema = GasPriceRecommendationDto$outboundSchema;
+  /** @deprecated use `GasPriceRecommendationDto$Outbound` instead. */
+  export type Outbound = GasPriceRecommendationDto$Outbound;
 }

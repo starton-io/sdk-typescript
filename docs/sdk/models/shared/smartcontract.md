@@ -6,13 +6,13 @@
 import { SmartContract, SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 
 let value: SmartContract = {
-    address: "10174 Seamus Grove",
-    id: "<id>",
-    name: "<value>",
-    network: "<value>",
-    projectId: "<value>",
-    state: State.Error,
-    status: SmartContractStatus.NewTransactionHash,
+  address: "10174 Seamus Grove",
+  id: "<id>",
+  name: "<value>",
+  network: "<value>",
+  projectId: "<value>",
+  state: State.Error,
+  status: SmartContractStatus.NewTransactionHash,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { GetOneTransactionRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneTransactionRequest = {
-    id: "tx_1abfa87e04814cb7a669d614d1fe5f78",
+  id: "tx_1abfa87e04814cb7a669d614d1fe5f78",
 };
 ```
 

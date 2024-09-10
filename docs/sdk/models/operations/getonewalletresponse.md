@@ -6,11 +6,11 @@
 import { GetOneWalletResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneWalletResponse = {
-    contentType: "<value>",
-    statusCode: 963663,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 963663,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

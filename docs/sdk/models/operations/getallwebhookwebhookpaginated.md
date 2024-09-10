@@ -7,22 +7,22 @@ import { GetAllWebhookWebhookPaginated } from "@starton/sdk/sdk/models/operation
 import { WebhookStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: GetAllWebhookWebhookPaginated = {
-    items: [
-        {
-            headers: {},
-            id: "<id>",
-            payload: {},
-            projectId: "<value>",
-            refId: "<value>",
-            status: WebhookStatus.Retrying,
-            url: "https://nimble-displacement.net",
-        },
-    ],
-    meta: {
-        currentPage: 7351.94,
-        itemCount: 2884.76,
-        itemsPerPage: 9621.89,
+  items: [
+    {
+      headers: {},
+      id: "<id>",
+      payload: {},
+      projectId: "<value>",
+      refId: "<value>",
+      status: WebhookStatus.Retrying,
+      url: "https://nimble-displacement.net",
     },
+  ],
+  meta: {
+    currentPage: 7351.94,
+    itemCount: 2884.76,
+    itemsPerPage: 9621.89,
+  },
 };
 ```
 

@@ -6,8 +6,8 @@
 import { GetAvailableFunctionsSmartContractRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAvailableFunctionsSmartContractRequest = {
-    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
-    network: "polygon-mumbai",
+  address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+  network: "polygon-mumbai",
 };
 ```
 

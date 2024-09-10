@@ -6,11 +6,11 @@
 import { UpdatePinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdatePinResponse = {
-    contentType: "<value>",
-    statusCode: 368241,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 368241,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

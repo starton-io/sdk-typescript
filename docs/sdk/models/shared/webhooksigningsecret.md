@@ -6,8 +6,8 @@
 import { WebhookSigningSecret } from "@starton/sdk/sdk/models/shared";
 
 let value: WebhookSigningSecret = {
-    projectId: "<value>",
-    secret: "<value>",
+  projectId: "<value>",
+  secret: "<value>",
 };
 ```
 

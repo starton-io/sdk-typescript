@@ -13,68 +13,88 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Rpc extends ClientSDK {
-    /**
-     * Add a rpc (enterprise)
-     *
-     * @remarks
-     * Add a rpc for a specific network
-     */
-    async create(
-        request: operations.CreateRpcRequest,
-        options?: RequestOptions
-    ): Promise<operations.CreateRpcResponse> {
-        return unwrapAsync(networkRpcCreate(this, request, options));
-    }
+  /**
+   * Add a rpc (enterprise)
+   *
+   * @remarks
+   * Add a rpc for a specific network
+   */
+  async create(
+    request: operations.CreateRpcRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateRpcResponse> {
+    return unwrapAsync(networkRpcCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a rpc (enterprise)
-     *
-     * @remarks
-     * Delete a rpc for a specific network
-     */
-    async delete(
-        request: operations.DeleteRpcRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeleteRpcResponse> {
-        return unwrapAsync(networkRpcDelete(this, request, options));
-    }
+  /**
+   * Delete a rpc (enterprise)
+   *
+   * @remarks
+   * Delete a rpc for a specific network
+   */
+  async delete(
+    request: operations.DeleteRpcRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteRpcResponse> {
+    return unwrapAsync(networkRpcDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get all rpc (enterprise)
-     *
-     * @remarks
-     * Return all rpc for a specific network
-     */
-    async getAll(
-        request: operations.GetAllRpcRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllRpcResponse>> {
-        return unwrapResultIterator(networkRpcGetAll(this, request, options));
-    }
+  /**
+   * Get all rpc (enterprise)
+   *
+   * @remarks
+   * Return all rpc for a specific network
+   */
+  async getAll(
+    request: operations.GetAllRpcRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllRpcResponse>> {
+    return unwrapResultIterator(networkRpcGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get a rpc (enterprise)
-     *
-     * @remarks
-     * Return a specific rpc for a specific network
-     */
-    async getOne(
-        request: operations.GetOneRpcRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneRpcResponse> {
-        return unwrapAsync(networkRpcGetOne(this, request, options));
-    }
+  /**
+   * Get a rpc (enterprise)
+   *
+   * @remarks
+   * Return a specific rpc for a specific network
+   */
+  async getOne(
+    request: operations.GetOneRpcRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneRpcResponse> {
+    return unwrapAsync(networkRpcGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update a rpc (enterprise)
-     *
-     * @remarks
-     * Update a specific rpc for a specific network
-     */
-    async update(
-        request: operations.UpdateRpcRequest,
-        options?: RequestOptions
-    ): Promise<operations.UpdateRpcResponse> {
-        return unwrapAsync(networkRpcUpdate(this, request, options));
-    }
+  /**
+   * Update a rpc (enterprise)
+   *
+   * @remarks
+   * Update a specific rpc for a specific network
+   */
+  async update(
+    request: operations.UpdateRpcRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateRpcResponse> {
+    return unwrapAsync(networkRpcUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

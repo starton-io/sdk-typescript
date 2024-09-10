@@ -5,61 +5,61 @@
 import * as z from "zod";
 
 export type Erc20BalanceResponse = {
-    /**
-     * Balance of the given address.
-     */
-    balance: string;
-    /**
-     * ERC20 smart contract address.
-     */
-    contractAddress: string;
-    /**
-     * The number of contract decimals.
-     */
-    decimal: number;
-    /**
-     * Formatted balance output.
-     */
-    formatted: string;
-    /**
-     * ERC20 token symbol.
-     */
-    symbol: string;
+  /**
+   * Balance of the given address.
+   */
+  balance: string;
+  /**
+   * ERC20 smart contract address.
+   */
+  contractAddress: string;
+  /**
+   * The number of contract decimals.
+   */
+  decimal: number;
+  /**
+   * Formatted balance output.
+   */
+  formatted: string;
+  /**
+   * ERC20 token symbol.
+   */
+  symbol: string;
 };
 
 /** @internal */
 export const Erc20BalanceResponse$inboundSchema: z.ZodType<
-    Erc20BalanceResponse,
-    z.ZodTypeDef,
-    unknown
+  Erc20BalanceResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    balance: z.string(),
-    contractAddress: z.string(),
-    decimal: z.number(),
-    formatted: z.string(),
-    symbol: z.string(),
+  balance: z.string(),
+  contractAddress: z.string(),
+  decimal: z.number(),
+  formatted: z.string(),
+  symbol: z.string(),
 });
 
 /** @internal */
 export type Erc20BalanceResponse$Outbound = {
-    balance: string;
-    contractAddress: string;
-    decimal: number;
-    formatted: string;
-    symbol: string;
+  balance: string;
+  contractAddress: string;
+  decimal: number;
+  formatted: string;
+  symbol: string;
 };
 
 /** @internal */
 export const Erc20BalanceResponse$outboundSchema: z.ZodType<
-    Erc20BalanceResponse$Outbound,
-    z.ZodTypeDef,
-    Erc20BalanceResponse
+  Erc20BalanceResponse$Outbound,
+  z.ZodTypeDef,
+  Erc20BalanceResponse
 > = z.object({
-    balance: z.string(),
-    contractAddress: z.string(),
-    decimal: z.number(),
-    formatted: z.string(),
-    symbol: z.string(),
+  balance: z.string(),
+  contractAddress: z.string(),
+  decimal: z.number(),
+  formatted: z.string(),
+  symbol: z.string(),
 });
 
 /**
@@ -67,10 +67,10 @@ export const Erc20BalanceResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Erc20BalanceResponse$ {
-    /** @deprecated use `Erc20BalanceResponse$inboundSchema` instead. */
-    export const inboundSchema = Erc20BalanceResponse$inboundSchema;
-    /** @deprecated use `Erc20BalanceResponse$outboundSchema` instead. */
-    export const outboundSchema = Erc20BalanceResponse$outboundSchema;
-    /** @deprecated use `Erc20BalanceResponse$Outbound` instead. */
-    export type Outbound = Erc20BalanceResponse$Outbound;
+  /** @deprecated use `Erc20BalanceResponse$inboundSchema` instead. */
+  export const inboundSchema = Erc20BalanceResponse$inboundSchema;
+  /** @deprecated use `Erc20BalanceResponse$outboundSchema` instead. */
+  export const outboundSchema = Erc20BalanceResponse$outboundSchema;
+  /** @deprecated use `Erc20BalanceResponse$Outbound` instead. */
+  export type Outbound = Erc20BalanceResponse$Outbound;
 }

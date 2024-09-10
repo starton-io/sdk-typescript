@@ -6,8 +6,8 @@
 import { CreateInvitationDto, Role } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateInvitationDto = {
-    email: "Alexanne_Bernhard37@yahoo.com",
-    role: Role.Owner,
+  email: "Alexanne_Bernhard37@yahoo.com",
+  role: Role.Owner,
 };
 ```
 

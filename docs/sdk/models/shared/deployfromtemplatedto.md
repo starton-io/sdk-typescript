@@ -6,16 +6,16 @@
 import { DeployFromTemplateDto } from "@starton/sdk/sdk/models/shared";
 
 let value: DeployFromTemplateDto = {
-    name: "TestToken",
-    network: "polygon-mumbai",
-    params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
-        "0x298e760768c8481780397eE28A127eAd584df4ee",
-    ],
-    signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
-    templateId: "ERC20_META_TRANSACTION",
+  name: "TestToken",
+  network: "polygon-mumbai",
+  params: [
+    "TestToken",
+    "TEST",
+    "1000000000000000000000000",
+    "0x298e760768c8481780397eE28A127eAd584df4ee",
+  ],
+  signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
+  templateId: "ERC20_META_TRANSACTION",
 };
 ```
 

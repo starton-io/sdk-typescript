@@ -6,11 +6,11 @@
 import { GetOneWebhookResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneWebhookResponse = {
-    contentType: "<value>",
-    statusCode: 248753,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 248753,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

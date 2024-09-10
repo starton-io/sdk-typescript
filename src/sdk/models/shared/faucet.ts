@@ -5,74 +5,75 @@
 import * as z from "zod";
 
 export type Faucet = {
-    /**
-     * Claim date.
-     */
-    createdAt?: Date | undefined;
-    /**
-     * Faucet claim id.
-     */
-    id: string;
-    /**
-     * Claim ip.
-     */
-    ip: string;
-    /**
-     * Testnet network claim.
-     */
-    network: string | null;
-    /**
-     * Hash transaction of native faucet transfer.
-     */
-    txHash?: string | null | undefined;
-    /**
-     * UserId claim.
-     */
-    userId?: string | null | undefined;
-    /**
-     * Claim wallet
-     */
-    wallet: string;
+  /**
+   * Claim date.
+   */
+  createdAt?: Date | undefined;
+  /**
+   * Faucet claim id.
+   */
+  id: string;
+  /**
+   * Claim ip.
+   */
+  ip: string;
+  /**
+   * Testnet network claim.
+   */
+  network: string | null;
+  /**
+   * Hash transaction of native faucet transfer.
+   */
+  txHash?: string | null | undefined;
+  /**
+   * UserId claim.
+   */
+  userId?: string | null | undefined;
+  /**
+   * Claim wallet
+   */
+  wallet: string;
 };
 
 /** @internal */
-export const Faucet$inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z.object({
-    createdAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:34:19.286Z")
-        .transform((v) => new Date(v)),
+export const Faucet$inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z
+  .object({
+    createdAt: z.string().datetime({ offset: true }).default(
+      "2024-05-02T09:34:19.286Z",
+    ).transform(v => new Date(v)),
     id: z.string(),
     ip: z.string(),
     network: z.nullable(z.string()),
     txHash: z.nullable(z.string()).optional(),
     userId: z.nullable(z.string()).optional(),
     wallet: z.string(),
-});
+  });
 
 /** @internal */
 export type Faucet$Outbound = {
-    createdAt: string;
-    id: string;
-    ip: string;
-    network: string | null;
-    txHash?: string | null | undefined;
-    userId?: string | null | undefined;
-    wallet: string;
+  createdAt: string;
+  id: string;
+  ip: string;
+  network: string | null;
+  txHash?: string | null | undefined;
+  userId?: string | null | undefined;
+  wallet: string;
 };
 
 /** @internal */
-export const Faucet$outboundSchema: z.ZodType<Faucet$Outbound, z.ZodTypeDef, Faucet> = z.object({
-    createdAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:34:19.286Z"))
-        .transform((v) => v.toISOString()),
-    id: z.string(),
-    ip: z.string(),
-    network: z.nullable(z.string()),
-    txHash: z.nullable(z.string()).optional(),
-    userId: z.nullable(z.string()).optional(),
-    wallet: z.string(),
+export const Faucet$outboundSchema: z.ZodType<
+  Faucet$Outbound,
+  z.ZodTypeDef,
+  Faucet
+> = z.object({
+  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.286Z"))
+    .transform(v => v.toISOString()),
+  id: z.string(),
+  ip: z.string(),
+  network: z.nullable(z.string()),
+  txHash: z.nullable(z.string()).optional(),
+  userId: z.nullable(z.string()).optional(),
+  wallet: z.string(),
 });
 
 /**
@@ -80,10 +81,10 @@ export const Faucet$outboundSchema: z.ZodType<Faucet$Outbound, z.ZodTypeDef, Fau
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Faucet$ {
-    /** @deprecated use `Faucet$inboundSchema` instead. */
-    export const inboundSchema = Faucet$inboundSchema;
-    /** @deprecated use `Faucet$outboundSchema` instead. */
-    export const outboundSchema = Faucet$outboundSchema;
-    /** @deprecated use `Faucet$Outbound` instead. */
-    export type Outbound = Faucet$Outbound;
+  /** @deprecated use `Faucet$inboundSchema` instead. */
+  export const inboundSchema = Faucet$inboundSchema;
+  /** @deprecated use `Faucet$outboundSchema` instead. */
+  export const outboundSchema = Faucet$outboundSchema;
+  /** @deprecated use `Faucet$Outbound` instead. */
+  export type Outbound = Faucet$Outbound;
 }

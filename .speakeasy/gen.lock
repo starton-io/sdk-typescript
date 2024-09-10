@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.392.1
-  generationVersion: 2.411.9
-  releaseVersion: 0.22.2
-  configChecksum: 303824aeb80a6bddef6430ed059cb6cf
+  speakeasyVersion: 1.394.0
+  generationVersion: 2.413.0
+  releaseVersion: 0.23.0
+  configChecksum: 01f8ebd7d50159dcff26c52f6c7fadf5
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.16.4
+    core: 3.17.0
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
@@ -992,6 +992,11 @@ examples:
         path:
           network: "polygon-mainnet"
           address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+      responses:
+        "200":
+          application/json: {"balance": "<value>", "decimal": "9355.76", "formatted": "<value>", "symbol": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
   getBalanceErc20:
     "":
       parameters:
@@ -1003,37 +1008,74 @@ examples:
       responses:
         "200":
           application/json: {"balance": "0", "contractAddress": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", "decimal": 6, "formatted": "0.0", "symbol": "USDT"}
-        "400": {}
+        "400":
+          application/json: {"message": [], "path": "/etc/periodic", "timestamp": "<value>"}
   getAllGasPrice:
     "":
       parameters:
         path:
           network: "polygon-mainnet"
+      responses:
+        "200":
+          application/json: {"average": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "fast": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "fastest": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "low": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}}
+        "400":
+          application/json: {"message": [], "path": "/var/spool", "timestamp": "<value>"}
   createWallet:
     speakeasy-default-create-wallet:
       requestBody:
         application/json: {"kmsId": "<value>"}
+      responses:
+        "201":
+          application/json: {"address": "4684 Bria Shores", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/dev", "timestamp": "<value>"}
+        "412":
+          application/json: {"path": "/var/yp", "timestamp": "<value>"}
   deleteWallet:
     "":
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
         query: {}
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllWallet:
     "":
       parameters:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneWallet:
     "":
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+      responses:
+        "200":
+          application/json: {"address": "43504 Penelope Expressway", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/var/log", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
   importProviderKeyWallet:
     speakeasy-default-import-provider-key-wallet:
       requestBody:
         application/json: {"provider": "AWS"}
+      responses:
+        "201":
+          application/json: {"address": "12295 Lacey Keys", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
   claimFaucet:
     "":
       parameters:
@@ -1041,12 +1083,32 @@ examples:
           network: "polygon-mumbai"
       requestBody:
         application/json: {"captchaToken": "testCaptchaToken", "wallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "ip": "52.249.80.129", "network": "<value>", "wallet": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/Library", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/var", "timestamp": "<value>"}
+        default:
+          application/json: {"path": "/usr/local/src", "timestamp": "<value>"}
   resyncNoncesWallet:
     "":
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
           network: "polygon-mumbai"
+      responses:
+        "201":
+          application/json: {"nextNonce": "5984.25"}
+        "400":
+          application/json: {"message": [], "path": "/srv", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/var/yp", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/home/user", "timestamp": "<value>"}
   signMessageWallet:
     "":
       parameters:
@@ -1054,34 +1116,81 @@ examples:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
       requestBody:
         application/json: {"message": "<value>"}
+      responses:
+        "201":
+          application/json: {"signature": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/var", "timestamp": "<value>"}
+        "403":
+          application/json: {"path": "/var", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
   updateWallet:
     "":
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+      responses:
+        "200":
+          application/json: {"address": "050 Mellie Well", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/lost+found", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/System", "timestamp": "<value>"}
   deletePin:
     "":
       parameters:
         path:
           id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+      responses:
+        "200":
+          application/json: true
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllPin:
     "":
       parameters:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOnePin:
     "":
       parameters:
         path:
           id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
         query: {}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
+        "400":
+          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt", "timestamp": "<value>"}
   getStorageUsedPin:
-    speakeasy-default-get-storage-used-pin: {}
+    speakeasy-default-get-storage-used-pin:
+      responses:
+        "200":
+          application/json: {"currentStorageUsed": "8696.26", "freeSpaceRemaining": "1073.07", "maxAllowed": "6001.5"}
+        "400":
+          application/json: {"message": [], "path": "/mnt", "timestamp": "<value>"}
   createPin:
     a:
       requestBody:
         application/json: {"cid": "bafkreiae3nprvu6qp6twwpokfk5lbd5qev34d6zrwmnv3jxetuc2zwmegq", "name": "my file"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
+        "400":
+          application/json: {"message": [], "path": "/usr/libdata", "timestamp": "<value>"}
+        "413":
+          application/json: {"path": "/boot", "timestamp": "<value>"}
   updatePin:
     a:
       parameters:
@@ -1089,43 +1198,109 @@ examples:
           id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
       requestBody:
         application/json: {"name": "My new name"}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "deleted"}
+        "400":
+          application/json: {"message": [], "path": "/srv", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
           id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
+        "400":
+          application/json: {"message": [], "path": "/Applications", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/bin", "timestamp": "<value>"}
   uploadFromFilePin:
-    speakeasy-default-upload-from-file-pin: {}
+    speakeasy-default-upload-from-file-pin:
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "pinned"}
+        "400":
+          application/json: {"message": [], "path": "/net", "timestamp": "<value>"}
+        "413":
+          application/json: {"path": "/srv", "timestamp": "<value>"}
   uploadFromFolderPin:
-    speakeasy-default-upload-from-folder-pin: {}
+    speakeasy-default-upload-from-folder-pin:
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
+        "400":
+          application/json: {"message": [], "path": "/opt/lib", "timestamp": "<value>"}
+        "413":
+          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
   uploadFromJsonPin:
     a:
       requestBody:
         application/json: {"name": "my file"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "status": "failed"}
+        "400":
+          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
+        "413":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   createKms:
     speakeasy-default-create-kms:
       requestBody:
         application/json: {"name": "<value>", "provider": "AWS", "secret": "<value>"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
+        "400":
+          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
   deleteKms:
     "":
       parameters:
         path:
           id: "kms_000"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllKms:
     "":
       parameters:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneKms:
     "":
       parameters:
         path:
           id: "kms_000"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
+        "400":
+          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt", "timestamp": "<value>"}
   updateKms:
     "":
       parameters:
         path:
           id: "kms_000"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "Vault"}
+        "400":
+          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/srv", "timestamp": "<value>"}
   createTransaction:
     a:
       parameters:
@@ -1133,18 +1308,51 @@ examples:
           simulate: false
       requestBody:
         application/json: {"data": "0x1234", "network": "polygon-mumbai", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "low", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+      responses:
+        "201":
+          application/json: {"automaticNonce": true, "chainId": "4893.82", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "INSUFFICIENT_FUNDS", "value": "<value>"}
+        "400":
+          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/sbin", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/srv", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/var/spool", "timestamp": "<value>"}
     b:
       parameters:
         query:
           simulate: false
       requestBody:
         application/json: {"customGas": {"gasPrice": "5000000000"}, "data": "0x1234", "network": "binance-testnet", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "custom", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+      responses:
+        "201":
+          application/json: {"automaticNonce": false, "chainId": "1343.65", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "SUCCESS", "status": "MONITORING_INTERRUPTED", "value": "<value>"}
+        "400":
+          application/json: {"path": "/etc", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/local/src", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/opt", "timestamp": "<value>"}
     "":
       parameters:
         query:
           simulate: false
       requestBody:
         application/json: {"data": "0x1234", "network": "polygon-mumbai", "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "speed": "low", "to": "0x298e760768c8481780397eE28A127eAd584df4ee", "value": "0"}
+      responses:
+        "201":
+          application/json: {"automaticNonce": false, "chainId": "3768.44", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "UNSIGNED", "value": "<value>"}
+        "400":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/sbin", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/usr/libdata", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/Library", "timestamp": "<value>"}
   getAllTransaction:
     "":
       parameters:
@@ -1155,22 +1363,52 @@ examples:
           transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5"
           to: "0x298e760768c8481780397eE28A127eAd584df4ee"
           from: "0x298e760768c8481780397eE28A127eAd584df4ee"
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getAvailableNoncesWallet:
     "":
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
           network: "polygon-mumbai"
+      responses:
+        "200":
+          application/json: {"availableNonces": [], "nextNonce": "1616.24"}
+        "400":
+          application/json: {"message": [], "path": "/var/mail", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/lost+found", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/media", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
   getOneTransaction:
     "":
       parameters:
         path:
           id: "tx_1abfa87e04814cb7a669d614d1fe5f78"
+      responses:
+        "200":
+          application/json: {"automaticNonce": false, "chainId": "4970.64", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "ERROR_TX", "value": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/private/tmp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
   getAllSettingRelayer:
     "":
       parameters:
         path:
           network: "polygon-mumbai"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "network": "<value>", "projectId": "<value>", "unstuckAutomaticGasPrice": true, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": "5588.34", "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": true, "unstuckMissingNonceDelay": "5442.21"}
+        "400":
+          application/json: {"message": [], "path": "/usr/obj", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/rescue", "timestamp": "<value>"}
   updateSettingRelayer:
     "":
       parameters:
@@ -1178,15 +1416,34 @@ examples:
           network: "polygon-mumbai"
       requestBody:
         application/json: {"unstuckAutomaticGasPrice": true, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": 300, "unstuckMaxGasPrice": "150000000000", "unstuckMissingNonce": true, "unstuckMissingNonceDelay": 300}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "network": "<value>", "projectId": "<value>", "unstuckAutomaticGasPrice": false, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": "5971.29", "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": false, "unstuckMissingNonceDelay": "3446.2"}
+        "400":
+          application/json: {"message": [], "path": "/usr/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/var/yp", "timestamp": "<value>"}
   createNetwork:
     a:
       requestBody:
         application/json: {"blockchain": "optimism", "chainId": 10, "confirmationBlocks": 128, "displayName": "optimism-private", "enableExternalWallet": false, "enableListener": false, "enableRelayer": false, "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://limp-pastry.org"}, "explorerUrl": "https://optimism-invalid-test-explorer.com", "logo": "https://optimism-invalid-test-logo.com", "name": "optimism-functional-tests1714642436107", "symbol": "ETH"}
+      responses:
+        "201":
+          application/json: {"blockchain": "<value>", "chainId": "4865.89", "confirmationBlocks": "4893.82", "decimal": "6384.24", "displayName": "Rylan13", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
+        "400":
+          application/json: {"message": [], "path": "/Applications", "timestamp": "<value>"}
   deleteNetwork:
     "":
       parameters:
         path:
           name: "optimism-functional-tests1714642436107"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllNetwork:
     "":
       parameters:
@@ -1197,11 +1454,23 @@ examples:
         header:
           origin: "<value>"
           x-platform-hostname: "<value>"
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneNetwork:
     "":
       parameters:
         path:
           name: "optimism-functional-tests"
+      responses:
+        "200":
+          application/json: {"blockchain": "<value>", "chainId": "1929.72", "confirmationBlocks": "4970.64", "decimal": "3503.11", "displayName": "Laurine.Barrows", "eip1159": true, "enableExternalWallet": true, "enableListener": true, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
+        "400":
+          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
   updateNetwork:
     a:
       parameters:
@@ -1209,12 +1478,26 @@ examples:
           name: "optimism-functional-tests"
       requestBody:
         application/json: {"displayName": "optimism-private-tests", "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "https://alarming-nondisclosure.com"}}
+      responses:
+        "200":
+          application/json: {"blockchain": "<value>", "chainId": "8574.78", "confirmationBlocks": "245.55", "decimal": "5971.29", "displayName": "Afton_Hegmann27", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
+        "400":
+          application/json: {"message": [], "path": "/Network", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
     "":
       parameters:
         path:
           name: "optimism-functional-tests"
       requestBody:
         application/json: {"explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://rubbery-wrap.biz"}}
+      responses:
+        "200":
+          application/json: {"blockchain": "<value>", "chainId": "2782.81", "confirmationBlocks": "8965.01", "decimal": "4995.57", "displayName": "Isac78", "eip1159": false, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
+        "400":
+          application/json: {"message": [], "path": "/mnt", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/private", "timestamp": "<value>"}
   createRpc:
     a:
       parameters:
@@ -1222,18 +1505,39 @@ examples:
           name: "optimism-functionnal-tests"
       requestBody:
         application/json: {"type": "archive", "url": "https://optimism.publicnode.com"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "isPublic": true, "networkName": "<value>", "type": "archive", "url": "https://timely-haven.biz"}
+        "400":
+          application/json: {"message": [], "path": "/var/spool", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
     "":
       parameters:
         path:
           name: "optimism-functionnal-tests"
       requestBody:
         application/json: {"type": "archive", "url": "https://timely-haven.biz"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "isPublic": true, "networkName": "<value>", "type": "full", "url": "http://yummy-shift.info"}
+        "400":
+          application/json: {"message": [], "path": "/usr/src", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/private", "timestamp": "<value>"}
   deleteRpc:
     "":
       parameters:
         path:
           id: "rpc_c3d39f5a79be4599b0cdff667ffd1df3"
           name: "optimism-functionnal-tests"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllRpc:
     "":
       parameters:
@@ -1242,12 +1546,24 @@ examples:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneRpc:
     "":
       parameters:
         path:
           name: "optimism-functionnal-tests"
           id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "http://ornate-angina.info"}
+        "400":
+          application/json: {"message": [], "path": "/opt/share", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   updateRpc:
     a:
       parameters:
@@ -1256,33 +1572,80 @@ examples:
           id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
       requestBody:
         application/json: {"url": "https://optimism.publicnode.com"}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "https://advanced-filing.net"}
+        "400":
+          application/json: {"message": [], "path": "/var/yp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/boot/defaults", "timestamp": "<value>"}
     "":
       parameters:
         path:
           name: "optimism-functionnal-tests"
           id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "https://realistic-kill.info"}
+        "400":
+          application/json: {"message": [], "path": "/etc/namedb", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/lost+found", "timestamp": "<value>"}
   deleteProjectMember:
     speakeasy-default-delete-project-member:
       parameters:
         path:
           userId: "<value>"
+      responses:
+        "200":
+          application/json: true
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/sbin", "timestamp": "<value>"}
   getAllProjectMember:
-    speakeasy-default-get-all-project-member: {}
+    speakeasy-default-get-all-project-member:
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   createInvitation:
     speakeasy-default-create-invitation:
       requestBody:
         application/json: {"email": "Jena.Nienow28@yahoo.com", "role": "owner"}
+      responses:
+        "201":
+          application/json: {"email": "Jena.Nienow28@yahoo.com", "id": "<id>", "projectId": "<value>", "role": "owner"}
+        "400":
+          application/json: {"message": [], "path": "/etc/namedb", "timestamp": "<value>"}
+        "401":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   deleteInvitation:
     "":
       parameters:
         path:
           id: "invit_f9701ff8e2ea4a1d964e0d6d40564801"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllInvitation:
     "":
       parameters:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   callSmartContract:
     a:
       parameters:
@@ -1293,6 +1656,17 @@ examples:
           simulate: false
       requestBody:
         application/json: {"functionName": "mint", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee", "1000000000000000000"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+      responses:
+        "201":
+          application/json: {"automaticNonce": true, "chainId": "8317.14", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "PENDING", "status": "INSUFFICIENT_FUNDS", "value": "<value>"}
+        "400":
+          application/json: {"path": "/opt", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/boot", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/Library", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1302,12 +1676,30 @@ examples:
           simulate: false
       requestBody:
         application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "<value>"}
+      responses:
+        "201":
+          application/json: {"automaticNonce": false, "chainId": "2865.22", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "PENDING", "status": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "value": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/etc/mail", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/System", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
   deleteSmartContract:
     "":
       parameters:
         path:
           network: "polygon-mumbai"
           address: "8653 Vaughn Hills"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   deployFromBytecodeSmartContract:
     a:
       parameters:
@@ -1315,12 +1707,34 @@ examples:
           simulate: false
       requestBody:
         application/json: {"abi": [{"inputs": {}, "stateMutability": "nonpayable", "type": "constructor"}], "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220543af7de4c3e10d25def66e7de6e0ecaf799771e226c96cf4620087585c071fd64736f6c63430008120033", "name": "Minimal test contract", "network": "polygon-mumbai", "params": [], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee"}
+      responses:
+        "201":
+          application/json: {"smartContract": {"address": "60839 Bartell Rapid", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "PUBLISHED"}, "transaction": {"automaticNonce": false, "chainId": "9578.35", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "PUBLISHED", "value": "<value>"}}
+        "400":
+          application/json: {"path": "/usr/libdata", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/dev", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/usr/src", "timestamp": "<value>"}
     "":
       parameters:
         query:
           simulate: false
       requestBody:
         application/json: {"abi": [], "bytecode": "<value>", "name": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "<value>"}
+      responses:
+        "201":
+          application/json: {"smartContract": {"address": "48819 Nikolaus Heights", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "INSUFFICIENT_FUNDS"}, "transaction": {"automaticNonce": false, "chainId": "4533.63", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "EXECUTION_WILL_FAIL", "value": "<value>"}}
+        "400":
+          application/json: {"path": "/rescue", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/Users", "timestamp": "<value>"}
+        "422":
+          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/var/log", "timestamp": "<value>"}
   deployFromTemplateSmartContract:
     a:
       parameters:
@@ -1328,12 +1742,30 @@ examples:
           simulate: false
       requestBody:
         application/json: {"name": "TestToken", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "templateId": "ERC20_MINT_META_TRANSACTION"}
+      responses:
+        "201":
+          application/json: {"smartContract": {"address": "9291 Zander Lights", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "RECEIVED_BY_STARTON"}, "transaction": {"automaticNonce": true, "chainId": "5157.68", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "MAX_GAS_PRICE_REACH", "value": "<value>"}}
+        "400":
+          application/json: {"path": "/opt", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/etc/periodic", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/private", "timestamp": "<value>"}
     "":
       parameters:
         query:
           simulate: false
       requestBody:
         application/json: {"name": "TestToken", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "signerWallet": "0x298e760768c8481780397eE28A127eAd584df4ee", "templateId": "ERC20_META_TRANSACTION"}
+      responses:
+        "201":
+          application/json: {"smartContract": {"address": "74997 Antwon Forge", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "NONCE_EXPIRED"}, "transaction": {"automaticNonce": false, "chainId": "7175.86", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "GAS_LIMIT_ESTIMATED", "value": "<value>"}}
+        "400":
+          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/selinux", "timestamp": "<value>"}
   encodeSmartContract:
     a:
       parameters:
@@ -1342,6 +1774,13 @@ examples:
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
       requestBody:
         application/json: {"functionName": "mint", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee", "1000000000000000000"]}
+      responses:
+        "400":
+          application/json: {"path": "/usr", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/bin", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1349,6 +1788,13 @@ examples:
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
       requestBody:
         application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"]}
+      responses:
+        "400":
+          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/selinux", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
   getAllSmartContract:
     "":
       parameters:
@@ -1359,12 +1805,26 @@ examples:
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
           includeAbi: true
           includeCompilationDetails: true
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getAvailableFunctionsSmartContract:
     "":
       parameters:
         path:
           network: "polygon-mumbai"
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      responses:
+        "200":
+          application/json: {"call": [], "events": [], "read": []}
+        "400":
+          application/json: {"path": "/home", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/sbin", "timestamp": "<value>"}
   getOneSmartContract:
     "":
       parameters:
@@ -1374,10 +1834,22 @@ examples:
         query:
           includeAbi: true
           includeCompilationDetails: true
+      responses:
+        "200":
+          application/json: {"address": "43504 Penelope Expressway", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "EXECUTION_WILL_FAIL"}
+        "400":
+          application/json: {"message": [], "path": "/private/tmp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
   importExistingSmartContract:
     a:
       requestBody:
         application/json: {"abi": [{"inputs": {}, "stateMutability": "nonpayable", "type": "constructor"}], "address": "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e", "creationHash": "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da", "description": "Test minimal contract tests.", "name": "Minimal contract tests.", "network": "polygon-mumbai", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "templateId": "ERC721_META_TRANSACTION"}
+      responses:
+        "201":
+          application/json: {"address": "2964 Maggio Cove", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "COULD_NOT_ESTIMATE_GAS_LIMIT"}
+        "400":
+          application/json: {"message": [], "path": "/usr/local/src", "timestamp": "<value>"}
   readSmartContract:
     a:
       parameters:
@@ -1388,10 +1860,13 @@ examples:
         application/json: {"functionName": "balanceOf", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee"]}
       responses:
         "201":
-          application/json: {"address": "660 Romaine Highway", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": false}
-        "400": {}
-        "404": {}
-        "500": {}
+          application/json: {"address": "660 Romaine Highway", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": []}
+        "400":
+          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/var", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1402,9 +1877,12 @@ examples:
       responses:
         "201":
           application/json: {"address": "742 Feil Lane", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": false}
-        "400": {}
-        "404": {}
-        "500": {}
+        "400":
+          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/rescue", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/usr/libexec", "timestamp": "<value>"}
   updateSmartContract:
     a:
       parameters:
@@ -1413,11 +1891,25 @@ examples:
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
       requestBody:
         application/json: {"description": "Test description", "name": "Test smart contract"}
+      responses:
+        "200":
+          application/json: {"address": "050 Mellie Well", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "SENT_TO_MEMPOOL"}
+        "400":
+          application/json: {"message": [], "path": "/opt/share", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/mnt", "timestamp": "<value>"}
     "":
       parameters:
         path:
           network: "polygon-mumbai"
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      responses:
+        "200":
+          application/json: {"address": "449 Amiya Forge", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "COULD_NOT_UNSTUCK_NONCE"}
+        "400":
+          application/json: {"message": [], "path": "/opt/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   getAllSmartContractTemplate:
     "":
       parameters:
@@ -1431,6 +1923,11 @@ examples:
           category: "NFT"
           includeCompilationDetails: true
           includeForm: true
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneSmartContractTemplate:
     "":
       parameters:
@@ -1438,15 +1935,40 @@ examples:
           id: "ERC721_META_TRANSACTION"
         query:
           includeForm: true
+      responses:
+        "200":
+          application/json: {"abi": [], "blockchains": [], "category": "FUNGIBLE", "description": "Networked even-keeled matrices", "githubUrl": "<value>", "humanReadableAbi": [], "id": "<id>", "name": "<value>", "shortDescription": "<value>", "tags": []}
+        "400":
+          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
   createWatcher:
     a:
       requestBody:
         application/json: {"address": "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1", "confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher test", "network": "polygon-mumbai", "type": "ADDRESS_ACTIVITY", "webhookUrl": "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"}
+      responses:
+        "201":
+          application/json: {"address": "4684 Bria Shores", "confirmationsBlocks": "690.25", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "GAS_PRICE", "type": "EVENT_TRANSFER", "webhookUrl": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/var/spool", "timestamp": "<value>"}
+        "409":
+          application/json: {"path": "/usr/src", "timestamp": "<value>"}
+        "412":
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/private", "timestamp": "<value>"}
   deleteWatcher:
     speakeasy-default-delete-watcher:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: "5459.07"
+        "400":
+          application/json: {"message": [], "path": "/usr/ports", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
   getAllWatcher:
     "":
       parameters:
@@ -1460,6 +1982,11 @@ examples:
           webhookUrl: "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"
           confirmationsBlocks: 0
           paused: false
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getAllWatcherEvent:
     "":
       parameters:
@@ -1468,17 +1995,36 @@ examples:
         query:
           page: 0
           limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "1346.69", "itemCount": "1117.17", "itemsPerPage": "1403.7"}}
+        "400":
+          application/json: {"message": [], "path": "/opt/share", "timestamp": "<value>"}
   getOneWatcher:
     "":
       parameters:
         path:
           id: "ntif_f94e4a79611947d48254537a8861265d"
+      responses:
+        "200":
+          application/json: {"address": "43504 Penelope Expressway", "confirmationsBlocks": "9175.33", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "TRANSACTION", "type": "ADDRESS_RECEIVED_NATIVE_CURRENCY", "webhookUrl": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/usr/local/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
   getOneWatcherEvent:
     "":
       parameters:
         path:
           id: "ntif_f94e4a79611947d48254537a8861265d"
           eventId: "wevent_437e18e7470944099bd094e1c936e4cd"
+      responses:
+        "200":
+          application/json: {"blockHash": "<value>", "blockNumber": "1603.15", "id": "<id>", "network": "<value>", "projectId": "<value>", "status": "CANCELED", "txHash": "<value>", "watcherId": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/Applications", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
   updateWatcher:
     a:
       parameters:
@@ -1486,17 +2032,40 @@ examples:
           id: "ntif_f94e4a79611947d48254537a8861265d"
       requestBody:
         application/json: {"confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher tests", "paused": false, "webhookUrl": ""}
+      responses:
+        "200":
+          application/json: {"address": "050 Mellie Well", "confirmationsBlocks": "2703.24", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "EVENT", "type": "ERC721_EVENT_TRANSFER", "webhookUrl": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/opt/bin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/tmp", "timestamp": "<value>"}
     "":
       parameters:
         path:
           id: "ntif_f94e4a79611947d48254537a8861265d"
       requestBody:
         application/json: {"confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher tests", "paused": true, "webhookUrl": ""}
+      responses:
+        "200":
+          application/json: {"address": "9102 Kutch Lake", "confirmationsBlocks": "3691.82", "id": "<id>", "network": "<value>", "paused": true, "projectId": "<value>", "triggerType": "GAS_PRICE", "type": "ADDRESS_RECEIVED_NATIVE_CURRENCY", "webhookUrl": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/etc/namedb", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   cancelWebhook:
     "":
       parameters:
         path:
           id: "wh_4c2905f7276b415fac02ee3682189940"
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
+        "400":
+          application/json: {"message": [], "path": "/boot/defaults", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/etc", "timestamp": "<value>"}
+        "412":
+          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
   getAllWebhook:
     "":
       parameters:
@@ -1504,17 +2073,50 @@ examples:
           page: 0
           limit: 20
           status: "SUCCESSFUL"
+      responses:
+        "200":
+          application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
+        "400":
+          application/json: {"message": [], "path": "/usr/libexec", "timestamp": "<value>"}
   getOneWebhook:
     "":
       parameters:
         path:
           id: "wh_4c2905f7276b415fac02ee3682189940"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
+        "400":
+          application/json: {"message": [], "path": "/private/tmp", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
   getOneWebhookSigningSecret:
-    speakeasy-default-get-one-webhook-signing-secret: {}
+    speakeasy-default-get-one-webhook-signing-secret:
+      responses:
+        "200":
+          application/json: {"projectId": "<value>", "secret": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/opt/lib", "timestamp": "<value>"}
   createWebhookSigningSecret:
-    speakeasy-default-create-webhook-signing-secret: {}
+    speakeasy-default-create-webhook-signing-secret:
+      responses:
+        "201":
+          application/json: {"projectId": "<value>", "secret": "<value>"}
+        "400":
+          application/json: {"message": [], "path": "/Users", "timestamp": "<value>"}
+        "401":
+          application/json: {"path": "/lib", "timestamp": "<value>"}
   resendWebhook:
     "":
       parameters:
         path:
           id: "wh_4c2905f7276b415fac02ee3682189940"
+      responses:
+        "201":
+          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
+        "400":
+          application/json: {"message": [], "path": "/opt/sbin", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/System", "timestamp": "<value>"}
+        "412":
+          application/json: {"path": "/usr/lib", "timestamp": "<value>"}

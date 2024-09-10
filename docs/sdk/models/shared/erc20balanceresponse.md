@@ -6,11 +6,11 @@
 import { Erc20BalanceResponse } from "@starton/sdk/sdk/models/shared";
 
 let value: Erc20BalanceResponse = {
-    balance: "0",
-    contractAddress: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-    decimal: 6,
-    formatted: "0.0",
-    symbol: "USDT",
+  balance: "0",
+  contractAddress: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+  decimal: 6,
+  formatted: "0.0",
+  symbol: "USDT",
 };
 ```
 

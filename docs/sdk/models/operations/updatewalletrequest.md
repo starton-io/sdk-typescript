@@ -6,8 +6,8 @@
 import { UpdateWalletRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateWalletRequest = {
-    updateWalletDto: {},
-    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+  updateWalletDto: {},
+  address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
 };
 ```
 

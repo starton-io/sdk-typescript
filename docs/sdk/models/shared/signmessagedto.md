@@ -6,7 +6,7 @@
 import { SignMessageDto } from "@starton/sdk/sdk/models/shared";
 
 let value: SignMessageDto = {
-    message: "<value>",
+  message: "<value>",
 };
 ```
 

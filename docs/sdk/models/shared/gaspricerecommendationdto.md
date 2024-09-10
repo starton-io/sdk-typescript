@@ -6,9 +6,9 @@
 import { GasPriceRecommendationDto } from "@starton/sdk/sdk/models/shared";
 
 let value: GasPriceRecommendationDto = {
-    defaultRelayerUnstuck: "<value>",
-    lowest: "<value>",
-    max: "<value>",
+  defaultRelayerUnstuck: "<value>",
+  lowest: "<value>",
+  max: "<value>",
 };
 ```
 

@@ -9,60 +9,66 @@ export type Headers = {};
 export type WebhookPayload = {};
 
 export enum WebhookStatus {
-    Retrying = "RETRYING",
-    Successful = "SUCCESSFUL",
-    Failed = "FAILED",
-    Canceled = "CANCELED",
+  Retrying = "RETRYING",
+  Successful = "SUCCESSFUL",
+  Failed = "FAILED",
+  Canceled = "CANCELED",
 }
 
 export type Webhook = {
-    createdAt?: Date | undefined;
-    headers: Headers | null;
-    id: string;
-    payload: WebhookPayload | null;
-    projectId: string;
-    refId: string;
-    status: WebhookStatus;
-    updatedAt?: Date | undefined;
-    url: string;
+  createdAt?: Date | undefined;
+  headers: Headers | null;
+  id: string;
+  payload: WebhookPayload | null;
+  projectId: string;
+  refId: string;
+  status: WebhookStatus;
+  updatedAt?: Date | undefined;
+  url: string;
 };
 
 /** @internal */
-export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
+export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
+  z.object({});
 
 /** @internal */
 export type Headers$Outbound = {};
 
 /** @internal */
-export const Headers$outboundSchema: z.ZodType<Headers$Outbound, z.ZodTypeDef, Headers> = z.object(
-    {}
-);
+export const Headers$outboundSchema: z.ZodType<
+  Headers$Outbound,
+  z.ZodTypeDef,
+  Headers
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Headers$ {
-    /** @deprecated use `Headers$inboundSchema` instead. */
-    export const inboundSchema = Headers$inboundSchema;
-    /** @deprecated use `Headers$outboundSchema` instead. */
-    export const outboundSchema = Headers$outboundSchema;
-    /** @deprecated use `Headers$Outbound` instead. */
-    export type Outbound = Headers$Outbound;
+  /** @deprecated use `Headers$inboundSchema` instead. */
+  export const inboundSchema = Headers$inboundSchema;
+  /** @deprecated use `Headers$outboundSchema` instead. */
+  export const outboundSchema = Headers$outboundSchema;
+  /** @deprecated use `Headers$Outbound` instead. */
+  export type Outbound = Headers$Outbound;
 }
 
 /** @internal */
-export const WebhookPayload$inboundSchema: z.ZodType<WebhookPayload, z.ZodTypeDef, unknown> =
-    z.object({});
+export const WebhookPayload$inboundSchema: z.ZodType<
+  WebhookPayload,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
 /** @internal */
 export type WebhookPayload$Outbound = {};
 
 /** @internal */
 export const WebhookPayload$outboundSchema: z.ZodType<
-    WebhookPayload$Outbound,
-    z.ZodTypeDef,
-    WebhookPayload
+  WebhookPayload$Outbound,
+  z.ZodTypeDef,
+  WebhookPayload
 > = z.object({});
 
 /**
@@ -70,84 +76,83 @@ export const WebhookPayload$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace WebhookPayload$ {
-    /** @deprecated use `WebhookPayload$inboundSchema` instead. */
-    export const inboundSchema = WebhookPayload$inboundSchema;
-    /** @deprecated use `WebhookPayload$outboundSchema` instead. */
-    export const outboundSchema = WebhookPayload$outboundSchema;
-    /** @deprecated use `WebhookPayload$Outbound` instead. */
-    export type Outbound = WebhookPayload$Outbound;
+  /** @deprecated use `WebhookPayload$inboundSchema` instead. */
+  export const inboundSchema = WebhookPayload$inboundSchema;
+  /** @deprecated use `WebhookPayload$outboundSchema` instead. */
+  export const outboundSchema = WebhookPayload$outboundSchema;
+  /** @deprecated use `WebhookPayload$Outbound` instead. */
+  export type Outbound = WebhookPayload$Outbound;
 }
 
 /** @internal */
-export const WebhookStatus$inboundSchema: z.ZodNativeEnum<typeof WebhookStatus> =
-    z.nativeEnum(WebhookStatus);
+export const WebhookStatus$inboundSchema: z.ZodNativeEnum<
+  typeof WebhookStatus
+> = z.nativeEnum(WebhookStatus);
 
 /** @internal */
-export const WebhookStatus$outboundSchema: z.ZodNativeEnum<typeof WebhookStatus> =
-    WebhookStatus$inboundSchema;
+export const WebhookStatus$outboundSchema: z.ZodNativeEnum<
+  typeof WebhookStatus
+> = WebhookStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace WebhookStatus$ {
-    /** @deprecated use `WebhookStatus$inboundSchema` instead. */
-    export const inboundSchema = WebhookStatus$inboundSchema;
-    /** @deprecated use `WebhookStatus$outboundSchema` instead. */
-    export const outboundSchema = WebhookStatus$outboundSchema;
+  /** @deprecated use `WebhookStatus$inboundSchema` instead. */
+  export const inboundSchema = WebhookStatus$inboundSchema;
+  /** @deprecated use `WebhookStatus$outboundSchema` instead. */
+  export const outboundSchema = WebhookStatus$outboundSchema;
 }
 
 /** @internal */
-export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> = z.object({
-    createdAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:34:00.636Z")
-        .transform((v) => new Date(v)),
+export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> =
+  z.object({
+    createdAt: z.string().datetime({ offset: true }).default(
+      "2024-05-02T09:34:00.636Z",
+    ).transform(v => new Date(v)),
     headers: z.nullable(z.lazy(() => Headers$inboundSchema)),
     id: z.string(),
     payload: z.nullable(z.lazy(() => WebhookPayload$inboundSchema)),
     projectId: z.string(),
     refId: z.string(),
     status: WebhookStatus$inboundSchema,
-    updatedAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:34:00.636Z")
-        .transform((v) => new Date(v)),
+    updatedAt: z.string().datetime({ offset: true }).default(
+      "2024-05-02T09:34:00.636Z",
+    ).transform(v => new Date(v)),
     url: z.string(),
-});
+  });
 
 /** @internal */
 export type Webhook$Outbound = {
-    createdAt: string;
-    headers: Headers$Outbound | null;
-    id: string;
-    payload: WebhookPayload$Outbound | null;
-    projectId: string;
-    refId: string;
-    status: string;
-    updatedAt: string;
-    url: string;
+  createdAt: string;
+  headers: Headers$Outbound | null;
+  id: string;
+  payload: WebhookPayload$Outbound | null;
+  projectId: string;
+  refId: string;
+  status: string;
+  updatedAt: string;
+  url: string;
 };
 
 /** @internal */
-export const Webhook$outboundSchema: z.ZodType<Webhook$Outbound, z.ZodTypeDef, Webhook> = z.object({
-    createdAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:34:00.636Z"))
-        .transform((v) => v.toISOString()),
-    headers: z.nullable(z.lazy(() => Headers$outboundSchema)),
-    id: z.string(),
-    payload: z.nullable(z.lazy(() => WebhookPayload$outboundSchema)),
-    projectId: z.string(),
-    refId: z.string(),
-    status: WebhookStatus$outboundSchema,
-    updatedAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:34:00.636Z"))
-        .transform((v) => v.toISOString()),
-    url: z.string(),
+export const Webhook$outboundSchema: z.ZodType<
+  Webhook$Outbound,
+  z.ZodTypeDef,
+  Webhook
+> = z.object({
+  createdAt: z.date().default(() => new Date("2024-05-02T09:34:00.636Z"))
+    .transform(v => v.toISOString()),
+  headers: z.nullable(z.lazy(() => Headers$outboundSchema)),
+  id: z.string(),
+  payload: z.nullable(z.lazy(() => WebhookPayload$outboundSchema)),
+  projectId: z.string(),
+  refId: z.string(),
+  status: WebhookStatus$outboundSchema,
+  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:00.636Z"))
+    .transform(v => v.toISOString()),
+  url: z.string(),
 });
 
 /**
@@ -155,10 +160,10 @@ export const Webhook$outboundSchema: z.ZodType<Webhook$Outbound, z.ZodTypeDef, W
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Webhook$ {
-    /** @deprecated use `Webhook$inboundSchema` instead. */
-    export const inboundSchema = Webhook$inboundSchema;
-    /** @deprecated use `Webhook$outboundSchema` instead. */
-    export const outboundSchema = Webhook$outboundSchema;
-    /** @deprecated use `Webhook$Outbound` instead. */
-    export type Outbound = Webhook$Outbound;
+  /** @deprecated use `Webhook$inboundSchema` instead. */
+  export const inboundSchema = Webhook$inboundSchema;
+  /** @deprecated use `Webhook$outboundSchema` instead. */
+  export const outboundSchema = Webhook$outboundSchema;
+  /** @deprecated use `Webhook$Outbound` instead. */
+  export type Outbound = Webhook$Outbound;
 }

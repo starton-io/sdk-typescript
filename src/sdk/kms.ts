@@ -14,68 +14,88 @@ import * as shared from "./models/shared/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Kms extends ClientSDK {
-    /**
-     * Create a new KMS entry
-     *
-     * @remarks
-     * Add a new Key Management System entry to the project.
-     */
-    async create(
-        request: shared.CreateKmsDto,
-        options?: RequestOptions
-    ): Promise<operations.CreateKmsResponse> {
-        return unwrapAsync(kmsCreate(this, request, options));
-    }
+  /**
+   * Create a new KMS entry
+   *
+   * @remarks
+   * Add a new Key Management System entry to the project.
+   */
+  async create(
+    request: shared.CreateKmsDto,
+    options?: RequestOptions,
+  ): Promise<operations.CreateKmsResponse> {
+    return unwrapAsync(kmsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Remove a specific KMS entry
-     *
-     * @remarks
-     * Delete a Key Management System entry from the project.
-     */
-    async delete(
-        request: operations.DeleteKmsRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeleteKmsResponse> {
-        return unwrapAsync(kmsDelete(this, request, options));
-    }
+  /**
+   * Remove a specific KMS entry
+   *
+   * @remarks
+   * Delete a Key Management System entry from the project.
+   */
+  async delete(
+    request: operations.DeleteKmsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteKmsResponse> {
+    return unwrapAsync(kmsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve all Key Management Systems (KMS)
-     *
-     * @remarks
-     * Provides a list of all Key Management Systems entries associated with the current project
-     */
-    async getAll(
-        request: operations.GetAllKmsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllKmsResponse>> {
-        return unwrapResultIterator(kmsGetAll(this, request, options));
-    }
+  /**
+   * Retrieve all Key Management Systems (KMS)
+   *
+   * @remarks
+   * Provides a list of all Key Management Systems entries associated with the current project
+   */
+  async getAll(
+    request: operations.GetAllKmsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllKmsResponse>> {
+    return unwrapResultIterator(kmsGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve details of a specific KMS
-     *
-     * @remarks
-     * Returns information of a particular Key Management Systems entry using its unique identifier.
-     */
-    async getOne(
-        request: operations.GetOneKmsRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneKmsResponse> {
-        return unwrapAsync(kmsGetOne(this, request, options));
-    }
+  /**
+   * Retrieve details of a specific KMS
+   *
+   * @remarks
+   * Returns information of a particular Key Management Systems entry using its unique identifier.
+   */
+  async getOne(
+    request: operations.GetOneKmsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneKmsResponse> {
+    return unwrapAsync(kmsGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update the details of a KMS
-     *
-     * @remarks
-     * Updates changes to a particular Key Management Systems entry.
-     */
-    async update(
-        request: operations.UpdateKmsRequest,
-        options?: RequestOptions
-    ): Promise<operations.UpdateKmsResponse> {
-        return unwrapAsync(kmsUpdate(this, request, options));
-    }
+  /**
+   * Update the details of a KMS
+   *
+   * @remarks
+   * Updates changes to a particular Key Management Systems entry.
+   */
+  async update(
+    request: operations.UpdateKmsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateKmsResponse> {
+    return unwrapAsync(kmsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

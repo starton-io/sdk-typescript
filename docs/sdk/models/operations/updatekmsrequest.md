@@ -6,8 +6,8 @@
 import { UpdateKmsRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateKmsRequest = {
-    updateKmsDto: {},
-    id: "kms_000",
+  updateKmsDto: {},
+  id: "kms_000",
 };
 ```
 

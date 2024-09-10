@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type EncodeSmartContractResponse = {
-    data?: string | null | undefined;
+  data?: string | null | undefined;
 };
 
 /** @internal */
 export const EncodeSmartContractResponse$inboundSchema: z.ZodType<
-    EncodeSmartContractResponse,
-    z.ZodTypeDef,
-    unknown
+  EncodeSmartContractResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    data: z.nullable(z.string()).optional(),
+  data: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type EncodeSmartContractResponse$Outbound = {
-    data?: string | null | undefined;
+  data?: string | null | undefined;
 };
 
 /** @internal */
 export const EncodeSmartContractResponse$outboundSchema: z.ZodType<
-    EncodeSmartContractResponse$Outbound,
-    z.ZodTypeDef,
-    EncodeSmartContractResponse
+  EncodeSmartContractResponse$Outbound,
+  z.ZodTypeDef,
+  EncodeSmartContractResponse
 > = z.object({
-    data: z.nullable(z.string()).optional(),
+  data: z.nullable(z.string()).optional(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const EncodeSmartContractResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace EncodeSmartContractResponse$ {
-    /** @deprecated use `EncodeSmartContractResponse$inboundSchema` instead. */
-    export const inboundSchema = EncodeSmartContractResponse$inboundSchema;
-    /** @deprecated use `EncodeSmartContractResponse$outboundSchema` instead. */
-    export const outboundSchema = EncodeSmartContractResponse$outboundSchema;
-    /** @deprecated use `EncodeSmartContractResponse$Outbound` instead. */
-    export type Outbound = EncodeSmartContractResponse$Outbound;
+  /** @deprecated use `EncodeSmartContractResponse$inboundSchema` instead. */
+  export const inboundSchema = EncodeSmartContractResponse$inboundSchema;
+  /** @deprecated use `EncodeSmartContractResponse$outboundSchema` instead. */
+  export const outboundSchema = EncodeSmartContractResponse$outboundSchema;
+  /** @deprecated use `EncodeSmartContractResponse$Outbound` instead. */
+  export type Outbound = EncodeSmartContractResponse$Outbound;
 }

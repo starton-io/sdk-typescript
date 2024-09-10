@@ -15,73 +15,93 @@ import { Rpc } from "./rpc.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Network extends ClientSDK {
-    private _rpc?: Rpc;
-    get rpc(): Rpc {
-        return (this._rpc ??= new Rpc(this.options$));
-    }
+  private _rpc?: Rpc;
+  get rpc(): Rpc {
+    return (this._rpc ??= new Rpc(this.options$));
+  }
 
-    /**
-     * Create a new network (Enterprise)
-     *
-     * @remarks
-     * Adds a new network to the project, available only for Enterprise plans.
-     */
-    async create(
-        request: shared.CreateNetworkDto,
-        options?: RequestOptions
-    ): Promise<operations.CreateNetworkResponse> {
-        return unwrapAsync(networkCreate(this, request, options));
-    }
+  /**
+   * Create a new network (Enterprise)
+   *
+   * @remarks
+   * Adds a new network to the project, available only for Enterprise plans.
+   */
+  async create(
+    request: shared.CreateNetworkDto,
+    options?: RequestOptions,
+  ): Promise<operations.CreateNetworkResponse> {
+    return unwrapAsync(networkCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a network (Enterprise)
-     *
-     * @remarks
-     * Removes a network from the project, available only for Enterprise plans.
-     */
-    async delete(
-        request: operations.DeleteNetworkRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeleteNetworkResponse> {
-        return unwrapAsync(networkDelete(this, request, options));
-    }
+  /**
+   * Delete a network (Enterprise)
+   *
+   * @remarks
+   * Removes a network from the project, available only for Enterprise plans.
+   */
+  async delete(
+    request: operations.DeleteNetworkRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteNetworkResponse> {
+    return unwrapAsync(networkDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve the list of supported networks
-     *
-     * @remarks
-     * Fetches a paginated list of networks available in the current project.
-     */
-    async getAll(
-        request: operations.GetAllNetworkRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
-        return unwrapResultIterator(networkGetAll(this, request, options));
-    }
+  /**
+   * Retrieve the list of supported networks
+   *
+   * @remarks
+   * Fetches a paginated list of networks available in the current project.
+   */
+  async getAll(
+    request: operations.GetAllNetworkRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
+    return unwrapResultIterator(networkGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Fetch a specific network
-     *
-     * @remarks
-     * Retrieves detailed information about a specific network based on its name.
-     */
-    async getOne(
-        request: operations.GetOneNetworkRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneNetworkResponse> {
-        return unwrapAsync(networkGetOne(this, request, options));
-    }
+  /**
+   * Fetch a specific network
+   *
+   * @remarks
+   * Retrieves detailed information about a specific network based on its name.
+   */
+  async getOne(
+    request: operations.GetOneNetworkRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneNetworkResponse> {
+    return unwrapAsync(networkGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update specific network details (Enterprise)
-     *
-     * @remarks
-     * Modifies the details of a specific network based on its unique name. This feature is only available to Entreprise plans.
-     */
-    async update(
-        request: operations.UpdateNetworkRequest,
-        options?: RequestOptions
-    ): Promise<operations.UpdateNetworkResponse> {
-        return unwrapAsync(networkUpdate(this, request, options));
-    }
+  /**
+   * Update specific network details (Enterprise)
+   *
+   * @remarks
+   * Modifies the details of a specific network based on its unique name. This feature is only available to Entreprise plans.
+   */
+  async update(
+    request: operations.UpdateNetworkRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateNetworkResponse> {
+    return unwrapAsync(networkUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

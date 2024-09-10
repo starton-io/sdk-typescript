@@ -6,16 +6,24 @@
 import { Category, SmartContractTemplate } from "@starton/sdk/sdk/models/shared";
 
 let value: SmartContractTemplate = {
-    abi: [{}],
-    blockchains: ["<value>"],
-    category: Category.Fungible,
-    description: "Down-sized value-added local area network",
-    githubUrl: "<value>",
-    humanReadableAbi: ["<value>"],
-    id: "<id>",
-    name: "<value>",
-    shortDescription: "<value>",
-    tags: ["<value>"],
+  abi: [
+    {},
+  ],
+  blockchains: [
+    "<value>",
+  ],
+  category: Category.Fungible,
+  description: "Down-sized value-added local area network",
+  githubUrl: "<value>",
+  humanReadableAbi: [
+    "<value>",
+  ],
+  id: "<id>",
+  name: "<value>",
+  shortDescription: "<value>",
+  tags: [
+    "<value>",
+  ],
 };
 ```
 

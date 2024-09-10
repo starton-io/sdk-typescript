@@ -6,9 +6,9 @@
 import { UpdateSmartContractRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateSmartContractRequest = {
-    updateSmartContractDto: {},
-    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
-    network: "polygon-mumbai",
+  updateSmartContractDto: {},
+  address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+  network: "polygon-mumbai",
 };
 ```
 

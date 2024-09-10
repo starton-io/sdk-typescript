@@ -5,54 +5,60 @@
 import * as z from "zod";
 
 export enum UpdateRpcDtoType {
-    Archive = "archive",
-    Full = "full",
+  Archive = "archive",
+  Full = "full",
 }
 
 export type UpdateRpcDto = {
-    type?: UpdateRpcDtoType | undefined;
-    url?: string | undefined;
+  type?: UpdateRpcDtoType | undefined;
+  url?: string | undefined;
 };
 
 /** @internal */
-export const UpdateRpcDtoType$inboundSchema: z.ZodNativeEnum<typeof UpdateRpcDtoType> =
-    z.nativeEnum(UpdateRpcDtoType);
+export const UpdateRpcDtoType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateRpcDtoType
+> = z.nativeEnum(UpdateRpcDtoType);
 
 /** @internal */
-export const UpdateRpcDtoType$outboundSchema: z.ZodNativeEnum<typeof UpdateRpcDtoType> =
-    UpdateRpcDtoType$inboundSchema;
+export const UpdateRpcDtoType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateRpcDtoType
+> = UpdateRpcDtoType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UpdateRpcDtoType$ {
-    /** @deprecated use `UpdateRpcDtoType$inboundSchema` instead. */
-    export const inboundSchema = UpdateRpcDtoType$inboundSchema;
-    /** @deprecated use `UpdateRpcDtoType$outboundSchema` instead. */
-    export const outboundSchema = UpdateRpcDtoType$outboundSchema;
+  /** @deprecated use `UpdateRpcDtoType$inboundSchema` instead. */
+  export const inboundSchema = UpdateRpcDtoType$inboundSchema;
+  /** @deprecated use `UpdateRpcDtoType$outboundSchema` instead. */
+  export const outboundSchema = UpdateRpcDtoType$outboundSchema;
 }
 
 /** @internal */
-export const UpdateRpcDto$inboundSchema: z.ZodType<UpdateRpcDto, z.ZodTypeDef, unknown> = z.object({
-    type: UpdateRpcDtoType$inboundSchema.optional(),
-    url: z.string().optional(),
+export const UpdateRpcDto$inboundSchema: z.ZodType<
+  UpdateRpcDto,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateRpcDtoType$inboundSchema.optional(),
+  url: z.string().optional(),
 });
 
 /** @internal */
 export type UpdateRpcDto$Outbound = {
-    type?: string | undefined;
-    url?: string | undefined;
+  type?: string | undefined;
+  url?: string | undefined;
 };
 
 /** @internal */
 export const UpdateRpcDto$outboundSchema: z.ZodType<
-    UpdateRpcDto$Outbound,
-    z.ZodTypeDef,
-    UpdateRpcDto
+  UpdateRpcDto$Outbound,
+  z.ZodTypeDef,
+  UpdateRpcDto
 > = z.object({
-    type: UpdateRpcDtoType$outboundSchema.optional(),
-    url: z.string().optional(),
+  type: UpdateRpcDtoType$outboundSchema.optional(),
+  url: z.string().optional(),
 });
 
 /**
@@ -60,10 +66,10 @@ export const UpdateRpcDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UpdateRpcDto$ {
-    /** @deprecated use `UpdateRpcDto$inboundSchema` instead. */
-    export const inboundSchema = UpdateRpcDto$inboundSchema;
-    /** @deprecated use `UpdateRpcDto$outboundSchema` instead. */
-    export const outboundSchema = UpdateRpcDto$outboundSchema;
-    /** @deprecated use `UpdateRpcDto$Outbound` instead. */
-    export type Outbound = UpdateRpcDto$Outbound;
+  /** @deprecated use `UpdateRpcDto$inboundSchema` instead. */
+  export const inboundSchema = UpdateRpcDto$inboundSchema;
+  /** @deprecated use `UpdateRpcDto$outboundSchema` instead. */
+  export const outboundSchema = UpdateRpcDto$outboundSchema;
+  /** @deprecated use `UpdateRpcDto$Outbound` instead. */
+  export type Outbound = UpdateRpcDto$Outbound;
 }

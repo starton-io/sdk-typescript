@@ -5,56 +5,48 @@
 import * as z from "zod";
 
 export type WebhookSigningSecret = {
-    createdAt?: Date | undefined;
-    projectId: string;
-    secret: string;
-    updatedAt?: Date | undefined;
+  createdAt?: Date | undefined;
+  projectId: string;
+  secret: string;
+  updatedAt?: Date | undefined;
 };
 
 /** @internal */
 export const WebhookSigningSecret$inboundSchema: z.ZodType<
-    WebhookSigningSecret,
-    z.ZodTypeDef,
-    unknown
+  WebhookSigningSecret,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    createdAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:34:00.631Z")
-        .transform((v) => new Date(v)),
-    projectId: z.string(),
-    secret: z.string(),
-    updatedAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:34:00.631Z")
-        .transform((v) => new Date(v)),
+  createdAt: z.string().datetime({ offset: true }).default(
+    "2024-05-02T09:34:00.631Z",
+  ).transform(v => new Date(v)),
+  projectId: z.string(),
+  secret: z.string(),
+  updatedAt: z.string().datetime({ offset: true }).default(
+    "2024-05-02T09:34:00.631Z",
+  ).transform(v => new Date(v)),
 });
 
 /** @internal */
 export type WebhookSigningSecret$Outbound = {
-    createdAt: string;
-    projectId: string;
-    secret: string;
-    updatedAt: string;
+  createdAt: string;
+  projectId: string;
+  secret: string;
+  updatedAt: string;
 };
 
 /** @internal */
 export const WebhookSigningSecret$outboundSchema: z.ZodType<
-    WebhookSigningSecret$Outbound,
-    z.ZodTypeDef,
-    WebhookSigningSecret
+  WebhookSigningSecret$Outbound,
+  z.ZodTypeDef,
+  WebhookSigningSecret
 > = z.object({
-    createdAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:34:00.631Z"))
-        .transform((v) => v.toISOString()),
-    projectId: z.string(),
-    secret: z.string(),
-    updatedAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:34:00.631Z"))
-        .transform((v) => v.toISOString()),
+  createdAt: z.date().default(() => new Date("2024-05-02T09:34:00.631Z"))
+    .transform(v => v.toISOString()),
+  projectId: z.string(),
+  secret: z.string(),
+  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:00.631Z"))
+    .transform(v => v.toISOString()),
 });
 
 /**
@@ -62,10 +54,10 @@ export const WebhookSigningSecret$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace WebhookSigningSecret$ {
-    /** @deprecated use `WebhookSigningSecret$inboundSchema` instead. */
-    export const inboundSchema = WebhookSigningSecret$inboundSchema;
-    /** @deprecated use `WebhookSigningSecret$outboundSchema` instead. */
-    export const outboundSchema = WebhookSigningSecret$outboundSchema;
-    /** @deprecated use `WebhookSigningSecret$Outbound` instead. */
-    export type Outbound = WebhookSigningSecret$Outbound;
+  /** @deprecated use `WebhookSigningSecret$inboundSchema` instead. */
+  export const inboundSchema = WebhookSigningSecret$inboundSchema;
+  /** @deprecated use `WebhookSigningSecret$outboundSchema` instead. */
+  export const outboundSchema = WebhookSigningSecret$outboundSchema;
+  /** @deprecated use `WebhookSigningSecret$Outbound` instead. */
+  export type Outbound = WebhookSigningSecret$Outbound;
 }

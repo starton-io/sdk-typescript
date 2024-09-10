@@ -6,7 +6,7 @@
 import { GetAllGasPriceRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllGasPriceRequest = {
-    network: "polygon-mainnet",
+  network: "polygon-mainnet",
 };
 ```
 

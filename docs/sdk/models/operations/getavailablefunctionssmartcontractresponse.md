@@ -6,11 +6,11 @@
 import { GetAvailableFunctionsSmartContractResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAvailableFunctionsSmartContractResponse = {
-    contentType: "<value>",
-    statusCode: 39187,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 39187,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

@@ -6,7 +6,7 @@
 import { SignMessageResponse } from "@starton/sdk/sdk/models/shared";
 
 let value: SignMessageResponse = {
-    signature: "<value>",
+  signature: "<value>",
 };
 ```
 

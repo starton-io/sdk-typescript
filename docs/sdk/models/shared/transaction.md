@@ -6,24 +6,24 @@
 import { Transaction, TransactionLogType, TransactionState, TransactionStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: Transaction = {
-    automaticNonce: false,
-    chainId: 4748.67,
-    from: "<value>",
-    id: "<id>",
-    isDeployTransaction: false,
-    logs: [
-        {
-            createdAt: "<value>",
-            message: "<value>",
-            type: TransactionLogType.Unsigned,
-        },
-    ],
-    network: "<value>",
-    projectId: "<value>",
-    signerWallet: "<value>",
-    state: TransactionState.Pending,
-    status: TransactionStatus.CouldNotEstimateGasLimit,
-    value: "<value>",
+  automaticNonce: false,
+  chainId: 4748.67,
+  from: "<value>",
+  id: "<id>",
+  isDeployTransaction: false,
+  logs: [
+    {
+      createdAt: "<value>",
+      message: "<value>",
+      type: TransactionLogType.Unsigned,
+    },
+  ],
+  network: "<value>",
+  projectId: "<value>",
+  signerWallet: "<value>",
+  state: TransactionState.Pending,
+  status: TransactionStatus.CouldNotEstimateGasLimit,
+  value: "<value>",
 };
 ```
 

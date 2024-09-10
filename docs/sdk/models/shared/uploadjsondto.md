@@ -6,8 +6,8 @@
 import { UploadJsonDto } from "@starton/sdk/sdk/models/shared";
 
 let value: UploadJsonDto = {
-    content: {},
-    name: "<value>",
+  content: {},
+  name: "<value>",
 };
 ```
 

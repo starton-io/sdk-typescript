@@ -5,37 +5,40 @@
 import * as z from "zod";
 
 export type RequireFaucetDto = {
-    /**
-     * Captcha token.
-     */
-    captchaToken?: string | undefined;
-    /**
-     * Destination wallet address.
-     */
-    wallet: string;
+  /**
+   * Captcha token.
+   */
+  captchaToken?: string | undefined;
+  /**
+   * Destination wallet address.
+   */
+  wallet: string;
 };
 
 /** @internal */
-export const RequireFaucetDto$inboundSchema: z.ZodType<RequireFaucetDto, z.ZodTypeDef, unknown> =
-    z.object({
-        captchaToken: z.string().optional(),
-        wallet: z.string(),
-    });
+export const RequireFaucetDto$inboundSchema: z.ZodType<
+  RequireFaucetDto,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  captchaToken: z.string().optional(),
+  wallet: z.string(),
+});
 
 /** @internal */
 export type RequireFaucetDto$Outbound = {
-    captchaToken?: string | undefined;
-    wallet: string;
+  captchaToken?: string | undefined;
+  wallet: string;
 };
 
 /** @internal */
 export const RequireFaucetDto$outboundSchema: z.ZodType<
-    RequireFaucetDto$Outbound,
-    z.ZodTypeDef,
-    RequireFaucetDto
+  RequireFaucetDto$Outbound,
+  z.ZodTypeDef,
+  RequireFaucetDto
 > = z.object({
-    captchaToken: z.string().optional(),
-    wallet: z.string(),
+  captchaToken: z.string().optional(),
+  wallet: z.string(),
 });
 
 /**
@@ -43,10 +46,10 @@ export const RequireFaucetDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RequireFaucetDto$ {
-    /** @deprecated use `RequireFaucetDto$inboundSchema` instead. */
-    export const inboundSchema = RequireFaucetDto$inboundSchema;
-    /** @deprecated use `RequireFaucetDto$outboundSchema` instead. */
-    export const outboundSchema = RequireFaucetDto$outboundSchema;
-    /** @deprecated use `RequireFaucetDto$Outbound` instead. */
-    export type Outbound = RequireFaucetDto$Outbound;
+  /** @deprecated use `RequireFaucetDto$inboundSchema` instead. */
+  export const inboundSchema = RequireFaucetDto$inboundSchema;
+  /** @deprecated use `RequireFaucetDto$outboundSchema` instead. */
+  export const outboundSchema = RequireFaucetDto$outboundSchema;
+  /** @deprecated use `RequireFaucetDto$Outbound` instead. */
+  export type Outbound = RequireFaucetDto$Outbound;
 }

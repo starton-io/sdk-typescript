@@ -6,9 +6,9 @@
 import { GetBalanceErc20Request } from "@starton/sdk/sdk/models/operations";
 
 let value: GetBalanceErc20Request = {
-    address: "0x24cd470f549b136ec93ccd42c087124cf3ea3233",
-    contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-    network: "polygon-mainnet",
+  address: "0x24cd470f549b136ec93ccd42c087124cf3ea3233",
+  contractAddress: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+  network: "polygon-mainnet",
 };
 ```
 

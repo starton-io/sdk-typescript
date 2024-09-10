@@ -6,11 +6,11 @@
 import { GetAllProjectMemberResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllProjectMemberResponse = {
-    contentType: "<value>",
-    statusCode: 995300,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 995300,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

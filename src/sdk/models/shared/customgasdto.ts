@@ -5,34 +5,38 @@
 import * as z from "zod";
 
 export type CustomGasDto = {
-    gasPrice?: string | undefined;
-    maxFeePerGas?: string | undefined;
-    maxPriorityFeePerGas?: string | undefined;
+  gasPrice?: string | undefined;
+  maxFeePerGas?: string | undefined;
+  maxPriorityFeePerGas?: string | undefined;
 };
 
 /** @internal */
-export const CustomGasDto$inboundSchema: z.ZodType<CustomGasDto, z.ZodTypeDef, unknown> = z.object({
-    gasPrice: z.string().optional(),
-    maxFeePerGas: z.string().optional(),
-    maxPriorityFeePerGas: z.string().optional(),
+export const CustomGasDto$inboundSchema: z.ZodType<
+  CustomGasDto,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  gasPrice: z.string().optional(),
+  maxFeePerGas: z.string().optional(),
+  maxPriorityFeePerGas: z.string().optional(),
 });
 
 /** @internal */
 export type CustomGasDto$Outbound = {
-    gasPrice?: string | undefined;
-    maxFeePerGas?: string | undefined;
-    maxPriorityFeePerGas?: string | undefined;
+  gasPrice?: string | undefined;
+  maxFeePerGas?: string | undefined;
+  maxPriorityFeePerGas?: string | undefined;
 };
 
 /** @internal */
 export const CustomGasDto$outboundSchema: z.ZodType<
-    CustomGasDto$Outbound,
-    z.ZodTypeDef,
-    CustomGasDto
+  CustomGasDto$Outbound,
+  z.ZodTypeDef,
+  CustomGasDto
 > = z.object({
-    gasPrice: z.string().optional(),
-    maxFeePerGas: z.string().optional(),
-    maxPriorityFeePerGas: z.string().optional(),
+  gasPrice: z.string().optional(),
+  maxFeePerGas: z.string().optional(),
+  maxPriorityFeePerGas: z.string().optional(),
 });
 
 /**
@@ -40,10 +44,10 @@ export const CustomGasDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CustomGasDto$ {
-    /** @deprecated use `CustomGasDto$inboundSchema` instead. */
-    export const inboundSchema = CustomGasDto$inboundSchema;
-    /** @deprecated use `CustomGasDto$outboundSchema` instead. */
-    export const outboundSchema = CustomGasDto$outboundSchema;
-    /** @deprecated use `CustomGasDto$Outbound` instead. */
-    export type Outbound = CustomGasDto$Outbound;
+  /** @deprecated use `CustomGasDto$inboundSchema` instead. */
+  export const inboundSchema = CustomGasDto$inboundSchema;
+  /** @deprecated use `CustomGasDto$outboundSchema` instead. */
+  export const outboundSchema = CustomGasDto$outboundSchema;
+  /** @deprecated use `CustomGasDto$Outbound` instead. */
+  export type Outbound = CustomGasDto$Outbound;
 }

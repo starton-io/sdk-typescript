@@ -14,73 +14,93 @@ import { Setting } from "./setting.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class TransactionManager extends ClientSDK {
-    private _setting?: Setting;
-    get setting(): Setting {
-        return (this._setting ??= new Setting(this.options$));
-    }
+  private _setting?: Setting;
+  get setting(): Setting {
+    return (this._setting ??= new Setting(this.options$));
+  }
 
-    /**
-     * Create a new transaction
-     *
-     * @remarks
-     * Create a new blockchain transaction
-     */
-    async create(
-        request: operations.CreateTransactionRequest,
-        options?: RequestOptions
-    ): Promise<operations.CreateTransactionResponse> {
-        return unwrapAsync(transactionManagerCreate(this, request, options));
-    }
+  /**
+   * Create a new transaction
+   *
+   * @remarks
+   * Create a new blockchain transaction
+   */
+  async create(
+    request: operations.CreateTransactionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateTransactionResponse> {
+    return unwrapAsync(transactionManagerCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve a List of Transactions
-     *
-     * @remarks
-     * Retrieves a list of transactions.
-     */
-    async getAll(
-        request: operations.GetAllTransactionRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllTransactionResponse>> {
-        return unwrapResultIterator(transactionManagerGetAll(this, request, options));
-    }
+  /**
+   * Retrieve a List of Transactions
+   *
+   * @remarks
+   * Retrieves a list of transactions.
+   */
+  async getAll(
+    request: operations.GetAllTransactionRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllTransactionResponse>> {
+    return unwrapResultIterator(transactionManagerGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Available Nonces for a wallet
-     *
-     * @remarks
-     * Gets all available nonces for a wallet, ensuring transaction integrity on the blockchain.
-     */
-    async getAvailableNonces(
-        request: operations.GetAvailableNoncesWalletRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetAvailableNoncesWalletResponse> {
-        return unwrapAsync(transactionManagerGetAvailableNonces(this, request, options));
-    }
+  /**
+   * Retrieve Available Nonces for a wallet
+   *
+   * @remarks
+   * Gets all available nonces for a wallet, ensuring transaction integrity on the blockchain.
+   */
+  async getAvailableNonces(
+    request: operations.GetAvailableNoncesWalletRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetAvailableNoncesWalletResponse> {
+    return unwrapAsync(transactionManagerGetAvailableNonces(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get a Specific Transaction
-     *
-     * @remarks
-     * Retrieves the details of a specific transaction using its unique identifier.
-     */
-    async getOne(
-        request: operations.GetOneTransactionRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneTransactionResponse> {
-        return unwrapAsync(transactionManagerGetOne(this, request, options));
-    }
+  /**
+   * Get a Specific Transaction
+   *
+   * @remarks
+   * Retrieves the details of a specific transaction using its unique identifier.
+   */
+  async getOne(
+    request: operations.GetOneTransactionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneTransactionResponse> {
+    return unwrapAsync(transactionManagerGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Synchronize Nonces for a wallet
-     *
-     * @remarks
-     * Updates the stored nonce values for a wallet, synchronizing them with the current blockchain state.
-     */
-    async resyncNonce(
-        request: operations.ResyncNoncesWalletRequest,
-        options?: RequestOptions
-    ): Promise<operations.ResyncNoncesWalletResponse> {
-        return unwrapAsync(transactionManagerResyncNonce(this, request, options));
-    }
+  /**
+   * Synchronize Nonces for a wallet
+   *
+   * @remarks
+   * Updates the stored nonce values for a wallet, synchronizing them with the current blockchain state.
+   */
+  async resyncNonce(
+    request: operations.ResyncNoncesWalletRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ResyncNoncesWalletResponse> {
+    return unwrapAsync(transactionManagerResyncNonce(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type SignMessageResponse = {
-    signature: string;
+  signature: string;
 };
 
 /** @internal */
 export const SignMessageResponse$inboundSchema: z.ZodType<
-    SignMessageResponse,
-    z.ZodTypeDef,
-    unknown
+  SignMessageResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    signature: z.string(),
+  signature: z.string(),
 });
 
 /** @internal */
 export type SignMessageResponse$Outbound = {
-    signature: string;
+  signature: string;
 };
 
 /** @internal */
 export const SignMessageResponse$outboundSchema: z.ZodType<
-    SignMessageResponse$Outbound,
-    z.ZodTypeDef,
-    SignMessageResponse
+  SignMessageResponse$Outbound,
+  z.ZodTypeDef,
+  SignMessageResponse
 > = z.object({
-    signature: z.string(),
+  signature: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const SignMessageResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SignMessageResponse$ {
-    /** @deprecated use `SignMessageResponse$inboundSchema` instead. */
-    export const inboundSchema = SignMessageResponse$inboundSchema;
-    /** @deprecated use `SignMessageResponse$outboundSchema` instead. */
-    export const outboundSchema = SignMessageResponse$outboundSchema;
-    /** @deprecated use `SignMessageResponse$Outbound` instead. */
-    export type Outbound = SignMessageResponse$Outbound;
+  /** @deprecated use `SignMessageResponse$inboundSchema` instead. */
+  export const inboundSchema = SignMessageResponse$inboundSchema;
+  /** @deprecated use `SignMessageResponse$outboundSchema` instead. */
+  export const outboundSchema = SignMessageResponse$outboundSchema;
+  /** @deprecated use `SignMessageResponse$Outbound` instead. */
+  export type Outbound = SignMessageResponse$Outbound;
 }

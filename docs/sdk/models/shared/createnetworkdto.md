@@ -6,18 +6,18 @@
 import { CreateNetworkDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateNetworkDto = {
-    blockchain: "<value>",
-    chainId: 5699.65,
-    confirmationBlocks: 3540.47,
-    displayName: "Landen.Lueilwitz",
-    explorerApi: {
-        apiKey: "<value>",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "https://wide-eyed-perspective.biz",
-    },
-    logo: "<value>",
-    name: "<value>",
-    symbol: "<value>",
+  blockchain: "<value>",
+  chainId: 5699.65,
+  confirmationBlocks: 3540.47,
+  displayName: "Landen.Lueilwitz",
+  explorerApi: {
+    apiKey: "<value>",
+    type: ExplorerApiDtoType.Etherscan,
+    url: "https://wide-eyed-perspective.biz",
+  },
+  logo: "<value>",
+  name: "<value>",
+  symbol: "<value>",
 };
 ```
 

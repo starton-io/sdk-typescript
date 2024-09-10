@@ -10,42 +10,54 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Data extends ClientSDK {
-    /**
-     * Retrieve the native token balance of a specific blockchain address
-     *
-     * @remarks
-     * Checks the native balance of a given address on a specified blockchain network.
-     */
-    async getBalance(
-        request: operations.GetBalanceAddressRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetBalanceAddressResponse> {
-        return unwrapAsync(dataGetBalance(this, request, options));
-    }
+  /**
+   * Retrieve the native token balance of a specific blockchain address
+   *
+   * @remarks
+   * Checks the native balance of a given address on a specified blockchain network.
+   */
+  async getBalance(
+    request: operations.GetBalanceAddressRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetBalanceAddressResponse> {
+    return unwrapAsync(dataGetBalance(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve the ERC20 token balance for a specific address
-     *
-     * @remarks
-     * Fetches the balance of ERC20 tokens held by a specific address. You must specify the blockchain network, the contract address of the ERC20 token, and the address of the token holder.
-     */
-    async getErc20Balance(
-        request: operations.GetBalanceErc20Request,
-        options?: RequestOptions
-    ): Promise<operations.GetBalanceErc20Response> {
-        return unwrapAsync(dataGetErc20Balance(this, request, options));
-    }
+  /**
+   * Retrieve the ERC20 token balance for a specific address
+   *
+   * @remarks
+   * Fetches the balance of ERC20 tokens held by a specific address. You must specify the blockchain network, the contract address of the ERC20 token, and the address of the token holder.
+   */
+  async getErc20Balance(
+    request: operations.GetBalanceErc20Request,
+    options?: RequestOptions,
+  ): Promise<operations.GetBalanceErc20Response> {
+    return unwrapAsync(dataGetErc20Balance(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     *  Retrieve the current gas prices
-     *
-     * @remarks
-     * Provides the current gas prices for the specified blockchain network, offering crucial information to estimate transaction costs.
-     */
-    async getGasPrice(
-        request: operations.GetAllGasPriceRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetAllGasPriceResponse> {
-        return unwrapAsync(dataGetGasPrice(this, request, options));
-    }
+  /**
+   *  Retrieve the current gas prices
+   *
+   * @remarks
+   * Provides the current gas prices for the specified blockchain network, offering crucial information to estimate transaction costs.
+   */
+  async getGasPrice(
+    request: operations.GetAllGasPriceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetAllGasPriceResponse> {
+    return unwrapAsync(dataGetGasPrice(
+      this,
+      request,
+      options,
+    ));
+  }
 }

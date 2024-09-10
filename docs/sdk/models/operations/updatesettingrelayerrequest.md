@@ -6,15 +6,15 @@
 import { UpdateSettingRelayerRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateSettingRelayerRequest = {
-    updateSettingRelayerDto: {
-        unstuckAutomaticGasPrice: true,
-        unstuckCustomGasPrice: true,
-        unstuckGasPriceDelay: 300,
-        unstuckMaxGasPrice: "150000000000",
-        unstuckMissingNonce: true,
-        unstuckMissingNonceDelay: 300,
-    },
-    network: "polygon-mumbai",
+  updateSettingRelayerDto: {
+    unstuckAutomaticGasPrice: true,
+    unstuckCustomGasPrice: true,
+    unstuckGasPriceDelay: 300,
+    unstuckMaxGasPrice: "150000000000",
+    unstuckMissingNonce: true,
+    unstuckMissingNonceDelay: 300,
+  },
+  network: "polygon-mumbai",
 };
 ```
 

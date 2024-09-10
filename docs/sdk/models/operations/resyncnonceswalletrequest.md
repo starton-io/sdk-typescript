@@ -6,8 +6,8 @@
 import { ResyncNoncesWalletRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: ResyncNoncesWalletRequest = {
-    address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
-    network: "polygon-mumbai",
+  address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
+  network: "polygon-mumbai",
 };
 ```
 

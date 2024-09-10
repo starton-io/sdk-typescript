@@ -6,11 +6,11 @@
 import { GetAllSmartContractTemplateResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllSmartContractTemplateResponse = {
-    contentType: "<value>",
-    statusCode: 508969,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 508969,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

@@ -6,9 +6,9 @@
 import { GetAllRpcRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllRpcRequest = {
-    limit: 20,
-    name: "optimism-functionnal-tests",
-    page: 0,
+  limit: 20,
+  name: "optimism-functionnal-tests",
+  page: 0,
 };
 ```
 

@@ -6,12 +6,12 @@
 import { UpdateSettingRelayerDto } from "@starton/sdk/sdk/models/shared";
 
 let value: UpdateSettingRelayerDto = {
-    unstuckAutomaticGasPrice: true,
-    unstuckCustomGasPrice: true,
-    unstuckGasPriceDelay: 300,
-    unstuckMaxGasPrice: "150000000000",
-    unstuckMissingNonce: true,
-    unstuckMissingNonceDelay: 300,
+  unstuckAutomaticGasPrice: true,
+  unstuckCustomGasPrice: true,
+  unstuckGasPriceDelay: 300,
+  unstuckMaxGasPrice: "150000000000",
+  unstuckMissingNonce: true,
+  unstuckMissingNonceDelay: 300,
 };
 ```
 

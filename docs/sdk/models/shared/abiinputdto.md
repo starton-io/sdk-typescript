@@ -6,8 +6,8 @@
 import { AbiInputDto } from "@starton/sdk/sdk/models/shared";
 
 let value: AbiInputDto = {
-    name: "<value>",
-    type: "<value>",
+  name: "<value>",
+  type: "<value>",
 };
 ```
 

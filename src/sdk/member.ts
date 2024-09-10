@@ -10,31 +10,40 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Member extends ClientSDK {
-    private _invitation?: Invitation;
-    get invitation(): Invitation {
-        return (this._invitation ??= new Invitation(this.options$));
-    }
+  private _invitation?: Invitation;
+  get invitation(): Invitation {
+    return (this._invitation ??= new Invitation(this.options$));
+  }
 
-    /**
-     * Remove a user from a project.
-     *
-     * @remarks
-     * Delete a user's project membership. The user attempting this action needs to have the necessary permissions, and they cannot remove the project's owner.
-     */
-    async delete(
-        request: operations.DeleteProjectMemberRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeleteProjectMemberResponse> {
-        return unwrapAsync(projectMemberDelete(this, request, options));
-    }
+  /**
+   * Remove a user from a project.
+   *
+   * @remarks
+   * Delete a user's project membership. The user attempting this action needs to have the necessary permissions, and they cannot remove the project's owner.
+   */
+  async delete(
+    request: operations.DeleteProjectMemberRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteProjectMemberResponse> {
+    return unwrapAsync(projectMemberDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve a list of all members of a specific project.
-     *
-     * @remarks
-     * Fetches all the members associated with a project. The user must have the appropriate permissions to access this data.
-     */
-    async getAll(options?: RequestOptions): Promise<operations.GetAllProjectMemberResponse> {
-        return unwrapAsync(projectMemberGetAll(this, options));
-    }
+  /**
+   * Retrieve a list of all members of a specific project.
+   *
+   * @remarks
+   * Fetches all the members associated with a project. The user must have the appropriate permissions to access this data.
+   */
+  async getAll(
+    options?: RequestOptions,
+  ): Promise<operations.GetAllProjectMemberResponse> {
+    return unwrapAsync(projectMemberGetAll(
+      this,
+      options,
+    ));
+  }
 }

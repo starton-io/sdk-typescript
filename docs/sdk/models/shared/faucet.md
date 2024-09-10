@@ -6,10 +6,10 @@
 import { Faucet } from "@starton/sdk/sdk/models/shared";
 
 let value: Faucet = {
-    id: "<id>",
-    ip: "76.196.208.105",
-    network: "<value>",
-    wallet: "<value>",
+  id: "<id>",
+  ip: "76.196.208.105",
+  network: "<value>",
+  wallet: "<value>",
 };
 ```
 

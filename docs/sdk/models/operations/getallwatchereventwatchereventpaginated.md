@@ -7,24 +7,24 @@ import { GetAllWatcherEventWatcherEventPaginated } from "@starton/sdk/sdk/models
 import { WatcherEventStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: GetAllWatcherEventWatcherEventPaginated = {
-    items: [
-        {
-            blockHash: "<value>",
-            blockNumber: 2647.3,
-            id: "<id>",
-            network: "<value>",
-            payload: {},
-            projectId: "<value>",
-            status: WatcherEventStatus.PendingValidation,
-            txHash: "<value>",
-            watcherId: "<value>",
-        },
-    ],
-    meta: {
-        currentPage: 3978.21,
-        itemCount: 5865.13,
-        itemsPerPage: 5528.22,
+  items: [
+    {
+      blockHash: "<value>",
+      blockNumber: 2647.3,
+      id: "<id>",
+      network: "<value>",
+      payload: {},
+      projectId: "<value>",
+      status: WatcherEventStatus.PendingValidation,
+      txHash: "<value>",
+      watcherId: "<value>",
     },
+  ],
+  meta: {
+    currentPage: 3978.21,
+    itemCount: 5865.13,
+    itemsPerPage: 5528.22,
+  },
 };
 ```
 

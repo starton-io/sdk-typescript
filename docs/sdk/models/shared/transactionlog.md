@@ -6,9 +6,9 @@
 import { TransactionLog, TransactionLogType } from "@starton/sdk/sdk/models/shared";
 
 let value: TransactionLog = {
-    createdAt: "<value>",
-    message: "<value>",
-    type: TransactionLogType.CouldNotBroadcast,
+  createdAt: "<value>",
+  message: "<value>",
+  type: TransactionLogType.CouldNotBroadcast,
 };
 ```
 

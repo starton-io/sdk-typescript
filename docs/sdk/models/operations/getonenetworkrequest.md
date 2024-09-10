@@ -6,7 +6,7 @@
 import { GetOneNetworkRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneNetworkRequest = {
-    name: "optimism-functional-tests",
+  name: "optimism-functional-tests",
 };
 ```
 

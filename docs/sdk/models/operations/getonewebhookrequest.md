@@ -6,7 +6,7 @@
 import { GetOneWebhookRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneWebhookRequest = {
-    id: "wh_4c2905f7276b415fac02ee3682189940",
+  id: "wh_4c2905f7276b415fac02ee3682189940",
 };
 ```
 

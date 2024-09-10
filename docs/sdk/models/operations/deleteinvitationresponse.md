@@ -6,11 +6,11 @@
 import { DeleteInvitationResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteInvitationResponse = {
-    contentType: "<value>",
-    statusCode: 581850,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 581850,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

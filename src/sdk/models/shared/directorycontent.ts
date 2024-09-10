@@ -5,63 +5,68 @@
 import * as z from "zod";
 
 export enum DirectoryContentType {
-    Directory = "directory",
-    File = "file",
+  Directory = "directory",
+  File = "file",
 }
 
 export type DirectoryContent = {
-    cid: string;
-    name: string;
-    size: number;
-    type?: DirectoryContentType | undefined;
+  cid: string;
+  name: string;
+  size: number;
+  type?: DirectoryContentType | undefined;
 };
 
 /** @internal */
-export const DirectoryContentType$inboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> =
-    z.nativeEnum(DirectoryContentType);
+export const DirectoryContentType$inboundSchema: z.ZodNativeEnum<
+  typeof DirectoryContentType
+> = z.nativeEnum(DirectoryContentType);
 
 /** @internal */
-export const DirectoryContentType$outboundSchema: z.ZodNativeEnum<typeof DirectoryContentType> =
-    DirectoryContentType$inboundSchema;
+export const DirectoryContentType$outboundSchema: z.ZodNativeEnum<
+  typeof DirectoryContentType
+> = DirectoryContentType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DirectoryContentType$ {
-    /** @deprecated use `DirectoryContentType$inboundSchema` instead. */
-    export const inboundSchema = DirectoryContentType$inboundSchema;
-    /** @deprecated use `DirectoryContentType$outboundSchema` instead. */
-    export const outboundSchema = DirectoryContentType$outboundSchema;
+  /** @deprecated use `DirectoryContentType$inboundSchema` instead. */
+  export const inboundSchema = DirectoryContentType$inboundSchema;
+  /** @deprecated use `DirectoryContentType$outboundSchema` instead. */
+  export const outboundSchema = DirectoryContentType$outboundSchema;
 }
 
 /** @internal */
-export const DirectoryContent$inboundSchema: z.ZodType<DirectoryContent, z.ZodTypeDef, unknown> =
-    z.object({
-        cid: z.string(),
-        name: z.string(),
-        size: z.number(),
-        type: DirectoryContentType$inboundSchema.optional(),
-    });
+export const DirectoryContent$inboundSchema: z.ZodType<
+  DirectoryContent,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cid: z.string(),
+  name: z.string(),
+  size: z.number(),
+  type: DirectoryContentType$inboundSchema.optional(),
+});
 
 /** @internal */
 export type DirectoryContent$Outbound = {
-    cid: string;
-    name: string;
-    size: number;
-    type?: string | undefined;
+  cid: string;
+  name: string;
+  size: number;
+  type?: string | undefined;
 };
 
 /** @internal */
 export const DirectoryContent$outboundSchema: z.ZodType<
-    DirectoryContent$Outbound,
-    z.ZodTypeDef,
-    DirectoryContent
+  DirectoryContent$Outbound,
+  z.ZodTypeDef,
+  DirectoryContent
 > = z.object({
-    cid: z.string(),
-    name: z.string(),
-    size: z.number(),
-    type: DirectoryContentType$outboundSchema.optional(),
+  cid: z.string(),
+  name: z.string(),
+  size: z.number(),
+  type: DirectoryContentType$outboundSchema.optional(),
 });
 
 /**
@@ -69,10 +74,10 @@ export const DirectoryContent$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DirectoryContent$ {
-    /** @deprecated use `DirectoryContent$inboundSchema` instead. */
-    export const inboundSchema = DirectoryContent$inboundSchema;
-    /** @deprecated use `DirectoryContent$outboundSchema` instead. */
-    export const outboundSchema = DirectoryContent$outboundSchema;
-    /** @deprecated use `DirectoryContent$Outbound` instead. */
-    export type Outbound = DirectoryContent$Outbound;
+  /** @deprecated use `DirectoryContent$inboundSchema` instead. */
+  export const inboundSchema = DirectoryContent$inboundSchema;
+  /** @deprecated use `DirectoryContent$outboundSchema` instead. */
+  export const outboundSchema = DirectoryContent$outboundSchema;
+  /** @deprecated use `DirectoryContent$Outbound` instead. */
+  export type Outbound = DirectoryContent$Outbound;
 }

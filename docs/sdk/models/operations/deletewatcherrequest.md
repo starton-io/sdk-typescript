@@ -6,7 +6,7 @@
 import { DeleteWatcherRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteWatcherRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

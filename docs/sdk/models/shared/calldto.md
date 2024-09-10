@@ -6,14 +6,14 @@
 import { CallDto } from "@starton/sdk/sdk/models/shared";
 
 let value: CallDto = {
-    functionName: "<value>",
-    params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
-        "0x298e760768c8481780397eE28A127eAd584df4ee",
-    ],
-    signerWallet: "<value>",
+  functionName: "<value>",
+  params: [
+    "TestToken",
+    "TEST",
+    "1000000000000000000000000",
+    "0x298e760768c8481780397eE28A127eAd584df4ee",
+  ],
+  signerWallet: "<value>",
 };
 ```
 

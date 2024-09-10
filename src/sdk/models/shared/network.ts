@@ -7,35 +7,35 @@ import * as z from "zod";
 export type GasPriceRecommendation = {};
 
 export type Network = {
-    blockchain: string;
-    chainId: number;
-    confirmationBlocks: number;
-    createdAt?: Date | undefined;
-    decimal: number;
-    displayName: string;
-    eip1159: boolean;
-    enableExternalWallet: boolean;
-    enableListener: boolean;
-    enableRelayer: boolean;
-    explorerUrl: string;
-    faucetUrl?: string | null | undefined;
-    gasPriceRecommendation?: GasPriceRecommendation | null | undefined;
-    loadbalancerUrl: string;
-    logo: string;
-    name: string;
-    owner: string;
-    symbol: string;
-    testnet: boolean;
-    updatedAt?: Date | undefined;
-    verifyBlockIntegrity: boolean;
-    verifyTxIntegrity: boolean;
+  blockchain: string;
+  chainId: number;
+  confirmationBlocks: number;
+  createdAt?: Date | undefined;
+  decimal: number;
+  displayName: string;
+  eip1159: boolean;
+  enableExternalWallet: boolean;
+  enableListener: boolean;
+  enableRelayer: boolean;
+  explorerUrl: string;
+  faucetUrl?: string | null | undefined;
+  gasPriceRecommendation?: GasPriceRecommendation | null | undefined;
+  loadbalancerUrl: string;
+  logo: string;
+  name: string;
+  owner: string;
+  symbol: string;
+  testnet: boolean;
+  updatedAt?: Date | undefined;
+  verifyBlockIntegrity: boolean;
+  verifyTxIntegrity: boolean;
 };
 
 /** @internal */
 export const GasPriceRecommendation$inboundSchema: z.ZodType<
-    GasPriceRecommendation,
-    z.ZodTypeDef,
-    unknown
+  GasPriceRecommendation,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -43,9 +43,9 @@ export type GasPriceRecommendation$Outbound = {};
 
 /** @internal */
 export const GasPriceRecommendation$outboundSchema: z.ZodType<
-    GasPriceRecommendation$Outbound,
-    z.ZodTypeDef,
-    GasPriceRecommendation
+  GasPriceRecommendation$Outbound,
+  z.ZodTypeDef,
+  GasPriceRecommendation
 > = z.object({});
 
 /**
@@ -53,24 +53,23 @@ export const GasPriceRecommendation$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GasPriceRecommendation$ {
-    /** @deprecated use `GasPriceRecommendation$inboundSchema` instead. */
-    export const inboundSchema = GasPriceRecommendation$inboundSchema;
-    /** @deprecated use `GasPriceRecommendation$outboundSchema` instead. */
-    export const outboundSchema = GasPriceRecommendation$outboundSchema;
-    /** @deprecated use `GasPriceRecommendation$Outbound` instead. */
-    export type Outbound = GasPriceRecommendation$Outbound;
+  /** @deprecated use `GasPriceRecommendation$inboundSchema` instead. */
+  export const inboundSchema = GasPriceRecommendation$inboundSchema;
+  /** @deprecated use `GasPriceRecommendation$outboundSchema` instead. */
+  export const outboundSchema = GasPriceRecommendation$outboundSchema;
+  /** @deprecated use `GasPriceRecommendation$Outbound` instead. */
+  export type Outbound = GasPriceRecommendation$Outbound;
 }
 
 /** @internal */
-export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> = z.object({
+export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
+  z.object({
     blockchain: z.string(),
     chainId: z.number(),
     confirmationBlocks: z.number(),
-    createdAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:33:57.058Z")
-        .transform((v) => new Date(v)),
+    createdAt: z.string().datetime({ offset: true }).default(
+      "2024-05-02T09:33:57.058Z",
+    ).transform(v => new Date(v)),
     decimal: z.number(),
     displayName: z.string(),
     eip1159: z.boolean(),
@@ -79,82 +78,80 @@ export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> = 
     enableRelayer: z.boolean(),
     explorerUrl: z.string(),
     faucetUrl: z.nullable(z.string()).optional(),
-    gasPriceRecommendation: z
-        .nullable(z.lazy(() => GasPriceRecommendation$inboundSchema))
-        .optional(),
+    gasPriceRecommendation: z.nullable(
+      z.lazy(() => GasPriceRecommendation$inboundSchema),
+    ).optional(),
     loadbalancerUrl: z.string(),
     logo: z.string(),
     name: z.string(),
     owner: z.string(),
     symbol: z.string(),
     testnet: z.boolean(),
-    updatedAt: z
-        .string()
-        .datetime({ offset: true })
-        .default("2024-05-02T09:33:57.058Z")
-        .transform((v) => new Date(v)),
+    updatedAt: z.string().datetime({ offset: true }).default(
+      "2024-05-02T09:33:57.058Z",
+    ).transform(v => new Date(v)),
     verifyBlockIntegrity: z.boolean(),
     verifyTxIntegrity: z.boolean(),
-});
+  });
 
 /** @internal */
 export type Network$Outbound = {
-    blockchain: string;
-    chainId: number;
-    confirmationBlocks: number;
-    createdAt: string;
-    decimal: number;
-    displayName: string;
-    eip1159: boolean;
-    enableExternalWallet: boolean;
-    enableListener: boolean;
-    enableRelayer: boolean;
-    explorerUrl: string;
-    faucetUrl?: string | null | undefined;
-    gasPriceRecommendation?: GasPriceRecommendation$Outbound | null | undefined;
-    loadbalancerUrl: string;
-    logo: string;
-    name: string;
-    owner: string;
-    symbol: string;
-    testnet: boolean;
-    updatedAt: string;
-    verifyBlockIntegrity: boolean;
-    verifyTxIntegrity: boolean;
+  blockchain: string;
+  chainId: number;
+  confirmationBlocks: number;
+  createdAt: string;
+  decimal: number;
+  displayName: string;
+  eip1159: boolean;
+  enableExternalWallet: boolean;
+  enableListener: boolean;
+  enableRelayer: boolean;
+  explorerUrl: string;
+  faucetUrl?: string | null | undefined;
+  gasPriceRecommendation?: GasPriceRecommendation$Outbound | null | undefined;
+  loadbalancerUrl: string;
+  logo: string;
+  name: string;
+  owner: string;
+  symbol: string;
+  testnet: boolean;
+  updatedAt: string;
+  verifyBlockIntegrity: boolean;
+  verifyTxIntegrity: boolean;
 };
 
 /** @internal */
-export const Network$outboundSchema: z.ZodType<Network$Outbound, z.ZodTypeDef, Network> = z.object({
-    blockchain: z.string(),
-    chainId: z.number(),
-    confirmationBlocks: z.number(),
-    createdAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:33:57.058Z"))
-        .transform((v) => v.toISOString()),
-    decimal: z.number(),
-    displayName: z.string(),
-    eip1159: z.boolean(),
-    enableExternalWallet: z.boolean(),
-    enableListener: z.boolean(),
-    enableRelayer: z.boolean(),
-    explorerUrl: z.string(),
-    faucetUrl: z.nullable(z.string()).optional(),
-    gasPriceRecommendation: z
-        .nullable(z.lazy(() => GasPriceRecommendation$outboundSchema))
-        .optional(),
-    loadbalancerUrl: z.string(),
-    logo: z.string(),
-    name: z.string(),
-    owner: z.string(),
-    symbol: z.string(),
-    testnet: z.boolean(),
-    updatedAt: z
-        .date()
-        .default(() => new Date("2024-05-02T09:33:57.058Z"))
-        .transform((v) => v.toISOString()),
-    verifyBlockIntegrity: z.boolean(),
-    verifyTxIntegrity: z.boolean(),
+export const Network$outboundSchema: z.ZodType<
+  Network$Outbound,
+  z.ZodTypeDef,
+  Network
+> = z.object({
+  blockchain: z.string(),
+  chainId: z.number(),
+  confirmationBlocks: z.number(),
+  createdAt: z.date().default(() => new Date("2024-05-02T09:33:57.058Z"))
+    .transform(v => v.toISOString()),
+  decimal: z.number(),
+  displayName: z.string(),
+  eip1159: z.boolean(),
+  enableExternalWallet: z.boolean(),
+  enableListener: z.boolean(),
+  enableRelayer: z.boolean(),
+  explorerUrl: z.string(),
+  faucetUrl: z.nullable(z.string()).optional(),
+  gasPriceRecommendation: z.nullable(
+    z.lazy(() => GasPriceRecommendation$outboundSchema),
+  ).optional(),
+  loadbalancerUrl: z.string(),
+  logo: z.string(),
+  name: z.string(),
+  owner: z.string(),
+  symbol: z.string(),
+  testnet: z.boolean(),
+  updatedAt: z.date().default(() => new Date("2024-05-02T09:33:57.058Z"))
+    .transform(v => v.toISOString()),
+  verifyBlockIntegrity: z.boolean(),
+  verifyTxIntegrity: z.boolean(),
 });
 
 /**
@@ -162,10 +159,10 @@ export const Network$outboundSchema: z.ZodType<Network$Outbound, z.ZodTypeDef, N
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Network$ {
-    /** @deprecated use `Network$inboundSchema` instead. */
-    export const inboundSchema = Network$inboundSchema;
-    /** @deprecated use `Network$outboundSchema` instead. */
-    export const outboundSchema = Network$outboundSchema;
-    /** @deprecated use `Network$Outbound` instead. */
-    export type Outbound = Network$Outbound;
+  /** @deprecated use `Network$inboundSchema` instead. */
+  export const inboundSchema = Network$inboundSchema;
+  /** @deprecated use `Network$outboundSchema` instead. */
+  export const outboundSchema = Network$outboundSchema;
+  /** @deprecated use `Network$Outbound` instead. */
+  export type Outbound = Network$Outbound;
 }

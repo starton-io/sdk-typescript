@@ -6,11 +6,11 @@
 import { GetStorageUsedPinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetStorageUsedPinResponse = {
-    contentType: "<value>",
-    statusCode: 648172,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 648172,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

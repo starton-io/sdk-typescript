@@ -253,19 +253,19 @@ Here's an example of one such pagination call:
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.wallet.getAll({
-        limit: 20,
-        page: 0,
-    });
+  const result = await starton.wallet.getAll({
+    limit: 20,
+    page: 0,
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -293,17 +293,17 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.data.getBalance({
-        address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-        network: "polygon-mainnet",
-    });
+  const result = await starton.data.getBalance({
+    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -329,14 +329,14 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.ipfs.uploadFile({});
+  const result = await starton.ipfs.uploadFile({});
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -360,31 +360,28 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.data.getBalance(
-        {
-            address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-            network: "polygon-mainnet",
-        },
-        {
-            retries: {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 1,
-                    maxInterval: 50,
-                    exponent: 1.1,
-                    maxElapsedTime: 100,
-                },
-                retryConnectionErrors: false,
-            },
-        }
-    );
+  const result = await starton.data.getBalance({
+    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
+  }, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -396,27 +393,27 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Starton } from "@starton/sdk";
 
 const starton = new Starton({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    apiKey: "<YOUR_API_KEY_HERE>",
+    retryConnectionErrors: false,
+  },
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await starton.data.getBalance({
-        address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-        network: "polygon-mainnet",
-    });
+  const result = await starton.data.getBalance({
+    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    network: "polygon-mainnet",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

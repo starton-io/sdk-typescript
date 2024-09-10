@@ -5,35 +5,38 @@
 import * as z from "zod";
 
 export type ProjectMember = {
-    email: string;
-    fullName: string;
-    id: string;
+  email: string;
+  fullName: string;
+  id: string;
 };
 
 /** @internal */
-export const ProjectMember$inboundSchema: z.ZodType<ProjectMember, z.ZodTypeDef, unknown> =
-    z.object({
-        email: z.string(),
-        fullName: z.string(),
-        id: z.string(),
-    });
+export const ProjectMember$inboundSchema: z.ZodType<
+  ProjectMember,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string(),
+  fullName: z.string(),
+  id: z.string(),
+});
 
 /** @internal */
 export type ProjectMember$Outbound = {
-    email: string;
-    fullName: string;
-    id: string;
+  email: string;
+  fullName: string;
+  id: string;
 };
 
 /** @internal */
 export const ProjectMember$outboundSchema: z.ZodType<
-    ProjectMember$Outbound,
-    z.ZodTypeDef,
-    ProjectMember
+  ProjectMember$Outbound,
+  z.ZodTypeDef,
+  ProjectMember
 > = z.object({
-    email: z.string(),
-    fullName: z.string(),
-    id: z.string(),
+  email: z.string(),
+  fullName: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -41,10 +44,10 @@ export const ProjectMember$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ProjectMember$ {
-    /** @deprecated use `ProjectMember$inboundSchema` instead. */
-    export const inboundSchema = ProjectMember$inboundSchema;
-    /** @deprecated use `ProjectMember$outboundSchema` instead. */
-    export const outboundSchema = ProjectMember$outboundSchema;
-    /** @deprecated use `ProjectMember$Outbound` instead. */
-    export type Outbound = ProjectMember$Outbound;
+  /** @deprecated use `ProjectMember$inboundSchema` instead. */
+  export const inboundSchema = ProjectMember$inboundSchema;
+  /** @deprecated use `ProjectMember$outboundSchema` instead. */
+  export const outboundSchema = ProjectMember$outboundSchema;
+  /** @deprecated use `ProjectMember$Outbound` instead. */
+  export type Outbound = ProjectMember$Outbound;
 }

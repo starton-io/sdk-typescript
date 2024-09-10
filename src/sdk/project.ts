@@ -6,8 +6,8 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Member } from "./member.js";
 
 export class Project extends ClientSDK {
-    private _member?: Member;
-    get member(): Member {
-        return (this._member ??= new Member(this.options$));
-    }
+  private _member?: Member;
+  get member(): Member {
+    return (this._member ??= new Member(this.options$));
+  }
 }

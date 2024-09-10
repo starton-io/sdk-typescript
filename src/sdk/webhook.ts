@@ -14,79 +14,101 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Webhook extends ClientSDK {
-    /**
-     * Cancel a webhook
-     *
-     * @remarks
-     * Terminates the designated webhook, identified by its {id}, preventing any further processing.
-     */
-    async cancel(
-        request: operations.CancelWebhookRequest,
-        options?: RequestOptions
-    ): Promise<operations.CancelWebhookResponse> {
-        return unwrapAsync(webhookCancel(this, request, options));
-    }
+  /**
+   * Cancel a webhook
+   *
+   * @remarks
+   * Terminates the designated webhook, identified by its {id}, preventing any further processing.
+   */
+  async cancel(
+    request: operations.CancelWebhookRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CancelWebhookResponse> {
+    return unwrapAsync(webhookCancel(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve the list of Webhooks
-     *
-     * @remarks
-     * Fetches the list of all webhooks dispatched to your server. You can apply filters and pagination for more tailored results.
-     */
-    async getAll(
-        request: operations.GetAllWebhookRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllWebhookResponse>> {
-        return unwrapResultIterator(webhookGetAll(this, request, options));
-    }
+  /**
+   * Retrieve the list of Webhooks
+   *
+   * @remarks
+   * Fetches the list of all webhooks dispatched to your server. You can apply filters and pagination for more tailored results.
+   */
+  async getAll(
+    request: operations.GetAllWebhookRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllWebhookResponse>> {
+    return unwrapResultIterator(webhookGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve a Specific Webhook
-     *
-     * @remarks
-     * Fetches the details of a specific webhook dispatched by Starton, identified uniquely by its {id}.
-     */
-    async getOne(
-        request: operations.GetOneWebhookRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneWebhookResponse> {
-        return unwrapAsync(webhookGetOne(this, request, options));
-    }
+  /**
+   * Retrieve a Specific Webhook
+   *
+   * @remarks
+   * Fetches the details of a specific webhook dispatched by Starton, identified uniquely by its {id}.
+   */
+  async getOne(
+    request: operations.GetOneWebhookRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneWebhookResponse> {
+    return unwrapAsync(webhookGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Webhook Signing Secret
-     *
-     * @remarks
-     * Fetches the signing secret associated with your project. Use this secret to securely verify the integrity and authenticity of payloads received from Starton's API in your server-side webhook implementations.
-     */
-    async getSigningSecret(
-        options?: RequestOptions
-    ): Promise<operations.GetOneWebhookSigningSecretResponse> {
-        return unwrapAsync(webhookGetSigningSecret(this, options));
-    }
+  /**
+   * Retrieve Webhook Signing Secret
+   *
+   * @remarks
+   * Fetches the signing secret associated with your project. Use this secret to securely verify the integrity and authenticity of payloads received from Starton's API in your server-side webhook implementations.
+   */
+  async getSigningSecret(
+    options?: RequestOptions,
+  ): Promise<operations.GetOneWebhookSigningSecretResponse> {
+    return unwrapAsync(webhookGetSigningSecret(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Regenerate Webhook signing secret
-     *
-     * @remarks
-     * Generates a new signing secret for your project, invalidating the old one. All subsequent payloads from Starton's API will be signed using this new secret, enhancing the security of your webhook integrations.
-     */
-    async regenerateSigningSecret(
-        options?: RequestOptions
-    ): Promise<operations.CreateWebhookSigningSecretResponse> {
-        return unwrapAsync(webhookRegenerateSigningSecret(this, options));
-    }
+  /**
+   * Regenerate Webhook signing secret
+   *
+   * @remarks
+   * Generates a new signing secret for your project, invalidating the old one. All subsequent payloads from Starton's API will be signed using this new secret, enhancing the security of your webhook integrations.
+   */
+  async regenerateSigningSecret(
+    options?: RequestOptions,
+  ): Promise<operations.CreateWebhookSigningSecretResponse> {
+    return unwrapAsync(webhookRegenerateSigningSecret(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Resend a Webhook
-     *
-     * @remarks
-     * Initiates the resend process for a particular webhook to your server, facilitating testing scenarios or handling missed events.
-     */
-    async resend(
-        request: operations.ResendWebhookRequest,
-        options?: RequestOptions
-    ): Promise<operations.ResendWebhookResponse> {
-        return unwrapAsync(webhookResend(this, request, options));
-    }
+  /**
+   * Resend a Webhook
+   *
+   * @remarks
+   * Initiates the resend process for a particular webhook to your server, facilitating testing scenarios or handling missed events.
+   */
+  async resend(
+    request: operations.ResendWebhookRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ResendWebhookResponse> {
+    return unwrapAsync(webhookResend(
+      this,
+      request,
+      options,
+    ));
+  }
 }

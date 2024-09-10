@@ -7,25 +7,33 @@ import { GetAllSmartContractTemplateSmartContractTemplatePaginated } from "@star
 import { Category } from "@starton/sdk/sdk/models/shared";
 
 let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
-    items: [
-        {
-            abi: [{}],
-            blockchains: ["<value>"],
-            category: Category.Nft,
-            description: "Down-sized needs-based knowledge base",
-            githubUrl: "<value>",
-            humanReadableAbi: ["<value>"],
-            id: "<id>",
-            name: "<value>",
-            shortDescription: "<value>",
-            tags: ["<value>"],
-        },
-    ],
-    meta: {
-        currentPage: 5666.02,
-        itemCount: 8651.03,
-        itemsPerPage: 2653.89,
+  items: [
+    {
+      abi: [
+        {},
+      ],
+      blockchains: [
+        "<value>",
+      ],
+      category: Category.Nft,
+      description: "Down-sized needs-based knowledge base",
+      githubUrl: "<value>",
+      humanReadableAbi: [
+        "<value>",
+      ],
+      id: "<id>",
+      name: "<value>",
+      shortDescription: "<value>",
+      tags: [
+        "<value>",
+      ],
     },
+  ],
+  meta: {
+    currentPage: 5666.02,
+    itemCount: 8651.03,
+    itemsPerPage: 2653.89,
+  },
 };
 ```
 

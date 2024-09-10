@@ -5,54 +5,54 @@
 import * as z from "zod";
 
 export type AddressNativeBalanceResponse = {
-    /**
-     * The amount of native currency the wallet has.
-     */
-    balance: string;
-    /**
-     * The number of decimals on the blockchain.
-     */
-    decimal: number;
-    /**
-     * The formatted (human readable) output.
-     */
-    formatted: string;
-    /**
-     * native currency symbol.
-     */
-    symbol: string;
+  /**
+   * The amount of native currency the wallet has.
+   */
+  balance: string;
+  /**
+   * The number of decimals on the blockchain.
+   */
+  decimal: number;
+  /**
+   * The formatted (human readable) output.
+   */
+  formatted: string;
+  /**
+   * native currency symbol.
+   */
+  symbol: string;
 };
 
 /** @internal */
 export const AddressNativeBalanceResponse$inboundSchema: z.ZodType<
-    AddressNativeBalanceResponse,
-    z.ZodTypeDef,
-    unknown
+  AddressNativeBalanceResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    balance: z.string(),
-    decimal: z.number(),
-    formatted: z.string(),
-    symbol: z.string(),
+  balance: z.string(),
+  decimal: z.number(),
+  formatted: z.string(),
+  symbol: z.string(),
 });
 
 /** @internal */
 export type AddressNativeBalanceResponse$Outbound = {
-    balance: string;
-    decimal: number;
-    formatted: string;
-    symbol: string;
+  balance: string;
+  decimal: number;
+  formatted: string;
+  symbol: string;
 };
 
 /** @internal */
 export const AddressNativeBalanceResponse$outboundSchema: z.ZodType<
-    AddressNativeBalanceResponse$Outbound,
-    z.ZodTypeDef,
-    AddressNativeBalanceResponse
+  AddressNativeBalanceResponse$Outbound,
+  z.ZodTypeDef,
+  AddressNativeBalanceResponse
 > = z.object({
-    balance: z.string(),
-    decimal: z.number(),
-    formatted: z.string(),
-    symbol: z.string(),
+  balance: z.string(),
+  decimal: z.number(),
+  formatted: z.string(),
+  symbol: z.string(),
 });
 
 /**
@@ -60,10 +60,10 @@ export const AddressNativeBalanceResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AddressNativeBalanceResponse$ {
-    /** @deprecated use `AddressNativeBalanceResponse$inboundSchema` instead. */
-    export const inboundSchema = AddressNativeBalanceResponse$inboundSchema;
-    /** @deprecated use `AddressNativeBalanceResponse$outboundSchema` instead. */
-    export const outboundSchema = AddressNativeBalanceResponse$outboundSchema;
-    /** @deprecated use `AddressNativeBalanceResponse$Outbound` instead. */
-    export type Outbound = AddressNativeBalanceResponse$Outbound;
+  /** @deprecated use `AddressNativeBalanceResponse$inboundSchema` instead. */
+  export const inboundSchema = AddressNativeBalanceResponse$inboundSchema;
+  /** @deprecated use `AddressNativeBalanceResponse$outboundSchema` instead. */
+  export const outboundSchema = AddressNativeBalanceResponse$outboundSchema;
+  /** @deprecated use `AddressNativeBalanceResponse$Outbound` instead. */
+  export type Outbound = AddressNativeBalanceResponse$Outbound;
 }

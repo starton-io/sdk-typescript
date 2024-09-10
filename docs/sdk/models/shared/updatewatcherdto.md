@@ -6,12 +6,12 @@
 import { UpdateWatcherDto } from "@starton/sdk/sdk/models/shared";
 
 let value: UpdateWatcherDto = {
-    confirmationsBlocks: 0,
-    description: "watcher tests",
-    metadata: {},
-    name: "watcher tests",
-    paused: true,
-    webhookUrl: "",
+  confirmationsBlocks: 0,
+  description: "watcher tests",
+  metadata: {},
+  name: "watcher tests",
+  paused: true,
+  webhookUrl: "",
 };
 ```
 

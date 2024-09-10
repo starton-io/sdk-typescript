@@ -11,11 +11,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-    ConnectionError,
-    InvalidRequestError,
-    RequestAbortedError,
-    RequestTimeoutError,
-    UnexpectedClientError,
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
 import * as errors from "../sdk/models/errors/index.js";
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
@@ -32,125 +32,129 @@ import { isReadableStream } from "../sdk/types/streams.js";
  * Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retrieval, and receive a unique CID as a reference to the uploaded content. THE BODY PARAMETERS ARE FORM PARAMETERS FOR THIS ENDPOINT.
  */
 export async function ipfsUploadFile(
-    client$: StartonCore,
-    request: operations.UploadFromFilePinRequestBody,
-    options?: RequestOptions
+  client$: StartonCore,
+  request: operations.UploadFromFilePinRequestBody,
+  options?: RequestOptions,
 ): Promise<
-    Result<
-        operations.UploadFromFilePinResponse,
-        | errors.UploadFromFilePinResponseBody
-        | errors.UploadFromFilePinIpfsResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >
+  Result<
+    operations.UploadFromFilePinResponse,
+    | errors.UploadFromFilePinResponseBody
+    | errors.UploadFromFilePinIpfsResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
-    const input$ = request;
+  const input$ = request;
 
-    const parsed$ = schemas$.safeParse(
-        input$,
-        (value$) => operations.UploadFromFilePinRequestBody$outboundSchema.parse(value$),
-        "Input validation failed"
+  const parsed$ = schemas$.safeParse(
+    input$,
+    (value$) =>
+      operations.UploadFromFilePinRequestBody$outboundSchema.parse(value$),
+    "Input validation failed",
+  );
+  if (!parsed$.ok) {
+    return parsed$;
+  }
+  const payload$ = parsed$.value;
+  const body$ = new FormData();
+
+  if (payload$.file !== undefined) {
+    if (isBlobLike(payload$.file)) {
+      body$.append("file", payload$.file);
+    } else if (isReadableStream(payload$.file.content)) {
+      const buffer = await readableStreamToArrayBuffer(payload$.file.content);
+      const blob = new Blob([buffer], { type: "application/octet-stream" });
+      body$.append("file", blob);
+    } else {
+      body$.append(
+        "file",
+        new Blob([payload$.file.content], { type: "application/octet-stream" }),
+        payload$.file.fileName,
+      );
+    }
+  }
+  if (payload$.metadata !== undefined) {
+    body$.append(
+      "metadata",
+      encodeJSON$("metadata", payload$.metadata, { explode: true }),
     );
-    if (!parsed$.ok) {
-        return parsed$;
-    }
-    const payload$ = parsed$.value;
-    const body$ = new FormData();
+  }
 
-    if (payload$.file !== undefined) {
-        if (isBlobLike(payload$.file)) {
-            body$.append("file", payload$.file);
-        } else if (isReadableStream(payload$.file.content)) {
-            const buffer = await readableStreamToArrayBuffer(payload$.file.content);
-            const blob = new Blob([buffer], { type: "application/octet-stream" });
-            body$.append("file", blob);
-        } else {
-            body$.append(
-                "file",
-                new Blob([payload$.file.content], { type: "application/octet-stream" }),
-                payload$.file.fileName
-            );
-        }
-    }
-    if (payload$.metadata !== undefined) {
-        body$.append("metadata", encodeJSON$("metadata", payload$.metadata, { explode: true }));
-    }
+  const path$ = pathToFunc("/v3/ipfs/file")();
 
-    const path$ = pathToFunc("/v3/ipfs/file")();
+  const headers$ = new Headers({
+    Accept: "application/json",
+  });
 
-    const headers$ = new Headers({
-        Accept: "application/json",
-    });
+  const apiKey$ = await extractSecurity(client$.options$.apiKey);
+  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const context = {
+    operationID: "uploadFromFilePin",
+    oAuth2Scopes: [],
+    securitySource: client$.options$.apiKey,
+  };
+  const securitySettings$ = resolveGlobalSecurity(security$);
 
-    const apiKey$ = await extractSecurity(client$.options$.apiKey);
-    const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
-    const context = {
-        operationID: "uploadFromFilePin",
-        oAuth2Scopes: [],
-        securitySource: client$.options$.apiKey,
-    };
-    const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestRes = client$.createRequest$(context, {
+    security: securitySettings$,
+    method: "POST",
+    path: path$,
+    headers: headers$,
+    body: body$,
+    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return requestRes;
+  }
+  const request$ = requestRes.value;
 
-    const requestRes = client$.createRequest$(
-        context,
-        {
-            security: securitySettings$,
-            method: "POST",
-            path: path$,
-            headers: headers$,
-            body: body$,
-            timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
-        },
-        options
-    );
-    if (!requestRes.ok) {
-        return requestRes;
-    }
-    const request$ = requestRes.value;
+  const doResult = await client$.do$(request$, {
+    context,
+    errorCodes: ["400", "413", "4XX", "5XX"],
+    retryConfig: options?.retries
+      || client$.options$.retryConfig,
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  });
+  if (!doResult.ok) {
+    return doResult;
+  }
+  const response = doResult.value;
 
-    const doResult = await client$.do$(request$, {
-        context,
-        errorCodes: ["400", "413", "4XX", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-    });
-    if (!doResult.ok) {
-        return doResult;
-    }
-    const response = doResult.value;
+  const responseFields$ = {
+    ContentType: response.headers.get("content-type")
+      ?? "application/octet-stream",
+    StatusCode: response.status,
+    RawResponse: response,
+    Headers: {},
+  };
 
-    const responseFields$ = {
-        ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-        StatusCode: response.status,
-        RawResponse: response,
-        Headers: {},
-    };
-
-    const [result$] = await m$.match<
-        operations.UploadFromFilePinResponse,
-        | errors.UploadFromFilePinResponseBody
-        | errors.UploadFromFilePinIpfsResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >(
-        m$.json(201, operations.UploadFromFilePinResponse$inboundSchema, { key: "Pin" }),
-        m$.jsonErr(400, errors.UploadFromFilePinResponseBody$inboundSchema),
-        m$.jsonErr(413, errors.UploadFromFilePinIpfsResponseBody$inboundSchema),
-        m$.fail(["4XX", "5XX"])
-    )(response, { extraFields: responseFields$ });
-    if (!result$.ok) {
-        return result$;
-    }
-
+  const [result$] = await m$.match<
+    operations.UploadFromFilePinResponse,
+    | errors.UploadFromFilePinResponseBody
+    | errors.UploadFromFilePinIpfsResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >(
+    m$.json(201, operations.UploadFromFilePinResponse$inboundSchema, {
+      key: "Pin",
+    }),
+    m$.jsonErr(400, errors.UploadFromFilePinResponseBody$inboundSchema),
+    m$.jsonErr(413, errors.UploadFromFilePinIpfsResponseBody$inboundSchema),
+    m$.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields$ });
+  if (!result$.ok) {
     return result$;
+  }
+
+  return result$;
 }

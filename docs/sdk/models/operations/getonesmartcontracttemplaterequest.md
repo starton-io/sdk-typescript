@@ -6,8 +6,8 @@
 import { GetOneSmartContractTemplateRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneSmartContractTemplateRequest = {
-    id: "ERC721_META_TRANSACTION",
-    includeForm: true,
+  id: "ERC721_META_TRANSACTION",
+  includeForm: true,
 };
 ```
 

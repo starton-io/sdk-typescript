@@ -6,11 +6,11 @@
 import { UpdateSettingRelayerResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateSettingRelayerResponse = {
-    contentType: "<value>",
-    statusCode: 414662,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 414662,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

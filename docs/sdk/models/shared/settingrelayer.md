@@ -6,15 +6,15 @@
 import { SettingRelayer } from "@starton/sdk/sdk/models/shared";
 
 let value: SettingRelayer = {
-    id: "<id>",
-    network: "<value>",
-    projectId: "<value>",
-    unstuckAutomaticGasPrice: false,
-    unstuckCustomGasPrice: false,
-    unstuckGasPriceDelay: 3834.62,
-    unstuckMaxGasPrice: "<value>",
-    unstuckMissingNonce: false,
-    unstuckMissingNonceDelay: 6180.16,
+  id: "<id>",
+  network: "<value>",
+  projectId: "<value>",
+  unstuckAutomaticGasPrice: false,
+  unstuckCustomGasPrice: false,
+  unstuckGasPriceDelay: 3834.62,
+  unstuckMaxGasPrice: "<value>",
+  unstuckMissingNonce: false,
+  unstuckMissingNonceDelay: 6180.16,
 };
 ```
 

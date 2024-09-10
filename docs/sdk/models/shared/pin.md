@@ -6,9 +6,9 @@
 import { Pin, Status } from "@starton/sdk/sdk/models/shared";
 
 let value: Pin = {
-    id: "<id>",
-    projectId: "<value>",
-    status: Status.Pinning,
+  id: "<id>",
+  projectId: "<value>",
+  status: Status.Pinning,
 };
 ```
 

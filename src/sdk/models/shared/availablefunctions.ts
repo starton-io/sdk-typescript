@@ -5,38 +5,38 @@
 import * as z from "zod";
 
 export type AvailableFunctions = {
-    call: Array<string>;
-    events: Array<string>;
-    read: Array<string>;
+  call: Array<string>;
+  events: Array<string>;
+  read: Array<string>;
 };
 
 /** @internal */
 export const AvailableFunctions$inboundSchema: z.ZodType<
-    AvailableFunctions,
-    z.ZodTypeDef,
-    unknown
+  AvailableFunctions,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    call: z.array(z.string()),
-    events: z.array(z.string()),
-    read: z.array(z.string()),
+  call: z.array(z.string()),
+  events: z.array(z.string()),
+  read: z.array(z.string()),
 });
 
 /** @internal */
 export type AvailableFunctions$Outbound = {
-    call: Array<string>;
-    events: Array<string>;
-    read: Array<string>;
+  call: Array<string>;
+  events: Array<string>;
+  read: Array<string>;
 };
 
 /** @internal */
 export const AvailableFunctions$outboundSchema: z.ZodType<
-    AvailableFunctions$Outbound,
-    z.ZodTypeDef,
-    AvailableFunctions
+  AvailableFunctions$Outbound,
+  z.ZodTypeDef,
+  AvailableFunctions
 > = z.object({
-    call: z.array(z.string()),
-    events: z.array(z.string()),
-    read: z.array(z.string()),
+  call: z.array(z.string()),
+  events: z.array(z.string()),
+  read: z.array(z.string()),
 });
 
 /**
@@ -44,10 +44,10 @@ export const AvailableFunctions$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AvailableFunctions$ {
-    /** @deprecated use `AvailableFunctions$inboundSchema` instead. */
-    export const inboundSchema = AvailableFunctions$inboundSchema;
-    /** @deprecated use `AvailableFunctions$outboundSchema` instead. */
-    export const outboundSchema = AvailableFunctions$outboundSchema;
-    /** @deprecated use `AvailableFunctions$Outbound` instead. */
-    export type Outbound = AvailableFunctions$Outbound;
+  /** @deprecated use `AvailableFunctions$inboundSchema` instead. */
+  export const inboundSchema = AvailableFunctions$inboundSchema;
+  /** @deprecated use `AvailableFunctions$outboundSchema` instead. */
+  export const outboundSchema = AvailableFunctions$outboundSchema;
+  /** @deprecated use `AvailableFunctions$Outbound` instead. */
+  export type Outbound = AvailableFunctions$Outbound;
 }

@@ -6,8 +6,8 @@
 import { ClaimFaucetResponseBody } from "@starton/sdk/sdk/models/operations";
 
 let value: ClaimFaucetResponseBody = {
-    path: "/opt/include",
-    timestamp: "<value>",
+  path: "/opt/include",
+  timestamp: "<value>",
 };
 ```
 

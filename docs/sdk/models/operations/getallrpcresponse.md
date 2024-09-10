@@ -6,11 +6,11 @@
 import { GetAllRpcResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllRpcResponse = {
-    contentType: "<value>",
-    statusCode: 358152,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 358152,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

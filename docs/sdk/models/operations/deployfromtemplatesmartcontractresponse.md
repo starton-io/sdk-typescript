@@ -6,11 +6,11 @@
 import { DeployFromTemplateSmartContractResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeployFromTemplateSmartContractResponse = {
-    contentType: "<value>",
-    statusCode: 622846,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 622846,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

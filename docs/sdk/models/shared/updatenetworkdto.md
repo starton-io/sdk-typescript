@@ -6,11 +6,11 @@
 import { ExplorerApiDtoType, UpdateNetworkDto } from "@starton/sdk/sdk/models/shared";
 
 let value: UpdateNetworkDto = {
-    explorerApi: {
-        apiKey: "<value>",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "http://bumpy-hosiery.org",
-    },
+  explorerApi: {
+    apiKey: "<value>",
+    type: ExplorerApiDtoType.Etherscan,
+    url: "http://bumpy-hosiery.org",
+  },
 };
 ```
 

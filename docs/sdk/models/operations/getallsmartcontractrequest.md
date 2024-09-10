@@ -6,12 +6,12 @@
 import { GetAllSmartContractRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllSmartContractRequest = {
-    address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
-    includeAbi: true,
-    includeCompilationDetails: true,
-    limit: 20,
-    network: "polygon-mumbai",
-    page: 0,
+  address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
+  includeAbi: true,
+  includeCompilationDetails: true,
+  limit: 20,
+  network: "polygon-mumbai",
+  page: 0,
 };
 ```
 

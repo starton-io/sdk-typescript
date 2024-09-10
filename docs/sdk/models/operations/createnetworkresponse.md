@@ -6,11 +6,11 @@
 import { CreateNetworkResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CreateNetworkResponse = {
-    contentType: "<value>",
-    statusCode: 473600,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 473600,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

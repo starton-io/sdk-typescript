@@ -6,10 +6,10 @@
 import { Wallet } from "@starton/sdk/sdk/models/shared";
 
 let value: Wallet = {
-    address: "562 Wilderman Port",
-    kmsId: "<value>",
-    projectId: "<value>",
-    providerKeyId: "<value>",
+  address: "562 Wilderman Port",
+  kmsId: "<value>",
+  projectId: "<value>",
+  providerKeyId: "<value>",
 };
 ```
 

@@ -7,24 +7,24 @@ import { DeployFromBytecodeSmartContractRequest } from "@starton/sdk/sdk/models/
 import { Type } from "@starton/sdk/sdk/models/shared";
 
 let value: DeployFromBytecodeSmartContractRequest = {
-    deployFromBytecodeDto: {
-        abi: [
-            {
-                type: Type.Constructor,
-            },
-        ],
-        bytecode: "<value>",
-        name: "<value>",
-        network: "<value>",
-        params: [
-            "TestToken",
-            "TEST",
-            "1000000000000000000000000",
-            "0x298e760768c8481780397eE28A127eAd584df4ee",
-        ],
-        signerWallet: "<value>",
-    },
-    simulate: false,
+  deployFromBytecodeDto: {
+    abi: [
+      {
+        type: Type.Constructor,
+      },
+    ],
+    bytecode: "<value>",
+    name: "<value>",
+    network: "<value>",
+    params: [
+      "TestToken",
+      "TEST",
+      "1000000000000000000000000",
+      "0x298e760768c8481780397eE28A127eAd584df4ee",
+    ],
+    signerWallet: "<value>",
+  },
+  simulate: false,
 };
 ```
 

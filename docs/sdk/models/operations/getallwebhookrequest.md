@@ -6,9 +6,9 @@
 import { GetAllWebhookRequest, QueryParamStatus } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllWebhookRequest = {
-    limit: 20,
-    page: 0,
-    status: QueryParamStatus.Successful,
+  limit: 20,
+  page: 0,
+  status: QueryParamStatus.Successful,
 };
 ```
 

@@ -6,9 +6,15 @@
 import { AvailableFunctions } from "@starton/sdk/sdk/models/shared";
 
 let value: AvailableFunctions = {
-    call: ["<value>"],
-    events: ["<value>"],
-    read: ["<value>"],
+  call: [
+    "<value>",
+  ],
+  events: [
+    "<value>",
+  ],
+  read: [
+    "<value>",
+  ],
 };
 ```
 

@@ -6,7 +6,7 @@
 import { GetAllSettingRelayerRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllSettingRelayerRequest = {
-    network: "polygon-mumbai",
+  network: "polygon-mumbai",
 };
 ```
 

@@ -20,146 +20,190 @@ import * as shared from "./models/shared/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class SmartContractManagement extends ClientSDK {
-    /**
-     * Execute Smart Contract Function
-     *
-     * @remarks
-     * Calls a specific function within a deployed smart contract, enabling interactions such as executing transactions or querying state. The method parameters, including the smart contract address and network, need to be specified.
-     */
-    async call(
-        request: operations.CallSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.CallSmartContractResponse> {
-        return unwrapAsync(smartContractManagementCall(this, request, options));
-    }
+  /**
+   * Execute Smart Contract Function
+   *
+   * @remarks
+   * Calls a specific function within a deployed smart contract, enabling interactions such as executing transactions or querying state. The method parameters, including the smart contract address and network, need to be specified.
+   */
+  async call(
+    request: operations.CallSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CallSmartContractResponse> {
+    return unwrapAsync(smartContractManagementCall(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a smart contract
-     *
-     * @remarks
-     * Deletes a specific smart contract based on network and address.
-     */
-    async delete(
-        request: operations.DeleteSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeleteSmartContractResponse> {
-        return unwrapAsync(smartContractManagementDelete(this, request, options));
-    }
+  /**
+   * Delete a smart contract
+   *
+   * @remarks
+   * Deletes a specific smart contract based on network and address.
+   */
+  async delete(
+    request: operations.DeleteSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteSmartContractResponse> {
+    return unwrapAsync(smartContractManagementDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Deploy from bytecode (your own contract)
-     *
-     * @remarks
-     * Deploys a smart contract from bytecode and returns transaction details.
-     */
-    async deployFromBytecode(
-        request: operations.DeployFromBytecodeSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeployFromBytecodeSmartContractResponse> {
-        return unwrapAsync(smartContractManagementDeployFromBytecode(this, request, options));
-    }
+  /**
+   * Deploy from bytecode (your own contract)
+   *
+   * @remarks
+   * Deploys a smart contract from bytecode and returns transaction details.
+   */
+  async deployFromBytecode(
+    request: operations.DeployFromBytecodeSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeployFromBytecodeSmartContractResponse> {
+    return unwrapAsync(smartContractManagementDeployFromBytecode(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Deploy Smart Contract from Template
-     *
-     * @remarks
-     * Deploy from Starton audited smart contract template.
-     */
-    async deployFromTemplate(
-        request: operations.DeployFromTemplateSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.DeployFromTemplateSmartContractResponse> {
-        return unwrapAsync(smartContractManagementDeployFromTemplate(this, request, options));
-    }
+  /**
+   * Deploy Smart Contract from Template
+   *
+   * @remarks
+   * Deploy from Starton audited smart contract template.
+   */
+  async deployFromTemplate(
+    request: operations.DeployFromTemplateSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeployFromTemplateSmartContractResponse> {
+    return unwrapAsync(smartContractManagementDeployFromTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Encode data for a Smart Contract call
-     *
-     * @remarks
-     * Display the encoded data that is sent to a smart contract
-     */
-    async encode(
-        request: operations.EncodeSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.EncodeSmartContractResponse> {
-        return unwrapAsync(smartContractManagementEncode(this, request, options));
-    }
+  /**
+   * Encode data for a Smart Contract call
+   *
+   * @remarks
+   * Display the encoded data that is sent to a smart contract
+   */
+  async encode(
+    request: operations.EncodeSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.EncodeSmartContractResponse> {
+    return unwrapAsync(smartContractManagementEncode(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get all smart contracts
-     *
-     * @remarks
-     * Fetches and returns the list of smart contracts.
-     */
-    async getAll(
-        request: operations.GetAllSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.GetAllSmartContractResponse>> {
-        return unwrapResultIterator(smartContractManagementGetAll(this, request, options));
-    }
+  /**
+   * Get all smart contracts
+   *
+   * @remarks
+   * Fetches and returns the list of smart contracts.
+   */
+  async getAll(
+    request: operations.GetAllSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAllSmartContractResponse>> {
+    return unwrapResultIterator(smartContractManagementGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieves Smart Contract Functions and Events
-     *
-     * @remarks
-     * Provides a list of the available read and write functions, as well as events, of a specified smart contract. This can be used to understand how to interact with the contract.
-     */
-    async getFunctions(
-        request: operations.GetAvailableFunctionsSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetAvailableFunctionsSmartContractResponse> {
-        return unwrapAsync(smartContractManagementGetFunctions(this, request, options));
-    }
+  /**
+   * Retrieves Smart Contract Functions and Events
+   *
+   * @remarks
+   * Provides a list of the available read and write functions, as well as events, of a specified smart contract. This can be used to understand how to interact with the contract.
+   */
+  async getFunctions(
+    request: operations.GetAvailableFunctionsSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetAvailableFunctionsSmartContractResponse> {
+    return unwrapAsync(smartContractManagementGetFunctions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get a single smart contract
-     *
-     * @remarks
-     * Fetches details of a specific smart contract based on network and address.
-     */
-    async getOne(
-        request: operations.GetOneSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetOneSmartContractResponse> {
-        return unwrapAsync(smartContractManagementGetOne(this, request, options));
-    }
+  /**
+   * Get a single smart contract
+   *
+   * @remarks
+   * Fetches details of a specific smart contract based on network and address.
+   */
+  async getOne(
+    request: operations.GetOneSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetOneSmartContractResponse> {
+    return unwrapAsync(smartContractManagementGetOne(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Import Existing Smart Contract
-     *
-     * @remarks
-     * Import an already deployed smart contract into the project. This requires providing the smart contract’s address, ABI, and the network it’s deployed on.
-     */
-    async importExisting(
-        request: shared.ImportSmartContractDto,
-        options?: RequestOptions
-    ): Promise<operations.ImportExistingSmartContractResponse> {
-        return unwrapAsync(smartContractManagementImportExisting(this, request, options));
-    }
+  /**
+   * Import Existing Smart Contract
+   *
+   * @remarks
+   * Import an already deployed smart contract into the project. This requires providing the smart contract’s address, ABI, and the network it’s deployed on.
+   */
+  async importExisting(
+    request: shared.ImportSmartContractDto,
+    options?: RequestOptions,
+  ): Promise<operations.ImportExistingSmartContractResponse> {
+    return unwrapAsync(smartContractManagementImportExisting(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Query Smart Contract Function
-     *
-     * @remarks
-     * Reads data from a smart contract by calling one of its functions without making any state changes on the blockchain. This is typically used for retrieving information from the contract.
-     */
-    async read(
-        request: operations.ReadSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.ReadSmartContractResponse> {
-        return unwrapAsync(smartContractManagementRead(this, request, options));
-    }
+  /**
+   * Query Smart Contract Function
+   *
+   * @remarks
+   * Reads data from a smart contract by calling one of its functions without making any state changes on the blockchain. This is typically used for retrieving information from the contract.
+   */
+  async read(
+    request: operations.ReadSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ReadSmartContractResponse> {
+    return unwrapAsync(smartContractManagementRead(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update a smart contract
-     *
-     * @remarks
-     * Updates and returns details of a specific smart contract based on network and address.
-     */
-    async update(
-        request: operations.UpdateSmartContractRequest,
-        options?: RequestOptions
-    ): Promise<operations.UpdateSmartContractResponse> {
-        return unwrapAsync(smartContractManagementUpdate(this, request, options));
-    }
+  /**
+   * Update a smart contract
+   *
+   * @remarks
+   * Updates and returns details of a specific smart contract based on network and address.
+   */
+  async update(
+    request: operations.UpdateSmartContractRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateSmartContractResponse> {
+    return unwrapAsync(smartContractManagementUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

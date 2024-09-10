@@ -6,8 +6,8 @@
 import { GetOneWatcherEventRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneWatcherEventRequest = {
-    eventId: "wevent_437e18e7470944099bd094e1c936e4cd",
-    id: "ntif_f94e4a79611947d48254537a8861265d",
+  eventId: "wevent_437e18e7470944099bd094e1c936e4cd",
+  id: "ntif_f94e4a79611947d48254537a8861265d",
 };
 ```
 

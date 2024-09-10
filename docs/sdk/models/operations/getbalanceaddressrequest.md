@@ -6,8 +6,8 @@
 import { GetBalanceAddressRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetBalanceAddressRequest = {
-    address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-    network: "polygon-mainnet",
+  address: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+  network: "polygon-mainnet",
 };
 ```
 

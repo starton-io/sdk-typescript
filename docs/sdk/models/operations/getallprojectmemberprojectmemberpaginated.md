@@ -6,18 +6,18 @@
 import { GetAllProjectMemberProjectMemberPaginated } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllProjectMemberProjectMemberPaginated = {
-    items: [
-        {
-            email: "Franco.Hane@yahoo.com",
-            fullName: "Cecilia Yundt MD",
-            id: "<id>",
-        },
-    ],
-    meta: {
-        currentPage: 2088.76,
-        itemCount: 6350.59,
-        itemsPerPage: 1613.09,
+  items: [
+    {
+      email: "Franco.Hane@yahoo.com",
+      fullName: "Cecilia Yundt MD",
+      id: "<id>",
     },
+  ],
+  meta: {
+    currentPage: 2088.76,
+    itemCount: 6350.59,
+    itemsPerPage: 1613.09,
+  },
 };
 ```
 

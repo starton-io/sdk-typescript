@@ -10,9 +10,9 @@ import {
 } from "@starton/sdk/sdk/models/shared";
 
 let value: DeployFromTemplateDtoUiData = {
-    deployMethod: DeployFromTemplateDtoDeployMethod.Web3,
-    imported: false,
-    version: DeployFromTemplateDtoVersion.One,
+  deployMethod: DeployFromTemplateDtoDeployMethod.Web3,
+  imported: false,
+  version: DeployFromTemplateDtoVersion.One,
 };
 ```
 

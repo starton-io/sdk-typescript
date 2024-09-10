@@ -6,21 +6,21 @@
 import { DeployFromBytecodeDto, Type } from "@starton/sdk/sdk/models/shared";
 
 let value: DeployFromBytecodeDto = {
-    abi: [
-        {
-            type: Type.Fallback,
-        },
-    ],
-    bytecode: "<value>",
-    name: "<value>",
-    network: "<value>",
-    params: [
-        "TestToken",
-        "TEST",
-        "1000000000000000000000000",
-        "0x298e760768c8481780397eE28A127eAd584df4ee",
-    ],
-    signerWallet: "<value>",
+  abi: [
+    {
+      type: Type.Fallback,
+    },
+  ],
+  bytecode: "<value>",
+  name: "<value>",
+  network: "<value>",
+  params: [
+    "TestToken",
+    "TEST",
+    "1000000000000000000000000",
+    "0x298e760768c8481780397eE28A127eAd584df4ee",
+  ],
+  signerWallet: "<value>",
 };
 ```
 

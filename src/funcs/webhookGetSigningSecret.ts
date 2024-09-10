@@ -8,11 +8,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-    ConnectionError,
-    InvalidRequestError,
-    RequestAbortedError,
-    RequestTimeoutError,
-    UnexpectedClientError,
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
 import * as errors from "../sdk/models/errors/index.js";
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
@@ -27,90 +27,91 @@ import { Result } from "../sdk/types/fp.js";
  * Fetches the signing secret associated with your project. Use this secret to securely verify the integrity and authenticity of payloads received from Starton's API in your server-side webhook implementations.
  */
 export async function webhookGetSigningSecret(
-    client$: StartonCore,
-    options?: RequestOptions
+  client$: StartonCore,
+  options?: RequestOptions,
 ): Promise<
-    Result<
-        operations.GetOneWebhookSigningSecretResponse,
-        | errors.GetOneWebhookSigningSecretResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >
+  Result<
+    operations.GetOneWebhookSigningSecretResponse,
+    | errors.GetOneWebhookSigningSecretResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
-    const path$ = pathToFunc("/v3/webhook/signing-secret")();
+  const path$ = pathToFunc("/v3/webhook/signing-secret")();
 
-    const headers$ = new Headers({
-        Accept: "application/json",
-    });
+  const headers$ = new Headers({
+    Accept: "application/json",
+  });
 
-    const apiKey$ = await extractSecurity(client$.options$.apiKey);
-    const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
-    const context = {
-        operationID: "getOneWebhookSigningSecret",
-        oAuth2Scopes: [],
-        securitySource: client$.options$.apiKey,
-    };
-    const securitySettings$ = resolveGlobalSecurity(security$);
+  const apiKey$ = await extractSecurity(client$.options$.apiKey);
+  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const context = {
+    operationID: "getOneWebhookSigningSecret",
+    oAuth2Scopes: [],
+    securitySource: client$.options$.apiKey,
+  };
+  const securitySettings$ = resolveGlobalSecurity(security$);
 
-    const requestRes = client$.createRequest$(
-        context,
-        {
-            security: securitySettings$,
-            method: "GET",
-            path: path$,
-            headers: headers$,
-            timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
-        },
-        options
-    );
-    if (!requestRes.ok) {
-        return requestRes;
-    }
-    const request$ = requestRes.value;
+  const requestRes = client$.createRequest$(context, {
+    security: securitySettings$,
+    method: "GET",
+    path: path$,
+    headers: headers$,
+    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return requestRes;
+  }
+  const request$ = requestRes.value;
 
-    const doResult = await client$.do$(request$, {
-        context,
-        errorCodes: ["400", "4XX", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-    });
-    if (!doResult.ok) {
-        return doResult;
-    }
-    const response = doResult.value;
+  const doResult = await client$.do$(request$, {
+    context,
+    errorCodes: ["400", "4XX", "5XX"],
+    retryConfig: options?.retries
+      || client$.options$.retryConfig,
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  });
+  if (!doResult.ok) {
+    return doResult;
+  }
+  const response = doResult.value;
 
-    const responseFields$ = {
-        ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-        StatusCode: response.status,
-        RawResponse: response,
-        Headers: {},
-    };
+  const responseFields$ = {
+    ContentType: response.headers.get("content-type")
+      ?? "application/octet-stream",
+    StatusCode: response.status,
+    RawResponse: response,
+    Headers: {},
+  };
 
-    const [result$] = await m$.match<
-        operations.GetOneWebhookSigningSecretResponse,
-        | errors.GetOneWebhookSigningSecretResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >(
-        m$.json(200, operations.GetOneWebhookSigningSecretResponse$inboundSchema, {
-            key: "WebhookSigningSecret",
-        }),
-        m$.jsonErr(400, errors.GetOneWebhookSigningSecretResponseBody$inboundSchema),
-        m$.fail(["4XX", "5XX"])
-    )(response, { extraFields: responseFields$ });
-    if (!result$.ok) {
-        return result$;
-    }
-
+  const [result$] = await m$.match<
+    operations.GetOneWebhookSigningSecretResponse,
+    | errors.GetOneWebhookSigningSecretResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >(
+    m$.json(200, operations.GetOneWebhookSigningSecretResponse$inboundSchema, {
+      key: "WebhookSigningSecret",
+    }),
+    m$.jsonErr(
+      400,
+      errors.GetOneWebhookSigningSecretResponseBody$inboundSchema,
+    ),
+    m$.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields$ });
+  if (!result$.ok) {
     return result$;
+  }
+
+  return result$;
 }

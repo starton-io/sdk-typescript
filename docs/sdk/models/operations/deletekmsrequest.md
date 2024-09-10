@@ -6,7 +6,7 @@
 import { DeleteKmsRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteKmsRequest = {
-    id: "kms_000",
+  id: "kms_000",
 };
 ```
 

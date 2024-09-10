@@ -9,29 +9,37 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Setting extends ClientSDK {
-    /**
-     * Get Relayer settings
-     *
-     * @remarks
-     * Retrieve the Relayer settings for a specific network within the current project.
-     */
-    async get(
-        request: operations.GetAllSettingRelayerRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetAllSettingRelayerResponse> {
-        return unwrapAsync(transactionManagerSettingGet(this, request, options));
-    }
+  /**
+   * Get Relayer settings
+   *
+   * @remarks
+   * Retrieve the Relayer settings for a specific network within the current project.
+   */
+  async get(
+    request: operations.GetAllSettingRelayerRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetAllSettingRelayerResponse> {
+    return unwrapAsync(transactionManagerSettingGet(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Relayer Settings
-     *
-     * @remarks
-     * Update the Relayer settings for a specific network within the current project.
-     */
-    async update(
-        request: operations.UpdateSettingRelayerRequest,
-        options?: RequestOptions
-    ): Promise<operations.UpdateSettingRelayerResponse> {
-        return unwrapAsync(transactionManagerSettingUpdate(this, request, options));
-    }
+  /**
+   * Update Relayer Settings
+   *
+   * @remarks
+   * Update the Relayer settings for a specific network within the current project.
+   */
+  async update(
+    request: operations.UpdateSettingRelayerRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateSettingRelayerResponse> {
+    return unwrapAsync(transactionManagerSettingUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

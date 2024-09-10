@@ -7,33 +7,33 @@ import { GetAllTransactionTransactionPaginated } from "@starton/sdk/sdk/models/o
 import { TransactionLogType, TransactionState, TransactionStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: GetAllTransactionTransactionPaginated = {
-    items: [
+  items: [
+    {
+      automaticNonce: false,
+      chainId: 6788.8,
+      from: "<value>",
+      id: "<id>",
+      isDeployTransaction: false,
+      logs: [
         {
-            automaticNonce: false,
-            chainId: 6788.8,
-            from: "<value>",
-            id: "<id>",
-            isDeployTransaction: false,
-            logs: [
-                {
-                    createdAt: "<value>",
-                    message: "<value>",
-                    type: TransactionLogType.ReceivedByStarton,
-                },
-            ],
-            network: "<value>",
-            projectId: "<value>",
-            signerWallet: "<value>",
-            state: TransactionState.ManualActionRequired,
-            status: TransactionStatus.SentToMempool,
-            value: "<value>",
+          createdAt: "<value>",
+          message: "<value>",
+          type: TransactionLogType.ReceivedByStarton,
         },
-    ],
-    meta: {
-        currentPage: 5820.2,
-        itemCount: 1433.53,
-        itemsPerPage: 5373.73,
+      ],
+      network: "<value>",
+      projectId: "<value>",
+      signerWallet: "<value>",
+      state: TransactionState.ManualActionRequired,
+      status: TransactionStatus.SentToMempool,
+      value: "<value>",
     },
+  ],
+  meta: {
+    currentPage: 5820.2,
+    itemCount: 1433.53,
+    itemsPerPage: 5373.73,
+  },
 };
 ```
 

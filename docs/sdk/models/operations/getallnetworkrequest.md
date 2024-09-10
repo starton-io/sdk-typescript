@@ -6,11 +6,13 @@
 import { GetAllNetworkRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllNetworkRequest = {
-    chainIds: ["<value>"],
-    limit: 20,
-    origin: "<value>",
-    page: 0,
-    xPlatformHostname: "<value>",
+  chainIds: [
+    "<value>",
+  ],
+  limit: 20,
+  origin: "<value>",
+  page: 0,
+  xPlatformHostname: "<value>",
 };
 ```
 
