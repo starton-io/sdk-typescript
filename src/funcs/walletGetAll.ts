@@ -54,7 +54,7 @@ export async function walletGetAll(
     >
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

@@ -65,23 +65,14 @@ sdk.data.getBalance({
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
 ### [data](docs/sdks/data/README.md)
 
 * [getBalance](docs/sdks/data/README.md#getbalance) - Retrieve the native token balance of a specific blockchain address
 * [getErc20Balance](docs/sdks/data/README.md#geterc20balance) - Retrieve the ERC20 token balance for a specific address
 * [getGasPrice](docs/sdks/data/README.md#getgasprice) -  Retrieve the current gas prices
-
-### [wallet](docs/sdks/wallet/README.md)
-
-* [create](docs/sdks/wallet/README.md#create) - Create a new wallet
-* [delete](docs/sdks/wallet/README.md#delete) - Delete a wallet
-* [getAll](docs/sdks/wallet/README.md#getall) - Retrieve the list of Wallets
-* [getOne](docs/sdks/wallet/README.md#getone) - Fetch Wallet Details
-* [import](docs/sdks/wallet/README.md#import) - Import Wallet from Provider Key
-* [requestFaucet](docs/sdks/wallet/README.md#requestfaucet) - Request tokens from faucet
-* [resyncNonce](docs/sdks/wallet/README.md#resyncnonce) - Synchronize Nonces for a wallet
-* [sign](docs/sdks/wallet/README.md#sign) - Sign a message
-* [update](docs/sdks/wallet/README.md#update) - Update Wallet Information
 
 ### [ipfs](docs/sdks/ipfs/README.md)
 
@@ -103,18 +94,15 @@ sdk.data.getBalance({
 * [getOne](docs/sdks/kms/README.md#getone) - Retrieve details of a specific KMS
 * [update](docs/sdks/kms/README.md#update) - Update the details of a KMS
 
-### [transactionManager](docs/sdks/transactionmanager/README.md)
+### [monitor](docs/sdks/monitor/README.md)
 
-* [create](docs/sdks/transactionmanager/README.md#create) - Create a new transaction
-* [getAll](docs/sdks/transactionmanager/README.md#getall) - Retrieve a List of Transactions
-* [getAvailableNonces](docs/sdks/transactionmanager/README.md#getavailablenonces) - Retrieve Available Nonces for a wallet
-* [getOne](docs/sdks/transactionmanager/README.md#getone) - Get a Specific Transaction
-* [resyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce) - Synchronize Nonces for a wallet
-
-### [transactionManager.setting](docs/sdks/setting/README.md)
-
-* [get](docs/sdks/setting/README.md#get) - Get Relayer settings
-* [update](docs/sdks/setting/README.md#update) - Update Relayer Settings
+* [create](docs/sdks/monitor/README.md#create) - Create a New Watcher
+* [delete](docs/sdks/monitor/README.md#delete) - Delete a watcher
+* [getAll](docs/sdks/monitor/README.md#getall) - Retrieve List of Watchers
+* [getAllEvents](docs/sdks/monitor/README.md#getallevents) - Fetches the list of events for a watcher 
+* [getOne](docs/sdks/monitor/README.md#getone) - Get a specific watcher
+* [getOneEvent](docs/sdks/monitor/README.md#getoneevent) - Get a watcher event
+* [update](docs/sdks/monitor/README.md#update) - Update a watcher
 
 ### [network](docs/sdks/network/README.md)
 
@@ -124,7 +112,7 @@ sdk.data.getBalance({
 * [getOne](docs/sdks/network/README.md#getone) - Fetch a specific network
 * [update](docs/sdks/network/README.md#update) - Update specific network details (Enterprise)
 
-### [network.rpc](docs/sdks/rpc/README.md)
+#### [network.rpc](docs/sdks/rpc/README.md)
 
 * [create](docs/sdks/rpc/README.md#create) - Add a rpc (enterprise)
 * [delete](docs/sdks/rpc/README.md#delete) - Delete a rpc (enterprise)
@@ -132,17 +120,27 @@ sdk.data.getBalance({
 * [getOne](docs/sdks/rpc/README.md#getone) - Get a rpc (enterprise)
 * [update](docs/sdks/rpc/README.md#update) - Update a rpc (enterprise)
 
+### [project](docs/sdks/project/README.md)
 
-### [project.member](docs/sdks/member/README.md)
+
+#### [project.member](docs/sdks/member/README.md)
 
 * [delete](docs/sdks/member/README.md#delete) - Remove a user from a project.
 * [getAll](docs/sdks/member/README.md#getall) - Retrieve a list of all members of a specific project.
 
-### [project.member.invitation](docs/sdks/invitation/README.md)
+#### [project.member.invitation](docs/sdks/invitation/README.md)
 
 * [create](docs/sdks/invitation/README.md#create) - Send an invitation to the project
 * [delete](docs/sdks/invitation/README.md#delete) - Revoke a previously sent invitation.
 * [getAll](docs/sdks/invitation/README.md#getall) - Retrieve a list of all member invitations for a specific project
+
+### [smartContract](docs/sdks/smartcontract/README.md)
+
+
+#### [smartContract.template](docs/sdks/template/README.md)
+
+* [getAll](docs/sdks/template/README.md#getall) - Fetch the list of Smart Contract Templates
+* [getOne](docs/sdks/template/README.md#getone) - Retrieve a Specific Smart Contract Template
 
 ### [smartContractManagement](docs/sdks/smartcontractmanagement/README.md)
 
@@ -159,20 +157,30 @@ sdk.data.getBalance({
 * [update](docs/sdks/smartcontractmanagement/README.md#update) - Update a smart contract
 
 
-### [smartContract.template](docs/sdks/template/README.md)
+### [transactionManager](docs/sdks/transactionmanager/README.md)
 
-* [getAll](docs/sdks/template/README.md#getall) - Fetch the list of Smart Contract Templates
-* [getOne](docs/sdks/template/README.md#getone) - Retrieve a Specific Smart Contract Template
+* [create](docs/sdks/transactionmanager/README.md#create) - Create a new transaction
+* [getAll](docs/sdks/transactionmanager/README.md#getall) - Retrieve a List of Transactions
+* [getAvailableNonces](docs/sdks/transactionmanager/README.md#getavailablenonces) - Retrieve Available Nonces for a wallet
+* [getOne](docs/sdks/transactionmanager/README.md#getone) - Get a Specific Transaction
+* [resyncNonce](docs/sdks/transactionmanager/README.md#resyncnonce) - Synchronize Nonces for a wallet
 
-### [monitor](docs/sdks/monitor/README.md)
+#### [transactionManager.setting](docs/sdks/setting/README.md)
 
-* [create](docs/sdks/monitor/README.md#create) - Create a New Watcher
-* [delete](docs/sdks/monitor/README.md#delete) - Delete a watcher
-* [getAll](docs/sdks/monitor/README.md#getall) - Retrieve List of Watchers
-* [getAllEvents](docs/sdks/monitor/README.md#getallevents) - Fetches the list of events for a watcher 
-* [getOne](docs/sdks/monitor/README.md#getone) - Get a specific watcher
-* [getOneEvent](docs/sdks/monitor/README.md#getoneevent) - Get a watcher event
-* [update](docs/sdks/monitor/README.md#update) - Update a watcher
+* [get](docs/sdks/setting/README.md#get) - Get Relayer settings
+* [update](docs/sdks/setting/README.md#update) - Update Relayer Settings
+
+### [wallet](docs/sdks/wallet/README.md)
+
+* [create](docs/sdks/wallet/README.md#create) - Create a new wallet
+* [delete](docs/sdks/wallet/README.md#delete) - Delete a wallet
+* [getAll](docs/sdks/wallet/README.md#getall) - Retrieve the list of Wallets
+* [getOne](docs/sdks/wallet/README.md#getone) - Fetch Wallet Details
+* [import](docs/sdks/wallet/README.md#import) - Import Wallet from Provider Key
+* [requestFaucet](docs/sdks/wallet/README.md#requestfaucet) - Request tokens from faucet
+* [resyncNonce](docs/sdks/wallet/README.md#resyncnonce) - Synchronize Nonces for a wallet
+* [sign](docs/sdks/wallet/README.md#sign) - Sign a message
+* [update](docs/sdks/wallet/README.md#update) - Update Wallet Information
 
 ### [webhook](docs/sdks/webhook/README.md)
 
@@ -182,6 +190,8 @@ sdk.data.getBalance({
 * [getSigningSecret](docs/sdks/webhook/README.md#getsigningsecret) - Retrieve Webhook Signing Secret
 * [regenerateSigningSecret](docs/sdks/webhook/README.md#regeneratesigningsecret) - Regenerate Webhook signing secret
 * [resend](docs/sdks/webhook/README.md#resend) - Resend a Webhook
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- No Error Handling -->
