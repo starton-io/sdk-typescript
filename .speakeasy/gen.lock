@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.396.6
-  generationVersion: 2.415.6
-  releaseVersion: 0.24.0
-  configChecksum: f6b585f55e8b3a6a19a4ed7f7afc8f14
+  speakeasyVersion: 1.396.9
+  generationVersion: 2.415.7
+  releaseVersion: 0.24.1
+  configChecksum: a9a5406b179740e994353ac08f664791
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.2
+    core: 3.17.3
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
@@ -1865,11 +1865,11 @@ examples:
         "201":
           application/json: {"address": "660 Romaine Highway", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": {}}
         "400":
-          application/json: {"path": "/sys", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/Users", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
+          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1879,13 +1879,13 @@ examples:
         application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"]}
       responses:
         "201":
-          application/json: {"address": "742 Feil Lane", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": []}
+          application/json: {"address": "742 Feil Lane", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": {}}
         "400":
-          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
+          application/json: {"path": "/etc", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
+          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/rescue", "timestamp": "<value>"}
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   updateSmartContract:
     a:
       parameters:
