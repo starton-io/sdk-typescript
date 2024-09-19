@@ -164,7 +164,7 @@ export async function monitorGetAll(
       | ConnectionError
     >
   > => {
-    const page = input$.page || 0;
+    const page = input$?.page || 0;
     const nextPage = page + 1;
     const numPages = dlv(responseData, "meta.totalPages");
     if (numPages == null || numPages <= page) {
@@ -178,7 +178,7 @@ export async function monitorGetAll(
     if (!Array.isArray(results) || !results.length) {
       return () => null;
     }
-    const limit = input$.limit || 0;
+    const limit = input$?.limit || 0;
     if (results.length < limit) {
       return () => null;
     }
