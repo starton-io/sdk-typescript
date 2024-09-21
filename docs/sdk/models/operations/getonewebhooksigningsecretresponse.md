@@ -7,7 +7,7 @@ import { GetOneWebhookSigningSecretResponse } from "@starton/sdk/sdk/models/oper
 
 let value: GetOneWebhookSigningSecretResponse = {
   contentType: "<value>",
-  statusCode: 756107,
+  statusCode: 758379,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

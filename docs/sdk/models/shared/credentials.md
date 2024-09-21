@@ -6,14 +6,9 @@
 import { Credentials } from "@starton/sdk/sdk/models/shared";
 
 let value: Credentials = {
-  baseUrl: "<value>",
-  id: "<id>",
-  loginPath: "<value>",
-  role: "<value>",
-  rootPath: "<value>",
-  selfSigned: false,
-  timeout: 5013.24,
-  tokenPath: "<value>",
+  accessKeyId: "<value>",
+  accountId: "<value>",
+  region: "<value>",
 };
 ```
 

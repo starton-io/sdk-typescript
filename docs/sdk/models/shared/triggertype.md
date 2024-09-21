@@ -5,7 +5,7 @@
 ```typescript
 import { TriggerType } from "@starton/sdk/sdk/models/shared";
 
-let value: TriggerType = TriggerType.Event;
+let value: TriggerType = TriggerType.Transaction;
 ```
 
 ## Values

@@ -13,7 +13,7 @@ let value: SmartContractTemplate = {
     "<value>",
   ],
   category: Category.Fungible,
-  description: "Down-sized value-added local area network",
+  description: "Switchable 4th generation time-frame",
   githubUrl: "<value>",
   humanReadableAbi: [
     "<value>",

@@ -7,13 +7,13 @@ import { CreateNetworkDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/sh
 
 let value: CreateNetworkDto = {
   blockchain: "<value>",
-  chainId: 5699.65,
-  confirmationBlocks: 3540.47,
-  displayName: "Landen.Lueilwitz",
+  chainId: 9413.78,
+  confirmationBlocks: 7992.03,
+  displayName: "Lon_Greenholt61",
   explorerApi: {
     apiKey: "<value>",
     type: ExplorerApiDtoType.Etherscan,
-    url: "https://wide-eyed-perspective.biz",
+    url: "https://creamy-wedding.info/",
   },
   logo: "<value>",
   name: "<value>",

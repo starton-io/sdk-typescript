@@ -7,7 +7,7 @@ import { UpdateRpcResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateRpcResponse = {
   contentType: "<value>",
-  statusCode: 750686,
+  statusCode: 20107,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

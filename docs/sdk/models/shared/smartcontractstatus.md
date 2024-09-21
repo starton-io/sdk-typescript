@@ -5,7 +5,7 @@
 ```typescript
 import { SmartContractStatus } from "@starton/sdk/sdk/models/shared";
 
-let value: SmartContractStatus = SmartContractStatus.CouldNotUnstuckNonce;
+let value: SmartContractStatus = SmartContractStatus.InsufficientFunds;
 ```
 
 ## Values

@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
   docVersion: "1.0"
-  speakeasyVersion: 1.399.2
-  generationVersion: 2.416.6
-  releaseVersion: 0.24.2
-  configChecksum: 7aeae8f044aad3eba7813222024f4a18
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 0.24.3
+  configChecksum: 0aad5decbe460dfddf18f1046e700c86
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.4
+    core: 3.17.6
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
@@ -997,7 +997,7 @@ examples:
         "200":
           application/json: {"balance": "<value>", "decimal": "9355.76", "formatted": "<value>", "symbol": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/var/mail", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
   getBalanceErc20:
     "":
       parameters:
@@ -1010,7 +1010,7 @@ examples:
         "200":
           application/json: {"balance": "0", "contractAddress": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", "decimal": 6, "formatted": "0.0", "symbol": "USDT"}
         "400":
-          application/json: {"message": [], "path": "/etc/periodic", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/etc/defaults", "timestamp": "<value>"}
   getAllGasPrice:
     "":
       parameters:
@@ -1020,7 +1020,7 @@ examples:
         "200":
           application/json: {"average": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "fast": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "fastest": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}, "low": {"gasPrice": "<value>", "maxFeePerGas": "<value>", "maxPriorityFeePerGas": "<value>"}}
         "400":
-          application/json: {"message": [], "path": "/var/spool", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/usr/libexec", "timestamp": "<value>"}
   createWallet:
     speakeasy-default-create-wallet:
       requestBody:
@@ -1029,9 +1029,9 @@ examples:
         "201":
           application/json: {"address": "4684 Bria Shores", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
   deleteWallet:
     "":
       parameters:
@@ -1042,9 +1042,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllWallet:
     "":
       parameters:
@@ -1055,7 +1055,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneWallet:
     "":
       parameters:
@@ -1065,9 +1065,9 @@ examples:
         "200":
           application/json: {"address": "43504 Penelope Expressway", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   importProviderKeyWallet:
     speakeasy-default-import-provider-key-wallet:
       requestBody:
@@ -1076,7 +1076,7 @@ examples:
         "201":
           application/json: {"address": "12295 Lacey Keys", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/home/user/dir", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/Library", "timestamp": "<value>"}
   claimFaucet:
     "":
       parameters:
@@ -1088,9 +1088,9 @@ examples:
         "201":
           application/json: {"id": "<id>", "ip": "52.249.80.129", "network": "<value>", "wallet": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/home/user", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/mnt", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/mnt", "timestamp": "<value>"}
+          application/json: {"path": "/var", "timestamp": "<value>"}
         default:
           application/json: {"path": "/usr/local/src", "timestamp": "<value>"}
   resyncNoncesWallet:
@@ -1103,13 +1103,13 @@ examples:
         "201":
           application/json: {"nextNonce": "5984.25"}
         "400":
-          application/json: {"message": [], "path": "/srv", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/var/yp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/selinux", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/var/yp", "timestamp": "<value>"}
+          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/home/user", "timestamp": "<value>"}
+          application/json: {"path": "/boot", "timestamp": "<value>"}
   signMessageWallet:
     "":
       parameters:
@@ -1121,11 +1121,11 @@ examples:
         "201":
           application/json: {"signature": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/home/user/dir", "timestamp": "<value>"}
         "403":
-          application/json: {"path": "/var", "timestamp": "<value>"}
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
+          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
   updateWallet:
     "":
       parameters:
@@ -1135,9 +1135,9 @@ examples:
         "200":
           application/json: {"address": "050 Mellie Well", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
   deletePin:
     "":
       parameters:
@@ -1147,9 +1147,9 @@ examples:
         "200":
           application/json: true
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllPin:
     "":
       parameters:
@@ -1160,7 +1160,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOnePin:
     "":
       parameters:
@@ -1171,16 +1171,16 @@ examples:
         "200":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   getStorageUsedPin:
     speakeasy-default-get-storage-used-pin:
       responses:
         "200":
           application/json: {"currentStorageUsed": "8696.26", "freeSpaceRemaining": "1073.07", "maxAllowed": "6001.5"}
         "400":
-          application/json: {"message": [], "path": "/usr/share", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/sys", "timestamp": "<value>"}
   createPin:
     a:
       requestBody:
@@ -1189,9 +1189,9 @@ examples:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
         "400":
-          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/boot", "timestamp": "<value>"}
         "413":
-          application/json: {"path": "/usr/libdata", "timestamp": "<value>"}
+          application/json: {"path": "/media", "timestamp": "<value>"}
   updatePin:
     a:
       parameters:
@@ -1203,9 +1203,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "deleted"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1214,27 +1214,27 @@ examples:
         "200":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Applications", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   uploadFromFilePin:
     speakeasy-default-upload-from-file-pin:
       responses:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "pinned"}
         "400":
-          application/json: {"message": [], "path": "/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "413":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
   uploadFromFolderPin:
     speakeasy-default-upload-from-folder-pin:
       responses:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
         "400":
-          application/json: {"message": [], "path": "/boot", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
         "413":
-          application/json: {"path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
   uploadFromJsonPin:
     a:
       requestBody:
@@ -1243,9 +1243,9 @@ examples:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "failed"}
         "400":
-          application/json: {"message": [], "path": "/Users", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/local/bin", "timestamp": "<value>"}
         "413":
-          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
+          application/json: {"path": "/lost+found", "timestamp": "<value>"}
   createKms:
     speakeasy-default-create-kms:
       requestBody:
@@ -1254,7 +1254,7 @@ examples:
         "201":
           application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
   deleteKms:
     "":
       parameters:
@@ -1264,9 +1264,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllKms:
     "":
       parameters:
@@ -1277,7 +1277,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneKms:
     "":
       parameters:
@@ -1287,9 +1287,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   updateKms:
     "":
       parameters:
@@ -1299,9 +1299,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "Vault"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
   createTransaction:
     a:
       parameters:
@@ -1313,13 +1313,13 @@ examples:
         "201":
           application/json: {"automaticNonce": true, "chainId": "4893.82", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "INSUFFICIENT_FUNDS", "value": "<value>"}
         "400":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/tmp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/var/yp", "timestamp": "<value>"}
+          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/src", "timestamp": "<value>"}
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
     b:
       parameters:
         query:
@@ -1330,13 +1330,13 @@ examples:
         "201":
           application/json: {"automaticNonce": false, "chainId": "1343.65", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "SUCCESS", "status": "MONITORING_INTERRUPTED", "value": "<value>"}
         "400":
-          application/json: {"path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
+          application/json: {"path": "/etc", "timestamp": "<value>"}
         "422":
           application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/private", "timestamp": "<value>"}
+          application/json: {"path": "/srv", "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1347,13 +1347,13 @@ examples:
         "201":
           application/json: {"automaticNonce": false, "chainId": "3768.44", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "UNSIGNED", "value": "<value>"}
         "400":
-          application/json: {"path": "/media", "timestamp": "<value>"}
+          application/json: {"path": "/var/spool", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/dev", "timestamp": "<value>"}
+          application/json: {"path": "/opt", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
+          application/json: {"path": "/Library", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/mnt", "timestamp": "<value>"}
+          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
   getAllTransaction:
     "":
       parameters:
@@ -1368,7 +1368,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getAvailableNoncesWallet:
     "":
       parameters:
@@ -1379,13 +1379,13 @@ examples:
         "200":
           application/json: {"availableNonces": [], "nextNonce": "1616.24"}
         "400":
-          application/json: {"message": [], "path": "/etc/periodic", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/lost+found", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/var/mail", "timestamp": "<value>"}
+          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/lost+found", "timestamp": "<value>"}
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/media", "timestamp": "<value>"}
+          application/json: {"path": "/usr/libdata", "timestamp": "<value>"}
   getOneTransaction:
     "":
       parameters:
@@ -1395,9 +1395,9 @@ examples:
         "200":
           application/json: {"automaticNonce": false, "chainId": "4970.64", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "ERROR_TX", "value": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   getAllSettingRelayer:
     "":
       parameters:
@@ -1407,9 +1407,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "network": "<value>", "projectId": "<value>", "unstuckAutomaticGasPrice": true, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": "5588.34", "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": true, "unstuckMissingNonceDelay": "5442.21"}
         "400":
-          application/json: {"message": [], "path": "/usr/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/sbin", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/etc", "timestamp": "<value>"}
+          application/json: {"path": "/root", "timestamp": "<value>"}
   updateSettingRelayer:
     "":
       parameters:
@@ -1421,9 +1421,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "network": "<value>", "projectId": "<value>", "unstuckAutomaticGasPrice": false, "unstuckCustomGasPrice": true, "unstuckGasPriceDelay": "5971.29", "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": false, "unstuckMissingNonceDelay": "3446.2"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
   createNetwork:
     a:
       requestBody:
@@ -1432,7 +1432,7 @@ examples:
         "201":
           application/json: {"blockchain": "<value>", "chainId": "4865.89", "confirmationBlocks": "4893.82", "decimal": "6384.24", "displayName": "Rylan13", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
   deleteNetwork:
     "":
       parameters:
@@ -1442,9 +1442,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllNetwork:
     "":
       parameters:
@@ -1459,7 +1459,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneNetwork:
     "":
       parameters:
@@ -1469,9 +1469,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "chainId": "1929.72", "confirmationBlocks": "4970.64", "decimal": "3503.11", "displayName": "Laurine.Barrows", "eip1159": true, "enableExternalWallet": true, "enableListener": true, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   updateNetwork:
     a:
       parameters:
@@ -1483,9 +1483,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "chainId": "8574.78", "confirmationBlocks": "245.55", "decimal": "5971.29", "displayName": "Afton_Hegmann27", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1496,9 +1496,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "chainId": "2782.81", "confirmationBlocks": "8965.01", "decimal": "4995.57", "displayName": "Isac78", "eip1159": false, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Applications", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   createRpc:
     a:
       parameters:
@@ -1510,9 +1510,9 @@ examples:
         "201":
           application/json: {"id": "<id>", "isPublic": true, "networkName": "<value>", "type": "archive", "url": "https://timely-haven.biz"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1523,9 +1523,9 @@ examples:
         "201":
           application/json: {"id": "<id>", "isPublic": true, "networkName": "<value>", "type": "full", "url": "http://yummy-shift.info"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/dev", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
   deleteRpc:
     "":
       parameters:
@@ -1536,9 +1536,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllRpc:
     "":
       parameters:
@@ -1551,7 +1551,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneRpc:
     "":
       parameters:
@@ -1562,9 +1562,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "http://ornate-angina.info"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   updateRpc:
     a:
       parameters:
@@ -1577,9 +1577,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "https://advanced-filing.net"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1589,9 +1589,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "https://realistic-kill.info"}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Applications", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   deleteProjectMember:
     speakeasy-default-delete-project-member:
       parameters:
@@ -1601,18 +1601,18 @@ examples:
         "200":
           application/json: true
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
+          application/json: {"path": "/var/spool", "timestamp": "<value>"}
   getAllProjectMember:
     speakeasy-default-get-all-project-member:
       responses:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   createInvitation:
     speakeasy-default-create-invitation:
       requestBody:
@@ -1621,9 +1621,9 @@ examples:
         "201":
           application/json: {"email": "Jena.Nienow28@yahoo.com", "id": "<id>", "projectId": "<value>", "role": "owner"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
         "401":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
   deleteInvitation:
     "":
       parameters:
@@ -1633,9 +1633,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllInvitation:
     "":
       parameters:
@@ -1646,7 +1646,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   callSmartContract:
     a:
       parameters:
@@ -1661,13 +1661,13 @@ examples:
         "201":
           application/json: {"automaticNonce": true, "chainId": "8317.14", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "PENDING", "status": "INSUFFICIENT_FUNDS", "value": "<value>"}
         "400":
-          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
         "404":
           application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
         "422":
           application/json: {"path": "/media", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/media", "timestamp": "<value>"}
+          application/json: {"path": "/mnt", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1681,13 +1681,13 @@ examples:
         "201":
           application/json: {"automaticNonce": false, "chainId": "2865.22", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "PENDING", "status": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "value": "<value>"}
         "400":
-          application/json: {"path": "/media", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/Library", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/sys", "timestamp": "<value>"}
+          application/json: {"path": "/boot/defaults", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/opt", "timestamp": "<value>"}
+          application/json: {"path": "/etc", "timestamp": "<value>"}
   deleteSmartContract:
     "":
       parameters:
@@ -1698,9 +1698,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   deployFromBytecodeSmartContract:
     a:
       parameters:
@@ -1712,13 +1712,13 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "60839 Bartell Rapid", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "PUBLISHED"}, "transaction": {"automaticNonce": false, "chainId": "9578.35", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "ERROR", "status": "PUBLISHED", "value": "<value>"}}
         "400":
-          application/json: {"path": "/usr", "timestamp": "<value>"}
+          application/json: {"path": "/Applications", "timestamp": "<value>"}
         "404":
           application/json: {"path": "/opt/bin", "timestamp": "<value>"}
         "422":
           application/json: {"path": "/root", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/X11R6", "timestamp": "<value>"}
+          application/json: {"path": "/etc/defaults", "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1729,13 +1729,13 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "48819 Nikolaus Heights", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "INSUFFICIENT_FUNDS"}, "transaction": {"automaticNonce": false, "chainId": "4533.63", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "EXECUTION_WILL_FAIL", "value": "<value>"}}
         "400":
-          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/dev", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/var/log", "timestamp": "<value>"}
+          application/json: {"path": "/usr/obj", "timestamp": "<value>"}
         "422":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/home", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/opt/include", "timestamp": "<value>"}
+          application/json: {"path": "/opt/bin", "timestamp": "<value>"}
   deployFromTemplateSmartContract:
     a:
       parameters:
@@ -1747,11 +1747,11 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "9291 Zander Lights", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "RECEIVED_BY_STARTON"}, "transaction": {"automaticNonce": true, "chainId": "5157.68", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "MAX_GAS_PRICE_REACH", "value": "<value>"}}
         "400":
-          application/json: {"path": "/var/log", "timestamp": "<value>"}
+          application/json: {"path": "/home/user/dir", "timestamp": "<value>"}
         "404":
           application/json: {"path": "/etc/mail", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/var/spool", "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1762,11 +1762,11 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "74997 Antwon Forge", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "NONCE_EXPIRED"}, "transaction": {"automaticNonce": false, "chainId": "7175.86", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<value>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "GAS_LIMIT_ESTIMATED", "value": "<value>"}}
         "400":
-          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/opt", "timestamp": "<value>"}
+          application/json: {"path": "/usr/src", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/etc/mail", "timestamp": "<value>"}
+          application/json: {"path": "/var/log", "timestamp": "<value>"}
   encodeSmartContract:
     a:
       parameters:
@@ -1777,7 +1777,7 @@ examples:
         application/json: {"functionName": "mint", "params": ["0x298e760768c8481780397eE28A127eAd584df4ee", "1000000000000000000"]}
       responses:
         "400":
-          application/json: {"path": "/usr", "timestamp": "<value>"}
+          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
         "404":
           application/json: {"path": "/bin", "timestamp": "<value>"}
         "500":
@@ -1792,11 +1792,11 @@ examples:
         application/json: {"functionName": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"]}
       responses:
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"path": "/boot", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/selinux", "timestamp": "<value>"}
+          application/json: {"path": "/etc/defaults", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/etc/ppp", "timestamp": "<value>"}
+          application/json: {"path": "/sys", "timestamp": "<value>"}
         "201": {}
   getAllSmartContract:
     "":
@@ -1812,7 +1812,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getAvailableFunctionsSmartContract:
     "":
       parameters:
@@ -1823,11 +1823,11 @@ examples:
         "200":
           application/json: {"call": [], "events": [], "read": []}
         "400":
-          application/json: {"path": "/home", "timestamp": "<value>"}
-        "404":
           application/json: {"path": "/usr/obj", "timestamp": "<value>"}
+        "404":
+          application/json: {"path": "/media", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/sbin", "timestamp": "<value>"}
+          application/json: {"path": "/Library", "timestamp": "<value>"}
   getOneSmartContract:
     "":
       parameters:
@@ -1841,9 +1841,9 @@ examples:
         "200":
           application/json: {"address": "43504 Penelope Expressway", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "EXECUTION_WILL_FAIL"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   importExistingSmartContract:
     a:
       requestBody:
@@ -1852,7 +1852,7 @@ examples:
         "201":
           application/json: {"address": "2964 Maggio Cove", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "COULD_NOT_ESTIMATE_GAS_LIMIT"}
         "400":
-          application/json: {"path": "/lost+found", "timestamp": "<value>"}
+          application/json: {"path": "/var/spool", "timestamp": "<value>"}
   readSmartContract:
     a:
       parameters:
@@ -1865,11 +1865,11 @@ examples:
         "201":
           application/json: {"address": "660 Romaine Highway", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": {}}
         "400":
-          application/json: {"message": [], "path": "/Users", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/etc/namedb", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
-        "500":
           application/json: {"path": "/opt/bin", "timestamp": "<value>"}
+        "500":
+          application/json: {"path": "/rescue", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1881,11 +1881,11 @@ examples:
         "201":
           application/json: {"address": "742 Feil Lane", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": {}}
         "400":
-          application/json: {"path": "/etc", "timestamp": "<value>"}
+          application/json: {"path": "/home/user", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/lib", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/local/bin", "timestamp": "<value>"}
+          application/json: {"path": "/usr", "timestamp": "<value>"}
   updateSmartContract:
     a:
       parameters:
@@ -1898,9 +1898,9 @@ examples:
         "200":
           application/json: {"address": "050 Mellie Well", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "PENDING", "status": "SENT_TO_MEMPOOL"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1910,9 +1910,9 @@ examples:
         "200":
           application/json: {"address": "449 Amiya Forge", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "COULD_NOT_UNSTUCK_NONCE"}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Applications", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   getAllSmartContractTemplate:
     "":
       parameters:
@@ -1930,7 +1930,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneSmartContractTemplate:
     "":
       parameters:
@@ -1942,9 +1942,9 @@ examples:
         "200":
           application/json: {"abi": [], "blockchains": [], "category": "FUNGIBLE", "description": "Networked even-keeled matrices", "githubUrl": "<value>", "humanReadableAbi": [], "id": "<id>", "name": "<value>", "shortDescription": "<value>", "tags": []}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   createWatcher:
     a:
       requestBody:
@@ -1953,13 +1953,13 @@ examples:
         "201":
           application/json: {"address": "4684 Bria Shores", "confirmationsBlocks": "690.25", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "GAS_PRICE", "type": "EVENT_TRANSFER", "webhookUrl": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
         "409":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/opt/sbin", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/etc/namedb", "timestamp": "<value>"}
         "500":
-          application/json: {"path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"path": "/dev", "timestamp": "<value>"}
   deleteWatcher:
     speakeasy-default-delete-watcher:
       parameters:
@@ -1969,9 +1969,9 @@ examples:
         "200":
           application/json: "5459.07"
         "400":
-          application/json: {"message": [], "path": "/root", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/ports", "timestamp": "<value>"}
+          application/json: {"path": "/opt/include", "timestamp": "<value>"}
   getAllWatcher:
     "":
       parameters:
@@ -1989,7 +1989,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getAllWatcherEvent:
     "":
       parameters:
@@ -2012,9 +2012,9 @@ examples:
         "200":
           application/json: {"address": "43504 Penelope Expressway", "confirmationsBlocks": "9175.33", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "TRANSACTION", "type": "ADDRESS_RECEIVED_NATIVE_CURRENCY", "webhookUrl": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   getOneWatcherEvent:
     "":
       parameters:
@@ -2025,9 +2025,9 @@ examples:
         "200":
           application/json: {"blockHash": "<value>", "blockNumber": "1603.15", "id": "<id>", "network": "<value>", "projectId": "<value>", "status": "CANCELED", "txHash": "<value>", "watcherId": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/etc/periodic", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/Applications", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/etc/periodic", "timestamp": "<value>"}
   updateWatcher:
     a:
       parameters:
@@ -2039,9 +2039,9 @@ examples:
         "200":
           application/json: {"address": "050 Mellie Well", "confirmationsBlocks": "2703.24", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "EVENT", "type": "ERC721_EVENT_TRANSFER", "webhookUrl": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/usr/sbin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/srv", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -2052,9 +2052,9 @@ examples:
         "200":
           application/json: {"address": "9102 Kutch Lake", "confirmationsBlocks": "3691.82", "id": "<id>", "network": "<value>", "paused": true, "projectId": "<value>", "triggerType": "GAS_PRICE", "type": "ADDRESS_RECEIVED_NATIVE_CURRENCY", "webhookUrl": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Applications", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   cancelWebhook:
     "":
       parameters:
@@ -2064,11 +2064,11 @@ examples:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
         "400":
-          application/json: {"message": [], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/var/yp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/home", "timestamp": "<value>"}
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/var/yp", "timestamp": "<value>"}
+          application/json: {"path": "/etc", "timestamp": "<value>"}
   getAllWebhook:
     "":
       parameters:
@@ -2080,7 +2080,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": "4610.08", "itemCount": "8581.62", "itemsPerPage": "592.15"}}
         "400":
-          application/json: {"message": [], "path": "/private", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/boot/defaults", "timestamp": "<value>"}
   getOneWebhook:
     "":
       parameters:
@@ -2090,25 +2090,25 @@ examples:
         "200":
           application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
         "400":
-          application/json: {"message": [], "path": "/home", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   getOneWebhookSigningSecret:
     speakeasy-default-get-one-webhook-signing-secret:
       responses:
         "200":
           application/json: {"projectId": "<value>", "secret": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/opt/lib", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/etc/defaults", "timestamp": "<value>"}
   createWebhookSigningSecret:
     speakeasy-default-create-webhook-signing-secret:
       responses:
         "201":
           application/json: {"projectId": "<value>", "secret": "<value>"}
         "400":
-          application/json: {"message": [], "path": "/Users", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/etc/ppp", "timestamp": "<value>"}
         "401":
-          application/json: {"path": "/lib", "timestamp": "<value>"}
+          application/json: {"path": "/etc/periodic", "timestamp": "<value>"}
   resendWebhook:
     "":
       parameters:
@@ -2118,8 +2118,8 @@ examples:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
         "400":
-          application/json: {"message": [], "path": "/private/var", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/usr/libdata", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/boot/defaults", "timestamp": "<value>"}
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/usr/libdata", "timestamp": "<value>"}
+          application/json: {"path": "/System", "timestamp": "<value>"}

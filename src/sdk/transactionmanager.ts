@@ -16,7 +16,7 @@ import { unwrapAsync } from "./types/fp.js";
 export class TransactionManager extends ClientSDK {
   private _setting?: Setting;
   get setting(): Setting {
-    return (this._setting ??= new Setting(this.options$));
+    return (this._setting ??= new Setting(this._options));
   }
 
   /**

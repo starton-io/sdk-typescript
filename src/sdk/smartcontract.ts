@@ -8,6 +8,6 @@ import { Template } from "./template.js";
 export class SmartContract extends ClientSDK {
   private _template?: Template;
   get template(): Template {
-    return (this._template ??= new Template(this.options$));
+    return (this._template ??= new Template(this._options));
   }
 }

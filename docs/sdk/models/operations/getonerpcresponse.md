@@ -7,7 +7,7 @@ import { GetOneRpcResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneRpcResponse = {
   contentType: "<value>",
-  statusCode: 128926,
+  statusCode: 586513,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

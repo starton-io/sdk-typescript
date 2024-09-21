@@ -18,58 +18,58 @@ import { Webhook } from "./webhook.js";
 export class Starton extends ClientSDK {
   private _data?: Data;
   get data(): Data {
-    return (this._data ??= new Data(this.options$));
+    return (this._data ??= new Data(this._options));
   }
 
   private _wallet?: Wallet;
   get wallet(): Wallet {
-    return (this._wallet ??= new Wallet(this.options$));
+    return (this._wallet ??= new Wallet(this._options));
   }
 
   private _ipfs?: Ipfs;
   get ipfs(): Ipfs {
-    return (this._ipfs ??= new Ipfs(this.options$));
+    return (this._ipfs ??= new Ipfs(this._options));
   }
 
   private _kms?: Kms;
   get kms(): Kms {
-    return (this._kms ??= new Kms(this.options$));
+    return (this._kms ??= new Kms(this._options));
   }
 
   private _transactionManager?: TransactionManager;
   get transactionManager(): TransactionManager {
-    return (this._transactionManager ??= new TransactionManager(this.options$));
+    return (this._transactionManager ??= new TransactionManager(this._options));
   }
 
   private _network?: Network;
   get network(): Network {
-    return (this._network ??= new Network(this.options$));
+    return (this._network ??= new Network(this._options));
   }
 
   private _project?: Project;
   get project(): Project {
-    return (this._project ??= new Project(this.options$));
+    return (this._project ??= new Project(this._options));
   }
 
   private _smartContractManagement?: SmartContractManagement;
   get smartContractManagement(): SmartContractManagement {
     return (this._smartContractManagement ??= new SmartContractManagement(
-      this.options$,
+      this._options,
     ));
   }
 
   private _smartContract?: SmartContract;
   get smartContract(): SmartContract {
-    return (this._smartContract ??= new SmartContract(this.options$));
+    return (this._smartContract ??= new SmartContract(this._options));
   }
 
   private _monitor?: Monitor;
   get monitor(): Monitor {
-    return (this._monitor ??= new Monitor(this.options$));
+    return (this._monitor ??= new Monitor(this._options));
   }
 
   private _webhook?: Webhook;
   get webhook(): Webhook {
-    return (this._webhook ??= new Webhook(this.options$));
+    return (this._webhook ??= new Webhook(this._options));
   }
 }

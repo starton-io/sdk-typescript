@@ -7,7 +7,7 @@ import { ResyncNoncesWalletResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: ResyncNoncesWalletResponse = {
   contentType: "<value>",
-  statusCode: 791725,
+  statusCode: 978619,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -7,7 +7,7 @@ import { UploadFromFolderPinResponse } from "@starton/sdk/sdk/models/operations"
 
 let value: UploadFromFolderPinResponse = {
   contentType: "<value>",
-  statusCode: 957156,
+  statusCode: 617636,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

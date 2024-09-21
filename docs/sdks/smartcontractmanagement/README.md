@@ -302,7 +302,7 @@ async function run() {
       name: "Minimal test contract",
       network: "polygon-mumbai",
       params: [
-        "<value>",
+        5392.97,
       ],
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
     },

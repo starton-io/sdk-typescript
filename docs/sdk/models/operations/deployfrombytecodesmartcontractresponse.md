@@ -7,7 +7,7 @@ import { DeployFromBytecodeSmartContractResponse } from "@starton/sdk/sdk/models
 
 let value: DeployFromBytecodeSmartContractResponse = {
   contentType: "<value>",
-  statusCode: 97101,
+  statusCode: 896547,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

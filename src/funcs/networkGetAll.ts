@@ -4,12 +4,9 @@
 
 import { StartonCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -39,7 +36,7 @@ import {
  * Fetches a paginated list of networks available in the current project.
  */
 export async function networkGetAll(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.GetAllNetworkRequest,
   options?: RequestOptions,
 ): Promise<
@@ -57,70 +54,70 @@ export async function networkGetAll(
     >
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.GetAllNetworkRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.GetAllNetworkRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return haltIterator(parsed$);
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const path$ = pathToFunc("/v3/network")();
+  const path = pathToFunc("/v3/network")();
 
-  const query$ = encodeFormQuery$({
-    "chainIds": payload$.chainIds,
-    "id": payload$.id,
-    "limit": payload$.limit,
-    "page": payload$.page,
-    "testnet": payload$.testnet,
+  const query = encodeFormQuery({
+    "chainIds": payload.chainIds,
+    "id": payload.id,
+    "limit": payload.limit,
+    "page": payload.page,
+    "testnet": payload.testnet,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "origin": encodeSimple$("origin", payload$.origin, {
+    "origin": encodeSimple("origin", payload.origin, {
       explode: false,
       charEncoding: "none",
     }),
-    "x-platform-hostname": encodeSimple$(
+    "x-platform-hostname": encodeSimple(
       "x-platform-hostname",
-      payload$["x-platform-hostname"],
+      payload["x-platform-hostname"],
       { explode: false, charEncoding: "none" },
     ),
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "getAllNetwork",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -128,7 +125,7 @@ export async function networkGetAll(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -136,7 +133,7 @@ export async function networkGetAll(
     Headers: {},
   };
 
-  const [result$, raw$] = await m$.match<
+  const [result, raw] = await M.match<
     operations.GetAllNetworkResponse,
     | errors.GetAllNetworkResponseBody
     | SDKError
@@ -147,14 +144,14 @@ export async function networkGetAll(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.GetAllNetworkResponse$inboundSchema, {
+    M.json(200, operations.GetAllNetworkResponse$inboundSchema, {
       key: "NetworkPaginated",
     }),
-    m$.jsonErr(400, errors.GetAllNetworkResponseBody$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return haltIterator(result$);
+    M.jsonErr(400, errors.GetAllNetworkResponseBody$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
   const nextFunc = (
@@ -172,7 +169,7 @@ export async function networkGetAll(
       | ConnectionError
     >
   > => {
-    const page = input$?.page || 0;
+    const page = input?.page || 0;
     const nextPage = page + 1;
     const numPages = dlv(responseData, "meta.totalPages");
     if (numPages == null || numPages <= page) {
@@ -186,22 +183,22 @@ export async function networkGetAll(
     if (!Array.isArray(results) || !results.length) {
       return () => null;
     }
-    const limit = input$?.limit || 0;
+    const limit = input?.limit || 0;
     if (results.length < limit) {
       return () => null;
     }
 
     return () =>
       networkGetAll(
-        client$,
+        client,
         {
-          ...input$,
+          ...input,
           page: nextPage,
         },
         options,
       );
   };
 
-  const page$ = { ...result$, next: nextFunc(raw$) };
-  return { ...page$, ...createPageIterator(page$, (v) => !v.ok) };
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

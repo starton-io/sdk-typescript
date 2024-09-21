@@ -6,14 +6,14 @@
 import { TriggerType, Watcher, WatcherType } from "@starton/sdk/sdk/models/shared";
 
 let value: Watcher = {
-  address: "9262 Anderson Cape",
-  confirmationsBlocks: 4344.17,
+  address: "24909 Maple Street",
+  confirmationsBlocks: 3267.01,
   id: "<id>",
   network: "<value>",
   paused: false,
   projectId: "<value>",
-  triggerType: TriggerType.Transaction,
-  type: WatcherType.AddressSentNativeCurrency,
+  triggerType: TriggerType.Block,
+  type: WatcherType.Erc1155EventTransferSingle,
   webhookUrl: "<value>",
 };
 ```

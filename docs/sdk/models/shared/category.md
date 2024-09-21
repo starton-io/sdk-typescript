@@ -5,7 +5,7 @@
 ```typescript
 import { Category } from "@starton/sdk/sdk/models/shared";
 
-let value: Category = Category.Fungible;
+let value: Category = Category.Other;
 ```
 
 ## Values

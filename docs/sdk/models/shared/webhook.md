@@ -11,8 +11,8 @@ let value: Webhook = {
   payload: {},
   projectId: "<value>",
   refId: "<value>",
-  status: WebhookStatus.Failed,
-  url: "http://monstrous-ambassador.org",
+  status: WebhookStatus.Successful,
+  url: "https://fair-ceramic.com/",
 };
 ```
 

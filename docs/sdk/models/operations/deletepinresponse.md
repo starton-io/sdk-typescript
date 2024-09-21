@@ -7,7 +7,7 @@ import { DeletePinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeletePinResponse = {
   contentType: "<value>",
-  statusCode: 479977,
+  statusCode: 780529,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

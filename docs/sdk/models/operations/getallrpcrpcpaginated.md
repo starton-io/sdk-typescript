@@ -13,13 +13,13 @@ let value: GetAllRpcRpcPaginated = {
       isPublic: false,
       networkName: "<value>",
       type: RpcType.Archive,
-      url: "http://wiggly-plane.name",
+      url: "https://vengeful-farmer.net",
     },
   ],
   meta: {
-    currentPage: 6706.38,
-    itemCount: 1709.09,
-    itemsPerPage: 2103.82,
+    currentPage: 1317.98,
+    itemCount: 7163.27,
+    itemsPerPage: 2894.06,
   },
 };
 ```

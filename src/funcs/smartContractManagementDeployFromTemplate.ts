@@ -3,12 +3,9 @@
  */
 
 import { StartonCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeJSON as encodeJSON$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +29,7 @@ import { Result } from "../sdk/types/fp.js";
  * Deploy from Starton audited smart contract template.
  */
 export async function smartContractManagementDeployFromTemplate(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.DeployFromTemplateSmartContractRequest,
   options?: RequestOptions,
 ): Promise<
@@ -50,63 +47,63 @@ export async function smartContractManagementDeployFromTemplate(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
+  const parsed = safeParse(
+    input,
+    (value) =>
       operations.DeployFromTemplateSmartContractRequest$outboundSchema.parse(
-        value$,
+        value,
       ),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.DeployFromTemplateDto, {
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.DeployFromTemplateDto, {
     explode: true,
   });
 
-  const path$ = pathToFunc("/v3/smart-contract/from-template")();
+  const path = pathToFunc("/v3/smart-contract/from-template")();
 
-  const query$ = encodeFormQuery$({
-    "simulate": payload$.simulate,
+  const query = encodeFormQuery({
+    "simulate": payload.simulate,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "deployFromTemplateSmartContract",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "404", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -114,7 +111,7 @@ export async function smartContractManagementDeployFromTemplate(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -122,7 +119,7 @@ export async function smartContractManagementDeployFromTemplate(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.DeployFromTemplateSmartContractResponse,
     | errors.DeployFromTemplateSmartContractResponseBody
     | errors.DeployFromTemplateSmartContractSmartContractManagementResponseBody
@@ -135,30 +132,30 @@ export async function smartContractManagementDeployFromTemplate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(
+    M.json(
       201,
       operations.DeployFromTemplateSmartContractResponse$inboundSchema,
       { key: "DeploySmartContractResponse" },
     ),
-    m$.jsonErr(
+    M.jsonErr(
       400,
       errors.DeployFromTemplateSmartContractResponseBody$inboundSchema,
     ),
-    m$.jsonErr(
+    M.jsonErr(
       404,
       errors
         .DeployFromTemplateSmartContractSmartContractManagementResponseBody$inboundSchema,
     ),
-    m$.jsonErr(
+    M.jsonErr(
       500,
       errors
         .DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

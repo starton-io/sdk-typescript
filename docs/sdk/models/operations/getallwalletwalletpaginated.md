@@ -8,16 +8,16 @@ import { GetAllWalletWalletPaginated } from "@starton/sdk/sdk/models/operations"
 let value: GetAllWalletWalletPaginated = {
   items: [
     {
-      address: "584 Oberbrunner Hill",
+      address: "4893 N High Street",
       kmsId: "<value>",
       projectId: "<value>",
       providerKeyId: "<value>",
     },
   ],
   meta: {
-    currentPage: 4375.87,
-    itemCount: 2975.34,
-    itemsPerPage: 8917.73,
+    currentPage: 5680.45,
+    itemCount: 9255.97,
+    itemsPerPage: 710.36,
   },
 };
 ```

@@ -5,7 +5,7 @@
 ```typescript
 import { ReadDtoParams } from "@starton/sdk/sdk/models/shared";
 
-let value: ReadDtoParams = "<value>";
+let value: ReadDtoParams = 627.13;
 ```
 
 ## Supported Types

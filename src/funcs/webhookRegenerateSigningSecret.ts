@@ -3,7 +3,7 @@
  */
 
 import { StartonCore } from "../core.js";
-import * as m$ from "../lib/matchers.js";
+import * as M from "../lib/matchers.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -27,7 +27,7 @@ import { Result } from "../sdk/types/fp.js";
  * Generates a new signing secret for your project, invalidating the old one. All subsequent payloads from Starton's API will be signed using this new secret, enhancing the security of your webhook integrations.
  */
 export async function webhookRegenerateSigningSecret(
-  client$: StartonCore,
+  client: StartonCore,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -43,38 +43,38 @@ export async function webhookRegenerateSigningSecret(
     | ConnectionError
   >
 > {
-  const path$ = pathToFunc("/v3/webhook/signing-secret/regenerate")();
+  const path = pathToFunc("/v3/webhook/signing-secret/regenerate")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "createWebhookSigningSecret",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -82,7 +82,7 @@ export async function webhookRegenerateSigningSecret(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -90,7 +90,7 @@ export async function webhookRegenerateSigningSecret(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.CreateWebhookSigningSecretResponse,
     | errors.CreateWebhookSigningSecretResponseBody
     | errors.CreateWebhookSigningSecretWebhookResponseBody
@@ -102,22 +102,19 @@ export async function webhookRegenerateSigningSecret(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, operations.CreateWebhookSigningSecretResponse$inboundSchema, {
+    M.json(201, operations.CreateWebhookSigningSecretResponse$inboundSchema, {
       key: "WebhookSigningSecret",
     }),
-    m$.jsonErr(
-      400,
-      errors.CreateWebhookSigningSecretResponseBody$inboundSchema,
-    ),
-    m$.jsonErr(
+    M.jsonErr(400, errors.CreateWebhookSigningSecretResponseBody$inboundSchema),
+    M.jsonErr(
       401,
       errors.CreateWebhookSigningSecretWebhookResponseBody$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

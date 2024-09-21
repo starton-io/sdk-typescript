@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "@starton/sdk/sdk/models/operations";
 
-let value: Status = Status.Pinned;
+let value: Status = Status.Queued;
 ```
 
 ## Values

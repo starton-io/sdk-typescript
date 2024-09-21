@@ -7,7 +7,7 @@ import { GetAllWatcherEventResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllWatcherEventResponse = {
   contentType: "<value>",
-  statusCode: 20107,
+  statusCode: 311796,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

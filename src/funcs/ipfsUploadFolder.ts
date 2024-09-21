@@ -3,9 +3,9 @@
  */
 
 import { StartonCore } from "../core.js";
-import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -29,7 +29,7 @@ import { Result } from "../sdk/types/fp.js";
  * Upload an entire folder to IPFS, ensuring secure pinning of its contents for reliable retrieval. This endpoint expects a multipart/form-data payload, consisting of an optional metadata object and an array of files. The successful upload of the folder will result in a unique Content Identifier (CID) reference, which can be used to fetch the folder and its contents from IPFS at any time.
  */
 export async function ipfsUploadFolder(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.UploadFromFolderPinRequestBody,
   options?: RequestOptions,
 ): Promise<
@@ -46,63 +46,63 @@ export async function ipfsUploadFolder(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.UploadFromFolderPinRequestBody$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.UploadFromFolderPinRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = new FormData();
+  const payload = parsed.value;
+  const body = new FormData();
 
-  if (payload$.files !== undefined) {
-    body$.append("files", String(payload$.files));
+  if (payload.files !== undefined) {
+    body.append("files", String(payload.files));
   }
-  if (payload$.metadata !== undefined) {
-    body$.append(
+  if (payload.metadata !== undefined) {
+    body.append(
       "metadata",
-      encodeJSON$("metadata", payload$.metadata, { explode: true }),
+      encodeJSON("metadata", payload.metadata, { explode: true }),
     );
   }
 
-  const path$ = pathToFunc("/v3/ipfs/folder")();
+  const path = pathToFunc("/v3/ipfs/folder")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "uploadFromFolderPin",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "413", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -110,7 +110,7 @@ export async function ipfsUploadFolder(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -118,7 +118,7 @@ export async function ipfsUploadFolder(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.UploadFromFolderPinResponse,
     | errors.UploadFromFolderPinResponseBody
     | errors.UploadFromFolderPinIpfsResponseBody
@@ -130,16 +130,16 @@ export async function ipfsUploadFolder(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, operations.UploadFromFolderPinResponse$inboundSchema, {
+    M.json(201, operations.UploadFromFolderPinResponse$inboundSchema, {
       key: "Pin",
     }),
-    m$.jsonErr(400, errors.UploadFromFolderPinResponseBody$inboundSchema),
-    m$.jsonErr(413, errors.UploadFromFolderPinIpfsResponseBody$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.jsonErr(400, errors.UploadFromFolderPinResponseBody$inboundSchema),
+    M.jsonErr(413, errors.UploadFromFolderPinIpfsResponseBody$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

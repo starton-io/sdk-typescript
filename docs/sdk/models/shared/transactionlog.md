@@ -8,7 +8,7 @@ import { TransactionLog, TransactionLogType } from "@starton/sdk/sdk/models/shar
 let value: TransactionLog = {
   createdAt: "<value>",
   message: "<value>",
-  type: TransactionLogType.CouldNotBroadcast,
+  type: TransactionLogType.Published,
 };
 ```
 

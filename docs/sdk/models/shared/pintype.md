@@ -5,7 +5,7 @@
 ```typescript
 import { PinType } from "@starton/sdk/sdk/models/shared";
 
-let value: PinType = PinType.File;
+let value: PinType = PinType.Directory;
 ```
 
 ## Values

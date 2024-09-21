@@ -9,21 +9,21 @@ import { TriggerType, WatcherType } from "@starton/sdk/sdk/models/shared";
 let value: GetAllWatcherWatcherPaginated = {
   items: [
     {
-      address: "509 Emily Avenue",
-      confirmationsBlocks: 6674.11,
+      address: "26529 Leuschke Overpass",
+      confirmationsBlocks: 7301.22,
       id: "<id>",
       network: "<value>",
       paused: false,
       projectId: "<value>",
-      triggerType: TriggerType.GasPrice,
-      type: WatcherType.AddressActivity,
+      triggerType: TriggerType.Transaction,
+      type: WatcherType.EventTransfer,
       webhookUrl: "<value>",
     },
   ],
   meta: {
-    currentPage: 6471.74,
-    itemCount: 7163.27,
-    itemsPerPage: 8413.86,
+    currentPage: 2098.44,
+    itemCount: 1861.93,
+    itemsPerPage: 9443.72,
   },
 };
 ```

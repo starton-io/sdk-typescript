@@ -7,10 +7,10 @@ import { Network } from "@starton/sdk/sdk/models/shared";
 
 let value: Network = {
   blockchain: "<value>",
-  chainId: 7491.7,
-  confirmationBlocks: 4287.69,
-  decimal: 8784.53,
-  displayName: "Brice9",
+  chainId: 2817.30,
+  confirmationBlocks: 5864.10,
+  decimal: 639.55,
+  displayName: "Jeanette23",
   eip1159: false,
   enableExternalWallet: false,
   enableListener: false,

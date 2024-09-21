@@ -7,7 +7,7 @@ import { ClaimFaucetResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: ClaimFaucetResponse = {
   contentType: "<value>",
-  statusCode: 477665,
+  statusCode: 870013,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

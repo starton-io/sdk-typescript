@@ -7,7 +7,7 @@ import { GetOneSmartContractResponse } from "@starton/sdk/sdk/models/operations"
 
 let value: GetOneSmartContractResponse = {
   contentType: "<value>",
-  statusCode: 441711,
+  statusCode: 807319,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

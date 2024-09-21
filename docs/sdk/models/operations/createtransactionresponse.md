@@ -7,7 +7,7 @@ import { CreateTransactionResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CreateTransactionResponse = {
   contentType: "<value>",
-  statusCode: 780529,
+  statusCode: 210382,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

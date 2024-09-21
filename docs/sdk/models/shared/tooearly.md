@@ -6,7 +6,7 @@
 import { TooEarly } from "@starton/sdk/sdk/models/shared";
 
 let value: TooEarly = {
-  path: "/etc/defaults",
+  path: "/Library",
   timestamp: "<value>",
 };
 ```

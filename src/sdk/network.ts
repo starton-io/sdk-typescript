@@ -17,7 +17,7 @@ import { unwrapAsync } from "./types/fp.js";
 export class Network extends ClientSDK {
   private _rpc?: Rpc;
   get rpc(): Rpc {
-    return (this._rpc ??= new Rpc(this.options$));
+    return (this._rpc ??= new Rpc(this._options));
   }
 
   /**

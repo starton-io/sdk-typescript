@@ -11,13 +11,13 @@ let value: GetAllPinPinPaginated = {
     {
       id: "<id>",
       projectId: "<value>",
-      status: Status.Pinning,
+      status: Status.Failed,
     },
   ],
   meta: {
-    currentPage: 9255.97,
-    itemCount: 8360.79,
-    itemsPerPage: 710.36,
+    currentPage: 1433.53,
+    itemCount: 9446.69,
+    itemsPerPage: 5218.48,
   },
 };
 ```

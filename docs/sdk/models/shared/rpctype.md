@@ -5,7 +5,7 @@
 ```typescript
 import { RpcType } from "@starton/sdk/sdk/models/shared";
 
-let value: RpcType = RpcType.Full;
+let value: RpcType = RpcType.Archive;
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { WebhookStatus } from "@starton/sdk/sdk/models/shared";
 
-let value: WebhookStatus = WebhookStatus.Successful;
+let value: WebhookStatus = WebhookStatus.Retrying;
 ```
 
 ## Values

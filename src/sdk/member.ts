@@ -12,7 +12,7 @@ import { unwrapAsync } from "./types/fp.js";
 export class Member extends ClientSDK {
   private _invitation?: Invitation;
   get invitation(): Invitation {
-    return (this._invitation ??= new Invitation(this.options$));
+    return (this._invitation ??= new Invitation(this._options));
   }
 
   /**

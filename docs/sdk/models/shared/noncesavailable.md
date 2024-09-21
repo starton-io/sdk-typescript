@@ -7,9 +7,9 @@ import { NoncesAvailable } from "@starton/sdk/sdk/models/shared";
 
 let value: NoncesAvailable = {
   availableNonces: [
-    2879.91,
+    164.30,
   ],
-  nextNonce: 2900.77,
+  nextNonce: 9295.29,
 };
 ```
 

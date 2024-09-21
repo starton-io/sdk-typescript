@@ -7,7 +7,7 @@ import { AddressNativeBalanceResponse } from "@starton/sdk/sdk/models/shared";
 
 let value: AddressNativeBalanceResponse = {
   balance: "<value>",
-  decimal: 5920.42,
+  decimal: 5883.17,
   formatted: "<value>",
   symbol: "<value>",
 };

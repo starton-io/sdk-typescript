@@ -3,12 +3,9 @@
  */
 
 import { StartonCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +29,7 @@ import { Result } from "../sdk/types/fp.js";
  * Fetches details of a specific smart contract based on network and address.
  */
 export async function smartContractManagementGetOne(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.GetOneSmartContractRequest,
   options?: RequestOptions,
 ): Promise<
@@ -49,72 +46,70 @@ export async function smartContractManagementGetOne(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.GetOneSmartContractRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.GetOneSmartContractRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    address: encodeSimple$("address", payload$.address, {
+  const pathParams = {
+    address: encodeSimple("address", payload.address, {
       explode: false,
       charEncoding: "percent",
     }),
-    network: encodeSimple$("network", payload$.network, {
+    network: encodeSimple("network", payload.network, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/v3/smart-contract/{network}/{address}")(
-    pathParams$,
-  );
+  const path = pathToFunc("/v3/smart-contract/{network}/{address}")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "includeAbi": payload$.includeAbi,
-    "includeCompilationDetails": payload$.includeCompilationDetails,
+  const query = encodeFormQuery({
+    "includeAbi": payload.includeAbi,
+    "includeCompilationDetails": payload.includeCompilationDetails,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "getOneSmartContract",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "404", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -122,7 +117,7 @@ export async function smartContractManagementGetOne(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -130,7 +125,7 @@ export async function smartContractManagementGetOne(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.GetOneSmartContractResponse,
     | errors.GetOneSmartContractResponseBody
     | errors.GetOneSmartContractSmartContractManagementResponseBody
@@ -142,20 +137,20 @@ export async function smartContractManagementGetOne(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.GetOneSmartContractResponse$inboundSchema, {
+    M.json(200, operations.GetOneSmartContractResponse$inboundSchema, {
       key: "SmartContract",
     }),
-    m$.jsonErr(400, errors.GetOneSmartContractResponseBody$inboundSchema),
-    m$.jsonErr(
+    M.jsonErr(400, errors.GetOneSmartContractResponseBody$inboundSchema),
+    M.jsonErr(
       404,
       errors
         .GetOneSmartContractSmartContractManagementResponseBody$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

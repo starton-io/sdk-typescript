@@ -3,12 +3,9 @@
  */
 
 import { StartonCore } from "../core.js";
-import {
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +29,7 @@ import { Result } from "../sdk/types/fp.js";
  * Display the encoded data that is sent to a smart contract
  */
 export async function smartContractManagementEncode(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.EncodeSmartContractRequest,
   options?: RequestOptions,
 ): Promise<
@@ -50,67 +47,67 @@ export async function smartContractManagementEncode(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.EncodeSmartContractRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.EncodeSmartContractRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.EncodeDto, { explode: true });
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.EncodeDto, { explode: true });
 
-  const pathParams$ = {
-    address: encodeSimple$("address", payload$.address, {
+  const pathParams = {
+    address: encodeSimple("address", payload.address, {
       explode: false,
       charEncoding: "percent",
     }),
-    network: encodeSimple$("network", payload$.network, {
+    network: encodeSimple("network", payload.network, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/v3/smart-contract/{network}/{address}/encode")(
-    pathParams$,
+  const path = pathToFunc("/v3/smart-contract/{network}/{address}/encode")(
+    pathParams,
   );
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "encodeSmartContract",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "404", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -118,7 +115,7 @@ export async function smartContractManagementEncode(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -126,7 +123,7 @@ export async function smartContractManagementEncode(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.EncodeSmartContractResponse,
     | errors.EncodeSmartContractResponseBody
     | errors.EncodeSmartContractSmartContractManagementResponseBody
@@ -139,25 +136,25 @@ export async function smartContractManagementEncode(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, operations.EncodeSmartContractResponse$inboundSchema, {
+    M.json(201, operations.EncodeSmartContractResponse$inboundSchema, {
       key: "EncodeSmartContractResponse",
     }),
-    m$.jsonErr(400, errors.EncodeSmartContractResponseBody$inboundSchema),
-    m$.jsonErr(
+    M.jsonErr(400, errors.EncodeSmartContractResponseBody$inboundSchema),
+    M.jsonErr(
       404,
       errors
         .EncodeSmartContractSmartContractManagementResponseBody$inboundSchema,
     ),
-    m$.jsonErr(
+    M.jsonErr(
       500,
       errors
         .EncodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

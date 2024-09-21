@@ -3,10 +3,10 @@
  */
 
 import { StartonCore } from "../core.js";
-import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import { readableStreamToArrayBuffer } from "../lib/files.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +32,7 @@ import { isReadableStream } from "../sdk/types/streams.js";
  * Safely upload a file to IPFS, ensuring it gets securely pinned for reliable retrieval, and receive a unique CID as a reference to the uploaded content. THE BODY PARAMETERS ARE FORM PARAMETERS FOR THIS ENDPOINT.
  */
 export async function ipfsUploadFile(
-  client$: StartonCore,
+  client: StartonCore,
   request: operations.UploadFromFilePinRequestBody,
   options?: RequestOptions,
 ): Promise<
@@ -49,75 +49,75 @@ export async function ipfsUploadFile(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.UploadFromFilePinRequestBody$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.UploadFromFilePinRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = new FormData();
+  const payload = parsed.value;
+  const body = new FormData();
 
-  if (payload$.file !== undefined) {
-    if (isBlobLike(payload$.file)) {
-      body$.append("file", payload$.file);
-    } else if (isReadableStream(payload$.file.content)) {
-      const buffer = await readableStreamToArrayBuffer(payload$.file.content);
+  if (payload.file !== undefined) {
+    if (isBlobLike(payload.file)) {
+      body.append("file", payload.file);
+    } else if (isReadableStream(payload.file.content)) {
+      const buffer = await readableStreamToArrayBuffer(payload.file.content);
       const blob = new Blob([buffer], { type: "application/octet-stream" });
-      body$.append("file", blob);
+      body.append("file", blob);
     } else {
-      body$.append(
+      body.append(
         "file",
-        new Blob([payload$.file.content], { type: "application/octet-stream" }),
-        payload$.file.fileName,
+        new Blob([payload.file.content], { type: "application/octet-stream" }),
+        payload.file.fileName,
       );
     }
   }
-  if (payload$.metadata !== undefined) {
-    body$.append(
+  if (payload.metadata !== undefined) {
+    body.append(
       "metadata",
-      encodeJSON$("metadata", payload$.metadata, { explode: true }),
+      encodeJSON("metadata", payload.metadata, { explode: true }),
     );
   }
 
-  const path$ = pathToFunc("/v3/ipfs/file")();
+  const path = pathToFunc("/v3/ipfs/file")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "uploadFromFilePin",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "413", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -125,7 +125,7 @@ export async function ipfsUploadFile(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -133,7 +133,7 @@ export async function ipfsUploadFile(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.UploadFromFilePinResponse,
     | errors.UploadFromFilePinResponseBody
     | errors.UploadFromFilePinIpfsResponseBody
@@ -145,16 +145,16 @@ export async function ipfsUploadFile(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, operations.UploadFromFilePinResponse$inboundSchema, {
+    M.json(201, operations.UploadFromFilePinResponse$inboundSchema, {
       key: "Pin",
     }),
-    m$.jsonErr(400, errors.UploadFromFilePinResponseBody$inboundSchema),
-    m$.jsonErr(413, errors.UploadFromFilePinIpfsResponseBody$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.jsonErr(400, errors.UploadFromFilePinResponseBody$inboundSchema),
+    M.jsonErr(413, errors.UploadFromFilePinIpfsResponseBody$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

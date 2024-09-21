@@ -7,7 +7,7 @@ import { UploadFromJsonPinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UploadFromJsonPinResponse = {
   contentType: "<value>",
-  statusCode: 778157,
+  statusCode: 612096,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

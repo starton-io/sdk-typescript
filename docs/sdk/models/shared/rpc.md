@@ -9,8 +9,8 @@ let value: Rpc = {
   id: "<id>",
   isPublic: false,
   networkName: "<value>",
-  type: RpcType.Archive,
-  url: "https://miserly-pruner.info",
+  type: RpcType.Full,
+  url: "https://whirlwind-testing.net",
 };
 ```
 

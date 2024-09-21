@@ -5,7 +5,7 @@
 ```typescript
 import { DeployFromTemplateDtoParams } from "@starton/sdk/sdk/models/shared";
 
-let value: DeployFromTemplateDtoParams = "<value>";
+let value: DeployFromTemplateDtoParams = false;
 ```
 
 ## Supported Types
