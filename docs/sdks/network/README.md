@@ -46,9 +46,9 @@ async function run() {
     name: "optimism-functional-tests1714642436107",
     symbol: "ETH",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -96,7 +96,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -140,9 +140,9 @@ async function run() {
   const result = await starton.network.delete({
     name: "optimism-functional-tests1714642436107",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -174,7 +174,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -225,7 +225,7 @@ async function run() {
     page: 0,
     xPlatformHostname: "<value>",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -313,9 +313,9 @@ async function run() {
   const result = await starton.network.getOne({
     name: "optimism-functional-tests",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -347,7 +347,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -401,9 +401,9 @@ async function run() {
     },
     name: "optimism-functional-tests",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -444,7 +444,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

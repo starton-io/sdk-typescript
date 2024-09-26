@@ -17,9 +17,9 @@ let value: GetAllKmsKmsPaginated = {
     },
   ],
   meta: {
-    currentPage: 3595.08,
-    itemCount: 4370.32,
-    itemsPerPage: 6976.31,
+    currentPage: 1381.83,
+    itemCount: 1965.82,
+    itemsPerPage: 3687.25,
   },
 };
 ```

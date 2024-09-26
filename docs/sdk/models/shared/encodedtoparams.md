@@ -5,7 +5,7 @@
 ```typescript
 import { EncodeDtoParams } from "@starton/sdk/sdk/models/shared";
 
-let value: EncodeDtoParams = false;
+let value: EncodeDtoParams = "<value>";
 ```
 
 ## Supported Types

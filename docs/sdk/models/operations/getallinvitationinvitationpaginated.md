@@ -9,16 +9,16 @@ import { InvitationRole } from "@starton/sdk/sdk/models/shared";
 let value: GetAllInvitationInvitationPaginated = {
   items: [
     {
-      email: "Shannon_Reinger@yahoo.com",
+      email: "Wendy.Anderson72@hotmail.com",
       id: "<id>",
       projectId: "<value>",
       role: InvitationRole.Owner,
     },
   ],
   meta: {
-    currentPage: 4238.55,
-    itemCount: 6063.93,
-    itemsPerPage: 191.93,
+    currentPage: 5210.37,
+    itemCount: 543.38,
+    itemsPerPage: 1999.97,
   },
 };
 ```

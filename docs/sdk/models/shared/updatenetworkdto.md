@@ -9,7 +9,7 @@ let value: UpdateNetworkDto = {
   explorerApi: {
     apiKey: "<value>",
     type: ExplorerApiDtoType.Etherscan,
-    url: "https://devoted-lashes.biz",
+    url: "https://lavish-quart.info",
   },
 };
 ```

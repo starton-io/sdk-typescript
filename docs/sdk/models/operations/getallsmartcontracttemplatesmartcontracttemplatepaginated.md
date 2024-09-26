@@ -16,7 +16,7 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
         "<value>",
       ],
       category: Category.Sale,
-      description: "Devolved incremental algorithm",
+      description: "Down-sized value-added policy",
       githubUrl: "<value>",
       humanReadableAbi: [
         "<value>",
@@ -30,9 +30,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
     },
   ],
   meta: {
-    currentPage: 1999.97,
-    itemCount: 185.22,
-    itemsPerPage: 7936.98,
+    currentPage: 2539.42,
+    itemCount: 2133.12,
+    itemsPerPage: 5182.01,
   },
 };
 ```

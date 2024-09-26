@@ -6,14 +6,9 @@
 import { UpdateKmsDtoCredentials } from "@starton/sdk/sdk/models/shared";
 
 let value: UpdateKmsDtoCredentials = {
-  baseUrl: "<value>",
-  id: "<id>",
-  loginPath: "<value>",
-  role: "<value>",
-  rootPath: "<value>",
-  selfSigned: false,
-  timeout: 7653.25,
-  tokenPath: "<value>",
+  accessKeyId: "<value>",
+  accountId: "<value>",
+  region: "<value>",
 };
 ```
 

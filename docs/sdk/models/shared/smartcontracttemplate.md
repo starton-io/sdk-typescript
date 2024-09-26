@@ -13,7 +13,7 @@ let value: SmartContractTemplate = {
     "<value>",
   ],
   category: Category.Fungible,
-  description: "Switchable 4th generation time-frame",
+  description: "Object-based value-added migration",
   githubUrl: "<value>",
   humanReadableAbi: [
     "<value>",

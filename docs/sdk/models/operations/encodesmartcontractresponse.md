@@ -7,7 +7,7 @@ import { EncodeSmartContractResponse } from "@starton/sdk/sdk/models/operations"
 
 let value: EncodeSmartContractResponse = {
   contentType: "<value>",
-  statusCode: 435865,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

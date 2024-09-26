@@ -5,7 +5,7 @@
 ```typescript
 import { WatcherType } from "@starton/sdk/sdk/models/shared";
 
-let value: WatcherType = WatcherType.AddressSentNativeCurrency;
+let value: WatcherType = WatcherType.EventCustom;
 ```
 
 ## Values

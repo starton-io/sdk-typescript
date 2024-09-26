@@ -7,7 +7,7 @@ import { CreateRpcResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CreateRpcResponse = {
   contentType: "<value>",
-  statusCode: 265389,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

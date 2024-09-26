@@ -7,7 +7,7 @@ import { GetAllPinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllPinResponse = {
   contentType: "<value>",
-  statusCode: 414662,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

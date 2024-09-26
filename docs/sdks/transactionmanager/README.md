@@ -39,9 +39,9 @@ async function run() {
     },
     simulate: false,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -82,7 +82,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -145,7 +145,7 @@ async function run() {
     to: "0x298e760768c8481780397eE28A127eAd584df4ee",
     transactionHash: "0x59d2053f9d73d9e7d81acab1890b7f53d1718d27947092a5962e49e59b2596b5",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -233,9 +233,9 @@ async function run() {
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -268,7 +268,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -315,9 +315,9 @@ async function run() {
   const result = await starton.transactionManager.getOne({
     id: "tx_1abfa87e04814cb7a669d614d1fe5f78",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -349,7 +349,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -395,9 +395,9 @@ async function run() {
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -430,7 +430,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

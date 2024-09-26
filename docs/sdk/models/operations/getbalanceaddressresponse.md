@@ -7,7 +7,7 @@ import { GetBalanceAddressResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetBalanceAddressResponse = {
   contentType: "<value>",
-  statusCode: 548814,
+  statusCode: 306,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

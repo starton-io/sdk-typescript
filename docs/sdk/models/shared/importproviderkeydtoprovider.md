@@ -5,7 +5,7 @@
 ```typescript
 import { ImportProviderKeyDtoProvider } from "@starton/sdk/sdk/models/shared";
 
-let value: ImportProviderKeyDtoProvider = ImportProviderKeyDtoProvider.Vault;
+let value: ImportProviderKeyDtoProvider = ImportProviderKeyDtoProvider.Aws;
 ```
 
 ## Values

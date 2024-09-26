@@ -6,7 +6,7 @@
 import { ResyncNonce } from "@starton/sdk/sdk/models/shared";
 
 let value: ResyncNonce = {
-  nextNonce: 3741.70,
+  nextNonce: 7705.81,
 };
 ```
 

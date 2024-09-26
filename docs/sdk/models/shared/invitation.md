@@ -6,7 +6,7 @@
 import { Invitation, InvitationRole } from "@starton/sdk/sdk/models/shared";
 
 let value: Invitation = {
-  email: "Amya68@gmail.com",
+  email: "Alexie.Hermiston-Hermiston@hotmail.com",
   id: "<id>",
   projectId: "<value>",
   role: InvitationRole.Owner,

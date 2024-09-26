@@ -7,7 +7,7 @@ Gas Speed, by default on average, could be set at custom.
 ```typescript
 import { DeployFromTemplateDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
-let value: DeployFromTemplateDtoSpeed = DeployFromTemplateDtoSpeed.Fastest;
+let value: DeployFromTemplateDtoSpeed = DeployFromTemplateDtoSpeed.Average;
 ```
 
 ## Values

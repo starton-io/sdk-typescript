@@ -5,7 +5,7 @@
 ```typescript
 import { WatcherEventStatus } from "@starton/sdk/sdk/models/shared";
 
-let value: WatcherEventStatus = WatcherEventStatus.PendingValidation;
+let value: WatcherEventStatus = WatcherEventStatus.Completed;
 ```
 
 ## Values

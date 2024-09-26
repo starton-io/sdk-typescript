@@ -7,7 +7,7 @@ import { DeleteWatcherResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteWatcherResponse = {
   contentType: "<value>",
-  statusCode: 704415,
+  statusCode: 307,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

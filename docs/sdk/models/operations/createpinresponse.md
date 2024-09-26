@@ -7,7 +7,7 @@ import { CreatePinResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CreatePinResponse = {
   contentType: "<value>",
-  statusCode: 456150,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -7,7 +7,7 @@ import { ImportProviderKeyWalletResponse } from "@starton/sdk/sdk/models/operati
 
 let value: ImportProviderKeyWalletResponse = {
   contentType: "<value>",
-  statusCode: 832620,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

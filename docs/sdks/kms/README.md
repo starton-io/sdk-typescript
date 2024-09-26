@@ -33,9 +33,9 @@ async function run() {
     provider: Provider.Aws,
     secret: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -70,7 +70,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -114,9 +114,9 @@ async function run() {
   const result = await starton.kms.delete({
     id: "kms_000",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -148,7 +148,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -194,7 +194,7 @@ async function run() {
     limit: 20,
     page: 0,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -277,9 +277,9 @@ async function run() {
   const result = await starton.kms.getOne({
     id: "kms_000",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -311,7 +311,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -357,9 +357,9 @@ async function run() {
     updateKmsDto: {},
     id: "kms_000",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -392,7 +392,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

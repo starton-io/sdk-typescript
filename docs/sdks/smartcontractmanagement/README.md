@@ -49,9 +49,9 @@ async function run() {
     network: "polygon-mumbai",
     simulate: false,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -93,7 +93,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -162,9 +162,9 @@ async function run() {
     address: "8653 Vaughn Hills",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -197,7 +197,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -262,9 +262,9 @@ async function run() {
     },
     simulate: false,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -316,7 +316,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -394,9 +394,9 @@ async function run() {
     },
     simulate: false,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -440,7 +440,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -515,9 +515,9 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -557,7 +557,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -618,7 +618,7 @@ async function run() {
     network: "polygon-mumbai",
     page: 0,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -706,9 +706,9 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -741,7 +741,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -792,9 +792,9 @@ async function run() {
     includeCompilationDetails: true,
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -829,7 +829,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -896,9 +896,9 @@ async function run() {
     ],
     templateId: "ERC721_META_TRANSACTION",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -952,7 +952,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1004,9 +1004,9 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1045,7 +1045,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1106,9 +1106,9 @@ async function run() {
     address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1145,7 +1145,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

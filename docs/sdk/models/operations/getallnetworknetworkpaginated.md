@@ -9,10 +9,10 @@ let value: GetAllNetworkNetworkPaginated = {
   items: [
     {
       blockchain: "<value>",
-      chainId: 1103.75,
-      confirmationBlocks: 6563.30,
-      decimal: 1381.83,
-      displayName: "Cleveland.Schuster83",
+      chainId: 1831.91,
+      confirmationBlocks: 5865.13,
+      decimal: 201.08,
+      displayName: "Rhoda73",
       eip1159: false,
       enableExternalWallet: false,
       enableListener: false,
@@ -29,9 +29,9 @@ let value: GetAllNetworkNetworkPaginated = {
     },
   ],
   meta: {
-    currentPage: 9764.59,
-    itemCount: 4686.51,
-    itemsPerPage: 9767.61,
+    currentPage: 2487.53,
+    itemCount: 5761.57,
+    itemsPerPage: 5920.42,
   },
 };
 ```

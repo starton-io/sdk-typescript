@@ -6,7 +6,7 @@
 import { ClaimFaucetResponseBody } from "@starton/sdk/sdk/models/operations";
 
 let value: ClaimFaucetResponseBody = {
-  path: "/usr/libexec",
+  path: "/etc/namedb",
   timestamp: "<value>",
 };
 ```

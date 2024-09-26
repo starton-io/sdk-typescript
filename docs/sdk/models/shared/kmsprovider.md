@@ -5,7 +5,7 @@
 ```typescript
 import { KmsProvider } from "@starton/sdk/sdk/models/shared";
 
-let value: KmsProvider = KmsProvider.Aws;
+let value: KmsProvider = KmsProvider.Vault;
 ```
 
 ## Values

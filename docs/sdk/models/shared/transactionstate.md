@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionState } from "@starton/sdk/sdk/models/shared";
 
-let value: TransactionState = TransactionState.Error;
+let value: TransactionState = TransactionState.ManualActionRequired;
 ```
 
 ## Values

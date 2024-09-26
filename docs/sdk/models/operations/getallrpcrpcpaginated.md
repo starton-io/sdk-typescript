@@ -13,13 +13,13 @@ let value: GetAllRpcRpcPaginated = {
       isPublic: false,
       networkName: "<value>",
       type: RpcType.Archive,
-      url: "https://vengeful-farmer.net",
+      url: "https://quiet-elevator.name/",
     },
   ],
   meta: {
-    currentPage: 1317.98,
-    itemCount: 7163.27,
-    itemsPerPage: 2894.06,
+    currentPage: 4287.69,
+    itemCount: 1354.74,
+    itemsPerPage: 2982.82,
   },
 };
 ```

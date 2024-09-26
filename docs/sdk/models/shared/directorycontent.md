@@ -8,7 +8,7 @@ import { DirectoryContent } from "@starton/sdk/sdk/models/shared";
 let value: DirectoryContent = {
   cid: "<value>",
   name: "<value>",
-  size: 1175.32,
+  size: 2453.67,
 };
 ```
 

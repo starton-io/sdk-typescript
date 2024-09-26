@@ -5,7 +5,7 @@
 ```typescript
 import { DeployFromBytecodeDtoParams } from "@starton/sdk/sdk/models/shared";
 
-let value: DeployFromBytecodeDtoParams = 8820.41;
+let value: DeployFromBytecodeDtoParams = 8286.57;
 ```
 
 ## Supported Types

@@ -34,9 +34,9 @@ async function run() {
   const result = await starton.wallet.create({
     kmsId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -68,7 +68,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -113,9 +113,9 @@ async function run() {
   const result = await starton.wallet.delete({
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -147,7 +147,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -193,7 +193,7 @@ async function run() {
     limit: 20,
     page: 0,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -276,9 +276,9 @@ async function run() {
   const result = await starton.wallet.getOne({
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -310,7 +310,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -356,9 +356,9 @@ async function run() {
   const result = await starton.wallet.import({
     provider: ImportProviderKeyDtoProvider.Aws,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -391,7 +391,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -439,9 +439,9 @@ async function run() {
     },
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -477,7 +477,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -524,9 +524,9 @@ async function run() {
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
     network: "polygon-mumbai",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -559,7 +559,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -609,9 +609,9 @@ async function run() {
     },
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -646,7 +646,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -693,9 +693,9 @@ async function run() {
     updateWalletDto: {},
     address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -728,7 +728,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

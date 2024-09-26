@@ -7,7 +7,7 @@ import { Transaction, TransactionLogType, TransactionState, TransactionStatus } 
 
 let value: Transaction = {
   automaticNonce: false,
-  chainId: 5521.92,
+  chainId: 3799.27,
   from: "<value>",
   id: "<id>",
   isDeployTransaction: false,
@@ -15,14 +15,14 @@ let value: Transaction = {
     {
       createdAt: "<value>",
       message: "<value>",
-      type: TransactionLogType.CouldNotSign,
+      type: TransactionLogType.CouldNotEstimateGasPrice,
     },
   ],
   network: "<value>",
   projectId: "<value>",
   signerWallet: "<value>",
   state: TransactionState.Error,
-  status: TransactionStatus.ReplacementGasPriceUnderpriced,
+  status: TransactionStatus.ErrorPublish,
   value: "<value>",
 };
 ```

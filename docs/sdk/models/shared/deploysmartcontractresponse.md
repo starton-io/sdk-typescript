@@ -14,17 +14,17 @@ import {
 
 let value: DeploySmartContractResponse = {
   smartContract: {
-    address: "6231 Bayer Spring",
+    address: "40222 Adolfo Corners",
     id: "<id>",
     name: "<value>",
     network: "<value>",
     projectId: "<value>",
-    state: State.Success,
-    status: SmartContractStatus.NonceAssigned,
+    state: State.ManualActionRequired,
+    status: SmartContractStatus.MonitoringInterrupted,
   },
   transaction: {
     automaticNonce: false,
-    chainId: 3068.10,
+    chainId: 9903.45,
     from: "<value>",
     id: "<id>",
     isDeployTransaction: false,
@@ -32,13 +32,13 @@ let value: DeploySmartContractResponse = {
       {
         createdAt: "<value>",
         message: "<value>",
-        type: TransactionLogType.CouldNotSign,
+        type: TransactionLogType.InsufficientFunds,
       },
     ],
     network: "<value>",
     projectId: "<value>",
     signerWallet: "<value>",
-    state: TransactionState.Error,
+    state: TransactionState.Success,
     status: TransactionStatus.SentToMempool,
     value: "<value>",
   },

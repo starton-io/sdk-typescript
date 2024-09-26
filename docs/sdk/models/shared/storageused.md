@@ -6,9 +6,9 @@
 import { StorageUsed } from "@starton/sdk/sdk/models/shared";
 
 let value: StorageUsed = {
-  currentStorageUsed: 5173.79,
-  freeSpaceRemaining: 1320.68,
-  maxAllowed: 7168.60,
+  currentStorageUsed: 4205.39,
+  freeSpaceRemaining: 5573.69,
+  maxAllowed: 8605.51,
 };
 ```
 

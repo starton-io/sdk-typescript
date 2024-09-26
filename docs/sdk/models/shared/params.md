@@ -5,7 +5,7 @@
 ```typescript
 import { Params } from "@starton/sdk/sdk/models/shared";
 
-let value: Params = false;
+let value: Params = {};
 ```
 
 ## Supported Types

@@ -10,7 +10,7 @@ let value: Kms = {
   id: "<id>",
   name: "<value>",
   projectId: "<value>",
-  provider: KmsProvider.Vault,
+  provider: KmsProvider.Aws,
 };
 ```
 

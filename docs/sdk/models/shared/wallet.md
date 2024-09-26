@@ -6,7 +6,7 @@
 import { Wallet } from "@starton/sdk/sdk/models/shared";
 
 let value: Wallet = {
-  address: "682 County Line Road",
+  address: "252 Sage Walks",
   kmsId: "<value>",
   projectId: "<value>",
   providerKeyId: "<value>",

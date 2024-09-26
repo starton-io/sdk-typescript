@@ -7,7 +7,7 @@ import { GetAllNetworkResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllNetworkResponse = {
   contentType: "<value>",
-  statusCode: 604846,
+  statusCode: 302,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -9,19 +9,19 @@ import { SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 let value: GetAllSmartContractSmartContractPaginated = {
   items: [
     {
-      address: "871 S Market Street",
+      address: "742 Anderson Keys",
       id: "<id>",
       name: "<value>",
       network: "<value>",
       projectId: "<value>",
-      state: State.Error,
-      status: SmartContractStatus.CreatedByStarton,
+      state: State.Pending,
+      status: SmartContractStatus.AlreadyKnown,
     },
   ],
   meta: {
-    currentPage: 8681.26,
-    itemCount: 1624.93,
-    itemsPerPage: 6155.60,
+    currentPage: 3777.52,
+    itemCount: 1796.04,
+    itemsPerPage: 246.79,
   },
 };
 ```

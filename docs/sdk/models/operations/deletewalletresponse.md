@@ -7,7 +7,7 @@ import { DeleteWalletResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteWalletResponse = {
   contentType: "<value>",
-  statusCode: 423655,
+  statusCode: 504,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

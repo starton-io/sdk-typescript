@@ -7,7 +7,7 @@ import { CreateWalletResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CreateWalletResponse = {
   contentType: "<value>",
-  statusCode: 544883,
+  statusCode: 308,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "@starton/sdk/sdk/models/operations";
 
-let value: Status = Status.Queued;
+let value: Status = Status.Failed;
 ```
 
 ## Values

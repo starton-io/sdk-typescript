@@ -6,13 +6,13 @@
 import { SmartContract, SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 
 let value: SmartContract = {
-  address: "313 County Road",
+  address: "36265 Luettgen Forges",
   id: "<id>",
   name: "<value>",
   network: "<value>",
   projectId: "<value>",
-  state: State.Error,
-  status: SmartContractStatus.NonceExpired,
+  state: State.ManualActionRequired,
+  status: SmartContractStatus.InsufficientFunds,
 };
 ```
 

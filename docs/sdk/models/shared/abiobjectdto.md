@@ -6,7 +6,7 @@
 import { AbiObjectDto, Type } from "@starton/sdk/sdk/models/shared";
 
 let value: AbiObjectDto = {
-  type: Type.Event,
+  type: Type.Error,
 };
 ```
 
