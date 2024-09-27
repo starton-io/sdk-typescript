@@ -1,30 +1,35 @@
 # GetAvailableFunctionsSmartContractResponseBody
 
-## Example Usage
-
-```typescript
-import { GetAvailableFunctionsSmartContractResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.InvalidBytecode`
 
 ```typescript
-const value: errors.InvalidBytecode = /* values here */
+const value: errors.InvalidBytecode = {
+  path: "/var/mail",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.InvalidAbi`
 
 ```typescript
-const value: errors.InvalidAbi = /* values here */
+const value: errors.InvalidAbi = {
+  path: "/var/log",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.BadRequestException`
 
 ```typescript
-const value: errors.BadRequestException = /* values here */
+const value: errors.BadRequestException = {
+  message: [
+    "<value>",
+  ],
+  path: "/lost+found",
+  timestamp: "<value>",
+};
 ```
 

@@ -7,7 +7,7 @@ import { GetOneWatcherEventResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetOneWatcherEventResponse = {
   contentType: "<value>",
-  statusCode: 300,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

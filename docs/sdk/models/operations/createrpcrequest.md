@@ -9,7 +9,7 @@ import { CreateRpcDtoType } from "@starton/sdk/sdk/models/shared";
 let value: CreateRpcRequest = {
   createRpcDto: {
     type: CreateRpcDtoType.Full,
-    url: "https://rough-quinoa.name",
+    url: "https://frizzy-perp.biz/",
   },
   name: "optimism-functionnal-tests",
 };

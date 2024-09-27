@@ -9,7 +9,7 @@ let value: UpdateNetworkDto = {
   explorerApi: {
     apiKey: "<value>",
     type: ExplorerApiDtoType.Etherscan,
-    url: "https://lavish-quart.info",
+    url: "https://meager-typeface.name/",
   },
 };
 ```

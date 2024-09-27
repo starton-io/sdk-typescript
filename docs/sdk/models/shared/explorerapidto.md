@@ -8,7 +8,7 @@ import { ExplorerApiDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/shar
 let value: ExplorerApiDto = {
   apiKey: "<value>",
   type: ExplorerApiDtoType.Etherscan,
-  url: "https://unsteady-makeover.info/",
+  url: "https://knotty-exasperation.org/",
 };
 ```
 

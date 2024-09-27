@@ -12,9 +12,10 @@ let value: SmartContractTemplate = {
   blockchains: [
     "<value>",
   ],
-  category: Category.Fungible,
-  description: "Object-based value-added migration",
-  githubUrl: "<value>",
+  category: Category.Sale,
+  description:
+    "huzzah after what gah eek flight grouper uniform industrialize when",
+  githubUrl: "https://voluminous-whale.info",
   humanReadableAbi: [
     "<value>",
   ],

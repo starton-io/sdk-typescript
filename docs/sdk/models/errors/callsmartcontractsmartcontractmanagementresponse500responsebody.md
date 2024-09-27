@@ -1,48 +1,59 @@
 # CallSmartContractSmartContractManagementResponse500ResponseBody
 
-## Example Usage
-
-```typescript
-import { CallSmartContractSmartContractManagementResponse500ResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.Unknown`
 
 ```typescript
-const value: errors.Unknown = /* values here */
+const value: errors.Unknown = {
+  path: "/usr",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotBroadcast`
 
 ```typescript
-const value: errors.CouldNotBroadcast = /* values here */
+const value: errors.CouldNotBroadcast = {
+  path: "/lib",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.NoProviderForNetwork`
 
 ```typescript
-const value: errors.NoProviderForNetwork = /* values here */
+const value: errors.NoProviderForNetwork = {
+  path: "/home/user",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotEstimateGasPrice`
 
 ```typescript
-const value: errors.CouldNotEstimateGasPrice = /* values here */
+const value: errors.CouldNotEstimateGasPrice = {
+  path: "/etc/periodic",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotAssignNonce`
 
 ```typescript
-const value: errors.CouldNotAssignNonce = /* values here */
+const value: errors.CouldNotAssignNonce = {
+  path: "/var/log",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotSign`
 
 ```typescript
-const value: errors.CouldNotSign = /* values here */
+const value: errors.CouldNotSign = {
+  path: "/media",
+  timestamp: "<value>",
+};
 ```
 

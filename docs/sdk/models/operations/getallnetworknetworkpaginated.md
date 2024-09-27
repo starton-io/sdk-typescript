@@ -17,8 +17,8 @@ let value: GetAllNetworkNetworkPaginated = {
       enableExternalWallet: false,
       enableListener: false,
       enableRelayer: false,
-      explorerUrl: "<value>",
-      loadbalancerUrl: "<value>",
+      explorerUrl: "https://orange-mozzarella.name/",
+      loadbalancerUrl: "https://well-groomed-hyena.org/",
       logo: "<value>",
       name: "<value>",
       owner: "<value>",
@@ -29,9 +29,9 @@ let value: GetAllNetworkNetworkPaginated = {
     },
   ],
   meta: {
-    currentPage: 2487.53,
-    itemCount: 5761.57,
-    itemsPerPage: 5920.42,
+    currentPage: 6994.79,
+    itemCount: 2974.37,
+    itemsPerPage: 8137.98,
   },
 };
 ```

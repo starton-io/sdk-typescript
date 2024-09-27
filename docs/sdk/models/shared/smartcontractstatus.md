@@ -5,7 +5,7 @@
 ```typescript
 import { SmartContractStatus } from "@starton/sdk/sdk/models/shared";
 
-let value: SmartContractStatus = SmartContractStatus.MonitoringInterrupted;
+let value: SmartContractStatus = SmartContractStatus.Published;
 ```
 
 ## Values

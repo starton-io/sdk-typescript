@@ -1,42 +1,37 @@
 # Response
 
-## Example Usage
-
-```typescript
-import { Response } from "@starton/sdk/sdk/models/shared";
-
-let value: Response = false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 6232.95;
 ```
 
 ### `shared.ReadSmartContractResponseSchemas3`
 
 ```typescript
-const value: shared.ReadSmartContractResponseSchemas3 = /* values here */
+const value: shared.ReadSmartContractResponseSchemas3 = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -12,14 +12,6 @@ export type ReplacementGasPriceUnderpricedData = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse2?: Response | undefined;
   context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | null | undefined;
   errorCode?: string;
   message?: string;
@@ -33,14 +25,6 @@ export class ReplacementGasPriceUnderpriced extends Error {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse2?: Response | undefined;
   context?: SchemasREPLACEMENTGASPRICEUNDERPRICEDContext | null | undefined;
   errorCode?: string;
   path: string;
@@ -58,8 +42,6 @@ export class ReplacementGasPriceUnderpriced extends Error {
     this.data$ = err;
 
     if (err.rawResponse != null) this.rawResponse = err.rawResponse;
-    if (err.rawResponse1 != null) this.rawResponse1 = err.rawResponse1;
-    if (err.rawResponse2 != null) this.rawResponse2 = err.rawResponse2;
     if (err.context != null) this.context = err.context;
     if (err.errorCode != null) this.errorCode = err.errorCode;
     this.path = err.path;
@@ -111,8 +93,6 @@ export const ReplacementGasPriceUnderpriced$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   RawResponse: z.instanceof(Response).optional(),
-  RawResponse1: z.instanceof(Response).optional(),
-  RawResponse2: z.instanceof(Response).optional(),
   context: z.nullable(
     z.lazy(() => SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$inboundSchema),
   ).optional(),
@@ -127,8 +107,6 @@ export const ReplacementGasPriceUnderpriced$inboundSchema: z.ZodType<
   .transform((v) => {
     const remapped = remap$(v, {
       "RawResponse": "rawResponse",
-      "RawResponse1": "rawResponse1",
-      "RawResponse2": "rawResponse2",
     });
 
     return new ReplacementGasPriceUnderpriced(remapped);
@@ -137,8 +115,6 @@ export const ReplacementGasPriceUnderpriced$inboundSchema: z.ZodType<
 /** @internal */
 export type ReplacementGasPriceUnderpriced$Outbound = {
   RawResponse?: never | undefined;
-  RawResponse1?: never | undefined;
-  RawResponse2?: never | undefined;
   context?:
     | SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$Outbound
     | null
@@ -162,12 +138,6 @@ export const ReplacementGasPriceUnderpriced$outboundSchema: z.ZodType<
       rawResponse: z.instanceof(Response).transform(() => {
         throw new Error("Response cannot be serialized");
       }).optional(),
-      rawResponse1: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
-      rawResponse2: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
       context: z.nullable(
         z.lazy(() =>
           SchemasREPLACEMENTGASPRICEUNDERPRICEDContext$outboundSchema
@@ -183,8 +153,6 @@ export const ReplacementGasPriceUnderpriced$outboundSchema: z.ZodType<
     }).transform((v) => {
       return remap$(v, {
         rawResponse: "RawResponse",
-        rawResponse1: "RawResponse1",
-        rawResponse2: "RawResponse2",
       });
     }),
   );

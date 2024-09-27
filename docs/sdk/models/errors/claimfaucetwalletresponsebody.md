@@ -1,24 +1,23 @@
 # ClaimFaucetWalletResponseBody
 
-## Example Usage
-
-```typescript
-import { ClaimFaucetWalletResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.MicroserviceNotResponding`
 
 ```typescript
-const value: errors.MicroserviceNotResponding = /* values here */
+const value: errors.MicroserviceNotResponding = {
+  path: "/opt/lib",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotPerformRequest`
 
 ```typescript
-const value: errors.CouldNotPerformRequest = /* values here */
+const value: errors.CouldNotPerformRequest = {
+  path: "/net",
+  timestamp: "<value>",
+};
 ```
 

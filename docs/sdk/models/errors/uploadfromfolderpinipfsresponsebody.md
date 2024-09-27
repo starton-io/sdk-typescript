@@ -1,24 +1,23 @@
 # UploadFromFolderPinIpfsResponseBody
 
-## Example Usage
-
-```typescript
-import { UploadFromFolderPinIpfsResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.MaximumStorageReached`
 
 ```typescript
-const value: errors.MaximumStorageReached = /* values here */
+const value: errors.MaximumStorageReached = {
+  path: "/etc/defaults",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.PayloadTooLarge`
 
 ```typescript
-const value: errors.PayloadTooLarge = /* values here */
+const value: errors.PayloadTooLarge = {
+  path: "/Library",
+  timestamp: "<value>",
+};
 ```
 

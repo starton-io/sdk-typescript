@@ -12,14 +12,14 @@ let value: GetAllRpcRpcPaginated = {
       id: "<id>",
       isPublic: false,
       networkName: "<value>",
-      type: RpcType.Archive,
-      url: "https://quiet-elevator.name/",
+      type: RpcType.Full,
+      url: "https://optimal-pendant.name",
     },
   ],
   meta: {
-    currentPage: 4287.69,
-    itemCount: 1354.74,
-    itemsPerPage: 2982.82,
+    currentPage: 4314.18,
+    itemCount: 8965.47,
+    itemsPerPage: 3675.62,
   },
 };
 ```

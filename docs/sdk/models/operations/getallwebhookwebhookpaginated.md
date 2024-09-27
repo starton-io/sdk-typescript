@@ -12,16 +12,16 @@ let value: GetAllWebhookWebhookPaginated = {
       headers: {},
       id: "<id>",
       payload: {},
-      projectId: "<value>",
-      refId: "<value>",
-      status: WebhookStatus.Canceled,
-      url: "https://weighty-tuxedo.net/",
+      projectId: "<id>",
+      refId: "<id>",
+      status: WebhookStatus.Retrying,
+      url: "https://back-possession.net",
     },
   ],
   meta: {
-    currentPage: 6304.48,
-    itemCount: 8742.88,
-    itemsPerPage: 2930.20,
+    currentPage: 7774.08,
+    itemCount: 2594.23,
+    itemsPerPage: 3738.13,
   },
 };
 ```

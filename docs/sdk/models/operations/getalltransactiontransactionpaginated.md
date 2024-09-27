@@ -22,7 +22,7 @@ let value: GetAllTransactionTransactionPaginated = {
         },
       ],
       network: "<value>",
-      projectId: "<value>",
+      projectId: "<id>",
       signerWallet: "<value>",
       state: TransactionState.Pending,
       status: TransactionStatus.ReceivedByStarton,

@@ -9,9 +9,9 @@ let value: GetAllWalletWalletPaginated = {
   items: [
     {
       address: "559 Ashlee Bridge",
-      kmsId: "<value>",
-      projectId: "<value>",
-      providerKeyId: "<value>",
+      kmsId: "<id>",
+      projectId: "<id>",
+      providerKeyId: "<id>",
     },
   ],
   meta: {

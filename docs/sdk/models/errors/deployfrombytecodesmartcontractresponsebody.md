@@ -1,102 +1,143 @@
 # DeployFromBytecodeSmartContractResponseBody
 
-## Example Usage
-
-```typescript
-import { DeployFromBytecodeSmartContractResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.InvalidBytecode`
 
 ```typescript
-const value: errors.InvalidBytecode = /* values here */
+const value: errors.InvalidBytecode = {
+  path: "/usr/bin",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.InvalidAbi`
 
 ```typescript
-const value: errors.InvalidAbi = /* values here */
+const value: errors.InvalidAbi = {
+  path: "/var/spool",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.MissingArgument`
 
 ```typescript
-const value: errors.MissingArgument = /* values here */
+const value: errors.MissingArgument = {
+  path: "/opt",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.UnexpectedArgument`
 
 ```typescript
-const value: errors.UnexpectedArgument = /* values here */
+const value: errors.UnexpectedArgument = {
+  path: "/usr/src",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.InvalidArgument`
 
 ```typescript
-const value: errors.InvalidArgument = /* values here */
+const value: errors.InvalidArgument = {
+  path: "/usr/libexec",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CallException`
 
 ```typescript
-const value: errors.CallException = /* values here */
+const value: errors.CallException = {
+  path: "/opt",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.NumericFault`
 
 ```typescript
-const value: errors.NumericFault = /* values here */
+const value: errors.NumericFault = {
+  path: "/System",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.EnsNotSupported`
 
 ```typescript
-const value: errors.EnsNotSupported = /* values here */
+const value: errors.EnsNotSupported = {
+  path: "/media",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.ExecutionWillFail`
 
 ```typescript
-const value: errors.ExecutionWillFail = /* values here */
+const value: errors.ExecutionWillFail = {
+  path: "/usr/share",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.InvalidGasPrice`
 
 ```typescript
-const value: errors.InvalidGasPrice = /* values here */
+const value: errors.InvalidGasPrice = {
+  path: "/etc/defaults",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.InsufficientFunds`
 
 ```typescript
-const value: errors.InsufficientFunds = /* values here */
+const value: errors.InsufficientFunds = {
+  path: "/home/user",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.AlreadyKnown`
 
 ```typescript
-const value: errors.AlreadyKnown = /* values here */
+const value: errors.AlreadyKnown = {
+  path: "/etc/ppp",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.NonceExpired`
 
 ```typescript
-const value: errors.NonceExpired = /* values here */
+const value: errors.NonceExpired = {
+  path: "/opt/lib",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.UnpredictableGasLimit`
 
 ```typescript
-const value: errors.UnpredictableGasLimit = /* values here */
+const value: errors.UnpredictableGasLimit = {
+  path: "/usr/lib",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.BadRequestException`
 
 ```typescript
-const value: errors.BadRequestException = /* values here */
+const value: errors.BadRequestException = {
+  message: [
+    "<value>",
+  ],
+  path: "/rescue",
+  timestamp: "<value>",
+};
 ```
 

@@ -1,28 +1,30 @@
 # UpdateKmsDtoCredentials
 
-## Example Usage
-
-```typescript
-import { UpdateKmsDtoCredentials } from "@starton/sdk/sdk/models/shared";
-
-let value: UpdateKmsDtoCredentials = {
-  accessKeyId: "<value>",
-  accountId: "<value>",
-  region: "<value>",
-};
-```
 
 ## Supported Types
 
 ### `shared.AwsKmsCredentialsDto`
 
 ```typescript
-const value: shared.AwsKmsCredentialsDto = /* values here */
+const value: shared.AwsKmsCredentialsDto = {
+  accessKeyId: "<id>",
+  accountId: "<id>",
+  region: "<value>",
+};
 ```
 
 ### `shared.VaultKmsCredentialsDto`
 
 ```typescript
-const value: shared.VaultKmsCredentialsDto = /* values here */
+const value: shared.VaultKmsCredentialsDto = {
+  baseUrl: "https://polished-wafer.org/",
+  id: "<id>",
+  loginPath: "<value>",
+  role: "<value>",
+  rootPath: "<value>",
+  selfSigned: false,
+  timeout: 4090.54,
+  tokenPath: "<value>",
+};
 ```
 

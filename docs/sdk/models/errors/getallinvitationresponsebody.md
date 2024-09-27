@@ -1,18 +1,17 @@
 # GetAllInvitationResponseBody
 
-## Example Usage
-
-```typescript
-import { GetAllInvitationResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.BadRequestException`
 
 ```typescript
-const value: errors.BadRequestException = /* values here */
+const value: errors.BadRequestException = {
+  message: [
+    "<value>",
+  ],
+  path: "/usr/local/bin",
+  timestamp: "<value>",
+};
 ```
 

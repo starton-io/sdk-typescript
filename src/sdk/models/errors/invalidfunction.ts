@@ -12,14 +12,6 @@ export type InvalidFunctionData = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse2?: Response | undefined;
   context?: SchemasINVALIDFUNCTIONContext | null | undefined;
   errorCode?: string;
   message?: string;
@@ -33,14 +25,6 @@ export class InvalidFunction extends Error {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse2?: Response | undefined;
   context?: SchemasINVALIDFUNCTIONContext | null | undefined;
   errorCode?: string;
   path: string;
@@ -58,8 +42,6 @@ export class InvalidFunction extends Error {
     this.data$ = err;
 
     if (err.rawResponse != null) this.rawResponse = err.rawResponse;
-    if (err.rawResponse1 != null) this.rawResponse1 = err.rawResponse1;
-    if (err.rawResponse2 != null) this.rawResponse2 = err.rawResponse2;
     if (err.context != null) this.context = err.context;
     if (err.errorCode != null) this.errorCode = err.errorCode;
     this.path = err.path;
@@ -107,8 +89,6 @@ export const InvalidFunction$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   RawResponse: z.instanceof(Response).optional(),
-  RawResponse1: z.instanceof(Response).optional(),
-  RawResponse2: z.instanceof(Response).optional(),
   context: z.nullable(z.lazy(() => SchemasINVALIDFUNCTIONContext$inboundSchema))
     .optional(),
   errorCode: z.string().default("INVALID_FUNCTION"),
@@ -120,8 +100,6 @@ export const InvalidFunction$inboundSchema: z.ZodType<
   .transform((v) => {
     const remapped = remap$(v, {
       "RawResponse": "rawResponse",
-      "RawResponse1": "rawResponse1",
-      "RawResponse2": "rawResponse2",
     });
 
     return new InvalidFunction(remapped);
@@ -130,8 +108,6 @@ export const InvalidFunction$inboundSchema: z.ZodType<
 /** @internal */
 export type InvalidFunction$Outbound = {
   RawResponse?: never | undefined;
-  RawResponse1?: never | undefined;
-  RawResponse2?: never | undefined;
   context?: SchemasINVALIDFUNCTIONContext$Outbound | null | undefined;
   errorCode?: string;
   message?: string;
@@ -152,12 +128,6 @@ export const InvalidFunction$outboundSchema: z.ZodType<
       rawResponse: z.instanceof(Response).transform(() => {
         throw new Error("Response cannot be serialized");
       }).optional(),
-      rawResponse1: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
-      rawResponse2: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
       context: z.nullable(
         z.lazy(() => SchemasINVALIDFUNCTIONContext$outboundSchema),
       ).optional(),
@@ -169,8 +139,6 @@ export const InvalidFunction$outboundSchema: z.ZodType<
     }).transform((v) => {
       return remap$(v, {
         rawResponse: "RawResponse",
-        rawResponse1: "RawResponse1",
-        rawResponse2: "RawResponse2",
       });
     }),
   );

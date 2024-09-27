@@ -7,7 +7,7 @@ import { GetAllInvitationResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllInvitationResponse = {
   contentType: "<value>",
-  statusCode: 103,
+  statusCode: 416,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

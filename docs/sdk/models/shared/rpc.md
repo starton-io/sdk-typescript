@@ -10,7 +10,7 @@ let value: Rpc = {
   isPublic: false,
   networkName: "<value>",
   type: RpcType.Full,
-  url: "https://good-natured-retention.name",
+  url: "https://runny-vicinity.org",
 };
 ```
 

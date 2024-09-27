@@ -6,7 +6,7 @@
 import { DeleteProjectMemberRequest } from "@starton/sdk/sdk/models/operations";
 
 let value: DeleteProjectMemberRequest = {
-  userId: "<value>",
+  userId: "<id>",
 };
 ```
 

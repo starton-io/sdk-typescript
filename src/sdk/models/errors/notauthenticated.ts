@@ -12,10 +12,6 @@ export type NotAuthenticatedData = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
   context?: SchemasNOTAUTHENTICATEDContext | null | undefined;
   errorCode?: string;
   message?: string;
@@ -29,10 +25,6 @@ export class NotAuthenticated extends Error {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
   context?: SchemasNOTAUTHENTICATEDContext | null | undefined;
   errorCode?: string;
   path: string;
@@ -50,7 +42,6 @@ export class NotAuthenticated extends Error {
     this.data$ = err;
 
     if (err.rawResponse != null) this.rawResponse = err.rawResponse;
-    if (err.rawResponse1 != null) this.rawResponse1 = err.rawResponse1;
     if (err.context != null) this.context = err.context;
     if (err.errorCode != null) this.errorCode = err.errorCode;
     this.path = err.path;
@@ -98,7 +89,6 @@ export const NotAuthenticated$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   RawResponse: z.instanceof(Response).optional(),
-  RawResponse1: z.instanceof(Response).optional(),
   context: z.nullable(
     z.lazy(() => SchemasNOTAUTHENTICATEDContext$inboundSchema),
   ).optional(),
@@ -111,7 +101,6 @@ export const NotAuthenticated$inboundSchema: z.ZodType<
   .transform((v) => {
     const remapped = remap$(v, {
       "RawResponse": "rawResponse",
-      "RawResponse1": "rawResponse1",
     });
 
     return new NotAuthenticated(remapped);
@@ -120,7 +109,6 @@ export const NotAuthenticated$inboundSchema: z.ZodType<
 /** @internal */
 export type NotAuthenticated$Outbound = {
   RawResponse?: never | undefined;
-  RawResponse1?: never | undefined;
   context?: SchemasNOTAUTHENTICATEDContext$Outbound | null | undefined;
   errorCode?: string;
   message?: string;
@@ -141,9 +129,6 @@ export const NotAuthenticated$outboundSchema: z.ZodType<
       rawResponse: z.instanceof(Response).transform(() => {
         throw new Error("Response cannot be serialized");
       }).optional(),
-      rawResponse1: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
       context: z.nullable(
         z.lazy(() => SchemasNOTAUTHENTICATEDContext$outboundSchema),
       ).optional(),
@@ -155,7 +140,6 @@ export const NotAuthenticated$outboundSchema: z.ZodType<
     }).transform((v) => {
       return remap$(v, {
         rawResponse: "RawResponse",
-        rawResponse1: "RawResponse1",
       });
     }),
   );

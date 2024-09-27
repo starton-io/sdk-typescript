@@ -6,7 +6,7 @@
 import { CreateWalletDto } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateWalletDto = {
-  kmsId: "<value>",
+  kmsId: "<id>",
 };
 ```
 

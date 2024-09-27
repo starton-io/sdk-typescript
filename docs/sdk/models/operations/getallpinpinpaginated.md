@@ -10,7 +10,7 @@ let value: GetAllPinPinPaginated = {
   items: [
     {
       id: "<id>",
-      projectId: "<value>",
+      projectId: "<id>",
       status: Status.Deleted,
     },
   ],

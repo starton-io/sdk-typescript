@@ -6,7 +6,7 @@
 import { DeployFromTemplateDtoDeployMethod } from "@starton/sdk/sdk/models/shared";
 
 let value: DeployFromTemplateDtoDeployMethod =
-  DeployFromTemplateDtoDeployMethod.Kms;
+  DeployFromTemplateDtoDeployMethod.Web3;
 ```
 
 ## Values

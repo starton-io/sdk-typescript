@@ -9,10 +9,10 @@ let value: Webhook = {
   headers: {},
   id: "<id>",
   payload: {},
-  projectId: "<value>",
-  refId: "<value>",
-  status: WebhookStatus.Failed,
-  url: "https://pale-technician.info/",
+  projectId: "<id>",
+  refId: "<id>",
+  status: WebhookStatus.Successful,
+  url: "https://reckless-flu.net/",
 };
 ```
 

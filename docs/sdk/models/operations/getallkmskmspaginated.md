@@ -12,7 +12,7 @@ let value: GetAllKmsKmsPaginated = {
       credentials: {},
       id: "<id>",
       name: "<value>",
-      projectId: "<value>",
+      projectId: "<id>",
       provider: KmsProvider.Vault,
     },
   ],

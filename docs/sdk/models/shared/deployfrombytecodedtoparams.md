@@ -1,36 +1,29 @@
 # DeployFromBytecodeDtoParams
 
-## Example Usage
-
-```typescript
-import { DeployFromBytecodeDtoParams } from "@starton/sdk/sdk/models/shared";
-
-let value: DeployFromBytecodeDtoParams = 8286.57;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 6471.97;
 ```
 
 ### `shared.DeployFromBytecodeDto3`
 
 ```typescript
-const value: shared.DeployFromBytecodeDto3 = /* values here */
+const value: shared.DeployFromBytecodeDto3 = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 

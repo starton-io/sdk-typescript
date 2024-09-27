@@ -12,10 +12,6 @@ export type CouldNotProcessEntityData = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
   context?: SchemasCOULDNOTPROCESSENTITYContext | null | undefined;
   errorCode?: string;
   message?: string;
@@ -29,10 +25,6 @@ export class CouldNotProcessEntity extends Error {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse?: Response | undefined;
-  /**
-   * Raw HTTP response; suitable for custom response parsing
-   */
-  rawResponse1?: Response | undefined;
   context?: SchemasCOULDNOTPROCESSENTITYContext | null | undefined;
   errorCode?: string;
   path: string;
@@ -50,7 +42,6 @@ export class CouldNotProcessEntity extends Error {
     this.data$ = err;
 
     if (err.rawResponse != null) this.rawResponse = err.rawResponse;
-    if (err.rawResponse1 != null) this.rawResponse1 = err.rawResponse1;
     if (err.context != null) this.context = err.context;
     if (err.errorCode != null) this.errorCode = err.errorCode;
     this.path = err.path;
@@ -100,7 +91,6 @@ export const CouldNotProcessEntity$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   RawResponse: z.instanceof(Response).optional(),
-  RawResponse1: z.instanceof(Response).optional(),
   context: z.nullable(
     z.lazy(() => SchemasCOULDNOTPROCESSENTITYContext$inboundSchema),
   ).optional(),
@@ -113,7 +103,6 @@ export const CouldNotProcessEntity$inboundSchema: z.ZodType<
   .transform((v) => {
     const remapped = remap$(v, {
       "RawResponse": "rawResponse",
-      "RawResponse1": "rawResponse1",
     });
 
     return new CouldNotProcessEntity(remapped);
@@ -122,7 +111,6 @@ export const CouldNotProcessEntity$inboundSchema: z.ZodType<
 /** @internal */
 export type CouldNotProcessEntity$Outbound = {
   RawResponse?: never | undefined;
-  RawResponse1?: never | undefined;
   context?: SchemasCOULDNOTPROCESSENTITYContext$Outbound | null | undefined;
   errorCode?: string;
   message?: string;
@@ -143,9 +131,6 @@ export const CouldNotProcessEntity$outboundSchema: z.ZodType<
       rawResponse: z.instanceof(Response).transform(() => {
         throw new Error("Response cannot be serialized");
       }).optional(),
-      rawResponse1: z.instanceof(Response).transform(() => {
-        throw new Error("Response cannot be serialized");
-      }).optional(),
       context: z.nullable(
         z.lazy(() => SchemasCOULDNOTPROCESSENTITYContext$outboundSchema),
       ).optional(),
@@ -157,7 +142,6 @@ export const CouldNotProcessEntity$outboundSchema: z.ZodType<
     }).transform((v) => {
       return remap$(v, {
         rawResponse: "RawResponse",
-        rawResponse1: "RawResponse1",
       });
     }),
   );

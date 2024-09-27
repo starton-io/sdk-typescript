@@ -1,18 +1,14 @@
 # GetAvailableNoncesWalletTransactionManagerResponseBody
 
-## Example Usage
-
-```typescript
-import { GetAvailableNoncesWalletTransactionManagerResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.CouldNotFindResource`
 
 ```typescript
-const value: errors.CouldNotFindResource = /* values here */
+const value: errors.CouldNotFindResource = {
+  path: "/lost+found",
+  timestamp: "<value>",
+};
 ```
 

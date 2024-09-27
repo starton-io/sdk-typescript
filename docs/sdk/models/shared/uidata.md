@@ -6,7 +6,7 @@
 import { DeployMethod, UiData, Version } from "@starton/sdk/sdk/models/shared";
 
 let value: UiData = {
-  deployMethod: DeployMethod.Web3,
+  deployMethod: DeployMethod.Kms,
   imported: false,
   version: Version.One,
 };

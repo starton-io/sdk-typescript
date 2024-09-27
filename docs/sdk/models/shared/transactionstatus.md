@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionStatus } from "@starton/sdk/sdk/models/shared";
 
-let value: TransactionStatus = TransactionStatus.ReplacementGasPriceUnderpriced;
+let value: TransactionStatus = TransactionStatus.CouldNotUnstuckNonce;
 ```
 
 ## Values

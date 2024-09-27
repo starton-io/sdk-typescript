@@ -1,48 +1,59 @@
 # DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody
 
-## Example Usage
-
-```typescript
-import { DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.Unknown`
 
 ```typescript
-const value: errors.Unknown = /* values here */
+const value: errors.Unknown = {
+  path: "/lib",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.NoProviderForNetwork`
 
 ```typescript
-const value: errors.NoProviderForNetwork = /* values here */
+const value: errors.NoProviderForNetwork = {
+  path: "/Library",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotEstimateGasPrice`
 
 ```typescript
-const value: errors.CouldNotEstimateGasPrice = /* values here */
+const value: errors.CouldNotEstimateGasPrice = {
+  path: "/private/var",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotSign`
 
 ```typescript
-const value: errors.CouldNotSign = /* values here */
+const value: errors.CouldNotSign = {
+  path: "/boot",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotAssignNonce`
 
 ```typescript
-const value: errors.CouldNotAssignNonce = /* values here */
+const value: errors.CouldNotAssignNonce = {
+  path: "/tmp",
+  timestamp: "<value>",
+};
 ```
 
 ### `errors.CouldNotBroadcast`
 
 ```typescript
-const value: errors.CouldNotBroadcast = /* values here */
+const value: errors.CouldNotBroadcast = {
+  path: "/opt/lib",
+  timestamp: "<value>",
+};
 ```
 

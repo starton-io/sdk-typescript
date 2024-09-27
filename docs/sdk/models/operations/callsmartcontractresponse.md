@@ -7,7 +7,7 @@ import { CallSmartContractResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: CallSmartContractResponse = {
   contentType: "<value>",
-  statusCode: 203,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

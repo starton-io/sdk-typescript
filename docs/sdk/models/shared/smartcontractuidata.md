@@ -6,7 +6,7 @@
 import { SmartContractDeployMethod, SmartContractUiData, SmartContractVersion } from "@starton/sdk/sdk/models/shared";
 
 let value: SmartContractUiData = {
-  deployMethod: SmartContractDeployMethod.Kms,
+  deployMethod: SmartContractDeployMethod.Web3,
   imported: false,
   version: SmartContractVersion.One,
 };

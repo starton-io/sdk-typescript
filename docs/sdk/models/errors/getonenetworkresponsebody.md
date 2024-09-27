@@ -1,18 +1,17 @@
 # GetOneNetworkResponseBody
 
-## Example Usage
-
-```typescript
-import { GetOneNetworkResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.BadRequestException`
 
 ```typescript
-const value: errors.BadRequestException = /* values here */
+const value: errors.BadRequestException = {
+  message: [
+    "<value>",
+  ],
+  path: "/proc",
+  timestamp: "<value>",
+};
 ```
 

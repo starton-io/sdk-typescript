@@ -1,36 +1,29 @@
 # Params
 
-## Example Usage
-
-```typescript
-import { Params } from "@starton/sdk/sdk/models/shared";
-
-let value: Params = {};
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 6805.14;
 ```
 
 ### `shared.Three`
 
 ```typescript
-const value: shared.Three = /* values here */
+const value: shared.Three = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 

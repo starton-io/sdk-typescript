@@ -1,28 +1,30 @@
 # Credentials
 
-## Example Usage
-
-```typescript
-import { Credentials } from "@starton/sdk/sdk/models/shared";
-
-let value: Credentials = {
-  accessKeyId: "<value>",
-  accountId: "<value>",
-  region: "<value>",
-};
-```
 
 ## Supported Types
 
 ### `shared.AwsKmsCredentialsDto`
 
 ```typescript
-const value: shared.AwsKmsCredentialsDto = /* values here */
+const value: shared.AwsKmsCredentialsDto = {
+  accessKeyId: "<id>",
+  accountId: "<id>",
+  region: "<value>",
+};
 ```
 
 ### `shared.VaultKmsCredentialsDto`
 
 ```typescript
-const value: shared.VaultKmsCredentialsDto = /* values here */
+const value: shared.VaultKmsCredentialsDto = {
+  baseUrl: "https://entire-obesity.com/",
+  id: "<id>",
+  loginPath: "<value>",
+  role: "<value>",
+  rootPath: "<value>",
+  selfSigned: false,
+  timeout: 156.06,
+  tokenPath: "<value>",
+};
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { StateMutability } from "@starton/sdk/sdk/models/shared";
 
-let value: StateMutability = StateMutability.Payable;
+let value: StateMutability = StateMutability.Nonpayable;
 ```
 
 ## Values

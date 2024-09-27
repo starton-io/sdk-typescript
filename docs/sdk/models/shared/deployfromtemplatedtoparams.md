@@ -1,36 +1,29 @@
 # DeployFromTemplateDtoParams
 
-## Example Usage
-
-```typescript
-import { DeployFromTemplateDtoParams } from "@starton/sdk/sdk/models/shared";
-
-let value: DeployFromTemplateDtoParams = false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 3339.65;
 ```
 
 ### `shared.DeployFromTemplateDto3`
 
 ```typescript
-const value: shared.DeployFromTemplateDto3 = /* values here */
+const value: shared.DeployFromTemplateDto3 = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 

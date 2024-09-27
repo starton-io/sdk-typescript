@@ -7,7 +7,7 @@ import { CreateRpcDto, CreateRpcDtoType } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateRpcDto = {
   type: CreateRpcDtoType.Archive,
-  url: "https://whimsical-impostor.name",
+  url: "https://crooked-heating.com/",
 };
 ```
 

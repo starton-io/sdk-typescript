@@ -1,36 +1,29 @@
 # ReadSmartContractResponseParams
 
-## Example Usage
-
-```typescript
-import { ReadSmartContractResponseParams } from "@starton/sdk/sdk/models/shared";
-
-let value: ReadSmartContractResponseParams = "<value>";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 4103.02;
 ```
 
 ### `shared.ReadSmartContractResponse3`
 
 ```typescript
-const value: shared.ReadSmartContractResponse3 = /* values here */
+const value: shared.ReadSmartContractResponse3 = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 

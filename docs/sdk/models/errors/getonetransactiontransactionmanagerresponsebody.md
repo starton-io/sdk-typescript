@@ -1,18 +1,14 @@
 # GetOneTransactionTransactionManagerResponseBody
 
-## Example Usage
-
-```typescript
-import { GetOneTransactionTransactionManagerResponseBody } from "@starton/sdk/sdk/models/errors";
-
-// No examples available for this model
-```
 
 ## Supported Types
 
 ### `errors.CouldNotFindResource`
 
 ```typescript
-const value: errors.CouldNotFindResource = /* values here */
+const value: errors.CouldNotFindResource = {
+  path: "/etc/mail",
+  timestamp: "<value>",
+};
 ```
 

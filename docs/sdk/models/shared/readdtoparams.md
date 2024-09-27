@@ -1,36 +1,29 @@
 # ReadDtoParams
 
-## Example Usage
-
-```typescript
-import { ReadDtoParams } from "@starton/sdk/sdk/models/shared";
-
-let value: ReadDtoParams = 3044.68;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 5413.81;
 ```
 
 ### `shared.ReadDto3`
 
 ```typescript
-const value: shared.ReadDto3 = /* values here */
+const value: shared.ReadDto3 = {};
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 

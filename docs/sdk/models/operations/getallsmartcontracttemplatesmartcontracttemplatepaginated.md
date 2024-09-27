@@ -15,9 +15,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
       blockchains: [
         "<value>",
       ],
-      category: Category.Sale,
-      description: "Down-sized value-added policy",
-      githubUrl: "<value>",
+      category: Category.Other,
+      description: "until twist oof ack flame turbulent",
+      githubUrl: "https://thick-ocelot.com/",
       humanReadableAbi: [
         "<value>",
       ],
@@ -30,9 +30,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
     },
   ],
   meta: {
-    currentPage: 2539.42,
-    itemCount: 2133.12,
-    itemsPerPage: 5182.01,
+    currentPage: 3472.34,
+    itemCount: 1481.41,
+    itemsPerPage: 9818.29,
   },
 };
 ```
