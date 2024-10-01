@@ -86,13 +86,12 @@ run();
 
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
+| Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.BadRequestException   | 400                          | application/json             |
 | errors.CouldNotFindResource  | 404                          | application/json             |
 | errors.CouldNotCancelWebhook | 412                          | application/json             |
-| errors.SDKError              | 4xx-5xx                      | */*                          |
-
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getAll
 
@@ -176,11 +175,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getOne
 
@@ -254,12 +252,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## getSigningSecret
 
@@ -328,11 +325,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## regenerateSigningSecret
 
@@ -401,12 +397,11 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
 | errors.NotAuthenticated    | 401                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## resend
 
@@ -480,9 +475,9 @@ run();
 
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
+| Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.BadRequestException   | 400                          | application/json             |
 | errors.CouldNotFindResource  | 404                          | application/json             |
 | errors.CouldNotResendWebhook | 412                          | application/json             |
-| errors.SDKError              | 4xx-5xx                      | */*                          |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

@@ -114,7 +114,7 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
+| Error Type                            | Status Code                           | Content Type                          |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | errors.InvalidBytecode                | 400                                   | application/json                      |
 | errors.InvalidAbi                     | 400                                   | application/json                      |
@@ -141,8 +141,7 @@ run();
 | errors.CouldNotEstimateGasPrice       | 500                                   | application/json                      |
 | errors.CouldNotAssignNonce            | 500                                   | application/json                      |
 | errors.CouldNotSign                   | 500                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
-
+| errors.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## delete
 
@@ -218,12 +217,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## deployFromBytecode
 
@@ -337,7 +335,7 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
+| Error Type                            | Status Code                           | Content Type                          |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | errors.InvalidBytecode                | 400                                   | application/json                      |
 | errors.InvalidAbi                     | 400                                   | application/json                      |
@@ -362,8 +360,7 @@ run();
 | errors.CouldNotSign                   | 500                                   | application/json                      |
 | errors.CouldNotAssignNonce            | 500                                   | application/json                      |
 | errors.CouldNotBroadcast              | 500                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
-
+| errors.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## deployFromTemplate
 
@@ -461,7 +458,7 @@ run();
 
 ### Errors
 
-| Error Object                     | Status Code                      | Content Type                     |
+| Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.SmartContractNotActivated | 400                              | application/json                 |
 | errors.InvalidBytecode           | 400                              | application/json                 |
@@ -487,8 +484,7 @@ run();
 | errors.CouldNotAssignNonce       | 500                              | application/json                 |
 | errors.CouldNotSign              | 500                              | application/json                 |
 | errors.NoProviderForNetwork      | 500                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
-
+| errors.SDKError                  | 4XX, 5XX                         | \*/\*                            |
 
 ## encode
 
@@ -578,7 +574,7 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.InvalidBytecode      | 400                         | application/json            |
 | errors.InvalidAbi           | 400                         | application/json            |
@@ -593,8 +589,7 @@ run();
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
 | errors.Unknown              | 500                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## getAll
 
@@ -682,11 +677,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getFunctions
 
@@ -762,15 +756,14 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.InvalidBytecode      | 400                         | application/json            |
 | errors.InvalidAbi           | 400                         | application/json            |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
 | errors.Unknown              | 500                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## getOne
 
@@ -850,12 +843,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## importExisting
 
@@ -973,12 +965,11 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.InvalidAbi          | 400                        | application/json           |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## read
 
@@ -1066,7 +1057,7 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.InvalidBytecode      | 400                         | application/json            |
 | errors.InvalidAbi           | 400                         | application/json            |
@@ -1081,8 +1072,7 @@ run();
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
 | errors.Unknown              | 500                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## update
 
@@ -1166,8 +1156,8 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |

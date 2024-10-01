@@ -89,12 +89,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.MaximumWalletReached | 412                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## delete
 
@@ -168,12 +167,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## getAll
 
@@ -253,11 +251,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getOne
 
@@ -331,12 +328,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## import
 
@@ -412,11 +408,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## requestFaucet
 
@@ -498,13 +493,12 @@ run();
 
 ### Errors
 
-| Error Object                     | Status Code                      | Content Type                     |
+| Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.BadRequestException       | 400                              | application/json                 |
 | errors.MicroserviceNotResponding | 500                              | application/json                 |
 | errors.CouldNotPerformRequest    | 500                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
-
+| errors.SDKError                  | 4XX, 5XX                         | \*/\*                            |
 
 ## resyncNonce
 
@@ -580,14 +574,13 @@ run();
 
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
+| Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.BadRequestException   | 400                          | application/json             |
 | errors.CouldNotFindResource  | 404                          | application/json             |
 | errors.CouldNotProcessEntity | 422                          | application/json             |
 | errors.CouldNotAssignNonce   | 500                          | application/json             |
-| errors.SDKError              | 4xx-5xx                      | */*                          |
-
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## sign
 
@@ -667,13 +660,12 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.Forbidden            | 403                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## update
 
@@ -749,8 +741,8 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |

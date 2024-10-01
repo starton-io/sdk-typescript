@@ -103,7 +103,7 @@ run();
 
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
+| Error Type                            | Status Code                           | Content Type                          |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | errors.NonceExpired                   | 400                                   | application/json                      |
 | errors.ExecutionWillFail              | 400                                   | application/json                      |
@@ -120,8 +120,7 @@ run();
 | errors.NoProviderForNetwork           | 500                                   | application/json                      |
 | errors.CouldNotSign                   | 500                                   | application/json                      |
 | errors.Unknown                        | 500                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
-
+| errors.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## getAll
 
@@ -209,11 +208,10 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequestException | 400                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getAvailableNonces
 
@@ -289,14 +287,13 @@ run();
 
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
+| Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.BadRequestException   | 400                          | application/json             |
 | errors.CouldNotFindResource  | 404                          | application/json             |
 | errors.CouldNotProcessEntity | 422                          | application/json             |
 | errors.CouldNotAssignNonce   | 500                          | application/json             |
-| errors.SDKError              | 4xx-5xx                      | */*                          |
-
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getOne
 
@@ -370,12 +367,11 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
+| Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.BadRequestException  | 400                         | application/json            |
 | errors.CouldNotFindResource | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## resyncNonce
 
@@ -451,10 +447,10 @@ run();
 
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
+| Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.BadRequestException   | 400                          | application/json             |
 | errors.CouldNotFindResource  | 404                          | application/json             |
 | errors.CouldNotProcessEntity | 422                          | application/json             |
 | errors.CouldNotAssignNonce   | 500                          | application/json             |
-| errors.SDKError              | 4xx-5xx                      | */*                          |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
