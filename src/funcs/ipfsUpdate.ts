@@ -46,10 +46,8 @@ export async function ipfsUpdate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.UpdatePinRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

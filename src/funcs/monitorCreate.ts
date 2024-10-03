@@ -49,10 +49,8 @@ export async function monitorCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.CreateWatcherDto$outboundSchema.parse(value),
     "Input validation failed",
   );

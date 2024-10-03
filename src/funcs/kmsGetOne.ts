@@ -46,10 +46,8 @@ export async function kmsGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneKmsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

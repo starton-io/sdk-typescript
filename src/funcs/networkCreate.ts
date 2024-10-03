@@ -46,10 +46,8 @@ export async function networkCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.CreateNetworkDto$outboundSchema.parse(value),
     "Input validation failed",
   );

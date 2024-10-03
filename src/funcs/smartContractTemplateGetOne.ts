@@ -46,10 +46,8 @@ export async function smartContractTemplateGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetOneSmartContractTemplateRequest$outboundSchema.parse(value),
     "Input validation failed",

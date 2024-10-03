@@ -48,10 +48,8 @@ export async function walletResyncNonce(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ResyncNoncesWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

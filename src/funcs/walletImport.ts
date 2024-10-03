@@ -46,10 +46,8 @@ export async function walletImport(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.ImportProviderKeyDto$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -46,10 +46,8 @@ export async function networkUpdate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.UpdateNetworkRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

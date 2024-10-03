@@ -47,10 +47,8 @@ export async function webhookResend(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ResendWebhookRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

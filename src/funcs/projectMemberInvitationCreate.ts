@@ -47,10 +47,8 @@ export async function projectMemberInvitationCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.CreateInvitationDto$outboundSchema.parse(value),
     "Input validation failed",
   );

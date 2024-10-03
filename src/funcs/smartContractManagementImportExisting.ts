@@ -46,10 +46,8 @@ export async function smartContractManagementImportExisting(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.ImportSmartContractDto$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -47,10 +47,8 @@ export async function walletSign(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.SignMessageWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

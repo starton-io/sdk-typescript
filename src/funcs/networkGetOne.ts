@@ -46,10 +46,8 @@ export async function networkGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneNetworkRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

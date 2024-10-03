@@ -46,10 +46,8 @@ export async function smartContractManagementDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.DeleteSmartContractRequest$outboundSchema.parse(value),
     "Input validation failed",

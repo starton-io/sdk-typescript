@@ -45,10 +45,8 @@ export async function dataGetGasPrice(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetAllGasPriceRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

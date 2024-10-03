@@ -46,10 +46,8 @@ export async function walletDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeleteWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -46,10 +46,8 @@ export async function monitorGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneWatcherRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

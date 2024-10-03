@@ -46,10 +46,8 @@ export async function networkDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeleteNetworkRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

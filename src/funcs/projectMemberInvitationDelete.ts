@@ -46,10 +46,8 @@ export async function projectMemberInvitationDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeleteInvitationRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

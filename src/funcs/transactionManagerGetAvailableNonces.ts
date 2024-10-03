@@ -48,10 +48,8 @@ export async function transactionManagerGetAvailableNonces(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetAvailableNoncesWalletRequest$outboundSchema.parse(value),
     "Input validation failed",

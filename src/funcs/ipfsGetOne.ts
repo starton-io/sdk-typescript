@@ -46,10 +46,8 @@ export async function ipfsGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOnePinRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

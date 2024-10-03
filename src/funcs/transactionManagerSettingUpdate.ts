@@ -46,10 +46,8 @@ export async function transactionManagerSettingUpdate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.UpdateSettingRelayerRequest$outboundSchema.parse(value),
     "Input validation failed",

@@ -46,10 +46,8 @@ export async function kmsDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeleteKmsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -47,10 +47,8 @@ export async function ipfsUploadJson(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.UploadJsonDto$outboundSchema.parse(value),
     "Input validation failed",
   );

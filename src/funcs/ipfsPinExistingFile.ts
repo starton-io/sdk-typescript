@@ -47,10 +47,8 @@ export async function ipfsPinExistingFile(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.CreatePinDto$outboundSchema.parse(value),
     "Input validation failed",
   );

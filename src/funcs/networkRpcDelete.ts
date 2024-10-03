@@ -46,10 +46,8 @@ export async function networkRpcDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeleteRpcRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

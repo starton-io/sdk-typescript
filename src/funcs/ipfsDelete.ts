@@ -46,10 +46,8 @@ export async function ipfsDelete(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.DeletePinRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

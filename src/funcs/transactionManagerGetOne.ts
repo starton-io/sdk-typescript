@@ -46,10 +46,8 @@ export async function transactionManagerGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneTransactionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

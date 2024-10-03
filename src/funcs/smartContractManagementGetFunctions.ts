@@ -47,10 +47,8 @@ export async function smartContractManagementGetFunctions(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetAvailableFunctionsSmartContractRequest$outboundSchema.parse(
         value,

@@ -47,10 +47,8 @@ export async function smartContractManagementDeployFromTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.DeployFromTemplateSmartContractRequest$outboundSchema.parse(
         value,

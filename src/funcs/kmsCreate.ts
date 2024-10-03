@@ -46,10 +46,8 @@ export async function kmsCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.CreateKmsDto$outboundSchema.parse(value),
     "Input validation failed",
   );

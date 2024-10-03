@@ -46,10 +46,8 @@ export async function walletUpdate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.UpdateWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -48,10 +48,8 @@ export async function smartContractManagementDeployFromBytecode(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.DeployFromBytecodeSmartContractRequest$outboundSchema.parse(
         value,

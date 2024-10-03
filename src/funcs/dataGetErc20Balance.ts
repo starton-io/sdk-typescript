@@ -45,10 +45,8 @@ export async function dataGetErc20Balance(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetBalanceErc20Request$outboundSchema.parse(value),
     "Input validation failed",
   );

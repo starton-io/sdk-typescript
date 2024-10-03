@@ -46,10 +46,8 @@ export async function networkRpcCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.CreateRpcRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

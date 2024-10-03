@@ -46,10 +46,8 @@ export async function networkRpcGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneRpcRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

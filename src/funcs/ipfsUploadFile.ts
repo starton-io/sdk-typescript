@@ -49,10 +49,8 @@ export async function ipfsUploadFile(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.UploadFromFilePinRequestBody$outboundSchema.parse(value),
     "Input validation failed",

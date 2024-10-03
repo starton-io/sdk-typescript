@@ -46,10 +46,8 @@ export async function walletGetOne(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOneWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -46,10 +46,8 @@ export async function walletRequestFaucet(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ClaimFaucetRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
