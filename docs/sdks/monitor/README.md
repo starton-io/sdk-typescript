@@ -31,7 +31,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.monitor.create({
-    address: "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1",
+    address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
     description: "watcher tests",
     metadata: {},
@@ -65,7 +65,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await monitorCreate(starton, {
-    address: "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1",
+    address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
     description: "watcher tests",
     metadata: {},

@@ -114,7 +114,7 @@ export const Pin$inboundSchema: z.ZodType<Pin, z.ZodTypeDef, unknown> = z
   .object({
     cid: z.nullable(z.string()).optional(),
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:33:57.821Z",
+      "2024-10-07T18:00:02.654Z",
     ).transform(v => new Date(v)),
     delegates: z.nullable(z.array(z.string())).optional(),
     directoryContent: z.nullable(z.array(DirectoryContent$inboundSchema))
@@ -128,7 +128,7 @@ export const Pin$inboundSchema: z.ZodType<Pin, z.ZodTypeDef, unknown> = z
     status: Status$inboundSchema,
     type: z.nullable(PinType$inboundSchema).optional(),
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:33:57.821Z",
+      "2024-10-07T18:00:02.654Z",
     ).transform(v => new Date(v)),
   });
 
@@ -153,7 +153,7 @@ export type Pin$Outbound = {
 export const Pin$outboundSchema: z.ZodType<Pin$Outbound, z.ZodTypeDef, Pin> = z
   .object({
     cid: z.nullable(z.string()).optional(),
-    createdAt: z.date().default(() => new Date("2024-05-02T09:33:57.821Z"))
+    createdAt: z.date().default(() => new Date("2024-10-07T18:00:02.654Z"))
       .transform(v => v.toISOString()),
     delegates: z.nullable(z.array(z.string())).optional(),
     directoryContent: z.nullable(z.array(DirectoryContent$outboundSchema))
@@ -166,7 +166,7 @@ export const Pin$outboundSchema: z.ZodType<Pin$Outbound, z.ZodTypeDef, Pin> = z
     size: z.nullable(z.number()).optional(),
     status: Status$outboundSchema,
     type: z.nullable(PinType$outboundSchema).optional(),
-    updatedAt: z.date().default(() => new Date("2024-05-02T09:33:57.821Z"))
+    updatedAt: z.date().default(() => new Date("2024-10-07T18:00:02.654Z"))
       .transform(v => v.toISOString()),
   });
 

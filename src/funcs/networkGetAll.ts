@@ -68,24 +68,25 @@ export async function networkGetAll(
   const path = pathToFunc("/v3/network")();
 
   const query = encodeFormQuery({
+    "browserExtensionService": payload.browserExtensionService,
     "chainIds": payload.chainIds,
-    "id": payload.id,
+    "deprecated": payload.deprecated,
+    "displayName": payload.displayName,
+    "featured": payload.featured,
+    "indexerService": payload.indexerService,
     "limit": payload.limit,
+    "name": payload.name,
     "page": payload.page,
     "testnet": payload.testnet,
+    "transactionManagerService": payload.transactionManagerService,
   });
 
   const headers = new Headers({
     Accept: "application/json",
-    "origin": encodeSimple("origin", payload.origin, {
+    "x-tenant-name": encodeSimple("x-tenant-name", payload["x-tenant-name"], {
       explode: false,
       charEncoding: "none",
     }),
-    "x-platform-hostname": encodeSimple(
-      "x-platform-hostname",
-      payload["x-platform-hostname"],
-      { explode: false, charEncoding: "none" },
-    ),
   });
 
   const secConfig = await extractSecurity(client._options.apiKey);

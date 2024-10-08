@@ -323,7 +323,7 @@ export const SmartContract$inboundSchema: z.ZodType<
   compilationDetails: z.nullable(z.lazy(() => CompilationDetails$inboundSchema))
     .optional(),
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.243Z",
+    "2024-10-07T18:00:44.828Z",
   ).transform(v => new Date(v)),
   creationHash: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
@@ -343,7 +343,7 @@ export const SmartContract$inboundSchema: z.ZodType<
   uiData: z.nullable(z.lazy(() => SmartContractUiData$inboundSchema))
     .optional(),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.243Z",
+    "2024-10-07T18:00:44.828Z",
   ).transform(v => new Date(v)),
 });
 
@@ -382,7 +382,7 @@ export const SmartContract$outboundSchema: z.ZodType<
   compilationDetails: z.nullable(
     z.lazy(() => CompilationDetails$outboundSchema),
   ).optional(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.243Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.828Z"))
     .transform(v => v.toISOString()),
   creationHash: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
@@ -399,7 +399,7 @@ export const SmartContract$outboundSchema: z.ZodType<
   templateId: z.nullable(z.string()).optional(),
   uiData: z.nullable(z.lazy(() => SmartContractUiData$outboundSchema))
     .optional(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:19.243Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:44.828Z"))
     .transform(v => v.toISOString()),
 });
 

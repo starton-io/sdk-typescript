@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/root",
+  path: "/opt/include",
   timestamp: "<value>",
 };
 ```

@@ -9,7 +9,7 @@ let value: UpdateNetworkDto = {
   explorerApi: {
     apiKey: "<value>",
     type: ExplorerApiDtoType.Etherscan,
-    url: "https://meager-typeface.name/",
+    url: "https://subdued-widow.org/",
   },
 };
 ```
@@ -35,7 +35,7 @@ let value: UpdateNetworkDto = {
 | `logo`                                                                                      | *string*                                                                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `name`                                                                                      | *string*                                                                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `symbol`                                                                                    | *string*                                                                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `tenantHostnames`                                                                           | *string*[]                                                                                  | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `tenantNames`                                                                               | *string*[]                                                                                  | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `testnet`                                                                                   | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `verifyBlockIntegrity`                                                                      | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `verifyTxIntegrity`                                                                         | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |

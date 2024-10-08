@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.DatabaseDuplicate = {
-  path: "/usr/lib",
+  path: "/usr/X11R6",
   timestamp: "<value>",
 };
 ```

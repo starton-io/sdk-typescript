@@ -137,7 +137,7 @@ export namespace Wallets$ {
 export const Kms$inboundSchema: z.ZodType<Kms, z.ZodTypeDef, unknown> = z
   .object({
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:19.277Z",
+      "2024-10-07T18:00:44.886Z",
     ).transform(v => new Date(v)),
     credentials: z.lazy(() => KmsCredentials$inboundSchema),
     id: z.string(),
@@ -146,7 +146,7 @@ export const Kms$inboundSchema: z.ZodType<Kms, z.ZodTypeDef, unknown> = z
     projectId: z.string(),
     provider: KmsProvider$inboundSchema,
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:19.277Z",
+      "2024-10-07T18:00:44.886Z",
     ).transform(v => new Date(v)),
     wallets: z.lazy(() => Wallets$inboundSchema).optional(),
   });
@@ -167,7 +167,7 @@ export type Kms$Outbound = {
 /** @internal */
 export const Kms$outboundSchema: z.ZodType<Kms$Outbound, z.ZodTypeDef, Kms> = z
   .object({
-    createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.277Z"))
+    createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.886Z"))
       .transform(v => v.toISOString()),
     credentials: z.lazy(() => KmsCredentials$outboundSchema),
     id: z.string(),
@@ -175,7 +175,7 @@ export const Kms$outboundSchema: z.ZodType<Kms$Outbound, z.ZodTypeDef, Kms> = z
     name: z.string(),
     projectId: z.string(),
     provider: KmsProvider$outboundSchema,
-    updatedAt: z.date().default(() => new Date("2024-05-02T09:34:19.277Z"))
+    updatedAt: z.date().default(() => new Date("2024-10-07T18:00:44.886Z"))
       .transform(v => v.toISOString()),
     wallets: z.lazy(() => Wallets$outboundSchema).optional(),
   });

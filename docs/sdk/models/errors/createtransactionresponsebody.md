@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.NonceExpired = {
-  path: "/usr/X11R6",
+  path: "/root",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.NonceExpired = {
 
 ```typescript
 const value: errors.ExecutionWillFail = {
-  path: "/var/yp",
+  path: "/opt/lib",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.ExecutionWillFail = {
 
 ```typescript
 const value: errors.InvalidGasPrice = {
-  path: "/usr/libdata",
+  path: "/rescue",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.InsufficientFunds = {
 
 ```typescript
 const value: errors.AlreadyKnown = {
-  path: "/proc",
+  path: "/home",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.AlreadyKnown = {
 
 ```typescript
 const value: errors.UnpredictableGasLimit = {
-  path: "/opt/bin",
+  path: "/bin",
   timestamp: "<value>",
 };
 ```
@@ -64,7 +64,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/opt",
+  path: "/rescue",
   timestamp: "<value>",
 };
 ```

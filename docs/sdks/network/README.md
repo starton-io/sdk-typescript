@@ -43,7 +43,7 @@ async function run() {
     },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
-    name: "optimism-functional-tests1714642436107",
+    name: "optimism-functional-tests1728323990886",
     symbol: "ETH",
   });
 
@@ -85,7 +85,7 @@ async function run() {
     },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
-    name: "optimism-functional-tests1714642436107",
+    name: "optimism-functional-tests1728323990886",
     symbol: "ETH",
   });
 
@@ -137,7 +137,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.delete({
-    name: "optimism-functional-tests1714642436107",
+    name: "optimism-functional-tests1728323990886",
   });
 
   // Handle the result
@@ -163,7 +163,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await networkDelete(starton, {
-    name: "optimism-functional-tests1714642436107",
+    name: "optimism-functional-tests1728323990886",
   });
 
   if (!res.ok) {
@@ -216,12 +216,10 @@ const starton = new Starton({
 async function run() {
   const result = await starton.network.getAll({
     chainIds: [
-      "<value>",
+      4610.08,
     ],
     limit: 20,
-    origin: "<value>",
     page: 0,
-    xPlatformHostname: "<value>",
   });
 
   for await (const page of result) {
@@ -250,12 +248,10 @@ const starton = new StartonCore({
 async function run() {
   const res = await networkGetAll(starton, {
     chainIds: [
-      "<value>",
+      5984.80,
     ],
     limit: 20,
-    origin: "<value>",
     page: 0,
-    xPlatformHostname: "<value>",
   });
 
   if (!res.ok) {

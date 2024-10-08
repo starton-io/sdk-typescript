@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/selinux",
+  path: "/opt/bin",
   timestamp: "<value>",
 };
 ```

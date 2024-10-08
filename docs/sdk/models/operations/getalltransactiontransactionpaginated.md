@@ -10,7 +10,7 @@ let value: GetAllTransactionTransactionPaginated = {
   items: [
     {
       automaticNonce: false,
-      chainId: 7392.64,
+      chainId: 2828.07,
       from: "<value>",
       id: "<id>",
       isDeployTransaction: false,
@@ -18,7 +18,7 @@ let value: GetAllTransactionTransactionPaginated = {
         {
           createdAt: "<value>",
           message: "<value>",
-          type: TransactionLogType.ErrorTx,
+          type: TransactionLogType.ReceivedByStarton,
         },
       ],
       network: "<value>",
@@ -30,9 +30,9 @@ let value: GetAllTransactionTransactionPaginated = {
     },
   ],
   meta: {
-    currentPage: 2961.40,
-    itemCount: 1187.28,
-    itemsPerPage: 3179.83,
+    currentPage: 3179.83,
+    itemCount: 4142.63,
+    itemsPerPage: 641.47,
   },
 };
 ```

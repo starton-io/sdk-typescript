@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 5199.52;
+const value: number = 3426.11;
 ```
 
 ### `shared.EncodeDto3`

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
-  docChecksum: b4af0673c061eb6f5d6fb4c72cf67a82
+  docChecksum: 4b1b219e53d243b06fabb8ad05ab6221
   docVersion: "1.0"
-  speakeasyVersion: 1.406.0
-  generationVersion: 2.429.0
-  releaseVersion: 0.25.2
-  configChecksum: 0345b875f531775ac36ea5341cfd2400
+  speakeasyVersion: 1.411.1
+  generationVersion: 2.436.1
+  releaseVersion: 0.25.3
+  configChecksum: ac5e0f7503f10cc7b7374cfcea0b7127
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -350,6 +350,7 @@ generatedFiles:
   - docs/sdk/models/operations/getallwatcherrequest.md
   - docs/sdk/models/operations/getallwatcherresponse.md
   - docs/sdk/models/operations/getallwatcherwatcherpaginated.md
+  - docs/sdk/models/operations/getallwebhookqueryparamstatus.md
   - docs/sdk/models/operations/getallwebhookrequest.md
   - docs/sdk/models/operations/getallwebhookresponse.md
   - docs/sdk/models/operations/getallwebhookwebhookpaginated.md
@@ -397,6 +398,7 @@ generatedFiles:
   - docs/sdk/models/operations/resyncnonceswalletresponse.md
   - docs/sdk/models/operations/signmessagewalletrequest.md
   - docs/sdk/models/operations/signmessagewalletresponse.md
+  - docs/sdk/models/operations/state.md
   - docs/sdk/models/operations/status.md
   - docs/sdk/models/operations/type.md
   - docs/sdk/models/operations/updatekmsrequest.md
@@ -429,6 +431,7 @@ generatedFiles:
   - docs/sdk/models/shared/addressnativebalanceresponse.md
   - docs/sdk/models/shared/availablefunctions.md
   - docs/sdk/models/shared/awskmscredentialsdto.md
+  - docs/sdk/models/shared/browserextensionsettings.md
   - docs/sdk/models/shared/calldto.md
   - docs/sdk/models/shared/category.md
   - docs/sdk/models/shared/compilationdetails.md
@@ -495,6 +498,7 @@ generatedFiles:
   - docs/sdk/models/shared/importsmartcontractdtoparams.md
   - docs/sdk/models/shared/importsmartcontractdtouidata.md
   - docs/sdk/models/shared/importsmartcontractdtoversion.md
+  - docs/sdk/models/shared/indexersettings.md
   - docs/sdk/models/shared/invitation.md
   - docs/sdk/models/shared/invitationrole.md
   - docs/sdk/models/shared/kms.md
@@ -503,6 +507,8 @@ generatedFiles:
   - docs/sdk/models/shared/kmsprovider.md
   - docs/sdk/models/shared/metadata.md
   - docs/sdk/models/shared/network.md
+  - docs/sdk/models/shared/networkeips.md
+  - docs/sdk/models/shared/networkgaspricerecommendation.md
   - docs/sdk/models/shared/noncesavailable.md
   - docs/sdk/models/shared/paginationdata.md
   - docs/sdk/models/shared/params.md
@@ -524,6 +530,7 @@ generatedFiles:
   - docs/sdk/models/shared/resyncnonce.md
   - docs/sdk/models/shared/role.md
   - docs/sdk/models/shared/rpc.md
+  - docs/sdk/models/shared/rpcheaders.md
   - docs/sdk/models/shared/rpctype.md
   - docs/sdk/models/shared/security.md
   - docs/sdk/models/shared/settingrelayer.md
@@ -549,6 +556,7 @@ generatedFiles:
   - docs/sdk/models/shared/transactionlog.md
   - docs/sdk/models/shared/transactionlogcontext.md
   - docs/sdk/models/shared/transactionlogtype.md
+  - docs/sdk/models/shared/transactionmanagersettings.md
   - docs/sdk/models/shared/transactionmetadata.md
   - docs/sdk/models/shared/transactionspeed.md
   - docs/sdk/models/shared/transactionstate.md
@@ -586,6 +594,8 @@ generatedFiles:
   - docs/sdk/models/shared/watchermetadata.md
   - docs/sdk/models/shared/watchertype.md
   - docs/sdk/models/shared/webhook.md
+  - docs/sdk/models/shared/webhookattempt.md
+  - docs/sdk/models/shared/webhookattemptstatus.md
   - docs/sdk/models/shared/webhookpayload.md
   - docs/sdk/models/shared/webhooksigningsecret.md
   - docs/sdk/models/shared/webhookstatus.md
@@ -903,6 +913,7 @@ generatedFiles:
   - src/sdk/models/shared/addressnativebalanceresponse.ts
   - src/sdk/models/shared/availablefunctions.ts
   - src/sdk/models/shared/awskmscredentialsdto.ts
+  - src/sdk/models/shared/browserextensionsettings.ts
   - src/sdk/models/shared/calldto.ts
   - src/sdk/models/shared/createinvitationdto.ts
   - src/sdk/models/shared/createkmsdto.ts
@@ -923,14 +934,17 @@ generatedFiles:
   - src/sdk/models/shared/explorerapidto.ts
   - src/sdk/models/shared/faucet.ts
   - src/sdk/models/shared/gaspriceinfo.ts
+  - src/sdk/models/shared/gaspricerecommendation.ts
   - src/sdk/models/shared/gaspricerecommendationdto.ts
   - src/sdk/models/shared/gasprices.ts
   - src/sdk/models/shared/importproviderkeydto.ts
   - src/sdk/models/shared/importsmartcontractdto.ts
   - src/sdk/models/shared/index.ts
+  - src/sdk/models/shared/indexersettings.ts
   - src/sdk/models/shared/invitation.ts
   - src/sdk/models/shared/kms.ts
   - src/sdk/models/shared/network.ts
+  - src/sdk/models/shared/networkeips.ts
   - src/sdk/models/shared/noncesavailable.ts
   - src/sdk/models/shared/paginationdata.ts
   - src/sdk/models/shared/pin.ts
@@ -950,6 +964,7 @@ generatedFiles:
   - src/sdk/models/shared/tooearly.ts
   - src/sdk/models/shared/transaction.ts
   - src/sdk/models/shared/transactionlog.ts
+  - src/sdk/models/shared/transactionmanagersettings.ts
   - src/sdk/models/shared/updatekmsdto.ts
   - src/sdk/models/shared/updatenetworkdto.ts
   - src/sdk/models/shared/updatepindto.ts
@@ -964,6 +979,7 @@ generatedFiles:
   - src/sdk/models/shared/watcher.ts
   - src/sdk/models/shared/watcherevent.ts
   - src/sdk/models/shared/webhook.ts
+  - src/sdk/models/shared/webhookattempt.ts
   - src/sdk/models/shared/webhooksigningsecret.ts
   - src/sdk/monitor.ts
   - src/sdk/network.ts
@@ -1427,17 +1443,17 @@ examples:
   createNetwork:
     a:
       requestBody:
-        application/json: {"blockchain": "optimism", "chainId": 10, "confirmationBlocks": 128, "displayName": "optimism-private", "enableExternalWallet": false, "enableListener": false, "enableRelayer": false, "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://limp-pastry.org"}, "explorerUrl": "https://optimism-invalid-test-explorer.com", "logo": "https://optimism-invalid-test-logo.com", "name": "optimism-functional-tests1714642436107", "symbol": "ETH"}
+        application/json: {"blockchain": "optimism", "chainId": 10, "confirmationBlocks": 128, "displayName": "optimism-private", "enableExternalWallet": false, "enableListener": false, "enableRelayer": false, "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://limp-pastry.org"}, "explorerUrl": "https://optimism-invalid-test-explorer.com", "logo": "https://optimism-invalid-test-logo.com", "name": "optimism-functional-tests1728323990886", "symbol": "ETH"}
       responses:
         "201":
-          application/json: {"blockchain": "<value>", "chainId": "4865.89", "confirmationBlocks": "4893.82", "decimal": "6384.24", "displayName": "Rylan13", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
+          application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": "4865.89", "confirmationBlocks": "4893.82", "decimal": "6384.24", "deprecated": false, "displayName": "Rylan13", "eip1159": false, "eips": {"eip1159": true, "eip155": true}, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "featured": true, "indexerService": false, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
   deleteNetwork:
     "":
       parameters:
         path:
-          name: "optimism-functional-tests1714642436107"
+          name: "optimism-functional-tests1728323990886"
       responses:
         "200":
           application/json: "5459.07"
@@ -1467,11 +1483,11 @@ examples:
           name: "optimism-functional-tests"
       responses:
         "200":
-          application/json: {"blockchain": "<value>", "chainId": "1929.72", "confirmationBlocks": "4970.64", "decimal": "3503.11", "displayName": "Laurine.Barrows", "eip1159": true, "enableExternalWallet": true, "enableListener": true, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
+          application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": "1929.72", "confirmationBlocks": "4970.64", "decimal": "3503.11", "deprecated": true, "displayName": "Laurine.Barrows", "eip1159": true, "eips": {"eip1159": true, "eip155": true}, "enableExternalWallet": true, "enableListener": true, "enableRelayer": false, "explorerUrl": "<value>", "featured": true, "indexerService": true, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "transactionManagerService": true, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
           application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
   updateNetwork:
     a:
       parameters:
@@ -1481,11 +1497,11 @@ examples:
         application/json: {"displayName": "optimism-private-tests", "explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "https://alarming-nondisclosure.com"}}
       responses:
         "200":
-          application/json: {"blockchain": "<value>", "chainId": "8574.78", "confirmationBlocks": "245.55", "decimal": "5971.29", "displayName": "Afton_Hegmann27", "eip1159": false, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
+          application/json: {"blockchain": "<value>", "browserExtensionService": false, "chainId": "8574.78", "confirmationBlocks": "245.55", "decimal": "5971.29", "deprecated": false, "displayName": "Afton_Hegmann27", "eip1159": false, "eips": {"eip1159": true, "eip155": false}, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "featured": false, "indexerService": true, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/usr/src", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/Network", "timestamp": "<value>"}
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1494,11 +1510,11 @@ examples:
         application/json: {"explorerApi": {"apiKey": "<value>", "type": "etherscan", "url": "http://rubbery-wrap.biz"}}
       responses:
         "200":
-          application/json: {"blockchain": "<value>", "chainId": "2782.81", "confirmationBlocks": "8965.01", "decimal": "4995.57", "displayName": "Isac78", "eip1159": false, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "<value>", "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
+          application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": "2782.81", "confirmationBlocks": "8965.01", "decimal": "4995.57", "deprecated": true, "displayName": "Isac78", "eip1159": false, "eips": {"eip1159": true, "eip155": false}, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "<value>", "featured": false, "indexerService": true, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "transactionManagerService": true, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/var", "timestamp": "<value>"}
+          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
   createRpc:
     a:
       parameters:
@@ -1948,7 +1964,7 @@ examples:
   createWatcher:
     a:
       requestBody:
-        application/json: {"address": "0xf96aeba5b2df4ba7b69e5f61fe1d963840ededb1", "confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher test", "network": "polygon-mumbai", "type": "ADDRESS_ACTIVITY", "webhookUrl": "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"}
+        application/json: {"address": "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a", "confirmationsBlocks": 0, "description": "watcher tests", "name": "watcher test", "network": "polygon-mumbai", "type": "ADDRESS_ACTIVITY", "webhookUrl": "https://webhook.site/db756457-9ca1-4975-9a3d-6257c9e0601e"}
       responses:
         "201":
           application/json: {"address": "4684 Bria Shores", "confirmationsBlocks": "690.25", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<value>", "triggerType": "GAS_PRICE", "type": "EVENT_TRANSFER", "webhookUrl": "<value>"}
@@ -2062,13 +2078,13 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "201":
-          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
+          application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
         "400":
-          application/json: {"message": [], "path": "/var/yp", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/private/tmp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
-        "412":
           application/json: {"path": "/etc", "timestamp": "<value>"}
+        "412":
+          application/json: {"path": "/home", "timestamp": "<value>"}
   getAllWebhook:
     "":
       parameters:
@@ -2088,11 +2104,11 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "200":
-          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
+          application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
         "400":
-          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/bin", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/bin", "timestamp": "<value>"}
+          application/json: {"path": "/opt/share", "timestamp": "<value>"}
   getOneWebhookSigningSecret:
     speakeasy-default-get-one-webhook-signing-secret:
       responses:
@@ -2116,10 +2132,10 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "201":
-          application/json: {"id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
+          application/json: {"attempts": [{"attempt": "7522.59", "attemptDate": "<value>", "id": "<id>", "responsePayload": "<value>", "responseStatusCode": "4706.48", "status": "SUCCESSFUL_CALL", "webhookId": "<id>"}], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
         "400":
-          application/json: {"message": ["<value>"], "path": "/usr/libdata", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/usr/libexec", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/System", "timestamp": "<value>"}
+          application/json: {"path": "/usr/bin", "timestamp": "<value>"}

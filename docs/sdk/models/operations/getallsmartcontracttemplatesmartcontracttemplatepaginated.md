@@ -16,8 +16,8 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
         "<value>",
       ],
       category: Category.Other,
-      description: "until twist oof ack flame turbulent",
-      githubUrl: "https://thick-ocelot.com/",
+      description: "aha roundabout embarrassment earth wildly",
+      githubUrl: "https://weighty-tuxedo.net/",
       humanReadableAbi: [
         "<value>",
       ],
@@ -30,9 +30,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
     },
   ],
   meta: {
-    currentPage: 3472.34,
-    itemCount: 1481.41,
-    itemsPerPage: 9818.29,
+    currentPage: 6304.48,
+    itemCount: 8742.88,
+    itemsPerPage: 2930.20,
   },
 };
 ```

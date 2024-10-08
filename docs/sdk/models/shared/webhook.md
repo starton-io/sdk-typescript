@@ -3,16 +3,27 @@
 ## Example Usage
 
 ```typescript
-import { Webhook, WebhookStatus } from "@starton/sdk/sdk/models/shared";
+import { Webhook, WebhookAttemptStatus, WebhookStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: Webhook = {
+  attempts: [
+    {
+      attempt: 8130.54,
+      attemptDate: "<value>",
+      id: "<id>",
+      responsePayload: "<value>",
+      responseStatusCode: 9762.26,
+      status: WebhookAttemptStatus.FailedCall,
+      webhookId: "<id>",
+    },
+  ],
   headers: {},
   id: "<id>",
   payload: {},
   projectId: "<id>",
   refId: "<id>",
-  status: WebhookStatus.Successful,
-  url: "https://reckless-flu.net/",
+  status: WebhookStatus.Canceled,
+  url: "https://great-chiffonier.com",
 };
 ```
 
@@ -20,6 +31,7 @@ let value: Webhook = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `attempts`                                                                                    | [shared.WebhookAttempt](../../../sdk/models/shared/webhookattempt.md)[]                       | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `headers`                                                                                     | [shared.Headers](../../../sdk/models/shared/headers.md)                                       | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `id`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |

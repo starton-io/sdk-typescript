@@ -5,7 +5,7 @@
 ```typescript
 import { Type } from "@starton/sdk/sdk/models/shared";
 
-let value: Type = Type.Fallback;
+let value: Type = Type.Function;
 ```
 
 ## Values

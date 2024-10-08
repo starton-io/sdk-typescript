@@ -11,10 +11,10 @@ let value: SettingRelayer = {
   projectId: "<id>",
   unstuckAutomaticGasPrice: false,
   unstuckCustomGasPrice: false,
-  unstuckGasPriceDelay: 5173.09,
+  unstuckGasPriceDelay: 8694.89,
   unstuckMaxGasPrice: "<value>",
   unstuckMissingNonce: false,
-  unstuckMissingNonceDelay: 4240.89,
+  unstuckMissingNonceDelay: 4541.62,
 };
 ```
 

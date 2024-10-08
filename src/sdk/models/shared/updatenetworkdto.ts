@@ -34,7 +34,7 @@ export type UpdateNetworkDto = {
   logo?: string | undefined;
   name?: string | undefined;
   symbol?: string | undefined;
-  tenantHostnames?: Array<string> | undefined;
+  tenantNames?: Array<string> | undefined;
   testnet?: boolean | undefined;
   verifyBlockIntegrity?: boolean | undefined;
   verifyTxIntegrity?: boolean | undefined;
@@ -63,7 +63,7 @@ export const UpdateNetworkDto$inboundSchema: z.ZodType<
   logo: z.string().optional(),
   name: z.string().optional(),
   symbol: z.string().optional(),
-  tenantHostnames: z.array(z.string()).optional(),
+  tenantNames: z.array(z.string()).optional(),
   testnet: z.boolean().optional(),
   verifyBlockIntegrity: z.boolean().optional(),
   verifyTxIntegrity: z.boolean().optional(),
@@ -88,7 +88,7 @@ export type UpdateNetworkDto$Outbound = {
   logo?: string | undefined;
   name?: string | undefined;
   symbol?: string | undefined;
-  tenantHostnames?: Array<string> | undefined;
+  tenantNames?: Array<string> | undefined;
   testnet?: boolean | undefined;
   verifyBlockIntegrity?: boolean | undefined;
   verifyTxIntegrity?: boolean | undefined;
@@ -117,7 +117,7 @@ export const UpdateNetworkDto$outboundSchema: z.ZodType<
   logo: z.string().optional(),
   name: z.string().optional(),
   symbol: z.string().optional(),
-  tenantHostnames: z.array(z.string()).optional(),
+  tenantNames: z.array(z.string()).optional(),
   testnet: z.boolean().optional(),
   verifyBlockIntegrity: z.boolean().optional(),
   verifyTxIntegrity: z.boolean().optional(),

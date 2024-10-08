@@ -45,14 +45,14 @@ export const Invitation$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:07.024Z",
+    "2024-10-07T18:00:31.716Z",
   ).transform(v => new Date(v)),
   email: z.string(),
   id: z.string(),
   projectId: z.string(),
   role: InvitationRole$inboundSchema,
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:07.024Z",
+    "2024-10-07T18:00:31.716Z",
   ).transform(v => new Date(v)),
 });
 
@@ -72,13 +72,13 @@ export const Invitation$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Invitation
 > = z.object({
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:07.024Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:31.716Z"))
     .transform(v => v.toISOString()),
   email: z.string(),
   id: z.string(),
   projectId: z.string(),
   role: InvitationRole$outboundSchema,
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:07.024Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:31.716Z"))
     .transform(v => v.toISOString()),
 });
 

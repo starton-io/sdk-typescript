@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.ReplacementGasPriceUnderpriced = {
-  path: "/opt/include",
+  path: "/usr/share",
   timestamp: "<value>",
 };
 ```

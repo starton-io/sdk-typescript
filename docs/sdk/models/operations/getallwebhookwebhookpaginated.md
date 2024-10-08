@@ -4,24 +4,35 @@
 
 ```typescript
 import { GetAllWebhookWebhookPaginated } from "@starton/sdk/sdk/models/operations";
-import { WebhookStatus } from "@starton/sdk/sdk/models/shared";
+import { WebhookAttemptStatus, WebhookStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: GetAllWebhookWebhookPaginated = {
   items: [
     {
+      attempts: [
+        {
+          attempt: 2621.18,
+          attemptDate: "<value>",
+          id: "<id>",
+          responsePayload: "<value>",
+          responseStatusCode: 4561.41,
+          status: WebhookAttemptStatus.FailedCall,
+          webhookId: "<id>",
+        },
+      ],
       headers: {},
       id: "<id>",
       payload: {},
       projectId: "<id>",
       refId: "<id>",
-      status: WebhookStatus.Retrying,
-      url: "https://back-possession.net",
+      status: WebhookStatus.Failed,
+      url: "https://hungry-conservative.net/",
     },
   ],
   meta: {
-    currentPage: 7774.08,
-    itemCount: 2594.23,
-    itemsPerPage: 3738.13,
+    currentPage: 568.48,
+    itemCount: 6969.97,
+    itemsPerPage: 7786.95,
   },
 };
 ```

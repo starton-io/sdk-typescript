@@ -83,7 +83,7 @@ export const WatcherEvent$inboundSchema: z.ZodType<
   blockHash: z.string(),
   blockNumber: z.number(),
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:03.892Z",
+    "2024-10-07T18:00:22.747Z",
   ).transform(v => new Date(v)),
   id: z.string(),
   network: z.string(),
@@ -92,7 +92,7 @@ export const WatcherEvent$inboundSchema: z.ZodType<
   status: WatcherEventStatus$inboundSchema,
   txHash: z.string(),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:03.892Z",
+    "2024-10-07T18:00:22.747Z",
   ).transform(v => new Date(v)),
   watcherId: z.string(),
 });
@@ -120,7 +120,7 @@ export const WatcherEvent$outboundSchema: z.ZodType<
 > = z.object({
   blockHash: z.string(),
   blockNumber: z.number(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:03.892Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:22.747Z"))
     .transform(v => v.toISOString()),
   id: z.string(),
   network: z.string(),
@@ -128,7 +128,7 @@ export const WatcherEvent$outboundSchema: z.ZodType<
   projectId: z.string(),
   status: WatcherEventStatus$outboundSchema,
   txHash: z.string(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:03.892Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:22.747Z"))
     .transform(v => v.toISOString()),
   watcherId: z.string(),
 });

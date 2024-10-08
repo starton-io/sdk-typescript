@@ -53,7 +53,7 @@ export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
   .object({
     address: z.string(),
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:19.272Z",
+      "2024-10-07T18:00:44.878Z",
     ).transform(v => new Date(v)),
     description: z.nullable(z.string()).optional(),
     kmsId: z.string(),
@@ -62,7 +62,7 @@ export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
     projectId: z.string(),
     providerKeyId: z.string(),
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:19.272Z",
+      "2024-10-07T18:00:44.878Z",
     ).transform(v => new Date(v)),
   });
 
@@ -86,7 +86,7 @@ export const Wallet$outboundSchema: z.ZodType<
   Wallet
 > = z.object({
   address: z.string(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.272Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.878Z"))
     .transform(v => v.toISOString()),
   description: z.nullable(z.string()).optional(),
   kmsId: z.string(),
@@ -94,7 +94,7 @@ export const Wallet$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   projectId: z.string(),
   providerKeyId: z.string(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:19.272Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:44.878Z"))
     .transform(v => v.toISOString()),
 });
 

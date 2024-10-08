@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/bin",
+  path: "/lost+found",
   timestamp: "<value>",
 };
 ```

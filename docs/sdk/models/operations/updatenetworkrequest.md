@@ -11,7 +11,7 @@ let value: UpdateNetworkRequest = {
     explorerApi: {
       apiKey: "<value>",
       type: ExplorerApiDtoType.Etherscan,
-      url: "https://serpentine-knight.org",
+      url: "https://well-to-do-papa.info",
     },
   },
   name: "optimism-functional-tests",

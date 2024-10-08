@@ -68,6 +68,7 @@ export async function walletGetAll(
   const path = pathToFunc("/v3/kms/wallet")();
 
   const query = encodeFormQuery({
+    "kmsId": payload.kmsId,
     "limit": payload.limit,
     "name": payload.name,
     "page": payload.page,

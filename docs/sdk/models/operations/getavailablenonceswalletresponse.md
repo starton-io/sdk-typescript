@@ -7,7 +7,7 @@ import { GetAvailableNoncesWalletResponse } from "@starton/sdk/sdk/models/operat
 
 let value: GetAvailableNoncesWalletResponse = {
   contentType: "<value>",
-  statusCode: 416,
+  statusCode: 205,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

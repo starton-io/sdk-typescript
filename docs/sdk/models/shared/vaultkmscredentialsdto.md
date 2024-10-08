@@ -6,13 +6,13 @@
 import { VaultKmsCredentialsDto } from "@starton/sdk/sdk/models/shared";
 
 let value: VaultKmsCredentialsDto = {
-  baseUrl: "https://elegant-disappointment.com/",
+  baseUrl: "https://sugary-thongs.net",
   id: "<id>",
   loginPath: "<value>",
   role: "<value>",
   rootPath: "<value>",
   selfSigned: false,
-  timeout: 120.36,
+  timeout: 1594.14,
   tokenPath: "<value>",
 };
 ```

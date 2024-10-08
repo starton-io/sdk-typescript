@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllWalletRequest = {
+  kmsId?: string | undefined;
   /**
    * Number of entities returned on each page. By default this number is set to 100.
    */
@@ -45,6 +46,7 @@ export const GetAllWalletRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  kmsId: z.string().optional(),
   limit: z.number().int().default(100),
   name: z.string().optional(),
   page: z.number().int().optional(),
@@ -52,6 +54,7 @@ export const GetAllWalletRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetAllWalletRequest$Outbound = {
+  kmsId?: string | undefined;
   limit: number;
   name?: string | undefined;
   page?: number | undefined;
@@ -63,6 +66,7 @@ export const GetAllWalletRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllWalletRequest
 > = z.object({
+  kmsId: z.string().optional(),
   limit: z.number().int().default(100),
   name: z.string().optional(),
   page: z.number().int().optional(),

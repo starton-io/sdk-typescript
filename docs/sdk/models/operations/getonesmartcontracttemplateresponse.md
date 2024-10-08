@@ -7,7 +7,7 @@ import { GetOneSmartContractTemplateResponse } from "@starton/sdk/sdk/models/ope
 
 let value: GetOneSmartContractTemplateResponse = {
   contentType: "<value>",
-  statusCode: 410,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

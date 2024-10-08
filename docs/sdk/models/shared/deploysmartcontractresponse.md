@@ -14,17 +14,17 @@ import {
 
 let value: DeploySmartContractResponse = {
   smartContract: {
-    address: "236 N Oak Street",
+    address: "452 Jacobson Fields",
     id: "<id>",
     name: "<value>",
     network: "<value>",
     projectId: "<id>",
-    state: State.Pending,
-    status: SmartContractStatus.ErrorTx,
+    state: State.ManualActionRequired,
+    status: SmartContractStatus.CouldNotEstimateGasLimit,
   },
   transaction: {
     automaticNonce: false,
-    chainId: 7103.37,
+    chainId: 3730.35,
     from: "<value>",
     id: "<id>",
     isDeployTransaction: false,
@@ -32,14 +32,14 @@ let value: DeploySmartContractResponse = {
       {
         createdAt: "<value>",
         message: "<value>",
-        type: TransactionLogType.Unsigned,
+        type: TransactionLogType.NonceAssigned,
       },
     ],
     network: "<value>",
     projectId: "<id>",
     signerWallet: "<value>",
-    state: TransactionState.Pending,
-    status: TransactionStatus.NonceAssigned,
+    state: TransactionState.Error,
+    status: TransactionStatus.GasLimitEstimated,
     value: "<value>",
   },
 };

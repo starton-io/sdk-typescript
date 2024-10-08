@@ -18,12 +18,12 @@ export const WebhookSigningSecret$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:00.631Z",
+    "2024-10-07T18:00:19.999Z",
   ).transform(v => new Date(v)),
   projectId: z.string(),
   secret: z.string(),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:00.631Z",
+    "2024-10-07T18:00:19.999Z",
   ).transform(v => new Date(v)),
 });
 
@@ -41,11 +41,11 @@ export const WebhookSigningSecret$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookSigningSecret
 > = z.object({
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:00.631Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:19.999Z"))
     .transform(v => v.toISOString()),
   projectId: z.string(),
   secret: z.string(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:00.631Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:19.999Z"))
     .transform(v => v.toISOString()),
 });
 

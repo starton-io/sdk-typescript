@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/etc/periodic",
+  path: "/etc/defaults",
   timestamp: "<value>",
 };
 ```

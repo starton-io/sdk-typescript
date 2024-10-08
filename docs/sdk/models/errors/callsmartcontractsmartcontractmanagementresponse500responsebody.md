@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/usr",
+  path: "/lost+found",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.Unknown = {
 
 ```typescript
 const value: errors.CouldNotBroadcast = {
-  path: "/lib",
+  path: "/rescue",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.CouldNotBroadcast = {
 
 ```typescript
 const value: errors.NoProviderForNetwork = {
-  path: "/home/user",
+  path: "/etc/mail",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.CouldNotEstimateGasPrice = {
 
 ```typescript
 const value: errors.CouldNotAssignNonce = {
-  path: "/var/log",
+  path: "/boot",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.CouldNotAssignNonce = {
 
 ```typescript
 const value: errors.CouldNotSign = {
-  path: "/media",
+  path: "/var/tmp",
   timestamp: "<value>",
 };
 ```

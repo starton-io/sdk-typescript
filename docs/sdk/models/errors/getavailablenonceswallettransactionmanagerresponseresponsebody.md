@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotProcessEntity = {
-  path: "/usr",
+  path: "/home/user/dir",
   timestamp: "<value>",
 };
 ```

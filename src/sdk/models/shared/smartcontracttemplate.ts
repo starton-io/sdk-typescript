@@ -160,7 +160,7 @@ export const SmartContractTemplate$inboundSchema: z.ZodType<
     z.lazy(() => SmartContractTemplateCompilationDetails$inboundSchema),
   ).optional(),
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:33:57.362Z",
+    "2024-10-07T18:00:07.422Z",
   ).transform(v => new Date(v)),
   description: z.string(),
   form: z.nullable(z.lazy(() => Form$inboundSchema)).optional(),
@@ -174,7 +174,7 @@ export const SmartContractTemplate$inboundSchema: z.ZodType<
   shortDescription: z.string(),
   tags: z.array(z.string()),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:33:57.362Z",
+    "2024-10-07T18:00:07.422Z",
   ).transform(v => new Date(v)),
 });
 
@@ -214,7 +214,7 @@ export const SmartContractTemplate$outboundSchema: z.ZodType<
   compilationDetails: z.nullable(
     z.lazy(() => SmartContractTemplateCompilationDetails$outboundSchema),
   ).optional(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:33:57.362Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:07.422Z"))
     .transform(v => v.toISOString()),
   description: z.string(),
   form: z.nullable(z.lazy(() => Form$outboundSchema)).optional(),
@@ -227,7 +227,7 @@ export const SmartContractTemplate$outboundSchema: z.ZodType<
   order: z.number().default(0),
   shortDescription: z.string(),
   tags: z.array(z.string()),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:33:57.362Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:07.422Z"))
     .transform(v => v.toISOString()),
 });
 

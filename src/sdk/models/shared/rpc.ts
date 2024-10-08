@@ -42,14 +42,14 @@ export namespace RpcType$ {
 export const Rpc$inboundSchema: z.ZodType<Rpc, z.ZodTypeDef, unknown> = z
   .object({
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:33:57.043Z",
+      "2024-10-07T17:59:53.167Z",
     ).transform(v => new Date(v)),
     id: z.string(),
     isPublic: z.boolean(),
     networkName: z.string(),
     type: RpcType$inboundSchema,
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:33:57.043Z",
+      "2024-10-07T17:59:53.167Z",
     ).transform(v => new Date(v)),
     url: z.string(),
   });
@@ -68,13 +68,13 @@ export type Rpc$Outbound = {
 /** @internal */
 export const Rpc$outboundSchema: z.ZodType<Rpc$Outbound, z.ZodTypeDef, Rpc> = z
   .object({
-    createdAt: z.date().default(() => new Date("2024-05-02T09:33:57.043Z"))
+    createdAt: z.date().default(() => new Date("2024-10-07T17:59:53.167Z"))
       .transform(v => v.toISOString()),
     id: z.string(),
     isPublic: z.boolean(),
     networkName: z.string(),
     type: RpcType$outboundSchema,
-    updatedAt: z.date().default(() => new Date("2024-05-02T09:33:57.043Z"))
+    updatedAt: z.date().default(() => new Date("2024-10-07T17:59:53.167Z"))
       .transform(v => v.toISOString()),
     url: z.string(),
   });

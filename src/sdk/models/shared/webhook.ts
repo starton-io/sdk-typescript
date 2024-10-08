@@ -3,6 +3,12 @@
  */
 
 import * as z from "zod";
+import {
+  WebhookAttempt,
+  WebhookAttempt$inboundSchema,
+  WebhookAttempt$Outbound,
+  WebhookAttempt$outboundSchema,
+} from "./webhookattempt.js";
 
 export type Headers = {};
 
@@ -16,6 +22,7 @@ export enum WebhookStatus {
 }
 
 export type Webhook = {
+  attempts: Array<WebhookAttempt>;
   createdAt?: Date | undefined;
   headers: Headers | null;
   id: string;
@@ -108,8 +115,9 @@ export namespace WebhookStatus$ {
 /** @internal */
 export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> =
   z.object({
+    attempts: z.array(WebhookAttempt$inboundSchema),
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:00.636Z",
+      "2024-10-07T18:00:20.011Z",
     ).transform(v => new Date(v)),
     headers: z.nullable(z.lazy(() => Headers$inboundSchema)),
     id: z.string(),
@@ -118,13 +126,14 @@ export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> =
     refId: z.string(),
     status: WebhookStatus$inboundSchema,
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:00.636Z",
+      "2024-10-07T18:00:20.011Z",
     ).transform(v => new Date(v)),
     url: z.string(),
   });
 
 /** @internal */
 export type Webhook$Outbound = {
+  attempts: Array<WebhookAttempt$Outbound>;
   createdAt: string;
   headers: Headers$Outbound | null;
   id: string;
@@ -142,7 +151,8 @@ export const Webhook$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Webhook
 > = z.object({
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:00.636Z"))
+  attempts: z.array(WebhookAttempt$outboundSchema),
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:20.011Z"))
     .transform(v => v.toISOString()),
   headers: z.nullable(z.lazy(() => Headers$outboundSchema)),
   id: z.string(),
@@ -150,7 +160,7 @@ export const Webhook$outboundSchema: z.ZodType<
   projectId: z.string(),
   refId: z.string(),
   status: WebhookStatus$outboundSchema,
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:00.636Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:20.011Z"))
     .transform(v => v.toISOString()),
   url: z.string(),
 });

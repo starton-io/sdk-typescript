@@ -7,7 +7,7 @@ import { GetAllProjectMemberResponse } from "@starton/sdk/sdk/models/operations"
 
 let value: GetAllProjectMemberResponse = {
   contentType: "<value>",
-  statusCode: 500,
+  statusCode: 404,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

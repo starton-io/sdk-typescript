@@ -5,7 +5,7 @@
 ```typescript
 import { WatcherType } from "@starton/sdk/sdk/models/shared";
 
-let value: WatcherType = WatcherType.AddressActivity;
+let value: WatcherType = WatcherType.MinedTransaction;
 ```
 
 ## Values

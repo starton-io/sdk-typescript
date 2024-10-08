@@ -7,7 +7,7 @@ import { GetAllWebhookResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: GetAllWebhookResponse = {
   contentType: "<value>",
-  statusCode: 302,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

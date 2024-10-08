@@ -39,7 +39,7 @@ export type Faucet = {
 export const Faucet$inboundSchema: z.ZodType<Faucet, z.ZodTypeDef, unknown> = z
   .object({
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:19.286Z",
+      "2024-10-07T18:00:44.904Z",
     ).transform(v => new Date(v)),
     id: z.string(),
     ip: z.string(),
@@ -66,7 +66,7 @@ export const Faucet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Faucet
 > = z.object({
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.286Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.904Z"))
     .transform(v => v.toISOString()),
   id: z.string(),
   ip: z.string(),

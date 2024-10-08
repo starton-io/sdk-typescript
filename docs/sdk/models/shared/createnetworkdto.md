@@ -7,13 +7,13 @@ import { CreateNetworkDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/sh
 
 let value: CreateNetworkDto = {
   blockchain: "<value>",
-  chainId: 1059.06,
-  confirmationBlocks: 9509.53,
-  displayName: "Darrel_Beer88",
+  chainId: 2883.98,
+  confirmationBlocks: 2414.19,
+  displayName: "Makayla_OReilly",
   explorerApi: {
     apiKey: "<value>",
     type: ExplorerApiDtoType.Etherscan,
-    url: "https://hospitable-republican.biz/",
+    url: "https://sarcastic-hawk.info/",
   },
   logo: "<value>",
   name: "<value>",
@@ -42,7 +42,7 @@ let value: CreateNetworkDto = {
 | `logo`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `name`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `symbol`                                                                                    | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `tenantHostnames`                                                                           | *string*[]                                                                                  | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `tenantNames`                                                                               | *string*[]                                                                                  | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `testnet`                                                                                   | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `verifyBlockIntegrity`                                                                      | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `verifyTxIntegrity`                                                                         | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |

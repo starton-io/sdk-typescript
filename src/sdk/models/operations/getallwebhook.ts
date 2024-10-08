@@ -6,7 +6,7 @@ import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
-export enum QueryParamStatus {
+export enum GetAllWebhookQueryParamStatus {
   Retrying = "RETRYING",
   Successful = "SUCCESSFUL",
   Failed = "FAILED",
@@ -22,7 +22,7 @@ export type GetAllWebhookRequest = {
    * Number of returned page. By default the returned page is the first.
    */
   page?: number | undefined;
-  status?: QueryParamStatus | undefined;
+  status?: GetAllWebhookQueryParamStatus | undefined;
 };
 
 export type GetAllWebhookWebhookPaginated = {
@@ -47,24 +47,24 @@ export type GetAllWebhookResponse = {
 };
 
 /** @internal */
-export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+export const GetAllWebhookQueryParamStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllWebhookQueryParamStatus
+> = z.nativeEnum(GetAllWebhookQueryParamStatus);
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = QueryParamStatus$inboundSchema;
+export const GetAllWebhookQueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof GetAllWebhookQueryParamStatus
+> = GetAllWebhookQueryParamStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamStatus$ {
-  /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = QueryParamStatus$inboundSchema;
-  /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema = QueryParamStatus$outboundSchema;
+export namespace GetAllWebhookQueryParamStatus$ {
+  /** @deprecated use `GetAllWebhookQueryParamStatus$inboundSchema` instead. */
+  export const inboundSchema = GetAllWebhookQueryParamStatus$inboundSchema;
+  /** @deprecated use `GetAllWebhookQueryParamStatus$outboundSchema` instead. */
+  export const outboundSchema = GetAllWebhookQueryParamStatus$outboundSchema;
 }
 
 /** @internal */
@@ -75,7 +75,7 @@ export const GetAllWebhookRequest$inboundSchema: z.ZodType<
 > = z.object({
   limit: z.number().int().default(100),
   page: z.number().int().optional(),
-  status: QueryParamStatus$inboundSchema.optional(),
+  status: GetAllWebhookQueryParamStatus$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -93,7 +93,7 @@ export const GetAllWebhookRequest$outboundSchema: z.ZodType<
 > = z.object({
   limit: z.number().int().default(100),
   page: z.number().int().optional(),
-  status: QueryParamStatus$outboundSchema.optional(),
+  status: GetAllWebhookQueryParamStatus$outboundSchema.optional(),
 });
 
 /**

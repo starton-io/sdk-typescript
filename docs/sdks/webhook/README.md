@@ -101,7 +101,7 @@ Fetches the list of all webhooks dispatched to your server. You can apply filter
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
+import { GetAllWebhookQueryParamStatus } from "@starton/sdk/sdk/models/operations";
 
 const starton = new Starton({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -111,7 +111,7 @@ async function run() {
   const result = await starton.webhook.getAll({
     limit: 20,
     page: 0,
-    status: QueryParamStatus.Successful,
+    status: GetAllWebhookQueryParamStatus.Successful,
   });
 
   for await (const page of result) {
@@ -130,7 +130,7 @@ The standalone function version of this method:
 ```typescript
 import { StartonCore } from "@starton/sdk/core.js";
 import { webhookGetAll } from "@starton/sdk/funcs/webhookGetAll.js";
-import { QueryParamStatus } from "@starton/sdk/sdk/models/operations";
+import { GetAllWebhookQueryParamStatus } from "@starton/sdk/sdk/models/operations";
 
 // Use `StartonCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -142,7 +142,7 @@ async function run() {
   const res = await webhookGetAll(starton, {
     limit: 20,
     page: 0,
-    status: QueryParamStatus.Successful,
+    status: GetAllWebhookQueryParamStatus.Successful,
   });
 
   if (!res.ok) {

@@ -25,7 +25,7 @@ export const SettingRelayer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.284Z",
+    "2024-10-07T18:00:44.901Z",
   ).transform(v => new Date(v)),
   id: z.string(),
   network: z.string(),
@@ -37,7 +37,7 @@ export const SettingRelayer$inboundSchema: z.ZodType<
   unstuckMissingNonce: z.boolean(),
   unstuckMissingNonceDelay: z.number(),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.284Z",
+    "2024-10-07T18:00:44.901Z",
   ).transform(v => new Date(v)),
 });
 
@@ -62,7 +62,7 @@ export const SettingRelayer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SettingRelayer
 > = z.object({
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.284Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.901Z"))
     .transform(v => v.toISOString()),
   id: z.string(),
   network: z.string(),
@@ -73,7 +73,7 @@ export const SettingRelayer$outboundSchema: z.ZodType<
   unstuckMaxGasPrice: z.string(),
   unstuckMissingNonce: z.boolean(),
   unstuckMissingNonceDelay: z.number(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:19.284Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:44.901Z"))
     .transform(v => v.toISOString()),
 });
 

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MicroserviceNotResponding = {
-  path: "/Network",
+  path: "/usr/lib",
   timestamp: "<value>",
 };
 ```

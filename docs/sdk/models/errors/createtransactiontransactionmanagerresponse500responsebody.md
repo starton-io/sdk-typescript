@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotAssignNonce = {
-  path: "/Network",
+  path: "/etc/defaults",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.CouldNotAssignNonce = {
 
 ```typescript
 const value: errors.CouldNotBroadcast = {
-  path: "/usr/libexec",
+  path: "/sys",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.CouldNotBroadcast = {
 
 ```typescript
 const value: errors.CouldNotEstimateGasPrice = {
-  path: "/usr/libdata",
+  path: "/usr/bin",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.CouldNotEstimateGasPrice = {
 
 ```typescript
 const value: errors.NoProviderForNetwork = {
-  path: "/var/log",
+  path: "/tmp",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.NoProviderForNetwork = {
 
 ```typescript
 const value: errors.CouldNotSign = {
-  path: "/bin",
+  path: "/var/spool",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.CouldNotSign = {
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/usr/src",
+  path: "/etc/defaults",
   timestamp: "<value>",
 };
 ```

@@ -13,9 +13,8 @@ let value: SmartContractTemplate = {
     "<value>",
   ],
   category: Category.Sale,
-  description:
-    "huzzah after what gah eek flight grouper uniform industrialize when",
-  githubUrl: "https://voluminous-whale.info",
+  description: "against within wiggly huzzah after what gah",
+  githubUrl: "https://wordy-completion.biz/",
   humanReadableAbi: [
     "<value>",
   ],

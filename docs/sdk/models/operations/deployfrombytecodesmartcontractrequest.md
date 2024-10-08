@@ -10,7 +10,7 @@ let value: DeployFromBytecodeSmartContractRequest = {
   deployFromBytecodeDto: {
     abi: [
       {
-        type: Type.Function,
+        type: Type.Event,
       },
     ],
     bytecode: "<value>",

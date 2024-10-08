@@ -205,7 +205,7 @@ export const Transaction$inboundSchema: z.ZodType<
   blockNumber: z.nullable(z.number()).optional(),
   chainId: z.number(),
   createdAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.251Z",
+    "2024-10-07T18:00:44.843Z",
   ).transform(v => new Date(v)),
   data: z.nullable(z.string()).optional(),
   from: z.string(),
@@ -237,7 +237,7 @@ export const Transaction$inboundSchema: z.ZodType<
   transactionHash: z.nullable(z.string()).optional(),
   type: z.nullable(z.number()).optional(),
   updatedAt: z.string().datetime({ offset: true }).default(
-    "2024-05-02T09:34:19.251Z",
+    "2024-10-07T18:00:44.843Z",
   ).transform(v => new Date(v)),
   value: z.string(),
 });
@@ -287,7 +287,7 @@ export const Transaction$outboundSchema: z.ZodType<
   blockHash: z.nullable(z.string()).optional(),
   blockNumber: z.nullable(z.number()).optional(),
   chainId: z.number(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:19.251Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:44.843Z"))
     .transform(v => v.toISOString()),
   data: z.nullable(z.string()).optional(),
   from: z.string(),
@@ -315,7 +315,7 @@ export const Transaction$outboundSchema: z.ZodType<
   to: z.nullable(z.string()).optional(),
   transactionHash: z.nullable(z.string()).optional(),
   type: z.nullable(z.number()).optional(),
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:19.251Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:44.843Z"))
     .transform(v => v.toISOString()),
   value: z.string(),
 });

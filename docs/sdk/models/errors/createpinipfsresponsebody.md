@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MaximumStorageReached = {
-  path: "/rescue",
+  path: "/opt/lib",
   timestamp: "<value>",
 };
 ```

@@ -6,6 +6,53 @@ import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
+export enum State {
+  Success = "SUCCESS",
+  Pending = "PENDING",
+  ManualActionRequired = "MANUAL_ACTION_REQUIRED",
+  Error = "ERROR",
+}
+
+export enum QueryParamStatus {
+  Unsigned = "UNSIGNED",
+  ErrorTx = "ERROR_TX",
+  ErrorPublish = "ERROR_PUBLISH",
+  Published = "PUBLISHED",
+  ReceivedByStarton = "RECEIVED_BY_STARTON",
+  CreatedByStarton = "CREATED_BY_STARTON",
+  CouldNotEstimateGasPrice = "COULD_NOT_ESTIMATE_GAS_PRICE",
+  CouldNotIncreaseGasPrice = "COULD_NOT_INCREASE_GAS_PRICE",
+  GasPriceEstimated = "GAS_PRICE_ESTIMATED",
+  InvalidGasPrice = "INVALID_GAS_PRICE",
+  ReplacementGasPriceUnderpriced = "REPLACEMENT_GAS_PRICE_UNDERPRICED",
+  CouldNotEstimateGasLimit = "COULD_NOT_ESTIMATE_GAS_LIMIT",
+  GasLimitEstimated = "GAS_LIMIT_ESTIMATED",
+  ExecutionWillFail = "EXECUTION_WILL_FAIL",
+  InvalidArgument = "INVALID_ARGUMENT",
+  InsufficientFunds = "INSUFFICIENT_FUNDS",
+  InsufficientFundsAfterBroadcast = "INSUFFICIENT_FUNDS_AFTER_BROADCAST",
+  CouldNotAssignNonce = "COULD_NOT_ASSIGN_NONCE",
+  CouldNotUnstuckNonce = "COULD_NOT_UNSTUCK_NONCE",
+  NonceAssigned = "NONCE_ASSIGNED",
+  NonceExpired = "NONCE_EXPIRED",
+  CouldNotSign = "COULD_NOT_SIGN",
+  Signed = "SIGNED",
+  SentToMempool = "SENT_TO_MEMPOOL",
+  CouldNotBroadcast = "COULD_NOT_BROADCAST",
+  AlreadyKnown = "ALREADY_KNOWN",
+  Mined = "MINED",
+  Confirmed = "CONFIRMED",
+  Replaced = "REPLACED",
+  Failed = "FAILED",
+  MonitoringInProgress = "MONITORING_IN_PROGRESS",
+  StuckByPreviousTransaction = "STUCK_BY_PREVIOUS_TRANSACTION",
+  MaxGasPriceReach = "MAX_GAS_PRICE_REACH",
+  GasPriceIncreased = "GAS_PRICE_INCREASED",
+  NewTransactionHash = "NEW_TRANSACTION_HASH",
+  Unknown = "UNKNOWN",
+  MonitoringInterrupted = "MONITORING_INTERRUPTED",
+}
+
 export type GetAllTransactionRequest = {
   /**
    * The wallet used to sign the transactions (filter).
@@ -27,6 +74,8 @@ export type GetAllTransactionRequest = {
    * Number of returned page. By default the returned page is the first.
    */
   page?: number | undefined;
+  state?: Array<State> | undefined;
+  status?: Array<QueryParamStatus> | undefined;
   /**
    * The address receiver of transactions, which can be a smart contract (filter).
    */
@@ -59,6 +108,47 @@ export type GetAllTransactionResponse = {
 };
 
 /** @internal */
+export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
+  State,
+);
+
+/** @internal */
+export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
+  State$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace State$ {
+  /** @deprecated use `State$inboundSchema` instead. */
+  export const inboundSchema = State$inboundSchema;
+  /** @deprecated use `State$outboundSchema` instead. */
+  export const outboundSchema = State$outboundSchema;
+}
+
+/** @internal */
+export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamStatus
+> = z.nativeEnum(QueryParamStatus);
+
+/** @internal */
+export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamStatus
+> = QueryParamStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamStatus$ {
+  /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
+  export const inboundSchema = QueryParamStatus$inboundSchema;
+  /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
+  export const outboundSchema = QueryParamStatus$outboundSchema;
+}
+
+/** @internal */
 export const GetAllTransactionRequest$inboundSchema: z.ZodType<
   GetAllTransactionRequest,
   z.ZodTypeDef,
@@ -70,6 +160,8 @@ export const GetAllTransactionRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(100),
   network: z.string().optional(),
   page: z.number().int().optional(),
+  state: z.array(State$inboundSchema).optional(),
+  status: z.array(QueryParamStatus$inboundSchema).optional(),
   to: z.string().optional(),
   transactionHash: z.string().optional(),
 });
@@ -81,6 +173,8 @@ export type GetAllTransactionRequest$Outbound = {
   limit: number;
   network?: string | undefined;
   page?: number | undefined;
+  state?: Array<string> | undefined;
+  status?: Array<string> | undefined;
   to?: string | undefined;
   transactionHash?: string | undefined;
 };
@@ -96,6 +190,8 @@ export const GetAllTransactionRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(100),
   network: z.string().optional(),
   page: z.number().int().optional(),
+  state: z.array(State$outboundSchema).optional(),
+  status: z.array(QueryParamStatus$outboundSchema).optional(),
   to: z.string().optional(),
   transactionHash: z.string().optional(),
 });

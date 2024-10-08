@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/Applications",
+  path: "/boot/defaults",
   timestamp: "<value>",
 };
 ```

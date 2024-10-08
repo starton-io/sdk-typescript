@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.InvalidBytecode = {
-  path: "/usr/libexec",
+  path: "/sys",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.InvalidBytecode = {
 
 ```typescript
 const value: errors.InvalidAbi = {
-  path: "/usr/ports",
+  path: "/dev",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.InvalidAbi = {
 
 ```typescript
 const value: errors.InvalidFunction = {
-  path: "/etc/namedb",
+  path: "/usr/share",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.InvalidFunction = {
 
 ```typescript
 const value: errors.MissingArgument = {
-  path: "/opt/sbin",
+  path: "/usr/include",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.MissingArgument = {
 
 ```typescript
 const value: errors.UnexpectedArgument = {
-  path: "/usr/ports",
+  path: "/var/spool",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.UnexpectedArgument = {
 
 ```typescript
 const value: errors.InvalidArgument = {
-  path: "/usr/obj",
+  path: "/proc",
   timestamp: "<value>",
 };
 ```
@@ -61,7 +61,7 @@ const value: errors.InvalidArgument = {
 
 ```typescript
 const value: errors.CallException = {
-  path: "/etc/defaults",
+  path: "/mnt",
   timestamp: "<value>",
 };
 ```
@@ -70,7 +70,7 @@ const value: errors.CallException = {
 
 ```typescript
 const value: errors.NumericFault = {
-  path: "/etc/periodic",
+  path: "/root",
   timestamp: "<value>",
 };
 ```
@@ -79,7 +79,7 @@ const value: errors.NumericFault = {
 
 ```typescript
 const value: errors.EnsNotSupported = {
-  path: "/mnt",
+  path: "/var/log",
   timestamp: "<value>",
 };
 ```
@@ -88,7 +88,7 @@ const value: errors.EnsNotSupported = {
 
 ```typescript
 const value: errors.UnpredictableGasLimit = {
-  path: "/dev",
+  path: "/rescue",
   timestamp: "<value>",
 };
 ```
@@ -97,7 +97,7 @@ const value: errors.UnpredictableGasLimit = {
 
 ```typescript
 const value: errors.ExecutionWillFail = {
-  path: "/opt/sbin",
+  path: "/lost+found",
   timestamp: "<value>",
 };
 ```
@@ -106,7 +106,7 @@ const value: errors.ExecutionWillFail = {
 
 ```typescript
 const value: errors.InvalidGasPrice = {
-  path: "/etc/defaults",
+  path: "/usr/share",
   timestamp: "<value>",
 };
 ```
@@ -115,7 +115,7 @@ const value: errors.InvalidGasPrice = {
 
 ```typescript
 const value: errors.InsufficientFunds = {
-  path: "/selinux",
+  path: "/opt/bin",
   timestamp: "<value>",
 };
 ```
@@ -124,7 +124,7 @@ const value: errors.InsufficientFunds = {
 
 ```typescript
 const value: errors.AlreadyKnown = {
-  path: "/lib",
+  path: "/Applications",
   timestamp: "<value>",
 };
 ```
@@ -133,7 +133,7 @@ const value: errors.AlreadyKnown = {
 
 ```typescript
 const value: errors.NonceExpired = {
-  path: "/srv",
+  path: "/lib",
   timestamp: "<value>",
 };
 ```
@@ -142,7 +142,7 @@ const value: errors.NonceExpired = {
 
 ```typescript
 const value: errors.ContractNotYetDeployed = {
-  path: "/etc/mail",
+  path: "/net",
   timestamp: "<value>",
 };
 ```
@@ -154,7 +154,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/var/tmp",
+  path: "/usr/sbin",
   timestamp: "<value>",
 };
 ```

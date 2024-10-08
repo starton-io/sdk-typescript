@@ -7,19 +7,24 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllNetworkRequest = {
-  chainIds: Array<string>;
-  id?: string | undefined;
+  browserExtensionService?: boolean | undefined;
+  chainIds?: Array<number> | undefined;
+  deprecated?: boolean | undefined;
+  displayName?: string | undefined;
+  featured?: boolean | undefined;
+  indexerService?: boolean | undefined;
   /**
    * Number of entities returned on each page. By default this number is set to 100.
    */
   limit?: number | undefined;
-  origin: string;
+  name?: string | undefined;
   /**
    * Number of returned page. By default the returned page is the first.
    */
   page?: number | undefined;
   testnet?: boolean | undefined;
-  xPlatformHostname: string;
+  transactionManagerService?: boolean | undefined;
+  xTenantName?: string | undefined;
 };
 
 export type GetAllNetworkNetworkPaginated = {
@@ -49,28 +54,38 @@ export const GetAllNetworkRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  chainIds: z.array(z.string()),
-  id: z.string().optional(),
+  browserExtensionService: z.boolean().optional(),
+  chainIds: z.array(z.number()).optional(),
+  deprecated: z.boolean().optional(),
+  displayName: z.string().optional(),
+  featured: z.boolean().optional(),
+  indexerService: z.boolean().optional(),
   limit: z.number().int().default(100),
-  origin: z.string(),
+  name: z.string().optional(),
   page: z.number().int().optional(),
   testnet: z.boolean().optional(),
-  "x-platform-hostname": z.string(),
+  transactionManagerService: z.boolean().optional(),
+  "x-tenant-name": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "x-platform-hostname": "xPlatformHostname",
+    "x-tenant-name": "xTenantName",
   });
 });
 
 /** @internal */
 export type GetAllNetworkRequest$Outbound = {
-  chainIds: Array<string>;
-  id?: string | undefined;
+  browserExtensionService?: boolean | undefined;
+  chainIds?: Array<number> | undefined;
+  deprecated?: boolean | undefined;
+  displayName?: string | undefined;
+  featured?: boolean | undefined;
+  indexerService?: boolean | undefined;
   limit: number;
-  origin: string;
+  name?: string | undefined;
   page?: number | undefined;
   testnet?: boolean | undefined;
-  "x-platform-hostname": string;
+  transactionManagerService?: boolean | undefined;
+  "x-tenant-name"?: string | undefined;
 };
 
 /** @internal */
@@ -79,16 +94,21 @@ export const GetAllNetworkRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllNetworkRequest
 > = z.object({
-  chainIds: z.array(z.string()),
-  id: z.string().optional(),
+  browserExtensionService: z.boolean().optional(),
+  chainIds: z.array(z.number()).optional(),
+  deprecated: z.boolean().optional(),
+  displayName: z.string().optional(),
+  featured: z.boolean().optional(),
+  indexerService: z.boolean().optional(),
   limit: z.number().int().default(100),
-  origin: z.string(),
+  name: z.string().optional(),
   page: z.number().int().optional(),
   testnet: z.boolean().optional(),
-  xPlatformHostname: z.string(),
+  transactionManagerService: z.boolean().optional(),
+  xTenantName: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    xPlatformHostname: "x-platform-hostname",
+    xTenantName: "x-tenant-name",
   });
 });
 

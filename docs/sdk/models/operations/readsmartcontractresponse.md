@@ -8,7 +8,7 @@ import { ReadSmartContractResponse } from "@starton/sdk/sdk/models/operations";
 let value: ReadSmartContractResponse = {
   contentType: "<value>",
   readSmartContractResponse: {
-    address: "296 Ulises Ridges",
+    address: "729 E Main Street",
     functionName: "<value>",
     network: "<value>",
     params: [
@@ -17,9 +17,9 @@ let value: ReadSmartContractResponse = {
       "1000000000000000000000000",
       "0x298e760768c8481780397eE28A127eAd584df4ee",
     ],
-    response: 2133.12,
+    response: 5182.01,
   },
-  statusCode: 300,
+  statusCode: 100,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

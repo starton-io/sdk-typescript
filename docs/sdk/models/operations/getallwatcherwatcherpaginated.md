@@ -9,21 +9,21 @@ import { TriggerType, WatcherType } from "@starton/sdk/sdk/models/shared";
 let value: GetAllWatcherWatcherPaginated = {
   items: [
     {
-      address: "18999 Grove Lane",
-      confirmationsBlocks: 811.01,
+      address: "4181 Fahey Club",
+      confirmationsBlocks: 8621.92,
       id: "<id>",
       network: "<value>",
       paused: false,
       projectId: "<id>",
-      triggerType: TriggerType.Transaction,
-      type: WatcherType.AddressReceivedNativeCurrency,
-      webhookUrl: "https://awesome-quinoa.com/",
+      triggerType: TriggerType.GasPrice,
+      type: WatcherType.EventCustom,
+      webhookUrl: "https://sorrowful-finger.com",
     },
   ],
   meta: {
-    currentPage: 7705.81,
-    itemCount: 1469.47,
-    itemsPerPage: 795.22,
+    currentPage: 4072.41,
+    itemCount: 2322.34,
+    itemsPerPage: 1324.88,
   },
 };
 ```

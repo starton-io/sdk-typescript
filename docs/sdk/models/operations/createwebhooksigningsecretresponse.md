@@ -7,7 +7,7 @@ import { CreateWebhookSigningSecretResponse } from "@starton/sdk/sdk/models/oper
 
 let value: CreateWebhookSigningSecretResponse = {
   contentType: "<value>",
-  statusCode: 402,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

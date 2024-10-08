@@ -73,6 +73,8 @@ export async function transactionManagerGetAll(
     "limit": payload.limit,
     "network": payload.network,
     "page": payload.page,
+    "state": payload.state,
+    "status": payload.status,
     "to": payload.to,
     "transactionHash": payload.transactionHash,
   });

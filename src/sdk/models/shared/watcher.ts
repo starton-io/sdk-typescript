@@ -185,7 +185,7 @@ export const Watcher$inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> =
     address: z.string(),
     confirmationsBlocks: z.number(),
     createdAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:03.879Z",
+      "2024-10-07T18:00:22.732Z",
     ).transform(v => new Date(v)),
     customEventAbi: z.nullable(
       z.array(z.lazy(() => WatcherCustomEventAbi$inboundSchema)),
@@ -203,7 +203,7 @@ export const Watcher$inboundSchema: z.ZodType<Watcher, z.ZodTypeDef, unknown> =
     triggerType: TriggerType$inboundSchema,
     type: WatcherType$inboundSchema,
     updatedAt: z.string().datetime({ offset: true }).default(
-      "2024-05-02T09:34:03.879Z",
+      "2024-10-07T18:00:22.732Z",
     ).transform(v => new Date(v)),
     webhookUrl: z.string(),
   });
@@ -237,7 +237,7 @@ export const Watcher$outboundSchema: z.ZodType<
 > = z.object({
   address: z.string(),
   confirmationsBlocks: z.number(),
-  createdAt: z.date().default(() => new Date("2024-05-02T09:34:03.879Z"))
+  createdAt: z.date().default(() => new Date("2024-10-07T18:00:22.732Z"))
     .transform(v => v.toISOString()),
   customEventAbi: z.nullable(
     z.array(z.lazy(() => WatcherCustomEventAbi$outboundSchema)),
@@ -253,7 +253,7 @@ export const Watcher$outboundSchema: z.ZodType<
   projectId: z.string(),
   triggerType: TriggerType$outboundSchema,
   type: WatcherType$outboundSchema,
-  updatedAt: z.date().default(() => new Date("2024-05-02T09:34:03.879Z"))
+  updatedAt: z.date().default(() => new Date("2024-10-07T18:00:22.732Z"))
     .transform(v => v.toISOString()),
   webhookUrl: z.string(),
 });

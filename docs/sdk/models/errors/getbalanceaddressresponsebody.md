@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/tmp",
+  path: "/var/spool",
   timestamp: "<value>",
 };
 ```

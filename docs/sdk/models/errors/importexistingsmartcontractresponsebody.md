@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.InvalidAbi = {
-  path: "/var/spool",
+  path: "/etc/defaults",
   timestamp: "<value>",
 };
 ```
@@ -19,7 +19,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/etc/namedb",
+  path: "/usr/include",
   timestamp: "<value>",
 };
 ```

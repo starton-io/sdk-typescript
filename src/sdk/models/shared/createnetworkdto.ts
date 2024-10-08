@@ -34,7 +34,7 @@ export type CreateNetworkDto = {
   logo: string;
   name: string;
   symbol: string;
-  tenantHostnames?: Array<string> | undefined;
+  tenantNames?: Array<string> | undefined;
   testnet?: boolean | undefined;
   verifyBlockIntegrity?: boolean | undefined;
   verifyTxIntegrity?: boolean | undefined;
@@ -63,7 +63,7 @@ export const CreateNetworkDto$inboundSchema: z.ZodType<
   logo: z.string(),
   name: z.string(),
   symbol: z.string(),
-  tenantHostnames: z.array(z.string()).optional(),
+  tenantNames: z.array(z.string()).optional(),
   testnet: z.boolean().optional(),
   verifyBlockIntegrity: z.boolean().optional(),
   verifyTxIntegrity: z.boolean().optional(),
@@ -88,7 +88,7 @@ export type CreateNetworkDto$Outbound = {
   logo: string;
   name: string;
   symbol: string;
-  tenantHostnames?: Array<string> | undefined;
+  tenantNames?: Array<string> | undefined;
   testnet?: boolean | undefined;
   verifyBlockIntegrity?: boolean | undefined;
   verifyTxIntegrity?: boolean | undefined;
@@ -117,7 +117,7 @@ export const CreateNetworkDto$outboundSchema: z.ZodType<
   logo: z.string(),
   name: z.string(),
   symbol: z.string(),
-  tenantHostnames: z.array(z.string()).optional(),
+  tenantNames: z.array(z.string()).optional(),
   testnet: z.boolean().optional(),
   verifyBlockIntegrity: z.boolean().optional(),
   verifyTxIntegrity: z.boolean().optional(),

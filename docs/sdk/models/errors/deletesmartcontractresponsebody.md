@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/opt/include",
+  path: "/opt/share",
   timestamp: "<value>",
 };
 ```

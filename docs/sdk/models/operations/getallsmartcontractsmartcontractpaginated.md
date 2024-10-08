@@ -9,19 +9,19 @@ import { SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 let value: GetAllSmartContractSmartContractPaginated = {
   items: [
     {
-      address: "2006 Leuschke Turnpike",
+      address: "16458 E 14th Street",
       id: "<id>",
       name: "<value>",
       network: "<value>",
       projectId: "<id>",
-      state: State.Error,
-      status: SmartContractStatus.GasPriceEstimated,
+      state: State.ManualActionRequired,
+      status: SmartContractStatus.InvalidGasPrice,
     },
   ],
   meta: {
-    currentPage: 6630.78,
-    itemCount: 2633.22,
-    itemsPerPage: 206.51,
+    currentPage: 206.51,
+    itemCount: 7583.79,
+    itemsPerPage: 3200.17,
   },
 };
 ```

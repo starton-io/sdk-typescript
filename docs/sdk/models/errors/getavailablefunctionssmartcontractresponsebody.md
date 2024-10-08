@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.InvalidBytecode = {
-  path: "/var/mail",
+  path: "/home/user",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.InvalidBytecode = {
 
 ```typescript
 const value: errors.InvalidAbi = {
-  path: "/var/log",
+  path: "/usr/sbin",
   timestamp: "<value>",
 };
 ```
@@ -28,7 +28,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/lost+found",
+  path: "/usr/local/src",
   timestamp: "<value>",
 };
 ```
