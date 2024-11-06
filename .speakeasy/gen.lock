@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: 4b1b219e53d243b06fabb8ad05ab6221
   docVersion: "1.0"
-  speakeasyVersion: 1.411.1
-  generationVersion: 2.436.1
-  releaseVersion: 0.25.3
-  configChecksum: ac5e0f7503f10cc7b7374cfcea0b7127
+  speakeasyVersion: 1.431.0
+  generationVersion: 2.451.0
+  releaseVersion: 0.26.0
+  configChecksum: e80ea943822c8a704deda676954cd2c2
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,11 +15,11 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.3
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
+    envVarSecurityUsage: 0.1.2
     errorUnions: 0.1.1
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
@@ -31,8 +31,8 @@ features:
     pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
-    unions: 2.85.7
+    sdkHooks: 0.2.0
+    unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -1448,7 +1448,7 @@ examples:
         "201":
           application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": "4865.89", "confirmationBlocks": "4893.82", "decimal": "6384.24", "deprecated": false, "displayName": "Rylan13", "eip1159": false, "eips": {"eip1159": true, "eip155": true}, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "featured": true, "indexerService": false, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/etc/ppp", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
   deleteNetwork:
     "":
       parameters:
@@ -1487,7 +1487,7 @@ examples:
         "400":
           application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/var/tmp", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   updateNetwork:
     a:
       parameters:
@@ -1499,9 +1499,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "browserExtensionService": false, "chainId": "8574.78", "confirmationBlocks": "245.55", "decimal": "5971.29", "deprecated": false, "displayName": "Afton_Hegmann27", "eip1159": false, "eips": {"eip1159": true, "eip155": false}, "enableExternalWallet": true, "enableListener": false, "enableRelayer": false, "explorerUrl": "<value>", "featured": false, "indexerService": true, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": [], "path": "/usr/src", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/opt/share", "timestamp": "<value>"}
+          application/json: {"path": "/Network", "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1512,9 +1512,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": "2782.81", "confirmationBlocks": "8965.01", "decimal": "4995.57", "deprecated": true, "displayName": "Isac78", "eip1159": false, "eips": {"eip1159": true, "eip155": false}, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "<value>", "featured": false, "indexerService": true, "loadbalancerUrl": "<value>", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "transactionManagerService": true, "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/usr/X11R6", "timestamp": "<value>"}
+          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/System", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/opt/lib", "timestamp": "<value>"}
+          application/json: {"path": "/private/var", "timestamp": "<value>"}
   createRpc:
     a:
       parameters:
@@ -2080,11 +2080,11 @@ examples:
         "201":
           application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
         "400":
-          application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/private/tmp", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/var/yp", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/etc", "timestamp": "<value>"}
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/home", "timestamp": "<value>"}
+          application/json: {"path": "/etc", "timestamp": "<value>"}
   getAllWebhook:
     "":
       parameters:
@@ -2106,9 +2106,9 @@ examples:
         "200":
           application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
         "400":
-          application/json: {"message": ["<value>"], "path": "/bin", "timestamp": "<value>"}
+          application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/opt/share", "timestamp": "<value>"}
+          application/json: {"path": "/bin", "timestamp": "<value>"}
   getOneWebhookSigningSecret:
     speakeasy-default-get-one-webhook-signing-secret:
       responses:
@@ -2134,8 +2134,8 @@ examples:
         "201":
           application/json: {"attempts": [{"attempt": "7522.59", "attemptDate": "<value>", "id": "<id>", "responsePayload": "<value>", "responseStatusCode": "4706.48", "status": "SUCCESSFUL_CALL", "webhookId": "<id>"}], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
         "400":
-          application/json: {"message": ["<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
+          application/json: {"message": ["<value>"], "path": "/usr/libdata", "timestamp": "<value>"}
         "404":
-          application/json: {"path": "/usr/libexec", "timestamp": "<value>"}
+          application/json: {"path": "/private/tmp", "timestamp": "<value>"}
         "412":
-          application/json: {"path": "/usr/bin", "timestamp": "<value>"}
+          application/json: {"path": "/System", "timestamp": "<value>"}

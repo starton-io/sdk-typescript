@@ -12,8 +12,9 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 0.25.3
+  version: 0.26.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
