@@ -294,9 +294,9 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `apiKey` | apiKey   | API key  |
+| Name     | Type   | Scheme  |
+| -------- | ------ | ------- |
+| `apiKey` | apiKey | API key |
 
 To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
