@@ -55,6 +55,9 @@ export async function projectMemberGetAll(
   const context = {
     operationID: "getAllProjectMember",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -86,6 +86,9 @@ export async function dataGetErc20Balance(
   const context = {
     operationID: "getBalanceErc20",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

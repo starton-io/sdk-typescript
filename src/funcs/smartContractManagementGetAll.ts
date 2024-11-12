@@ -88,6 +88,9 @@ export async function smartContractManagementGetAll(
   const context = {
     operationID: "getAllSmartContract",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

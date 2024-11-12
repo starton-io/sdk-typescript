@@ -84,6 +84,9 @@ export async function webhookGetAll(
   const context = {
     operationID: "getAllWebhook",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

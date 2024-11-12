@@ -86,6 +86,9 @@ export async function transactionManagerGetAvailableNonces(
   const context = {
     operationID: "getAvailableNoncesWallet",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

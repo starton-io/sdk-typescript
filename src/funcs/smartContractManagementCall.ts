@@ -90,6 +90,9 @@ export async function smartContractManagementCall(
   const context = {
     operationID: "callSmartContract",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

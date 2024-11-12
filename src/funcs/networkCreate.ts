@@ -71,6 +71,9 @@ export async function networkCreate(
   const context = {
     operationID: "createNetwork",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

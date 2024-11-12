@@ -78,6 +78,9 @@ export async function ipfsUpdate(
   const context = {
     operationID: "updatePin",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

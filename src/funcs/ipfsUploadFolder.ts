@@ -81,6 +81,9 @@ export async function ipfsUploadFolder(
   const context = {
     operationID: "uploadFromFolderPin",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

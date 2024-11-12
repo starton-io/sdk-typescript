@@ -77,6 +77,9 @@ export async function monitorDelete(
   const context = {
     operationID: "deleteWatcher",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

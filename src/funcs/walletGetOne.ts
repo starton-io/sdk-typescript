@@ -77,6 +77,9 @@ export async function walletGetOne(
   const context = {
     operationID: "getOneWallet",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -82,6 +82,9 @@ export async function smartContractTemplateGetOne(
   const context = {
     operationID: "getOneSmartContractTemplate",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

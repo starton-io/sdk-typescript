@@ -72,6 +72,9 @@ export async function projectMemberInvitationCreate(
   const context = {
     operationID: "createInvitation",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

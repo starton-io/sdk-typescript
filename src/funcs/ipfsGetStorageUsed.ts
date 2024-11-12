@@ -55,6 +55,9 @@ export async function ipfsGetStorageUsed(
   const context = {
     operationID: "getStorageUsedPin",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

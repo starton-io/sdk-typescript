@@ -72,6 +72,9 @@ export async function ipfsUploadJson(
   const context = {
     operationID: "uploadFromJsonPin",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

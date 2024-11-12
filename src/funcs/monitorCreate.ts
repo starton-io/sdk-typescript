@@ -74,6 +74,9 @@ export async function monitorCreate(
   const context = {
     operationID: "createWatcher",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -81,6 +81,9 @@ export async function ipfsGetOne(
   const context = {
     operationID: "getOnePin",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

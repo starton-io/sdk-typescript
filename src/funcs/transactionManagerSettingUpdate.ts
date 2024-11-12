@@ -81,6 +81,9 @@ export async function transactionManagerSettingUpdate(
   const context = {
     operationID: "updateSettingRelayer",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

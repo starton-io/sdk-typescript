@@ -79,6 +79,9 @@ export async function walletSign(
   const context = {
     operationID: "signMessageWallet",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

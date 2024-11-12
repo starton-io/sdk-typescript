@@ -86,6 +86,9 @@ export async function smartContractManagementEncode(
   const context = {
     operationID: "encodeSmartContract",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

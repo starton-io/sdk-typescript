@@ -83,6 +83,9 @@ export async function projectMemberInvitationGetAll(
   const context = {
     operationID: "getAllInvitation",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

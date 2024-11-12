@@ -55,6 +55,9 @@ export async function webhookGetSigningSecret(
   const context = {
     operationID: "getOneWebhookSigningSecret",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

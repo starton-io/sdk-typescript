@@ -79,6 +79,9 @@ export async function transactionManagerCreate(
   const context = {
     operationID: "createTransaction",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

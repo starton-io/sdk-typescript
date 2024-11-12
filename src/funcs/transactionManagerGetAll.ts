@@ -90,6 +90,9 @@ export async function transactionManagerGetAll(
   const context = {
     operationID: "getAllTransaction",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -77,6 +77,9 @@ export async function kmsGetOne(
   const context = {
     operationID: "getOneKms",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

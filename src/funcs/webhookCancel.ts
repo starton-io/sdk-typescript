@@ -78,6 +78,9 @@ export async function webhookCancel(
   const context = {
     operationID: "cancelWebhook",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

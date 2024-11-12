@@ -82,6 +82,9 @@ export async function smartContractManagementDelete(
   const context = {
     operationID: "deleteSmartContract",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

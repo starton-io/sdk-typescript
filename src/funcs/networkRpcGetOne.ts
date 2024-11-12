@@ -81,6 +81,9 @@ export async function networkRpcGetOne(
   const context = {
     operationID: "getOneRpc",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

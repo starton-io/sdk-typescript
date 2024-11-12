@@ -77,6 +77,9 @@ export async function projectMemberInvitationDelete(
   const context = {
     operationID: "deleteInvitation",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

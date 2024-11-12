@@ -81,6 +81,9 @@ export async function walletDelete(
   const context = {
     operationID: "deleteWallet",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

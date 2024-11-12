@@ -76,6 +76,9 @@ export async function dataGetGasPrice(
   const context = {
     operationID: "getAllGasPrice",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

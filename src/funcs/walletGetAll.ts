@@ -85,6 +85,9 @@ export async function walletGetAll(
   const context = {
     operationID: "getAllWallet",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

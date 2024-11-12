@@ -81,6 +81,9 @@ export async function smartContractManagementDeployFromTemplate(
   const context = {
     operationID: "deployFromTemplateSmartContract",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig
