@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StorageUsed = {
   currentStorageUsed: number;
@@ -50,4 +53,18 @@ export namespace StorageUsed$ {
   export const outboundSchema = StorageUsed$outboundSchema;
   /** @deprecated use `StorageUsed$Outbound` instead. */
   export type Outbound = StorageUsed$Outbound;
+}
+
+export function storageUsedToJSON(storageUsed: StorageUsed): string {
+  return JSON.stringify(StorageUsed$outboundSchema.parse(storageUsed));
+}
+
+export function storageUsedFromJSON(
+  jsonString: string,
+): SafeParseResult<StorageUsed, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StorageUsed$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StorageUsed' from JSON`,
+  );
 }

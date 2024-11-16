@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AddressNativeBalanceResponse = {
   /**
@@ -66,4 +69,24 @@ export namespace AddressNativeBalanceResponse$ {
   export const outboundSchema = AddressNativeBalanceResponse$outboundSchema;
   /** @deprecated use `AddressNativeBalanceResponse$Outbound` instead. */
   export type Outbound = AddressNativeBalanceResponse$Outbound;
+}
+
+export function addressNativeBalanceResponseToJSON(
+  addressNativeBalanceResponse: AddressNativeBalanceResponse,
+): string {
+  return JSON.stringify(
+    AddressNativeBalanceResponse$outboundSchema.parse(
+      addressNativeBalanceResponse,
+    ),
+  );
+}
+
+export function addressNativeBalanceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AddressNativeBalanceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddressNativeBalanceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddressNativeBalanceResponse' from JSON`,
+  );
 }

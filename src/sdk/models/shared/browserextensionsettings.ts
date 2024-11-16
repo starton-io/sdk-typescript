@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RpcHeaders = {};
 
@@ -39,6 +42,20 @@ export namespace RpcHeaders$ {
   export const outboundSchema = RpcHeaders$outboundSchema;
   /** @deprecated use `RpcHeaders$Outbound` instead. */
   export type Outbound = RpcHeaders$Outbound;
+}
+
+export function rpcHeadersToJSON(rpcHeaders: RpcHeaders): string {
+  return JSON.stringify(RpcHeaders$outboundSchema.parse(rpcHeaders));
+}
+
+export function rpcHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<RpcHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RpcHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RpcHeaders' from JSON`,
+  );
 }
 
 /** @internal */
@@ -78,4 +95,22 @@ export namespace BrowserExtensionSettings$ {
   export const outboundSchema = BrowserExtensionSettings$outboundSchema;
   /** @deprecated use `BrowserExtensionSettings$Outbound` instead. */
   export type Outbound = BrowserExtensionSettings$Outbound;
+}
+
+export function browserExtensionSettingsToJSON(
+  browserExtensionSettings: BrowserExtensionSettings,
+): string {
+  return JSON.stringify(
+    BrowserExtensionSettings$outboundSchema.parse(browserExtensionSettings),
+  );
+}
+
+export function browserExtensionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<BrowserExtensionSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BrowserExtensionSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BrowserExtensionSettings' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type NoncesAvailable = {
   availableNonces: Array<number>;
@@ -46,4 +49,20 @@ export namespace NoncesAvailable$ {
   export const outboundSchema = NoncesAvailable$outboundSchema;
   /** @deprecated use `NoncesAvailable$Outbound` instead. */
   export type Outbound = NoncesAvailable$Outbound;
+}
+
+export function noncesAvailableToJSON(
+  noncesAvailable: NoncesAvailable,
+): string {
+  return JSON.stringify(NoncesAvailable$outboundSchema.parse(noncesAvailable));
+}
+
+export function noncesAvailableFromJSON(
+  jsonString: string,
+): SafeParseResult<NoncesAvailable, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NoncesAvailable$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NoncesAvailable' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SignMessageResponse = {
   signature: string;
@@ -42,4 +45,22 @@ export namespace SignMessageResponse$ {
   export const outboundSchema = SignMessageResponse$outboundSchema;
   /** @deprecated use `SignMessageResponse$Outbound` instead. */
   export type Outbound = SignMessageResponse$Outbound;
+}
+
+export function signMessageResponseToJSON(
+  signMessageResponse: SignMessageResponse,
+): string {
+  return JSON.stringify(
+    SignMessageResponse$outboundSchema.parse(signMessageResponse),
+  );
+}
+
+export function signMessageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignMessageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageResponse' from JSON`,
+  );
 }

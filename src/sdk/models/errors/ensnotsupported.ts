@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasENSNOTSUPPORTEDContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasENSNOTSUPPORTEDContext$ {
   export const outboundSchema = SchemasENSNOTSUPPORTEDContext$outboundSchema;
   /** @deprecated use `SchemasENSNOTSUPPORTEDContext$Outbound` instead. */
   export type Outbound = SchemasENSNOTSUPPORTEDContext$Outbound;
+}
+
+export function schemasENSNOTSUPPORTEDContextToJSON(
+  schemasENSNOTSUPPORTEDContext: SchemasENSNOTSUPPORTEDContext,
+): string {
+  return JSON.stringify(
+    SchemasENSNOTSUPPORTEDContext$outboundSchema.parse(
+      schemasENSNOTSUPPORTEDContext,
+    ),
+  );
+}
+
+export function schemasENSNOTSUPPORTEDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasENSNOTSUPPORTEDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasENSNOTSUPPORTEDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasENSNOTSUPPORTEDContext' from JSON`,
+  );
 }
 
 /** @internal */

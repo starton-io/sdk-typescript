@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   PayloadTooLarge$Outbound,
   PayloadTooLarge$outboundSchema,
 } from "./payloadtoolarge.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UploadFromFilePinIpfsResponseBody =
   | MaximumStorageReached
@@ -67,6 +70,26 @@ export namespace UploadFromFilePinIpfsResponseBody$ {
   export type Outbound = UploadFromFilePinIpfsResponseBody$Outbound;
 }
 
+export function uploadFromFilePinIpfsResponseBodyToJSON(
+  uploadFromFilePinIpfsResponseBody: UploadFromFilePinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    UploadFromFilePinIpfsResponseBody$outboundSchema.parse(
+      uploadFromFilePinIpfsResponseBody,
+    ),
+  );
+}
+
+export function uploadFromFilePinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFilePinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromFilePinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFilePinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadFromFilePinResponseBody$inboundSchema: z.ZodType<
   UploadFromFilePinResponseBody,
@@ -96,4 +119,24 @@ export namespace UploadFromFilePinResponseBody$ {
   export const outboundSchema = UploadFromFilePinResponseBody$outboundSchema;
   /** @deprecated use `UploadFromFilePinResponseBody$Outbound` instead. */
   export type Outbound = UploadFromFilePinResponseBody$Outbound;
+}
+
+export function uploadFromFilePinResponseBodyToJSON(
+  uploadFromFilePinResponseBody: UploadFromFilePinResponseBody,
+): string {
+  return JSON.stringify(
+    UploadFromFilePinResponseBody$outboundSchema.parse(
+      uploadFromFilePinResponseBody,
+    ),
+  );
+}
+
+export function uploadFromFilePinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFilePinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromFilePinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFilePinResponseBody' from JSON`,
+  );
 }

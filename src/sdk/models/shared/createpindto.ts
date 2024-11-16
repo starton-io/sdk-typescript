@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreatePinDtoMetadata = {};
 
@@ -40,6 +43,24 @@ export namespace CreatePinDtoMetadata$ {
   export const outboundSchema = CreatePinDtoMetadata$outboundSchema;
   /** @deprecated use `CreatePinDtoMetadata$Outbound` instead. */
   export type Outbound = CreatePinDtoMetadata$Outbound;
+}
+
+export function createPinDtoMetadataToJSON(
+  createPinDtoMetadata: CreatePinDtoMetadata,
+): string {
+  return JSON.stringify(
+    CreatePinDtoMetadata$outboundSchema.parse(createPinDtoMetadata),
+  );
+}
+
+export function createPinDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePinDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePinDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePinDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -82,4 +103,18 @@ export namespace CreatePinDto$ {
   export const outboundSchema = CreatePinDto$outboundSchema;
   /** @deprecated use `CreatePinDto$Outbound` instead. */
   export type Outbound = CreatePinDto$Outbound;
+}
+
+export function createPinDtoToJSON(createPinDto: CreatePinDto): string {
+  return JSON.stringify(CreatePinDto$outboundSchema.parse(createPinDto));
+}
+
+export function createPinDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePinDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePinDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePinDto' from JSON`,
+  );
 }

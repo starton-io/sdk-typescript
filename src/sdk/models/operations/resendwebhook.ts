@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ResendWebhookRequest = {
@@ -65,6 +68,24 @@ export namespace ResendWebhookRequest$ {
   export type Outbound = ResendWebhookRequest$Outbound;
 }
 
+export function resendWebhookRequestToJSON(
+  resendWebhookRequest: ResendWebhookRequest,
+): string {
+  return JSON.stringify(
+    ResendWebhookRequest$outboundSchema.parse(resendWebhookRequest),
+  );
+}
+
+export function resendWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ResendWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResendWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResendWebhookRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResendWebhookResponse$inboundSchema: z.ZodType<
   ResendWebhookResponse,
@@ -124,4 +145,22 @@ export namespace ResendWebhookResponse$ {
   export const outboundSchema = ResendWebhookResponse$outboundSchema;
   /** @deprecated use `ResendWebhookResponse$Outbound` instead. */
   export type Outbound = ResendWebhookResponse$Outbound;
+}
+
+export function resendWebhookResponseToJSON(
+  resendWebhookResponse: ResendWebhookResponse,
+): string {
+  return JSON.stringify(
+    ResendWebhookResponse$outboundSchema.parse(resendWebhookResponse),
+  );
+}
+
+export function resendWebhookResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ResendWebhookResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResendWebhookResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResendWebhookResponse' from JSON`,
+  );
 }

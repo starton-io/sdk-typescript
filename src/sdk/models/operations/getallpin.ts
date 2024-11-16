@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export enum Status {
@@ -120,6 +123,24 @@ export namespace GetAllPinRequest$ {
   export type Outbound = GetAllPinRequest$Outbound;
 }
 
+export function getAllPinRequestToJSON(
+  getAllPinRequest: GetAllPinRequest,
+): string {
+  return JSON.stringify(
+    GetAllPinRequest$outboundSchema.parse(getAllPinRequest),
+  );
+}
+
+export function getAllPinRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllPinRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllPinRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllPinRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllPinPinPaginated$inboundSchema: z.ZodType<
   GetAllPinPinPaginated,
@@ -157,6 +178,24 @@ export namespace GetAllPinPinPaginated$ {
   export const outboundSchema = GetAllPinPinPaginated$outboundSchema;
   /** @deprecated use `GetAllPinPinPaginated$Outbound` instead. */
   export type Outbound = GetAllPinPinPaginated$Outbound;
+}
+
+export function getAllPinPinPaginatedToJSON(
+  getAllPinPinPaginated: GetAllPinPinPaginated,
+): string {
+  return JSON.stringify(
+    GetAllPinPinPaginated$outboundSchema.parse(getAllPinPinPaginated),
+  );
+}
+
+export function getAllPinPinPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllPinPinPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllPinPinPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllPinPinPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -218,4 +257,22 @@ export namespace GetAllPinResponse$ {
   export const outboundSchema = GetAllPinResponse$outboundSchema;
   /** @deprecated use `GetAllPinResponse$Outbound` instead. */
   export type Outbound = GetAllPinResponse$Outbound;
+}
+
+export function getAllPinResponseToJSON(
+  getAllPinResponse: GetAllPinResponse,
+): string {
+  return JSON.stringify(
+    GetAllPinResponse$outboundSchema.parse(getAllPinResponse),
+  );
+}
+
+export function getAllPinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllPinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllPinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllPinResponse' from JSON`,
+  );
 }

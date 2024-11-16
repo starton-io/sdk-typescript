@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateSettingRelayerDto = {
   /**
@@ -80,4 +83,22 @@ export namespace UpdateSettingRelayerDto$ {
   export const outboundSchema = UpdateSettingRelayerDto$outboundSchema;
   /** @deprecated use `UpdateSettingRelayerDto$Outbound` instead. */
   export type Outbound = UpdateSettingRelayerDto$Outbound;
+}
+
+export function updateSettingRelayerDtoToJSON(
+  updateSettingRelayerDto: UpdateSettingRelayerDto,
+): string {
+  return JSON.stringify(
+    UpdateSettingRelayerDto$outboundSchema.parse(updateSettingRelayerDto),
+  );
+}
+
+export function updateSettingRelayerDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSettingRelayerDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSettingRelayerDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSettingRelayerDto' from JSON`,
+  );
 }

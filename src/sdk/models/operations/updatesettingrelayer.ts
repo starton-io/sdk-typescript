@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateSettingRelayerRequest = {
@@ -77,6 +80,26 @@ export namespace UpdateSettingRelayerRequest$ {
   export type Outbound = UpdateSettingRelayerRequest$Outbound;
 }
 
+export function updateSettingRelayerRequestToJSON(
+  updateSettingRelayerRequest: UpdateSettingRelayerRequest,
+): string {
+  return JSON.stringify(
+    UpdateSettingRelayerRequest$outboundSchema.parse(
+      updateSettingRelayerRequest,
+    ),
+  );
+}
+
+export function updateSettingRelayerRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSettingRelayerRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSettingRelayerRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSettingRelayerRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateSettingRelayerResponse$inboundSchema: z.ZodType<
   UpdateSettingRelayerResponse,
@@ -136,4 +159,24 @@ export namespace UpdateSettingRelayerResponse$ {
   export const outboundSchema = UpdateSettingRelayerResponse$outboundSchema;
   /** @deprecated use `UpdateSettingRelayerResponse$Outbound` instead. */
   export type Outbound = UpdateSettingRelayerResponse$Outbound;
+}
+
+export function updateSettingRelayerResponseToJSON(
+  updateSettingRelayerResponse: UpdateSettingRelayerResponse,
+): string {
+  return JSON.stringify(
+    UpdateSettingRelayerResponse$outboundSchema.parse(
+      updateSettingRelayerResponse,
+    ),
+  );
+}
+
+export function updateSettingRelayerResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSettingRelayerResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSettingRelayerResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSettingRelayerResponse' from JSON`,
+  );
 }

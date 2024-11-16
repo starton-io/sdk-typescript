@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type DeployFromBytecodeSmartContractRequest = {
@@ -79,6 +82,28 @@ export namespace DeployFromBytecodeSmartContractRequest$ {
   export type Outbound = DeployFromBytecodeSmartContractRequest$Outbound;
 }
 
+export function deployFromBytecodeSmartContractRequestToJSON(
+  deployFromBytecodeSmartContractRequest:
+    DeployFromBytecodeSmartContractRequest,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractRequest$outboundSchema.parse(
+      deployFromBytecodeSmartContractRequest,
+    ),
+  );
+}
+
+export function deployFromBytecodeSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromBytecodeSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromBytecodeSmartContractResponse$inboundSchema: z.ZodType<
   DeployFromBytecodeSmartContractResponse,
@@ -144,4 +169,31 @@ export namespace DeployFromBytecodeSmartContractResponse$ {
     DeployFromBytecodeSmartContractResponse$outboundSchema;
   /** @deprecated use `DeployFromBytecodeSmartContractResponse$Outbound` instead. */
   export type Outbound = DeployFromBytecodeSmartContractResponse$Outbound;
+}
+
+export function deployFromBytecodeSmartContractResponseToJSON(
+  deployFromBytecodeSmartContractResponse:
+    DeployFromBytecodeSmartContractResponse,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractResponse$outboundSchema.parse(
+      deployFromBytecodeSmartContractResponse,
+    ),
+  );
+}
+
+export function deployFromBytecodeSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromBytecodeSmartContractResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeployFromBytecodeSmartContractResponse' from JSON`,
+  );
 }

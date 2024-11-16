@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateWatcherRequest = {
@@ -80,6 +83,24 @@ export namespace UpdateWatcherRequest$ {
   export type Outbound = UpdateWatcherRequest$Outbound;
 }
 
+export function updateWatcherRequestToJSON(
+  updateWatcherRequest: UpdateWatcherRequest,
+): string {
+  return JSON.stringify(
+    UpdateWatcherRequest$outboundSchema.parse(updateWatcherRequest),
+  );
+}
+
+export function updateWatcherRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWatcherRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWatcherRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWatcherRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateWatcherResponse$inboundSchema: z.ZodType<
   UpdateWatcherResponse,
@@ -139,4 +160,22 @@ export namespace UpdateWatcherResponse$ {
   export const outboundSchema = UpdateWatcherResponse$outboundSchema;
   /** @deprecated use `UpdateWatcherResponse$Outbound` instead. */
   export type Outbound = UpdateWatcherResponse$Outbound;
+}
+
+export function updateWatcherResponseToJSON(
+  updateWatcherResponse: UpdateWatcherResponse,
+): string {
+  return JSON.stringify(
+    UpdateWatcherResponse$outboundSchema.parse(updateWatcherResponse),
+  );
+}
+
+export function updateWatcherResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWatcherResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWatcherResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWatcherResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SettingRelayer = {
   createdAt?: Date | undefined;
@@ -88,4 +91,18 @@ export namespace SettingRelayer$ {
   export const outboundSchema = SettingRelayer$outboundSchema;
   /** @deprecated use `SettingRelayer$Outbound` instead. */
   export type Outbound = SettingRelayer$Outbound;
+}
+
+export function settingRelayerToJSON(settingRelayer: SettingRelayer): string {
+  return JSON.stringify(SettingRelayer$outboundSchema.parse(settingRelayer));
+}
+
+export function settingRelayerFromJSON(
+  jsonString: string,
+): SafeParseResult<SettingRelayer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SettingRelayer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SettingRelayer' from JSON`,
+  );
 }

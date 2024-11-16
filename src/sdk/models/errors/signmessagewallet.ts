@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   Forbidden$Outbound,
   Forbidden$outboundSchema,
 } from "./forbidden.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SignMessageWalletWalletResponseResponseBody = CouldNotFindResource;
 
@@ -63,6 +66,33 @@ export namespace SignMessageWalletWalletResponseResponseBody$ {
   export type Outbound = SignMessageWalletWalletResponseResponseBody$Outbound;
 }
 
+export function signMessageWalletWalletResponseResponseBodyToJSON(
+  signMessageWalletWalletResponseResponseBody:
+    SignMessageWalletWalletResponseResponseBody,
+): string {
+  return JSON.stringify(
+    SignMessageWalletWalletResponseResponseBody$outboundSchema.parse(
+      signMessageWalletWalletResponseResponseBody,
+    ),
+  );
+}
+
+export function signMessageWalletWalletResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SignMessageWalletWalletResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SignMessageWalletWalletResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SignMessageWalletWalletResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const SignMessageWalletWalletResponseBody$inboundSchema: z.ZodType<
   SignMessageWalletWalletResponseBody,
@@ -95,6 +125,27 @@ export namespace SignMessageWalletWalletResponseBody$ {
   export type Outbound = SignMessageWalletWalletResponseBody$Outbound;
 }
 
+export function signMessageWalletWalletResponseBodyToJSON(
+  signMessageWalletWalletResponseBody: SignMessageWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    SignMessageWalletWalletResponseBody$outboundSchema.parse(
+      signMessageWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function signMessageWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SignMessageWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const SignMessageWalletResponseBody$inboundSchema: z.ZodType<
   SignMessageWalletResponseBody,
@@ -124,4 +175,24 @@ export namespace SignMessageWalletResponseBody$ {
   export const outboundSchema = SignMessageWalletResponseBody$outboundSchema;
   /** @deprecated use `SignMessageWalletResponseBody$Outbound` instead. */
   export type Outbound = SignMessageWalletResponseBody$Outbound;
+}
+
+export function signMessageWalletResponseBodyToJSON(
+  signMessageWalletResponseBody: SignMessageWalletResponseBody,
+): string {
+  return JSON.stringify(
+    SignMessageWalletResponseBody$outboundSchema.parse(
+      signMessageWalletResponseBody,
+    ),
+  );
+}
+
+export function signMessageWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignMessageWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageWalletResponseBody' from JSON`,
+  );
 }

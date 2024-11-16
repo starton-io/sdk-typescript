@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ProjectMember = {
   email: string;
@@ -50,4 +53,18 @@ export namespace ProjectMember$ {
   export const outboundSchema = ProjectMember$outboundSchema;
   /** @deprecated use `ProjectMember$Outbound` instead. */
   export type Outbound = ProjectMember$Outbound;
+}
+
+export function projectMemberToJSON(projectMember: ProjectMember): string {
+  return JSON.stringify(ProjectMember$outboundSchema.parse(projectMember));
+}
+
+export function projectMemberFromJSON(
+  jsonString: string,
+): SafeParseResult<ProjectMember, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProjectMember$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProjectMember' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreateNetworkResponse = {
@@ -81,4 +84,22 @@ export namespace CreateNetworkResponse$ {
   export const outboundSchema = CreateNetworkResponse$outboundSchema;
   /** @deprecated use `CreateNetworkResponse$Outbound` instead. */
   export type Outbound = CreateNetworkResponse$Outbound;
+}
+
+export function createNetworkResponseToJSON(
+  createNetworkResponse: CreateNetworkResponse,
+): string {
+  return JSON.stringify(
+    CreateNetworkResponse$outboundSchema.parse(createNetworkResponse),
+  );
+}
+
+export function createNetworkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateNetworkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateNetworkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateNetworkResponse' from JSON`,
+  );
 }

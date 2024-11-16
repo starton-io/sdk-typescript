@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllRpcRequest = {
@@ -81,6 +84,24 @@ export namespace GetAllRpcRequest$ {
   export type Outbound = GetAllRpcRequest$Outbound;
 }
 
+export function getAllRpcRequestToJSON(
+  getAllRpcRequest: GetAllRpcRequest,
+): string {
+  return JSON.stringify(
+    GetAllRpcRequest$outboundSchema.parse(getAllRpcRequest),
+  );
+}
+
+export function getAllRpcRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllRpcRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllRpcRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllRpcRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllRpcRpcPaginated$inboundSchema: z.ZodType<
   GetAllRpcRpcPaginated,
@@ -118,6 +139,24 @@ export namespace GetAllRpcRpcPaginated$ {
   export const outboundSchema = GetAllRpcRpcPaginated$outboundSchema;
   /** @deprecated use `GetAllRpcRpcPaginated$Outbound` instead. */
   export type Outbound = GetAllRpcRpcPaginated$Outbound;
+}
+
+export function getAllRpcRpcPaginatedToJSON(
+  getAllRpcRpcPaginated: GetAllRpcRpcPaginated,
+): string {
+  return JSON.stringify(
+    GetAllRpcRpcPaginated$outboundSchema.parse(getAllRpcRpcPaginated),
+  );
+}
+
+export function getAllRpcRpcPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllRpcRpcPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllRpcRpcPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllRpcRpcPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -179,4 +218,22 @@ export namespace GetAllRpcResponse$ {
   export const outboundSchema = GetAllRpcResponse$outboundSchema;
   /** @deprecated use `GetAllRpcResponse$Outbound` instead. */
   export type Outbound = GetAllRpcResponse$Outbound;
+}
+
+export function getAllRpcResponseToJSON(
+  getAllRpcResponse: GetAllRpcResponse,
+): string {
+  return JSON.stringify(
+    GetAllRpcResponse$outboundSchema.parse(getAllRpcResponse),
+  );
+}
+
+export function getAllRpcResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllRpcResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllRpcResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllRpcResponse' from JSON`,
+  );
 }

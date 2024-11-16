@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTRESENDWEBHOOKContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasCOULDNOTRESENDWEBHOOKContext$ {
     SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTRESENDWEBHOOKContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTRESENDWEBHOOKContext$Outbound;
+}
+
+export function schemasCOULDNOTRESENDWEBHOOKContextToJSON(
+  schemasCOULDNOTRESENDWEBHOOKContext: SchemasCOULDNOTRESENDWEBHOOKContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTRESENDWEBHOOKContext$outboundSchema.parse(
+      schemasCOULDNOTRESENDWEBHOOKContext,
+    ),
+  );
+}
+
+export function schemasCOULDNOTRESENDWEBHOOKContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTRESENDWEBHOOKContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasCOULDNOTRESENDWEBHOOKContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTRESENDWEBHOOKContext' from JSON`,
+  );
 }
 
 /** @internal */

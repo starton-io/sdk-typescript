@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllWalletResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllWalletResponseBody$ {
   export const outboundSchema = GetAllWalletResponseBody$outboundSchema;
   /** @deprecated use `GetAllWalletResponseBody$Outbound` instead. */
   export type Outbound = GetAllWalletResponseBody$Outbound;
+}
+
+export function getAllWalletResponseBodyToJSON(
+  getAllWalletResponseBody: GetAllWalletResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllWalletResponseBody$outboundSchema.parse(getAllWalletResponseBody),
+  );
+}
+
+export function getAllWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWalletResponseBody' from JSON`,
+  );
 }

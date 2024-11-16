@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AbiOutputDtoComponents = {};
 
@@ -41,6 +44,24 @@ export namespace AbiOutputDtoComponents$ {
   export const outboundSchema = AbiOutputDtoComponents$outboundSchema;
   /** @deprecated use `AbiOutputDtoComponents$Outbound` instead. */
   export type Outbound = AbiOutputDtoComponents$Outbound;
+}
+
+export function abiOutputDtoComponentsToJSON(
+  abiOutputDtoComponents: AbiOutputDtoComponents,
+): string {
+  return JSON.stringify(
+    AbiOutputDtoComponents$outboundSchema.parse(abiOutputDtoComponents),
+  );
+}
+
+export function abiOutputDtoComponentsFromJSON(
+  jsonString: string,
+): SafeParseResult<AbiOutputDtoComponents, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AbiOutputDtoComponents$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AbiOutputDtoComponents' from JSON`,
+  );
 }
 
 /** @internal */
@@ -86,4 +107,18 @@ export namespace AbiOutputDto$ {
   export const outboundSchema = AbiOutputDto$outboundSchema;
   /** @deprecated use `AbiOutputDto$Outbound` instead. */
   export type Outbound = AbiOutputDto$Outbound;
+}
+
+export function abiOutputDtoToJSON(abiOutputDto: AbiOutputDto): string {
+  return JSON.stringify(AbiOutputDto$outboundSchema.parse(abiOutputDto));
+}
+
+export function abiOutputDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AbiOutputDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AbiOutputDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AbiOutputDto' from JSON`,
+  );
 }

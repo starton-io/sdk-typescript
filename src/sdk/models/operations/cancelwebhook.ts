@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CancelWebhookRequest = {
@@ -65,6 +68,24 @@ export namespace CancelWebhookRequest$ {
   export type Outbound = CancelWebhookRequest$Outbound;
 }
 
+export function cancelWebhookRequestToJSON(
+  cancelWebhookRequest: CancelWebhookRequest,
+): string {
+  return JSON.stringify(
+    CancelWebhookRequest$outboundSchema.parse(cancelWebhookRequest),
+  );
+}
+
+export function cancelWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelWebhookRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelWebhookResponse$inboundSchema: z.ZodType<
   CancelWebhookResponse,
@@ -124,4 +145,22 @@ export namespace CancelWebhookResponse$ {
   export const outboundSchema = CancelWebhookResponse$outboundSchema;
   /** @deprecated use `CancelWebhookResponse$Outbound` instead. */
   export type Outbound = CancelWebhookResponse$Outbound;
+}
+
+export function cancelWebhookResponseToJSON(
+  cancelWebhookResponse: CancelWebhookResponse,
+): string {
+  return JSON.stringify(
+    CancelWebhookResponse$outboundSchema.parse(cancelWebhookResponse),
+  );
+}
+
+export function cancelWebhookResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelWebhookResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelWebhookResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelWebhookResponse' from JSON`,
+  );
 }

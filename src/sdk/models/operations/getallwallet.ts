@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllWalletRequest = {
@@ -85,6 +88,24 @@ export namespace GetAllWalletRequest$ {
   export type Outbound = GetAllWalletRequest$Outbound;
 }
 
+export function getAllWalletRequestToJSON(
+  getAllWalletRequest: GetAllWalletRequest,
+): string {
+  return JSON.stringify(
+    GetAllWalletRequest$outboundSchema.parse(getAllWalletRequest),
+  );
+}
+
+export function getAllWalletRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWalletRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWalletRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWalletRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllWalletWalletPaginated$inboundSchema: z.ZodType<
   GetAllWalletWalletPaginated,
@@ -122,6 +143,26 @@ export namespace GetAllWalletWalletPaginated$ {
   export const outboundSchema = GetAllWalletWalletPaginated$outboundSchema;
   /** @deprecated use `GetAllWalletWalletPaginated$Outbound` instead. */
   export type Outbound = GetAllWalletWalletPaginated$Outbound;
+}
+
+export function getAllWalletWalletPaginatedToJSON(
+  getAllWalletWalletPaginated: GetAllWalletWalletPaginated,
+): string {
+  return JSON.stringify(
+    GetAllWalletWalletPaginated$outboundSchema.parse(
+      getAllWalletWalletPaginated,
+    ),
+  );
+}
+
+export function getAllWalletWalletPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWalletWalletPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWalletWalletPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWalletWalletPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -185,4 +226,22 @@ export namespace GetAllWalletResponse$ {
   export const outboundSchema = GetAllWalletResponse$outboundSchema;
   /** @deprecated use `GetAllWalletResponse$Outbound` instead. */
   export type Outbound = GetAllWalletResponse$Outbound;
+}
+
+export function getAllWalletResponseToJSON(
+  getAllWalletResponse: GetAllWalletResponse,
+): string {
+  return JSON.stringify(
+    GetAllWalletResponse$outboundSchema.parse(getAllWalletResponse),
+  );
+}
+
+export function getAllWalletResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWalletResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWalletResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWalletResponse' from JSON`,
+  );
 }

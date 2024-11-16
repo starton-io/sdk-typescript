@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllSettingRelayerRequest = {
@@ -65,6 +68,26 @@ export namespace GetAllSettingRelayerRequest$ {
   export type Outbound = GetAllSettingRelayerRequest$Outbound;
 }
 
+export function getAllSettingRelayerRequestToJSON(
+  getAllSettingRelayerRequest: GetAllSettingRelayerRequest,
+): string {
+  return JSON.stringify(
+    GetAllSettingRelayerRequest$outboundSchema.parse(
+      getAllSettingRelayerRequest,
+    ),
+  );
+}
+
+export function getAllSettingRelayerRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllSettingRelayerRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllSettingRelayerRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSettingRelayerRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllSettingRelayerResponse$inboundSchema: z.ZodType<
   GetAllSettingRelayerResponse,
@@ -124,4 +147,24 @@ export namespace GetAllSettingRelayerResponse$ {
   export const outboundSchema = GetAllSettingRelayerResponse$outboundSchema;
   /** @deprecated use `GetAllSettingRelayerResponse$Outbound` instead. */
   export type Outbound = GetAllSettingRelayerResponse$Outbound;
+}
+
+export function getAllSettingRelayerResponseToJSON(
+  getAllSettingRelayerResponse: GetAllSettingRelayerResponse,
+): string {
+  return JSON.stringify(
+    GetAllSettingRelayerResponse$outboundSchema.parse(
+      getAllSettingRelayerResponse,
+    ),
+  );
+}
+
+export function getAllSettingRelayerResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllSettingRelayerResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllSettingRelayerResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSettingRelayerResponse' from JSON`,
+  );
 }

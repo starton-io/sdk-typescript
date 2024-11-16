@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ClaimFaucetRequest = {
@@ -80,6 +83,24 @@ export namespace ClaimFaucetRequest$ {
   export type Outbound = ClaimFaucetRequest$Outbound;
 }
 
+export function claimFaucetRequestToJSON(
+  claimFaucetRequest: ClaimFaucetRequest,
+): string {
+  return JSON.stringify(
+    ClaimFaucetRequest$outboundSchema.parse(claimFaucetRequest),
+  );
+}
+
+export function claimFaucetRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ClaimFaucetRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClaimFaucetRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClaimFaucetRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ClaimFaucetResponseBody$inboundSchema: z.ZodType<
   ClaimFaucetResponseBody,
@@ -108,6 +129,24 @@ export namespace ClaimFaucetResponseBody$ {
   export const outboundSchema = ClaimFaucetResponseBody$outboundSchema;
   /** @deprecated use `ClaimFaucetResponseBody$Outbound` instead. */
   export type Outbound = ClaimFaucetResponseBody$Outbound;
+}
+
+export function claimFaucetResponseBodyToJSON(
+  claimFaucetResponseBody: ClaimFaucetResponseBody,
+): string {
+  return JSON.stringify(
+    ClaimFaucetResponseBody$outboundSchema.parse(claimFaucetResponseBody),
+  );
+}
+
+export function claimFaucetResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ClaimFaucetResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClaimFaucetResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClaimFaucetResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -172,4 +211,22 @@ export namespace ClaimFaucetResponse$ {
   export const outboundSchema = ClaimFaucetResponse$outboundSchema;
   /** @deprecated use `ClaimFaucetResponse$Outbound` instead. */
   export type Outbound = ClaimFaucetResponse$Outbound;
+}
+
+export function claimFaucetResponseToJSON(
+  claimFaucetResponse: ClaimFaucetResponse,
+): string {
+  return JSON.stringify(
+    ClaimFaucetResponse$outboundSchema.parse(claimFaucetResponse),
+  );
+}
+
+export function claimFaucetResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ClaimFaucetResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClaimFaucetResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClaimFaucetResponse' from JSON`,
+  );
 }

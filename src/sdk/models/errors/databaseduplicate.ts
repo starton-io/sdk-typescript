@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasDATABASEDUPLICATEContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasDATABASEDUPLICATEContext$ {
   export const outboundSchema = SchemasDATABASEDUPLICATEContext$outboundSchema;
   /** @deprecated use `SchemasDATABASEDUPLICATEContext$Outbound` instead. */
   export type Outbound = SchemasDATABASEDUPLICATEContext$Outbound;
+}
+
+export function schemasDATABASEDUPLICATEContextToJSON(
+  schemasDATABASEDUPLICATEContext: SchemasDATABASEDUPLICATEContext,
+): string {
+  return JSON.stringify(
+    SchemasDATABASEDUPLICATEContext$outboundSchema.parse(
+      schemasDATABASEDUPLICATEContext,
+    ),
+  );
+}
+
+export function schemasDATABASEDUPLICATEContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasDATABASEDUPLICATEContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasDATABASEDUPLICATEContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasDATABASEDUPLICATEContext' from JSON`,
+  );
 }
 
 /** @internal */

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteProjectMemberRequest = {
   userId: string;
@@ -59,6 +62,24 @@ export namespace DeleteProjectMemberRequest$ {
   export const outboundSchema = DeleteProjectMemberRequest$outboundSchema;
   /** @deprecated use `DeleteProjectMemberRequest$Outbound` instead. */
   export type Outbound = DeleteProjectMemberRequest$Outbound;
+}
+
+export function deleteProjectMemberRequestToJSON(
+  deleteProjectMemberRequest: DeleteProjectMemberRequest,
+): string {
+  return JSON.stringify(
+    DeleteProjectMemberRequest$outboundSchema.parse(deleteProjectMemberRequest),
+  );
+}
+
+export function deleteProjectMemberRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectMemberRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteProjectMemberRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectMemberRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -118,4 +139,24 @@ export namespace DeleteProjectMemberResponse$ {
   export const outboundSchema = DeleteProjectMemberResponse$outboundSchema;
   /** @deprecated use `DeleteProjectMemberResponse$Outbound` instead. */
   export type Outbound = DeleteProjectMemberResponse$Outbound;
+}
+
+export function deleteProjectMemberResponseToJSON(
+  deleteProjectMemberResponse: DeleteProjectMemberResponse,
+): string {
+  return JSON.stringify(
+    DeleteProjectMemberResponse$outboundSchema.parse(
+      deleteProjectMemberResponse,
+    ),
+  );
+}
+
+export function deleteProjectMemberResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectMemberResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteProjectMemberResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectMemberResponse' from JSON`,
+  );
 }

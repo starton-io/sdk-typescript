@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateNetworkNetworkResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace UpdateNetworkNetworkResponseBody$ {
   export type Outbound = UpdateNetworkNetworkResponseBody$Outbound;
 }
 
+export function updateNetworkNetworkResponseBodyToJSON(
+  updateNetworkNetworkResponseBody: UpdateNetworkNetworkResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateNetworkNetworkResponseBody$outboundSchema.parse(
+      updateNetworkNetworkResponseBody,
+    ),
+  );
+}
+
+export function updateNetworkNetworkResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkNetworkResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkNetworkResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkNetworkResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateNetworkResponseBody$inboundSchema: z.ZodType<
   UpdateNetworkResponseBody,
@@ -79,4 +102,22 @@ export namespace UpdateNetworkResponseBody$ {
   export const outboundSchema = UpdateNetworkResponseBody$outboundSchema;
   /** @deprecated use `UpdateNetworkResponseBody$Outbound` instead. */
   export type Outbound = UpdateNetworkResponseBody$Outbound;
+}
+
+export function updateNetworkResponseBodyToJSON(
+  updateNetworkResponseBody: UpdateNetworkResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateNetworkResponseBody$outboundSchema.parse(updateNetworkResponseBody),
+  );
+}
+
+export function updateNetworkResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkResponseBody' from JSON`,
+  );
 }

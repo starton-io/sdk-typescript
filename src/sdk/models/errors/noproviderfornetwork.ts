@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasNOPROVIDERFORNETWORKContext = {};
 
@@ -81,6 +84,27 @@ export namespace SchemasNOPROVIDERFORNETWORKContext$ {
     SchemasNOPROVIDERFORNETWORKContext$outboundSchema;
   /** @deprecated use `SchemasNOPROVIDERFORNETWORKContext$Outbound` instead. */
   export type Outbound = SchemasNOPROVIDERFORNETWORKContext$Outbound;
+}
+
+export function schemasNOPROVIDERFORNETWORKContextToJSON(
+  schemasNOPROVIDERFORNETWORKContext: SchemasNOPROVIDERFORNETWORKContext,
+): string {
+  return JSON.stringify(
+    SchemasNOPROVIDERFORNETWORKContext$outboundSchema.parse(
+      schemasNOPROVIDERFORNETWORKContext,
+    ),
+  );
+}
+
+export function schemasNOPROVIDERFORNETWORKContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasNOPROVIDERFORNETWORKContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasNOPROVIDERFORNETWORKContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasNOPROVIDERFORNETWORKContext' from JSON`,
+  );
 }
 
 /** @internal */

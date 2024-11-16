@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOnePinRequest = {
@@ -69,6 +72,24 @@ export namespace GetOnePinRequest$ {
   export type Outbound = GetOnePinRequest$Outbound;
 }
 
+export function getOnePinRequestToJSON(
+  getOnePinRequest: GetOnePinRequest,
+): string {
+  return JSON.stringify(
+    GetOnePinRequest$outboundSchema.parse(getOnePinRequest),
+  );
+}
+
+export function getOnePinRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOnePinRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOnePinRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnePinRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOnePinResponse$inboundSchema: z.ZodType<
   GetOnePinResponse,
@@ -128,4 +149,22 @@ export namespace GetOnePinResponse$ {
   export const outboundSchema = GetOnePinResponse$outboundSchema;
   /** @deprecated use `GetOnePinResponse$Outbound` instead. */
   export type Outbound = GetOnePinResponse$Outbound;
+}
+
+export function getOnePinResponseToJSON(
+  getOnePinResponse: GetOnePinResponse,
+): string {
+  return JSON.stringify(
+    GetOnePinResponse$outboundSchema.parse(getOnePinResponse),
+  );
+}
+
+export function getOnePinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOnePinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOnePinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnePinResponse' from JSON`,
+  );
 }

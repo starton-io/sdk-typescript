@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdatePinIpfsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace UpdatePinIpfsResponseBody$ {
   export type Outbound = UpdatePinIpfsResponseBody$Outbound;
 }
 
+export function updatePinIpfsResponseBodyToJSON(
+  updatePinIpfsResponseBody: UpdatePinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    UpdatePinIpfsResponseBody$outboundSchema.parse(updatePinIpfsResponseBody),
+  );
+}
+
+export function updatePinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdatePinResponseBody$inboundSchema: z.ZodType<
   UpdatePinResponseBody,
@@ -78,4 +99,22 @@ export namespace UpdatePinResponseBody$ {
   export const outboundSchema = UpdatePinResponseBody$outboundSchema;
   /** @deprecated use `UpdatePinResponseBody$Outbound` instead. */
   export type Outbound = UpdatePinResponseBody$Outbound;
+}
+
+export function updatePinResponseBodyToJSON(
+  updatePinResponseBody: UpdatePinResponseBody,
+): string {
+  return JSON.stringify(
+    UpdatePinResponseBody$outboundSchema.parse(updatePinResponseBody),
+  );
+}
+
+export function updatePinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinResponseBody' from JSON`,
+  );
 }

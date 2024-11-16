@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AbiObjectDto,
   AbiObjectDto$inboundSchema,
@@ -101,6 +104,26 @@ export namespace DeployFromBytecodeDtoMetadata$ {
   export type Outbound = DeployFromBytecodeDtoMetadata$Outbound;
 }
 
+export function deployFromBytecodeDtoMetadataToJSON(
+  deployFromBytecodeDtoMetadata: DeployFromBytecodeDtoMetadata,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeDtoMetadata$outboundSchema.parse(
+      deployFromBytecodeDtoMetadata,
+    ),
+  );
+}
+
+export function deployFromBytecodeDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromBytecodeDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromBytecodeDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeDtoMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromBytecodeDto3$inboundSchema: z.ZodType<
   DeployFromBytecodeDto3,
@@ -129,6 +152,24 @@ export namespace DeployFromBytecodeDto3$ {
   export const outboundSchema = DeployFromBytecodeDto3$outboundSchema;
   /** @deprecated use `DeployFromBytecodeDto3$Outbound` instead. */
   export type Outbound = DeployFromBytecodeDto3$Outbound;
+}
+
+export function deployFromBytecodeDto3ToJSON(
+  deployFromBytecodeDto3: DeployFromBytecodeDto3,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeDto3$outboundSchema.parse(deployFromBytecodeDto3),
+  );
+}
+
+export function deployFromBytecodeDto3FromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromBytecodeDto3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromBytecodeDto3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeDto3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -173,6 +214,26 @@ export namespace DeployFromBytecodeDtoParams$ {
   export const outboundSchema = DeployFromBytecodeDtoParams$outboundSchema;
   /** @deprecated use `DeployFromBytecodeDtoParams$Outbound` instead. */
   export type Outbound = DeployFromBytecodeDtoParams$Outbound;
+}
+
+export function deployFromBytecodeDtoParamsToJSON(
+  deployFromBytecodeDtoParams: DeployFromBytecodeDtoParams,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeDtoParams$outboundSchema.parse(
+      deployFromBytecodeDtoParams,
+    ),
+  );
+}
+
+export function deployFromBytecodeDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromBytecodeDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromBytecodeDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeDtoParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -279,6 +340,20 @@ export namespace UiData$ {
   export type Outbound = UiData$Outbound;
 }
 
+export function uiDataToJSON(uiData: UiData): string {
+  return JSON.stringify(UiData$outboundSchema.parse(uiData));
+}
+
+export function uiDataFromJSON(
+  jsonString: string,
+): SafeParseResult<UiData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UiData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UiData' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromBytecodeDto$inboundSchema: z.ZodType<
   DeployFromBytecodeDto,
@@ -368,4 +443,22 @@ export namespace DeployFromBytecodeDto$ {
   export const outboundSchema = DeployFromBytecodeDto$outboundSchema;
   /** @deprecated use `DeployFromBytecodeDto$Outbound` instead. */
   export type Outbound = DeployFromBytecodeDto$Outbound;
+}
+
+export function deployFromBytecodeDtoToJSON(
+  deployFromBytecodeDto: DeployFromBytecodeDto,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeDto$outboundSchema.parse(deployFromBytecodeDto),
+  );
+}
+
+export function deployFromBytecodeDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromBytecodeDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromBytecodeDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeDto' from JSON`,
+  );
 }

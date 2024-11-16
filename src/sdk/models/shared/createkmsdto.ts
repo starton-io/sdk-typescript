@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AwsKmsCredentialsDto,
   AwsKmsCredentialsDto$inboundSchema,
@@ -71,6 +74,20 @@ export namespace Credentials$ {
   export type Outbound = Credentials$Outbound;
 }
 
+export function credentialsToJSON(credentials: Credentials): string {
+  return JSON.stringify(Credentials$outboundSchema.parse(credentials));
+}
+
+export function credentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<Credentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Credentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Credentials' from JSON`,
+  );
+}
+
 /** @internal */
 export const Metadata$inboundSchema: z.ZodType<
   Metadata,
@@ -99,6 +116,20 @@ export namespace Metadata$ {
   export const outboundSchema = Metadata$outboundSchema;
   /** @deprecated use `Metadata$Outbound` instead. */
   export type Outbound = Metadata$Outbound;
+}
+
+export function metadataToJSON(metadata: Metadata): string {
+  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+}
+
+export function metadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Metadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Metadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -175,4 +206,18 @@ export namespace CreateKmsDto$ {
   export const outboundSchema = CreateKmsDto$outboundSchema;
   /** @deprecated use `CreateKmsDto$Outbound` instead. */
   export type Outbound = CreateKmsDto$Outbound;
+}
+
+export function createKmsDtoToJSON(createKmsDto: CreateKmsDto): string {
+  return JSON.stringify(CreateKmsDto$outboundSchema.parse(createKmsDto));
+}
+
+export function createKmsDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateKmsDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateKmsDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateKmsDto' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WebhookAttempt,
   WebhookAttempt$inboundSchema,
@@ -61,6 +64,20 @@ export namespace Headers$ {
   export type Outbound = Headers$Outbound;
 }
 
+export function headersToJSON(headers: Headers): string {
+  return JSON.stringify(Headers$outboundSchema.parse(headers));
+}
+
+export function headersFromJSON(
+  jsonString: string,
+): SafeParseResult<Headers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Headers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Headers' from JSON`,
+  );
+}
+
 /** @internal */
 export const WebhookPayload$inboundSchema: z.ZodType<
   WebhookPayload,
@@ -89,6 +106,20 @@ export namespace WebhookPayload$ {
   export const outboundSchema = WebhookPayload$outboundSchema;
   /** @deprecated use `WebhookPayload$Outbound` instead. */
   export type Outbound = WebhookPayload$Outbound;
+}
+
+export function webhookPayloadToJSON(webhookPayload: WebhookPayload): string {
+  return JSON.stringify(WebhookPayload$outboundSchema.parse(webhookPayload));
+}
+
+export function webhookPayloadFromJSON(
+  jsonString: string,
+): SafeParseResult<WebhookPayload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebhookPayload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebhookPayload' from JSON`,
+  );
 }
 
 /** @internal */
@@ -176,4 +207,18 @@ export namespace Webhook$ {
   export const outboundSchema = Webhook$outboundSchema;
   /** @deprecated use `Webhook$Outbound` instead. */
   export type Outbound = Webhook$Outbound;
+}
+
+export function webhookToJSON(webhook: Webhook): string {
+  return JSON.stringify(Webhook$outboundSchema.parse(webhook));
+}
+
+export function webhookFromJSON(
+  jsonString: string,
+): SafeParseResult<Webhook, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Webhook$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Webhook' from JSON`,
+  );
 }

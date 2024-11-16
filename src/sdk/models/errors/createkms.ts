@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateKmsResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace CreateKmsResponseBody$ {
   export const outboundSchema = CreateKmsResponseBody$outboundSchema;
   /** @deprecated use `CreateKmsResponseBody$Outbound` instead. */
   export type Outbound = CreateKmsResponseBody$Outbound;
+}
+
+export function createKmsResponseBodyToJSON(
+  createKmsResponseBody: CreateKmsResponseBody,
+): string {
+  return JSON.stringify(
+    CreateKmsResponseBody$outboundSchema.parse(createKmsResponseBody),
+  );
+}
+
+export function createKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateKmsResponseBody' from JSON`,
+  );
 }

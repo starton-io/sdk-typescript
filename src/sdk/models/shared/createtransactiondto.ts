@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomGasDto,
   CustomGasDto$inboundSchema,
@@ -85,6 +88,26 @@ export namespace CreateTransactionDtoMetadata$ {
   export const outboundSchema = CreateTransactionDtoMetadata$outboundSchema;
   /** @deprecated use `CreateTransactionDtoMetadata$Outbound` instead. */
   export type Outbound = CreateTransactionDtoMetadata$Outbound;
+}
+
+export function createTransactionDtoMetadataToJSON(
+  createTransactionDtoMetadata: CreateTransactionDtoMetadata,
+): string {
+  return JSON.stringify(
+    CreateTransactionDtoMetadata$outboundSchema.parse(
+      createTransactionDtoMetadata,
+    ),
+  );
+}
+
+export function createTransactionDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTransactionDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTransactionDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransactionDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -170,4 +193,22 @@ export namespace CreateTransactionDto$ {
   export const outboundSchema = CreateTransactionDto$outboundSchema;
   /** @deprecated use `CreateTransactionDto$Outbound` instead. */
   export type Outbound = CreateTransactionDto$Outbound;
+}
+
+export function createTransactionDtoToJSON(
+  createTransactionDto: CreateTransactionDto,
+): string {
+  return JSON.stringify(
+    CreateTransactionDto$outboundSchema.parse(createTransactionDto),
+  );
+}
+
+export function createTransactionDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTransactionDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTransactionDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransactionDto' from JSON`,
+  );
 }

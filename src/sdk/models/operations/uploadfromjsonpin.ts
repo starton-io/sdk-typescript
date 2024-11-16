@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UploadFromJsonPinResponse = {
@@ -81,4 +84,22 @@ export namespace UploadFromJsonPinResponse$ {
   export const outboundSchema = UploadFromJsonPinResponse$outboundSchema;
   /** @deprecated use `UploadFromJsonPinResponse$Outbound` instead. */
   export type Outbound = UploadFromJsonPinResponse$Outbound;
+}
+
+export function uploadFromJsonPinResponseToJSON(
+  uploadFromJsonPinResponse: UploadFromJsonPinResponse,
+): string {
+  return JSON.stringify(
+    UploadFromJsonPinResponse$outboundSchema.parse(uploadFromJsonPinResponse),
+  );
+}
+
+export function uploadFromJsonPinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromJsonPinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromJsonPinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromJsonPinResponse' from JSON`,
+  );
 }

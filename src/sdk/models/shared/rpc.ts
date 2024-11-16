@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum RpcType {
   Archive = "archive",
@@ -90,4 +93,18 @@ export namespace Rpc$ {
   export const outboundSchema = Rpc$outboundSchema;
   /** @deprecated use `Rpc$Outbound` instead. */
   export type Outbound = Rpc$Outbound;
+}
+
+export function rpcToJSON(rpc: Rpc): string {
+  return JSON.stringify(Rpc$outboundSchema.parse(rpc));
+}
+
+export function rpcFromJSON(
+  jsonString: string,
+): SafeParseResult<Rpc, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Rpc$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rpc' from JSON`,
+  );
 }

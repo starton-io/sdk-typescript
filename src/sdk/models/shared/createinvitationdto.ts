@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Role {
   Owner = "owner",
@@ -70,4 +73,22 @@ export namespace CreateInvitationDto$ {
   export const outboundSchema = CreateInvitationDto$outboundSchema;
   /** @deprecated use `CreateInvitationDto$Outbound` instead. */
   export type Outbound = CreateInvitationDto$Outbound;
+}
+
+export function createInvitationDtoToJSON(
+  createInvitationDto: CreateInvitationDto,
+): string {
+  return JSON.stringify(
+    CreateInvitationDto$outboundSchema.parse(createInvitationDto),
+  );
+}
+
+export function createInvitationDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateInvitationDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateInvitationDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateInvitationDto' from JSON`,
+  );
 }

@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateSettingRelayerTransactionManagerSettingResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,31 @@ export namespace UpdateSettingRelayerTransactionManagerSettingResponseBody$ {
     UpdateSettingRelayerTransactionManagerSettingResponseBody$Outbound;
 }
 
+export function updateSettingRelayerTransactionManagerSettingResponseBodyToJSON(
+  updateSettingRelayerTransactionManagerSettingResponseBody:
+    UpdateSettingRelayerTransactionManagerSettingResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateSettingRelayerTransactionManagerSettingResponseBody$outboundSchema
+      .parse(updateSettingRelayerTransactionManagerSettingResponseBody),
+  );
+}
+
+export function updateSettingRelayerTransactionManagerSettingResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateSettingRelayerTransactionManagerSettingResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateSettingRelayerTransactionManagerSettingResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSettingRelayerTransactionManagerSettingResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateSettingRelayerResponseBody$inboundSchema: z.ZodType<
   UpdateSettingRelayerResponseBody,
@@ -86,4 +114,24 @@ export namespace UpdateSettingRelayerResponseBody$ {
   export const outboundSchema = UpdateSettingRelayerResponseBody$outboundSchema;
   /** @deprecated use `UpdateSettingRelayerResponseBody$Outbound` instead. */
   export type Outbound = UpdateSettingRelayerResponseBody$Outbound;
+}
+
+export function updateSettingRelayerResponseBodyToJSON(
+  updateSettingRelayerResponseBody: UpdateSettingRelayerResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateSettingRelayerResponseBody$outboundSchema.parse(
+      updateSettingRelayerResponseBody,
+    ),
+  );
+}
+
+export function updateSettingRelayerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSettingRelayerResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSettingRelayerResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSettingRelayerResponseBody' from JSON`,
+  );
 }

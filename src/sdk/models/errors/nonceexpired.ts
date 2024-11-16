@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasNONCEEXPIREDContext = {};
 
@@ -80,6 +83,24 @@ export namespace SchemasNONCEEXPIREDContext$ {
   export const outboundSchema = SchemasNONCEEXPIREDContext$outboundSchema;
   /** @deprecated use `SchemasNONCEEXPIREDContext$Outbound` instead. */
   export type Outbound = SchemasNONCEEXPIREDContext$Outbound;
+}
+
+export function schemasNONCEEXPIREDContextToJSON(
+  schemasNONCEEXPIREDContext: SchemasNONCEEXPIREDContext,
+): string {
+  return JSON.stringify(
+    SchemasNONCEEXPIREDContext$outboundSchema.parse(schemasNONCEEXPIREDContext),
+  );
+}
+
+export function schemasNONCEEXPIREDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasNONCEEXPIREDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasNONCEEXPIREDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasNONCEEXPIREDContext' from JSON`,
+  );
 }
 
 /** @internal */

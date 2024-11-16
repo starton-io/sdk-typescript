@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateWalletDtoMetadata = {};
 
@@ -41,6 +44,24 @@ export namespace CreateWalletDtoMetadata$ {
   export const outboundSchema = CreateWalletDtoMetadata$outboundSchema;
   /** @deprecated use `CreateWalletDtoMetadata$Outbound` instead. */
   export type Outbound = CreateWalletDtoMetadata$Outbound;
+}
+
+export function createWalletDtoMetadataToJSON(
+  createWalletDtoMetadata: CreateWalletDtoMetadata,
+): string {
+  return JSON.stringify(
+    CreateWalletDtoMetadata$outboundSchema.parse(createWalletDtoMetadata),
+  );
+}
+
+export function createWalletDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWalletDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWalletDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWalletDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -86,4 +107,20 @@ export namespace CreateWalletDto$ {
   export const outboundSchema = CreateWalletDto$outboundSchema;
   /** @deprecated use `CreateWalletDto$Outbound` instead. */
   export type Outbound = CreateWalletDto$Outbound;
+}
+
+export function createWalletDtoToJSON(
+  createWalletDto: CreateWalletDto,
+): string {
+  return JSON.stringify(CreateWalletDto$outboundSchema.parse(createWalletDto));
+}
+
+export function createWalletDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWalletDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWalletDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWalletDto' from JSON`,
+  );
 }

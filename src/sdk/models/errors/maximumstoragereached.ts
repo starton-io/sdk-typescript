@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasMAXIMUMSTORAGEREACHEDContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasMAXIMUMSTORAGEREACHEDContext$ {
     SchemasMAXIMUMSTORAGEREACHEDContext$outboundSchema;
   /** @deprecated use `SchemasMAXIMUMSTORAGEREACHEDContext$Outbound` instead. */
   export type Outbound = SchemasMAXIMUMSTORAGEREACHEDContext$Outbound;
+}
+
+export function schemasMAXIMUMSTORAGEREACHEDContextToJSON(
+  schemasMAXIMUMSTORAGEREACHEDContext: SchemasMAXIMUMSTORAGEREACHEDContext,
+): string {
+  return JSON.stringify(
+    SchemasMAXIMUMSTORAGEREACHEDContext$outboundSchema.parse(
+      schemasMAXIMUMSTORAGEREACHEDContext,
+    ),
+  );
+}
+
+export function schemasMAXIMUMSTORAGEREACHEDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasMAXIMUMSTORAGEREACHEDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasMAXIMUMSTORAGEREACHEDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasMAXIMUMSTORAGEREACHEDContext' from JSON`,
+  );
 }
 
 /** @internal */

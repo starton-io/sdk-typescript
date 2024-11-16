@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CallSmartContractRequest = {
@@ -94,6 +97,24 @@ export namespace CallSmartContractRequest$ {
   export type Outbound = CallSmartContractRequest$Outbound;
 }
 
+export function callSmartContractRequestToJSON(
+  callSmartContractRequest: CallSmartContractRequest,
+): string {
+  return JSON.stringify(
+    CallSmartContractRequest$outboundSchema.parse(callSmartContractRequest),
+  );
+}
+
+export function callSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CallSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CallSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CallSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CallSmartContractResponse$inboundSchema: z.ZodType<
   CallSmartContractResponse,
@@ -153,4 +174,22 @@ export namespace CallSmartContractResponse$ {
   export const outboundSchema = CallSmartContractResponse$outboundSchema;
   /** @deprecated use `CallSmartContractResponse$Outbound` instead. */
   export type Outbound = CallSmartContractResponse$Outbound;
+}
+
+export function callSmartContractResponseToJSON(
+  callSmartContractResponse: CallSmartContractResponse,
+): string {
+  return JSON.stringify(
+    CallSmartContractResponse$outboundSchema.parse(callSmartContractResponse),
+  );
+}
+
+export function callSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CallSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CallSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CallSmartContractResponse' from JSON`,
+  );
 }

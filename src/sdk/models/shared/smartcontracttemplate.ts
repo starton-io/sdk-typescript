@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SmartContractTemplateAbi = {};
 
@@ -72,6 +75,24 @@ export namespace SmartContractTemplateAbi$ {
   export type Outbound = SmartContractTemplateAbi$Outbound;
 }
 
+export function smartContractTemplateAbiToJSON(
+  smartContractTemplateAbi: SmartContractTemplateAbi,
+): string {
+  return JSON.stringify(
+    SmartContractTemplateAbi$outboundSchema.parse(smartContractTemplateAbi),
+  );
+}
+
+export function smartContractTemplateAbiFromJSON(
+  jsonString: string,
+): SafeParseResult<SmartContractTemplateAbi, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmartContractTemplateAbi$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmartContractTemplateAbi' from JSON`,
+  );
+}
+
 /** @internal */
 export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
   .nativeEnum(Category);
@@ -123,6 +144,33 @@ export namespace SmartContractTemplateCompilationDetails$ {
   export type Outbound = SmartContractTemplateCompilationDetails$Outbound;
 }
 
+export function smartContractTemplateCompilationDetailsToJSON(
+  smartContractTemplateCompilationDetails:
+    SmartContractTemplateCompilationDetails,
+): string {
+  return JSON.stringify(
+    SmartContractTemplateCompilationDetails$outboundSchema.parse(
+      smartContractTemplateCompilationDetails,
+    ),
+  );
+}
+
+export function smartContractTemplateCompilationDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SmartContractTemplateCompilationDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SmartContractTemplateCompilationDetails$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SmartContractTemplateCompilationDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const Form$inboundSchema: z.ZodType<Form, z.ZodTypeDef, unknown> = z
   .object({});
@@ -145,6 +193,20 @@ export namespace Form$ {
   export const outboundSchema = Form$outboundSchema;
   /** @deprecated use `Form$Outbound` instead. */
   export type Outbound = Form$Outbound;
+}
+
+export function formToJSON(form: Form): string {
+  return JSON.stringify(Form$outboundSchema.parse(form));
+}
+
+export function formFromJSON(
+  jsonString: string,
+): SafeParseResult<Form, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Form$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Form' from JSON`,
+  );
 }
 
 /** @internal */
@@ -242,4 +304,22 @@ export namespace SmartContractTemplate$ {
   export const outboundSchema = SmartContractTemplate$outboundSchema;
   /** @deprecated use `SmartContractTemplate$Outbound` instead. */
   export type Outbound = SmartContractTemplate$Outbound;
+}
+
+export function smartContractTemplateToJSON(
+  smartContractTemplate: SmartContractTemplate,
+): string {
+  return JSON.stringify(
+    SmartContractTemplate$outboundSchema.parse(smartContractTemplate),
+  );
+}
+
+export function smartContractTemplateFromJSON(
+  jsonString: string,
+): SafeParseResult<SmartContractTemplate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmartContractTemplate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmartContractTemplate' from JSON`,
+  );
 }

@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   AlreadyKnown,
   AlreadyKnown$inboundSchema,
@@ -123,6 +125,7 @@ import {
   ReplacementGasPriceUnderpriced$Outbound,
   ReplacementGasPriceUnderpriced$outboundSchema,
 } from "./replacementgaspriceunderpriced.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UnexpectedArgument,
   UnexpectedArgument$inboundSchema,
@@ -228,6 +231,33 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponse5
     DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$Outbound;
 }
 
+export function deployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBodyToJSON(
+  deployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody:
+    DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$outboundSchema
+      .parse(
+        deployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody,
+      ),
+  );
+}
+
+export function deployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeSmartContractSmartContractManagementResponse500ResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema:
   z.ZodType<
@@ -264,6 +294,33 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseR
     DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$Outbound;
 }
 
+export function deployFromBytecodeSmartContractSmartContractManagementResponseResponseBodyToJSON(
+  deployFromBytecodeSmartContractSmartContractManagementResponseResponseBody:
+    DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$outboundSchema
+      .parse(
+        deployFromBytecodeSmartContractSmartContractManagementResponseResponseBody,
+      ),
+  );
+}
+
+export function deployFromBytecodeSmartContractSmartContractManagementResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeSmartContractSmartContractManagementResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromBytecodeSmartContractSmartContractManagementResponseBody$inboundSchema:
   z.ZodType<
@@ -298,6 +355,33 @@ export namespace DeployFromBytecodeSmartContractSmartContractManagementResponseB
   /** @deprecated use `DeployFromBytecodeSmartContractSmartContractManagementResponseBody$Outbound` instead. */
   export type Outbound =
     DeployFromBytecodeSmartContractSmartContractManagementResponseBody$Outbound;
+}
+
+export function deployFromBytecodeSmartContractSmartContractManagementResponseBodyToJSON(
+  deployFromBytecodeSmartContractSmartContractManagementResponseBody:
+    DeployFromBytecodeSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractSmartContractManagementResponseBody$outboundSchema
+      .parse(
+        deployFromBytecodeSmartContractSmartContractManagementResponseBody,
+      ),
+  );
+}
+
+export function deployFromBytecodeSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromBytecodeSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromBytecodeSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -379,4 +463,31 @@ export namespace DeployFromBytecodeSmartContractResponseBody$ {
     DeployFromBytecodeSmartContractResponseBody$outboundSchema;
   /** @deprecated use `DeployFromBytecodeSmartContractResponseBody$Outbound` instead. */
   export type Outbound = DeployFromBytecodeSmartContractResponseBody$Outbound;
+}
+
+export function deployFromBytecodeSmartContractResponseBodyToJSON(
+  deployFromBytecodeSmartContractResponseBody:
+    DeployFromBytecodeSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromBytecodeSmartContractResponseBody$outboundSchema.parse(
+      deployFromBytecodeSmartContractResponseBody,
+    ),
+  );
+}
+
+export function deployFromBytecodeSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromBytecodeSmartContractResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromBytecodeSmartContractResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeployFromBytecodeSmartContractResponseBody' from JSON`,
+  );
 }

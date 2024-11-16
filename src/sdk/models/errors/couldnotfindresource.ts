@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTFINDRESOURCEContext = {};
 
@@ -81,6 +84,27 @@ export namespace SchemasCOULDNOTFINDRESOURCEContext$ {
     SchemasCOULDNOTFINDRESOURCEContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTFINDRESOURCEContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTFINDRESOURCEContext$Outbound;
+}
+
+export function schemasCOULDNOTFINDRESOURCEContextToJSON(
+  schemasCOULDNOTFINDRESOURCEContext: SchemasCOULDNOTFINDRESOURCEContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTFINDRESOURCEContext$outboundSchema.parse(
+      schemasCOULDNOTFINDRESOURCEContext,
+    ),
+  );
+}
+
+export function schemasCOULDNOTFINDRESOURCEContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTFINDRESOURCEContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasCOULDNOTFINDRESOURCEContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTFINDRESOURCEContext' from JSON`,
+  );
 }
 
 /** @internal */

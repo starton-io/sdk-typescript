@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCALLEXCEPTIONContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasCALLEXCEPTIONContext$ {
   export const outboundSchema = SchemasCALLEXCEPTIONContext$outboundSchema;
   /** @deprecated use `SchemasCALLEXCEPTIONContext$Outbound` instead. */
   export type Outbound = SchemasCALLEXCEPTIONContext$Outbound;
+}
+
+export function schemasCALLEXCEPTIONContextToJSON(
+  schemasCALLEXCEPTIONContext: SchemasCALLEXCEPTIONContext,
+): string {
+  return JSON.stringify(
+    SchemasCALLEXCEPTIONContext$outboundSchema.parse(
+      schemasCALLEXCEPTIONContext,
+    ),
+  );
+}
+
+export function schemasCALLEXCEPTIONContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCALLEXCEPTIONContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasCALLEXCEPTIONContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCALLEXCEPTIONContext' from JSON`,
+  );
 }
 
 /** @internal */

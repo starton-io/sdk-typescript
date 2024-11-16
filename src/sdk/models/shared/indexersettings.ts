@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IndexerSettings = {
   confirmationBlocks: number;
@@ -50,4 +53,20 @@ export namespace IndexerSettings$ {
   export const outboundSchema = IndexerSettings$outboundSchema;
   /** @deprecated use `IndexerSettings$Outbound` instead. */
   export type Outbound = IndexerSettings$Outbound;
+}
+
+export function indexerSettingsToJSON(
+  indexerSettings: IndexerSettings,
+): string {
+  return JSON.stringify(IndexerSettings$outboundSchema.parse(indexerSettings));
+}
+
+export function indexerSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<IndexerSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IndexerSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IndexerSettings' from JSON`,
+  );
 }

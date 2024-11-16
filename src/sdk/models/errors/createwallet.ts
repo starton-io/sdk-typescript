@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   MaximumWalletReached$Outbound,
   MaximumWalletReached$outboundSchema,
 } from "./maximumwalletreached.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateWalletWalletResponseBody = MaximumWalletReached;
 
@@ -51,6 +54,26 @@ export namespace CreateWalletWalletResponseBody$ {
   export type Outbound = CreateWalletWalletResponseBody$Outbound;
 }
 
+export function createWalletWalletResponseBodyToJSON(
+  createWalletWalletResponseBody: CreateWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWalletWalletResponseBody$outboundSchema.parse(
+      createWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function createWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWalletResponseBody$inboundSchema: z.ZodType<
   CreateWalletResponseBody,
@@ -79,4 +102,22 @@ export namespace CreateWalletResponseBody$ {
   export const outboundSchema = CreateWalletResponseBody$outboundSchema;
   /** @deprecated use `CreateWalletResponseBody$Outbound` instead. */
   export type Outbound = CreateWalletResponseBody$Outbound;
+}
+
+export function createWalletResponseBodyToJSON(
+  createWalletResponseBody: CreateWalletResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWalletResponseBody$outboundSchema.parse(createWalletResponseBody),
+  );
+}
+
+export function createWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWalletResponseBody' from JSON`,
+  );
 }

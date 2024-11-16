@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AvailableFunctions = {
   call: Array<string>;
@@ -50,4 +53,22 @@ export namespace AvailableFunctions$ {
   export const outboundSchema = AvailableFunctions$outboundSchema;
   /** @deprecated use `AvailableFunctions$Outbound` instead. */
   export type Outbound = AvailableFunctions$Outbound;
+}
+
+export function availableFunctionsToJSON(
+  availableFunctions: AvailableFunctions,
+): string {
+  return JSON.stringify(
+    AvailableFunctions$outboundSchema.parse(availableFunctions),
+  );
+}
+
+export function availableFunctionsFromJSON(
+  jsonString: string,
+): SafeParseResult<AvailableFunctions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AvailableFunctions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AvailableFunctions' from JSON`,
+  );
 }

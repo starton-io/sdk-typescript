@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTPERFORMREQUESTContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasCOULDNOTPERFORMREQUESTContext$ {
     SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTPERFORMREQUESTContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTPERFORMREQUESTContext$Outbound;
+}
+
+export function schemasCOULDNOTPERFORMREQUESTContextToJSON(
+  schemasCOULDNOTPERFORMREQUESTContext: SchemasCOULDNOTPERFORMREQUESTContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTPERFORMREQUESTContext$outboundSchema.parse(
+      schemasCOULDNOTPERFORMREQUESTContext,
+    ),
+  );
+}
+
+export function schemasCOULDNOTPERFORMREQUESTContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTPERFORMREQUESTContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasCOULDNOTPERFORMREQUESTContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTPERFORMREQUESTContext' from JSON`,
+  );
 }
 
 /** @internal */

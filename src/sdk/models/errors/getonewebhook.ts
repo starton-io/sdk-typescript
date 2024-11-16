@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneWebhookWebhookResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace GetOneWebhookWebhookResponseBody$ {
   export type Outbound = GetOneWebhookWebhookResponseBody$Outbound;
 }
 
+export function getOneWebhookWebhookResponseBodyToJSON(
+  getOneWebhookWebhookResponseBody: GetOneWebhookWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWebhookWebhookResponseBody$outboundSchema.parse(
+      getOneWebhookWebhookResponseBody,
+    ),
+  );
+}
+
+export function getOneWebhookWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWebhookWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookWebhookResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWebhookResponseBody$inboundSchema: z.ZodType<
   GetOneWebhookResponseBody,
@@ -79,4 +102,22 @@ export namespace GetOneWebhookResponseBody$ {
   export const outboundSchema = GetOneWebhookResponseBody$outboundSchema;
   /** @deprecated use `GetOneWebhookResponseBody$Outbound` instead. */
   export type Outbound = GetOneWebhookResponseBody$Outbound;
+}
+
+export function getOneWebhookResponseBodyToJSON(
+  getOneWebhookResponseBody: GetOneWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWebhookResponseBody$outboundSchema.parse(getOneWebhookResponseBody),
+  );
+}
+
+export function getOneWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookResponseBody' from JSON`,
+  );
 }

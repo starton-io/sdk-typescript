@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SignMessageDto = {
   message: string;
@@ -42,4 +45,18 @@ export namespace SignMessageDto$ {
   export const outboundSchema = SignMessageDto$outboundSchema;
   /** @deprecated use `SignMessageDto$Outbound` instead. */
   export type Outbound = SignMessageDto$Outbound;
+}
+
+export function signMessageDtoToJSON(signMessageDto: SignMessageDto): string {
+  return JSON.stringify(SignMessageDto$outboundSchema.parse(signMessageDto));
+}
+
+export function signMessageDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignMessageDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageDto' from JSON`,
+  );
 }

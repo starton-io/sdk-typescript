@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllGasPriceRequest = {
@@ -65,6 +68,24 @@ export namespace GetAllGasPriceRequest$ {
   export type Outbound = GetAllGasPriceRequest$Outbound;
 }
 
+export function getAllGasPriceRequestToJSON(
+  getAllGasPriceRequest: GetAllGasPriceRequest,
+): string {
+  return JSON.stringify(
+    GetAllGasPriceRequest$outboundSchema.parse(getAllGasPriceRequest),
+  );
+}
+
+export function getAllGasPriceRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllGasPriceRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllGasPriceRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllGasPriceRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllGasPriceResponse$inboundSchema: z.ZodType<
   GetAllGasPriceResponse,
@@ -124,4 +145,22 @@ export namespace GetAllGasPriceResponse$ {
   export const outboundSchema = GetAllGasPriceResponse$outboundSchema;
   /** @deprecated use `GetAllGasPriceResponse$Outbound` instead. */
   export type Outbound = GetAllGasPriceResponse$Outbound;
+}
+
+export function getAllGasPriceResponseToJSON(
+  getAllGasPriceResponse: GetAllGasPriceResponse,
+): string {
+  return JSON.stringify(
+    GetAllGasPriceResponse$outboundSchema.parse(getAllGasPriceResponse),
+  );
+}
+
+export function getAllGasPriceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllGasPriceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllGasPriceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllGasPriceResponse' from JSON`,
+  );
 }

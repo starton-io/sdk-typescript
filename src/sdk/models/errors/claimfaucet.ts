@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   MicroserviceNotResponding$Outbound,
   MicroserviceNotResponding$outboundSchema,
 } from "./microservicenotresponding.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ClaimFaucetWalletResponseBody =
   | MicroserviceNotResponding
@@ -66,6 +69,26 @@ export namespace ClaimFaucetWalletResponseBody$ {
   export type Outbound = ClaimFaucetWalletResponseBody$Outbound;
 }
 
+export function claimFaucetWalletResponseBodyToJSON(
+  claimFaucetWalletResponseBody: ClaimFaucetWalletResponseBody,
+): string {
+  return JSON.stringify(
+    ClaimFaucetWalletResponseBody$outboundSchema.parse(
+      claimFaucetWalletResponseBody,
+    ),
+  );
+}
+
+export function claimFaucetWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ClaimFaucetWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClaimFaucetWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClaimFaucetWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ClaimFaucetResponseBody$inboundSchema: z.ZodType<
   ClaimFaucetResponseBody,
@@ -94,4 +117,22 @@ export namespace ClaimFaucetResponseBody$ {
   export const outboundSchema = ClaimFaucetResponseBody$outboundSchema;
   /** @deprecated use `ClaimFaucetResponseBody$Outbound` instead. */
   export type Outbound = ClaimFaucetResponseBody$Outbound;
+}
+
+export function claimFaucetResponseBodyToJSON(
+  claimFaucetResponseBody: ClaimFaucetResponseBody,
+): string {
+  return JSON.stringify(
+    ClaimFaucetResponseBody$outboundSchema.parse(claimFaucetResponseBody),
+  );
+}
+
+export function claimFaucetResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ClaimFaucetResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClaimFaucetResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClaimFaucetResponseBody' from JSON`,
+  );
 }

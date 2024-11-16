@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneKmsRequest = {
@@ -65,6 +68,24 @@ export namespace GetOneKmsRequest$ {
   export type Outbound = GetOneKmsRequest$Outbound;
 }
 
+export function getOneKmsRequestToJSON(
+  getOneKmsRequest: GetOneKmsRequest,
+): string {
+  return JSON.stringify(
+    GetOneKmsRequest$outboundSchema.parse(getOneKmsRequest),
+  );
+}
+
+export function getOneKmsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneKmsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneKmsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneKmsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneKmsResponse$inboundSchema: z.ZodType<
   GetOneKmsResponse,
@@ -124,4 +145,22 @@ export namespace GetOneKmsResponse$ {
   export const outboundSchema = GetOneKmsResponse$outboundSchema;
   /** @deprecated use `GetOneKmsResponse$Outbound` instead. */
   export type Outbound = GetOneKmsResponse$Outbound;
+}
+
+export function getOneKmsResponseToJSON(
+  getOneKmsResponse: GetOneKmsResponse,
+): string {
+  return JSON.stringify(
+    GetOneKmsResponse$outboundSchema.parse(getOneKmsResponse),
+  );
+}
+
+export function getOneKmsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneKmsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneKmsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneKmsResponse' from JSON`,
+  );
 }

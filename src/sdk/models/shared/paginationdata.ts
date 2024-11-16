@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PaginationData = {
   currentPage: number;
@@ -58,4 +61,18 @@ export namespace PaginationData$ {
   export const outboundSchema = PaginationData$outboundSchema;
   /** @deprecated use `PaginationData$Outbound` instead. */
   export type Outbound = PaginationData$Outbound;
+}
+
+export function paginationDataToJSON(paginationData: PaginationData): string {
+  return JSON.stringify(PaginationData$outboundSchema.parse(paginationData));
+}
+
+export function paginationDataFromJSON(
+  jsonString: string,
+): SafeParseResult<PaginationData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PaginationData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PaginationData' from JSON`,
+  );
 }

@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllRpcResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllRpcResponseBody$ {
   export const outboundSchema = GetAllRpcResponseBody$outboundSchema;
   /** @deprecated use `GetAllRpcResponseBody$Outbound` instead. */
   export type Outbound = GetAllRpcResponseBody$Outbound;
+}
+
+export function getAllRpcResponseBodyToJSON(
+  getAllRpcResponseBody: GetAllRpcResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllRpcResponseBody$outboundSchema.parse(getAllRpcResponseBody),
+  );
+}
+
+export function getAllRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllRpcResponseBody' from JSON`,
+  );
 }

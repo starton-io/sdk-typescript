@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteWatcherMonitorResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace DeleteWatcherMonitorResponseBody$ {
   export type Outbound = DeleteWatcherMonitorResponseBody$Outbound;
 }
 
+export function deleteWatcherMonitorResponseBodyToJSON(
+  deleteWatcherMonitorResponseBody: DeleteWatcherMonitorResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteWatcherMonitorResponseBody$outboundSchema.parse(
+      deleteWatcherMonitorResponseBody,
+    ),
+  );
+}
+
+export function deleteWatcherMonitorResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWatcherMonitorResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWatcherMonitorResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWatcherMonitorResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteWatcherResponseBody$inboundSchema: z.ZodType<
   DeleteWatcherResponseBody,
@@ -79,4 +102,22 @@ export namespace DeleteWatcherResponseBody$ {
   export const outboundSchema = DeleteWatcherResponseBody$outboundSchema;
   /** @deprecated use `DeleteWatcherResponseBody$Outbound` instead. */
   export type Outbound = DeleteWatcherResponseBody$Outbound;
+}
+
+export function deleteWatcherResponseBodyToJSON(
+  deleteWatcherResponseBody: DeleteWatcherResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteWatcherResponseBody$outboundSchema.parse(deleteWatcherResponseBody),
+  );
+}
+
+export function deleteWatcherResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWatcherResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWatcherResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWatcherResponseBody' from JSON`,
+  );
 }

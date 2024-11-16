@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateKmsRequest = {
@@ -77,6 +80,24 @@ export namespace UpdateKmsRequest$ {
   export type Outbound = UpdateKmsRequest$Outbound;
 }
 
+export function updateKmsRequestToJSON(
+  updateKmsRequest: UpdateKmsRequest,
+): string {
+  return JSON.stringify(
+    UpdateKmsRequest$outboundSchema.parse(updateKmsRequest),
+  );
+}
+
+export function updateKmsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateKmsResponse$inboundSchema: z.ZodType<
   UpdateKmsResponse,
@@ -136,4 +157,22 @@ export namespace UpdateKmsResponse$ {
   export const outboundSchema = UpdateKmsResponse$outboundSchema;
   /** @deprecated use `UpdateKmsResponse$Outbound` instead. */
   export type Outbound = UpdateKmsResponse$Outbound;
+}
+
+export function updateKmsResponseToJSON(
+  updateKmsResponse: UpdateKmsResponse,
+): string {
+  return JSON.stringify(
+    UpdateKmsResponse$outboundSchema.parse(updateKmsResponse),
+  );
+}
+
+export function updateKmsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsResponse' from JSON`,
+  );
 }

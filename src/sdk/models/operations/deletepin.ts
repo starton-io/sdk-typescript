@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeletePinRequest = {
   /**
@@ -64,6 +67,24 @@ export namespace DeletePinRequest$ {
   export type Outbound = DeletePinRequest$Outbound;
 }
 
+export function deletePinRequestToJSON(
+  deletePinRequest: DeletePinRequest,
+): string {
+  return JSON.stringify(
+    DeletePinRequest$outboundSchema.parse(deletePinRequest),
+  );
+}
+
+export function deletePinRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeletePinRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeletePinRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeletePinRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeletePinResponse$inboundSchema: z.ZodType<
   DeletePinResponse,
@@ -121,4 +142,22 @@ export namespace DeletePinResponse$ {
   export const outboundSchema = DeletePinResponse$outboundSchema;
   /** @deprecated use `DeletePinResponse$Outbound` instead. */
   export type Outbound = DeletePinResponse$Outbound;
+}
+
+export function deletePinResponseToJSON(
+  deletePinResponse: DeletePinResponse,
+): string {
+  return JSON.stringify(
+    DeletePinResponse$outboundSchema.parse(deletePinResponse),
+  );
+}
+
+export function deletePinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeletePinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeletePinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeletePinResponse' from JSON`,
+  );
 }

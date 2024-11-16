@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteNetworkRequest = {
   /**
@@ -64,6 +67,24 @@ export namespace DeleteNetworkRequest$ {
   export type Outbound = DeleteNetworkRequest$Outbound;
 }
 
+export function deleteNetworkRequestToJSON(
+  deleteNetworkRequest: DeleteNetworkRequest,
+): string {
+  return JSON.stringify(
+    DeleteNetworkRequest$outboundSchema.parse(deleteNetworkRequest),
+  );
+}
+
+export function deleteNetworkRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteNetworkRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteNetworkRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteNetworkRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteNetworkResponse$inboundSchema: z.ZodType<
   DeleteNetworkResponse,
@@ -121,4 +142,22 @@ export namespace DeleteNetworkResponse$ {
   export const outboundSchema = DeleteNetworkResponse$outboundSchema;
   /** @deprecated use `DeleteNetworkResponse$Outbound` instead. */
   export type Outbound = DeleteNetworkResponse$Outbound;
+}
+
+export function deleteNetworkResponseToJSON(
+  deleteNetworkResponse: DeleteNetworkResponse,
+): string {
+  return JSON.stringify(
+    DeleteNetworkResponse$outboundSchema.parse(deleteNetworkResponse),
+  );
+}
+
+export function deleteNetworkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteNetworkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteNetworkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteNetworkResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteRpcRequest = {
   id: string;
@@ -65,6 +68,24 @@ export namespace DeleteRpcRequest$ {
   export type Outbound = DeleteRpcRequest$Outbound;
 }
 
+export function deleteRpcRequestToJSON(
+  deleteRpcRequest: DeleteRpcRequest,
+): string {
+  return JSON.stringify(
+    DeleteRpcRequest$outboundSchema.parse(deleteRpcRequest),
+  );
+}
+
+export function deleteRpcRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRpcRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRpcRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRpcRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteRpcResponse$inboundSchema: z.ZodType<
   DeleteRpcResponse,
@@ -122,4 +143,22 @@ export namespace DeleteRpcResponse$ {
   export const outboundSchema = DeleteRpcResponse$outboundSchema;
   /** @deprecated use `DeleteRpcResponse$Outbound` instead. */
   export type Outbound = DeleteRpcResponse$Outbound;
+}
+
+export function deleteRpcResponseToJSON(
+  deleteRpcResponse: DeleteRpcResponse,
+): string {
+  return JSON.stringify(
+    DeleteRpcResponse$outboundSchema.parse(deleteRpcResponse),
+  );
+}
+
+export function deleteRpcResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRpcResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRpcResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRpcResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type EncodeSmartContractRequest = {
@@ -87,6 +90,24 @@ export namespace EncodeSmartContractRequest$ {
   export type Outbound = EncodeSmartContractRequest$Outbound;
 }
 
+export function encodeSmartContractRequestToJSON(
+  encodeSmartContractRequest: EncodeSmartContractRequest,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractRequest$outboundSchema.parse(encodeSmartContractRequest),
+  );
+}
+
+export function encodeSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const EncodeSmartContractResponse$inboundSchema: z.ZodType<
   EncodeSmartContractResponse,
@@ -150,4 +171,24 @@ export namespace EncodeSmartContractResponse$ {
   export const outboundSchema = EncodeSmartContractResponse$outboundSchema;
   /** @deprecated use `EncodeSmartContractResponse$Outbound` instead. */
   export type Outbound = EncodeSmartContractResponse$Outbound;
+}
+
+export function encodeSmartContractResponseToJSON(
+  encodeSmartContractResponse: EncodeSmartContractResponse,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractResponse$outboundSchema.parse(
+      encodeSmartContractResponse,
+    ),
+  );
+}
+
+export function encodeSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractResponse' from JSON`,
+  );
 }

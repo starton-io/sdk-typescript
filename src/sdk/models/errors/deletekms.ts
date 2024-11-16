@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteKmsKmsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace DeleteKmsKmsResponseBody$ {
   export type Outbound = DeleteKmsKmsResponseBody$Outbound;
 }
 
+export function deleteKmsKmsResponseBodyToJSON(
+  deleteKmsKmsResponseBody: DeleteKmsKmsResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteKmsKmsResponseBody$outboundSchema.parse(deleteKmsKmsResponseBody),
+  );
+}
+
+export function deleteKmsKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteKmsKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteKmsKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteKmsKmsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteKmsResponseBody$inboundSchema: z.ZodType<
   DeleteKmsResponseBody,
@@ -78,4 +99,22 @@ export namespace DeleteKmsResponseBody$ {
   export const outboundSchema = DeleteKmsResponseBody$outboundSchema;
   /** @deprecated use `DeleteKmsResponseBody$Outbound` instead. */
   export type Outbound = DeleteKmsResponseBody$Outbound;
+}
+
+export function deleteKmsResponseBodyToJSON(
+  deleteKmsResponseBody: DeleteKmsResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteKmsResponseBody$outboundSchema.parse(deleteKmsResponseBody),
+  );
+}
+
+export function deleteKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteKmsResponseBody' from JSON`,
+  );
 }

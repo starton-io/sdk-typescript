@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomGasDto,
   CustomGasDto$inboundSchema,
@@ -127,6 +130,26 @@ export namespace DeployFromTemplateDtoMetadata$ {
   export type Outbound = DeployFromTemplateDtoMetadata$Outbound;
 }
 
+export function deployFromTemplateDtoMetadataToJSON(
+  deployFromTemplateDtoMetadata: DeployFromTemplateDtoMetadata,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateDtoMetadata$outboundSchema.parse(
+      deployFromTemplateDtoMetadata,
+    ),
+  );
+}
+
+export function deployFromTemplateDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromTemplateDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateDtoMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromTemplateDto3$inboundSchema: z.ZodType<
   DeployFromTemplateDto3,
@@ -155,6 +178,24 @@ export namespace DeployFromTemplateDto3$ {
   export const outboundSchema = DeployFromTemplateDto3$outboundSchema;
   /** @deprecated use `DeployFromTemplateDto3$Outbound` instead. */
   export type Outbound = DeployFromTemplateDto3$Outbound;
+}
+
+export function deployFromTemplateDto3ToJSON(
+  deployFromTemplateDto3: DeployFromTemplateDto3,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateDto3$outboundSchema.parse(deployFromTemplateDto3),
+  );
+}
+
+export function deployFromTemplateDto3FromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateDto3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromTemplateDto3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateDto3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -199,6 +240,26 @@ export namespace DeployFromTemplateDtoParams$ {
   export const outboundSchema = DeployFromTemplateDtoParams$outboundSchema;
   /** @deprecated use `DeployFromTemplateDtoParams$Outbound` instead. */
   export type Outbound = DeployFromTemplateDtoParams$Outbound;
+}
+
+export function deployFromTemplateDtoParamsToJSON(
+  deployFromTemplateDtoParams: DeployFromTemplateDtoParams,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateDtoParams$outboundSchema.parse(
+      deployFromTemplateDtoParams,
+    ),
+  );
+}
+
+export function deployFromTemplateDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromTemplateDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateDtoParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -313,6 +374,26 @@ export namespace DeployFromTemplateDtoUiData$ {
   export type Outbound = DeployFromTemplateDtoUiData$Outbound;
 }
 
+export function deployFromTemplateDtoUiDataToJSON(
+  deployFromTemplateDtoUiData: DeployFromTemplateDtoUiData,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateDtoUiData$outboundSchema.parse(
+      deployFromTemplateDtoUiData,
+    ),
+  );
+}
+
+export function deployFromTemplateDtoUiDataFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateDtoUiData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromTemplateDtoUiData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateDtoUiData' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromTemplateDto$inboundSchema: z.ZodType<
   DeployFromTemplateDto,
@@ -401,4 +482,22 @@ export namespace DeployFromTemplateDto$ {
   export const outboundSchema = DeployFromTemplateDto$outboundSchema;
   /** @deprecated use `DeployFromTemplateDto$Outbound` instead. */
   export type Outbound = DeployFromTemplateDto$Outbound;
+}
+
+export function deployFromTemplateDtoToJSON(
+  deployFromTemplateDto: DeployFromTemplateDto,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateDto$outboundSchema.parse(deployFromTemplateDto),
+  );
+}
+
+export function deployFromTemplateDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeployFromTemplateDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateDto' from JSON`,
+  );
 }

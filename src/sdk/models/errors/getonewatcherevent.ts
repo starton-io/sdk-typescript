@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneWatcherEventMonitorResponseBody = CouldNotFindResource;
 
@@ -53,6 +56,27 @@ export namespace GetOneWatcherEventMonitorResponseBody$ {
   export type Outbound = GetOneWatcherEventMonitorResponseBody$Outbound;
 }
 
+export function getOneWatcherEventMonitorResponseBodyToJSON(
+  getOneWatcherEventMonitorResponseBody: GetOneWatcherEventMonitorResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWatcherEventMonitorResponseBody$outboundSchema.parse(
+      getOneWatcherEventMonitorResponseBody,
+    ),
+  );
+}
+
+export function getOneWatcherEventMonitorResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherEventMonitorResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneWatcherEventMonitorResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherEventMonitorResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWatcherEventResponseBody$inboundSchema: z.ZodType<
   GetOneWatcherEventResponseBody,
@@ -82,4 +106,24 @@ export namespace GetOneWatcherEventResponseBody$ {
   export const outboundSchema = GetOneWatcherEventResponseBody$outboundSchema;
   /** @deprecated use `GetOneWatcherEventResponseBody$Outbound` instead. */
   export type Outbound = GetOneWatcherEventResponseBody$Outbound;
+}
+
+export function getOneWatcherEventResponseBodyToJSON(
+  getOneWatcherEventResponseBody: GetOneWatcherEventResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWatcherEventResponseBody$outboundSchema.parse(
+      getOneWatcherEventResponseBody,
+    ),
+  );
+}
+
+export function getOneWatcherEventResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherEventResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWatcherEventResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherEventResponseBody' from JSON`,
+  );
 }

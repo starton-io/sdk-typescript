@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Payload = {};
 
@@ -51,6 +54,20 @@ export namespace Payload$ {
   export const outboundSchema = Payload$outboundSchema;
   /** @deprecated use `Payload$Outbound` instead. */
   export type Outbound = Payload$Outbound;
+}
+
+export function payloadToJSON(payload: Payload): string {
+  return JSON.stringify(Payload$outboundSchema.parse(payload));
+}
+
+export function payloadFromJSON(
+  jsonString: string,
+): SafeParseResult<Payload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Payload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Payload' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,4 +161,18 @@ export namespace WatcherEvent$ {
   export const outboundSchema = WatcherEvent$outboundSchema;
   /** @deprecated use `WatcherEvent$Outbound` instead. */
   export type Outbound = WatcherEvent$Outbound;
+}
+
+export function watcherEventToJSON(watcherEvent: WatcherEvent): string {
+  return JSON.stringify(WatcherEvent$outboundSchema.parse(watcherEvent));
+}
+
+export function watcherEventFromJSON(
+  jsonString: string,
+): SafeParseResult<WatcherEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatcherEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatcherEvent' from JSON`,
+  );
 }

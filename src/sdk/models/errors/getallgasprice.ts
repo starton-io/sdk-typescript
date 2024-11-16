@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllGasPriceResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllGasPriceResponseBody$ {
   export const outboundSchema = GetAllGasPriceResponseBody$outboundSchema;
   /** @deprecated use `GetAllGasPriceResponseBody$Outbound` instead. */
   export type Outbound = GetAllGasPriceResponseBody$Outbound;
+}
+
+export function getAllGasPriceResponseBodyToJSON(
+  getAllGasPriceResponseBody: GetAllGasPriceResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllGasPriceResponseBody$outboundSchema.parse(getAllGasPriceResponseBody),
+  );
+}
+
+export function getAllGasPriceResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllGasPriceResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllGasPriceResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllGasPriceResponseBody' from JSON`,
+  );
 }

@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   InvalidAbi$Outbound,
   InvalidAbi$outboundSchema,
 } from "./invalidabi.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ImportExistingSmartContractResponseBody =
   | InvalidAbi
@@ -52,4 +55,31 @@ export namespace ImportExistingSmartContractResponseBody$ {
     ImportExistingSmartContractResponseBody$outboundSchema;
   /** @deprecated use `ImportExistingSmartContractResponseBody$Outbound` instead. */
   export type Outbound = ImportExistingSmartContractResponseBody$Outbound;
+}
+
+export function importExistingSmartContractResponseBodyToJSON(
+  importExistingSmartContractResponseBody:
+    ImportExistingSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    ImportExistingSmartContractResponseBody$outboundSchema.parse(
+      importExistingSmartContractResponseBody,
+    ),
+  );
+}
+
+export function importExistingSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ImportExistingSmartContractResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ImportExistingSmartContractResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ImportExistingSmartContractResponseBody' from JSON`,
+  );
 }

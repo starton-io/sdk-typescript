@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdatePinRequest = {
@@ -80,6 +83,24 @@ export namespace UpdatePinRequest$ {
   export type Outbound = UpdatePinRequest$Outbound;
 }
 
+export function updatePinRequestToJSON(
+  updatePinRequest: UpdatePinRequest,
+): string {
+  return JSON.stringify(
+    UpdatePinRequest$outboundSchema.parse(updatePinRequest),
+  );
+}
+
+export function updatePinRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdatePinResponse$inboundSchema: z.ZodType<
   UpdatePinResponse,
@@ -139,4 +160,22 @@ export namespace UpdatePinResponse$ {
   export const outboundSchema = UpdatePinResponse$outboundSchema;
   /** @deprecated use `UpdatePinResponse$Outbound` instead. */
   export type Outbound = UpdatePinResponse$Outbound;
+}
+
+export function updatePinResponseToJSON(
+  updatePinResponse: UpdatePinResponse,
+): string {
+  return JSON.stringify(
+    UpdatePinResponse$outboundSchema.parse(updatePinResponse),
+  );
+}
+
+export function updatePinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinResponse' from JSON`,
+  );
 }

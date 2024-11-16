@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransactionLog,
   TransactionLog$inboundSchema,
@@ -129,6 +132,24 @@ export namespace TransactionMetadata$ {
   export const outboundSchema = TransactionMetadata$outboundSchema;
   /** @deprecated use `TransactionMetadata$Outbound` instead. */
   export type Outbound = TransactionMetadata$Outbound;
+}
+
+export function transactionMetadataToJSON(
+  transactionMetadata: TransactionMetadata,
+): string {
+  return JSON.stringify(
+    TransactionMetadata$outboundSchema.parse(transactionMetadata),
+  );
+}
+
+export function transactionMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -331,4 +352,18 @@ export namespace Transaction$ {
   export const outboundSchema = Transaction$outboundSchema;
   /** @deprecated use `Transaction$Outbound` instead. */
   export type Outbound = Transaction$Outbound;
+}
+
+export function transactionToJSON(transaction: Transaction): string {
+  return JSON.stringify(Transaction$outboundSchema.parse(transaction));
+}
+
+export function transactionFromJSON(
+  jsonString: string,
+): SafeParseResult<Transaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Transaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transaction' from JSON`,
+  );
 }

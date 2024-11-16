@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTCANCELWEBHOOKContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasCOULDNOTCANCELWEBHOOKContext$ {
     SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTCANCELWEBHOOKContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTCANCELWEBHOOKContext$Outbound;
+}
+
+export function schemasCOULDNOTCANCELWEBHOOKContextToJSON(
+  schemasCOULDNOTCANCELWEBHOOKContext: SchemasCOULDNOTCANCELWEBHOOKContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTCANCELWEBHOOKContext$outboundSchema.parse(
+      schemasCOULDNOTCANCELWEBHOOKContext,
+    ),
+  );
+}
+
+export function schemasCOULDNOTCANCELWEBHOOKContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTCANCELWEBHOOKContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasCOULDNOTCANCELWEBHOOKContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTCANCELWEBHOOKContext' from JSON`,
+  );
 }
 
 /** @internal */

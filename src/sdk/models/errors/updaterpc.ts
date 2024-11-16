@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateRpcNetworkRpcResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace UpdateRpcNetworkRpcResponseBody$ {
   export type Outbound = UpdateRpcNetworkRpcResponseBody$Outbound;
 }
 
+export function updateRpcNetworkRpcResponseBodyToJSON(
+  updateRpcNetworkRpcResponseBody: UpdateRpcNetworkRpcResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateRpcNetworkRpcResponseBody$outboundSchema.parse(
+      updateRpcNetworkRpcResponseBody,
+    ),
+  );
+}
+
+export function updateRpcNetworkRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRpcNetworkRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRpcNetworkRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRpcNetworkRpcResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateRpcResponseBody$inboundSchema: z.ZodType<
   UpdateRpcResponseBody,
@@ -79,4 +102,22 @@ export namespace UpdateRpcResponseBody$ {
   export const outboundSchema = UpdateRpcResponseBody$outboundSchema;
   /** @deprecated use `UpdateRpcResponseBody$Outbound` instead. */
   export type Outbound = UpdateRpcResponseBody$Outbound;
+}
+
+export function updateRpcResponseBodyToJSON(
+  updateRpcResponseBody: UpdateRpcResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateRpcResponseBody$outboundSchema.parse(updateRpcResponseBody),
+  );
+}
+
+export function updateRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRpcResponseBody' from JSON`,
+  );
 }

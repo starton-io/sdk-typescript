@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AbiObjectDto,
   AbiObjectDto$inboundSchema,
@@ -85,6 +88,26 @@ export namespace ImportSmartContractDtoMetadata$ {
   export type Outbound = ImportSmartContractDtoMetadata$Outbound;
 }
 
+export function importSmartContractDtoMetadataToJSON(
+  importSmartContractDtoMetadata: ImportSmartContractDtoMetadata,
+): string {
+  return JSON.stringify(
+    ImportSmartContractDtoMetadata$outboundSchema.parse(
+      importSmartContractDtoMetadata,
+    ),
+  );
+}
+
+export function importSmartContractDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportSmartContractDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportSmartContractDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportSmartContractDtoMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const ImportSmartContractDto3$inboundSchema: z.ZodType<
   ImportSmartContractDto3,
@@ -113,6 +136,24 @@ export namespace ImportSmartContractDto3$ {
   export const outboundSchema = ImportSmartContractDto3$outboundSchema;
   /** @deprecated use `ImportSmartContractDto3$Outbound` instead. */
   export type Outbound = ImportSmartContractDto3$Outbound;
+}
+
+export function importSmartContractDto3ToJSON(
+  importSmartContractDto3: ImportSmartContractDto3,
+): string {
+  return JSON.stringify(
+    ImportSmartContractDto3$outboundSchema.parse(importSmartContractDto3),
+  );
+}
+
+export function importSmartContractDto3FromJSON(
+  jsonString: string,
+): SafeParseResult<ImportSmartContractDto3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportSmartContractDto3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportSmartContractDto3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -157,6 +198,26 @@ export namespace ImportSmartContractDtoParams$ {
   export const outboundSchema = ImportSmartContractDtoParams$outboundSchema;
   /** @deprecated use `ImportSmartContractDtoParams$Outbound` instead. */
   export type Outbound = ImportSmartContractDtoParams$Outbound;
+}
+
+export function importSmartContractDtoParamsToJSON(
+  importSmartContractDtoParams: ImportSmartContractDtoParams,
+): string {
+  return JSON.stringify(
+    ImportSmartContractDtoParams$outboundSchema.parse(
+      importSmartContractDtoParams,
+    ),
+  );
+}
+
+export function importSmartContractDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportSmartContractDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportSmartContractDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportSmartContractDtoParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -250,6 +311,26 @@ export namespace ImportSmartContractDtoUiData$ {
   export type Outbound = ImportSmartContractDtoUiData$Outbound;
 }
 
+export function importSmartContractDtoUiDataToJSON(
+  importSmartContractDtoUiData: ImportSmartContractDtoUiData,
+): string {
+  return JSON.stringify(
+    ImportSmartContractDtoUiData$outboundSchema.parse(
+      importSmartContractDtoUiData,
+    ),
+  );
+}
+
+export function importSmartContractDtoUiDataFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportSmartContractDtoUiData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportSmartContractDtoUiData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportSmartContractDtoUiData' from JSON`,
+  );
+}
+
 /** @internal */
 export const ImportSmartContractDto$inboundSchema: z.ZodType<
   ImportSmartContractDto,
@@ -331,4 +412,22 @@ export namespace ImportSmartContractDto$ {
   export const outboundSchema = ImportSmartContractDto$outboundSchema;
   /** @deprecated use `ImportSmartContractDto$Outbound` instead. */
   export type Outbound = ImportSmartContractDto$Outbound;
+}
+
+export function importSmartContractDtoToJSON(
+  importSmartContractDto: ImportSmartContractDto,
+): string {
+  return JSON.stringify(
+    ImportSmartContractDto$outboundSchema.parse(importSmartContractDto),
+  );
+}
+
+export function importSmartContractDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportSmartContractDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportSmartContractDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportSmartContractDto' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneSmartContractRequest = {
@@ -80,6 +83,24 @@ export namespace GetOneSmartContractRequest$ {
   export type Outbound = GetOneSmartContractRequest$Outbound;
 }
 
+export function getOneSmartContractRequestToJSON(
+  getOneSmartContractRequest: GetOneSmartContractRequest,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractRequest$outboundSchema.parse(getOneSmartContractRequest),
+  );
+}
+
+export function getOneSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneSmartContractResponse$inboundSchema: z.ZodType<
   GetOneSmartContractResponse,
@@ -139,4 +160,24 @@ export namespace GetOneSmartContractResponse$ {
   export const outboundSchema = GetOneSmartContractResponse$outboundSchema;
   /** @deprecated use `GetOneSmartContractResponse$Outbound` instead. */
   export type Outbound = GetOneSmartContractResponse$Outbound;
+}
+
+export function getOneSmartContractResponseToJSON(
+  getOneSmartContractResponse: GetOneSmartContractResponse,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractResponse$outboundSchema.parse(
+      getOneSmartContractResponse,
+    ),
+  );
+}
+
+export function getOneSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractResponse' from JSON`,
+  );
 }

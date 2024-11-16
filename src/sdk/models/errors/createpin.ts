@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   MaximumStorageReached$Outbound,
   MaximumStorageReached$outboundSchema,
 } from "./maximumstoragereached.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreatePinIpfsResponseBody = MaximumStorageReached;
 
@@ -50,6 +53,24 @@ export namespace CreatePinIpfsResponseBody$ {
   export type Outbound = CreatePinIpfsResponseBody$Outbound;
 }
 
+export function createPinIpfsResponseBodyToJSON(
+  createPinIpfsResponseBody: CreatePinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    CreatePinIpfsResponseBody$outboundSchema.parse(createPinIpfsResponseBody),
+  );
+}
+
+export function createPinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreatePinResponseBody$inboundSchema: z.ZodType<
   CreatePinResponseBody,
@@ -78,4 +99,22 @@ export namespace CreatePinResponseBody$ {
   export const outboundSchema = CreatePinResponseBody$outboundSchema;
   /** @deprecated use `CreatePinResponseBody$Outbound` instead. */
   export type Outbound = CreatePinResponseBody$Outbound;
+}
+
+export function createPinResponseBodyToJSON(
+  createPinResponseBody: CreatePinResponseBody,
+): string {
+  return JSON.stringify(
+    CreatePinResponseBody$outboundSchema.parse(createPinResponseBody),
+  );
+}
+
+export function createPinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePinResponseBody' from JSON`,
+  );
 }

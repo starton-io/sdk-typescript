@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOnePinIpfsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace GetOnePinIpfsResponseBody$ {
   export type Outbound = GetOnePinIpfsResponseBody$Outbound;
 }
 
+export function getOnePinIpfsResponseBodyToJSON(
+  getOnePinIpfsResponseBody: GetOnePinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    GetOnePinIpfsResponseBody$outboundSchema.parse(getOnePinIpfsResponseBody),
+  );
+}
+
+export function getOnePinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOnePinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOnePinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnePinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOnePinResponseBody$inboundSchema: z.ZodType<
   GetOnePinResponseBody,
@@ -78,4 +99,22 @@ export namespace GetOnePinResponseBody$ {
   export const outboundSchema = GetOnePinResponseBody$outboundSchema;
   /** @deprecated use `GetOnePinResponseBody$Outbound` instead. */
   export type Outbound = GetOnePinResponseBody$Outbound;
+}
+
+export function getOnePinResponseBodyToJSON(
+  getOnePinResponseBody: GetOnePinResponseBody,
+): string {
+  return JSON.stringify(
+    GetOnePinResponseBody$outboundSchema.parse(getOnePinResponseBody),
+  );
+}
+
+export function getOnePinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOnePinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOnePinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnePinResponseBody' from JSON`,
+  );
 }

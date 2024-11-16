@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllProjectMemberResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetAllProjectMemberResponseBody$ {
   export const outboundSchema = GetAllProjectMemberResponseBody$outboundSchema;
   /** @deprecated use `GetAllProjectMemberResponseBody$Outbound` instead. */
   export type Outbound = GetAllProjectMemberResponseBody$Outbound;
+}
+
+export function getAllProjectMemberResponseBodyToJSON(
+  getAllProjectMemberResponseBody: GetAllProjectMemberResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllProjectMemberResponseBody$outboundSchema.parse(
+      getAllProjectMemberResponseBody,
+    ),
+  );
+}
+
+export function getAllProjectMemberResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllProjectMemberResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllProjectMemberResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllProjectMemberResponseBody' from JSON`,
+  );
 }

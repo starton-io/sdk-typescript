@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GasPriceRecommendationDto = {
   defaultRelayerUnstuck: string;
@@ -50,4 +53,22 @@ export namespace GasPriceRecommendationDto$ {
   export const outboundSchema = GasPriceRecommendationDto$outboundSchema;
   /** @deprecated use `GasPriceRecommendationDto$Outbound` instead. */
   export type Outbound = GasPriceRecommendationDto$Outbound;
+}
+
+export function gasPriceRecommendationDtoToJSON(
+  gasPriceRecommendationDto: GasPriceRecommendationDto,
+): string {
+  return JSON.stringify(
+    GasPriceRecommendationDto$outboundSchema.parse(gasPriceRecommendationDto),
+  );
+}
+
+export function gasPriceRecommendationDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<GasPriceRecommendationDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GasPriceRecommendationDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GasPriceRecommendationDto' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllProjectMemberProjectMemberPaginated = {
@@ -71,6 +74,33 @@ export namespace GetAllProjectMemberProjectMemberPaginated$ {
   export type Outbound = GetAllProjectMemberProjectMemberPaginated$Outbound;
 }
 
+export function getAllProjectMemberProjectMemberPaginatedToJSON(
+  getAllProjectMemberProjectMemberPaginated:
+    GetAllProjectMemberProjectMemberPaginated,
+): string {
+  return JSON.stringify(
+    GetAllProjectMemberProjectMemberPaginated$outboundSchema.parse(
+      getAllProjectMemberProjectMemberPaginated,
+    ),
+  );
+}
+
+export function getAllProjectMemberProjectMemberPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAllProjectMemberProjectMemberPaginated,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllProjectMemberProjectMemberPaginated$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAllProjectMemberProjectMemberPaginated' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllProjectMemberResponse$inboundSchema: z.ZodType<
   GetAllProjectMemberResponse,
@@ -136,4 +166,24 @@ export namespace GetAllProjectMemberResponse$ {
   export const outboundSchema = GetAllProjectMemberResponse$outboundSchema;
   /** @deprecated use `GetAllProjectMemberResponse$Outbound` instead. */
   export type Outbound = GetAllProjectMemberResponse$Outbound;
+}
+
+export function getAllProjectMemberResponseToJSON(
+  getAllProjectMemberResponse: GetAllProjectMemberResponse,
+): string {
+  return JSON.stringify(
+    GetAllProjectMemberResponse$outboundSchema.parse(
+      getAllProjectMemberResponse,
+    ),
+  );
+}
+
+export function getAllProjectMemberResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllProjectMemberResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllProjectMemberResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllProjectMemberResponse' from JSON`,
+  );
 }

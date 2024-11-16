@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteSmartContractSmartContractManagementResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,32 @@ export namespace DeleteSmartContractSmartContractManagementResponseBody$ {
     DeleteSmartContractSmartContractManagementResponseBody$Outbound;
 }
 
+export function deleteSmartContractSmartContractManagementResponseBodyToJSON(
+  deleteSmartContractSmartContractManagementResponseBody:
+    DeleteSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      deleteSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function deleteSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeleteSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteSmartContractResponseBody$inboundSchema: z.ZodType<
   DeleteSmartContractResponseBody,
@@ -86,4 +115,24 @@ export namespace DeleteSmartContractResponseBody$ {
   export const outboundSchema = DeleteSmartContractResponseBody$outboundSchema;
   /** @deprecated use `DeleteSmartContractResponseBody$Outbound` instead. */
   export type Outbound = DeleteSmartContractResponseBody$Outbound;
+}
+
+export function deleteSmartContractResponseBodyToJSON(
+  deleteSmartContractResponseBody: DeleteSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteSmartContractResponseBody$outboundSchema.parse(
+      deleteSmartContractResponseBody,
+    ),
+  );
+}
+
+export function deleteSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteSmartContractResponseBody' from JSON`,
+  );
 }

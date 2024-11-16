@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAvailableFunctionsSmartContractRequest = {
@@ -75,6 +78,33 @@ export namespace GetAvailableFunctionsSmartContractRequest$ {
   export type Outbound = GetAvailableFunctionsSmartContractRequest$Outbound;
 }
 
+export function getAvailableFunctionsSmartContractRequestToJSON(
+  getAvailableFunctionsSmartContractRequest:
+    GetAvailableFunctionsSmartContractRequest,
+): string {
+  return JSON.stringify(
+    GetAvailableFunctionsSmartContractRequest$outboundSchema.parse(
+      getAvailableFunctionsSmartContractRequest,
+    ),
+  );
+}
+
+export function getAvailableFunctionsSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAvailableFunctionsSmartContractRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableFunctionsSmartContractRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAvailableFunctionsSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAvailableFunctionsSmartContractResponse$inboundSchema:
   z.ZodType<GetAvailableFunctionsSmartContractResponse, z.ZodTypeDef, unknown> =
@@ -135,4 +165,31 @@ export namespace GetAvailableFunctionsSmartContractResponse$ {
     GetAvailableFunctionsSmartContractResponse$outboundSchema;
   /** @deprecated use `GetAvailableFunctionsSmartContractResponse$Outbound` instead. */
   export type Outbound = GetAvailableFunctionsSmartContractResponse$Outbound;
+}
+
+export function getAvailableFunctionsSmartContractResponseToJSON(
+  getAvailableFunctionsSmartContractResponse:
+    GetAvailableFunctionsSmartContractResponse,
+): string {
+  return JSON.stringify(
+    GetAvailableFunctionsSmartContractResponse$outboundSchema.parse(
+      getAvailableFunctionsSmartContractResponse,
+    ),
+  );
+}
+
+export function getAvailableFunctionsSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAvailableFunctionsSmartContractResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableFunctionsSmartContractResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAvailableFunctionsSmartContractResponse' from JSON`,
+  );
 }

@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllSmartContractResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetAllSmartContractResponseBody$ {
   export const outboundSchema = GetAllSmartContractResponseBody$outboundSchema;
   /** @deprecated use `GetAllSmartContractResponseBody$Outbound` instead. */
   export type Outbound = GetAllSmartContractResponseBody$Outbound;
+}
+
+export function getAllSmartContractResponseBodyToJSON(
+  getAllSmartContractResponseBody: GetAllSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllSmartContractResponseBody$outboundSchema.parse(
+      getAllSmartContractResponseBody,
+    ),
+  );
+}
+
+export function getAllSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSmartContractResponseBody' from JSON`,
+  );
 }

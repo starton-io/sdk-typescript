@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type KmsCredentials = {};
 
@@ -57,6 +60,20 @@ export namespace KmsCredentials$ {
   export type Outbound = KmsCredentials$Outbound;
 }
 
+export function kmsCredentialsToJSON(kmsCredentials: KmsCredentials): string {
+  return JSON.stringify(KmsCredentials$outboundSchema.parse(kmsCredentials));
+}
+
+export function kmsCredentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<KmsCredentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => KmsCredentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'KmsCredentials' from JSON`,
+  );
+}
+
 /** @internal */
 export const KmsMetadata$inboundSchema: z.ZodType<
   KmsMetadata,
@@ -85,6 +102,20 @@ export namespace KmsMetadata$ {
   export const outboundSchema = KmsMetadata$outboundSchema;
   /** @deprecated use `KmsMetadata$Outbound` instead. */
   export type Outbound = KmsMetadata$Outbound;
+}
+
+export function kmsMetadataToJSON(kmsMetadata: KmsMetadata): string {
+  return JSON.stringify(KmsMetadata$outboundSchema.parse(kmsMetadata));
+}
+
+export function kmsMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<KmsMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => KmsMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'KmsMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -131,6 +162,20 @@ export namespace Wallets$ {
   export const outboundSchema = Wallets$outboundSchema;
   /** @deprecated use `Wallets$Outbound` instead. */
   export type Outbound = Wallets$Outbound;
+}
+
+export function walletsToJSON(wallets: Wallets): string {
+  return JSON.stringify(Wallets$outboundSchema.parse(wallets));
+}
+
+export function walletsFromJSON(
+  jsonString: string,
+): SafeParseResult<Wallets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Wallets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Wallets' from JSON`,
+  );
 }
 
 /** @internal */
@@ -191,4 +236,18 @@ export namespace Kms$ {
   export const outboundSchema = Kms$outboundSchema;
   /** @deprecated use `Kms$Outbound` instead. */
   export type Outbound = Kms$Outbound;
+}
+
+export function kmsToJSON(kms: Kms): string {
+  return JSON.stringify(Kms$outboundSchema.parse(kms));
+}
+
+export function kmsFromJSON(
+  jsonString: string,
+): SafeParseResult<Kms, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Kms$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Kms' from JSON`,
+  );
 }

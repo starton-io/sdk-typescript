@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Faucet = {
   /**
@@ -87,4 +90,18 @@ export namespace Faucet$ {
   export const outboundSchema = Faucet$outboundSchema;
   /** @deprecated use `Faucet$Outbound` instead. */
   export type Outbound = Faucet$Outbound;
+}
+
+export function faucetToJSON(faucet: Faucet): string {
+  return JSON.stringify(Faucet$outboundSchema.parse(faucet));
+}
+
+export function faucetFromJSON(
+  jsonString: string,
+): SafeParseResult<Faucet, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Faucet$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Faucet' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasUNPREDICTABLEGASLIMITContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasUNPREDICTABLEGASLIMITContext$ {
     SchemasUNPREDICTABLEGASLIMITContext$outboundSchema;
   /** @deprecated use `SchemasUNPREDICTABLEGASLIMITContext$Outbound` instead. */
   export type Outbound = SchemasUNPREDICTABLEGASLIMITContext$Outbound;
+}
+
+export function schemasUNPREDICTABLEGASLIMITContextToJSON(
+  schemasUNPREDICTABLEGASLIMITContext: SchemasUNPREDICTABLEGASLIMITContext,
+): string {
+  return JSON.stringify(
+    SchemasUNPREDICTABLEGASLIMITContext$outboundSchema.parse(
+      schemasUNPREDICTABLEGASLIMITContext,
+    ),
+  );
+}
+
+export function schemasUNPREDICTABLEGASLIMITContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasUNPREDICTABLEGASLIMITContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasUNPREDICTABLEGASLIMITContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasUNPREDICTABLEGASLIMITContext' from JSON`,
+  );
 }
 
 /** @internal */

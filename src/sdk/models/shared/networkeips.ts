@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type NetworkEips = {
   eip1159: boolean;
@@ -46,4 +49,18 @@ export namespace NetworkEips$ {
   export const outboundSchema = NetworkEips$outboundSchema;
   /** @deprecated use `NetworkEips$Outbound` instead. */
   export type Outbound = NetworkEips$Outbound;
+}
+
+export function networkEipsToJSON(networkEips: NetworkEips): string {
+  return JSON.stringify(NetworkEips$outboundSchema.parse(networkEips));
+}
+
+export function networkEipsFromJSON(
+  jsonString: string,
+): SafeParseResult<NetworkEips, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetworkEips$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetworkEips' from JSON`,
+  );
 }

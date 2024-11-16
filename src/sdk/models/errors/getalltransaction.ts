@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllTransactionResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetAllTransactionResponseBody$ {
   export const outboundSchema = GetAllTransactionResponseBody$outboundSchema;
   /** @deprecated use `GetAllTransactionResponseBody$Outbound` instead. */
   export type Outbound = GetAllTransactionResponseBody$Outbound;
+}
+
+export function getAllTransactionResponseBodyToJSON(
+  getAllTransactionResponseBody: GetAllTransactionResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllTransactionResponseBody$outboundSchema.parse(
+      getAllTransactionResponseBody,
+    ),
+  );
+}
+
+export function getAllTransactionResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllTransactionResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllTransactionResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllTransactionResponseBody' from JSON`,
+  );
 }

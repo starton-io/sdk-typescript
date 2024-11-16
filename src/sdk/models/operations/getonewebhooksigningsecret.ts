@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneWebhookSigningSecretResponse = {
@@ -82,4 +85,25 @@ export namespace GetOneWebhookSigningSecretResponse$ {
     GetOneWebhookSigningSecretResponse$outboundSchema;
   /** @deprecated use `GetOneWebhookSigningSecretResponse$Outbound` instead. */
   export type Outbound = GetOneWebhookSigningSecretResponse$Outbound;
+}
+
+export function getOneWebhookSigningSecretResponseToJSON(
+  getOneWebhookSigningSecretResponse: GetOneWebhookSigningSecretResponse,
+): string {
+  return JSON.stringify(
+    GetOneWebhookSigningSecretResponse$outboundSchema.parse(
+      getOneWebhookSigningSecretResponse,
+    ),
+  );
+}
+
+export function getOneWebhookSigningSecretResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookSigningSecretResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneWebhookSigningSecretResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookSigningSecretResponse' from JSON`,
+  );
 }

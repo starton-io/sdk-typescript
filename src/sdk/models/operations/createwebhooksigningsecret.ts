@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreateWebhookSigningSecretResponse = {
@@ -82,4 +85,25 @@ export namespace CreateWebhookSigningSecretResponse$ {
     CreateWebhookSigningSecretResponse$outboundSchema;
   /** @deprecated use `CreateWebhookSigningSecretResponse$Outbound` instead. */
   export type Outbound = CreateWebhookSigningSecretResponse$Outbound;
+}
+
+export function createWebhookSigningSecretResponseToJSON(
+  createWebhookSigningSecretResponse: CreateWebhookSigningSecretResponse,
+): string {
+  return JSON.stringify(
+    CreateWebhookSigningSecretResponse$outboundSchema.parse(
+      createWebhookSigningSecretResponse,
+    ),
+  );
+}
+
+export function createWebhookSigningSecretResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWebhookSigningSecretResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWebhookSigningSecretResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWebhookSigningSecretResponse' from JSON`,
+  );
 }

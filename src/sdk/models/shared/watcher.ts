@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WatcherCustomEventAbi = {};
 
@@ -81,6 +84,24 @@ export namespace WatcherCustomEventAbi$ {
   export type Outbound = WatcherCustomEventAbi$Outbound;
 }
 
+export function watcherCustomEventAbiToJSON(
+  watcherCustomEventAbi: WatcherCustomEventAbi,
+): string {
+  return JSON.stringify(
+    WatcherCustomEventAbi$outboundSchema.parse(watcherCustomEventAbi),
+  );
+}
+
+export function watcherCustomEventAbiFromJSON(
+  jsonString: string,
+): SafeParseResult<WatcherCustomEventAbi, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatcherCustomEventAbi$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatcherCustomEventAbi' from JSON`,
+  );
+}
+
 /** @internal */
 export const WatcherCustomFilters$inboundSchema: z.ZodType<
   WatcherCustomFilters,
@@ -111,6 +132,24 @@ export namespace WatcherCustomFilters$ {
   export type Outbound = WatcherCustomFilters$Outbound;
 }
 
+export function watcherCustomFiltersToJSON(
+  watcherCustomFilters: WatcherCustomFilters,
+): string {
+  return JSON.stringify(
+    WatcherCustomFilters$outboundSchema.parse(watcherCustomFilters),
+  );
+}
+
+export function watcherCustomFiltersFromJSON(
+  jsonString: string,
+): SafeParseResult<WatcherCustomFilters, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatcherCustomFilters$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatcherCustomFilters' from JSON`,
+  );
+}
+
 /** @internal */
 export const WatcherMetadata$inboundSchema: z.ZodType<
   WatcherMetadata,
@@ -139,6 +178,22 @@ export namespace WatcherMetadata$ {
   export const outboundSchema = WatcherMetadata$outboundSchema;
   /** @deprecated use `WatcherMetadata$Outbound` instead. */
   export type Outbound = WatcherMetadata$Outbound;
+}
+
+export function watcherMetadataToJSON(
+  watcherMetadata: WatcherMetadata,
+): string {
+  return JSON.stringify(WatcherMetadata$outboundSchema.parse(watcherMetadata));
+}
+
+export function watcherMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<WatcherMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatcherMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatcherMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -269,4 +324,18 @@ export namespace Watcher$ {
   export const outboundSchema = Watcher$outboundSchema;
   /** @deprecated use `Watcher$Outbound` instead. */
   export type Outbound = Watcher$Outbound;
+}
+
+export function watcherToJSON(watcher: Watcher): string {
+  return JSON.stringify(Watcher$outboundSchema.parse(watcher));
+}
+
+export function watcherFromJSON(
+  jsonString: string,
+): SafeParseResult<Watcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Watcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Watcher' from JSON`,
+  );
 }

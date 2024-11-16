@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   MicroserviceNotResponding$Outbound,
   MicroserviceNotResponding$outboundSchema,
 } from "./microservicenotresponding.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   ServerNotResponding,
   ServerNotResponding$inboundSchema,
@@ -72,6 +75,33 @@ export namespace CreateWatcherMonitorResponse500ResponseBody$ {
   export type Outbound = CreateWatcherMonitorResponse500ResponseBody$Outbound;
 }
 
+export function createWatcherMonitorResponse500ResponseBodyToJSON(
+  createWatcherMonitorResponse500ResponseBody:
+    CreateWatcherMonitorResponse500ResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWatcherMonitorResponse500ResponseBody$outboundSchema.parse(
+      createWatcherMonitorResponse500ResponseBody,
+    ),
+  );
+}
+
+export function createWatcherMonitorResponse500ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateWatcherMonitorResponse500ResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWatcherMonitorResponse500ResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateWatcherMonitorResponse500ResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWatcherMonitorResponseResponseBody$inboundSchema: z.ZodType<
   CreateWatcherMonitorResponseResponseBody,
@@ -105,6 +135,33 @@ export namespace CreateWatcherMonitorResponseResponseBody$ {
   export type Outbound = CreateWatcherMonitorResponseResponseBody$Outbound;
 }
 
+export function createWatcherMonitorResponseResponseBodyToJSON(
+  createWatcherMonitorResponseResponseBody:
+    CreateWatcherMonitorResponseResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWatcherMonitorResponseResponseBody$outboundSchema.parse(
+      createWatcherMonitorResponseResponseBody,
+    ),
+  );
+}
+
+export function createWatcherMonitorResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateWatcherMonitorResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWatcherMonitorResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateWatcherMonitorResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWatcherMonitorResponseBody$inboundSchema: z.ZodType<
   CreateWatcherMonitorResponseBody,
@@ -136,6 +193,26 @@ export namespace CreateWatcherMonitorResponseBody$ {
   export type Outbound = CreateWatcherMonitorResponseBody$Outbound;
 }
 
+export function createWatcherMonitorResponseBodyToJSON(
+  createWatcherMonitorResponseBody: CreateWatcherMonitorResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWatcherMonitorResponseBody$outboundSchema.parse(
+      createWatcherMonitorResponseBody,
+    ),
+  );
+}
+
+export function createWatcherMonitorResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWatcherMonitorResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWatcherMonitorResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWatcherMonitorResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWatcherResponseBody$inboundSchema: z.ZodType<
   CreateWatcherResponseBody,
@@ -164,4 +241,22 @@ export namespace CreateWatcherResponseBody$ {
   export const outboundSchema = CreateWatcherResponseBody$outboundSchema;
   /** @deprecated use `CreateWatcherResponseBody$Outbound` instead. */
   export type Outbound = CreateWatcherResponseBody$Outbound;
+}
+
+export function createWatcherResponseBodyToJSON(
+  createWatcherResponseBody: CreateWatcherResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWatcherResponseBody$outboundSchema.parse(createWatcherResponseBody),
+  );
+}
+
+export function createWatcherResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWatcherResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWatcherResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWatcherResponseBody' from JSON`,
+  );
 }

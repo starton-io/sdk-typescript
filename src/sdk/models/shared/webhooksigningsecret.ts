@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookSigningSecret = {
   createdAt?: Date | undefined;
@@ -60,4 +63,22 @@ export namespace WebhookSigningSecret$ {
   export const outboundSchema = WebhookSigningSecret$outboundSchema;
   /** @deprecated use `WebhookSigningSecret$Outbound` instead. */
   export type Outbound = WebhookSigningSecret$Outbound;
+}
+
+export function webhookSigningSecretToJSON(
+  webhookSigningSecret: WebhookSigningSecret,
+): string {
+  return JSON.stringify(
+    WebhookSigningSecret$outboundSchema.parse(webhookSigningSecret),
+  );
+}
+
+export function webhookSigningSecretFromJSON(
+  jsonString: string,
+): SafeParseResult<WebhookSigningSecret, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebhookSigningSecret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebhookSigningSecret' from JSON`,
+  );
 }

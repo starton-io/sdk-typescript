@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CancelWebhookWebhookResponseResponseBody = CouldNotCancelWebhook;
 
@@ -61,6 +64,33 @@ export namespace CancelWebhookWebhookResponseResponseBody$ {
   export type Outbound = CancelWebhookWebhookResponseResponseBody$Outbound;
 }
 
+export function cancelWebhookWebhookResponseResponseBodyToJSON(
+  cancelWebhookWebhookResponseResponseBody:
+    CancelWebhookWebhookResponseResponseBody,
+): string {
+  return JSON.stringify(
+    CancelWebhookWebhookResponseResponseBody$outboundSchema.parse(
+      cancelWebhookWebhookResponseResponseBody,
+    ),
+  );
+}
+
+export function cancelWebhookWebhookResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelWebhookWebhookResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelWebhookWebhookResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelWebhookWebhookResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelWebhookWebhookResponseBody$inboundSchema: z.ZodType<
   CancelWebhookWebhookResponseBody,
@@ -92,6 +122,26 @@ export namespace CancelWebhookWebhookResponseBody$ {
   export type Outbound = CancelWebhookWebhookResponseBody$Outbound;
 }
 
+export function cancelWebhookWebhookResponseBodyToJSON(
+  cancelWebhookWebhookResponseBody: CancelWebhookWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    CancelWebhookWebhookResponseBody$outboundSchema.parse(
+      cancelWebhookWebhookResponseBody,
+    ),
+  );
+}
+
+export function cancelWebhookWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelWebhookWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelWebhookWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelWebhookWebhookResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelWebhookResponseBody$inboundSchema: z.ZodType<
   CancelWebhookResponseBody,
@@ -120,4 +170,22 @@ export namespace CancelWebhookResponseBody$ {
   export const outboundSchema = CancelWebhookResponseBody$outboundSchema;
   /** @deprecated use `CancelWebhookResponseBody$Outbound` instead. */
   export type Outbound = CancelWebhookResponseBody$Outbound;
+}
+
+export function cancelWebhookResponseBodyToJSON(
+  cancelWebhookResponseBody: CancelWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    CancelWebhookResponseBody$outboundSchema.parse(cancelWebhookResponseBody),
+  );
+}
+
+export function cancelWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelWebhookResponseBody' from JSON`,
+  );
 }

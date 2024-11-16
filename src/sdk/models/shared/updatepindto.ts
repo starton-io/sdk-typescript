@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatePinDtoMetadata = {};
 
@@ -39,6 +42,24 @@ export namespace UpdatePinDtoMetadata$ {
   export const outboundSchema = UpdatePinDtoMetadata$outboundSchema;
   /** @deprecated use `UpdatePinDtoMetadata$Outbound` instead. */
   export type Outbound = UpdatePinDtoMetadata$Outbound;
+}
+
+export function updatePinDtoMetadataToJSON(
+  updatePinDtoMetadata: UpdatePinDtoMetadata,
+): string {
+  return JSON.stringify(
+    UpdatePinDtoMetadata$outboundSchema.parse(updatePinDtoMetadata),
+  );
+}
+
+export function updatePinDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -78,4 +99,18 @@ export namespace UpdatePinDto$ {
   export const outboundSchema = UpdatePinDto$outboundSchema;
   /** @deprecated use `UpdatePinDto$Outbound` instead. */
   export type Outbound = UpdatePinDto$Outbound;
+}
+
+export function updatePinDtoToJSON(updatePinDto: UpdatePinDto): string {
+  return JSON.stringify(UpdatePinDto$outboundSchema.parse(updatePinDto));
+}
+
+export function updatePinDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePinDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePinDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePinDto' from JSON`,
+  );
 }

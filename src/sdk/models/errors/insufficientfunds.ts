@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasINSUFFICIENTFUNDSContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasINSUFFICIENTFUNDSContext$ {
   export const outboundSchema = SchemasINSUFFICIENTFUNDSContext$outboundSchema;
   /** @deprecated use `SchemasINSUFFICIENTFUNDSContext$Outbound` instead. */
   export type Outbound = SchemasINSUFFICIENTFUNDSContext$Outbound;
+}
+
+export function schemasINSUFFICIENTFUNDSContextToJSON(
+  schemasINSUFFICIENTFUNDSContext: SchemasINSUFFICIENTFUNDSContext,
+): string {
+  return JSON.stringify(
+    SchemasINSUFFICIENTFUNDSContext$outboundSchema.parse(
+      schemasINSUFFICIENTFUNDSContext,
+    ),
+  );
+}
+
+export function schemasINSUFFICIENTFUNDSContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasINSUFFICIENTFUNDSContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasINSUFFICIENTFUNDSContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasINSUFFICIENTFUNDSContext' from JSON`,
+  );
 }
 
 /** @internal */

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AwsKmsCredentialsDto,
   AwsKmsCredentialsDto$inboundSchema,
@@ -67,6 +70,24 @@ export namespace UpdateKmsDtoCredentials$ {
   export type Outbound = UpdateKmsDtoCredentials$Outbound;
 }
 
+export function updateKmsDtoCredentialsToJSON(
+  updateKmsDtoCredentials: UpdateKmsDtoCredentials,
+): string {
+  return JSON.stringify(
+    UpdateKmsDtoCredentials$outboundSchema.parse(updateKmsDtoCredentials),
+  );
+}
+
+export function updateKmsDtoCredentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsDtoCredentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsDtoCredentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsDtoCredentials' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateKmsDtoMetadata$inboundSchema: z.ZodType<
   UpdateKmsDtoMetadata,
@@ -95,6 +116,24 @@ export namespace UpdateKmsDtoMetadata$ {
   export const outboundSchema = UpdateKmsDtoMetadata$outboundSchema;
   /** @deprecated use `UpdateKmsDtoMetadata$Outbound` instead. */
   export type Outbound = UpdateKmsDtoMetadata$Outbound;
+}
+
+export function updateKmsDtoMetadataToJSON(
+  updateKmsDtoMetadata: UpdateKmsDtoMetadata,
+): string {
+  return JSON.stringify(
+    UpdateKmsDtoMetadata$outboundSchema.parse(updateKmsDtoMetadata),
+  );
+}
+
+export function updateKmsDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -149,4 +188,18 @@ export namespace UpdateKmsDto$ {
   export const outboundSchema = UpdateKmsDto$outboundSchema;
   /** @deprecated use `UpdateKmsDto$Outbound` instead. */
   export type Outbound = UpdateKmsDto$Outbound;
+}
+
+export function updateKmsDtoToJSON(updateKmsDto: UpdateKmsDto): string {
+  return JSON.stringify(UpdateKmsDto$outboundSchema.parse(updateKmsDto));
+}
+
+export function updateKmsDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsDto' from JSON`,
+  );
 }

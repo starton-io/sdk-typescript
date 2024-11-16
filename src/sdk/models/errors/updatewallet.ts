@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateWalletWalletResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace UpdateWalletWalletResponseBody$ {
   export type Outbound = UpdateWalletWalletResponseBody$Outbound;
 }
 
+export function updateWalletWalletResponseBodyToJSON(
+  updateWalletWalletResponseBody: UpdateWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateWalletWalletResponseBody$outboundSchema.parse(
+      updateWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function updateWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateWalletResponseBody$inboundSchema: z.ZodType<
   UpdateWalletResponseBody,
@@ -79,4 +102,22 @@ export namespace UpdateWalletResponseBody$ {
   export const outboundSchema = UpdateWalletResponseBody$outboundSchema;
   /** @deprecated use `UpdateWalletResponseBody$Outbound` instead. */
   export type Outbound = UpdateWalletResponseBody$Outbound;
+}
+
+export function updateWalletResponseBodyToJSON(
+  updateWalletResponseBody: UpdateWalletResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateWalletResponseBody$outboundSchema.parse(updateWalletResponseBody),
+  );
+}
+
+export function updateWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWalletResponseBody' from JSON`,
+  );
 }

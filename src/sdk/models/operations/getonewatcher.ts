@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneWatcherRequest = {
@@ -65,6 +68,24 @@ export namespace GetOneWatcherRequest$ {
   export type Outbound = GetOneWatcherRequest$Outbound;
 }
 
+export function getOneWatcherRequestToJSON(
+  getOneWatcherRequest: GetOneWatcherRequest,
+): string {
+  return JSON.stringify(
+    GetOneWatcherRequest$outboundSchema.parse(getOneWatcherRequest),
+  );
+}
+
+export function getOneWatcherRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWatcherRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWatcherResponse$inboundSchema: z.ZodType<
   GetOneWatcherResponse,
@@ -124,4 +145,22 @@ export namespace GetOneWatcherResponse$ {
   export const outboundSchema = GetOneWatcherResponse$outboundSchema;
   /** @deprecated use `GetOneWatcherResponse$Outbound` instead. */
   export type Outbound = GetOneWatcherResponse$Outbound;
+}
+
+export function getOneWatcherResponseToJSON(
+  getOneWatcherResponse: GetOneWatcherResponse,
+): string {
+  return JSON.stringify(
+    GetOneWatcherResponse$outboundSchema.parse(getOneWatcherResponse),
+  );
+}
+
+export function getOneWatcherResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWatcherResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherResponse' from JSON`,
+  );
 }

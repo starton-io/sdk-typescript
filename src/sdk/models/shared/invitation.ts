@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum InvitationRole {
   Owner = "owner",
@@ -93,4 +96,18 @@ export namespace Invitation$ {
   export const outboundSchema = Invitation$outboundSchema;
   /** @deprecated use `Invitation$Outbound` instead. */
   export type Outbound = Invitation$Outbound;
+}
+
+export function invitationToJSON(invitation: Invitation): string {
+  return JSON.stringify(Invitation$outboundSchema.parse(invitation));
+}
+
+export function invitationFromJSON(
+  jsonString: string,
+): SafeParseResult<Invitation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Invitation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Invitation' from JSON`,
+  );
 }

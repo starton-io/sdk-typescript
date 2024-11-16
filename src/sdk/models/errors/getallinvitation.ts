@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllInvitationResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetAllInvitationResponseBody$ {
   export const outboundSchema = GetAllInvitationResponseBody$outboundSchema;
   /** @deprecated use `GetAllInvitationResponseBody$Outbound` instead. */
   export type Outbound = GetAllInvitationResponseBody$Outbound;
+}
+
+export function getAllInvitationResponseBodyToJSON(
+  getAllInvitationResponseBody: GetAllInvitationResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllInvitationResponseBody$outboundSchema.parse(
+      getAllInvitationResponseBody,
+    ),
+  );
+}
+
+export function getAllInvitationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllInvitationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllInvitationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllInvitationResponseBody' from JSON`,
+  );
 }

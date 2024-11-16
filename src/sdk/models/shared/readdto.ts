@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ReadDto3 = {};
 
@@ -44,6 +47,20 @@ export namespace ReadDto3$ {
   export const outboundSchema = ReadDto3$outboundSchema;
   /** @deprecated use `ReadDto3$Outbound` instead. */
   export type Outbound = ReadDto3$Outbound;
+}
+
+export function readDto3ToJSON(readDto3: ReadDto3): string {
+  return JSON.stringify(ReadDto3$outboundSchema.parse(readDto3));
+}
+
+export function readDto3FromJSON(
+  jsonString: string,
+): SafeParseResult<ReadDto3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadDto3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadDto3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -88,6 +105,20 @@ export namespace ReadDtoParams$ {
   export const outboundSchema = ReadDtoParams$outboundSchema;
   /** @deprecated use `ReadDtoParams$Outbound` instead. */
   export type Outbound = ReadDtoParams$Outbound;
+}
+
+export function readDtoParamsToJSON(readDtoParams: ReadDtoParams): string {
+  return JSON.stringify(ReadDtoParams$outboundSchema.parse(readDtoParams));
+}
+
+export function readDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<ReadDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadDtoParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -138,4 +169,18 @@ export namespace ReadDto$ {
   export const outboundSchema = ReadDto$outboundSchema;
   /** @deprecated use `ReadDto$Outbound` instead. */
   export type Outbound = ReadDto$Outbound;
+}
+
+export function readDtoToJSON(readDto: ReadDto): string {
+  return JSON.stringify(ReadDto$outboundSchema.parse(readDto));
+}
+
+export function readDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<ReadDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadDto' from JSON`,
+  );
 }

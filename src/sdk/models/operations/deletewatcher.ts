@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteWatcherRequest = {
   id: string;
@@ -59,6 +62,24 @@ export namespace DeleteWatcherRequest$ {
   export const outboundSchema = DeleteWatcherRequest$outboundSchema;
   /** @deprecated use `DeleteWatcherRequest$Outbound` instead. */
   export type Outbound = DeleteWatcherRequest$Outbound;
+}
+
+export function deleteWatcherRequestToJSON(
+  deleteWatcherRequest: DeleteWatcherRequest,
+): string {
+  return JSON.stringify(
+    DeleteWatcherRequest$outboundSchema.parse(deleteWatcherRequest),
+  );
+}
+
+export function deleteWatcherRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWatcherRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWatcherRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWatcherRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -118,4 +139,22 @@ export namespace DeleteWatcherResponse$ {
   export const outboundSchema = DeleteWatcherResponse$outboundSchema;
   /** @deprecated use `DeleteWatcherResponse$Outbound` instead. */
   export type Outbound = DeleteWatcherResponse$Outbound;
+}
+
+export function deleteWatcherResponseToJSON(
+  deleteWatcherResponse: DeleteWatcherResponse,
+): string {
+  return JSON.stringify(
+    DeleteWatcherResponse$outboundSchema.parse(deleteWatcherResponse),
+  );
+}
+
+export function deleteWatcherResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWatcherResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWatcherResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWatcherResponse' from JSON`,
+  );
 }

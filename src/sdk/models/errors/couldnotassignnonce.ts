@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTASSIGNNONCEContext = {};
 
@@ -81,6 +84,26 @@ export namespace SchemasCOULDNOTASSIGNNONCEContext$ {
     SchemasCOULDNOTASSIGNNONCEContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTASSIGNNONCEContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTASSIGNNONCEContext$Outbound;
+}
+
+export function schemasCOULDNOTASSIGNNONCEContextToJSON(
+  schemasCOULDNOTASSIGNNONCEContext: SchemasCOULDNOTASSIGNNONCEContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTASSIGNNONCEContext$outboundSchema.parse(
+      schemasCOULDNOTASSIGNNONCEContext,
+    ),
+  );
+}
+
+export function schemasCOULDNOTASSIGNNONCEContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTASSIGNNONCEContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasCOULDNOTASSIGNNONCEContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTASSIGNNONCEContext' from JSON`,
+  );
 }
 
 /** @internal */

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetStorageUsedPinResponse = {
@@ -81,4 +84,22 @@ export namespace GetStorageUsedPinResponse$ {
   export const outboundSchema = GetStorageUsedPinResponse$outboundSchema;
   /** @deprecated use `GetStorageUsedPinResponse$Outbound` instead. */
   export type Outbound = GetStorageUsedPinResponse$Outbound;
+}
+
+export function getStorageUsedPinResponseToJSON(
+  getStorageUsedPinResponse: GetStorageUsedPinResponse,
+): string {
+  return JSON.stringify(
+    GetStorageUsedPinResponse$outboundSchema.parse(getStorageUsedPinResponse),
+  );
+}
+
+export function getStorageUsedPinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStorageUsedPinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStorageUsedPinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageUsedPinResponse' from JSON`,
+  );
 }

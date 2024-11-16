@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   NotAuthenticated$Outbound,
   NotAuthenticated$outboundSchema,
 } from "./notauthenticated.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateInvitationProjectMemberInvitationResponseBody =
   NotAuthenticated;
@@ -57,6 +60,33 @@ export namespace CreateInvitationProjectMemberInvitationResponseBody$ {
     CreateInvitationProjectMemberInvitationResponseBody$Outbound;
 }
 
+export function createInvitationProjectMemberInvitationResponseBodyToJSON(
+  createInvitationProjectMemberInvitationResponseBody:
+    CreateInvitationProjectMemberInvitationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateInvitationProjectMemberInvitationResponseBody$outboundSchema.parse(
+      createInvitationProjectMemberInvitationResponseBody,
+    ),
+  );
+}
+
+export function createInvitationProjectMemberInvitationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateInvitationProjectMemberInvitationResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateInvitationProjectMemberInvitationResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateInvitationProjectMemberInvitationResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateInvitationResponseBody$inboundSchema: z.ZodType<
   CreateInvitationResponseBody,
@@ -86,4 +116,24 @@ export namespace CreateInvitationResponseBody$ {
   export const outboundSchema = CreateInvitationResponseBody$outboundSchema;
   /** @deprecated use `CreateInvitationResponseBody$Outbound` instead. */
   export type Outbound = CreateInvitationResponseBody$Outbound;
+}
+
+export function createInvitationResponseBodyToJSON(
+  createInvitationResponseBody: CreateInvitationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateInvitationResponseBody$outboundSchema.parse(
+      createInvitationResponseBody,
+    ),
+  );
+}
+
+export function createInvitationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateInvitationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateInvitationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateInvitationResponseBody' from JSON`,
+  );
 }

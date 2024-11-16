@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   PayloadTooLarge$Outbound,
   PayloadTooLarge$outboundSchema,
 } from "./payloadtoolarge.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UploadFromFolderPinIpfsResponseBody =
   | MaximumStorageReached
@@ -68,6 +71,27 @@ export namespace UploadFromFolderPinIpfsResponseBody$ {
   export type Outbound = UploadFromFolderPinIpfsResponseBody$Outbound;
 }
 
+export function uploadFromFolderPinIpfsResponseBodyToJSON(
+  uploadFromFolderPinIpfsResponseBody: UploadFromFolderPinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    UploadFromFolderPinIpfsResponseBody$outboundSchema.parse(
+      uploadFromFolderPinIpfsResponseBody,
+    ),
+  );
+}
+
+export function uploadFromFolderPinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFolderPinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadFromFolderPinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFolderPinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadFromFolderPinResponseBody$inboundSchema: z.ZodType<
   UploadFromFolderPinResponseBody,
@@ -97,4 +121,24 @@ export namespace UploadFromFolderPinResponseBody$ {
   export const outboundSchema = UploadFromFolderPinResponseBody$outboundSchema;
   /** @deprecated use `UploadFromFolderPinResponseBody$Outbound` instead. */
   export type Outbound = UploadFromFolderPinResponseBody$Outbound;
+}
+
+export function uploadFromFolderPinResponseBodyToJSON(
+  uploadFromFolderPinResponseBody: UploadFromFolderPinResponseBody,
+): string {
+  return JSON.stringify(
+    UploadFromFolderPinResponseBody$outboundSchema.parse(
+      uploadFromFolderPinResponseBody,
+    ),
+  );
+}
+
+export function uploadFromFolderPinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFolderPinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromFolderPinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFolderPinResponseBody' from JSON`,
+  );
 }

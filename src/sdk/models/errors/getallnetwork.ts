@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllNetworkResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllNetworkResponseBody$ {
   export const outboundSchema = GetAllNetworkResponseBody$outboundSchema;
   /** @deprecated use `GetAllNetworkResponseBody$Outbound` instead. */
   export type Outbound = GetAllNetworkResponseBody$Outbound;
+}
+
+export function getAllNetworkResponseBodyToJSON(
+  getAllNetworkResponseBody: GetAllNetworkResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllNetworkResponseBody$outboundSchema.parse(getAllNetworkResponseBody),
+  );
+}
+
+export function getAllNetworkResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllNetworkResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllNetworkResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllNetworkResponseBody' from JSON`,
+  );
 }

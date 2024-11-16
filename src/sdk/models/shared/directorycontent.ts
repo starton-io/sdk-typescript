@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum DirectoryContentType {
   Directory = "directory",
@@ -80,4 +83,22 @@ export namespace DirectoryContent$ {
   export const outboundSchema = DirectoryContent$outboundSchema;
   /** @deprecated use `DirectoryContent$Outbound` instead. */
   export type Outbound = DirectoryContent$Outbound;
+}
+
+export function directoryContentToJSON(
+  directoryContent: DirectoryContent,
+): string {
+  return JSON.stringify(
+    DirectoryContent$outboundSchema.parse(directoryContent),
+  );
+}
+
+export function directoryContentFromJSON(
+  jsonString: string,
+): SafeParseResult<DirectoryContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DirectoryContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DirectoryContent' from JSON`,
+  );
 }

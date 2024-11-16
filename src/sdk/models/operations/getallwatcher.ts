@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export enum Type {
@@ -139,6 +142,24 @@ export namespace GetAllWatcherRequest$ {
   export type Outbound = GetAllWatcherRequest$Outbound;
 }
 
+export function getAllWatcherRequestToJSON(
+  getAllWatcherRequest: GetAllWatcherRequest,
+): string {
+  return JSON.stringify(
+    GetAllWatcherRequest$outboundSchema.parse(getAllWatcherRequest),
+  );
+}
+
+export function getAllWatcherRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllWatcherWatcherPaginated$inboundSchema: z.ZodType<
   GetAllWatcherWatcherPaginated,
@@ -176,6 +197,26 @@ export namespace GetAllWatcherWatcherPaginated$ {
   export const outboundSchema = GetAllWatcherWatcherPaginated$outboundSchema;
   /** @deprecated use `GetAllWatcherWatcherPaginated$Outbound` instead. */
   export type Outbound = GetAllWatcherWatcherPaginated$Outbound;
+}
+
+export function getAllWatcherWatcherPaginatedToJSON(
+  getAllWatcherWatcherPaginated: GetAllWatcherWatcherPaginated,
+): string {
+  return JSON.stringify(
+    GetAllWatcherWatcherPaginated$outboundSchema.parse(
+      getAllWatcherWatcherPaginated,
+    ),
+  );
+}
+
+export function getAllWatcherWatcherPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherWatcherPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherWatcherPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherWatcherPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -239,4 +280,22 @@ export namespace GetAllWatcherResponse$ {
   export const outboundSchema = GetAllWatcherResponse$outboundSchema;
   /** @deprecated use `GetAllWatcherResponse$Outbound` instead. */
   export type Outbound = GetAllWatcherResponse$Outbound;
+}
+
+export function getAllWatcherResponseToJSON(
+  getAllWatcherResponse: GetAllWatcherResponse,
+): string {
+  return JSON.stringify(
+    GetAllWatcherResponse$outboundSchema.parse(getAllWatcherResponse),
+  );
+}
+
+export function getAllWatcherResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherResponse' from JSON`,
+  );
 }

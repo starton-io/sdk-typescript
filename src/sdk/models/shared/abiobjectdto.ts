@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AbiInputDto,
   AbiInputDto$inboundSchema,
@@ -139,4 +142,18 @@ export namespace AbiObjectDto$ {
   export const outboundSchema = AbiObjectDto$outboundSchema;
   /** @deprecated use `AbiObjectDto$Outbound` instead. */
   export type Outbound = AbiObjectDto$Outbound;
+}
+
+export function abiObjectDtoToJSON(abiObjectDto: AbiObjectDto): string {
+  return JSON.stringify(AbiObjectDto$outboundSchema.parse(abiObjectDto));
+}
+
+export function abiObjectDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AbiObjectDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AbiObjectDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AbiObjectDto' from JSON`,
+  );
 }

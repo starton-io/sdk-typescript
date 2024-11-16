@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasUNKNOWNContext = {};
 
@@ -80,6 +83,24 @@ export namespace SchemasUNKNOWNContext$ {
   export const outboundSchema = SchemasUNKNOWNContext$outboundSchema;
   /** @deprecated use `SchemasUNKNOWNContext$Outbound` instead. */
   export type Outbound = SchemasUNKNOWNContext$Outbound;
+}
+
+export function schemasUNKNOWNContextToJSON(
+  schemasUNKNOWNContext: SchemasUNKNOWNContext,
+): string {
+  return JSON.stringify(
+    SchemasUNKNOWNContext$outboundSchema.parse(schemasUNKNOWNContext),
+  );
+}
+
+export function schemasUNKNOWNContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasUNKNOWNContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasUNKNOWNContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasUNKNOWNContext' from JSON`,
+  );
 }
 
 /** @internal */

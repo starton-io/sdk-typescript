@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   CouldNotResendWebhook$Outbound,
   CouldNotResendWebhook$outboundSchema,
 } from "./couldnotresendwebhook.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ResendWebhookWebhookResponseResponseBody = CouldNotResendWebhook;
 
@@ -61,6 +64,33 @@ export namespace ResendWebhookWebhookResponseResponseBody$ {
   export type Outbound = ResendWebhookWebhookResponseResponseBody$Outbound;
 }
 
+export function resendWebhookWebhookResponseResponseBodyToJSON(
+  resendWebhookWebhookResponseResponseBody:
+    ResendWebhookWebhookResponseResponseBody,
+): string {
+  return JSON.stringify(
+    ResendWebhookWebhookResponseResponseBody$outboundSchema.parse(
+      resendWebhookWebhookResponseResponseBody,
+    ),
+  );
+}
+
+export function resendWebhookWebhookResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ResendWebhookWebhookResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ResendWebhookWebhookResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ResendWebhookWebhookResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResendWebhookWebhookResponseBody$inboundSchema: z.ZodType<
   ResendWebhookWebhookResponseBody,
@@ -92,6 +122,26 @@ export namespace ResendWebhookWebhookResponseBody$ {
   export type Outbound = ResendWebhookWebhookResponseBody$Outbound;
 }
 
+export function resendWebhookWebhookResponseBodyToJSON(
+  resendWebhookWebhookResponseBody: ResendWebhookWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    ResendWebhookWebhookResponseBody$outboundSchema.parse(
+      resendWebhookWebhookResponseBody,
+    ),
+  );
+}
+
+export function resendWebhookWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResendWebhookWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResendWebhookWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResendWebhookWebhookResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResendWebhookResponseBody$inboundSchema: z.ZodType<
   ResendWebhookResponseBody,
@@ -120,4 +170,22 @@ export namespace ResendWebhookResponseBody$ {
   export const outboundSchema = ResendWebhookResponseBody$outboundSchema;
   /** @deprecated use `ResendWebhookResponseBody$Outbound` instead. */
   export type Outbound = ResendWebhookResponseBody$Outbound;
+}
+
+export function resendWebhookResponseBodyToJSON(
+  resendWebhookResponseBody: ResendWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    ResendWebhookResponseBody$outboundSchema.parse(resendWebhookResponseBody),
+  );
+}
+
+export function resendWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResendWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResendWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResendWebhookResponseBody' from JSON`,
+  );
 }

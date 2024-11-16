@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Content = {};
 
@@ -41,6 +44,20 @@ export namespace Content$ {
   export type Outbound = Content$Outbound;
 }
 
+export function contentToJSON(content: Content): string {
+  return JSON.stringify(Content$outboundSchema.parse(content));
+}
+
+export function contentFromJSON(
+  jsonString: string,
+): SafeParseResult<Content, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Content$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Content' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadJsonDtoMetadata$inboundSchema: z.ZodType<
   UploadJsonDtoMetadata,
@@ -69,6 +86,24 @@ export namespace UploadJsonDtoMetadata$ {
   export const outboundSchema = UploadJsonDtoMetadata$outboundSchema;
   /** @deprecated use `UploadJsonDtoMetadata$Outbound` instead. */
   export type Outbound = UploadJsonDtoMetadata$Outbound;
+}
+
+export function uploadJsonDtoMetadataToJSON(
+  uploadJsonDtoMetadata: UploadJsonDtoMetadata,
+): string {
+  return JSON.stringify(
+    UploadJsonDtoMetadata$outboundSchema.parse(uploadJsonDtoMetadata),
+  );
+}
+
+export function uploadJsonDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadJsonDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadJsonDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadJsonDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -111,4 +146,18 @@ export namespace UploadJsonDto$ {
   export const outboundSchema = UploadJsonDto$outboundSchema;
   /** @deprecated use `UploadJsonDto$Outbound` instead. */
   export type Outbound = UploadJsonDto$Outbound;
+}
+
+export function uploadJsonDtoToJSON(uploadJsonDto: UploadJsonDto): string {
+  return JSON.stringify(UploadJsonDto$outboundSchema.parse(uploadJsonDto));
+}
+
+export function uploadJsonDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadJsonDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadJsonDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadJsonDto' from JSON`,
+  );
 }

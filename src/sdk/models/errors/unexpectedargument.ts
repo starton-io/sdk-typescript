@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasUNEXPECTEDARGUMENTContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasUNEXPECTEDARGUMENTContext$ {
   export const outboundSchema = SchemasUNEXPECTEDARGUMENTContext$outboundSchema;
   /** @deprecated use `SchemasUNEXPECTEDARGUMENTContext$Outbound` instead. */
   export type Outbound = SchemasUNEXPECTEDARGUMENTContext$Outbound;
+}
+
+export function schemasUNEXPECTEDARGUMENTContextToJSON(
+  schemasUNEXPECTEDARGUMENTContext: SchemasUNEXPECTEDARGUMENTContext,
+): string {
+  return JSON.stringify(
+    SchemasUNEXPECTEDARGUMENTContext$outboundSchema.parse(
+      schemasUNEXPECTEDARGUMENTContext,
+    ),
+  );
+}
+
+export function schemasUNEXPECTEDARGUMENTContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasUNEXPECTEDARGUMENTContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasUNEXPECTEDARGUMENTContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasUNEXPECTEDARGUMENTContext' from JSON`,
+  );
 }
 
 /** @internal */

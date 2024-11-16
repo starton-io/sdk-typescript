@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomGasDto,
   CustomGasDto$inboundSchema,
@@ -63,6 +66,20 @@ export namespace Three$ {
   export type Outbound = Three$Outbound;
 }
 
+export function threeToJSON(three: Three): string {
+  return JSON.stringify(Three$outboundSchema.parse(three));
+}
+
+export function threeFromJSON(
+  jsonString: string,
+): SafeParseResult<Three, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Three$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three' from JSON`,
+  );
+}
+
 /** @internal */
 export const Params$inboundSchema: z.ZodType<Params, z.ZodTypeDef, unknown> = z
   .union([
@@ -98,6 +115,20 @@ export namespace Params$ {
   export const outboundSchema = Params$outboundSchema;
   /** @deprecated use `Params$Outbound` instead. */
   export type Outbound = Params$Outbound;
+}
+
+export function paramsToJSON(params: Params): string {
+  return JSON.stringify(Params$outboundSchema.parse(params));
+}
+
+export function paramsFromJSON(
+  jsonString: string,
+): SafeParseResult<Params, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Params$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Params' from JSON`,
+  );
 }
 
 /** @internal */
@@ -186,4 +217,18 @@ export namespace CallDto$ {
   export const outboundSchema = CallDto$outboundSchema;
   /** @deprecated use `CallDto$Outbound` instead. */
   export type Outbound = CallDto$Outbound;
+}
+
+export function callDtoToJSON(callDto: CallDto): string {
+  return JSON.stringify(CallDto$outboundSchema.parse(callDto));
+}
+
+export function callDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CallDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CallDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CallDto' from JSON`,
+  );
 }

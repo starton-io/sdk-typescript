@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneRpcNetworkRpcResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace GetOneRpcNetworkRpcResponseBody$ {
   export type Outbound = GetOneRpcNetworkRpcResponseBody$Outbound;
 }
 
+export function getOneRpcNetworkRpcResponseBodyToJSON(
+  getOneRpcNetworkRpcResponseBody: GetOneRpcNetworkRpcResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneRpcNetworkRpcResponseBody$outboundSchema.parse(
+      getOneRpcNetworkRpcResponseBody,
+    ),
+  );
+}
+
+export function getOneRpcNetworkRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneRpcNetworkRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneRpcNetworkRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneRpcNetworkRpcResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneRpcResponseBody$inboundSchema: z.ZodType<
   GetOneRpcResponseBody,
@@ -79,4 +102,22 @@ export namespace GetOneRpcResponseBody$ {
   export const outboundSchema = GetOneRpcResponseBody$outboundSchema;
   /** @deprecated use `GetOneRpcResponseBody$Outbound` instead. */
   export type Outbound = GetOneRpcResponseBody$Outbound;
+}
+
+export function getOneRpcResponseBodyToJSON(
+  getOneRpcResponseBody: GetOneRpcResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneRpcResponseBody$outboundSchema.parse(getOneRpcResponseBody),
+  );
+}
+
+export function getOneRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneRpcResponseBody' from JSON`,
+  );
 }

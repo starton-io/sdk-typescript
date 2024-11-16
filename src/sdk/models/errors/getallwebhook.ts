@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllWebhookResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllWebhookResponseBody$ {
   export const outboundSchema = GetAllWebhookResponseBody$outboundSchema;
   /** @deprecated use `GetAllWebhookResponseBody$Outbound` instead. */
   export type Outbound = GetAllWebhookResponseBody$Outbound;
+}
+
+export function getAllWebhookResponseBodyToJSON(
+  getAllWebhookResponseBody: GetAllWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllWebhookResponseBody$outboundSchema.parse(getAllWebhookResponseBody),
+  );
+}
+
+export function getAllWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWebhookResponseBody' from JSON`,
+  );
 }

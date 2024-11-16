@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasMICROSERVICENOTRESPONDINGContext = {};
 
@@ -82,6 +85,33 @@ export namespace SchemasMICROSERVICENOTRESPONDINGContext$ {
     SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema;
   /** @deprecated use `SchemasMICROSERVICENOTRESPONDINGContext$Outbound` instead. */
   export type Outbound = SchemasMICROSERVICENOTRESPONDINGContext$Outbound;
+}
+
+export function schemasMICROSERVICENOTRESPONDINGContextToJSON(
+  schemasMICROSERVICENOTRESPONDINGContext:
+    SchemasMICROSERVICENOTRESPONDINGContext,
+): string {
+  return JSON.stringify(
+    SchemasMICROSERVICENOTRESPONDINGContext$outboundSchema.parse(
+      schemasMICROSERVICENOTRESPONDINGContext,
+    ),
+  );
+}
+
+export function schemasMICROSERVICENOTRESPONDINGContextFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SchemasMICROSERVICENOTRESPONDINGContext,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasMICROSERVICENOTRESPONDINGContext$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SchemasMICROSERVICENOTRESPONDINGContext' from JSON`,
+  );
 }
 
 /** @internal */

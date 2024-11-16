@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasPAYLOADTOOLARGEContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasPAYLOADTOOLARGEContext$ {
   export const outboundSchema = SchemasPAYLOADTOOLARGEContext$outboundSchema;
   /** @deprecated use `SchemasPAYLOADTOOLARGEContext$Outbound` instead. */
   export type Outbound = SchemasPAYLOADTOOLARGEContext$Outbound;
+}
+
+export function schemasPAYLOADTOOLARGEContextToJSON(
+  schemasPAYLOADTOOLARGEContext: SchemasPAYLOADTOOLARGEContext,
+): string {
+  return JSON.stringify(
+    SchemasPAYLOADTOOLARGEContext$outboundSchema.parse(
+      schemasPAYLOADTOOLARGEContext,
+    ),
+  );
+}
+
+export function schemasPAYLOADTOOLARGEContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasPAYLOADTOOLARGEContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasPAYLOADTOOLARGEContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasPAYLOADTOOLARGEContext' from JSON`,
+  );
 }
 
 /** @internal */

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllWatcherEventRequest = {
@@ -84,6 +87,24 @@ export namespace GetAllWatcherEventRequest$ {
   export type Outbound = GetAllWatcherEventRequest$Outbound;
 }
 
+export function getAllWatcherEventRequestToJSON(
+  getAllWatcherEventRequest: GetAllWatcherEventRequest,
+): string {
+  return JSON.stringify(
+    GetAllWatcherEventRequest$outboundSchema.parse(getAllWatcherEventRequest),
+  );
+}
+
+export function getAllWatcherEventRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherEventRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherEventRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherEventRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllWatcherEventWatcherEventPaginated$inboundSchema: z.ZodType<
   GetAllWatcherEventWatcherEventPaginated,
@@ -123,6 +144,33 @@ export namespace GetAllWatcherEventWatcherEventPaginated$ {
     GetAllWatcherEventWatcherEventPaginated$outboundSchema;
   /** @deprecated use `GetAllWatcherEventWatcherEventPaginated$Outbound` instead. */
   export type Outbound = GetAllWatcherEventWatcherEventPaginated$Outbound;
+}
+
+export function getAllWatcherEventWatcherEventPaginatedToJSON(
+  getAllWatcherEventWatcherEventPaginated:
+    GetAllWatcherEventWatcherEventPaginated,
+): string {
+  return JSON.stringify(
+    GetAllWatcherEventWatcherEventPaginated$outboundSchema.parse(
+      getAllWatcherEventWatcherEventPaginated,
+    ),
+  );
+}
+
+export function getAllWatcherEventWatcherEventPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAllWatcherEventWatcherEventPaginated,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllWatcherEventWatcherEventPaginated$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAllWatcherEventWatcherEventPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -190,4 +238,22 @@ export namespace GetAllWatcherEventResponse$ {
   export const outboundSchema = GetAllWatcherEventResponse$outboundSchema;
   /** @deprecated use `GetAllWatcherEventResponse$Outbound` instead. */
   export type Outbound = GetAllWatcherEventResponse$Outbound;
+}
+
+export function getAllWatcherEventResponseToJSON(
+  getAllWatcherEventResponse: GetAllWatcherEventResponse,
+): string {
+  return JSON.stringify(
+    GetAllWatcherEventResponse$outboundSchema.parse(getAllWatcherEventResponse),
+  );
+}
+
+export function getAllWatcherEventResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherEventResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherEventResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherEventResponse' from JSON`,
+  );
 }

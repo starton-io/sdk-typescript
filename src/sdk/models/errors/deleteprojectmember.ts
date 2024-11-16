@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -21,6 +23,7 @@ import {
   MicroserviceNotResponding$Outbound,
   MicroserviceNotResponding$outboundSchema,
 } from "./microservicenotresponding.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteProjectMemberProjectMemberResponseResponseBody =
   MicroserviceNotResponding;
@@ -65,6 +68,33 @@ export namespace DeleteProjectMemberProjectMemberResponseResponseBody$ {
     DeleteProjectMemberProjectMemberResponseResponseBody$Outbound;
 }
 
+export function deleteProjectMemberProjectMemberResponseResponseBodyToJSON(
+  deleteProjectMemberProjectMemberResponseResponseBody:
+    DeleteProjectMemberProjectMemberResponseResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteProjectMemberProjectMemberResponseResponseBody$outboundSchema.parse(
+      deleteProjectMemberProjectMemberResponseResponseBody,
+    ),
+  );
+}
+
+export function deleteProjectMemberProjectMemberResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectMemberProjectMemberResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectMemberProjectMemberResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectMemberProjectMemberResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteProjectMemberProjectMemberResponseBody$inboundSchema:
   z.ZodType<
@@ -100,6 +130,33 @@ export namespace DeleteProjectMemberProjectMemberResponseBody$ {
   export type Outbound = DeleteProjectMemberProjectMemberResponseBody$Outbound;
 }
 
+export function deleteProjectMemberProjectMemberResponseBodyToJSON(
+  deleteProjectMemberProjectMemberResponseBody:
+    DeleteProjectMemberProjectMemberResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteProjectMemberProjectMemberResponseBody$outboundSchema.parse(
+      deleteProjectMemberProjectMemberResponseBody,
+    ),
+  );
+}
+
+export function deleteProjectMemberProjectMemberResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectMemberProjectMemberResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectMemberProjectMemberResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectMemberProjectMemberResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteProjectMemberResponseBody$inboundSchema: z.ZodType<
   DeleteProjectMemberResponseBody,
@@ -129,4 +186,24 @@ export namespace DeleteProjectMemberResponseBody$ {
   export const outboundSchema = DeleteProjectMemberResponseBody$outboundSchema;
   /** @deprecated use `DeleteProjectMemberResponseBody$Outbound` instead. */
   export type Outbound = DeleteProjectMemberResponseBody$Outbound;
+}
+
+export function deleteProjectMemberResponseBodyToJSON(
+  deleteProjectMemberResponseBody: DeleteProjectMemberResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteProjectMemberResponseBody$outboundSchema.parse(
+      deleteProjectMemberResponseBody,
+    ),
+  );
+}
+
+export function deleteProjectMemberResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectMemberResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteProjectMemberResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectMemberResponseBody' from JSON`,
+  );
 }

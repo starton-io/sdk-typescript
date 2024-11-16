@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetStorageUsedPinResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetStorageUsedPinResponseBody$ {
   export const outboundSchema = GetStorageUsedPinResponseBody$outboundSchema;
   /** @deprecated use `GetStorageUsedPinResponseBody$Outbound` instead. */
   export type Outbound = GetStorageUsedPinResponseBody$Outbound;
+}
+
+export function getStorageUsedPinResponseBodyToJSON(
+  getStorageUsedPinResponseBody: GetStorageUsedPinResponseBody,
+): string {
+  return JSON.stringify(
+    GetStorageUsedPinResponseBody$outboundSchema.parse(
+      getStorageUsedPinResponseBody,
+    ),
+  );
+}
+
+export function getStorageUsedPinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStorageUsedPinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStorageUsedPinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageUsedPinResponseBody' from JSON`,
+  );
 }

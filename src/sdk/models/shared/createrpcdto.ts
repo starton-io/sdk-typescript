@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum CreateRpcDtoType {
   Archive = "archive",
@@ -72,4 +75,18 @@ export namespace CreateRpcDto$ {
   export const outboundSchema = CreateRpcDto$outboundSchema;
   /** @deprecated use `CreateRpcDto$Outbound` instead. */
   export type Outbound = CreateRpcDto$Outbound;
+}
+
+export function createRpcDtoToJSON(createRpcDto: CreateRpcDto): string {
+  return JSON.stringify(CreateRpcDto$outboundSchema.parse(createRpcDto));
+}
+
+export function createRpcDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRpcDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRpcDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRpcDto' from JSON`,
+  );
 }

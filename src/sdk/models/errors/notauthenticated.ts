@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasNOTAUTHENTICATEDContext = {};
 
@@ -80,6 +83,26 @@ export namespace SchemasNOTAUTHENTICATEDContext$ {
   export const outboundSchema = SchemasNOTAUTHENTICATEDContext$outboundSchema;
   /** @deprecated use `SchemasNOTAUTHENTICATEDContext$Outbound` instead. */
   export type Outbound = SchemasNOTAUTHENTICATEDContext$Outbound;
+}
+
+export function schemasNOTAUTHENTICATEDContextToJSON(
+  schemasNOTAUTHENTICATEDContext: SchemasNOTAUTHENTICATEDContext,
+): string {
+  return JSON.stringify(
+    SchemasNOTAUTHENTICATEDContext$outboundSchema.parse(
+      schemasNOTAUTHENTICATEDContext,
+    ),
+  );
+}
+
+export function schemasNOTAUTHENTICATEDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasNOTAUTHENTICATEDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasNOTAUTHENTICATEDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasNOTAUTHENTICATEDContext' from JSON`,
+  );
 }
 
 /** @internal */

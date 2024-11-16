@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateKmsKmsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace UpdateKmsKmsResponseBody$ {
   export type Outbound = UpdateKmsKmsResponseBody$Outbound;
 }
 
+export function updateKmsKmsResponseBodyToJSON(
+  updateKmsKmsResponseBody: UpdateKmsKmsResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateKmsKmsResponseBody$outboundSchema.parse(updateKmsKmsResponseBody),
+  );
+}
+
+export function updateKmsKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsKmsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateKmsResponseBody$inboundSchema: z.ZodType<
   UpdateKmsResponseBody,
@@ -78,4 +99,22 @@ export namespace UpdateKmsResponseBody$ {
   export const outboundSchema = UpdateKmsResponseBody$outboundSchema;
   /** @deprecated use `UpdateKmsResponseBody$Outbound` instead. */
   export type Outbound = UpdateKmsResponseBody$Outbound;
+}
+
+export function updateKmsResponseBodyToJSON(
+  updateKmsResponseBody: UpdateKmsResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateKmsResponseBody$outboundSchema.parse(updateKmsResponseBody),
+  );
+}
+
+export function updateKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsResponseBody' from JSON`,
+  );
 }

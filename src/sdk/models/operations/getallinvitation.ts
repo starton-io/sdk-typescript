@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllInvitationRequest = {
@@ -77,6 +80,24 @@ export namespace GetAllInvitationRequest$ {
   export type Outbound = GetAllInvitationRequest$Outbound;
 }
 
+export function getAllInvitationRequestToJSON(
+  getAllInvitationRequest: GetAllInvitationRequest,
+): string {
+  return JSON.stringify(
+    GetAllInvitationRequest$outboundSchema.parse(getAllInvitationRequest),
+  );
+}
+
+export function getAllInvitationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllInvitationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllInvitationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllInvitationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllInvitationInvitationPaginated$inboundSchema: z.ZodType<
   GetAllInvitationInvitationPaginated,
@@ -116,6 +137,27 @@ export namespace GetAllInvitationInvitationPaginated$ {
     GetAllInvitationInvitationPaginated$outboundSchema;
   /** @deprecated use `GetAllInvitationInvitationPaginated$Outbound` instead. */
   export type Outbound = GetAllInvitationInvitationPaginated$Outbound;
+}
+
+export function getAllInvitationInvitationPaginatedToJSON(
+  getAllInvitationInvitationPaginated: GetAllInvitationInvitationPaginated,
+): string {
+  return JSON.stringify(
+    GetAllInvitationInvitationPaginated$outboundSchema.parse(
+      getAllInvitationInvitationPaginated,
+    ),
+  );
+}
+
+export function getAllInvitationInvitationPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllInvitationInvitationPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllInvitationInvitationPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllInvitationInvitationPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -183,4 +225,22 @@ export namespace GetAllInvitationResponse$ {
   export const outboundSchema = GetAllInvitationResponse$outboundSchema;
   /** @deprecated use `GetAllInvitationResponse$Outbound` instead. */
   export type Outbound = GetAllInvitationResponse$Outbound;
+}
+
+export function getAllInvitationResponseToJSON(
+  getAllInvitationResponse: GetAllInvitationResponse,
+): string {
+  return JSON.stringify(
+    GetAllInvitationResponse$outboundSchema.parse(getAllInvitationResponse),
+  );
+}
+
+export function getAllInvitationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllInvitationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllInvitationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllInvitationResponse' from JSON`,
+  );
 }

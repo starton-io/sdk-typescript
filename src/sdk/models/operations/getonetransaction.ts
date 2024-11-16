@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneTransactionRequest = {
@@ -65,6 +68,24 @@ export namespace GetOneTransactionRequest$ {
   export type Outbound = GetOneTransactionRequest$Outbound;
 }
 
+export function getOneTransactionRequestToJSON(
+  getOneTransactionRequest: GetOneTransactionRequest,
+): string {
+  return JSON.stringify(
+    GetOneTransactionRequest$outboundSchema.parse(getOneTransactionRequest),
+  );
+}
+
+export function getOneTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneTransactionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneTransactionResponse$inboundSchema: z.ZodType<
   GetOneTransactionResponse,
@@ -124,4 +145,22 @@ export namespace GetOneTransactionResponse$ {
   export const outboundSchema = GetOneTransactionResponse$outboundSchema;
   /** @deprecated use `GetOneTransactionResponse$Outbound` instead. */
   export type Outbound = GetOneTransactionResponse$Outbound;
+}
+
+export function getOneTransactionResponseToJSON(
+  getOneTransactionResponse: GetOneTransactionResponse,
+): string {
+  return JSON.stringify(
+    GetOneTransactionResponse$outboundSchema.parse(getOneTransactionResponse),
+  );
+}
+
+export function getOneTransactionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneTransactionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneTransactionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneTransactionResponse' from JSON`,
+  );
 }

@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -27,6 +29,7 @@ import {
   CouldNotProcessEntity$Outbound,
   CouldNotProcessEntity$outboundSchema,
 } from "./couldnotprocessentity.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ResyncNoncesWalletWalletTransactionManagerResponseResponseBody =
   CouldNotAssignNonce;
@@ -74,6 +77,31 @@ export namespace ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$
     ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$Outbound;
 }
 
+export function resyncNoncesWalletWalletTransactionManagerResponseResponseBodyToJSON(
+  resyncNoncesWalletWalletTransactionManagerResponseResponseBody:
+    ResyncNoncesWalletWalletTransactionManagerResponseResponseBody,
+): string {
+  return JSON.stringify(
+    ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$outboundSchema
+      .parse(resyncNoncesWalletWalletTransactionManagerResponseResponseBody),
+  );
+}
+
+export function resyncNoncesWalletWalletTransactionManagerResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ResyncNoncesWalletWalletTransactionManagerResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ResyncNoncesWalletWalletTransactionManagerResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ResyncNoncesWalletWalletTransactionManagerResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResyncNoncesWalletWalletTransactionManagerResponseBody$inboundSchema:
   z.ZodType<
@@ -110,6 +138,32 @@ export namespace ResyncNoncesWalletWalletTransactionManagerResponseBody$ {
     ResyncNoncesWalletWalletTransactionManagerResponseBody$Outbound;
 }
 
+export function resyncNoncesWalletWalletTransactionManagerResponseBodyToJSON(
+  resyncNoncesWalletWalletTransactionManagerResponseBody:
+    ResyncNoncesWalletWalletTransactionManagerResponseBody,
+): string {
+  return JSON.stringify(
+    ResyncNoncesWalletWalletTransactionManagerResponseBody$outboundSchema.parse(
+      resyncNoncesWalletWalletTransactionManagerResponseBody,
+    ),
+  );
+}
+
+export function resyncNoncesWalletWalletTransactionManagerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ResyncNoncesWalletWalletTransactionManagerResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ResyncNoncesWalletWalletTransactionManagerResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ResyncNoncesWalletWalletTransactionManagerResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResyncNoncesWalletWalletResponseBody$inboundSchema: z.ZodType<
   ResyncNoncesWalletWalletResponseBody,
@@ -143,6 +197,27 @@ export namespace ResyncNoncesWalletWalletResponseBody$ {
   export type Outbound = ResyncNoncesWalletWalletResponseBody$Outbound;
 }
 
+export function resyncNoncesWalletWalletResponseBodyToJSON(
+  resyncNoncesWalletWalletResponseBody: ResyncNoncesWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    ResyncNoncesWalletWalletResponseBody$outboundSchema.parse(
+      resyncNoncesWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function resyncNoncesWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResyncNoncesWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ResyncNoncesWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResyncNoncesWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ResyncNoncesWalletResponseBody$inboundSchema: z.ZodType<
   ResyncNoncesWalletResponseBody,
@@ -172,4 +247,24 @@ export namespace ResyncNoncesWalletResponseBody$ {
   export const outboundSchema = ResyncNoncesWalletResponseBody$outboundSchema;
   /** @deprecated use `ResyncNoncesWalletResponseBody$Outbound` instead. */
   export type Outbound = ResyncNoncesWalletResponseBody$Outbound;
+}
+
+export function resyncNoncesWalletResponseBodyToJSON(
+  resyncNoncesWalletResponseBody: ResyncNoncesWalletResponseBody,
+): string {
+  return JSON.stringify(
+    ResyncNoncesWalletResponseBody$outboundSchema.parse(
+      resyncNoncesWalletResponseBody,
+    ),
+  );
+}
+
+export function resyncNoncesWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResyncNoncesWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResyncNoncesWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResyncNoncesWalletResponseBody' from JSON`,
+  );
 }

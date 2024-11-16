@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum UpdateRpcDtoType {
   Archive = "archive",
@@ -72,4 +75,18 @@ export namespace UpdateRpcDto$ {
   export const outboundSchema = UpdateRpcDto$outboundSchema;
   /** @deprecated use `UpdateRpcDto$Outbound` instead. */
   export type Outbound = UpdateRpcDto$Outbound;
+}
+
+export function updateRpcDtoToJSON(updateRpcDto: UpdateRpcDto): string {
+  return JSON.stringify(UpdateRpcDto$outboundSchema.parse(updateRpcDto));
+}
+
+export function updateRpcDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRpcDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRpcDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRpcDto' from JSON`,
+  );
 }

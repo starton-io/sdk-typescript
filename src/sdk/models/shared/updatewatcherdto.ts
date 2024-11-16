@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateWatcherDtoMetadata = {};
 
@@ -43,6 +46,24 @@ export namespace UpdateWatcherDtoMetadata$ {
   export const outboundSchema = UpdateWatcherDtoMetadata$outboundSchema;
   /** @deprecated use `UpdateWatcherDtoMetadata$Outbound` instead. */
   export type Outbound = UpdateWatcherDtoMetadata$Outbound;
+}
+
+export function updateWatcherDtoMetadataToJSON(
+  updateWatcherDtoMetadata: UpdateWatcherDtoMetadata,
+): string {
+  return JSON.stringify(
+    UpdateWatcherDtoMetadata$outboundSchema.parse(updateWatcherDtoMetadata),
+  );
+}
+
+export function updateWatcherDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWatcherDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWatcherDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWatcherDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -94,4 +115,22 @@ export namespace UpdateWatcherDto$ {
   export const outboundSchema = UpdateWatcherDto$outboundSchema;
   /** @deprecated use `UpdateWatcherDto$Outbound` instead. */
   export type Outbound = UpdateWatcherDto$Outbound;
+}
+
+export function updateWatcherDtoToJSON(
+  updateWatcherDto: UpdateWatcherDto,
+): string {
+  return JSON.stringify(
+    UpdateWatcherDto$outboundSchema.parse(updateWatcherDto),
+  );
+}
+
+export function updateWatcherDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWatcherDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWatcherDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWatcherDto' from JSON`,
+  );
 }

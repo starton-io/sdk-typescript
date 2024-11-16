@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreateRpcRequest = {
@@ -74,6 +77,24 @@ export namespace CreateRpcRequest$ {
   export type Outbound = CreateRpcRequest$Outbound;
 }
 
+export function createRpcRequestToJSON(
+  createRpcRequest: CreateRpcRequest,
+): string {
+  return JSON.stringify(
+    CreateRpcRequest$outboundSchema.parse(createRpcRequest),
+  );
+}
+
+export function createRpcRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRpcRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRpcRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRpcRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateRpcResponse$inboundSchema: z.ZodType<
   CreateRpcResponse,
@@ -133,4 +154,22 @@ export namespace CreateRpcResponse$ {
   export const outboundSchema = CreateRpcResponse$outboundSchema;
   /** @deprecated use `CreateRpcResponse$Outbound` instead. */
   export type Outbound = CreateRpcResponse$Outbound;
+}
+
+export function createRpcResponseToJSON(
+  createRpcResponse: CreateRpcResponse,
+): string {
+  return JSON.stringify(
+    CreateRpcResponse$outboundSchema.parse(createRpcResponse),
+  );
+}
+
+export function createRpcResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRpcResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRpcResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRpcResponse' from JSON`,
+  );
 }

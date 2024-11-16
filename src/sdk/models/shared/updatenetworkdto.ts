@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExplorerApiDto,
   ExplorerApiDto$inboundSchema,
@@ -134,4 +137,22 @@ export namespace UpdateNetworkDto$ {
   export const outboundSchema = UpdateNetworkDto$outboundSchema;
   /** @deprecated use `UpdateNetworkDto$Outbound` instead. */
   export type Outbound = UpdateNetworkDto$Outbound;
+}
+
+export function updateNetworkDtoToJSON(
+  updateNetworkDto: UpdateNetworkDto,
+): string {
+  return JSON.stringify(
+    UpdateNetworkDto$outboundSchema.parse(updateNetworkDto),
+  );
+}
+
+export function updateNetworkDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkDto' from JSON`,
+  );
 }

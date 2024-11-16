@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export enum State {
@@ -209,6 +212,24 @@ export namespace GetAllTransactionRequest$ {
   export type Outbound = GetAllTransactionRequest$Outbound;
 }
 
+export function getAllTransactionRequestToJSON(
+  getAllTransactionRequest: GetAllTransactionRequest,
+): string {
+  return JSON.stringify(
+    GetAllTransactionRequest$outboundSchema.parse(getAllTransactionRequest),
+  );
+}
+
+export function getAllTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllTransactionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllTransactionTransactionPaginated$inboundSchema: z.ZodType<
   GetAllTransactionTransactionPaginated,
@@ -248,6 +269,27 @@ export namespace GetAllTransactionTransactionPaginated$ {
     GetAllTransactionTransactionPaginated$outboundSchema;
   /** @deprecated use `GetAllTransactionTransactionPaginated$Outbound` instead. */
   export type Outbound = GetAllTransactionTransactionPaginated$Outbound;
+}
+
+export function getAllTransactionTransactionPaginatedToJSON(
+  getAllTransactionTransactionPaginated: GetAllTransactionTransactionPaginated,
+): string {
+  return JSON.stringify(
+    GetAllTransactionTransactionPaginated$outboundSchema.parse(
+      getAllTransactionTransactionPaginated,
+    ),
+  );
+}
+
+export function getAllTransactionTransactionPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllTransactionTransactionPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllTransactionTransactionPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllTransactionTransactionPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -315,4 +357,22 @@ export namespace GetAllTransactionResponse$ {
   export const outboundSchema = GetAllTransactionResponse$outboundSchema;
   /** @deprecated use `GetAllTransactionResponse$Outbound` instead. */
   export type Outbound = GetAllTransactionResponse$Outbound;
+}
+
+export function getAllTransactionResponseToJSON(
+  getAllTransactionResponse: GetAllTransactionResponse,
+): string {
+  return JSON.stringify(
+    GetAllTransactionResponse$outboundSchema.parse(getAllTransactionResponse),
+  );
+}
+
+export function getAllTransactionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllTransactionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllTransactionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllTransactionResponse' from JSON`,
+  );
 }

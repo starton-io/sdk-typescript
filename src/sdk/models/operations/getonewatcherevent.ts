@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneWatcherEventRequest = {
@@ -72,6 +75,24 @@ export namespace GetOneWatcherEventRequest$ {
   export type Outbound = GetOneWatcherEventRequest$Outbound;
 }
 
+export function getOneWatcherEventRequestToJSON(
+  getOneWatcherEventRequest: GetOneWatcherEventRequest,
+): string {
+  return JSON.stringify(
+    GetOneWatcherEventRequest$outboundSchema.parse(getOneWatcherEventRequest),
+  );
+}
+
+export function getOneWatcherEventRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherEventRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWatcherEventRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherEventRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWatcherEventResponse$inboundSchema: z.ZodType<
   GetOneWatcherEventResponse,
@@ -131,4 +152,22 @@ export namespace GetOneWatcherEventResponse$ {
   export const outboundSchema = GetOneWatcherEventResponse$outboundSchema;
   /** @deprecated use `GetOneWatcherEventResponse$Outbound` instead. */
   export type Outbound = GetOneWatcherEventResponse$Outbound;
+}
+
+export function getOneWatcherEventResponseToJSON(
+  getOneWatcherEventResponse: GetOneWatcherEventResponse,
+): string {
+  return JSON.stringify(
+    GetOneWatcherEventResponse$outboundSchema.parse(getOneWatcherEventResponse),
+  );
+}
+
+export function getOneWatcherEventResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWatcherEventResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWatcherEventResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWatcherEventResponse' from JSON`,
+  );
 }

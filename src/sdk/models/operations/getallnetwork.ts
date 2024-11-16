@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllNetworkRequest = {
@@ -125,6 +128,24 @@ export namespace GetAllNetworkRequest$ {
   export type Outbound = GetAllNetworkRequest$Outbound;
 }
 
+export function getAllNetworkRequestToJSON(
+  getAllNetworkRequest: GetAllNetworkRequest,
+): string {
+  return JSON.stringify(
+    GetAllNetworkRequest$outboundSchema.parse(getAllNetworkRequest),
+  );
+}
+
+export function getAllNetworkRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllNetworkRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllNetworkRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllNetworkRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllNetworkNetworkPaginated$inboundSchema: z.ZodType<
   GetAllNetworkNetworkPaginated,
@@ -162,6 +183,26 @@ export namespace GetAllNetworkNetworkPaginated$ {
   export const outboundSchema = GetAllNetworkNetworkPaginated$outboundSchema;
   /** @deprecated use `GetAllNetworkNetworkPaginated$Outbound` instead. */
   export type Outbound = GetAllNetworkNetworkPaginated$Outbound;
+}
+
+export function getAllNetworkNetworkPaginatedToJSON(
+  getAllNetworkNetworkPaginated: GetAllNetworkNetworkPaginated,
+): string {
+  return JSON.stringify(
+    GetAllNetworkNetworkPaginated$outboundSchema.parse(
+      getAllNetworkNetworkPaginated,
+    ),
+  );
+}
+
+export function getAllNetworkNetworkPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllNetworkNetworkPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllNetworkNetworkPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllNetworkNetworkPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -225,4 +266,22 @@ export namespace GetAllNetworkResponse$ {
   export const outboundSchema = GetAllNetworkResponse$outboundSchema;
   /** @deprecated use `GetAllNetworkResponse$Outbound` instead. */
   export type Outbound = GetAllNetworkResponse$Outbound;
+}
+
+export function getAllNetworkResponseToJSON(
+  getAllNetworkResponse: GetAllNetworkResponse,
+): string {
+  return JSON.stringify(
+    GetAllNetworkResponse$outboundSchema.parse(getAllNetworkResponse),
+  );
+}
+
+export function getAllNetworkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllNetworkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllNetworkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllNetworkResponse' from JSON`,
+  );
 }

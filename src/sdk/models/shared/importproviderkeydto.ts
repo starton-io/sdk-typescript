@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ImportProviderKeyDtoMetadata = {};
 
@@ -47,6 +50,26 @@ export namespace ImportProviderKeyDtoMetadata$ {
   export const outboundSchema = ImportProviderKeyDtoMetadata$outboundSchema;
   /** @deprecated use `ImportProviderKeyDtoMetadata$Outbound` instead. */
   export type Outbound = ImportProviderKeyDtoMetadata$Outbound;
+}
+
+export function importProviderKeyDtoMetadataToJSON(
+  importProviderKeyDtoMetadata: ImportProviderKeyDtoMetadata,
+): string {
+  return JSON.stringify(
+    ImportProviderKeyDtoMetadata$outboundSchema.parse(
+      importProviderKeyDtoMetadata,
+    ),
+  );
+}
+
+export function importProviderKeyDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportProviderKeyDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportProviderKeyDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportProviderKeyDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -117,4 +140,22 @@ export namespace ImportProviderKeyDto$ {
   export const outboundSchema = ImportProviderKeyDto$outboundSchema;
   /** @deprecated use `ImportProviderKeyDto$Outbound` instead. */
   export type Outbound = ImportProviderKeyDto$Outbound;
+}
+
+export function importProviderKeyDtoToJSON(
+  importProviderKeyDto: ImportProviderKeyDto,
+): string {
+  return JSON.stringify(
+    ImportProviderKeyDto$outboundSchema.parse(importProviderKeyDto),
+  );
+}
+
+export function importProviderKeyDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportProviderKeyDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportProviderKeyDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportProviderKeyDto' from JSON`,
+  );
 }

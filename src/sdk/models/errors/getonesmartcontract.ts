@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneSmartContractSmartContractManagementResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,32 @@ export namespace GetOneSmartContractSmartContractManagementResponseBody$ {
     GetOneSmartContractSmartContractManagementResponseBody$Outbound;
 }
 
+export function getOneSmartContractSmartContractManagementResponseBodyToJSON(
+  getOneSmartContractSmartContractManagementResponseBody:
+    GetOneSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      getOneSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function getOneSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetOneSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneSmartContractResponseBody$inboundSchema: z.ZodType<
   GetOneSmartContractResponseBody,
@@ -86,4 +115,24 @@ export namespace GetOneSmartContractResponseBody$ {
   export const outboundSchema = GetOneSmartContractResponseBody$outboundSchema;
   /** @deprecated use `GetOneSmartContractResponseBody$Outbound` instead. */
   export type Outbound = GetOneSmartContractResponseBody$Outbound;
+}
+
+export function getOneSmartContractResponseBodyToJSON(
+  getOneSmartContractResponseBody: GetOneSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractResponseBody$outboundSchema.parse(
+      getOneSmartContractResponseBody,
+    ),
+  );
+}
+
+export function getOneSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractResponseBody' from JSON`,
+  );
 }

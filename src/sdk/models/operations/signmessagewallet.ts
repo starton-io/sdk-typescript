@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type SignMessageWalletRequest = {
@@ -74,6 +77,24 @@ export namespace SignMessageWalletRequest$ {
   export type Outbound = SignMessageWalletRequest$Outbound;
 }
 
+export function signMessageWalletRequestToJSON(
+  signMessageWalletRequest: SignMessageWalletRequest,
+): string {
+  return JSON.stringify(
+    SignMessageWalletRequest$outboundSchema.parse(signMessageWalletRequest),
+  );
+}
+
+export function signMessageWalletRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageWalletRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignMessageWalletRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageWalletRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const SignMessageWalletResponse$inboundSchema: z.ZodType<
   SignMessageWalletResponse,
@@ -133,4 +154,22 @@ export namespace SignMessageWalletResponse$ {
   export const outboundSchema = SignMessageWalletResponse$outboundSchema;
   /** @deprecated use `SignMessageWalletResponse$Outbound` instead. */
   export type Outbound = SignMessageWalletResponse$Outbound;
+}
+
+export function signMessageWalletResponseToJSON(
+  signMessageWalletResponse: SignMessageWalletResponse,
+): string {
+  return JSON.stringify(
+    SignMessageWalletResponse$outboundSchema.parse(signMessageWalletResponse),
+  );
+}
+
+export function signMessageWalletResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SignMessageWalletResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignMessageWalletResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignMessageWalletResponse' from JSON`,
+  );
 }

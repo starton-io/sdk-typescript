@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneRpcRequest = {
@@ -66,6 +69,24 @@ export namespace GetOneRpcRequest$ {
   export type Outbound = GetOneRpcRequest$Outbound;
 }
 
+export function getOneRpcRequestToJSON(
+  getOneRpcRequest: GetOneRpcRequest,
+): string {
+  return JSON.stringify(
+    GetOneRpcRequest$outboundSchema.parse(getOneRpcRequest),
+  );
+}
+
+export function getOneRpcRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneRpcRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneRpcRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneRpcRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneRpcResponse$inboundSchema: z.ZodType<
   GetOneRpcResponse,
@@ -125,4 +146,22 @@ export namespace GetOneRpcResponse$ {
   export const outboundSchema = GetOneRpcResponse$outboundSchema;
   /** @deprecated use `GetOneRpcResponse$Outbound` instead. */
   export type Outbound = GetOneRpcResponse$Outbound;
+}
+
+export function getOneRpcResponseToJSON(
+  getOneRpcResponse: GetOneRpcResponse,
+): string {
+  return JSON.stringify(
+    GetOneRpcResponse$outboundSchema.parse(getOneRpcResponse),
+  );
+}
+
+export function getOneRpcResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneRpcResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneRpcResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneRpcResponse' from JSON`,
+  );
 }

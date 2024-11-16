@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type FileT = {
@@ -81,6 +84,20 @@ export namespace FileT$ {
   export type Outbound = FileT$Outbound;
 }
 
+export function fileTToJSON(fileT: FileT): string {
+  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+}
+
+export function fileTFromJSON(
+  jsonString: string,
+): SafeParseResult<FileT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileT' from JSON`,
+  );
+}
+
 /** @internal */
 export const Metadata$inboundSchema: z.ZodType<
   Metadata,
@@ -109,6 +126,20 @@ export namespace Metadata$ {
   export const outboundSchema = Metadata$outboundSchema;
   /** @deprecated use `Metadata$Outbound` instead. */
   export type Outbound = Metadata$Outbound;
+}
+
+export function metadataToJSON(metadata: Metadata): string {
+  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+}
+
+export function metadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Metadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Metadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -148,6 +179,26 @@ export namespace UploadFromFilePinRequestBody$ {
   export const outboundSchema = UploadFromFilePinRequestBody$outboundSchema;
   /** @deprecated use `UploadFromFilePinRequestBody$Outbound` instead. */
   export type Outbound = UploadFromFilePinRequestBody$Outbound;
+}
+
+export function uploadFromFilePinRequestBodyToJSON(
+  uploadFromFilePinRequestBody: UploadFromFilePinRequestBody,
+): string {
+  return JSON.stringify(
+    UploadFromFilePinRequestBody$outboundSchema.parse(
+      uploadFromFilePinRequestBody,
+    ),
+  );
+}
+
+export function uploadFromFilePinRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFilePinRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromFilePinRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFilePinRequestBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -209,4 +260,22 @@ export namespace UploadFromFilePinResponse$ {
   export const outboundSchema = UploadFromFilePinResponse$outboundSchema;
   /** @deprecated use `UploadFromFilePinResponse$Outbound` instead. */
   export type Outbound = UploadFromFilePinResponse$Outbound;
+}
+
+export function uploadFromFilePinResponseToJSON(
+  uploadFromFilePinResponse: UploadFromFilePinResponse,
+): string {
+  return JSON.stringify(
+    UploadFromFilePinResponse$outboundSchema.parse(uploadFromFilePinResponse),
+  );
+}
+
+export function uploadFromFilePinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFromFilePinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFromFilePinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFromFilePinResponse' from JSON`,
+  );
 }

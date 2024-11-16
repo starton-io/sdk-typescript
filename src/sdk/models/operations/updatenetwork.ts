@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateNetworkRequest = {
@@ -80,6 +83,24 @@ export namespace UpdateNetworkRequest$ {
   export type Outbound = UpdateNetworkRequest$Outbound;
 }
 
+export function updateNetworkRequestToJSON(
+  updateNetworkRequest: UpdateNetworkRequest,
+): string {
+  return JSON.stringify(
+    UpdateNetworkRequest$outboundSchema.parse(updateNetworkRequest),
+  );
+}
+
+export function updateNetworkRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateNetworkResponse$inboundSchema: z.ZodType<
   UpdateNetworkResponse,
@@ -139,4 +160,22 @@ export namespace UpdateNetworkResponse$ {
   export const outboundSchema = UpdateNetworkResponse$outboundSchema;
   /** @deprecated use `UpdateNetworkResponse$Outbound` instead. */
   export type Outbound = UpdateNetworkResponse$Outbound;
+}
+
+export function updateNetworkResponseToJSON(
+  updateNetworkResponse: UpdateNetworkResponse,
+): string {
+  return JSON.stringify(
+    UpdateNetworkResponse$outboundSchema.parse(updateNetworkResponse),
+  );
+}
+
+export function updateNetworkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkResponse' from JSON`,
+  );
 }

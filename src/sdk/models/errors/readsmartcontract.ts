@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -69,6 +71,7 @@ import {
   NumericFault$Outbound,
   NumericFault$outboundSchema,
 } from "./numericfault.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UnexpectedArgument,
   UnexpectedArgument$inboundSchema,
@@ -137,6 +140,31 @@ export namespace ReadSmartContractSmartContractManagementResponseResponseBody$ {
     ReadSmartContractSmartContractManagementResponseResponseBody$Outbound;
 }
 
+export function readSmartContractSmartContractManagementResponseResponseBodyToJSON(
+  readSmartContractSmartContractManagementResponseResponseBody:
+    ReadSmartContractSmartContractManagementResponseResponseBody,
+): string {
+  return JSON.stringify(
+    ReadSmartContractSmartContractManagementResponseResponseBody$outboundSchema
+      .parse(readSmartContractSmartContractManagementResponseResponseBody),
+  );
+}
+
+export function readSmartContractSmartContractManagementResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ReadSmartContractSmartContractManagementResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ReadSmartContractSmartContractManagementResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ReadSmartContractSmartContractManagementResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ReadSmartContractSmartContractManagementResponseBody$inboundSchema:
   z.ZodType<
@@ -171,6 +199,33 @@ export namespace ReadSmartContractSmartContractManagementResponseBody$ {
   /** @deprecated use `ReadSmartContractSmartContractManagementResponseBody$Outbound` instead. */
   export type Outbound =
     ReadSmartContractSmartContractManagementResponseBody$Outbound;
+}
+
+export function readSmartContractSmartContractManagementResponseBodyToJSON(
+  readSmartContractSmartContractManagementResponseBody:
+    ReadSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    ReadSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      readSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function readSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ReadSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ReadSmartContractSmartContractManagementResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ReadSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -236,4 +291,24 @@ export namespace ReadSmartContractResponseBody$ {
   export const outboundSchema = ReadSmartContractResponseBody$outboundSchema;
   /** @deprecated use `ReadSmartContractResponseBody$Outbound` instead. */
   export type Outbound = ReadSmartContractResponseBody$Outbound;
+}
+
+export function readSmartContractResponseBodyToJSON(
+  readSmartContractResponseBody: ReadSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    ReadSmartContractResponseBody$outboundSchema.parse(
+      readSmartContractResponseBody,
+    ),
+  );
+}
+
+export function readSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ReadSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadSmartContractResponseBody' from JSON`,
+  );
 }

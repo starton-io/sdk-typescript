@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   GasPriceRecommendation,
   GasPriceRecommendation$inboundSchema,
@@ -52,4 +55,22 @@ export namespace TransactionManagerSettings$ {
   export const outboundSchema = TransactionManagerSettings$outboundSchema;
   /** @deprecated use `TransactionManagerSettings$Outbound` instead. */
   export type Outbound = TransactionManagerSettings$Outbound;
+}
+
+export function transactionManagerSettingsToJSON(
+  transactionManagerSettings: TransactionManagerSettings,
+): string {
+  return JSON.stringify(
+    TransactionManagerSettings$outboundSchema.parse(transactionManagerSettings),
+  );
+}
+
+export function transactionManagerSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionManagerSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionManagerSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionManagerSettings' from JSON`,
+  );
 }

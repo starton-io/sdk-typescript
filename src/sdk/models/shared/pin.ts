@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DirectoryContent,
   DirectoryContent$inboundSchema,
@@ -69,6 +72,20 @@ export namespace PinMetadata$ {
   export const outboundSchema = PinMetadata$outboundSchema;
   /** @deprecated use `PinMetadata$Outbound` instead. */
   export type Outbound = PinMetadata$Outbound;
+}
+
+export function pinMetadataToJSON(pinMetadata: PinMetadata): string {
+  return JSON.stringify(PinMetadata$outboundSchema.parse(pinMetadata));
+}
+
+export function pinMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<PinMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PinMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PinMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -181,4 +198,18 @@ export namespace Pin$ {
   export const outboundSchema = Pin$outboundSchema;
   /** @deprecated use `Pin$Outbound` instead. */
   export type Outbound = Pin$Outbound;
+}
+
+export function pinToJSON(pin: Pin): string {
+  return JSON.stringify(Pin$outboundSchema.parse(pin));
+}
+
+export function pinFromJSON(
+  jsonString: string,
+): SafeParseResult<Pin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Pin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Pin' from JSON`,
+  );
 }

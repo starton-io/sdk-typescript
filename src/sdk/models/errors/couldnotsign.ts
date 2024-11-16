@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCOULDNOTSIGNContext = {};
 
@@ -80,6 +83,24 @@ export namespace SchemasCOULDNOTSIGNContext$ {
   export const outboundSchema = SchemasCOULDNOTSIGNContext$outboundSchema;
   /** @deprecated use `SchemasCOULDNOTSIGNContext$Outbound` instead. */
   export type Outbound = SchemasCOULDNOTSIGNContext$Outbound;
+}
+
+export function schemasCOULDNOTSIGNContextToJSON(
+  schemasCOULDNOTSIGNContext: SchemasCOULDNOTSIGNContext,
+): string {
+  return JSON.stringify(
+    SchemasCOULDNOTSIGNContext$outboundSchema.parse(schemasCOULDNOTSIGNContext),
+  );
+}
+
+export function schemasCOULDNOTSIGNContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCOULDNOTSIGNContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasCOULDNOTSIGNContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCOULDNOTSIGNContext' from JSON`,
+  );
 }
 
 /** @internal */

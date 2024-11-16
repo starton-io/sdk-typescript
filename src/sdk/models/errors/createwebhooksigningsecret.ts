@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   NotAuthenticated$Outbound,
   NotAuthenticated$outboundSchema,
 } from "./notauthenticated.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateWebhookSigningSecretWebhookResponseBody = NotAuthenticated;
 
@@ -55,6 +58,33 @@ export namespace CreateWebhookSigningSecretWebhookResponseBody$ {
   export type Outbound = CreateWebhookSigningSecretWebhookResponseBody$Outbound;
 }
 
+export function createWebhookSigningSecretWebhookResponseBodyToJSON(
+  createWebhookSigningSecretWebhookResponseBody:
+    CreateWebhookSigningSecretWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWebhookSigningSecretWebhookResponseBody$outboundSchema.parse(
+      createWebhookSigningSecretWebhookResponseBody,
+    ),
+  );
+}
+
+export function createWebhookSigningSecretWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateWebhookSigningSecretWebhookResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWebhookSigningSecretWebhookResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateWebhookSigningSecretWebhookResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWebhookSigningSecretResponseBody$inboundSchema: z.ZodType<
   CreateWebhookSigningSecretResponseBody,
@@ -86,4 +116,26 @@ export namespace CreateWebhookSigningSecretResponseBody$ {
     CreateWebhookSigningSecretResponseBody$outboundSchema;
   /** @deprecated use `CreateWebhookSigningSecretResponseBody$Outbound` instead. */
   export type Outbound = CreateWebhookSigningSecretResponseBody$Outbound;
+}
+
+export function createWebhookSigningSecretResponseBodyToJSON(
+  createWebhookSigningSecretResponseBody:
+    CreateWebhookSigningSecretResponseBody,
+): string {
+  return JSON.stringify(
+    CreateWebhookSigningSecretResponseBody$outboundSchema.parse(
+      createWebhookSigningSecretResponseBody,
+    ),
+  );
+}
+
+export function createWebhookSigningSecretResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWebhookSigningSecretResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWebhookSigningSecretResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWebhookSigningSecretResponseBody' from JSON`,
+  );
 }

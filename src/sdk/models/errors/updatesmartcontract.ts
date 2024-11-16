@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateSmartContractSmartContractManagementResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,32 @@ export namespace UpdateSmartContractSmartContractManagementResponseBody$ {
     UpdateSmartContractSmartContractManagementResponseBody$Outbound;
 }
 
+export function updateSmartContractSmartContractManagementResponseBodyToJSON(
+  updateSmartContractSmartContractManagementResponseBody:
+    UpdateSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      updateSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function updateSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateSmartContractResponseBody$inboundSchema: z.ZodType<
   UpdateSmartContractResponseBody,
@@ -86,4 +115,24 @@ export namespace UpdateSmartContractResponseBody$ {
   export const outboundSchema = UpdateSmartContractResponseBody$outboundSchema;
   /** @deprecated use `UpdateSmartContractResponseBody$Outbound` instead. */
   export type Outbound = UpdateSmartContractResponseBody$Outbound;
+}
+
+export function updateSmartContractResponseBodyToJSON(
+  updateSmartContractResponseBody: UpdateSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractResponseBody$outboundSchema.parse(
+      updateSmartContractResponseBody,
+    ),
+  );
+}
+
+export function updateSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractResponseBody' from JSON`,
+  );
 }

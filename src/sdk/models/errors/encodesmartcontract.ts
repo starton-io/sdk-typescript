@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -69,6 +71,7 @@ import {
   NumericFault$Outbound,
   NumericFault$outboundSchema,
 } from "./numericfault.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UnexpectedArgument,
   UnexpectedArgument$inboundSchema,
@@ -137,6 +140,31 @@ export namespace EncodeSmartContractSmartContractManagementResponseResponseBody$
     EncodeSmartContractSmartContractManagementResponseResponseBody$Outbound;
 }
 
+export function encodeSmartContractSmartContractManagementResponseResponseBodyToJSON(
+  encodeSmartContractSmartContractManagementResponseResponseBody:
+    EncodeSmartContractSmartContractManagementResponseResponseBody,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractSmartContractManagementResponseResponseBody$outboundSchema
+      .parse(encodeSmartContractSmartContractManagementResponseResponseBody),
+  );
+}
+
+export function encodeSmartContractSmartContractManagementResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EncodeSmartContractSmartContractManagementResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EncodeSmartContractSmartContractManagementResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractSmartContractManagementResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const EncodeSmartContractSmartContractManagementResponseBody$inboundSchema:
   z.ZodType<
@@ -171,6 +199,32 @@ export namespace EncodeSmartContractSmartContractManagementResponseBody$ {
   /** @deprecated use `EncodeSmartContractSmartContractManagementResponseBody$Outbound` instead. */
   export type Outbound =
     EncodeSmartContractSmartContractManagementResponseBody$Outbound;
+}
+
+export function encodeSmartContractSmartContractManagementResponseBodyToJSON(
+  encodeSmartContractSmartContractManagementResponseBody:
+    EncodeSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      encodeSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function encodeSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EncodeSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EncodeSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -236,4 +290,24 @@ export namespace EncodeSmartContractResponseBody$ {
   export const outboundSchema = EncodeSmartContractResponseBody$outboundSchema;
   /** @deprecated use `EncodeSmartContractResponseBody$Outbound` instead. */
   export type Outbound = EncodeSmartContractResponseBody$Outbound;
+}
+
+export function encodeSmartContractResponseBodyToJSON(
+  encodeSmartContractResponseBody: EncodeSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractResponseBody$outboundSchema.parse(
+      encodeSmartContractResponseBody,
+    ),
+  );
+}
+
+export function encodeSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractResponseBody' from JSON`,
+  );
 }

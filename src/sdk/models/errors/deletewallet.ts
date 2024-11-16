@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteWalletWalletResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace DeleteWalletWalletResponseBody$ {
   export type Outbound = DeleteWalletWalletResponseBody$Outbound;
 }
 
+export function deleteWalletWalletResponseBodyToJSON(
+  deleteWalletWalletResponseBody: DeleteWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteWalletWalletResponseBody$outboundSchema.parse(
+      deleteWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function deleteWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteWalletResponseBody$inboundSchema: z.ZodType<
   DeleteWalletResponseBody,
@@ -79,4 +102,22 @@ export namespace DeleteWalletResponseBody$ {
   export const outboundSchema = DeleteWalletResponseBody$outboundSchema;
   /** @deprecated use `DeleteWalletResponseBody$Outbound` instead. */
   export type Outbound = DeleteWalletResponseBody$Outbound;
+}
+
+export function deleteWalletResponseBodyToJSON(
+  deleteWalletResponseBody: DeleteWalletResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteWalletResponseBody$outboundSchema.parse(deleteWalletResponseBody),
+  );
+}
+
+export function deleteWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteWalletResponseBody' from JSON`,
+  );
 }

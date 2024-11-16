@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllWatcherEventResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetAllWatcherEventResponseBody$ {
   export const outboundSchema = GetAllWatcherEventResponseBody$outboundSchema;
   /** @deprecated use `GetAllWatcherEventResponseBody$Outbound` instead. */
   export type Outbound = GetAllWatcherEventResponseBody$Outbound;
+}
+
+export function getAllWatcherEventResponseBodyToJSON(
+  getAllWatcherEventResponseBody: GetAllWatcherEventResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllWatcherEventResponseBody$outboundSchema.parse(
+      getAllWatcherEventResponseBody,
+    ),
+  );
+}
+
+export function getAllWatcherEventResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllWatcherEventResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllWatcherEventResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllWatcherEventResponseBody' from JSON`,
+  );
 }

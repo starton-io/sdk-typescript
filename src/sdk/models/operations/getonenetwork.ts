@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneNetworkRequest = {
@@ -65,6 +68,24 @@ export namespace GetOneNetworkRequest$ {
   export type Outbound = GetOneNetworkRequest$Outbound;
 }
 
+export function getOneNetworkRequestToJSON(
+  getOneNetworkRequest: GetOneNetworkRequest,
+): string {
+  return JSON.stringify(
+    GetOneNetworkRequest$outboundSchema.parse(getOneNetworkRequest),
+  );
+}
+
+export function getOneNetworkRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneNetworkRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneNetworkRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneNetworkRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneNetworkResponse$inboundSchema: z.ZodType<
   GetOneNetworkResponse,
@@ -124,4 +145,22 @@ export namespace GetOneNetworkResponse$ {
   export const outboundSchema = GetOneNetworkResponse$outboundSchema;
   /** @deprecated use `GetOneNetworkResponse$Outbound` instead. */
   export type Outbound = GetOneNetworkResponse$Outbound;
+}
+
+export function getOneNetworkResponseToJSON(
+  getOneNetworkResponse: GetOneNetworkResponse,
+): string {
+  return JSON.stringify(
+    GetOneNetworkResponse$outboundSchema.parse(getOneNetworkResponse),
+  );
+}
+
+export function getOneNetworkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneNetworkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneNetworkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneNetworkResponse' from JSON`,
+  );
 }

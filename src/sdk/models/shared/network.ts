@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BrowserExtensionSettings,
   BrowserExtensionSettings$inboundSchema,
@@ -92,6 +95,26 @@ export namespace NetworkGasPriceRecommendation$ {
   export const outboundSchema = NetworkGasPriceRecommendation$outboundSchema;
   /** @deprecated use `NetworkGasPriceRecommendation$Outbound` instead. */
   export type Outbound = NetworkGasPriceRecommendation$Outbound;
+}
+
+export function networkGasPriceRecommendationToJSON(
+  networkGasPriceRecommendation: NetworkGasPriceRecommendation,
+): string {
+  return JSON.stringify(
+    NetworkGasPriceRecommendation$outboundSchema.parse(
+      networkGasPriceRecommendation,
+    ),
+  );
+}
+
+export function networkGasPriceRecommendationFromJSON(
+  jsonString: string,
+): SafeParseResult<NetworkGasPriceRecommendation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetworkGasPriceRecommendation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetworkGasPriceRecommendation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -230,4 +253,18 @@ export namespace Network$ {
   export const outboundSchema = Network$outboundSchema;
   /** @deprecated use `Network$Outbound` instead. */
   export type Outbound = Network$Outbound;
+}
+
+export function networkToJSON(network: Network): string {
+  return JSON.stringify(Network$outboundSchema.parse(network));
+}
+
+export function networkFromJSON(
+  jsonString: string,
+): SafeParseResult<Network, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Network$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Network' from JSON`,
+  );
 }

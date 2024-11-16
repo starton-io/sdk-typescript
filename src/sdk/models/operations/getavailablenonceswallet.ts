@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAvailableNoncesWalletRequest = {
@@ -72,6 +75,26 @@ export namespace GetAvailableNoncesWalletRequest$ {
   export type Outbound = GetAvailableNoncesWalletRequest$Outbound;
 }
 
+export function getAvailableNoncesWalletRequestToJSON(
+  getAvailableNoncesWalletRequest: GetAvailableNoncesWalletRequest,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletRequest$outboundSchema.parse(
+      getAvailableNoncesWalletRequest,
+    ),
+  );
+}
+
+export function getAvailableNoncesWalletRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAvailableNoncesWalletRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAvailableNoncesWalletRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAvailableNoncesWalletResponse$inboundSchema: z.ZodType<
   GetAvailableNoncesWalletResponse,
@@ -131,4 +154,24 @@ export namespace GetAvailableNoncesWalletResponse$ {
   export const outboundSchema = GetAvailableNoncesWalletResponse$outboundSchema;
   /** @deprecated use `GetAvailableNoncesWalletResponse$Outbound` instead. */
   export type Outbound = GetAvailableNoncesWalletResponse$Outbound;
+}
+
+export function getAvailableNoncesWalletResponseToJSON(
+  getAvailableNoncesWalletResponse: GetAvailableNoncesWalletResponse,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletResponse$outboundSchema.parse(
+      getAvailableNoncesWalletResponse,
+    ),
+  );
+}
+
+export function getAvailableNoncesWalletResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAvailableNoncesWalletResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAvailableNoncesWalletResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletResponse' from JSON`,
+  );
 }

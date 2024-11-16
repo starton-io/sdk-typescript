@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBalanceErc20ResponseBody = BadRequestException;
 
@@ -40,4 +43,24 @@ export namespace GetBalanceErc20ResponseBody$ {
   export const outboundSchema = GetBalanceErc20ResponseBody$outboundSchema;
   /** @deprecated use `GetBalanceErc20ResponseBody$Outbound` instead. */
   export type Outbound = GetBalanceErc20ResponseBody$Outbound;
+}
+
+export function getBalanceErc20ResponseBodyToJSON(
+  getBalanceErc20ResponseBody: GetBalanceErc20ResponseBody,
+): string {
+  return JSON.stringify(
+    GetBalanceErc20ResponseBody$outboundSchema.parse(
+      getBalanceErc20ResponseBody,
+    ),
+  );
+}
+
+export function getBalanceErc20ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBalanceErc20ResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBalanceErc20ResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBalanceErc20ResponseBody' from JSON`,
+  );
 }

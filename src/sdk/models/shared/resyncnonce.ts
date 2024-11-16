@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ResyncNonce = {
   nextNonce: number;
@@ -42,4 +45,18 @@ export namespace ResyncNonce$ {
   export const outboundSchema = ResyncNonce$outboundSchema;
   /** @deprecated use `ResyncNonce$Outbound` instead. */
   export type Outbound = ResyncNonce$Outbound;
+}
+
+export function resyncNonceToJSON(resyncNonce: ResyncNonce): string {
+  return JSON.stringify(ResyncNonce$outboundSchema.parse(resyncNonce));
+}
+
+export function resyncNonceFromJSON(
+  jsonString: string,
+): SafeParseResult<ResyncNonce, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResyncNonce$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResyncNonce' from JSON`,
+  );
 }

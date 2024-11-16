@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RequireFaucetDto = {
   /**
@@ -52,4 +55,22 @@ export namespace RequireFaucetDto$ {
   export const outboundSchema = RequireFaucetDto$outboundSchema;
   /** @deprecated use `RequireFaucetDto$Outbound` instead. */
   export type Outbound = RequireFaucetDto$Outbound;
+}
+
+export function requireFaucetDtoToJSON(
+  requireFaucetDto: RequireFaucetDto,
+): string {
+  return JSON.stringify(
+    RequireFaucetDto$outboundSchema.parse(requireFaucetDto),
+  );
+}
+
+export function requireFaucetDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<RequireFaucetDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequireFaucetDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequireFaucetDto' from JSON`,
+  );
 }

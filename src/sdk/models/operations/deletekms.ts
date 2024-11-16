@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteKmsRequest = {
   /**
@@ -64,6 +67,24 @@ export namespace DeleteKmsRequest$ {
   export type Outbound = DeleteKmsRequest$Outbound;
 }
 
+export function deleteKmsRequestToJSON(
+  deleteKmsRequest: DeleteKmsRequest,
+): string {
+  return JSON.stringify(
+    DeleteKmsRequest$outboundSchema.parse(deleteKmsRequest),
+  );
+}
+
+export function deleteKmsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteKmsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteKmsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteKmsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteKmsResponse$inboundSchema: z.ZodType<
   DeleteKmsResponse,
@@ -121,4 +142,22 @@ export namespace DeleteKmsResponse$ {
   export const outboundSchema = DeleteKmsResponse$outboundSchema;
   /** @deprecated use `DeleteKmsResponse$Outbound` instead. */
   export type Outbound = DeleteKmsResponse$Outbound;
+}
+
+export function deleteKmsResponseToJSON(
+  deleteKmsResponse: DeleteKmsResponse,
+): string {
+  return JSON.stringify(
+    DeleteKmsResponse$outboundSchema.parse(deleteKmsResponse),
+  );
+}
+
+export function deleteKmsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteKmsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteKmsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteKmsResponse' from JSON`,
+  );
 }

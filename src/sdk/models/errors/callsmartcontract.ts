@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   AlreadyKnown,
   AlreadyKnown$inboundSchema,
@@ -135,6 +137,7 @@ import {
   ReplacementGasPriceUnderpriced$Outbound,
   ReplacementGasPriceUnderpriced$outboundSchema,
 } from "./replacementgaspriceunderpriced.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UnexpectedArgument,
   UnexpectedArgument$inboundSchema,
@@ -242,6 +245,31 @@ export namespace CallSmartContractSmartContractManagementResponse500ResponseBody
     CallSmartContractSmartContractManagementResponse500ResponseBody$Outbound;
 }
 
+export function callSmartContractSmartContractManagementResponse500ResponseBodyToJSON(
+  callSmartContractSmartContractManagementResponse500ResponseBody:
+    CallSmartContractSmartContractManagementResponse500ResponseBody,
+): string {
+  return JSON.stringify(
+    CallSmartContractSmartContractManagementResponse500ResponseBody$outboundSchema
+      .parse(callSmartContractSmartContractManagementResponse500ResponseBody),
+  );
+}
+
+export function callSmartContractSmartContractManagementResponse500ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CallSmartContractSmartContractManagementResponse500ResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CallSmartContractSmartContractManagementResponse500ResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CallSmartContractSmartContractManagementResponse500ResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CallSmartContractSmartContractManagementResponseResponseBody$inboundSchema:
   z.ZodType<
@@ -278,6 +306,31 @@ export namespace CallSmartContractSmartContractManagementResponseResponseBody$ {
     CallSmartContractSmartContractManagementResponseResponseBody$Outbound;
 }
 
+export function callSmartContractSmartContractManagementResponseResponseBodyToJSON(
+  callSmartContractSmartContractManagementResponseResponseBody:
+    CallSmartContractSmartContractManagementResponseResponseBody,
+): string {
+  return JSON.stringify(
+    CallSmartContractSmartContractManagementResponseResponseBody$outboundSchema
+      .parse(callSmartContractSmartContractManagementResponseResponseBody),
+  );
+}
+
+export function callSmartContractSmartContractManagementResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CallSmartContractSmartContractManagementResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CallSmartContractSmartContractManagementResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CallSmartContractSmartContractManagementResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CallSmartContractSmartContractManagementResponseBody$inboundSchema:
   z.ZodType<
@@ -312,6 +365,33 @@ export namespace CallSmartContractSmartContractManagementResponseBody$ {
   /** @deprecated use `CallSmartContractSmartContractManagementResponseBody$Outbound` instead. */
   export type Outbound =
     CallSmartContractSmartContractManagementResponseBody$Outbound;
+}
+
+export function callSmartContractSmartContractManagementResponseBodyToJSON(
+  callSmartContractSmartContractManagementResponseBody:
+    CallSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    CallSmartContractSmartContractManagementResponseBody$outboundSchema.parse(
+      callSmartContractSmartContractManagementResponseBody,
+    ),
+  );
+}
+
+export function callSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CallSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CallSmartContractSmartContractManagementResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CallSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -395,4 +475,24 @@ export namespace CallSmartContractResponseBody$ {
   export const outboundSchema = CallSmartContractResponseBody$outboundSchema;
   /** @deprecated use `CallSmartContractResponseBody$Outbound` instead. */
   export type Outbound = CallSmartContractResponseBody$Outbound;
+}
+
+export function callSmartContractResponseBodyToJSON(
+  callSmartContractResponseBody: CallSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    CallSmartContractResponseBody$outboundSchema.parse(
+      callSmartContractResponseBody,
+    ),
+  );
+}
+
+export function callSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CallSmartContractResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CallSmartContractResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CallSmartContractResponseBody' from JSON`,
+  );
 }

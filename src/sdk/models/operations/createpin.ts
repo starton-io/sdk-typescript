@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreatePinResponse = {
@@ -81,4 +84,22 @@ export namespace CreatePinResponse$ {
   export const outboundSchema = CreatePinResponse$outboundSchema;
   /** @deprecated use `CreatePinResponse$Outbound` instead. */
   export type Outbound = CreatePinResponse$Outbound;
+}
+
+export function createPinResponseToJSON(
+  createPinResponse: CreatePinResponse,
+): string {
+  return JSON.stringify(
+    CreatePinResponse$outboundSchema.parse(createPinResponse),
+  );
+}
+
+export function createPinResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePinResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePinResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePinResponse' from JSON`,
+  );
 }

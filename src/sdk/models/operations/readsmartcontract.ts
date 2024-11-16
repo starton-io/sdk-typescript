@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ReadSmartContractRequest = {
@@ -87,6 +90,24 @@ export namespace ReadSmartContractRequest$ {
   export type Outbound = ReadSmartContractRequest$Outbound;
 }
 
+export function readSmartContractRequestToJSON(
+  readSmartContractRequest: ReadSmartContractRequest,
+): string {
+  return JSON.stringify(
+    ReadSmartContractRequest$outboundSchema.parse(readSmartContractRequest),
+  );
+}
+
+export function readSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ReadSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ReadSmartContractResponse$inboundSchema: z.ZodType<
   ReadSmartContractResponse,
@@ -150,4 +171,22 @@ export namespace ReadSmartContractResponse$ {
   export const outboundSchema = ReadSmartContractResponse$outboundSchema;
   /** @deprecated use `ReadSmartContractResponse$Outbound` instead. */
   export type Outbound = ReadSmartContractResponse$Outbound;
+}
+
+export function readSmartContractResponseToJSON(
+  readSmartContractResponse: ReadSmartContractResponse,
+): string {
+  return JSON.stringify(
+    ReadSmartContractResponse$outboundSchema.parse(readSmartContractResponse),
+  );
+}
+
+export function readSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ReadSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReadSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReadSmartContractResponse' from JSON`,
+  );
 }

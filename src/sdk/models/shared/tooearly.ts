@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Context = {};
 
@@ -40,6 +43,20 @@ export namespace Context$ {
   export const outboundSchema = Context$outboundSchema;
   /** @deprecated use `Context$Outbound` instead. */
   export type Outbound = Context$Outbound;
+}
+
+export function contextToJSON(context: Context): string {
+  return JSON.stringify(Context$outboundSchema.parse(context));
+}
+
+export function contextFromJSON(
+  jsonString: string,
+): SafeParseResult<Context, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Context$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Context' from JSON`,
+  );
 }
 
 /** @internal */
@@ -95,4 +112,18 @@ export namespace TooEarly$ {
   export const outboundSchema = TooEarly$outboundSchema;
   /** @deprecated use `TooEarly$Outbound` instead. */
   export type Outbound = TooEarly$Outbound;
+}
+
+export function tooEarlyToJSON(tooEarly: TooEarly): string {
+  return JSON.stringify(TooEarly$outboundSchema.parse(tooEarly));
+}
+
+export function tooEarlyFromJSON(
+  jsonString: string,
+): SafeParseResult<TooEarly, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TooEarly$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TooEarly' from JSON`,
+  );
 }

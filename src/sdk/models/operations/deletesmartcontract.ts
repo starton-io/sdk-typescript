@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteSmartContractRequest = {
   address: string;
@@ -68,6 +71,24 @@ export namespace DeleteSmartContractRequest$ {
   export type Outbound = DeleteSmartContractRequest$Outbound;
 }
 
+export function deleteSmartContractRequestToJSON(
+  deleteSmartContractRequest: DeleteSmartContractRequest,
+): string {
+  return JSON.stringify(
+    DeleteSmartContractRequest$outboundSchema.parse(deleteSmartContractRequest),
+  );
+}
+
+export function deleteSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteSmartContractResponse$inboundSchema: z.ZodType<
   DeleteSmartContractResponse,
@@ -125,4 +146,24 @@ export namespace DeleteSmartContractResponse$ {
   export const outboundSchema = DeleteSmartContractResponse$outboundSchema;
   /** @deprecated use `DeleteSmartContractResponse$Outbound` instead. */
   export type Outbound = DeleteSmartContractResponse$Outbound;
+}
+
+export function deleteSmartContractResponseToJSON(
+  deleteSmartContractResponse: DeleteSmartContractResponse,
+): string {
+  return JSON.stringify(
+    DeleteSmartContractResponse$outboundSchema.parse(
+      deleteSmartContractResponse,
+    ),
+  );
+}
+
+export function deleteSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteSmartContractResponse' from JSON`,
+  );
 }

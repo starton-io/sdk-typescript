@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EncodeSmartContractResponse = {
   data?: string | null | undefined;
@@ -42,4 +45,24 @@ export namespace EncodeSmartContractResponse$ {
   export const outboundSchema = EncodeSmartContractResponse$outboundSchema;
   /** @deprecated use `EncodeSmartContractResponse$Outbound` instead. */
   export type Outbound = EncodeSmartContractResponse$Outbound;
+}
+
+export function encodeSmartContractResponseToJSON(
+  encodeSmartContractResponse: EncodeSmartContractResponse,
+): string {
+  return JSON.stringify(
+    EncodeSmartContractResponse$outboundSchema.parse(
+      encodeSmartContractResponse,
+    ),
+  );
+}
+
+export function encodeSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeSmartContractResponse' from JSON`,
+  );
 }

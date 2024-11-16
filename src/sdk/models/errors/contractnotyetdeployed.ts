@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasCONTRACTNOTYETDEPLOYEDContext = {};
 
@@ -82,6 +85,27 @@ export namespace SchemasCONTRACTNOTYETDEPLOYEDContext$ {
     SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema;
   /** @deprecated use `SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound` instead. */
   export type Outbound = SchemasCONTRACTNOTYETDEPLOYEDContext$Outbound;
+}
+
+export function schemasCONTRACTNOTYETDEPLOYEDContextToJSON(
+  schemasCONTRACTNOTYETDEPLOYEDContext: SchemasCONTRACTNOTYETDEPLOYEDContext,
+): string {
+  return JSON.stringify(
+    SchemasCONTRACTNOTYETDEPLOYEDContext$outboundSchema.parse(
+      schemasCONTRACTNOTYETDEPLOYEDContext,
+    ),
+  );
+}
+
+export function schemasCONTRACTNOTYETDEPLOYEDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasCONTRACTNOTYETDEPLOYEDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasCONTRACTNOTYETDEPLOYEDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCONTRACTNOTYETDEPLOYEDContext' from JSON`,
+  );
 }
 
 /** @internal */

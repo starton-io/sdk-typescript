@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBalanceAddressResponseBody = BadRequestException;
 
@@ -41,4 +44,24 @@ export namespace GetBalanceAddressResponseBody$ {
   export const outboundSchema = GetBalanceAddressResponseBody$outboundSchema;
   /** @deprecated use `GetBalanceAddressResponseBody$Outbound` instead. */
   export type Outbound = GetBalanceAddressResponseBody$Outbound;
+}
+
+export function getBalanceAddressResponseBodyToJSON(
+  getBalanceAddressResponseBody: GetBalanceAddressResponseBody,
+): string {
+  return JSON.stringify(
+    GetBalanceAddressResponseBody$outboundSchema.parse(
+      getBalanceAddressResponseBody,
+    ),
+  );
+}
+
+export function getBalanceAddressResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBalanceAddressResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBalanceAddressResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBalanceAddressResponseBody' from JSON`,
+  );
 }

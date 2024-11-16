@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EncodeDto3 = {};
 
@@ -44,6 +47,20 @@ export namespace EncodeDto3$ {
   export const outboundSchema = EncodeDto3$outboundSchema;
   /** @deprecated use `EncodeDto3$Outbound` instead. */
   export type Outbound = EncodeDto3$Outbound;
+}
+
+export function encodeDto3ToJSON(encodeDto3: EncodeDto3): string {
+  return JSON.stringify(EncodeDto3$outboundSchema.parse(encodeDto3));
+}
+
+export function encodeDto3FromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeDto3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeDto3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeDto3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -88,6 +105,22 @@ export namespace EncodeDtoParams$ {
   export const outboundSchema = EncodeDtoParams$outboundSchema;
   /** @deprecated use `EncodeDtoParams$Outbound` instead. */
   export type Outbound = EncodeDtoParams$Outbound;
+}
+
+export function encodeDtoParamsToJSON(
+  encodeDtoParams: EncodeDtoParams,
+): string {
+  return JSON.stringify(EncodeDtoParams$outboundSchema.parse(encodeDtoParams));
+}
+
+export function encodeDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeDtoParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -141,4 +174,18 @@ export namespace EncodeDto$ {
   export const outboundSchema = EncodeDto$outboundSchema;
   /** @deprecated use `EncodeDto$Outbound` instead. */
   export type Outbound = EncodeDto$Outbound;
+}
+
+export function encodeDtoToJSON(encodeDto: EncodeDto): string {
+  return JSON.stringify(EncodeDto$outboundSchema.parse(encodeDto));
+}
+
+export function encodeDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<EncodeDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EncodeDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EncodeDto' from JSON`,
+  );
 }

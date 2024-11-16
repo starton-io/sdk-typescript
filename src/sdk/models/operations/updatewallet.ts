@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateWalletRequest = {
@@ -77,6 +80,24 @@ export namespace UpdateWalletRequest$ {
   export type Outbound = UpdateWalletRequest$Outbound;
 }
 
+export function updateWalletRequestToJSON(
+  updateWalletRequest: UpdateWalletRequest,
+): string {
+  return JSON.stringify(
+    UpdateWalletRequest$outboundSchema.parse(updateWalletRequest),
+  );
+}
+
+export function updateWalletRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWalletRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWalletRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWalletRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateWalletResponse$inboundSchema: z.ZodType<
   UpdateWalletResponse,
@@ -136,4 +157,22 @@ export namespace UpdateWalletResponse$ {
   export const outboundSchema = UpdateWalletResponse$outboundSchema;
   /** @deprecated use `UpdateWalletResponse$Outbound` instead. */
   export type Outbound = UpdateWalletResponse$Outbound;
+}
+
+export function updateWalletResponseToJSON(
+  updateWalletResponse: UpdateWalletResponse,
+): string {
+  return JSON.stringify(
+    UpdateWalletResponse$outboundSchema.parse(updateWalletResponse),
+  );
+}
+
+export function updateWalletResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWalletResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWalletResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWalletResponse' from JSON`,
+  );
 }

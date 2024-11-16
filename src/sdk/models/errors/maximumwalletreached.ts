@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasMAXIMUMWALLETREACHEDContext = {};
 
@@ -81,6 +84,27 @@ export namespace SchemasMAXIMUMWALLETREACHEDContext$ {
     SchemasMAXIMUMWALLETREACHEDContext$outboundSchema;
   /** @deprecated use `SchemasMAXIMUMWALLETREACHEDContext$Outbound` instead. */
   export type Outbound = SchemasMAXIMUMWALLETREACHEDContext$Outbound;
+}
+
+export function schemasMAXIMUMWALLETREACHEDContextToJSON(
+  schemasMAXIMUMWALLETREACHEDContext: SchemasMAXIMUMWALLETREACHEDContext,
+): string {
+  return JSON.stringify(
+    SchemasMAXIMUMWALLETREACHEDContext$outboundSchema.parse(
+      schemasMAXIMUMWALLETREACHEDContext,
+    ),
+  );
+}
+
+export function schemasMAXIMUMWALLETREACHEDContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasMAXIMUMWALLETREACHEDContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SchemasMAXIMUMWALLETREACHEDContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasMAXIMUMWALLETREACHEDContext' from JSON`,
+  );
 }
 
 /** @internal */

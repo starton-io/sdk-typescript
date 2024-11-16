@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteInvitationRequest = {
   id: string;
@@ -59,6 +62,24 @@ export namespace DeleteInvitationRequest$ {
   export const outboundSchema = DeleteInvitationRequest$outboundSchema;
   /** @deprecated use `DeleteInvitationRequest$Outbound` instead. */
   export type Outbound = DeleteInvitationRequest$Outbound;
+}
+
+export function deleteInvitationRequestToJSON(
+  deleteInvitationRequest: DeleteInvitationRequest,
+): string {
+  return JSON.stringify(
+    DeleteInvitationRequest$outboundSchema.parse(deleteInvitationRequest),
+  );
+}
+
+export function deleteInvitationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInvitationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInvitationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInvitationRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -118,4 +139,22 @@ export namespace DeleteInvitationResponse$ {
   export const outboundSchema = DeleteInvitationResponse$outboundSchema;
   /** @deprecated use `DeleteInvitationResponse$Outbound` instead. */
   export type Outbound = DeleteInvitationResponse$Outbound;
+}
+
+export function deleteInvitationResponseToJSON(
+  deleteInvitationResponse: DeleteInvitationResponse,
+): string {
+  return JSON.stringify(
+    DeleteInvitationResponse$outboundSchema.parse(deleteInvitationResponse),
+  );
+}
+
+export function deleteInvitationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInvitationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInvitationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInvitationResponse' from JSON`,
+  );
 }

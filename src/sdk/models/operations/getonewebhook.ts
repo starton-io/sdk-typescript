@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneWebhookRequest = {
@@ -65,6 +68,24 @@ export namespace GetOneWebhookRequest$ {
   export type Outbound = GetOneWebhookRequest$Outbound;
 }
 
+export function getOneWebhookRequestToJSON(
+  getOneWebhookRequest: GetOneWebhookRequest,
+): string {
+  return JSON.stringify(
+    GetOneWebhookRequest$outboundSchema.parse(getOneWebhookRequest),
+  );
+}
+
+export function getOneWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWebhookResponse$inboundSchema: z.ZodType<
   GetOneWebhookResponse,
@@ -124,4 +145,22 @@ export namespace GetOneWebhookResponse$ {
   export const outboundSchema = GetOneWebhookResponse$outboundSchema;
   /** @deprecated use `GetOneWebhookResponse$Outbound` instead. */
   export type Outbound = GetOneWebhookResponse$Outbound;
+}
+
+export function getOneWebhookResponseToJSON(
+  getOneWebhookResponse: GetOneWebhookResponse,
+): string {
+  return JSON.stringify(
+    GetOneWebhookResponse$outboundSchema.parse(getOneWebhookResponse),
+  );
+}
+
+export function getOneWebhookResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWebhookResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookResponse' from JSON`,
+  );
 }

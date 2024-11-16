@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -27,6 +29,7 @@ import {
   CouldNotProcessEntity$Outbound,
   CouldNotProcessEntity$outboundSchema,
 } from "./couldnotprocessentity.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody =
   CouldNotAssignNonce;
@@ -75,6 +78,31 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponse500ResponseBo
     GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$Outbound;
 }
 
+export function getAvailableNoncesWalletTransactionManagerResponse500ResponseBodyToJSON(
+  getAvailableNoncesWalletTransactionManagerResponse500ResponseBody:
+    GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$outboundSchema
+      .parse(getAvailableNoncesWalletTransactionManagerResponse500ResponseBody),
+  );
+}
+
+export function getAvailableNoncesWalletTransactionManagerResponse500ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletTransactionManagerResponse500ResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAvailableNoncesWalletTransactionManagerResponseResponseBody$inboundSchema:
   z.ZodType<
@@ -109,6 +137,31 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponseResponseBody$
   /** @deprecated use `GetAvailableNoncesWalletTransactionManagerResponseResponseBody$Outbound` instead. */
   export type Outbound =
     GetAvailableNoncesWalletTransactionManagerResponseResponseBody$Outbound;
+}
+
+export function getAvailableNoncesWalletTransactionManagerResponseResponseBodyToJSON(
+  getAvailableNoncesWalletTransactionManagerResponseResponseBody:
+    GetAvailableNoncesWalletTransactionManagerResponseResponseBody,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletTransactionManagerResponseResponseBody$outboundSchema
+      .parse(getAvailableNoncesWalletTransactionManagerResponseResponseBody),
+  );
+}
+
+export function getAvailableNoncesWalletTransactionManagerResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAvailableNoncesWalletTransactionManagerResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableNoncesWalletTransactionManagerResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletTransactionManagerResponseResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -147,6 +200,32 @@ export namespace GetAvailableNoncesWalletTransactionManagerResponseBody$ {
     GetAvailableNoncesWalletTransactionManagerResponseBody$Outbound;
 }
 
+export function getAvailableNoncesWalletTransactionManagerResponseBodyToJSON(
+  getAvailableNoncesWalletTransactionManagerResponseBody:
+    GetAvailableNoncesWalletTransactionManagerResponseBody,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletTransactionManagerResponseBody$outboundSchema.parse(
+      getAvailableNoncesWalletTransactionManagerResponseBody,
+    ),
+  );
+}
+
+export function getAvailableNoncesWalletTransactionManagerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAvailableNoncesWalletTransactionManagerResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableNoncesWalletTransactionManagerResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletTransactionManagerResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAvailableNoncesWalletResponseBody$inboundSchema: z.ZodType<
   GetAvailableNoncesWalletResponseBody,
@@ -178,4 +257,25 @@ export namespace GetAvailableNoncesWalletResponseBody$ {
     GetAvailableNoncesWalletResponseBody$outboundSchema;
   /** @deprecated use `GetAvailableNoncesWalletResponseBody$Outbound` instead. */
   export type Outbound = GetAvailableNoncesWalletResponseBody$Outbound;
+}
+
+export function getAvailableNoncesWalletResponseBodyToJSON(
+  getAvailableNoncesWalletResponseBody: GetAvailableNoncesWalletResponseBody,
+): string {
+  return JSON.stringify(
+    GetAvailableNoncesWalletResponseBody$outboundSchema.parse(
+      getAvailableNoncesWalletResponseBody,
+    ),
+  );
+}
+
+export function getAvailableNoncesWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAvailableNoncesWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAvailableNoncesWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAvailableNoncesWalletResponseBody' from JSON`,
+  );
 }

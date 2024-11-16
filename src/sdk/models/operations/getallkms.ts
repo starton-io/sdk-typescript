@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAllKmsRequest = {
@@ -77,6 +80,24 @@ export namespace GetAllKmsRequest$ {
   export type Outbound = GetAllKmsRequest$Outbound;
 }
 
+export function getAllKmsRequestToJSON(
+  getAllKmsRequest: GetAllKmsRequest,
+): string {
+  return JSON.stringify(
+    GetAllKmsRequest$outboundSchema.parse(getAllKmsRequest),
+  );
+}
+
+export function getAllKmsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllKmsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllKmsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllKmsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllKmsKmsPaginated$inboundSchema: z.ZodType<
   GetAllKmsKmsPaginated,
@@ -114,6 +135,24 @@ export namespace GetAllKmsKmsPaginated$ {
   export const outboundSchema = GetAllKmsKmsPaginated$outboundSchema;
   /** @deprecated use `GetAllKmsKmsPaginated$Outbound` instead. */
   export type Outbound = GetAllKmsKmsPaginated$Outbound;
+}
+
+export function getAllKmsKmsPaginatedToJSON(
+  getAllKmsKmsPaginated: GetAllKmsKmsPaginated,
+): string {
+  return JSON.stringify(
+    GetAllKmsKmsPaginated$outboundSchema.parse(getAllKmsKmsPaginated),
+  );
+}
+
+export function getAllKmsKmsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllKmsKmsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllKmsKmsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllKmsKmsPaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -175,4 +214,22 @@ export namespace GetAllKmsResponse$ {
   export const outboundSchema = GetAllKmsResponse$outboundSchema;
   /** @deprecated use `GetAllKmsResponse$Outbound` instead. */
   export type Outbound = GetAllKmsResponse$Outbound;
+}
+
+export function getAllKmsResponseToJSON(
+  getAllKmsResponse: GetAllKmsResponse,
+): string {
+  return JSON.stringify(
+    GetAllKmsResponse$outboundSchema.parse(getAllKmsResponse),
+  );
+}
+
+export function getAllKmsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllKmsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllKmsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllKmsResponse' from JSON`,
+  );
 }

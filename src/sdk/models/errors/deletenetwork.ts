@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteNetworkNetworkResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace DeleteNetworkNetworkResponseBody$ {
   export type Outbound = DeleteNetworkNetworkResponseBody$Outbound;
 }
 
+export function deleteNetworkNetworkResponseBodyToJSON(
+  deleteNetworkNetworkResponseBody: DeleteNetworkNetworkResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteNetworkNetworkResponseBody$outboundSchema.parse(
+      deleteNetworkNetworkResponseBody,
+    ),
+  );
+}
+
+export function deleteNetworkNetworkResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteNetworkNetworkResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteNetworkNetworkResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteNetworkNetworkResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteNetworkResponseBody$inboundSchema: z.ZodType<
   DeleteNetworkResponseBody,
@@ -79,4 +102,22 @@ export namespace DeleteNetworkResponseBody$ {
   export const outboundSchema = DeleteNetworkResponseBody$outboundSchema;
   /** @deprecated use `DeleteNetworkResponseBody$Outbound` instead. */
   export type Outbound = DeleteNetworkResponseBody$Outbound;
+}
+
+export function deleteNetworkResponseBodyToJSON(
+  deleteNetworkResponseBody: DeleteNetworkResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteNetworkResponseBody$outboundSchema.parse(deleteNetworkResponseBody),
+  );
+}
+
+export function deleteNetworkResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteNetworkResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteNetworkResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteNetworkResponseBody' from JSON`,
+  );
 }

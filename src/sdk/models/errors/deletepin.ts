@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeletePinIpfsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace DeletePinIpfsResponseBody$ {
   export type Outbound = DeletePinIpfsResponseBody$Outbound;
 }
 
+export function deletePinIpfsResponseBodyToJSON(
+  deletePinIpfsResponseBody: DeletePinIpfsResponseBody,
+): string {
+  return JSON.stringify(
+    DeletePinIpfsResponseBody$outboundSchema.parse(deletePinIpfsResponseBody),
+  );
+}
+
+export function deletePinIpfsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeletePinIpfsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeletePinIpfsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeletePinIpfsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeletePinResponseBody$inboundSchema: z.ZodType<
   DeletePinResponseBody,
@@ -78,4 +99,22 @@ export namespace DeletePinResponseBody$ {
   export const outboundSchema = DeletePinResponseBody$outboundSchema;
   /** @deprecated use `DeletePinResponseBody$Outbound` instead. */
   export type Outbound = DeletePinResponseBody$Outbound;
+}
+
+export function deletePinResponseBodyToJSON(
+  deletePinResponseBody: DeletePinResponseBody,
+): string {
+  return JSON.stringify(
+    DeletePinResponseBody$outboundSchema.parse(deletePinResponseBody),
+  );
+}
+
+export function deletePinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeletePinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeletePinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeletePinResponseBody' from JSON`,
+  );
 }

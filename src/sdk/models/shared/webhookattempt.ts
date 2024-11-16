@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum WebhookAttemptStatus {
   RunningCall = "RUNNING_CALL",
@@ -107,4 +110,18 @@ export namespace WebhookAttempt$ {
   export const outboundSchema = WebhookAttempt$outboundSchema;
   /** @deprecated use `WebhookAttempt$Outbound` instead. */
   export type Outbound = WebhookAttempt$Outbound;
+}
+
+export function webhookAttemptToJSON(webhookAttempt: WebhookAttempt): string {
+  return JSON.stringify(WebhookAttempt$outboundSchema.parse(webhookAttempt));
+}
+
+export function webhookAttemptFromJSON(
+  jsonString: string,
+): SafeParseResult<WebhookAttempt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebhookAttempt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebhookAttempt' from JSON`,
+  );
 }

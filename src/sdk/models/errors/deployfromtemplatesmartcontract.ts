@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   AlreadyKnown,
   AlreadyKnown$inboundSchema,
@@ -123,6 +125,7 @@ import {
   NumericFault$Outbound,
   NumericFault$outboundSchema,
 } from "./numericfault.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   SmartContractNotActivated,
   SmartContractNotActivated$inboundSchema,
@@ -236,6 +239,33 @@ export namespace DeployFromTemplateSmartContractSmartContractManagementResponseR
     DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$Outbound;
 }
 
+export function deployFromTemplateSmartContractSmartContractManagementResponseResponseBodyToJSON(
+  deployFromTemplateSmartContractSmartContractManagementResponseResponseBody:
+    DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$outboundSchema
+      .parse(
+        deployFromTemplateSmartContractSmartContractManagementResponseResponseBody,
+      ),
+  );
+}
+
+export function deployFromTemplateSmartContractSmartContractManagementResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateSmartContractSmartContractManagementResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromTemplateSmartContractSmartContractManagementResponseBody$inboundSchema:
   z.ZodType<
@@ -270,6 +300,33 @@ export namespace DeployFromTemplateSmartContractSmartContractManagementResponseB
   /** @deprecated use `DeployFromTemplateSmartContractSmartContractManagementResponseBody$Outbound` instead. */
   export type Outbound =
     DeployFromTemplateSmartContractSmartContractManagementResponseBody$Outbound;
+}
+
+export function deployFromTemplateSmartContractSmartContractManagementResponseBodyToJSON(
+  deployFromTemplateSmartContractSmartContractManagementResponseBody:
+    DeployFromTemplateSmartContractSmartContractManagementResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateSmartContractSmartContractManagementResponseBody$outboundSchema
+      .parse(
+        deployFromTemplateSmartContractSmartContractManagementResponseBody,
+      ),
+  );
+}
+
+export function deployFromTemplateSmartContractSmartContractManagementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromTemplateSmartContractSmartContractManagementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromTemplateSmartContractSmartContractManagementResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateSmartContractSmartContractManagementResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -354,4 +411,31 @@ export namespace DeployFromTemplateSmartContractResponseBody$ {
     DeployFromTemplateSmartContractResponseBody$outboundSchema;
   /** @deprecated use `DeployFromTemplateSmartContractResponseBody$Outbound` instead. */
   export type Outbound = DeployFromTemplateSmartContractResponseBody$Outbound;
+}
+
+export function deployFromTemplateSmartContractResponseBodyToJSON(
+  deployFromTemplateSmartContractResponseBody:
+    DeployFromTemplateSmartContractResponseBody,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateSmartContractResponseBody$outboundSchema.parse(
+      deployFromTemplateSmartContractResponseBody,
+    ),
+  );
+}
+
+export function deployFromTemplateSmartContractResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromTemplateSmartContractResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromTemplateSmartContractResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeployFromTemplateSmartContractResponseBody' from JSON`,
+  );
 }

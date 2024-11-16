@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Erc20BalanceResponse = {
   /**
@@ -73,4 +76,22 @@ export namespace Erc20BalanceResponse$ {
   export const outboundSchema = Erc20BalanceResponse$outboundSchema;
   /** @deprecated use `Erc20BalanceResponse$Outbound` instead. */
   export type Outbound = Erc20BalanceResponse$Outbound;
+}
+
+export function erc20BalanceResponseToJSON(
+  erc20BalanceResponse: Erc20BalanceResponse,
+): string {
+  return JSON.stringify(
+    Erc20BalanceResponse$outboundSchema.parse(erc20BalanceResponse),
+  );
+}
+
+export function erc20BalanceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc20BalanceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc20BalanceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc20BalanceResponse' from JSON`,
+  );
 }

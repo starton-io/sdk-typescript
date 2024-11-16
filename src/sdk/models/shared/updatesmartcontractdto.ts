@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateSmartContractDtoMetadata = {};
 
@@ -40,6 +43,26 @@ export namespace UpdateSmartContractDtoMetadata$ {
   export const outboundSchema = UpdateSmartContractDtoMetadata$outboundSchema;
   /** @deprecated use `UpdateSmartContractDtoMetadata$Outbound` instead. */
   export type Outbound = UpdateSmartContractDtoMetadata$Outbound;
+}
+
+export function updateSmartContractDtoMetadataToJSON(
+  updateSmartContractDtoMetadata: UpdateSmartContractDtoMetadata,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractDtoMetadata$outboundSchema.parse(
+      updateSmartContractDtoMetadata,
+    ),
+  );
+}
+
+export function updateSmartContractDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSmartContractDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSmartContractDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractDtoMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -84,4 +107,22 @@ export namespace UpdateSmartContractDto$ {
   export const outboundSchema = UpdateSmartContractDto$outboundSchema;
   /** @deprecated use `UpdateSmartContractDto$Outbound` instead. */
   export type Outbound = UpdateSmartContractDto$Outbound;
+}
+
+export function updateSmartContractDtoToJSON(
+  updateSmartContractDto: UpdateSmartContractDto,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractDto$outboundSchema.parse(updateSmartContractDto),
+  );
+}
+
+export function updateSmartContractDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSmartContractDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSmartContractDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractDto' from JSON`,
+  );
 }

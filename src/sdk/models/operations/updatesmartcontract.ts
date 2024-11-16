@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type UpdateSmartContractRequest = {
@@ -84,6 +87,24 @@ export namespace UpdateSmartContractRequest$ {
   export type Outbound = UpdateSmartContractRequest$Outbound;
 }
 
+export function updateSmartContractRequestToJSON(
+  updateSmartContractRequest: UpdateSmartContractRequest,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractRequest$outboundSchema.parse(updateSmartContractRequest),
+  );
+}
+
+export function updateSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateSmartContractResponse$inboundSchema: z.ZodType<
   UpdateSmartContractResponse,
@@ -143,4 +164,24 @@ export namespace UpdateSmartContractResponse$ {
   export const outboundSchema = UpdateSmartContractResponse$outboundSchema;
   /** @deprecated use `UpdateSmartContractResponse$Outbound` instead. */
   export type Outbound = UpdateSmartContractResponse$Outbound;
+}
+
+export function updateSmartContractResponseToJSON(
+  updateSmartContractResponse: UpdateSmartContractResponse,
+): string {
+  return JSON.stringify(
+    UpdateSmartContractResponse$outboundSchema.parse(
+      updateSmartContractResponse,
+    ),
+  );
+}
+
+export function updateSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSmartContractResponse' from JSON`,
+  );
 }

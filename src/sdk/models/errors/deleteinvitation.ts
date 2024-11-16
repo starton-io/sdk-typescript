@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteInvitationProjectMemberInvitationResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,33 @@ export namespace DeleteInvitationProjectMemberInvitationResponseBody$ {
     DeleteInvitationProjectMemberInvitationResponseBody$Outbound;
 }
 
+export function deleteInvitationProjectMemberInvitationResponseBodyToJSON(
+  deleteInvitationProjectMemberInvitationResponseBody:
+    DeleteInvitationProjectMemberInvitationResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteInvitationProjectMemberInvitationResponseBody$outboundSchema.parse(
+      deleteInvitationProjectMemberInvitationResponseBody,
+    ),
+  );
+}
+
+export function deleteInvitationProjectMemberInvitationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteInvitationProjectMemberInvitationResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteInvitationProjectMemberInvitationResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteInvitationProjectMemberInvitationResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteInvitationResponseBody$inboundSchema: z.ZodType<
   DeleteInvitationResponseBody,
@@ -86,4 +116,24 @@ export namespace DeleteInvitationResponseBody$ {
   export const outboundSchema = DeleteInvitationResponseBody$outboundSchema;
   /** @deprecated use `DeleteInvitationResponseBody$Outbound` instead. */
   export type Outbound = DeleteInvitationResponseBody$Outbound;
+}
+
+export function deleteInvitationResponseBodyToJSON(
+  deleteInvitationResponseBody: DeleteInvitationResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteInvitationResponseBody$outboundSchema.parse(
+      deleteInvitationResponseBody,
+    ),
+  );
+}
+
+export function deleteInvitationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInvitationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInvitationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInvitationResponseBody' from JSON`,
+  );
 }

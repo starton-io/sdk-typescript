@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type DeployFromTemplateSmartContractRequest = {
@@ -82,6 +85,28 @@ export namespace DeployFromTemplateSmartContractRequest$ {
   export type Outbound = DeployFromTemplateSmartContractRequest$Outbound;
 }
 
+export function deployFromTemplateSmartContractRequestToJSON(
+  deployFromTemplateSmartContractRequest:
+    DeployFromTemplateSmartContractRequest,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateSmartContractRequest$outboundSchema.parse(
+      deployFromTemplateSmartContractRequest,
+    ),
+  );
+}
+
+export function deployFromTemplateSmartContractRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeployFromTemplateSmartContractRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromTemplateSmartContractRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeployFromTemplateSmartContractRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeployFromTemplateSmartContractResponse$inboundSchema: z.ZodType<
   DeployFromTemplateSmartContractResponse,
@@ -147,4 +172,31 @@ export namespace DeployFromTemplateSmartContractResponse$ {
     DeployFromTemplateSmartContractResponse$outboundSchema;
   /** @deprecated use `DeployFromTemplateSmartContractResponse$Outbound` instead. */
   export type Outbound = DeployFromTemplateSmartContractResponse$Outbound;
+}
+
+export function deployFromTemplateSmartContractResponseToJSON(
+  deployFromTemplateSmartContractResponse:
+    DeployFromTemplateSmartContractResponse,
+): string {
+  return JSON.stringify(
+    DeployFromTemplateSmartContractResponse$outboundSchema.parse(
+      deployFromTemplateSmartContractResponse,
+    ),
+  );
+}
+
+export function deployFromTemplateSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeployFromTemplateSmartContractResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeployFromTemplateSmartContractResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeployFromTemplateSmartContractResponse' from JSON`,
+  );
 }

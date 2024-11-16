@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneWebhookSigningSecretResponseBody = BadRequestException;
 
@@ -43,4 +46,26 @@ export namespace GetOneWebhookSigningSecretResponseBody$ {
     GetOneWebhookSigningSecretResponseBody$outboundSchema;
   /** @deprecated use `GetOneWebhookSigningSecretResponseBody$Outbound` instead. */
   export type Outbound = GetOneWebhookSigningSecretResponseBody$Outbound;
+}
+
+export function getOneWebhookSigningSecretResponseBodyToJSON(
+  getOneWebhookSigningSecretResponseBody:
+    GetOneWebhookSigningSecretResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWebhookSigningSecretResponseBody$outboundSchema.parse(
+      getOneWebhookSigningSecretResponseBody,
+    ),
+  );
+}
+
+export function getOneWebhookSigningSecretResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWebhookSigningSecretResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneWebhookSigningSecretResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWebhookSigningSecretResponseBody' from JSON`,
+  );
 }

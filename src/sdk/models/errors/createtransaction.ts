@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   AlreadyKnown,
   AlreadyKnown$inboundSchema,
@@ -81,6 +83,7 @@ import {
   ReplacementGasPriceUnderpriced$Outbound,
   ReplacementGasPriceUnderpriced$outboundSchema,
 } from "./replacementgaspriceunderpriced.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Unknown,
   Unknown$inboundSchema,
@@ -172,6 +175,31 @@ export namespace CreateTransactionTransactionManagerResponse500ResponseBody$ {
     CreateTransactionTransactionManagerResponse500ResponseBody$Outbound;
 }
 
+export function createTransactionTransactionManagerResponse500ResponseBodyToJSON(
+  createTransactionTransactionManagerResponse500ResponseBody:
+    CreateTransactionTransactionManagerResponse500ResponseBody,
+): string {
+  return JSON.stringify(
+    CreateTransactionTransactionManagerResponse500ResponseBody$outboundSchema
+      .parse(createTransactionTransactionManagerResponse500ResponseBody),
+  );
+}
+
+export function createTransactionTransactionManagerResponse500ResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateTransactionTransactionManagerResponse500ResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateTransactionTransactionManagerResponse500ResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransactionTransactionManagerResponse500ResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateTransactionTransactionManagerResponseResponseBody$inboundSchema:
   z.ZodType<
@@ -208,6 +236,31 @@ export namespace CreateTransactionTransactionManagerResponseResponseBody$ {
     CreateTransactionTransactionManagerResponseResponseBody$Outbound;
 }
 
+export function createTransactionTransactionManagerResponseResponseBodyToJSON(
+  createTransactionTransactionManagerResponseResponseBody:
+    CreateTransactionTransactionManagerResponseResponseBody,
+): string {
+  return JSON.stringify(
+    CreateTransactionTransactionManagerResponseResponseBody$outboundSchema
+      .parse(createTransactionTransactionManagerResponseResponseBody),
+  );
+}
+
+export function createTransactionTransactionManagerResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateTransactionTransactionManagerResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateTransactionTransactionManagerResponseResponseBody$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransactionTransactionManagerResponseResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateTransactionTransactionManagerResponseBody$inboundSchema:
   z.ZodType<
@@ -242,6 +295,33 @@ export namespace CreateTransactionTransactionManagerResponseBody$ {
   /** @deprecated use `CreateTransactionTransactionManagerResponseBody$Outbound` instead. */
   export type Outbound =
     CreateTransactionTransactionManagerResponseBody$Outbound;
+}
+
+export function createTransactionTransactionManagerResponseBodyToJSON(
+  createTransactionTransactionManagerResponseBody:
+    CreateTransactionTransactionManagerResponseBody,
+): string {
+  return JSON.stringify(
+    CreateTransactionTransactionManagerResponseBody$outboundSchema.parse(
+      createTransactionTransactionManagerResponseBody,
+    ),
+  );
+}
+
+export function createTransactionTransactionManagerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateTransactionTransactionManagerResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateTransactionTransactionManagerResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateTransactionTransactionManagerResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -295,4 +375,24 @@ export namespace CreateTransactionResponseBody$ {
   export const outboundSchema = CreateTransactionResponseBody$outboundSchema;
   /** @deprecated use `CreateTransactionResponseBody$Outbound` instead. */
   export type Outbound = CreateTransactionResponseBody$Outbound;
+}
+
+export function createTransactionResponseBodyToJSON(
+  createTransactionResponseBody: CreateTransactionResponseBody,
+): string {
+  return JSON.stringify(
+    CreateTransactionResponseBody$outboundSchema.parse(
+      createTransactionResponseBody,
+    ),
+  );
+}
+
+export function createTransactionResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTransactionResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTransactionResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransactionResponseBody' from JSON`,
+  );
 }

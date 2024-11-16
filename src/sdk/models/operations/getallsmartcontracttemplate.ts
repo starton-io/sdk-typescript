@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export enum Category {
@@ -136,6 +139,27 @@ export namespace GetAllSmartContractTemplateRequest$ {
   export type Outbound = GetAllSmartContractTemplateRequest$Outbound;
 }
 
+export function getAllSmartContractTemplateRequestToJSON(
+  getAllSmartContractTemplateRequest: GetAllSmartContractTemplateRequest,
+): string {
+  return JSON.stringify(
+    GetAllSmartContractTemplateRequest$outboundSchema.parse(
+      getAllSmartContractTemplateRequest,
+    ),
+  );
+}
+
+export function getAllSmartContractTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllSmartContractTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllSmartContractTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSmartContractTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema:
   z.ZodType<
@@ -179,6 +203,31 @@ export namespace GetAllSmartContractTemplateSmartContractTemplatePaginated$ {
   /** @deprecated use `GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound` instead. */
   export type Outbound =
     GetAllSmartContractTemplateSmartContractTemplatePaginated$Outbound;
+}
+
+export function getAllSmartContractTemplateSmartContractTemplatePaginatedToJSON(
+  getAllSmartContractTemplateSmartContractTemplatePaginated:
+    GetAllSmartContractTemplateSmartContractTemplatePaginated,
+): string {
+  return JSON.stringify(
+    GetAllSmartContractTemplateSmartContractTemplatePaginated$outboundSchema
+      .parse(getAllSmartContractTemplateSmartContractTemplatePaginated),
+  );
+}
+
+export function getAllSmartContractTemplateSmartContractTemplatePaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAllSmartContractTemplateSmartContractTemplatePaginated,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllSmartContractTemplateSmartContractTemplatePaginated$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSmartContractTemplateSmartContractTemplatePaginated' from JSON`,
+  );
 }
 
 /** @internal */
@@ -248,4 +297,25 @@ export namespace GetAllSmartContractTemplateResponse$ {
     GetAllSmartContractTemplateResponse$outboundSchema;
   /** @deprecated use `GetAllSmartContractTemplateResponse$Outbound` instead. */
   export type Outbound = GetAllSmartContractTemplateResponse$Outbound;
+}
+
+export function getAllSmartContractTemplateResponseToJSON(
+  getAllSmartContractTemplateResponse: GetAllSmartContractTemplateResponse,
+): string {
+  return JSON.stringify(
+    GetAllSmartContractTemplateResponse$outboundSchema.parse(
+      getAllSmartContractTemplateResponse,
+    ),
+  );
+}
+
+export function getAllSmartContractTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllSmartContractTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllSmartContractTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllSmartContractTemplateResponse' from JSON`,
+  );
 }

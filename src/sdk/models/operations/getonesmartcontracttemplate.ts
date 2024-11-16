@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetOneSmartContractTemplateRequest = {
@@ -70,6 +73,27 @@ export namespace GetOneSmartContractTemplateRequest$ {
   export type Outbound = GetOneSmartContractTemplateRequest$Outbound;
 }
 
+export function getOneSmartContractTemplateRequestToJSON(
+  getOneSmartContractTemplateRequest: GetOneSmartContractTemplateRequest,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractTemplateRequest$outboundSchema.parse(
+      getOneSmartContractTemplateRequest,
+    ),
+  );
+}
+
+export function getOneSmartContractTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneSmartContractTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneSmartContractTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneSmartContractTemplateResponse$inboundSchema: z.ZodType<
   GetOneSmartContractTemplateResponse,
@@ -131,4 +155,25 @@ export namespace GetOneSmartContractTemplateResponse$ {
     GetOneSmartContractTemplateResponse$outboundSchema;
   /** @deprecated use `GetOneSmartContractTemplateResponse$Outbound` instead. */
   export type Outbound = GetOneSmartContractTemplateResponse$Outbound;
+}
+
+export function getOneSmartContractTemplateResponseToJSON(
+  getOneSmartContractTemplateResponse: GetOneSmartContractTemplateResponse,
+): string {
+  return JSON.stringify(
+    GetOneSmartContractTemplateResponse$outboundSchema.parse(
+      getOneSmartContractTemplateResponse,
+    ),
+  );
+}
+
+export function getOneSmartContractTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneSmartContractTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneSmartContractTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneSmartContractTemplateResponse' from JSON`,
+  );
 }

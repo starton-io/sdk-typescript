@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AwsKmsCredentialsDto = {
   accessKeyId: string;
@@ -50,4 +53,22 @@ export namespace AwsKmsCredentialsDto$ {
   export const outboundSchema = AwsKmsCredentialsDto$outboundSchema;
   /** @deprecated use `AwsKmsCredentialsDto$Outbound` instead. */
   export type Outbound = AwsKmsCredentialsDto$Outbound;
+}
+
+export function awsKmsCredentialsDtoToJSON(
+  awsKmsCredentialsDto: AwsKmsCredentialsDto,
+): string {
+  return JSON.stringify(
+    AwsKmsCredentialsDto$outboundSchema.parse(awsKmsCredentialsDto),
+  );
+}
+
+export function awsKmsCredentialsDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AwsKmsCredentialsDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AwsKmsCredentialsDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AwsKmsCredentialsDto' from JSON`,
+  );
 }

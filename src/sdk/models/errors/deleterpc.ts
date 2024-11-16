@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteRpcNetworkRpcResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace DeleteRpcNetworkRpcResponseBody$ {
   export type Outbound = DeleteRpcNetworkRpcResponseBody$Outbound;
 }
 
+export function deleteRpcNetworkRpcResponseBodyToJSON(
+  deleteRpcNetworkRpcResponseBody: DeleteRpcNetworkRpcResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteRpcNetworkRpcResponseBody$outboundSchema.parse(
+      deleteRpcNetworkRpcResponseBody,
+    ),
+  );
+}
+
+export function deleteRpcNetworkRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRpcNetworkRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRpcNetworkRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRpcNetworkRpcResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteRpcResponseBody$inboundSchema: z.ZodType<
   DeleteRpcResponseBody,
@@ -79,4 +102,22 @@ export namespace DeleteRpcResponseBody$ {
   export const outboundSchema = DeleteRpcResponseBody$outboundSchema;
   /** @deprecated use `DeleteRpcResponseBody$Outbound` instead. */
   export type Outbound = DeleteRpcResponseBody$Outbound;
+}
+
+export function deleteRpcResponseBodyToJSON(
+  deleteRpcResponseBody: DeleteRpcResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteRpcResponseBody$outboundSchema.parse(deleteRpcResponseBody),
+  );
+}
+
+export function deleteRpcResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRpcResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRpcResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRpcResponseBody' from JSON`,
+  );
 }

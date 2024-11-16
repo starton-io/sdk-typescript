@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TransactionLogContext = {};
 
@@ -83,6 +86,24 @@ export namespace TransactionLogContext$ {
   export type Outbound = TransactionLogContext$Outbound;
 }
 
+export function transactionLogContextToJSON(
+  transactionLogContext: TransactionLogContext,
+): string {
+  return JSON.stringify(
+    TransactionLogContext$outboundSchema.parse(transactionLogContext),
+  );
+}
+
+export function transactionLogContextFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionLogContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionLogContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionLogContext' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransactionLogType$inboundSchema: z.ZodNativeEnum<
   typeof TransactionLogType
@@ -147,4 +168,18 @@ export namespace TransactionLog$ {
   export const outboundSchema = TransactionLog$outboundSchema;
   /** @deprecated use `TransactionLog$Outbound` instead. */
   export type Outbound = TransactionLog$Outbound;
+}
+
+export function transactionLogToJSON(transactionLog: TransactionLog): string {
+  return JSON.stringify(TransactionLog$outboundSchema.parse(transactionLog));
+}
+
+export function transactionLogFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionLog' from JSON`,
+  );
 }

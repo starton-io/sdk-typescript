@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreateInvitationResponse = {
@@ -81,4 +84,22 @@ export namespace CreateInvitationResponse$ {
   export const outboundSchema = CreateInvitationResponse$outboundSchema;
   /** @deprecated use `CreateInvitationResponse$Outbound` instead. */
   export type Outbound = CreateInvitationResponse$Outbound;
+}
+
+export function createInvitationResponseToJSON(
+  createInvitationResponse: CreateInvitationResponse,
+): string {
+  return JSON.stringify(
+    CreateInvitationResponse$outboundSchema.parse(createInvitationResponse),
+  );
+}
+
+export function createInvitationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateInvitationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateInvitationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateInvitationResponse' from JSON`,
+  );
 }

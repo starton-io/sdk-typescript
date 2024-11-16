@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SchemasFORBIDDENContext = {};
 
@@ -80,6 +83,24 @@ export namespace SchemasFORBIDDENContext$ {
   export const outboundSchema = SchemasFORBIDDENContext$outboundSchema;
   /** @deprecated use `SchemasFORBIDDENContext$Outbound` instead. */
   export type Outbound = SchemasFORBIDDENContext$Outbound;
+}
+
+export function schemasFORBIDDENContextToJSON(
+  schemasFORBIDDENContext: SchemasFORBIDDENContext,
+): string {
+  return JSON.stringify(
+    SchemasFORBIDDENContext$outboundSchema.parse(schemasFORBIDDENContext),
+  );
+}
+
+export function schemasFORBIDDENContextFromJSON(
+  jsonString: string,
+): SafeParseResult<SchemasFORBIDDENContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchemasFORBIDDENContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasFORBIDDENContext' from JSON`,
+  );
 }
 
 /** @internal */

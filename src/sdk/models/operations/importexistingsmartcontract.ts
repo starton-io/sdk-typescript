@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ImportExistingSmartContractResponse = {
@@ -83,4 +86,25 @@ export namespace ImportExistingSmartContractResponse$ {
     ImportExistingSmartContractResponse$outboundSchema;
   /** @deprecated use `ImportExistingSmartContractResponse$Outbound` instead. */
   export type Outbound = ImportExistingSmartContractResponse$Outbound;
+}
+
+export function importExistingSmartContractResponseToJSON(
+  importExistingSmartContractResponse: ImportExistingSmartContractResponse,
+): string {
+  return JSON.stringify(
+    ImportExistingSmartContractResponse$outboundSchema.parse(
+      importExistingSmartContractResponse,
+    ),
+  );
+}
+
+export function importExistingSmartContractResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportExistingSmartContractResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ImportExistingSmartContractResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportExistingSmartContractResponse' from JSON`,
+  );
 }

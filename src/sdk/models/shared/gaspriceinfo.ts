@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GasPriceInfo = {
   /**
@@ -59,4 +62,18 @@ export namespace GasPriceInfo$ {
   export const outboundSchema = GasPriceInfo$outboundSchema;
   /** @deprecated use `GasPriceInfo$Outbound` instead. */
   export type Outbound = GasPriceInfo$Outbound;
+}
+
+export function gasPriceInfoToJSON(gasPriceInfo: GasPriceInfo): string {
+  return JSON.stringify(GasPriceInfo$outboundSchema.parse(gasPriceInfo));
+}
+
+export function gasPriceInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<GasPriceInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GasPriceInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GasPriceInfo' from JSON`,
+  );
 }

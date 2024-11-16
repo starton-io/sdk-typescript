@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneTransactionTransactionManagerResponseBody =
   CouldNotFindResource;
@@ -57,6 +60,33 @@ export namespace GetOneTransactionTransactionManagerResponseBody$ {
     GetOneTransactionTransactionManagerResponseBody$Outbound;
 }
 
+export function getOneTransactionTransactionManagerResponseBodyToJSON(
+  getOneTransactionTransactionManagerResponseBody:
+    GetOneTransactionTransactionManagerResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneTransactionTransactionManagerResponseBody$outboundSchema.parse(
+      getOneTransactionTransactionManagerResponseBody,
+    ),
+  );
+}
+
+export function getOneTransactionTransactionManagerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetOneTransactionTransactionManagerResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetOneTransactionTransactionManagerResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetOneTransactionTransactionManagerResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneTransactionResponseBody$inboundSchema: z.ZodType<
   GetOneTransactionResponseBody,
@@ -86,4 +116,24 @@ export namespace GetOneTransactionResponseBody$ {
   export const outboundSchema = GetOneTransactionResponseBody$outboundSchema;
   /** @deprecated use `GetOneTransactionResponseBody$Outbound` instead. */
   export type Outbound = GetOneTransactionResponseBody$Outbound;
+}
+
+export function getOneTransactionResponseBodyToJSON(
+  getOneTransactionResponseBody: GetOneTransactionResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneTransactionResponseBody$outboundSchema.parse(
+      getOneTransactionResponseBody,
+    ),
+  );
+}
+
+export function getOneTransactionResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneTransactionResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneTransactionResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneTransactionResponseBody' from JSON`,
+  );
 }

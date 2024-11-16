@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneKmsKmsResponseBody = CouldNotFindResource;
 
@@ -50,6 +53,24 @@ export namespace GetOneKmsKmsResponseBody$ {
   export type Outbound = GetOneKmsKmsResponseBody$Outbound;
 }
 
+export function getOneKmsKmsResponseBodyToJSON(
+  getOneKmsKmsResponseBody: GetOneKmsKmsResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneKmsKmsResponseBody$outboundSchema.parse(getOneKmsKmsResponseBody),
+  );
+}
+
+export function getOneKmsKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneKmsKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneKmsKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneKmsKmsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneKmsResponseBody$inboundSchema: z.ZodType<
   GetOneKmsResponseBody,
@@ -78,4 +99,22 @@ export namespace GetOneKmsResponseBody$ {
   export const outboundSchema = GetOneKmsResponseBody$outboundSchema;
   /** @deprecated use `GetOneKmsResponseBody$Outbound` instead. */
   export type Outbound = GetOneKmsResponseBody$Outbound;
+}
+
+export function getOneKmsResponseBodyToJSON(
+  getOneKmsResponseBody: GetOneKmsResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneKmsResponseBody$outboundSchema.parse(getOneKmsResponseBody),
+  );
+}
+
+export function getOneKmsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneKmsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneKmsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneKmsResponseBody' from JSON`,
+  );
 }

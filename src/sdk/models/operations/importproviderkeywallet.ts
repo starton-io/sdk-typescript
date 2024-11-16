@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ImportProviderKeyWalletResponse = {
@@ -81,4 +84,24 @@ export namespace ImportProviderKeyWalletResponse$ {
   export const outboundSchema = ImportProviderKeyWalletResponse$outboundSchema;
   /** @deprecated use `ImportProviderKeyWalletResponse$Outbound` instead. */
   export type Outbound = ImportProviderKeyWalletResponse$Outbound;
+}
+
+export function importProviderKeyWalletResponseToJSON(
+  importProviderKeyWalletResponse: ImportProviderKeyWalletResponse,
+): string {
+  return JSON.stringify(
+    ImportProviderKeyWalletResponse$outboundSchema.parse(
+      importProviderKeyWalletResponse,
+    ),
+  );
+}
+
+export function importProviderKeyWalletResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportProviderKeyWalletResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportProviderKeyWalletResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportProviderKeyWalletResponse' from JSON`,
+  );
 }

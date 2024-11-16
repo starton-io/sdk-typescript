@@ -3,12 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
   BadRequestException$Outbound,
   BadRequestException$outboundSchema,
 } from "./badrequestexception.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllPinResponseBody = BadRequestException;
 
@@ -40,4 +43,22 @@ export namespace GetAllPinResponseBody$ {
   export const outboundSchema = GetAllPinResponseBody$outboundSchema;
   /** @deprecated use `GetAllPinResponseBody$Outbound` instead. */
   export type Outbound = GetAllPinResponseBody$Outbound;
+}
+
+export function getAllPinResponseBodyToJSON(
+  getAllPinResponseBody: GetAllPinResponseBody,
+): string {
+  return JSON.stringify(
+    GetAllPinResponseBody$outboundSchema.parse(getAllPinResponseBody),
+  );
+}
+
+export function getAllPinResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllPinResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllPinResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllPinResponseBody' from JSON`,
+  );
 }

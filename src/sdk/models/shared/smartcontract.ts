@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Abi = {};
 
@@ -120,6 +123,20 @@ export namespace Abi$ {
   export type Outbound = Abi$Outbound;
 }
 
+export function abiToJSON(abi: Abi): string {
+  return JSON.stringify(Abi$outboundSchema.parse(abi));
+}
+
+export function abiFromJSON(
+  jsonString: string,
+): SafeParseResult<Abi, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Abi$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Abi' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompilationDetails$inboundSchema: z.ZodType<
   CompilationDetails,
@@ -150,6 +167,24 @@ export namespace CompilationDetails$ {
   export type Outbound = CompilationDetails$Outbound;
 }
 
+export function compilationDetailsToJSON(
+  compilationDetails: CompilationDetails,
+): string {
+  return JSON.stringify(
+    CompilationDetails$outboundSchema.parse(compilationDetails),
+  );
+}
+
+export function compilationDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<CompilationDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompilationDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompilationDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const SmartContractMetadata$inboundSchema: z.ZodType<
   SmartContractMetadata,
@@ -178,6 +213,24 @@ export namespace SmartContractMetadata$ {
   export const outboundSchema = SmartContractMetadata$outboundSchema;
   /** @deprecated use `SmartContractMetadata$Outbound` instead. */
   export type Outbound = SmartContractMetadata$Outbound;
+}
+
+export function smartContractMetadataToJSON(
+  smartContractMetadata: SmartContractMetadata,
+): string {
+  return JSON.stringify(
+    SmartContractMetadata$outboundSchema.parse(smartContractMetadata),
+  );
+}
+
+export function smartContractMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<SmartContractMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmartContractMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmartContractMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -311,6 +364,24 @@ export namespace SmartContractUiData$ {
   export type Outbound = SmartContractUiData$Outbound;
 }
 
+export function smartContractUiDataToJSON(
+  smartContractUiData: SmartContractUiData,
+): string {
+  return JSON.stringify(
+    SmartContractUiData$outboundSchema.parse(smartContractUiData),
+  );
+}
+
+export function smartContractUiDataFromJSON(
+  jsonString: string,
+): SafeParseResult<SmartContractUiData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmartContractUiData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmartContractUiData' from JSON`,
+  );
+}
+
 /** @internal */
 export const SmartContract$inboundSchema: z.ZodType<
   SmartContract,
@@ -414,4 +485,18 @@ export namespace SmartContract$ {
   export const outboundSchema = SmartContract$outboundSchema;
   /** @deprecated use `SmartContract$Outbound` instead. */
   export type Outbound = SmartContract$Outbound;
+}
+
+export function smartContractToJSON(smartContract: SmartContract): string {
+  return JSON.stringify(SmartContract$outboundSchema.parse(smartContract));
+}
+
+export function smartContractFromJSON(
+  jsonString: string,
+): SafeParseResult<SmartContract, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmartContract$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmartContract' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum ExplorerApiDtoType {
   Etherscan = "etherscan",
@@ -76,4 +79,18 @@ export namespace ExplorerApiDto$ {
   export const outboundSchema = ExplorerApiDto$outboundSchema;
   /** @deprecated use `ExplorerApiDto$Outbound` instead. */
   export type Outbound = ExplorerApiDto$Outbound;
+}
+
+export function explorerApiDtoToJSON(explorerApiDto: ExplorerApiDto): string {
+  return JSON.stringify(ExplorerApiDto$outboundSchema.parse(explorerApiDto));
+}
+
+export function explorerApiDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<ExplorerApiDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExplorerApiDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExplorerApiDto' from JSON`,
+  );
 }

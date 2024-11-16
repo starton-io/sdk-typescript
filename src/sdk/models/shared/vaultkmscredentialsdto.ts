@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type VaultKmsCredentialsDto = {
   /**
@@ -91,4 +94,22 @@ export namespace VaultKmsCredentialsDto$ {
   export const outboundSchema = VaultKmsCredentialsDto$outboundSchema;
   /** @deprecated use `VaultKmsCredentialsDto$Outbound` instead. */
   export type Outbound = VaultKmsCredentialsDto$Outbound;
+}
+
+export function vaultKmsCredentialsDtoToJSON(
+  vaultKmsCredentialsDto: VaultKmsCredentialsDto,
+): string {
+  return JSON.stringify(
+    VaultKmsCredentialsDto$outboundSchema.parse(vaultKmsCredentialsDto),
+  );
+}
+
+export function vaultKmsCredentialsDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<VaultKmsCredentialsDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => VaultKmsCredentialsDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VaultKmsCredentialsDto' from JSON`,
+  );
 }

@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   BadRequestException,
   BadRequestException$inboundSchema,
@@ -15,6 +17,7 @@ import {
   CouldNotFindResource$Outbound,
   CouldNotFindResource$outboundSchema,
 } from "./couldnotfindresource.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOneWalletWalletResponseBody = CouldNotFindResource;
 
@@ -51,6 +54,26 @@ export namespace GetOneWalletWalletResponseBody$ {
   export type Outbound = GetOneWalletWalletResponseBody$Outbound;
 }
 
+export function getOneWalletWalletResponseBodyToJSON(
+  getOneWalletWalletResponseBody: GetOneWalletWalletResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWalletWalletResponseBody$outboundSchema.parse(
+      getOneWalletWalletResponseBody,
+    ),
+  );
+}
+
+export function getOneWalletWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWalletWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWalletWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWalletWalletResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetOneWalletResponseBody$inboundSchema: z.ZodType<
   GetOneWalletResponseBody,
@@ -79,4 +102,22 @@ export namespace GetOneWalletResponseBody$ {
   export const outboundSchema = GetOneWalletResponseBody$outboundSchema;
   /** @deprecated use `GetOneWalletResponseBody$Outbound` instead. */
   export type Outbound = GetOneWalletResponseBody$Outbound;
+}
+
+export function getOneWalletResponseBodyToJSON(
+  getOneWalletResponseBody: GetOneWalletResponseBody,
+): string {
+  return JSON.stringify(
+    GetOneWalletResponseBody$outboundSchema.parse(getOneWalletResponseBody),
+  );
+}
+
+export function getOneWalletResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOneWalletResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOneWalletResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOneWalletResponseBody' from JSON`,
+  );
 }
