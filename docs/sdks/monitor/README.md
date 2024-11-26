@@ -34,7 +34,6 @@ async function run() {
     address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
     description: "watcher tests",
-    metadata: {},
     name: "watcher test",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
@@ -68,7 +67,6 @@ async function run() {
     address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
     description: "watcher tests",
-    metadata: {},
     name: "watcher test",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
@@ -549,7 +547,6 @@ async function run() {
     updateWatcherDto: {
       confirmationsBlocks: 0,
       description: "watcher tests",
-      metadata: {},
       name: "watcher tests",
       paused: false,
       webhookUrl: "",
@@ -583,7 +580,6 @@ async function run() {
     updateWatcherDto: {
       confirmationsBlocks: 0,
       description: "watcher tests",
-      metadata: {},
       name: "watcher tests",
       paused: false,
       webhookUrl: "",
