@@ -55,7 +55,9 @@ export class Invitation extends ClientSDK {
   async getAll(
     request: operations.GetAllInvitationRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllInvitationResponse>> {
+  ): Promise<
+    PageIterator<operations.GetAllInvitationResponse, { page: number }>
+  > {
     return unwrapResultIterator(projectMemberInvitationGetAll(
       this,
       request,

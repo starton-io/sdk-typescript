@@ -45,7 +45,9 @@ export class TransactionManager extends ClientSDK {
   async getAll(
     request: operations.GetAllTransactionRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllTransactionResponse>> {
+  ): Promise<
+    PageIterator<operations.GetAllTransactionResponse, { page: number }>
+  > {
     return unwrapResultIterator(transactionManagerGetAll(
       this,
       request,

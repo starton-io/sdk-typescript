@@ -44,7 +44,7 @@ export class Ipfs extends ClientSDK {
   async getAll(
     request: operations.GetAllPinRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllPinResponse>> {
+  ): Promise<PageIterator<operations.GetAllPinResponse, { page: number }>> {
     return unwrapResultIterator(ipfsGetAll(
       this,
       request,

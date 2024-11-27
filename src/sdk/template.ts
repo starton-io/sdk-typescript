@@ -19,7 +19,12 @@ export class Template extends ClientSDK {
   async getAll(
     request: operations.GetAllSmartContractTemplateRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllSmartContractTemplateResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetAllSmartContractTemplateResponse,
+      { page: number }
+    >
+  > {
     return unwrapResultIterator(smartContractTemplateGetAll(
       this,
       request,

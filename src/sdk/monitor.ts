@@ -59,7 +59,7 @@ export class Monitor extends ClientSDK {
   async getAll(
     request: operations.GetAllWatcherRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllWatcherResponse>> {
+  ): Promise<PageIterator<operations.GetAllWatcherResponse, { page: number }>> {
     return unwrapResultIterator(monitorGetAll(
       this,
       request,
@@ -76,7 +76,9 @@ export class Monitor extends ClientSDK {
   async getAllEvents(
     request: operations.GetAllWatcherEventRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllWatcherEventResponse>> {
+  ): Promise<
+    PageIterator<operations.GetAllWatcherEventResponse, { page: number }>
+  > {
     return unwrapResultIterator(monitorGetAllEvents(
       this,
       request,

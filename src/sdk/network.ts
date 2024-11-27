@@ -63,7 +63,7 @@ export class Network extends ClientSDK {
   async getAll(
     request: operations.GetAllNetworkRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllNetworkResponse>> {
+  ): Promise<PageIterator<operations.GetAllNetworkResponse, { page: number }>> {
     return unwrapResultIterator(networkGetAll(
       this,
       request,

@@ -57,7 +57,7 @@ export class Kms extends ClientSDK {
   async getAll(
     request: operations.GetAllKmsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllKmsResponse>> {
+  ): Promise<PageIterator<operations.GetAllKmsResponse, { page: number }>> {
     return unwrapResultIterator(kmsGetAll(
       this,
       request,

@@ -114,7 +114,9 @@ export class SmartContractManagement extends ClientSDK {
   async getAll(
     request: operations.GetAllSmartContractRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllSmartContractResponse>> {
+  ): Promise<
+    PageIterator<operations.GetAllSmartContractResponse, { page: number }>
+  > {
     return unwrapResultIterator(smartContractManagementGetAll(
       this,
       request,

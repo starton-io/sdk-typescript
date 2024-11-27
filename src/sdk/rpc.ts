@@ -56,7 +56,7 @@ export class Rpc extends ClientSDK {
   async getAll(
     request: operations.GetAllRpcRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllRpcResponse>> {
+  ): Promise<PageIterator<operations.GetAllRpcResponse, { page: number }>> {
     return unwrapResultIterator(networkRpcGetAll(
       this,
       request,

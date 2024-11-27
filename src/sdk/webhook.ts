@@ -40,7 +40,7 @@ export class Webhook extends ClientSDK {
   async getAll(
     request: operations.GetAllWebhookRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllWebhookResponse>> {
+  ): Promise<PageIterator<operations.GetAllWebhookResponse, { page: number }>> {
     return unwrapResultIterator(webhookGetAll(
       this,
       request,

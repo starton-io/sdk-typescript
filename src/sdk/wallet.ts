@@ -61,7 +61,7 @@ export class Wallet extends ClientSDK {
   async getAll(
     request: operations.GetAllWalletRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetAllWalletResponse>> {
+  ): Promise<PageIterator<operations.GetAllWalletResponse, { page: number }>> {
     return unwrapResultIterator(walletGetAll(
       this,
       request,
