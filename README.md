@@ -614,20 +614,30 @@ Depending on your plan, you will benefit from a specific rate limit.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [@starton/sdk](#startonsdk)
+  * [🏗 **Under construction!** 🏗](#under-construction)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Pagination](#pagination)
+  * [Authentication](#authentication)
+  * [File uploads](#file-uploads)
+  * [Requirements](#requirements)
+  * [Retries](#retries)
+  * [Debugging](#debugging)
+  * [Standalone functions](#standalone-functions)
+* [Authentication](#authentication-1)
+* [Errors](#errors)
+* [Pagination](#pagination-1)
+* [Rate limits](#rate-limits)
+* [Development](#development)
+  * [Contributions](#contributions)
+  * [Documentation](#documentation)
+  * [License](#license)
+  * [Authors](#authors)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Pagination](#pagination)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
