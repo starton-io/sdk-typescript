@@ -1,6 +1,6 @@
 {
   "name": "@starton/sdk",
-  "version": "0.26.9",
+  "version": "0.26.10",
   "author": "Starton <support@starton.com> (https://www.starton.com)",
   "main": "./index.js",
   "sideEffects": false,
@@ -15,8 +15,6 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19",
     "zod": ">= 3"
   },
   "devDependencies": {
