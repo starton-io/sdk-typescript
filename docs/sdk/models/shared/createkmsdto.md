@@ -7,7 +7,7 @@ import { CreateKmsDto, Provider } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateKmsDto = {
   name: "<value>",
-  provider: Provider.Vault,
+  provider: Provider.Aws,
   secret: "<value>",
 };
 ```

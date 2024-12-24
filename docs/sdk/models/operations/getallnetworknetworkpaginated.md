@@ -10,11 +10,11 @@ let value: GetAllNetworkNetworkPaginated = {
     {
       blockchain: "<value>",
       browserExtensionService: false,
-      chainId: 201.08,
-      confirmationBlocks: 8289.40,
-      decimal: 46.95,
+      chainId: 8289.40,
+      confirmationBlocks: 46.95,
+      decimal: 6778.17,
       deprecated: false,
-      displayName: "Mariano_Rice",
+      displayName: "Dominique.Windler",
       eip1159: false,
       eips: {
         eip1159: false,
@@ -23,10 +23,10 @@ let value: GetAllNetworkNetworkPaginated = {
       enableExternalWallet: false,
       enableListener: false,
       enableRelayer: false,
-      explorerUrl: "https://old-fashioned-deck.org",
+      explorerUrl: "https://elliptical-valentine.info",
       featured: false,
       indexerService: false,
-      loadbalancerUrl: "https://that-premeditation.biz/",
+      loadbalancerUrl: "https://runny-epic.net",
       logo: "<value>",
       name: "<value>",
       owner: "<value>",
@@ -38,9 +38,9 @@ let value: GetAllNetworkNetworkPaginated = {
     },
   ],
   meta: {
-    currentPage: 8137.98,
-    itemCount: 3965.06,
-    itemsPerPage: 8811.03,
+    currentPage: 3965.06,
+    itemCount: 8811.03,
+    itemsPerPage: 5812.73,
   },
 };
 ```

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MicroserviceNotResponding = {
-  path: "/mnt",
+  path: "/private/var",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.MicroserviceNotResponding = {
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/dev",
+  path: "/Applications",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.CouldNotEstimateGasPrice = {
 
 ```typescript
 const value: errors.CouldNotBroadcast = {
-  path: "/etc/defaults",
+  path: "/boot/defaults",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.CouldNotBroadcast = {
 
 ```typescript
 const value: errors.CouldNotAssignNonce = {
-  path: "/selinux",
+  path: "/home/user",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.CouldNotAssignNonce = {
 
 ```typescript
 const value: errors.CouldNotSign = {
-  path: "/lib",
+  path: "/var/log",
   timestamp: "<value>",
 };
 ```
@@ -61,7 +61,7 @@ const value: errors.CouldNotSign = {
 
 ```typescript
 const value: errors.NoProviderForNetwork = {
-  path: "/srv",
+  path: "/home/user",
   timestamp: "<value>",
 };
 ```

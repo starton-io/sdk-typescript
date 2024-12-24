@@ -17,13 +17,13 @@ const value: shared.AwsKmsCredentialsDto = {
 
 ```typescript
 const value: shared.VaultKmsCredentialsDto = {
-  baseUrl: "https://whimsical-impostor.name",
+  baseUrl: "https://thin-almighty.org/",
   id: "<id>",
   loginPath: "<value>",
   role: "<value>",
   rootPath: "<value>",
   selfSigned: false,
-  timeout: 8577.23,
+  timeout: 3553.69,
   tokenPath: "<value>",
 };
 ```

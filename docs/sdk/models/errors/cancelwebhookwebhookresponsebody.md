@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/etc/namedb",
+  path: "/usr/local/src",
   timestamp: "<value>",
 };
 ```

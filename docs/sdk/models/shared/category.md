@@ -5,7 +5,7 @@
 ```typescript
 import { Category } from "@starton/sdk/sdk/models/shared";
 
-let value: Category = Category.Sale;
+let value: Category = Category.Deprecated;
 ```
 
 ## Values

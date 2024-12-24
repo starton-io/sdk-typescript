@@ -7,22 +7,22 @@ import { Transaction, TransactionLogType, TransactionState, TransactionStatus } 
 
 let value: Transaction = {
   automaticNonce: false,
-  chainId: 3553.69,
+  chainId: 680.74,
   from: "<value>",
   id: "<id>",
   isDeployTransaction: false,
   logs: [
     {
-      createdAt: "<value>",
+      createdAt: "1711411382874",
       message: "<value>",
-      type: TransactionLogType.ExecutionWillFail,
+      type: TransactionLogType.GasPriceEstimated,
     },
   ],
   network: "<value>",
   projectId: "<id>",
   signerWallet: "<value>",
-  state: TransactionState.Success,
-  status: TransactionStatus.CouldNotEstimateGasPrice,
+  state: TransactionState.Pending,
+  status: TransactionStatus.ReceivedByStarton,
   value: "<value>",
 };
 ```

@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/boot/defaults",
+  path: "/var/tmp",
   timestamp: "<value>",
 };
 ```

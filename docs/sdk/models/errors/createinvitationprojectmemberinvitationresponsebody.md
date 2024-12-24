@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.NotAuthenticated = {
-  path: "/opt/bin",
+  path: "/var/mail",
   timestamp: "<value>",
 };
 ```

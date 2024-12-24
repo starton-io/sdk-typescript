@@ -15,9 +15,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
       blockchains: [
         "<value>",
       ],
-      category: Category.Other,
-      description: "aha roundabout embarrassment earth wildly",
-      githubUrl: "https://weighty-tuxedo.net/",
+      category: Category.Tool,
+      description: "consequently bouncy abaft",
+      githubUrl: "https://reasonable-schnitzel.biz",
       humanReadableAbi: [
         "<value>",
       ],
@@ -30,9 +30,9 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
     },
   ],
   meta: {
-    currentPage: 6304.48,
-    itemCount: 8742.88,
-    itemsPerPage: 2930.20,
+    currentPage: 5864.10,
+    itemCount: 639.55,
+    itemsPerPage: 4856.28,
   },
 };
 ```

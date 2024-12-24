@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MicroserviceNotResponding = {
-  path: "/usr/X11R6",
+  path: "/opt/lib",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.MicroserviceNotResponding = {
 
 ```typescript
 const value: errors.CouldNotPerformRequest = {
-  path: "/Users",
+  path: "/net",
   timestamp: "<value>",
 };
 ```

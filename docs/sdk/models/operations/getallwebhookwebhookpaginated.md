@@ -11,12 +11,12 @@ let value: GetAllWebhookWebhookPaginated = {
     {
       attempts: [
         {
-          attempt: 2621.18,
+          attempt: 896.03,
           attemptDate: "<value>",
           id: "<id>",
           responsePayload: "<value>",
-          responseStatusCode: 4561.41,
-          status: WebhookAttemptStatus.FailedCall,
+          responseStatusCode: 6720.48,
+          status: WebhookAttemptStatus.RunningCall,
           webhookId: "<id>",
         },
       ],
@@ -25,14 +25,14 @@ let value: GetAllWebhookWebhookPaginated = {
       payload: {},
       projectId: "<id>",
       refId: "<id>",
-      status: WebhookStatus.Failed,
-      url: "https://hungry-conservative.net/",
+      status: WebhookStatus.Successful,
+      url: "https://torn-railway.biz",
     },
   ],
   meta: {
-    currentPage: 568.48,
-    itemCount: 6969.97,
-    itemsPerPage: 7786.95,
+    currentPage: 1314.83,
+    itemCount: 553.74,
+    itemsPerPage: 3015.99,
   },
 };
 ```

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/proc",
+  path: "/usr/libexec",
   timestamp: "<value>",
 };
 ```

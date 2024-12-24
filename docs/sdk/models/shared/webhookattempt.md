@@ -6,11 +6,11 @@
 import { WebhookAttempt, WebhookAttemptStatus } from "@starton/sdk/sdk/models/shared";
 
 let value: WebhookAttempt = {
-  attempt: 4322.81,
+  attempt: 6713.83,
   attemptDate: "<value>",
   id: "<id>",
   responsePayload: "<value>",
-  responseStatusCode: 5219.96,
+  responseStatusCode: 3447.18,
   status: WebhookAttemptStatus.FailedCall,
   webhookId: "<id>",
 };

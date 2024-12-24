@@ -7,7 +7,7 @@ import { DeleteSmartContractResponse } from "@starton/sdk/sdk/models/operations"
 
 let value: DeleteSmartContractResponse = {
   contentType: "<value>",
-  statusCode: 302,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

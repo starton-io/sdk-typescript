@@ -7,7 +7,7 @@ import { GetAllSettingRelayerResponse } from "@starton/sdk/sdk/models/operations
 
 let value: GetAllSettingRelayerResponse = {
   contentType: "<value>",
-  statusCode: 503,
+  statusCode: 206,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MaximumWalletReached = {
-  path: "/srv",
+  path: "/sys",
   timestamp: "<value>",
 };
 ```

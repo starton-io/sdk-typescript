@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/var/log",
+  path: "/usr/share",
   timestamp: "<value>",
 };
 ```

@@ -7,7 +7,7 @@ import { UpdateWatcherResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateWatcherResponse = {
   contentType: "<value>",
-  statusCode: 201,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

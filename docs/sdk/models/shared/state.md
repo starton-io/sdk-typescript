@@ -5,7 +5,7 @@
 ```typescript
 import { State } from "@starton/sdk/sdk/models/shared";
 
-let value: State = State.Error;
+let value: State = State.Success;
 ```
 
 ## Values

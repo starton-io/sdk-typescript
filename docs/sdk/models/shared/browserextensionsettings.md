@@ -6,7 +6,7 @@
 import { BrowserExtensionSettings } from "@starton/sdk/sdk/models/shared";
 
 let value: BrowserExtensionSettings = {
-  rpcUrl: "https://wrong-baseboard.net/",
+  rpcUrl: "https://entire-follower.net/",
 };
 ```
 

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotResendWebhook = {
-  path: "/mnt",
+  path: "/etc/ppp",
   timestamp: "<value>",
 };
 ```

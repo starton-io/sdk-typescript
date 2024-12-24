@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.ServerNotResponding = {
-  path: "/Applications",
+  path: "/usr/libexec",
   timestamp: "<value>",
 };
 ```

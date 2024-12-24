@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.InvalidBytecode = {
-  path: "/private/tmp",
+  path: "/private/var",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.InvalidBytecode = {
 
 ```typescript
 const value: errors.InvalidAbi = {
-  path: "/var",
+  path: "/usr/src",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.InvalidAbi = {
 
 ```typescript
 const value: errors.InvalidFunction = {
-  path: "/boot",
+  path: "/home",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.InvalidFunction = {
 
 ```typescript
 const value: errors.MissingArgument = {
-  path: "/media",
+  path: "/rescue",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.MissingArgument = {
 
 ```typescript
 const value: errors.UnexpectedArgument = {
-  path: "/usr/bin",
+  path: "/net",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.UnexpectedArgument = {
 
 ```typescript
 const value: errors.InvalidArgument = {
-  path: "/opt/sbin",
+  path: "/mnt",
   timestamp: "<value>",
 };
 ```
@@ -61,7 +61,7 @@ const value: errors.InvalidArgument = {
 
 ```typescript
 const value: errors.CallException = {
-  path: "/etc/ppp",
+  path: "/opt/share",
   timestamp: "<value>",
 };
 ```
@@ -70,7 +70,7 @@ const value: errors.CallException = {
 
 ```typescript
 const value: errors.NumericFault = {
-  path: "/etc/defaults",
+  path: "/opt/sbin",
   timestamp: "<value>",
 };
 ```
@@ -79,7 +79,7 @@ const value: errors.NumericFault = {
 
 ```typescript
 const value: errors.ExecutionWillFail = {
-  path: "/usr/obj",
+  path: "/opt",
   timestamp: "<value>",
 };
 ```
@@ -88,7 +88,7 @@ const value: errors.ExecutionWillFail = {
 
 ```typescript
 const value: errors.EnsNotSupported = {
-  path: "/private/tmp",
+  path: "/var",
   timestamp: "<value>",
 };
 ```
@@ -100,7 +100,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/usr/share",
+  path: "/usr/include",
   timestamp: "<value>",
 };
 ```

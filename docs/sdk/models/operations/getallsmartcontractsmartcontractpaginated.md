@@ -9,19 +9,19 @@ import { SmartContractStatus, State } from "@starton/sdk/sdk/models/shared";
 let value: GetAllSmartContractSmartContractPaginated = {
   items: [
     {
-      address: "16458 E 14th Street",
+      address: "5892 Gislason Brook",
       id: "<id>",
       name: "<value>",
       network: "<value>",
       projectId: "<id>",
-      state: State.ManualActionRequired,
-      status: SmartContractStatus.InvalidGasPrice,
+      state: State.Error,
+      status: SmartContractStatus.CouldNotEstimateGasLimit,
     },
   ],
   meta: {
-    currentPage: 206.51,
-    itemCount: 7583.79,
-    itemsPerPage: 3200.17,
+    currentPage: 3834.64,
+    itemCount: 5883.17,
+    itemsPerPage: 8310.48,
   },
 };
 ```

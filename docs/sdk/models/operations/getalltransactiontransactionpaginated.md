@@ -16,23 +16,23 @@ let value: GetAllTransactionTransactionPaginated = {
       isDeployTransaction: false,
       logs: [
         {
-          createdAt: "<value>",
+          createdAt: "1707256690122",
           message: "<value>",
-          type: TransactionLogType.ReceivedByStarton,
+          type: TransactionLogType.ReplacementGasPriceUnderpriced,
         },
       ],
       network: "<value>",
       projectId: "<id>",
       signerWallet: "<value>",
-      state: TransactionState.Pending,
-      status: TransactionStatus.ReceivedByStarton,
+      state: TransactionState.Success,
+      status: TransactionStatus.CouldNotEstimateGasLimit,
       value: "<value>",
     },
   ],
   meta: {
-    currentPage: 3179.83,
-    itemCount: 4142.63,
-    itemsPerPage: 641.47,
+    currentPage: 4142.63,
+    itemCount: 641.47,
+    itemsPerPage: 6924.72,
   },
 };
 ```

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.InvalidBytecode = {
-  path: "/media",
+  path: "/usr/include",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.InvalidBytecode = {
 
 ```typescript
 const value: errors.InvalidAbi = {
-  path: "/usr/share",
+  path: "/opt/lib",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.InvalidAbi = {
 
 ```typescript
 const value: errors.InvalidFunction = {
-  path: "/etc/defaults",
+  path: "/opt/bin",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.InvalidFunction = {
 
 ```typescript
 const value: errors.MissingArgument = {
-  path: "/home/user",
+  path: "/proc",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.MissingArgument = {
 
 ```typescript
 const value: errors.UnexpectedArgument = {
-  path: "/etc/ppp",
+  path: "/usr/src",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.UnexpectedArgument = {
 
 ```typescript
 const value: errors.InvalidArgument = {
-  path: "/opt/lib",
+  path: "/usr/lib",
   timestamp: "<value>",
 };
 ```
@@ -61,7 +61,7 @@ const value: errors.InvalidArgument = {
 
 ```typescript
 const value: errors.CallException = {
-  path: "/usr/lib",
+  path: "/Applications",
   timestamp: "<value>",
 };
 ```
@@ -70,7 +70,7 @@ const value: errors.CallException = {
 
 ```typescript
 const value: errors.NumericFault = {
-  path: "/rescue",
+  path: "/usr/X11R6",
   timestamp: "<value>",
 };
 ```
@@ -79,7 +79,7 @@ const value: errors.NumericFault = {
 
 ```typescript
 const value: errors.ExecutionWillFail = {
-  path: "/private/var",
+  path: "/var/log",
   timestamp: "<value>",
 };
 ```
@@ -88,7 +88,7 @@ const value: errors.ExecutionWillFail = {
 
 ```typescript
 const value: errors.EnsNotSupported = {
-  path: "/Applications",
+  path: "/usr/bin",
   timestamp: "<value>",
 };
 ```
@@ -100,7 +100,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/opt/sbin",
+  path: "/etc/ppp",
   timestamp: "<value>",
 };
 ```

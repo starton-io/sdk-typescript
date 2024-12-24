@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/etc/defaults",
+  path: "/usr/libexec",
   timestamp: "<value>",
 };
 ```

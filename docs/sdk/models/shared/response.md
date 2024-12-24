@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 5771.40;
+const value: number = 2277.60;
 ```
 
 ### `shared.ReadSmartContractResponseSchemas3`

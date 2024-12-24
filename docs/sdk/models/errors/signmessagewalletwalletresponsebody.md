@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.Forbidden = {
-  path: "/usr/sbin",
+  path: "/var/spool",
   timestamp: "<value>",
 };
 ```

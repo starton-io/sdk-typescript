@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/usr/X11R6",
+  path: "/usr/sbin",
   timestamp: "<value>",
 };
 ```

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotAssignNonce = {
-  path: "/etc",
+  path: "/usr/lib",
   timestamp: "<value>",
 };
 ```

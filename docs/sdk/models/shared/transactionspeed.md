@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionSpeed } from "@starton/sdk/sdk/models/shared";
 
-let value: TransactionSpeed = TransactionSpeed.Custom;
+let value: TransactionSpeed = TransactionSpeed.Low;
 ```
 
 ## Values

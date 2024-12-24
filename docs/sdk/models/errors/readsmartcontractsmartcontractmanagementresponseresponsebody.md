@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/tmp",
+  path: "/Library",
   timestamp: "<value>",
 };
 ```

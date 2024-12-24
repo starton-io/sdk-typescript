@@ -6,8 +6,8 @@
 import { ProjectMember } from "@starton/sdk/sdk/models/shared";
 
 let value: ProjectMember = {
-  email: "Nelle30@yahoo.com",
-  fullName: "Dr. Mattie Nader",
+  email: "Elbert.Johnson@gmail.com",
+  fullName: "Van Goodwin",
   id: "<id>",
 };
 ```

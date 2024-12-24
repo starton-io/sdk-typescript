@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/private",
+  path: "/var/log",
   timestamp: "<value>",
 };
 ```

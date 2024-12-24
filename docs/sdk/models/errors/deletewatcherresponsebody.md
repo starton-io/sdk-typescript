@@ -10,7 +10,7 @@ const value: errors.BadRequestException = {
   message: [
     "<value>",
   ],
-  path: "/etc/ppp",
+  path: "/opt/share",
   timestamp: "<value>",
 };
 ```

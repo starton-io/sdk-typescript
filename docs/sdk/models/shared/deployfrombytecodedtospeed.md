@@ -5,7 +5,7 @@
 ```typescript
 import { DeployFromBytecodeDtoSpeed } from "@starton/sdk/sdk/models/shared";
 
-let value: DeployFromBytecodeDtoSpeed = DeployFromBytecodeDtoSpeed.Fast;
+let value: DeployFromBytecodeDtoSpeed = DeployFromBytecodeDtoSpeed.Low;
 ```
 
 ## Values

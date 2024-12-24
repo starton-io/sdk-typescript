@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MaximumStorageReached = {
-  path: "/usr/obj",
+  path: "/boot/defaults",
   timestamp: "<value>",
 };
 ```

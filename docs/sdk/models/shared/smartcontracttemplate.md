@@ -12,9 +12,9 @@ let value: SmartContractTemplate = {
   blockchains: [
     "<value>",
   ],
-  category: Category.Sale,
-  description: "against within wiggly huzzah after what gah",
-  githubUrl: "https://wordy-completion.biz/",
+  category: Category.Tool,
+  description: "ah hunt until freckle across following gadzooks wobbly athwart",
+  githubUrl: "https://misguided-saloon.org/",
   humanReadableAbi: [
     "<value>",
   ],

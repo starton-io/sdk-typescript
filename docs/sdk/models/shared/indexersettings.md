@@ -6,7 +6,7 @@
 import { IndexerSettings } from "@starton/sdk/sdk/models/shared";
 
 let value: IndexerSettings = {
-  confirmationBlocks: 6387.62,
+  confirmationBlocks: 9249.67,
   verifyBlockIntegrity: false,
   verifyTxIntegrity: false,
 };

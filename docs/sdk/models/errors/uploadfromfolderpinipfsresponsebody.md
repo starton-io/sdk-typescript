@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.MaximumStorageReached = {
-  path: "/opt/sbin",
+  path: "/etc/defaults",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.MaximumStorageReached = {
 
 ```typescript
 const value: errors.PayloadTooLarge = {
-  path: "/sys",
+  path: "/Library",
   timestamp: "<value>",
 };
 ```

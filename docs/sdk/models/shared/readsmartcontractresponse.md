@@ -6,7 +6,7 @@
 import { ReadSmartContractResponse } from "@starton/sdk/sdk/models/shared";
 
 let value: ReadSmartContractResponse = {
-  address: "790 Miller Oval",
+  address: "6861 W 2nd Street",
   functionName: "<value>",
   network: "<value>",
   params: [
@@ -15,9 +15,7 @@ let value: ReadSmartContractResponse = {
     "1000000000000000000000000",
     "0x298e760768c8481780397eE28A127eAd584df4ee",
   ],
-  response: [
-    "<value>",
-  ],
+  response: {},
 };
 ```
 

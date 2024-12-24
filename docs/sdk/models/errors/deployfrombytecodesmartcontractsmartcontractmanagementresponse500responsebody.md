@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/Network",
+  path: "/lib",
   timestamp: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ const value: errors.Unknown = {
 
 ```typescript
 const value: errors.NoProviderForNetwork = {
-  path: "/usr/share",
+  path: "/Library",
   timestamp: "<value>",
 };
 ```
@@ -25,7 +25,7 @@ const value: errors.NoProviderForNetwork = {
 
 ```typescript
 const value: errors.CouldNotEstimateGasPrice = {
-  path: "/var/mail",
+  path: "/private/var",
   timestamp: "<value>",
 };
 ```
@@ -34,7 +34,7 @@ const value: errors.CouldNotEstimateGasPrice = {
 
 ```typescript
 const value: errors.CouldNotSign = {
-  path: "/var/yp",
+  path: "/boot",
   timestamp: "<value>",
 };
 ```
@@ -43,7 +43,7 @@ const value: errors.CouldNotSign = {
 
 ```typescript
 const value: errors.CouldNotAssignNonce = {
-  path: "/opt/bin",
+  path: "/tmp",
   timestamp: "<value>",
 };
 ```
@@ -52,7 +52,7 @@ const value: errors.CouldNotAssignNonce = {
 
 ```typescript
 const value: errors.CouldNotBroadcast = {
-  path: "/var/spool",
+  path: "/opt/lib",
   timestamp: "<value>",
 };
 ```

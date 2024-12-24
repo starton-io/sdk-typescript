@@ -6,7 +6,7 @@
 import { ImportSmartContractDtoDeployMethod } from "@starton/sdk/sdk/models/shared";
 
 let value: ImportSmartContractDtoDeployMethod =
-  ImportSmartContractDtoDeployMethod.Web3;
+  ImportSmartContractDtoDeployMethod.Kms;
 ```
 
 ## Values

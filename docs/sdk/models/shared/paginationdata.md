@@ -6,9 +6,9 @@
 import { PaginationData } from "@starton/sdk/sdk/models/shared";
 
 let value: PaginationData = {
-  currentPage: 5361.77,
-  itemCount: 6813.93,
-  itemsPerPage: 2775.96,
+  currentPage: 4598.56,
+  itemCount: 446.12,
+  itemsPerPage: 7997.96,
 };
 ```
 

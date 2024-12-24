@@ -13,13 +13,13 @@ let value: GetAllRpcRpcPaginated = {
       isPublic: false,
       networkName: "<value>",
       type: RpcType.Full,
-      url: "https://qualified-hose.org",
+      url: "https://intrepid-technician.info",
     },
   ],
   meta: {
-    currentPage: 3675.62,
-    itemCount: 4358.65,
-    itemsPerPage: 8919.23,
+    currentPage: 4358.65,
+    itemCount: 8919.23,
+    itemsPerPage: 8061.94,
   },
 };
 ```

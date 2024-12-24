@@ -7,7 +7,7 @@ import { UpdateNetworkResponse } from "@starton/sdk/sdk/models/operations";
 
 let value: UpdateNetworkResponse = {
   contentType: "<value>",
-  statusCode: 400,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

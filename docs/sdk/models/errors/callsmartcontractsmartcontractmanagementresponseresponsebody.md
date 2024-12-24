@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.ReplacementGasPriceUnderpriced = {
-  path: "/Applications",
+  path: "/private",
   timestamp: "<value>",
 };
 ```

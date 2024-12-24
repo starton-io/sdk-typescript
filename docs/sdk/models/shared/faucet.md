@@ -7,7 +7,7 @@ import { Faucet } from "@starton/sdk/sdk/models/shared";
 
 let value: Faucet = {
   id: "<id>",
-  ip: "231.139.116.225",
+  ip: "fe09:bbe6:28f4:dbad:af8d:ff7a:d53b:fadc",
   network: "<value>",
   wallet: "<value>",
 };

@@ -8,11 +8,11 @@ import { Webhook, WebhookAttemptStatus, WebhookStatus } from "@starton/sdk/sdk/m
 let value: Webhook = {
   attempts: [
     {
-      attempt: 8130.54,
+      attempt: 1158.34,
       attemptDate: "<value>",
       id: "<id>",
       responsePayload: "<value>",
-      responseStatusCode: 9762.26,
+      responseStatusCode: 4570.59,
       status: WebhookAttemptStatus.FailedCall,
       webhookId: "<id>",
     },
@@ -22,8 +22,8 @@ let value: Webhook = {
   payload: {},
   projectId: "<id>",
   refId: "<id>",
-  status: WebhookStatus.Canceled,
-  url: "https://great-chiffonier.com",
+  status: WebhookStatus.Successful,
+  url: "https://clear-cut-dredger.info",
 };
 ```
 

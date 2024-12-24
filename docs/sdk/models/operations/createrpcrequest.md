@@ -8,8 +8,8 @@ import { CreateRpcDtoType } from "@starton/sdk/sdk/models/shared";
 
 let value: CreateRpcRequest = {
   createRpcDto: {
-    type: CreateRpcDtoType.Archive,
-    url: "https://fortunate-octave.info",
+    type: CreateRpcDtoType.Full,
+    url: "https://polished-horde.com/",
   },
   name: "optimism-functionnal-tests",
 };

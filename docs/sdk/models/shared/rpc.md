@@ -9,8 +9,8 @@ let value: Rpc = {
   id: "<id>",
   isPublic: false,
   networkName: "<value>",
-  type: RpcType.Archive,
-  url: "https://extra-large-bug.org",
+  type: RpcType.Full,
+  url: "https://meager-typeface.name/",
 };
 ```
 

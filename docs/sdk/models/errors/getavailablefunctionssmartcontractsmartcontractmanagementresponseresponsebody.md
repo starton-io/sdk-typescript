@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.Unknown = {
-  path: "/home/user",
+  path: "/etc/namedb",
   timestamp: "<value>",
 };
 ```

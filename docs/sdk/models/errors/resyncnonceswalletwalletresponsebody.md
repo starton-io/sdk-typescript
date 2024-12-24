@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/selinux",
+  path: "/sys",
   timestamp: "<value>",
 };
 ```

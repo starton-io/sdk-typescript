@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotCancelWebhook = {
-  path: "/var/spool",
+  path: "/opt/sbin",
   timestamp: "<value>",
 };
 ```

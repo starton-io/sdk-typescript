@@ -6,7 +6,7 @@
 import { TransactionManagerSettings } from "@starton/sdk/sdk/models/shared";
 
 let value: TransactionManagerSettings = {
-  confirmationBlocks: 1629.54,
+  confirmationBlocks: 8286.57,
 };
 ```
 

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: errors.CouldNotFindResource = {
-  path: "/etc/periodic",
+  path: "/Network",
   timestamp: "<value>",
 };
 ```
