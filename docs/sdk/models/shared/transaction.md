@@ -13,7 +13,7 @@ let value: Transaction = {
   isDeployTransaction: false,
   logs: [
     {
-      createdAt: "1711584147163",
+      createdAt: "1711670568409",
       message: "<value>",
       type: TransactionLogType.GasPriceEstimated,
     },
