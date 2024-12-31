@@ -6,7 +6,7 @@
 import { TransactionLog, TransactionLogType } from "@starton/sdk/sdk/models/shared";
 
 let value: TransactionLog = {
-  createdAt: "1707626605847",
+  createdAt: "1707712862162",
   message: "<value>",
   type: TransactionLogType.Signed,
 };
