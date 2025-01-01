@@ -16,7 +16,7 @@ let value: GetAllTransactionTransactionPaginated = {
       isDeployTransaction: false,
       logs: [
         {
-          createdAt: "1707861467465",
+          createdAt: "1707948223003",
           message: "<value>",
           type: TransactionLogType.ReplacementGasPriceUnderpriced,
         },
