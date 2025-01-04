@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: 4b1b219e53d243b06fabb8ad05ab6221
   docVersion: "1.0"
-  speakeasyVersion: 1.460.5
-  generationVersion: 2.484.0
-  releaseVersion: 0.26.23
-  configChecksum: aeddcc03be0eb56ed036b839112f84d5
+  speakeasyVersion: 1.462.2
+  generationVersion: 2.486.1
+  releaseVersion: 0.26.24
+  configChecksum: cf3ae266315a0790a97e3429893994a4
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
