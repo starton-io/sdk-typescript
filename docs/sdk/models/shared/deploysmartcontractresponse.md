@@ -30,7 +30,7 @@ let value: DeploySmartContractResponse = {
     isDeployTransaction: false,
     logs: [
       {
-        createdAt: "1721734983425",
+        createdAt: "1721821230666",
         message: "<value>",
         type: TransactionLogType.ReplacementGasPriceUnderpriced,
       },
