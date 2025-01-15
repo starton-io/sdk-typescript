@@ -10,7 +10,7 @@ let value: Network = {
   browserExtensionService: false,
   chainId: 6387.62,
   confirmationBlocks: 4903.05,
-  decimal: 9894.10,
+  decimal: 9894.1,
   deprecated: false,
   displayName: "Anjali.Green66",
   eip1159: false,

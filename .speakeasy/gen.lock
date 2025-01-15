@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: 4b1b219e53d243b06fabb8ad05ab6221
   docVersion: "1.0"
-  speakeasyVersion: 1.468.3
-  generationVersion: 2.493.4
-  releaseVersion: 0.26.34
-  configChecksum: 5a47e93801d9d38c2183f0ed77b924dc
+  speakeasyVersion: 1.468.6
+  generationVersion: 2.493.13
+  releaseVersion: 0.26.35
+  configChecksum: bb5ac5c6a9a89dad9b17f2802175f76a
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.12
+    core: 3.18.14
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
@@ -1146,6 +1146,8 @@ examples:
       parameters:
         path:
           address: "0x1f9090aaE28b8a3dCeaDf281B0F12828e676c326"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"address": "050 Mellie Well", "kmsId": "<value>", "projectId": "<value>", "providerKeyId": "<value>"}
@@ -1225,6 +1227,8 @@ examples:
       parameters:
         path:
           id: "req_f9701ff8e2ea4a1d964e0d6d40564801"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
@@ -1234,6 +1238,8 @@ examples:
           application/json: {"path": "/private/var", "timestamp": "<value>"}
   uploadFromFilePin:
     speakeasy-default-upload-from-file-pin:
+      requestBody:
+        multipart/form-data: {}
       responses:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "pinned"}
@@ -1243,6 +1249,8 @@ examples:
           application/json: {"path": "/var/tmp", "timestamp": "<value>"}
   uploadFromFolderPin:
     speakeasy-default-upload-from-folder-pin:
+      requestBody:
+        multipart/form-data: {}
       responses:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "queued"}
@@ -1253,7 +1261,7 @@ examples:
   uploadFromJsonPin:
     a:
       requestBody:
-        application/json: {"name": "my file"}
+        application/json: {"content": {}, "name": "my file"}
       responses:
         "201":
           application/json: {"id": "<id>", "projectId": "<value>", "status": "failed"}
@@ -1267,7 +1275,7 @@ examples:
         application/json: {"name": "<value>", "provider": "AWS", "secret": "<value>"}
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
+          application/json: {"credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
         "400":
           application/json: {"message": ["<value>"], "path": "/tmp", "timestamp": "<value>"}
   deleteKms:
@@ -1300,7 +1308,7 @@ examples:
           id: "kms_000"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
+          application/json: {"credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "AWS"}
         "400":
           application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
@@ -1310,9 +1318,11 @@ examples:
       parameters:
         path:
           id: "kms_000"
+      requestBody:
+        application/json: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "Vault"}
+          application/json: {"credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<value>", "provider": "Vault"}
         "400":
           application/json: {"message": ["<value>", "<value>", "<value>"], "path": "/srv", "timestamp": "<value>"}
         "404":
@@ -1600,6 +1610,8 @@ examples:
         path:
           name: "optimism-functionnal-tests"
           id: "rpc_7fb8f5ed4f1f4f06a18d86f78676d71d"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "url": "https://realistic-kill.info"}
@@ -1921,6 +1933,8 @@ examples:
         path:
           network: "polygon-mumbai"
           address: "0x820f8728E32519b9C91B2406BF48AF80711aFecD"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"address": "449 Amiya Forge", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<value>", "state": "ERROR", "status": "COULD_NOT_UNSTUCK_NONCE"}
@@ -2038,7 +2052,7 @@ examples:
           eventId: "wevent_437e18e7470944099bd094e1c936e4cd"
       responses:
         "200":
-          application/json: {"blockHash": "<value>", "blockNumber": "1603.15", "id": "<id>", "network": "<value>", "projectId": "<value>", "status": "CANCELED", "txHash": "<value>", "watcherId": "<value>"}
+          application/json: {"blockHash": "<value>", "blockNumber": "1603.15", "id": "<id>", "network": "<value>", "payload": {}, "projectId": "<value>", "status": "CANCELED", "txHash": "<value>", "watcherId": "<value>"}
         "400":
           application/json: {"message": [], "path": "/Applications", "timestamp": "<value>"}
         "404":
@@ -2077,7 +2091,7 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "201":
-          application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
+          application/json: {"attempts": [], "headers": {}, "id": "<id>", "payload": {}, "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://yearly-payee.info"}
         "400":
           application/json: {"message": [], "path": "/var/yp", "timestamp": "<value>"}
         "404":
@@ -2103,7 +2117,7 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "200":
-          application/json: {"attempts": [], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
+          application/json: {"attempts": [], "headers": {}, "id": "<id>", "payload": {}, "projectId": "<value>", "refId": "<value>", "status": "RETRYING", "url": "http://green-nit.com"}
         "400":
           application/json: {"message": [], "path": "/opt", "timestamp": "<value>"}
         "404":
@@ -2131,7 +2145,7 @@ examples:
           id: "wh_4c2905f7276b415fac02ee3682189940"
       responses:
         "201":
-          application/json: {"attempts": [{"attempt": "7522.59", "attemptDate": "<value>", "id": "<id>", "responsePayload": "<value>", "responseStatusCode": "4706.48", "status": "SUCCESSFUL_CALL", "webhookId": "<id>"}], "id": "<id>", "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
+          application/json: {"attempts": [{"attempt": "7522.59", "attemptDate": "<value>", "id": "<id>", "responsePayload": "<value>", "responseStatusCode": "4706.48", "status": "SUCCESSFUL_CALL", "webhookId": "<id>"}], "headers": {}, "id": "<id>", "payload": {}, "projectId": "<value>", "refId": "<value>", "status": "SUCCESSFUL", "url": "http://silky-custard.info"}
         "400":
           application/json: {"message": ["<value>"], "path": "/usr/libdata", "timestamp": "<value>"}
         "404":

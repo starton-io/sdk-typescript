@@ -216,7 +216,7 @@ const starton = new Starton({
 async function run() {
   const result = await starton.network.getAll({
     chainIds: [
-      4610.08,
+
     ],
     limit: 20,
     page: 0,
@@ -248,7 +248,7 @@ const starton = new StartonCore({
 async function run() {
   const res = await networkGetAll(starton, {
     chainIds: [
-      5984.80,
+  
     ],
     limit: 20,
     page: 0,

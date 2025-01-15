@@ -30,7 +30,7 @@ let value: GetAllSmartContractTemplateSmartContractTemplatePaginated = {
     },
   ],
   meta: {
-    currentPage: 5864.10,
+    currentPage: 5864.1,
     itemCount: 639.55,
     itemsPerPage: 4856.28,
   },

@@ -7,7 +7,7 @@ import { CreateNetworkDto, ExplorerApiDtoType } from "@starton/sdk/sdk/models/sh
 
 let value: CreateNetworkDto = {
   blockchain: "<value>",
-  chainId: 9854.91,
+  chainId: 9854.92,
   confirmationBlocks: 9689.72,
   displayName: "Susan10",
   explorerApi: {

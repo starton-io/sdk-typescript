@@ -15,9 +15,9 @@ let value: GetAllWalletWalletPaginated = {
     },
   ],
   meta: {
-    currentPage: 8326.20,
+    currentPage: 8326.2,
     itemCount: 7781.57,
-    itemsPerPage: 8700.12,
+    itemsPerPage: 8700.13,
   },
 };
 ```

@@ -10,7 +10,7 @@ let value: GetAllNetworkNetworkPaginated = {
     {
       blockchain: "<value>",
       browserExtensionService: false,
-      chainId: 8289.40,
+      chainId: 8289.4,
       confirmationBlocks: 46.95,
       decimal: 6778.17,
       deprecated: false,
@@ -39,7 +39,7 @@ let value: GetAllNetworkNetworkPaginated = {
   ],
   meta: {
     currentPage: 3965.06,
-    itemCount: 8811.03,
+    itemCount: 8811.04,
     itemsPerPage: 5812.73,
   },
 };

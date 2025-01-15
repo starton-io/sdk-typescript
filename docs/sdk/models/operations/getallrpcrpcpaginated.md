@@ -18,7 +18,7 @@ let value: GetAllRpcRpcPaginated = {
   ],
   meta: {
     currentPage: 4358.65,
-    itemCount: 8919.23,
+    itemCount: 8919.24,
     itemsPerPage: 8061.94,
   },
 };

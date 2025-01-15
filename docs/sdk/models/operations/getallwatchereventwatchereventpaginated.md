@@ -10,7 +10,7 @@ let value: GetAllWatcherEventWatcherEventPaginated = {
   items: [
     {
       blockHash: "<value>",
-      blockNumber: 9729.19,
+      blockNumber: 9729.2,
       id: "<id>",
       network: "<value>",
       payload: {},
@@ -21,8 +21,8 @@ let value: GetAllWatcherEventWatcherEventPaginated = {
     },
   ],
   meta: {
-    currentPage: 9065.55,
-    itemCount: 7740.47,
+    currentPage: 9065.56,
+    itemCount: 7740.48,
     itemsPerPage: 3331.45,
   },
 };

@@ -15,7 +15,7 @@ let value: GetAllPinPinPaginated = {
     },
   ],
   meta: {
-    currentPage: 6818.20,
+    currentPage: 6818.2,
     itemCount: 3595.08,
     itemsPerPage: 4370.32,
   },

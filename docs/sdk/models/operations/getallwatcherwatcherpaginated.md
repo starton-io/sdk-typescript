@@ -10,7 +10,7 @@ let value: GetAllWatcherWatcherPaginated = {
   items: [
     {
       address: "8286 Fae Creek",
-      confirmationsBlocks: 9818.29,
+      confirmationsBlocks: 9818.3,
       id: "<id>",
       network: "<value>",
       paused: false,

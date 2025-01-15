@@ -30,9 +30,9 @@ let value: GetAllWebhookWebhookPaginated = {
     },
   ],
   meta: {
-    currentPage: 1314.83,
+    currentPage: 1314.82,
     itemCount: 553.74,
-    itemsPerPage: 3015.99,
+    itemsPerPage: 3015.98,
   },
 };
 ```

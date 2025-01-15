@@ -3,8 +3,9 @@
  */
 
 import { StartonCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { appendForm, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -59,10 +60,11 @@ export async function ipfsUploadFolder(
   const body = new FormData();
 
   if (payload.files !== undefined) {
-    body.append("files", String(payload.files));
+    appendForm(body, "files", payload.files);
   }
   if (payload.metadata !== undefined) {
-    body.append(
+    appendForm(
+      body,
       "metadata",
       encodeJSON("metadata", payload.metadata, { explode: true }),
     );
@@ -70,9 +72,9 @@ export async function ipfsUploadFolder(
 
   const path = pathToFunc("/v3/ipfs/folder")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
