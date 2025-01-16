@@ -130,7 +130,8 @@ export async function networkCreate(
       key: "Network",
     }),
     M.jsonErr(400, errors.CreateNetworkResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

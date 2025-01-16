@@ -144,7 +144,8 @@ export async function projectMemberInvitationGetAll(
       key: "InvitationPaginated",
     }),
     M.jsonErr(400, errors.GetAllInvitationResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return haltIterator(result);

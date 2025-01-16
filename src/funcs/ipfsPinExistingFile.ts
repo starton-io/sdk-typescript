@@ -131,7 +131,8 @@ export async function ipfsPinExistingFile(
     M.json(201, operations.CreatePinResponse$inboundSchema, { key: "Pin" }),
     M.jsonErr(400, errors.CreatePinResponseBody$inboundSchema),
     M.jsonErr(413, errors.CreatePinIpfsResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

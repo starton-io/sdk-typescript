@@ -139,7 +139,8 @@ export async function walletRequestFaucet(
     }),
     M.jsonErr(400, errors.ClaimFaucetResponseBody$inboundSchema),
     M.jsonErr(500, errors.ClaimFaucetWalletResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
     M.json("default", operations.ClaimFaucetResponse$inboundSchema, {
       key: "oneOf",
     }),

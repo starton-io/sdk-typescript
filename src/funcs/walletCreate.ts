@@ -133,7 +133,8 @@ export async function walletCreate(
     }),
     M.jsonErr(400, errors.CreateWalletResponseBody$inboundSchema),
     M.jsonErr(412, errors.CreateWalletWalletResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

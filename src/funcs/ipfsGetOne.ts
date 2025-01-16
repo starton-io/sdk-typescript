@@ -141,7 +141,8 @@ export async function ipfsGetOne(
     M.json(200, operations.GetOnePinResponse$inboundSchema, { key: "Pin" }),
     M.jsonErr(400, errors.GetOnePinResponseBody$inboundSchema),
     M.jsonErr(404, errors.GetOnePinIpfsResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

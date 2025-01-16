@@ -140,7 +140,8 @@ export async function networkRpcDelete(
     M.json(200, operations.DeleteRpcResponse$inboundSchema, { key: "number" }),
     M.jsonErr(400, errors.DeleteRpcResponseBody$inboundSchema),
     M.jsonErr(404, errors.DeleteRpcNetworkRpcResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

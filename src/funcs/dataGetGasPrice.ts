@@ -135,7 +135,8 @@ export async function dataGetGasPrice(
       key: "GasPrices",
     }),
     M.jsonErr(400, errors.GetAllGasPriceResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

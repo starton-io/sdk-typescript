@@ -137,7 +137,8 @@ export async function networkRpcCreate(
     M.json(201, operations.CreateRpcResponse$inboundSchema, { key: "Rpc" }),
     M.jsonErr(400, errors.CreateRpcResponseBody$inboundSchema),
     M.jsonErr(404, errors.CreateRpcNetworkRpcResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

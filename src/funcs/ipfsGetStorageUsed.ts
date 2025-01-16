@@ -113,7 +113,8 @@ export async function ipfsGetStorageUsed(
       key: "StorageUsed",
     }),
     M.jsonErr(400, errors.GetStorageUsedPinResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

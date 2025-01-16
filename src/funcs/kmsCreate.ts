@@ -128,7 +128,8 @@ export async function kmsCreate(
   >(
     M.json(201, operations.CreateKmsResponse$inboundSchema, { key: "Kms" }),
     M.jsonErr(400, errors.CreateKmsResponseBody$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
