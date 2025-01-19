@@ -5,8 +5,8 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.469.1
   generationVersion: 2.493.21
-  releaseVersion: 0.26.38
-  configChecksum: b56e2296c75cf047cf19714d3f292a3d
+  releaseVersion: 0.26.39
+  configChecksum: 14c35b0094436c1b316a83c7dd083d74
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
