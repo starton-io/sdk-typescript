@@ -21,7 +21,6 @@ Adds a new network to the project, available only for Enterprise plans.
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -36,11 +35,6 @@ async function run() {
     enableExternalWallet: false,
     enableListener: false,
     enableRelayer: false,
-    explorerApi: {
-      apiKey: "<value>",
-      type: ExplorerApiDtoType.Etherscan,
-      url: "http://limp-pastry.org",
-    },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
     name: "optimism-functional-tests1728323990886",
@@ -61,7 +55,6 @@ The standalone function version of this method:
 ```typescript
 import { StartonCore } from "@starton/sdk/core.js";
 import { networkCreate } from "@starton/sdk/funcs/networkCreate.js";
-import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 // Use `StartonCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -78,11 +71,6 @@ async function run() {
     enableExternalWallet: false,
     enableListener: false,
     enableRelayer: false,
-    explorerApi: {
-      apiKey: "<value>",
-      type: ExplorerApiDtoType.Etherscan,
-      url: "http://limp-pastry.org",
-    },
     explorerUrl: "https://optimism-invalid-test-explorer.com",
     logo: "https://optimism-invalid-test-logo.com",
     name: "optimism-functional-tests1728323990886",
@@ -215,9 +203,6 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.network.getAll({
-    chainIds: [
-
-    ],
     limit: 20,
     page: 0,
   });
@@ -247,9 +232,6 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await networkGetAll(starton, {
-    chainIds: [
-  
-    ],
     limit: 20,
     page: 0,
   });
@@ -375,7 +357,6 @@ Modifies the details of a specific network based on its unique name. This featur
 
 ```typescript
 import { Starton } from "@starton/sdk";
-import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 const starton = new Starton({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -385,11 +366,6 @@ async function run() {
   const result = await starton.network.update({
     updateNetworkDto: {
       displayName: "optimism-private-tests",
-      explorerApi: {
-        apiKey: "<value>",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "https://alarming-nondisclosure.com",
-      },
     },
     name: "optimism-functional-tests",
   });
@@ -408,7 +384,6 @@ The standalone function version of this method:
 ```typescript
 import { StartonCore } from "@starton/sdk/core.js";
 import { networkUpdate } from "@starton/sdk/funcs/networkUpdate.js";
-import { ExplorerApiDtoType } from "@starton/sdk/sdk/models/shared";
 
 // Use `StartonCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -420,11 +395,6 @@ async function run() {
   const res = await networkUpdate(starton, {
     updateNetworkDto: {
       displayName: "optimism-private-tests",
-      explorerApi: {
-        apiKey: "<value>",
-        type: ExplorerApiDtoType.Etherscan,
-        url: "https://alarming-nondisclosure.com",
-      },
     },
     name: "optimism-functional-tests",
   });

@@ -23,7 +23,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.project.member.delete({
-    userId: "<value>",
+    userId: "<id>",
   });
 
   // Handle the result
@@ -49,7 +49,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await projectMemberDelete(starton, {
-    userId: "<value>",
+    userId: "<id>",
   });
 
   if (!res.ok) {

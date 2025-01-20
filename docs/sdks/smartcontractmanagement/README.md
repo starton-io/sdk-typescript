@@ -158,7 +158,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.smartContractManagement.delete({
-    address: "8653 Vaughn Hills",
+    address: "7399 Brekke Points",
     network: "polygon-mumbai",
   });
 
@@ -185,7 +185,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await smartContractManagementDelete(starton, {
-    address: "8653 Vaughn Hills",
+    address: "7399 Brekke Points",
     network: "polygon-mumbai",
   });
 
@@ -876,17 +876,9 @@ async function run() {
       },
     ],
     address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
-    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
     description: "Test minimal contract tests.",
     name: "Minimal contract tests.",
     network: "polygon-mumbai",
-    params: [
-      "TestToken",
-      "TEST",
-      "1000000000000000000000000",
-      "0x298e760768c8481780397eE28A127eAd584df4ee",
-    ],
-    templateId: "ERC721_META_TRANSACTION",
   });
 
   // Handle the result
@@ -924,17 +916,9 @@ async function run() {
       },
     ],
     address: "0x1C1f7A4d7F853856b964947CA03B92993D3ef40e",
-    creationHash: "0x55b782a3db6d7b8c1949536110dcaaac69b4f83455959ab2839c09c2ed2ab1da",
     description: "Test minimal contract tests.",
     name: "Minimal contract tests.",
     network: "polygon-mumbai",
-    params: [
-      "TestToken",
-      "TEST",
-      "1000000000000000000000000",
-      "0x298e760768c8481780397eE28A127eAd584df4ee",
-    ],
-    templateId: "ERC721_META_TRANSACTION",
   });
 
   if (!res.ok) {

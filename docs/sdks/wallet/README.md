@@ -32,7 +32,7 @@ const starton = new Starton({
 
 async function run() {
   const result = await starton.wallet.create({
-    kmsId: "<value>",
+    kmsId: "<id>",
   });
 
   // Handle the result
@@ -58,7 +58,7 @@ const starton = new StartonCore({
 
 async function run() {
   const res = await walletCreate(starton, {
-    kmsId: "<value>",
+    kmsId: "<id>",
   });
 
   if (!res.ok) {

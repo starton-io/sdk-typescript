@@ -30,7 +30,6 @@ const starton = new Starton({
 async function run() {
   const result = await starton.transactionManager.create({
     createTransactionDto: {
-      data: "0x1234",
       network: "polygon-mumbai",
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       speed: CreateTransactionDtoSpeed.Low,
@@ -65,7 +64,6 @@ const starton = new StartonCore({
 async function run() {
   const res = await transactionManagerCreate(starton, {
     createTransactionDto: {
-      data: "0x1234",
       network: "polygon-mumbai",
       signerWallet: "0x298e760768c8481780397eE28A127eAd584df4ee",
       speed: CreateTransactionDtoSpeed.Low,

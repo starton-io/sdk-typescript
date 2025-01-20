@@ -33,7 +33,6 @@ async function run() {
   const result = await starton.monitor.create({
     address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
-    description: "watcher tests",
     name: "watcher test",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
@@ -66,7 +65,6 @@ async function run() {
   const res = await monitorCreate(starton, {
     address: "0x69bfde6e0e13d45670b17b182d45cdd72a35fc1a",
     confirmationsBlocks: 0,
-    description: "watcher tests",
     name: "watcher test",
     network: "polygon-mumbai",
     type: CreateWatcherDtoType.AddressActivity,
@@ -546,10 +544,7 @@ async function run() {
   const result = await starton.monitor.update({
     updateWatcherDto: {
       confirmationsBlocks: 0,
-      description: "watcher tests",
-      name: "watcher tests",
       paused: false,
-      webhookUrl: "",
     },
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
@@ -579,10 +574,7 @@ async function run() {
   const res = await monitorUpdate(starton, {
     updateWatcherDto: {
       confirmationsBlocks: 0,
-      description: "watcher tests",
-      name: "watcher tests",
       paused: false,
-      webhookUrl: "",
     },
     id: "ntif_f94e4a79611947d48254537a8861265d",
   });
