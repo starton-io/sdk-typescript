@@ -3,10 +3,10 @@ id: af204c0a-7bed-4d1c-a065-fe307b9f8161
 management:
   docChecksum: 4b1b219e53d243b06fabb8ad05ab6221
   docVersion: "1.0"
-  speakeasyVersion: 1.469.2
-  generationVersion: 2.493.23
-  releaseVersion: 0.26.40
-  configChecksum: 2bd8b059d1283498356d429b2aa823a9
+  speakeasyVersion: 1.469.11
+  generationVersion: 2.493.32
+  releaseVersion: 0.26.41
+  configChecksum: 226ad3ff20292fba1919f377fcedc593
   repoURL: https://github.com/starton-io/sdk-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/starton-io/sdk-typescript
@@ -1012,7 +1012,7 @@ examples:
         "200":
           application/json: {"balance": "<value>", "decimal": 9355.76, "formatted": "<value>", "symbol": "<value>"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
   getBalanceErc20:
     "":
       parameters:
@@ -1044,9 +1044,9 @@ examples:
         "201":
           application/json: {"address": "6410 Wellington Street", "createdAt": "2024-10-07T18:00:44.878Z", "kmsId": "<id>", "projectId": "<id>", "providerKeyId": "<id>", "updatedAt": "2024-10-07T18:00:44.878Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
         "412":
-          application/json: {"errorCode": "MAXIMUM_WALLET_REACHED", "message": "You can't create more than 1 address without your own KMS. You must specify AWS credentials to create more.", "path": "/etc", "statusCode": 412, "timestamp": "<value>"}
+          application/json: {"errorCode": "MAXIMUM_WALLET_REACHED", "message": "You can't create more than 1 address without your own KMS. You must specify AWS credentials to create more.", "path": "/opt/sbin", "statusCode": 412, "timestamp": "<value>"}
   deleteWallet:
     "":
       parameters:
@@ -1057,9 +1057,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllWallet:
     "":
       parameters:
@@ -1070,7 +1070,7 @@ examples:
         "200":
           application/json: {"items": [{"address": "66046 Rachael Shores", "createdAt": "2024-10-07T18:00:44.878Z", "kmsId": "<id>", "projectId": "<id>", "providerKeyId": "<id>", "updatedAt": "2024-10-07T18:00:44.878Z"}], "meta": {"currentPage": 1517.68, "itemCount": 2178.28, "itemsPerPage": 9968.61}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/private/var", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneWallet:
     "":
       parameters:
@@ -1080,9 +1080,9 @@ examples:
         "200":
           application/json: {"address": "40423 Cheyenne Haven", "createdAt": "2024-10-07T18:00:44.878Z", "kmsId": "<id>", "projectId": "<id>", "providerKeyId": "<id>", "updatedAt": "2024-10-07T18:00:44.878Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/selinux", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/local/src", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   importProviderKeyWallet:
     speakeasy-default-import-provider-key-wallet:
       requestBody:
@@ -1091,7 +1091,7 @@ examples:
         "201":
           application/json: {"address": "92453 Jameson Course", "createdAt": "2024-10-07T18:00:44.878Z", "kmsId": "<id>", "projectId": "<id>", "providerKeyId": "<id>", "updatedAt": "2024-10-07T18:00:44.878Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/rescue", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/Library", "statusCode": 400, "timestamp": "<value>"}
   claimFaucet:
     "":
       parameters:
@@ -1103,9 +1103,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:44.904Z", "id": "<id>", "ip": "80.67.234.234", "network": "<value>", "wallet": "<value>"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/mnt", "statusCode": 400, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/opt/share", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/var", "statusCode": 500, "timestamp": "<value>"}
         default:
           application/json: {"errorCode": "TOO_EARLY", "message": "Please try later, you already tried too recently", "path": "/var/tmp", "statusCode": 425, "timestamp": "<value>"}
   resyncNoncesWallet:
@@ -1152,9 +1152,9 @@ examples:
         "200":
           application/json: {"address": "639 Kuhn Way", "createdAt": "2024-10-07T18:00:44.878Z", "kmsId": "<id>", "projectId": "<id>", "providerKeyId": "<id>", "updatedAt": "2024-10-07T18:00:44.878Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/src", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/share", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
   deletePin:
     "":
       parameters:
@@ -1164,9 +1164,9 @@ examples:
         "200":
           application/json: false
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllPin:
     "":
       parameters:
@@ -1177,7 +1177,7 @@ examples:
         "200":
           application/json: {"items": [{"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "queued", "updatedAt": "2024-10-07T18:00:02.654Z"}], "meta": {"currentPage": 5984.8, "itemCount": 6512.03, "itemsPerPage": 163.08}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOnePin:
     "":
       parameters:
@@ -1188,16 +1188,16 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "queued", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/share", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   getStorageUsedPin:
     speakeasy-default-get-storage-used-pin:
       responses:
         "200":
           application/json: {"currentStorageUsed": 8696.26, "freeSpaceRemaining": 6001.5, "maxAllowed": 5595.69}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/Applications", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/sys", "statusCode": 400, "timestamp": "<value>"}
   createPin:
     a:
       requestBody:
@@ -1206,9 +1206,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "queued", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/media", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/boot", "statusCode": 400, "timestamp": "<value>"}
         "413":
-          application/json: {"errorCode": "MAXIMUM_STORAGE_REACHED", "message": "The max storage size allowed for this project would be exceeded.", "path": "/private/tmp", "statusCode": 413, "timestamp": "<value>"}
+          application/json: {"errorCode": "MAXIMUM_STORAGE_REACHED", "message": "The max storage size allowed for this project would be exceeded.", "path": "/media", "statusCode": 413, "timestamp": "<value>"}
   updatePin:
     a:
       parameters:
@@ -1220,9 +1220,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "deleted", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/Network", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/yp", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1233,9 +1233,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "failed", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/var/yp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/boot/defaults", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
   uploadFromFilePin:
     speakeasy-default-upload-from-file-pin:
       requestBody:
@@ -1244,9 +1244,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "pinned", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/private", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "413":
-          application/json: {"errorCode": "PAYLOAD_TOO_LARGE", "message": "Payload too large.", "path": "/Network", "statusCode": 413, "timestamp": "<value>"}
+          application/json: {"errorCode": "MAXIMUM_STORAGE_REACHED", "message": "The max storage size allowed for this project would be exceeded.", "path": "/var/tmp", "statusCode": 413, "timestamp": "<value>"}
   uploadFromFolderPin:
     speakeasy-default-upload-from-folder-pin:
       requestBody:
@@ -1255,9 +1255,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "queued", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/usr/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/sbin", "statusCode": 400, "timestamp": "<value>"}
         "413":
-          application/json: {"errorCode": "PAYLOAD_TOO_LARGE", "message": "Payload too large.", "path": "/usr/local/src", "statusCode": 413, "timestamp": "<value>"}
+          application/json: {"errorCode": "PAYLOAD_TOO_LARGE", "message": "Payload too large.", "path": "/usr/ports", "statusCode": 413, "timestamp": "<value>"}
   uploadFromJsonPin:
     a:
       requestBody:
@@ -1266,9 +1266,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:02.654Z", "id": "<id>", "projectId": "<id>", "status": "failed", "updatedAt": "2024-10-07T18:00:02.654Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/lost+found", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/local/bin", "statusCode": 400, "timestamp": "<value>"}
         "413":
-          application/json: {"errorCode": "MAXIMUM_STORAGE_REACHED", "message": "The max storage size allowed for this project would be exceeded.", "path": "/Library", "statusCode": 413, "timestamp": "<value>"}
+          application/json: {"errorCode": "MAXIMUM_STORAGE_REACHED", "message": "The max storage size allowed for this project would be exceeded.", "path": "/lost+found", "statusCode": 413, "timestamp": "<value>"}
   createKms:
     speakeasy-default-create-kms:
       requestBody:
@@ -1277,7 +1277,7 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:44.886Z", "credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<id>", "provider": "Vault", "updatedAt": "2024-10-07T18:00:44.886Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/etc/namedb", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
   deleteKms:
     "":
       parameters:
@@ -1287,9 +1287,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllKms:
     "":
       parameters:
@@ -1300,7 +1300,7 @@ examples:
         "200":
           application/json: {"items": [{"createdAt": "2024-10-07T18:00:44.886Z", "credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<id>", "provider": "AWS", "updatedAt": "2024-10-07T18:00:44.886Z"}], "meta": {"currentPage": 5984.8, "itemCount": 6512.03, "itemsPerPage": 163.08}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneKms:
     "":
       parameters:
@@ -1310,9 +1310,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:44.886Z", "credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<id>", "provider": "AWS", "updatedAt": "2024-10-07T18:00:44.886Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/share", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   updateKms:
     "":
       parameters:
@@ -1324,9 +1324,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:44.886Z", "credentials": {}, "id": "<id>", "name": "<value>", "projectId": "<id>", "provider": "Vault", "updatedAt": "2024-10-07T18:00:44.886Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/Network", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/yp", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
   createTransaction:
     a:
       parameters:
@@ -1338,13 +1338,13 @@ examples:
         "201":
           application/json: {"automaticNonce": true, "chainId": 6384.24, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "FAILED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "INSUFFICIENT_FUNDS", "message": "Your funds are insufficient.", "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/sbin", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/usr/local/bin", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/etc/namedb", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_SIGN", "message": "Could not sign transaction.", "path": "/srv", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/usr/local/bin", "statusCode": 500, "timestamp": "<value>"}
     b:
       parameters:
         query:
@@ -1355,13 +1355,13 @@ examples:
         "201":
           application/json: {"automaticNonce": false, "chainId": 9574.09, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [{"createdAt": "1706359013963", "message": "<value>", "type": "GAS_PRICE_ESTIMATED"}], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "ERROR_PUBLISH", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "INVALID_GAS_PRICE", "message": "Wrong gas price.", "path": "/home", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/dev", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/etc/defaults", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/usr/local/bin", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "NO_PROVIDER_FOR_NETWORK", "message": "No provider for network.", "path": "/Network", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_SIGN", "message": "Could not sign transaction.", "path": "/srv", "statusCode": 500, "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1372,13 +1372,13 @@ examples:
         "201":
           application/json: {"automaticNonce": true, "chainId": 6216.36, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "NONCE_ASSIGNED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "NONCE_EXPIRED", "message": "Your nonce is too low.", "path": "/Users", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "UNPREDICTABLE_GAS_LIMIT", "message": "Could not estimate gas limit for this transaction.", "path": "/var/spool", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/sbin", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/var", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/Library", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_ESTIMATE_GAS_PRICE", "message": "Could not estimate gas price.", "path": "/private/var", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/home/user/dir", "statusCode": 500, "timestamp": "<value>"}
   getAllTransaction:
     "":
       parameters:
@@ -1393,7 +1393,7 @@ examples:
         "200":
           application/json: {"items": [{"automaticNonce": true, "chainId": 5984.8, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "PENDING", "status": "SIGNED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}], "meta": {"currentPage": 617.56, "itemCount": 8059.21, "itemsPerPage": 7895.53}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/home/user/dir", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getAvailableNoncesWallet:
     "":
       parameters:
@@ -1404,13 +1404,13 @@ examples:
         "200":
           application/json: {"availableNonces": [], "nextNonce": 2780.88}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/usr/local/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/lost+found", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/libdata", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/lib", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "COULD_NOT_PROCESS_ENTITY", "message": "Could not process entity.", "path": "/opt/share", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_PROCESS_ENTITY", "message": "Could not process entity.", "path": "/usr/local/bin", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/var/yp", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/usr/libdata", "statusCode": 500, "timestamp": "<value>"}
   getOneTransaction:
     "":
       parameters:
@@ -1420,9 +1420,9 @@ examples:
         "200":
           application/json: {"automaticNonce": true, "chainId": 3503.11, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [{"createdAt": "1712504858422", "message": "<value>", "type": "EXECUTION_WILL_FAIL"}], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "COULD_NOT_ESTIMATE_GAS_PRICE", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/var/tmp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/selinux", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   getAllSettingRelayer:
     "":
       parameters:
@@ -1432,9 +1432,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:44.901Z", "id": "<id>", "network": "<value>", "projectId": "<id>", "unstuckAutomaticGasPrice": false, "unstuckCustomGasPrice": false, "unstuckGasPriceDelay": 5442.21, "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": false, "unstuckMissingNonceDelay": 9699.61, "updatedAt": "2024-10-07T18:00:44.901Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/private", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/sbin", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Library", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/root", "statusCode": 404, "timestamp": "<value>"}
   updateSettingRelayer:
     "":
       parameters:
@@ -1446,9 +1446,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T18:00:44.901Z", "id": "<id>", "network": "<value>", "projectId": "<id>", "unstuckAutomaticGasPrice": false, "unstuckCustomGasPrice": false, "unstuckGasPriceDelay": 3446.2, "unstuckMaxGasPrice": "<value>", "unstuckMissingNonce": false, "unstuckMissingNonceDelay": 6276.9, "updatedAt": "2024-10-07T18:00:44.901Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/var/yp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/boot/defaults", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
   createNetwork:
     a:
       requestBody:
@@ -1457,7 +1457,7 @@ examples:
         "201":
           application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": 6384.24, "confirmationBlocks": 4174.58, "createdAt": "2024-10-07T17:59:53.244Z", "decimal": 1343.65, "deprecated": true, "displayName": "Peyton79", "eip1159": false, "eips": {"eip1159": false, "eip155": false}, "enableExternalWallet": true, "enableListener": true, "enableRelayer": true, "explorerUrl": "https://each-barracks.biz/", "featured": true, "indexerService": true, "loadbalancerUrl": "https://puzzled-flat.com/", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "updatedAt": "2024-10-07T17:59:53.244Z", "verifyBlockIntegrity": true, "verifyTxIntegrity": true}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
   deleteNetwork:
     "":
       parameters:
@@ -1467,9 +1467,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllNetwork:
     "":
       parameters:
@@ -1481,7 +1481,7 @@ examples:
         "200":
           application/json: {"items": [{"blockchain": "<value>", "browserExtensionService": true, "chainId": 5984.8, "confirmationBlocks": 6512.03, "createdAt": "2024-10-07T17:59:53.244Z", "decimal": 163.08, "deprecated": true, "displayName": "Lillie_Schoen15", "eip1159": false, "eips": {"eip1159": true, "eip155": true}, "enableExternalWallet": true, "enableListener": false, "enableRelayer": true, "explorerUrl": "https://secret-suv.org/", "featured": true, "indexerService": true, "loadbalancerUrl": "https://repentant-hammock.net", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": true, "updatedAt": "2024-10-07T17:59:53.244Z", "verifyBlockIntegrity": true, "verifyTxIntegrity": false}], "meta": {"currentPage": 3754.83, "itemCount": 4421.99, "itemsPerPage": 2056.17}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/obj", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneNetwork:
     "":
       parameters:
@@ -1491,9 +1491,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": 3503.11, "confirmationBlocks": 290.29, "createdAt": "2024-10-07T17:59:53.244Z", "decimal": 4443.89, "deprecated": true, "displayName": "Gene.Deckow", "eip1159": false, "eips": {"eip1159": true, "eip155": true}, "enableExternalWallet": false, "enableListener": false, "enableRelayer": false, "explorerUrl": "https://royal-monocle.biz/", "featured": true, "indexerService": false, "loadbalancerUrl": "https://both-alligator.net/", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "transactionManagerService": true, "updatedAt": "2024-10-07T17:59:53.244Z", "verifyBlockIntegrity": true, "verifyTxIntegrity": false}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/lib", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Library", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   updateNetwork:
     a:
       parameters:
@@ -1505,9 +1505,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "browserExtensionService": false, "chainId": 5971.29, "confirmationBlocks": 3446.2, "createdAt": "2024-10-07T17:59:53.244Z", "decimal": 9914.64, "deprecated": false, "displayName": "Jeffry.Becker-Treutel31", "eip1159": true, "eips": {"eip1159": false, "eip155": false}, "enableExternalWallet": true, "enableListener": true, "enableRelayer": false, "explorerUrl": "https://impressionable-almighty.net", "featured": false, "indexerService": true, "loadbalancerUrl": "https://chilly-department.info", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": false, "transactionManagerService": false, "updatedAt": "2024-10-07T17:59:53.244Z", "verifyBlockIntegrity": false, "verifyTxIntegrity": false}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/net", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/root", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1518,9 +1518,9 @@ examples:
         "200":
           application/json: {"blockchain": "<value>", "browserExtensionService": true, "chainId": 3420.7, "confirmationBlocks": 6567.76, "createdAt": "2024-10-07T17:59:53.244Z", "decimal": 1190.53, "deprecated": false, "displayName": "Abe_Brakus", "eip1159": true, "eips": {"eip1159": true, "eip155": false}, "enableExternalWallet": false, "enableListener": true, "enableRelayer": true, "explorerUrl": "https://jagged-statue.name/", "featured": false, "indexerService": false, "loadbalancerUrl": "https://reckless-devastation.biz/", "logo": "<value>", "name": "<value>", "owner": "<value>", "symbol": "<value>", "testnet": true, "transactionManagerService": true, "updatedAt": "2024-10-07T17:59:53.244Z", "verifyBlockIntegrity": false, "verifyTxIntegrity": true}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/net", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/boot/defaults", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
   createRpc:
     a:
       parameters:
@@ -1532,9 +1532,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": false, "networkName": "<value>", "type": "archive", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://black-and-white-secrecy.org/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/sbin", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1545,9 +1545,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": true, "networkName": "<value>", "type": "archive", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://enlightened-curl.com/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/home", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/dev", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/dev", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/local/bin", "statusCode": 404, "timestamp": "<value>"}
   deleteRpc:
     "":
       parameters:
@@ -1558,9 +1558,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllRpc:
     "":
       parameters:
@@ -1573,7 +1573,7 @@ examples:
         "200":
           application/json: {"items": [{"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": true, "networkName": "<value>", "type": "full", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://aggressive-information.name"}], "meta": {"currentPage": 617.56, "itemCount": 8059.21, "itemsPerPage": 7895.53}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/home/user/dir", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneRpc:
     "":
       parameters:
@@ -1584,9 +1584,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": true, "networkName": "<value>", "type": "archive", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://jumbo-custody.info/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   updateRpc:
     a:
       parameters:
@@ -1599,9 +1599,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": false, "networkName": "<value>", "type": "full", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://yearly-order.info/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/src", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1613,9 +1613,9 @@ examples:
         "200":
           application/json: {"createdAt": "2024-10-07T17:59:53.167Z", "id": "<id>", "isPublic": true, "networkName": "<value>", "type": "archive", "updatedAt": "2024-10-07T17:59:53.167Z", "url": "https://cool-scout.org/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/private", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/libexec", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
   deleteProjectMember:
     speakeasy-default-delete-project-member:
       parameters:
@@ -1625,18 +1625,18 @@ examples:
         "200":
           application/json: false
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/var/log", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/var/spool", "statusCode": 500, "timestamp": "<value>"}
   getAllProjectMember:
     speakeasy-default-get-all-project-member:
       responses:
         "200":
           application/json: {"items": [{"email": "Lavinia.Armstrong62@gmail.com", "fullName": "Mr. Devin Erdman IV", "id": "<id>"}], "meta": {"currentPage": 2547.68, "itemCount": 6269, "itemsPerPage": 4198.31}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/usr/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   createInvitation:
     speakeasy-default-create-invitation:
       requestBody:
@@ -1645,9 +1645,9 @@ examples:
         "201":
           application/json: {"createdAt": "2024-10-07T18:00:31.716Z", "email": "Cecelia58@gmail.com", "id": "<id>", "projectId": "<id>", "role": "owner", "updatedAt": "2024-10-07T18:00:31.716Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
         "401":
-          application/json: {"errorCode": "NOT_AUTHENTICATED", "message": "Not authenticated.", "path": "/Library", "statusCode": 401, "timestamp": "<value>"}
+          application/json: {"errorCode": "NOT_AUTHENTICATED", "message": "Not authenticated.", "path": "/opt/sbin", "statusCode": 401, "timestamp": "<value>"}
   deleteInvitation:
     "":
       parameters:
@@ -1657,9 +1657,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllInvitation:
     "":
       parameters:
@@ -1670,7 +1670,7 @@ examples:
         "200":
           application/json: {"items": [{"createdAt": "2024-10-07T18:00:31.716Z", "email": "Lavinia.Armstrong62@gmail.com", "id": "<id>", "projectId": "<id>", "role": "owner", "updatedAt": "2024-10-07T18:00:31.716Z"}], "meta": {"currentPage": 8059.21, "itemCount": 7895.53, "itemsPerPage": 1517.68}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/var/yp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   callSmartContract:
     a:
       parameters:
@@ -1685,13 +1685,13 @@ examples:
         "201":
           application/json: {"automaticNonce": false, "chainId": 4388.95, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [{"createdAt": "1715560881204", "message": "<value>", "type": "COULD_NOT_ESTIMATE_GAS_LIMIT"}], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "ERROR", "status": "ERROR_TX", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "UNEXPECTED_ARGUMENT", "message": "Your params are invalid.", "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "ALREADY_KNOWN", "message": "This transaction is already known by the node.", "path": "/opt/share", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/share", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/sbin", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/etc/ppp", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/media", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/Network", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/mnt", "statusCode": 500, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1705,13 +1705,13 @@ examples:
         "201":
           application/json: {"automaticNonce": true, "chainId": 3085.66, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "COULD_NOT_INCREASE_GAS_PRICE", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}
         "400":
-          application/json: {"errorCode": "CONTRACT_NOT_YET_DEPLOYED", "message": "Smart contract is not deployed on the blockchain yet.", "path": "/sys", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/Library", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/libexec", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/boot/defaults", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/etc/periodic", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/opt/share", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/etc/defaults", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/etc", "statusCode": 500, "timestamp": "<value>"}
   deleteSmartContract:
     "":
       parameters:
@@ -1722,9 +1722,9 @@ examples:
         "200":
           application/json: 6358.16
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   deployFromBytecodeSmartContract:
     a:
       parameters:
@@ -1736,13 +1736,13 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "13571 Wren Close", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "SUCCESS", "status": "MONITORING_IN_PROGRESS", "updatedAt": "2024-10-07T18:00:44.828Z"}, "transaction": {"automaticNonce": true, "chainId": 8995.24, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [{"createdAt": "1720096197088", "message": "<value>", "type": "ALREADY_KNOWN"}], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "PENDING", "status": "COULD_NOT_ASSIGN_NONCE", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}}
         "400":
-          application/json: {"errorCode": "INVALID_ABI", "message": "INVALID_ABI", "path": "/var/tmp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "MISSING_ARGUMENT", "message": "Some params are missing.", "path": "/Applications", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/bin", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/etc/ppp", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/root", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_SIGN", "message": "Could not sign transaction.", "path": "/Applications", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/etc/defaults", "statusCode": 500, "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1753,13 +1753,13 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "37146 Dortha Gardens", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "ERROR", "status": "REPLACED", "updatedAt": "2024-10-07T18:00:44.828Z"}, "transaction": {"automaticNonce": false, "chainId": 9389.51, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": false, "logs": [{"createdAt": "1723268778146", "message": "<value>", "type": "SENT_TO_MEMPOOL"}, {"createdAt": "1729089808734", "message": "<value>", "type": "MONITORING_IN_PROGRESS"}], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "NONCE_ASSIGNED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}}
         "400":
-          application/json: {"errorCode": "NUMERIC_FAULT", "message": "Illegal operations with numerical values.", "path": "/var", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/dev", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/srv", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/obj", "statusCode": 404, "timestamp": "<value>"}
         "422":
-          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/opt/bin", "statusCode": 422, "timestamp": "<value>"}
+          application/json: {"errorCode": "REPLACEMENT_GAS_PRICE_UNDERPRICED", "message": "Your transaction is underpriced. You try to replace an existing transaction with not enough gas fee.", "path": "/home", "statusCode": 422, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_ASSIGN_NONCE", "message": "Could not assign nonce.", "path": "/etc/namedb", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/opt/bin", "statusCode": 500, "timestamp": "<value>"}
   deployFromTemplateSmartContract:
     a:
       parameters:
@@ -1771,11 +1771,11 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "3199 Penelope Tunnel", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "ERROR", "status": "NEW_TRANSACTION_HASH", "updatedAt": "2024-10-07T18:00:44.828Z"}, "transaction": {"automaticNonce": false, "chainId": 734.49, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "SUCCESS", "status": "GAS_LIMIT_ESTIMATED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}}
         "400":
-          application/json: {"errorCode": "INVALID_ARGUMENT", "message": "Some params are invalid.", "path": "/home/user/dir", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "INVALID_GAS_PRICE", "message": "Wrong gas price.", "path": "/home/user/dir", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Applications", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc/mail", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/selinux", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "NO_PROVIDER_FOR_NETWORK", "message": "No provider for network.", "path": "/var/spool", "statusCode": 500, "timestamp": "<value>"}
     "":
       parameters:
         query:
@@ -1786,11 +1786,11 @@ examples:
         "201":
           application/json: {"smartContract": {"address": "612 Oaklands", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "SUCCESS", "status": "NEW_TRANSACTION_HASH", "updatedAt": "2024-10-07T18:00:44.828Z"}, "transaction": {"automaticNonce": false, "chainId": 4817.65, "createdAt": "2024-10-07T18:00:44.843Z", "from": "<value>", "id": "<id>", "isDeployTransaction": true, "logs": [], "network": "<value>", "projectId": "<id>", "signerWallet": "<value>", "state": "MANUAL_ACTION_REQUIRED", "status": "MONITORING_INTERRUPTED", "updatedAt": "2024-10-07T18:00:44.843Z", "value": "<value>"}}
         "400":
-          application/json: {"errorCode": "UNEXPECTED_ARGUMENT", "message": "Your params are invalid.", "path": "/opt/share", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "SMART_CONTRACT_NOT_ACTIVATED", "message": "This smart contract is not active.", "path": "/usr/local/bin", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/srv", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/src", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "COULD_NOT_BROADCAST", "message": "Could not broadcast this transaction.", "path": "/usr/obj", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_SIGN", "message": "Could not sign transaction.", "path": "/var/log", "statusCode": 500, "timestamp": "<value>"}
   encodeSmartContract:
     a:
       parameters:
@@ -1806,6 +1806,7 @@ examples:
           application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
         "500":
           application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/usr/X11R6", "statusCode": 500, "timestamp": "<value>"}
+        "201": {}
     "":
       parameters:
         path:
@@ -1820,6 +1821,7 @@ examples:
           application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc/defaults", "statusCode": 404, "timestamp": "<value>"}
         "500":
           application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/sys", "statusCode": 500, "timestamp": "<value>"}
+        "201": {}
   getAllSmartContract:
     "":
       parameters:
@@ -1834,7 +1836,7 @@ examples:
         "200":
           application/json: {"items": [{"address": "66046 Rachael Shores", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "SUCCESS", "status": "GAS_PRICE_ESTIMATED", "updatedAt": "2024-10-07T18:00:44.828Z"}], "meta": {"currentPage": 9968.61, "itemCount": 1778.43, "itemsPerPage": 4859.66}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getAvailableFunctionsSmartContract:
     "":
       parameters:
@@ -1845,11 +1847,11 @@ examples:
         "200":
           application/json: {"call": [], "events": ["<value>", "<value>", "<value>"], "read": ["<value>"]}
         "400":
-          application/json: {"errorCode": "INVALID_BYTECODE", "message": "Your bytecode is invalid.", "path": "/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "INVALID_BYTECODE", "message": "Your bytecode is invalid.", "path": "/usr/obj", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/local/src", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/media", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/proc", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/Library", "statusCode": 500, "timestamp": "<value>"}
   getOneSmartContract:
     "":
       parameters:
@@ -1863,9 +1865,9 @@ examples:
         "200":
           application/json: {"address": "40423 Cheyenne Haven", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "ERROR", "status": "COULD_NOT_SIGN", "updatedAt": "2024-10-07T18:00:44.828Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/mnt", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/tmp", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   importExistingSmartContract:
     a:
       requestBody:
@@ -1874,7 +1876,7 @@ examples:
         "201":
           application/json: {"address": "9452 2nd Street", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "ERROR", "status": "SIGNED", "updatedAt": "2024-10-07T18:00:44.828Z"}
         "400":
-          application/json: {"errorCode": "INVALID_ABI", "message": "INVALID_ABI", "path": "/etc/mail", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "INVALID_ABI", "message": "INVALID_ABI", "path": "/var/spool", "statusCode": 400, "timestamp": "<value>"}
   readSmartContract:
     a:
       parameters:
@@ -1887,11 +1889,11 @@ examples:
         "201":
           application/json: {"address": "613 Russel Estate", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": 6694.17}
         "400":
-          application/json: {"errorCode": "INVALID_BYTECODE", "message": "Your bytecode is invalid.", "path": "/Applications", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/etc/namedb", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/selinux", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/bin", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/private/var", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/rescue", "statusCode": 500, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1903,11 +1905,11 @@ examples:
         "201":
           application/json: {"address": "3302 Cromwell Road", "functionName": "<value>", "network": "<value>", "params": ["TestToken", "TEST", "1000000000000000000000000", "0x298e760768c8481780397eE28A127eAd584df4ee"], "response": "<value>"}
         "400":
-          application/json: {"errorCode": "ENS_NOT_SUPPORTED", "message": "ENS is not supported on this network.", "path": "/private/var", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "EXECUTION_WILL_FAIL", "message": "This call will revert.", "path": "/home/user", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc/namedb", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/lib", "statusCode": 404, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/opt/share", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "UNKNOWN", "message": "Unknown error.", "path": "/usr", "statusCode": 500, "timestamp": "<value>"}
   updateSmartContract:
     a:
       parameters:
@@ -1920,9 +1922,9 @@ examples:
         "200":
           application/json: {"address": "639 Kuhn Way", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "SUCCESS", "status": "GAS_PRICE_INCREASED", "updatedAt": "2024-10-07T18:00:44.828Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/mnt", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/lib", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -1934,9 +1936,9 @@ examples:
         "200":
           application/json: {"address": "88347 Lancaster Road", "createdAt": "2024-10-07T18:00:44.828Z", "id": "<id>", "name": "<value>", "network": "<value>", "projectId": "<id>", "state": "SUCCESS", "status": "CONFIRMED", "updatedAt": "2024-10-07T18:00:44.828Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/opt/share", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/proc", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
   getAllSmartContractTemplate:
     "":
       parameters:
@@ -1954,7 +1956,7 @@ examples:
         "200":
           application/json: {"items": [{"abi": [], "blockchains": ["<value>", "<value>"], "category": "DEPRECATED", "createdAt": "2024-10-07T18:00:07.422Z", "description": "exactly expense duh", "githubUrl": "https://regular-widow.biz/", "humanReadableAbi": [], "id": "<id>", "isActivated": true, "isAudited": false, "name": "<value>", "order": 0, "shortDescription": "<value>", "tags": ["<value>", "<value>", "<value>"], "updatedAt": "2024-10-07T18:00:07.422Z"}], "meta": {"currentPage": 3754.83, "itemCount": 4421.99, "itemsPerPage": 2056.17}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/obj", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneSmartContractTemplate:
     "":
       parameters:
@@ -1966,9 +1968,9 @@ examples:
         "200":
           application/json: {"abi": [], "blockchains": ["<value>"], "category": "NFT", "createdAt": "2024-10-07T18:00:07.422Z", "description": "yippee dependent briskly though after rigidly", "githubUrl": "https://grubby-accompanist.net/", "humanReadableAbi": ["<value>", "<value>"], "id": "<id>", "isActivated": true, "isAudited": false, "name": "<value>", "order": 0, "shortDescription": "<value>", "tags": ["<value>", "<value>"], "updatedAt": "2024-10-07T18:00:07.422Z"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/usr/libdata", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   createWatcher:
     a:
       requestBody:
@@ -1977,13 +1979,13 @@ examples:
         "201":
           application/json: {"address": "6410 Wellington Street", "confirmationsBlocks": 0.86, "createdAt": "2024-10-07T18:00:22.732Z", "id": "<id>", "network": "<value>", "paused": true, "projectId": "<id>", "triggerType": "BLOCK", "type": "EVENT_MINT", "updatedAt": "2024-10-07T18:00:22.732Z", "webhookUrl": "https://outrageous-resolve.org"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/Library", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/tmp", "statusCode": 400, "timestamp": "<value>"}
         "409":
-          application/json: {"errorCode": "DATABASE_DUPLICATE", "message": "Duplicate conflict when saving this entity to the datbase.", "path": "/bin", "statusCode": 409, "timestamp": "<value>"}
+          application/json: {"errorCode": "DATABASE_DUPLICATE", "message": "Duplicate conflict when saving this entity to the datbase.", "path": "/opt/sbin", "statusCode": 409, "timestamp": "<value>"}
         "412":
-          application/json: {"errorCode": "SERVER_NOT_RESPONDING", "message": "Your server that receive webhook is not responding.", "path": "/home/user/dir", "statusCode": 412, "timestamp": "<value>"}
+          application/json: {"errorCode": "SERVER_NOT_RESPONDING", "message": "Your server that receive webhook is not responding.", "path": "/etc/namedb", "statusCode": 412, "timestamp": "<value>"}
         "500":
-          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/home/user", "statusCode": 500, "timestamp": "<value>"}
+          application/json: {"errorCode": "MICROSERVICE_NOT_RESPONDING", "message": "MICROSERVICE_NOT_RESPONDING", "path": "/dev", "statusCode": 500, "timestamp": "<value>"}
   deleteWatcher:
     speakeasy-default-delete-watcher:
       parameters:
@@ -1993,9 +1995,9 @@ examples:
         "200":
           application/json: 5459.07
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/include", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/var/spool", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt/include", "statusCode": 404, "timestamp": "<value>"}
   getAllWatcher:
     "":
       parameters:
@@ -2013,7 +2015,7 @@ examples:
         "200":
           application/json: {"items": [{"address": "66046 Rachael Shores", "confirmationsBlocks": 1517.68, "createdAt": "2024-10-07T18:00:22.732Z", "id": "<id>", "network": "<value>", "paused": true, "projectId": "<id>", "triggerType": "GAS_PRICE", "type": "ADDRESS_ACTIVITY", "updatedAt": "2024-10-07T18:00:22.732Z", "webhookUrl": "https://fake-orchid.info/"}], "meta": {"currentPage": 3090.21, "itemCount": 7186.44, "itemsPerPage": 11.95}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/etc/namedb", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getAllWatcherEvent:
     "":
       parameters:
@@ -2026,7 +2028,7 @@ examples:
         "200":
           application/json: {"items": [], "meta": {"currentPage": 1403.7, "itemCount": 5494.66, "itemsPerPage": 7391.65}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/opt/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/namedb", "statusCode": 400, "timestamp": "<value>"}
   getOneWatcher:
     "":
       parameters:
@@ -2036,9 +2038,9 @@ examples:
         "200":
           application/json: {"address": "40423 Cheyenne Haven", "confirmationsBlocks": 9756.6, "createdAt": "2024-10-07T18:00:22.732Z", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<id>", "triggerType": "GAS_PRICE", "type": "ADDRESS_SENT_NATIVE_CURRENCY", "updatedAt": "2024-10-07T18:00:22.732Z", "webhookUrl": "https://stupendous-shark.name/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/X11R6", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/srv", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   getOneWatcherEvent:
     "":
       parameters:
@@ -2049,9 +2051,9 @@ examples:
         "200":
           application/json: {"blockHash": "<value>", "blockNumber": 1603.15, "createdAt": "2024-10-07T18:00:22.747Z", "id": "<id>", "network": "<value>", "payload": {}, "projectId": "<id>", "status": "PENDING_VALIDATION", "txHash": "<value>", "updatedAt": "2024-10-07T18:00:22.747Z", "watcherId": "<id>"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/local/src", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/Applications", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/sbin", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc/periodic", "statusCode": 404, "timestamp": "<value>"}
   updateWatcher:
     a:
       parameters:
@@ -2063,9 +2065,9 @@ examples:
         "200":
           application/json: {"address": "639 Kuhn Way", "confirmationsBlocks": 540.62, "createdAt": "2024-10-07T18:00:22.732Z", "id": "<id>", "network": "<value>", "paused": false, "projectId": "<id>", "triggerType": "TRANSACTION", "type": "ADDRESS_SENT_NATIVE_CURRENCY", "updatedAt": "2024-10-07T18:00:22.732Z", "webhookUrl": "https://cool-scout.org/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/private", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/srv", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/usr/libexec", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/Network", "statusCode": 404, "timestamp": "<value>"}
     "":
       parameters:
         path:
@@ -2076,9 +2078,9 @@ examples:
         "200":
           application/json: {"address": "407 Main Street S", "confirmationsBlocks": 5011.35, "createdAt": "2024-10-07T18:00:22.732Z", "id": "<id>", "network": "<value>", "paused": true, "projectId": "<id>", "triggerType": "BLOCK", "type": "ADDRESS_SENT_NATIVE_CURRENCY", "updatedAt": "2024-10-07T18:00:22.732Z", "webhookUrl": "https://tame-tabletop.net"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>"], "path": "/net", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>", "<value>", "<value>"], "path": "/System", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/root", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/var", "statusCode": 404, "timestamp": "<value>"}
   cancelWebhook:
     "":
       parameters:
@@ -2088,11 +2090,11 @@ examples:
         "201":
           application/json: {"attempts": [], "createdAt": "2024-10-07T18:00:20.011Z", "headers": {}, "id": "<id>", "payload": {}, "projectId": "<id>", "refId": "<id>", "status": "CANCELED", "updatedAt": "2024-10-07T18:00:20.011Z", "url": "https://brave-costume.biz/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/periodic", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/var/yp", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/selinux", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/tmp", "statusCode": 404, "timestamp": "<value>"}
         "412":
-          application/json: {"errorCode": "COULD_NOT_CANCEL_WEBHOOK", "message": "Could not cancel webhook.", "path": "/etc/namedb", "statusCode": 412, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_CANCEL_WEBHOOK", "message": "Could not cancel webhook.", "path": "/etc", "statusCode": 412, "timestamp": "<value>"}
   getAllWebhook:
     "":
       parameters:
@@ -2104,7 +2106,7 @@ examples:
         "200":
           application/json: {"items": [{"attempts": [], "createdAt": "2024-10-07T18:00:20.011Z", "headers": {}, "id": "<id>", "payload": {}, "projectId": "<id>", "refId": "<id>", "status": "FAILED", "updatedAt": "2024-10-07T18:00:20.011Z", "url": "https://aggressive-information.name"}], "meta": {"currentPage": 617.56, "itemCount": 8059.21, "itemsPerPage": 7895.53}}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/home/user/dir", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/boot/defaults", "statusCode": 400, "timestamp": "<value>"}
   getOneWebhook:
     "":
       parameters:
@@ -2114,9 +2116,9 @@ examples:
         "200":
           application/json: {"attempts": [], "createdAt": "2024-10-07T18:00:20.011Z", "headers": {}, "id": "<id>", "payload": {}, "projectId": "<id>", "refId": "<id>", "status": "SUCCESSFUL", "updatedAt": "2024-10-07T18:00:20.011Z", "url": "https://jumbo-custody.info/"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/etc/ppp", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/opt", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/opt", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/bin", "statusCode": 404, "timestamp": "<value>"}
   getOneWebhookSigningSecret:
     speakeasy-default-get-one-webhook-signing-secret:
       responses:
@@ -2142,10 +2144,10 @@ examples:
         "201":
           application/json: {"attempts": [{"attempt": 7522.59, "attemptDate": "<value>", "createdAt": "2024-10-07T18:00:20.012Z", "id": "<id>", "responsePayload": "<value>", "responseStatusCode": 4706.48, "status": "SUCCESSFUL_CALL", "updatedAt": "2024-10-07T18:00:20.012Z", "webhookId": "<id>"}], "createdAt": "2024-10-07T18:00:20.011Z", "headers": {}, "id": "<id>", "payload": {}, "projectId": "<id>", "refId": "<id>", "status": "FAILED", "updatedAt": "2024-10-07T18:00:20.011Z", "url": "https://sour-programme.name"}
         "400":
-          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": [], "path": "/usr/local/bin", "statusCode": 400, "timestamp": "<value>"}
+          application/json: {"errorCode": "BAD_REQUEST_EXCEPTION", "message": ["<value>"], "path": "/usr/libdata", "statusCode": 400, "timestamp": "<value>"}
         "404":
-          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/etc/periodic", "statusCode": 404, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_FIND_RESOURCE", "message": "Could not found resource.", "path": "/private/tmp", "statusCode": 404, "timestamp": "<value>"}
         "412":
-          application/json: {"errorCode": "COULD_NOT_RESEND_WEBHOOK", "message": "Could not resend webhook.", "path": "/proc", "statusCode": 412, "timestamp": "<value>"}
+          application/json: {"errorCode": "COULD_NOT_RESEND_WEBHOOK", "message": "Could not resend webhook.", "path": "/System", "statusCode": 412, "timestamp": "<value>"}
 examplesVersion: 1.0.0
 generatedTests: {}
