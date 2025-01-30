@@ -1,6 +1,6 @@
 {
   "name": "@starton/sdk",
-  "version": "0.26.49",
+  "version": "0.26.50",
   "author": "Starton <support@starton.com> (https://www.starton.com)",
   "main": "./index.js",
   "sideEffects": false,
